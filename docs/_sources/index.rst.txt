@@ -68,6 +68,6 @@ It contains multiply things like:
 Index
 -----
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   beginners_guide
+    beginners_guide/index
