@@ -3,9 +3,8 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'Satisfactory Modding Documentation'
-copyright = '2019, Panakotta00'
-author = 'Panakotta00'
-
+copyright = '2019, SatisfactoryModding'
+author = 'Panakotta00, SuperCoder79'
 
 # -- General configuration ---------------------------------------------------
 
