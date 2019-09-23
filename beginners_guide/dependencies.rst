@@ -1,7 +1,5 @@
-.. _beginners_guide:
-
-Beginners-Guide
-###############
+Dependencies
+############
 To get started with modding of satisfactory you need multiple things.
 
 - Satisfactory
@@ -33,23 +31,25 @@ Also remember to select your wanted installation folder.
 
 Visual Studio
 '''''''''''''
-Visit the `Visual Studio <https://visualstudio.com/>`_ Page and select ``Visual Studio Community``. Then download the installer.
+Visit the `Visual Studio <https://visualstudio.com/>`_ Page and select ``Community`` under ``Visual Studio-IDE``/``Download Visual Studio``, then download the installer.
 Now when you opened it, click again on Visual Studio Community and keep the default settings.
 Hit Install and wait until the Installation process finsished.
 
 Visual C++ 15
 '''''''''''''
 This is just important for users of Visual Studio 2019. Cause VS 17 should have already installed what you need.
-Open the installer again and click on the ``change`` button of your installation.
-Now open the sidebar on the left hand side and select under ``Visual C++`` the option ``Something idk``.
+Open the visual studio installer again and click on the ``change`` button of your installation.
+If not already selected, select ``Desktop development with C++``.
+Now open the sidebar on the right hand side and select under ``Desktop development with C++`` the option ``VS 2015 C++-Buildtools``.
 Hit save and wait until the installation process finished.
 
 Wwise
 '''''
-Visit `Wwise.com <https://wwise.com/>`_ and click on the download button in the upper right corner.
-Now the website should ask you to login. Click on register and follow the given steps.
-After you finished downloading Wwise, open the installer and start with installing WWise.
+Visit `Wwise.com <https://wwise.com/>`_ and click on the ``Get Wwise`` -> ``download Wwise`` button in the upper right corner.
+Now the website should ask you to login. Click on ``Sign in`` and follow the given steps.
+After you finished downloading Wwise, open the installer and start with installing the WWise launcher.
 
 Satisfactory Mod Loader
 '''''''''''''''''''''''
-This 
+This extremly straight forward. Just visit `ficsit.app <https://ficsit.app/>`_, open up the menu and click on SML.
+Then just download SML version your mod should use, we reccomend always the newest one, and then move the downloaded ``xinput1_3.dll`` file into your Satisfactory installation folder under ``Binaries/Win64`` and you're done!
