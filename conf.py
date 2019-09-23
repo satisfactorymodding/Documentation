@@ -21,3 +21,8 @@ exclude_patterns = ['docs', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_logo = 'logo.png'
+html_favicon = 'favicon-32x32.png'
+html_theme_options = {
+    "navigation_depth": -1
+}
