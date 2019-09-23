@@ -27,7 +27,7 @@ SML provides two key features.
 - Loading and initializing mods directly from so called "paks"
 - Loading and initializing native mods written in C++
 
-To get started in how to code mods, we reccomend beginning with the first one. Learn more in our :ref:`beginners_guide`
+To get started in how to code mods, we reccomend beginning with the first one. Learn more in our :doc:`beginners_guide/index`
 
 Installing Mods
 ---------------
