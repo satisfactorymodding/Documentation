@@ -35,7 +35,4 @@ Interestingly though is, also buildgun recipes are described in a ``FGRecipe``, 
 
 Satisfactory uses a recipe manager to register and store all recipes there are. That means when you want to add a normal workbench recipe or a smelting recipe, it doesn't matter... just create a recipe with your desired descriptors and amounts and then let it register in the manager.
 The machines get there information from this manager so the can give the user a proper choice of what they can craft and what not.
-To determine this, if a machine is capable of crafting this recipe, you will need to pass a Object type implementing the ``FGCrafter`` interface.
-
-Crafter `(FGCrafter)`
-----------------------
+To determine this, if a machine is capable of crafting this recipe, you will need to pass a Object type implementing the "``Crafter``" interface.
