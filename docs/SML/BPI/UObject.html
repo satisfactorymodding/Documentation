@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UObject &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UField" href="UField.html" />
+    <link rel="prev" title="Blue-Print Interface" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../beginners_guide/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../SPL/index.html">Satisfactory Pak Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SDK/index.html">Satisfactory Development Kit</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Blue-Print Interface</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-problem">The Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-solution">The Solution</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#general">General</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">UObject</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#flags">Flags</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#class">Class</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="UField.html">UField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UProperty.html">UProperty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UStruct.html">UStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UFunction.html">UFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UClass.html">UClass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#mod-types">Mod “Types”</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">SML</a> &raquo;</li>
+        
+          <li><a href="index.html">Blue-Print Interface</a> &raquo;</li>
+        
+      <li>UObject</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/SML/BPI/UObject.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uobject">
+<h1>UObject<a class="headerlink" href="#uobject" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#uobject">UObject</a> is the most basic thing in the unreal reflection system. Heck, it even gave the system a name, the <code class="docutils literal notranslate"><span class="pre">UObject-System</span></code> which is found in the <code class="docutils literal notranslate"><span class="pre">UObjectCore</span></code> of the unreal engine.
+Every <a class="reference internal" href="#uobject">Uobject</a> contains flags and pointers to information which describes the object it self (not the class/type).</p>
+<div class="section" id="flags">
+<h2>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h2>
+<p>The object flags describe its propertys. (f.e. if it’s abstract)</p>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<p>Every <a class="reference internal" href="#uobject">UObject</a> has a valid attribute <code class="docutils literal notranslate"><span class="pre">clazz</span></code> which points to the <a class="reference external" href="UClass">UClass</a> describing the class/type of the <a class="reference internal" href="#uobject">UObject</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UField.html" class="btn btn-neutral float-right" title="UField" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Blue-Print Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

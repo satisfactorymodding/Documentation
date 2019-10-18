@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Blue-Print Interface &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="UObject" href="UObject.html" />
+    <link rel="prev" title="Satisfactory Development Kit" href="../SDK/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../beginners_guide/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../SPL/index.html">Satisfactory Pak Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SDK/index.html">Satisfactory Development Kit</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Blue-Print Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-problem">The Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-solution">The Solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="UObject.html">UObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UField.html">UField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UProperty.html">UProperty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UStruct.html">UStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UFunction.html">UFunction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UClass.html">UClass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#mod-types">Mod “Types”</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">SML</a> &raquo;</li>
+        
+      <li>Blue-Print Interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/SML/BPI/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="blue-print-interface">
+<h1>Blue-Print Interface<a class="headerlink" href="#blue-print-interface" title="Permalink to this headline">¶</a></h1>
+<p>The BPI provides multiple helper classes and functions for manipulating the reflection system of unreal.</p>
+<div class="section" id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h2>
+<p>Unreal uses a reflection system to have mainly a proper interface to there visual scripting language called Blueprint.
+If you want now to add something to this reflection system you were not able to do this through the <code class="docutils literal notranslate"><span class="pre">Unreal</span> <span class="pre">Header</span> <span class="pre">Tool</span></code> which provides features for Unreal C++ Devs to create easily proper reflection system interfaces.
+This is problematic especially if you want to integrate third-party libraries or make your code way more performant.</p>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution<a class="headerlink" href="#the-solution" title="Permalink to this headline">¶</a></h2>
+<p>The BPI uses the same interface as the <code class="docutils literal notranslate"><span class="pre">Unreal</span> <span class="pre">Header</span> <span class="pre">Tool</span></code> uses, but wraps this interface into easy to use builder classes.
+Through this you are able to:</p>
+<ul class="simple">
+<li><p>Attach custom functions to existing <code class="docutils literal notranslate"><span class="pre">UObjects</span></code></p></li>
+<li><p>Creating custom <code class="docutils literal notranslate"><span class="pre">UClasses</span></code></p></li>
+<li><p>Creating custom functions</p></li>
+<li><p>and many more</p></li>
+</ul>
+</div>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<p>The BPI is located under <code class="docutils literal notranslate"><span class="pre">assets/BPInterface.h</span></code> in the SML root and also provides better structures as the SDK under <code class="docutils literal notranslate"><span class="pre">util/Objects</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We heavily recommend to use the the BPI objects instead of the SDK ones cause the SDK is auto generated and provides less save implementations.</p>
+</div>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Pleas build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.</p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UObject.html">UObject</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UObject.html#flags">Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UObject.html#class">Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UField.html">UField</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UField.html#next">Next</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UProperty.html">UProperty</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UProperty.html#get-the-value-reference">Get the value reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UProperty.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UStruct.html">UStruct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UStruct.html#children">Children</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UStruct.html#iterating-over-children">Iterating over children</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UStruct.html#inheritance">Inheritance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UFunction.html">UFunction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#children">Children</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#invoking">Invoking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#paramterstruct">ParamterStruct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#flags">Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#native-exec-function">Native Exec-Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UFunction.html#building">Building</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UClass.html">UClass</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UClass.html#containing-information">Containing information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UClass.html#building">Building</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UObject.html" class="btn btn-neutral float-right" title="UObject" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../SDK/index.html" class="btn btn-neutral float-left" title="Satisfactory Development Kit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
