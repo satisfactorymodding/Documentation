@@ -1,17 +1,17 @@
 UFunction
 =========
-``UFunctions`` are ``UFields`` containing information about a function of a class.
+`UFunctions <UFunction>`_ are `UStructs <UStruct>`_ containing information about a function of a class.
 Each function contains a name, flags and again some children as well as eventually a native function pointer if it is a native function.
 
 Children
 --------
-A UFunction contains again a row of children just like the ``UClass`` but this time these children describe which input parameters, output parameters and return value this function has.
+These children (of the base class `UStruct <UStruct>`_) describe which input parameters, output parameters and return value this function has.
 
 Invoking
 --------
-You can invoke a ``UFunction`` through two main ways.
+You can invoke a `UFunction`_ through two main ways.
 
-1.  Using the ``invoke``-function of the ``UFunction``
+1.  Using the ``invoke``-function of the `UFunction`_
 
     .. code-block:: c++
         
@@ -21,7 +21,7 @@ You can invoke a ``UFunction`` through two main ways.
         ParamterStruct params;
         
         func->invoke(obj, params);
-2.  Using the ``processEvent``-function of ``UObject``
+2.  Using the ``processEvent``-function of `UObject`_
 
     .. code-block:: c++
         
@@ -35,9 +35,9 @@ You can invoke a ``UFunction`` through two main ways.
 ParamterStruct
 --------------
 All parameters the given function has need to get place in a structure, the so called "Parameter Structure" (aka. "ParamStruct")
-This structure is simply all C++ types given through the ``UPropertys`` in a row.
+This structure is simply all C++ types given through the `UPropertys <UProperty>`_ in a row.
 
-This example shows a paramstruct for a ``FVector`` and an ``UObject``-ref as input, a ``bool`` as output parameter and an ``int`` as return value.
+This example shows a paramstruct for a ``FVector`` and an `UObject <UObject>`_-ref as input, a ``bool`` as output parameter and an ``int`` as return value.
 
 .. code-block:: c++
 
@@ -56,8 +56,8 @@ To check, set or unset a flag use the bitwise ``&`` (and), ``|`` (or) and ``~`` 
 
 Native Exec-Function
 --------------------
-The native execution function gets called when the ``UFunction`` get invoked.
-The native function needs to be static and gets a ``UObject``-ptr as context object, a FFrame-ref, to get and set parameters and also to increase the code pointer, and pointer to the Return-Value-Structure (a struct containing all return values, not out params).
+The native execution function gets called when the `UFunction`_ get invoked.
+The native function needs to be static and gets a `UObject`_-ptr as context object, a FFrame-ref, to get and set parameters and also to increase the code pointer, and pointer to the Return-Value-Structure (a struct containing all return values, not out params).
 This means your exec-function declaration needs to look like ``static void execFuncName(UObject* obj, FFrame& stack, void* retVals)``
 
 Input Params
@@ -128,7 +128,7 @@ When the exec function gets executed you should increment the code counter of th
 
 Building
 --------
-The BPI provides the ``SML::Paks::FunctionBuilder``-Class in ``assets/BPInterface.h`` for easy declaring and defining custom UFunctions.
+The BPI provides the ``SML::Paks::FunctionBuilder``-Class in ``assets/BPInterface.h`` for easy declaring and defining custom `UFunctions <UFunction>`_.
 
 The class contains for each basic type of function a static initialize function.
 
@@ -146,7 +146,7 @@ If your UFunction should get linked to a native execution function use the provi
 
 Parameters
 ''''''''''
-To add a ``UProperty`` use ``param`` and pass the property builder.
+To add a `UProperty <UProperty>`_ use ``param`` and pass the property builder.
 If your property needs a offset value, and you don't provide one, the builder will get the last property and uses its offset and dimension to get the new offset.
 If there is no previous property, it uses 0 as offset and 0 as dimension.
 
@@ -160,4 +160,4 @@ To finish building just call the ``build`` function of the builderclass. If you 
 
 Attaching
 '''''''''
-You're also able to attach a new custom ``UFunction`` to an existing ``UClass`` with the ``attach`` function. The class will get properly builded by the builderclass when needed.
+You're also able to attach a new custom `UFunction`_ to an existing `UClass`_ with the ``attach`` function. The class will get properly builded by the builderclass when needed.

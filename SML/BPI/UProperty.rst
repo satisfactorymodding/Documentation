@@ -1,12 +1,12 @@
 UProperty
 =========
-A ``UProperty`` is a special kind of ``UField`` which contains a ref to some value of an object.
+A `UProperty`_ is a special kind of `UField <UField>`_ which contains a ref to some value of an object.
 Also it helps to construct and destruct that value.
 
 Get the value reference
 -----------------------
-Getting some value reference through a ``UProperty`` is pretty straight forward.
-Fist you need to get the ``UProperty`` of the corresponding ``UClass`` your ``UObject`` uses, then you just need to call the ``getValue`` method and provide the object (context) it self so the ``UProperty`` know from where it should extract the value from.
+Getting some value reference through a `UProperty`_ is pretty straight forward.
+Fist you need to get the `UProperty`_ of the corresponding `UClass <UClass>`_ your `UObject <UObject>`_ uses, then you just need to call the ``getValue`` method and provide the object (context) it self so the `UProperty`_ know from where it should extract the value from.
 
 .. code-block:: c++
 
@@ -18,12 +18,12 @@ As you can see, you need to give the function the c++ value type cause it casts 
 To get the final value just dereference it.
 You're also able to set the value by just using the c++ reference.
 
-.. warning:: If the value stored in the instance is a pointer, you need to use as ValueType a pointer. f.e. a ``UObjectProperty`` contains not the ``UObject`` but a pointer to it!
+.. warning:: If the value stored in the instance is a pointer, you need to use as ValueType a pointer. f.e. a ``UObjectProperty`` contains not the `UObject`_ but a pointer to it!
 
 Building
 --------
-The BPI provides the ``SML::Paks::PropertyBuilder``-Class in ``assets/BPInterface.h`` to make declaring and defining a custom ``UProperty`` easier.
-This class has multiple types of static initializer function for different types of ``UProperty`` s.
+The BPI provides the ``SML::Paks::PropertyBuilder``-Class in ``assets/BPInterface.h`` to make declaring and defining a custom `UProperty`_ easier.
+This class has multiple types of static initializer function for different types of `UPropertys <UProperty>`.
 
 - attrib
     This function initializes a PropertyBuilder for an attribute
@@ -42,10 +42,10 @@ The builderclass provides the addFlag and removeFlag methods for manipulating th
 
 Class-Type
 ''''''''''
-Some types like Object need a ``UClass`` to know which ``UObjects`` are allowed in that reference.
-For this purpose there is the ``classFunc`` method which wants a function pointer to a function which returns the wanted ``UClass``.
+Some types like Object need a `UClass <UClass>`_ to know which `UObjects <UObjects>`_ are allowed in that reference.
+For this purpose there is the ``classFunc`` method which wants a function pointer to a function which returns the wanted `UClass <UClass>`_.
 
-.. Tip:: You can use the provided "StaticClass" function of default ``UObject`` -types for this.
+.. Tip:: You can use the provided "StaticClass" function of default `UObject`_ -types for this.
 
 Booleans
 ''''''''

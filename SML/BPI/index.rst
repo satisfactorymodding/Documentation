@@ -24,7 +24,14 @@ The BPI is located under ``assets/BPInterface.h`` in the SML root and also provi
 
 .. warning:: We heavily recommend to use the the BPI objects instead of the SDK ones cause the SDK is auto generated and provides less save implementations.
 
+.. error:: Pleas build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.
+
 .. toctree::
+    :maxdepth: 2
+
+    UObject
+    UField
     UProperty
+    UStruct
     UFunction
     UClass
