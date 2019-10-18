@@ -71,3 +71,4 @@ Index
     :maxdepth: 2
 
     beginners_guide/index
+    SML/index
