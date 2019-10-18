@@ -24,5 +24,5 @@ html_static_path = ['_static']
 html_logo = 'logo.png'
 html_favicon = 'favicon-32x32.png'
 html_theme_options = {
-    "navigation_depth": -1
+    "navigation_depth": 4
 }
