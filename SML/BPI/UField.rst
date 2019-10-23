@@ -1,6 +1,6 @@
 UField
 ======
-A `UField`_ is a `UObject <UObject>`_ mainly containing a attribute ``next`` pointing to the next `UField`_ instance.
+A `UField`_ is a `UObject <UObject>`_ mainly containing an attribute ``next`` pointing to the next `UField`_ instance.
 
 Next
 ----
