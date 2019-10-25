@@ -1,6 +1,6 @@
 Getting Started
 ===============
-In this section we will guide you through the process making your first own mod for Satisfactory and tell you about important things for modding.
+In this section, we will guide you through the process making your first own mod for Satisfactory and tell you about important things for modding.
 
 .. toctree::
     :maxdepth: 3

@@ -10,8 +10,8 @@ This is problematic especially if you want to integrate third-party libraries or
 
 The Solution
 ------------
-The BPI uses the same interface as the ``Unreal Header Tool`` uses, but wraps this interface into easy to use builder classes.
-Through this you are able to:
+The BPI uses the same interface as the ``Unreal Header Tool`` uses but wraps this interface into easy to use builder classes.
+Through this you can:
 
 - Attach custom functions to existing ``UObjects``
 - Creating custom ``UClasses``
@@ -22,9 +22,9 @@ General
 -------
 The BPI is located under ``assets/BPInterface.h`` in the SML root and also provides better structures as the SDK under ``util/Objects``
 
-.. warning:: We heavily recommend to use the the BPI objects instead of the SDK ones cause the SDK is auto generated and provides less save implementations.
+.. warning:: We heavily recommend using the BPI objects instead of the SDK ones cause the SDK is auto-generated and provides less save implementations.
 
-.. error:: Pleas build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.
+.. error:: Please build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.
 
 .. toctree::
     :maxdepth: 2

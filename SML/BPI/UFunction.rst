@@ -34,10 +34,10 @@ You can invoke a `UFunction`_ through two main ways.
 
 ParamterStruct
 --------------
-All parameters the given function has need to get place in a structure, the so called "Parameter Structure" (aka. "ParamStruct")
+All parameters the given function has, need to get a place in a structure, the so-called "Parameter Structure" (aka. "ParamStruct")
 This structure is simply all C++ types given through the `UPropertys <UProperty>`_ in a row.
 
-This example shows a paramstruct for a ``FVector`` and an `UObject <UObject>`_-ref as input, a ``bool`` as output parameter and an ``int`` as return value.
+This example shows a param struct for a ``FVector`` and an `UObject <UObject>`_-ref as input, a ``bool`` as an output parameter and an ``int`` as a return value.
 
 .. code-block:: c++
 
@@ -57,14 +57,14 @@ To check, set or unset a flag use the bitwise ``&`` (and), ``|`` (or) and ``~`` 
 Native Exec-Function
 --------------------
 The native execution function gets called when the `UFunction`_ get invoked.
-The native function needs to be static and gets a `UObject`_-ptr as context object, a FFrame-ref, to get and set parameters and also to increase the code pointer, and pointer to the Return-Value-Structure (a struct containing all return values, not out params).
+The native function needs to be static and gets a `UObject`_-ptr as context object, an FFrame-ref, to get and set parameters and also to increase the code pointer, and a pointer to the Return-Value-Structure (a struct containing all return values, not out params).
 This means your exec-function declaration needs to look like ``static void execFuncName(UObject* obj, FFrame& stack, void* retVals)``
 
 Input Params
 ''''''''''''
 The stack (or FFrame) is used to give access to the execution and value flow.
 Getting parameters (in and out) depends on the order given in the building of the UFunction.
-To get an value you simply need to allocate a space were the input can get copied to, and after that you just give the pointer to tha location the ``stepCompIn`` function which gets the input param and stores it in that pointer.
+To get a value you simply need to allocate a space where the input can get copied to, and after that, you just give the pointer to the location the ``stepCompIn`` function which gets the input param and stores it in that pointer.
 
 .. code-block:: c++
 
@@ -133,12 +133,12 @@ The BPI provides the ``SML::Paks::FunctionBuilder``-Class in ``assets/BPInterfac
 The class contains for each basic type of function a static initialize function.
 
 - static
-    Use this for static functions (f.e. in Blueprint Function Librarys).
-    You will get in the execution function the default object as context object.
+    Use this for static functions (f.e. in Blueprint Function Libraries).
+    You will get in the execution function the default object as a context object.
 - member
-    Use this for member functions (f.e. in Actors which need the context of the actor to work properly). You get the "this" object in the execution function as context object.
+    Use this for member functions (f.e. in actors who need the context of the actor to work properly). You get the "this" object in the execute-function as a context object.
 
-As you will see, the function takes the name of the new function as parameter. 
+As you will see, the function takes the name of the new function as a parameter. 
 
 Native-Function
 '''''''''''''''
@@ -147,17 +147,17 @@ If your UFunction should get linked to a native execution function use the provi
 Parameters
 ''''''''''
 To add a `UProperty <UProperty>`_ use ``param`` and pass the property builder.
-If your property needs a offset value, and you don't provide one, the builder will get the last property and uses its offset and dimension to get the new offset.
+If your property needs an offset value, and you don't provide one, the builder will get the last property and uses its offset and dimension to get the new offset.
 If there is no previous property, it uses 0 as offset and 0 as dimension.
 
 Flags
 '''''
-The builderclass provides the addFlag and removeFlag methods for manipulating the function flag register.
+The builder class provides the ``addFlag`` and ``removeFlag`` methods for manipulating the function flag register.
 
 Finishing
 '''''''''
-To finish building just call the ``build`` function of the builderclass. If you use the function in f.e. the ClassBuilder, you just give it the unbuild ``FunctionBuilder``
+To finish building just call the ``build`` function of the builder class. If you use the function in f.e. the ClassBuilder, you just give it the unbuild ``FunctionBuilder``
 
 Attaching
 '''''''''
-You're also able to attach a new custom `UFunction`_ to an existing `UClass`_ with the ``attach`` function. The class will get properly builded by the builderclass when needed.
+You're also able to attach a new custom `UFunction`_ to an existing `UClass`_ with the ``attach`` function. The class will get properly built by the builder class when needed.
