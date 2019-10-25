@@ -211,9 +211,9 @@ Each function contains a name, flags and again some children as well as eventual
 </div>
 <div class="section" id="paramterstruct">
 <h2>ParamterStruct<a class="headerlink" href="#paramterstruct" title="Permalink to this headline">¶</a></h2>
-<p>All parameters the given function has need to get place in a structure, the so called “Parameter Structure” (aka. “ParamStruct”)
+<p>All parameters the given function has, need to get a place in a structure, the so-called “Parameter Structure” (aka. “ParamStruct”)
 This structure is simply all C++ types given through the <a class="reference external" href="UProperty">UPropertys</a> in a row.</p>
-<p>This example shows a paramstruct for a <code class="docutils literal notranslate"><span class="pre">FVector</span></code> and an <a class="reference external" href="UObject">UObject</a>-ref as input, a <code class="docutils literal notranslate"><span class="pre">bool</span></code> as output parameter and an <code class="docutils literal notranslate"><span class="pre">int</span></code> as return value.</p>
+<p>This example shows a param struct for a <code class="docutils literal notranslate"><span class="pre">FVector</span></code> and an <a class="reference external" href="UObject">UObject</a>-ref as input, a <code class="docutils literal notranslate"><span class="pre">bool</span></code> as an output parameter and an <code class="docutils literal notranslate"><span class="pre">int</span></code> as a return value.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">paramStruct</span> <span class="p">{</span>
     <span class="n">FVector</span> <span class="n">vectorInput</span><span class="p">;</span>
     <span class="n">UObject</span><span class="o">*</span> <span class="n">otherObj</span><span class="p">;</span>
@@ -232,13 +232,13 @@ To check, set or unset a flag use the bitwise <code class="docutils literal notr
 <div class="section" id="native-exec-function">
 <h2>Native Exec-Function<a class="headerlink" href="#native-exec-function" title="Permalink to this headline">¶</a></h2>
 <p>The native execution function gets called when the <a class="reference internal" href="#ufunction">UFunction</a> get invoked.
-The native function needs to be static and gets a <a class="reference external" href="UObject">UObject</a>-ptr as context object, a FFrame-ref, to get and set parameters and also to increase the code pointer, and pointer to the Return-Value-Structure (a struct containing all return values, not out params).
+The native function needs to be static and gets a <a class="reference external" href="UObject">UObject</a>-ptr as context object, an FFrame-ref, to get and set parameters and also to increase the code pointer, and a pointer to the Return-Value-Structure (a struct containing all return values, not out params).
 This means your exec-function declaration needs to look like <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">void</span> <span class="pre">execFuncName(UObject*</span> <span class="pre">obj,</span> <span class="pre">FFrame&amp;</span> <span class="pre">stack,</span> <span class="pre">void*</span> <span class="pre">retVals)</span></code></p>
 <div class="section" id="input-params">
 <h3>Input Params<a class="headerlink" href="#input-params" title="Permalink to this headline">¶</a></h3>
 <p>The stack (or FFrame) is used to give access to the execution and value flow.
 Getting parameters (in and out) depends on the order given in the building of the UFunction.
-To get an value you simply need to allocate a space were the input can get copied to, and after that you just give the pointer to tha location the <code class="docutils literal notranslate"><span class="pre">stepCompIn</span></code> function which gets the input param and stores it in that pointer.</p>
+To get a value you simply need to allocate a space where the input can get copied to, and after that, you just give the pointer to the location the <code class="docutils literal notranslate"><span class="pre">stepCompIn</span></code> function which gets the input param and stores it in that pointer.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">execFunc</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">FFrame</span><span class="o">&amp;</span> <span class="n">stack</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">ret</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">FString</span> <span class="n">input1</span><span class="p">;</span>
     <span class="n">FString</span> <span class="n">input2</span><span class="p">;</span>
@@ -303,18 +303,18 @@ To set those, just simply set the values of the struct pointed to.</p>
 <p>The class contains for each basic type of function a static initialize function.</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>static</dt><dd><p>Use this for static functions (f.e. in Blueprint Function Librarys).
-You will get in the execution function the default object as context object.</p>
+<dt>static</dt><dd><p>Use this for static functions (f.e. in Blueprint Function Libraries).
+You will get in the execution function the default object as a context object.</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>member</dt><dd><p>Use this for member functions (f.e. in Actors which need the context of the actor to work properly). You get the “this” object in the execution function as context object.</p>
+<dt>member</dt><dd><p>Use this for member functions (f.e. in actors who need the context of the actor to work properly). You get the “this” object in the execute-function as a context object.</p>
 </dd>
 </dl>
 </li>
 </ul>
-<p>As you will see, the function takes the name of the new function as parameter.</p>
+<p>As you will see, the function takes the name of the new function as a parameter.</p>
 <div class="section" id="native-function">
 <h3>Native-Function<a class="headerlink" href="#native-function" title="Permalink to this headline">¶</a></h3>
 <p>If your UFunction should get linked to a native execution function use the provided <code class="docutils literal notranslate"><span class="pre">native</span></code> to set the function pointer and the needed function-flags.</p>
@@ -322,20 +322,20 @@ You will get in the execution function the default object as context object.</p>
 <div class="section" id="parameters">
 <h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
 <p>To add a <a class="reference external" href="UProperty">UProperty</a> use <code class="docutils literal notranslate"><span class="pre">param</span></code> and pass the property builder.
-If your property needs a offset value, and you don’t provide one, the builder will get the last property and uses its offset and dimension to get the new offset.
+If your property needs an offset value, and you don’t provide one, the builder will get the last property and uses its offset and dimension to get the new offset.
 If there is no previous property, it uses 0 as offset and 0 as dimension.</p>
 </div>
 <div class="section" id="id2">
 <h3>Flags<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>The builderclass provides the addFlag and removeFlag methods for manipulating the function flag register.</p>
+<p>The builder class provides the <code class="docutils literal notranslate"><span class="pre">addFlag</span></code> and <code class="docutils literal notranslate"><span class="pre">removeFlag</span></code> methods for manipulating the function flag register.</p>
 </div>
 <div class="section" id="finishing">
 <h3>Finishing<a class="headerlink" href="#finishing" title="Permalink to this headline">¶</a></h3>
-<p>To finish building just call the <code class="docutils literal notranslate"><span class="pre">build</span></code> function of the builderclass. If you use the function in f.e. the ClassBuilder, you just give it the unbuild <code class="docutils literal notranslate"><span class="pre">FunctionBuilder</span></code></p>
+<p>To finish building just call the <code class="docutils literal notranslate"><span class="pre">build</span></code> function of the builder class. If you use the function in f.e. the ClassBuilder, you just give it the unbuild <code class="docutils literal notranslate"><span class="pre">FunctionBuilder</span></code></p>
 </div>
 <div class="section" id="attaching">
 <h3>Attaching<a class="headerlink" href="#attaching" title="Permalink to this headline">¶</a></h3>
-<p>You’re also able to attach a new custom <a class="reference internal" href="#ufunction">UFunction</a> to an existing <a href="#id3"><span class="problematic" id="id4">`UClass`_</span></a> with the <code class="docutils literal notranslate"><span class="pre">attach</span></code> function. The class will get properly builded by the builderclass when needed.</p>
+<p>You’re also able to attach a new custom <a class="reference internal" href="#ufunction">UFunction</a> to an existing <a href="#id3"><span class="problematic" id="id4">`UClass`_</span></a> with the <code class="docutils literal notranslate"><span class="pre">attach</span></code> function. The class will get properly built by the builder class when needed.</p>
 </div>
 </div>
 </div>

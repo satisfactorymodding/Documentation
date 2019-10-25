@@ -178,11 +178,11 @@
   <div class="section" id="uproperty">
 <h1>UProperty<a class="headerlink" href="#uproperty" title="Permalink to this headline">¶</a></h1>
 <p>A <a class="reference internal" href="#uproperty">UProperty</a> is a special kind of <a class="reference external" href="UField">UField</a> which contains a ref to some value of an object.
-Also it helps to construct and destruct that value.</p>
+Also, it helps to construct and destruct that value.</p>
 <div class="section" id="get-the-value-reference">
 <h2>Get the value reference<a class="headerlink" href="#get-the-value-reference" title="Permalink to this headline">¶</a></h2>
 <p>Getting some value reference through a <a class="reference internal" href="#uproperty">UProperty</a> is pretty straight forward.
-Fist you need to get the <a class="reference internal" href="#uproperty">UProperty</a> of the corresponding <a class="reference external" href="UClass">UClass</a> your <a class="reference external" href="UObject">UObject</a> uses, then you just need to call the <code class="docutils literal notranslate"><span class="pre">getValue</span></code> method and provide the object (context) it self so the <a class="reference internal" href="#uproperty">UProperty</a> know from where it should extract the value from.</p>
+First you need to get the <a class="reference internal" href="#uproperty">UProperty</a> of the corresponding <a class="reference external" href="UClass">UClass</a> your <a class="reference external" href="UObject">UObject</a> uses, then you just need to call the <code class="docutils literal notranslate"><span class="pre">getValue</span></code> method and provide the object (context) itself so the <a class="reference internal" href="#uproperty">UProperty</a> know from where it should extract the value from.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UObject</span><span class="o">*</span> <span class="n">obj</span><span class="p">;</span>
 <span class="n">UProperty</span><span class="o">*</span> <span class="n">prop</span><span class="p">;</span>
 <span class="n">ValueType</span><span class="o">*</span> <span class="n">val</span> <span class="o">=</span> <span class="n">prop</span><span class="o">-&gt;</span><span class="n">getValue</span><span class="o">&lt;</span><span class="n">ValueType</span><span class="o">&gt;</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
@@ -207,29 +207,29 @@ This class has multiple types of static initializer function for different types
 </dl>
 </li>
 <li><dl class="simple">
-<dt>param</dt><dd><p>This function initializes a PropertyBuilder for the use as a input paramter for a UFunction</p>
+<dt>param</dt><dd><p>This function initializes a PropertyBuilder for the use as an input parameter for a UFunction</p>
 </dd>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>outParam</dt><dd><p>This function initializes a PropertyBuilder for the use as a output paramter for a UFunction</p>
+<dt>outParam</dt><dd><p>This function initializes a PropertyBuilder for the use as an output parameter for a UFunction</p>
 </dd>
 </dl>
 </li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To get an Returnvalue-Property for a UFunction, add the <code class="docutils literal notranslate"><span class="pre">EPropertyFlag::Prop_RetVal</span></code>-Flag to a outParam.</p>
+<p>To get an Returnvalue-Property for a UFunction, add the <code class="docutils literal notranslate"><span class="pre">EPropertyFlag::Prop_RetVal</span></code>-Flag to a out param.</p>
 </div>
 <p>When you call one of this function you need to pass the property-type and the name of the property.</p>
 <div class="section" id="flags">
 <h3>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h3>
-<p>The builderclass provides the addFlag and removeFlag methods for manipulating the property flag register.</p>
+<p>The builder class provides the addFlag and removeFlag methods for manipulating the property flag register.</p>
 </div>
 <div class="section" id="class-type">
 <h3>Class-Type<a class="headerlink" href="#class-type" title="Permalink to this headline">¶</a></h3>
 <p>Some types like Object need a <a class="reference external" href="UClass">UClass</a> to know which <a class="reference external" href="UObjects">UObjects</a> are allowed in that reference.
-For this purpose there is the <code class="docutils literal notranslate"><span class="pre">classFunc</span></code> method which wants a function pointer to a function which returns the wanted <a class="reference external" href="UClass">UClass</a>.</p>
+For this purpose, there is the <code class="docutils literal notranslate"><span class="pre">classFunc</span></code> method which wants a function pointer to a function which returns the wanted <a class="reference external" href="UClass">UClass</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can use the provided “StaticClass” function of default <a class="reference external" href="UObject">UObject</a> -types for this.</p>
@@ -237,8 +237,8 @@ For this purpose there is the <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="booleans">
 <h3>Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline">¶</a></h3>
-<p>Booleans are tricky. They need a so called bit-set-function. To make this easier the PropertyBuilder-Class provides the <code class="docutils literal notranslate"><span class="pre">bool</span></code> function.
-This function has template which needs to be a C++ “pointer-to-member” which points to the attribute in your native class.</p>
+<p>Booleans are tricky. They need a so-called bit-set-function. To make this easier the PropertyBuilder-Class provides the <code class="docutils literal notranslate"><span class="pre">bool</span></code> function.
+This function has a template which needs to be a C++ “pointer-to-member” which points to the attribute in your native class.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UTestObj</span> <span class="p">{</span>
     <span class="kt">bool</span> <span class="n">isSomething</span><span class="p">;</span>
 <span class="p">}</span>
@@ -250,8 +250,8 @@ This function has template which needs to be a C++ “pointer-to-member” which
 <div class="section" id="offset">
 <h3>Offset<a class="headerlink" href="#offset" title="Permalink to this headline">¶</a></h3>
 <p>Some properties need the offset of the value location to the object-base-pointer like generic ones (f.e. int and Object).
-With the <code class="docutils literal notranslate"><span class="pre">off</span></code> function you can set that offset, but if you don’t set that value then the other builderclasses set that offset automaticly.
-The will look for the last given properties offset, add the used byte count onto the offset and then use that one as the new one.</p>
+With the <code class="docutils literal notranslate"><span class="pre">off</span></code> function you can set that offset, but if you don’t set that value then the other builder classes set that offset automatically.
+They will look for the last given properties offset, add the used byte count onto the offset and then use that one as the new one.</p>
 </div>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
@@ -282,7 +282,7 @@ The will look for the last given properties offset, add the used byte count onto
 <h3>Finishing<a class="headerlink" href="#finishing" title="Permalink to this headline">¶</a></h3>
 <p>To finish the build you just need to execute the <code class="docutils literal notranslate"><span class="pre">build</span></code> function which returns a pointer to the proper description structure.
 This structure is managed by the PropertyBuilder, that means <strong>when the PropertyBuilder runs out of scope, the description structure is invalid!</strong>
-That’s why other builderclasses want the builder directly and not the build description.</p>
+That’s why other builder classes want the builder directly and not the build description.</p>
 </div>
 </div>
 </div>

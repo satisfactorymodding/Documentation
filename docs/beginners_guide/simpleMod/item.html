@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create a item &mdash; Satisfactory Modding Documentation  documentation</title>
+  <title>Create an item &mdash; Satisfactory Modding Documentation  documentation</title>
   
 
   
@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="SML" href="../../SML/index.html" />
-    <link rel="prev" title="Creat a simple Mod" href="index.html" /> 
+    <link rel="prev" title="Recipe/Schematic" href="recipe.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,8 +92,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../Concepts/index.html">Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Creat a simple Mod</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Create a item</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modinit.html">Mod-Init</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html">Recipe/Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-recipe">Create a Recipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-schematic">Create a Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#register-the-schematic">Register the Schematic</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Create an item</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#creating-the-bp-class">Creating the BP-Class</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#describe-the-item">Describe the Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-the-item-available">Make the item available</a></li>
 </ul>
 </li>
 </ul>
@@ -150,7 +157,7 @@
         
           <li><a href="index.html">Creat a simple Mod</a> &raquo;</li>
         
-      <li>Create a item</li>
+      <li>Create an item</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -169,15 +176,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-a-item">
-<h1>Create a item<a class="headerlink" href="#create-a-item" title="Permalink to this headline">¶</a></h1>
-<p>Now that you created a custom recipe, you might want to create a custom Item.
-For this we need a Idea what name the item should have, how it should look like and stuff like that.
-We decided to make a new ingot called ‘Simple Ingot’ and it looks like this.</p>
+  <div class="section" id="create-an-item">
+<h1>Create an item<a class="headerlink" href="#create-an-item" title="Permalink to this headline">¶</a></h1>
+<p>Now that you created a custom recipe and schematic, you might want to create a custom Item.
+For this, we need an Idea what name the item should have, how it should look like and stuff like that.
+We decided to make a new ingot called ‘Doc Ingot’.</p>
 <div class="section" id="creating-the-bp-class">
 <h2>Creating the BP-Class<a class="headerlink" href="#creating-the-bp-class" title="Permalink to this headline">¶</a></h2>
-<p>Now that we know what we actually want to make, we need a space to put this data in.
-For this we need to create a BP-Class.</p>
+<p>The item system is a bit special but overall we simply just need to describe our item in a <code class="docutils literal notranslate"><span class="pre">FGItemDescriptor</span></code> class.
+To create it go to the content browser in the unreal editor. Go to the Mod-Root and create a new folder and call it f.e. “Items”.
+And create a new BlueprintClass in it. Call it what ever you want, but we will call it <code class="docutils literal notranslate"><span class="pre">Desc_DocItem</span></code> (“Desc” stands for descriptor).</p>
+</div>
+<div class="section" id="describe-the-item">
+<h2>Describe the Item<a class="headerlink" href="#describe-the-item" title="Permalink to this headline">¶</a></h2>
+<p>Now open the class and you should see the default settings of the classes attributes. If not, just click on “Default Settings” and they should appear in the settings browser of the class editor.
+In here you will find multiple attributes with the different properties such an Item can have.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>M Use Display Name and Description</dt><dd><p>Because we have just a simple Item we need to check this (set the boolean to true) so that the item name and description are used directly of this class.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Display Name</dt><dd><p>Set this to “Doc Item” so that the item gets called like that ingame.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Description</dt><dd><p>This should get set to a simple description of the item. In our case, we use the text “This is the starter Item of the SFM-Doc.”</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Stack Size</dt><dd><p>Set this to f.e. Big, this is just a simple description of how big you should be able to stack this item.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Can get Discarded</dt><dd><p>Leave this unchecked so that you cant throw the item into the trashcan because FicsIt does not waste.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Energy Value</dt><dd><p>Our it is not organic, so it shouldn’t be able to get burned in any generator. This value describes how much energy this item should release if it gets burned in a generator. And we use 0.0 for that value.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Radioactive Decay</dt><dd><p>I don’t think that your Item is so exciting that it should emit radioactivity, so we set this value to 0.0 because it describes how radioactive this item is.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Conveyor Mesh</dt><dd><p>As we know, an item is 3-Dimensional so we need a 3D-model for the item how it should look if it gets transported on a conveyor belt.
+We have an example model <a class="reference external" href="Mesh_DocItem.fbx">here</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Item Category</dt><dd><p>This groups the item into a category, we don’t need this so we leave it on “None” and so the item gets categorized under “Other”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Small Icon</dt><dd><p>This is a simple texture image of the object used f.e. in the inventory to visualize what the given stack is.
+We have an image ready for use <a class="reference external" href="Icon_DocItem.png">here</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Big Icon</dt><dd><p>This is the same as the small icon but, bigger.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="make-the-item-available">
+<h2>Make the item available<a class="headerlink" href="#make-the-item-available" title="Permalink to this headline">¶</a></h2>
+<p>The item is available to the user when it gets loaded at least once. Because of Unreal loads assets just in time, we somehow need to force the asset to get loaded.
+And we can simply do that when our item gets used in a Recipe and this also allows the user to somehow get the item xD
+So just change the outcome of our already created recipe to this item. And you’re done.</p>
 </div>
 </div>
 
@@ -192,7 +270,7 @@ For this we need to create a BP-Class.</p>
         <a href="../../SML/index.html" class="btn btn-neutral float-right" title="SML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Creat a simple Mod" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="recipe.html" class="btn btn-neutral float-left" title="Recipe/Schematic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

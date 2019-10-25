@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Create a item" href="item.html" />
+    <link rel="next" title="Mod-Init" href="modinit.html" />
     <link rel="prev" title="MainWindow" href="../UnrealEditor/MainWindow.html" /> 
 </head>
 
@@ -92,7 +92,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../Concepts/index.html">Concepts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Creat a simple Mod</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="item.html">Create a item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modinit.html">Mod-Init</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html">Recipe/Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-recipe">Create a Recipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-schematic">Create a Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recipe.html#register-the-schematic">Register the Schematic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="item.html">Create an item</a></li>
 </ul>
 </li>
 </ul>
@@ -166,11 +171,27 @@
             
   <div class="section" id="creat-a-simple-mod">
 <h1>Creat a simple Mod<a class="headerlink" href="#creat-a-simple-mod" title="Permalink to this headline">¶</a></h1>
-<p>Now that you learned the core concepts of Satisfactory we can use this knowledge to create your first own mod.</p>
+<p>Now that you learned the core concepts of Satisfactory you can use this knowledge to create your first own mod.
+Your basic mod should implement for everything something and for that we will start with the easy things and then we will work us to the more complex things.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Knowledge about 3D Modding are very important if you want to add new things to the world. If you have no clue about modeling but a great mod idea you can just try to ask some artists in the Discord server.</p>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="item.html">Create a item</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="modinit.html">Mod-Init</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modinit.html#create-the-actor">Create the Actor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modinit.html#add-the-init-events">Add the Init-Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipe.html">Recipe/Schematic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipe.html#create-a-recipe">Create a Recipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipe.html#create-a-schematic">Create a Schematic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="recipe.html#register-the-schematic">Register the Schematic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item.html">Create an item</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="item.html#creating-the-bp-class">Creating the BP-Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="item.html#describe-the-item">Describe the Item</a></li>
+<li class="toctree-l2"><a class="reference internal" href="item.html#make-the-item-available">Make the item available</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +206,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="item.html" class="btn btn-neutral float-right" title="Create a item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modinit.html" class="btn btn-neutral float-right" title="Mod-Init" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../UnrealEditor/MainWindow.html" class="btn btn-neutral float-left" title="MainWindow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

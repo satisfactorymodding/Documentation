@@ -182,7 +182,7 @@ Every <a class="reference external" href="UObject">UObject</a> is created by a <
 <h2>Containing information<a class="headerlink" href="#containing-information" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl>
-<dt>Name</dt><dd><p>The name of an <a class="reference internal" href="#uclass">UClass</a> not only names it, but also gives base information about its usage. Such name has a one character based prefix. <code class="docutils literal notranslate"><span class="pre">U</span></code> describes the use as a normal UObject. <code class="docutils literal notranslate"><span class="pre">A</span></code> describes the use as an Actor in a scene.</p>
+<dt>Name</dt><dd><p>The name of an <a class="reference internal" href="#uclass">UClass</a> not only names it but also gives base information about its usage. Such name has one character based prefix. <code class="docutils literal notranslate"><span class="pre">U</span></code> describes the use as a normal UObject. <code class="docutils literal notranslate"><span class="pre">A</span></code> describes the use as an Actor in a scene.</p>
 <p>f.e. <code class="docutils literal notranslate"><span class="pre">UClass</span></code>, <code class="docutils literal notranslate"><span class="pre">UTutorialObj</span></code> and <code class="docutils literal notranslate"><span class="pre">ATutorialBuilding</span></code></p>
 </dd>
 </dl>
@@ -204,7 +204,7 @@ Every <a class="reference external" href="UObject">UObject</a> is created by a <
 <p>Building is the most complex thing in the BPI cause there are just so many parameters which need to get set properly.
 The beginning makes the <code class="docutils literal notranslate"><span class="pre">SML::Paks::ClassBuilder</span></code>-Builderclass in <code class="docutils literal notranslate"><span class="pre">assets/BPInterface.h</span></code>
 This builder class is a bit special because it has a template which should be your class you want to reflect.
-The builderclass will automaticaly use the native name of your class to call <code class="docutils literal notranslate"><span class="pre">name(std::string</span> <span class="pre">name)</span></code></p>
+The builder class will automatically use the native name of your class to call <code class="docutils literal notranslate"><span class="pre">name(std::string</span> <span class="pre">name)</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Your native class name should due to this contain a <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">U</span></code> as prefix. If not, please call the <code class="docutils literal notranslate"><span class="pre">name(std::string</span> <span class="pre">name)</span></code> function manually to set the reflected name to a name with this prefix.</p>
@@ -216,7 +216,7 @@ The builderclass will automaticaly use the native name of your class to call <co
 </pre></div>
 </div>
 <p>as you can see you need to use the <code class="docutils literal notranslate"><span class="pre">Basic()</span></code> function to get the proper ClassBuilder reference.
-Its just a reference because this class builder needs to exist all the time and works like a singelton and this <code class="docutils literal notranslate"><span class="pre">Basic()</span></code> function just initializes the singelton with a basic setup and returns the reference to the singeltons instance.</p>
+It’s just a reference because this class builder needs to exist all the time and works like a singleton and this <code class="docutils literal notranslate"><span class="pre">Basic()</span></code> function just initializes the singleton with a basic setup and returns the reference to the singletons instance.</p>
 <div class="section" id="flags">
 <h3>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h3>
 <p>You can define class flags, like if it should be visible, with the flag functions.
@@ -225,14 +225,14 @@ The same principle applies to class cast flags but with the classes f.e. <code c
 </div>
 <div class="section" id="extending">
 <h3>Extending<a class="headerlink" href="#extending" title="Permalink to this headline">¶</a></h3>
-<p>You need to explicitly tell the builder which reflected superclass your class has (even if its just the basic <a class="reference external" href="UObject">UObject</a>).
-To make this more easy the builder class implements two function which takes each of them a class type to execute their <code class="docutils literal notranslate"><span class="pre">StaticClass()</span></code> functions.
-If you don’t want to do this through templates you can also use the <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code> and pass a function pointer returning the <a class="reference internal" href="#uclass">UClass</a> of your super class.</p>
+<p>You need to explicitly tell the builder which reflected superclass your class has (even if it’s just the basic <a class="reference external" href="UObject">UObject</a>).
+To make this easier the builder class implements two functions which take each of them a class type to execute their <code class="docutils literal notranslate"><span class="pre">StaticClass()</span></code> functions.
+If you don’t want to do this through templates you can also use the <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code> and pass a function pointer returning the <a class="reference internal" href="#uclass">UClass</a> of your superclass.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">extend&lt;class</span> <span class="pre">T&gt;()</span></code> is used if the given class has a function with the declaration <code class="docutils literal notranslate"><span class="pre">UClass*</span> <span class="pre">staticClass()</span></code> to return the <a class="reference internal" href="#uclass">UClass</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">extendSDK&lt;class</span> <span class="pre">sdkT&gt;()</span></code> is used if the given class has a function with the declaration <code class="docutils literal notranslate"><span class="pre">SDK::UClass*</span> <span class="pre">StaticClass</span></code> to return the <a class="reference internal" href="#uclass">UClass</a></p></li>
 </ul>
-<p><em>jeah ik, it’s wierd, but hey! It makes it more easy to use! And if you don’t like it, you can just use</em> <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code></p>
+<p><em>yeah ik, it’s weird, but hey! It makes it more easy to use! And if you don’t like it, you can just use</em> <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Unreals reflection system does not support multi inheritance like c++ does, that means you can’t the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.</p>
@@ -249,8 +249,8 @@ If you don’t want to do this through templates you can also use the <code clas
 <div class="section" id="attributes">
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
 <p>Attributes (aka. member-variables) which need to get reflected get defined with the <code class="docutils literal notranslate"><span class="pre">param(SML::Paks::PropertyBuilder</span> <span class="pre">builder)</span></code> function.
-Simply pass the <strong>unbuilt</strong> PropertyBuilder to this function and it gets reflected. If your property needs a offset value and you didn’t manually provide a value, automaticaly the last available/defined offset gets used. Also the last available/offset gets increased by the size of the given property.
-The first param uses the the size of the super class as offset.</p>
+Simply pass the <strong>unbuilt</strong> PropertyBuilder to this function and it gets reflected. If your property needs an offset value and you didn’t manually provide a value, automatically the last available/defined offset gets used. Also, the last available/offset gets increased by the size of the given property.
+The first param uses the size of the superclass as the offset.</p>
 <p>For examples please refer to <a class="reference external" href="UProperty">UProperty</a></p>
 </div>
 <div class="section" id="functions">
@@ -260,10 +260,10 @@ Pass this function the needed FunctionBuilder and it will get registered.</p>
 </div>
 <div class="section" id="interfaces">
 <h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
-<p>Because Unreals reflection system doesn’t support multiple inheritance like we know it doesn’t mean there is no.
+<p>Because Unreals reflection system doesn’t support multiple inheritances like we know it doesn’t mean there is no.
 Unreal uses interfaces to implement this concept but without any private functions or member variables.</p>
-<p>To declare the implementation of a interface you will need the <code class="docutils literal notranslate"><span class="pre">implementInterface(UInterface*</span> <span class="pre">interface,</span> <span class="pre">size_t</span> <span class="pre">offset)</span></code> function.
-Simply pass this function the <code class="docutils literal notranslate"><span class="pre">UInterface</span></code> and the offset to the vtable-pointer refering to the interface implementation in your class.</p>
+<p>To declare the implementation of an interface you will need the <code class="docutils literal notranslate"><span class="pre">implementInterface(UInterface*</span> <span class="pre">interface,</span> <span class="pre">size_t</span> <span class="pre">offset)</span></code> function.
+Simply pass this function the <code class="docutils literal notranslate"><span class="pre">UInterface</span></code> and the offset to the vtable-pointer referring to the interface implementation in your class.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The Interface support is very, very difficult because the SDK currently doesn’t provide the information needed to implement this. Only some interfaces are written into SML (like <code class="docutils literal notranslate"><span class="pre">ISaveGame</span></code>) and if your desired interface is not implemented you will need to get the information with Detours and IDA. To find more out pleas talk to the Discord Members.</p>
@@ -281,12 +281,12 @@ Simply pass this function the <code class="docutils literal notranslate"><span c
 </div>
 <div class="section" id="constructor">
 <h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h3>
-<p>The constructor of a BPI generated class is very special. We cant use the normal constructor because that one whouldn’t call the right constructors of the child classes.
+<p>The constructor of a BPI generated class is very special. We cant use the normal constructor because that one wouldn’t call the right constructors of the child classes.
 That means you need to explicitly set the constructor to member-function of your class with declaration <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">constructor()</span></code> (name not important) and call the <code class="docutils literal notranslate"><span class="pre">constructor(void(BuildClassT::*)())</span></code> to define it.
-Because we cant use the C++ constructor here (even not the default one) we would need to call the constructors or define them by our self.</p>
+Because we can’t use the C++ constructor here (even not the default one) we would need to call the constructors or define them by our self.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You need to know that the BuilderClass generates a second internal one which manages the pointers, super class construction and much more, but you’re able to define your own one if you desire to. (We do <strong>not</strong> recommend that)</p>
+<p>You need to know that the BuilderClass generates a second internal one which manages the pointers, superclass construction and much more, but you’re able to define your own one if you desire to. (We do <strong>not</strong> recommend that)</p>
 </div>
 </div>
 <div class="section" id="destructor">
@@ -294,7 +294,7 @@ Because we cant use the C++ constructor here (even not the default one) we would
 <p>The destructor works just like the constructor. But important to note is that you need to call the destructor on every member which needs that. And you need to use the <code class="docutils literal notranslate"><span class="pre">destructor</span></code> function to define it.</p>
 <div class="admonition error">
 <p class="admonition-title">Error</p>
-<p>Do not delete the members here! They get (automaticaly freed by the reflection system! Just call the destructors if needed.</p>
+<p>Do not delete the members here! They get (automatically freed by the reflection system! Just call the destructors if needed.</p>
 </div>
 <p>Example (destructor &amp; constructor):</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span> <span class="p">{</span>
@@ -320,7 +320,7 @@ Because we cant use the C++ constructor here (even not the default one) we would
 </div>
 <div class="section" id="finishing">
 <h3>Finishing<a class="headerlink" href="#finishing" title="Permalink to this headline">¶</a></h3>
-<p>To finish building just call the <code class="docutils literal notranslate"><span class="pre">build</span></code> function of the builderclass.</p>
+<p>To finish building just call the <code class="docutils literal notranslate"><span class="pre">build</span></code> function of the builder class.</p>
 </div>
 <div class="section" id="staticclass">
 <h3>StaticClass<a class="headerlink" href="#staticclass" title="Permalink to this headline">¶</a></h3>

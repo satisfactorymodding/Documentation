@@ -181,12 +181,12 @@
 <div class="section" id="children">
 <h2>Children<a class="headerlink" href="#children" title="Permalink to this headline">¶</a></h2>
 <p>These children are simply a row of references until the reference of one <a class="reference external" href="UField">UField</a> is equal to nullptr.
-The first children in that row is reffered by the <code class="docutils literal notranslate"><span class="pre">childs</span></code> attribute.</p>
+The first child in that row is referred by the <code class="docutils literal notranslate"><span class="pre">childs</span></code> attribute.</p>
 </div>
 <div class="section" id="iterating-over-children">
 <h2>Iterating over children<a class="headerlink" href="#iterating-over-children" title="Permalink to this headline">¶</a></h2>
 <p>As already said, the children of a <a class="reference external" href="UStruct">UStruct</a> are additional information of a <a class="reference external" href="UStruct">UStruct</a> about its f.e. functions, attributes and components.
-Each of those are representated through an instance of an <a class="reference external" href="UField">UField</a> . Important to not is that each <a class="reference external" href="UField">UField</a> points with the <code class="docutils literal notranslate"><span class="pre">next</span></code> attribute to next one of the class.
+Each of those are represented through an instance of an <a class="reference external" href="UField">UField</a> . Important to note is that each <a class="reference external" href="UField">UField</a> points with the <code class="docutils literal notranslate"><span class="pre">next</span></code> attribute to next one of the class.
 Iterating is simply following this next-pointer until it reaches nullptr.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UStruct</span><span class="o">*</span> <span class="n">struc</span><span class="p">;</span>
 <span class="n">UField</span><span class="o">*</span> <span class="n">field</span> <span class="o">=</span> <span class="n">struc</span><span class="o">-&gt;</span><span class="n">childs</span><span class="p">;</span>
@@ -196,7 +196,7 @@ Iterating is simply following this next-pointer until it reaches nullptr.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you want to also iterate over extended fields, you will need to switch to the super class when the field pointer reaches nullptr.</p>
+<p>If you want to also iterate overextended fields, you will need to switch to the superclass when the field pointer reaches nullptr.</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">UStruct</span><span class="o">*</span> <span class="n">struc</span><span class="p">;</span>
 <span class="n">UField</span><span class="o">*</span> <span class="n">field</span> <span class="o">=</span> <span class="n">struc</span><span class="o">-&gt;</span><span class="n">childs</span><span class="p">;</span>
 <span class="k">while</span><span class="p">(</span><span class="n">field</span> <span class="o">||</span> <span class="n">clazz</span><span class="p">)</span> <span class="p">{</span>
@@ -221,8 +221,8 @@ With that said you can use a c++ for-each loop to iterate over the fields of a <
 </div>
 <div class="section" id="inheritance">
 <h2>Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h2>
-<p>To get the super class of an <a class="reference external" href="UClass">UClass</a> just simply follow the <code class="docutils literal notranslate"><span class="pre">super</span></code> attribute. It contains the pointer to inherited <a class="reference external" href="UStruct">UStruct</a>.
-Multiple inheritance is not possible.</p>
+<p>To get the superclass of an <a class="reference external" href="UClass">UClass</a> just simply follow the <code class="docutils literal notranslate"><span class="pre">super</span></code> attribute. It contains the pointer to inherited <a class="reference external" href="UStruct">UStruct</a>.
+Multiple inheritances are not possible.</p>
 </div>
 </div>
 
