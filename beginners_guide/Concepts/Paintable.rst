@@ -17,7 +17,7 @@ This is a simplified representative atlas map for the material you can use to UV
 
 Custom implementation
 ---------------------
-You can implement the ability to paint in any object by implementing the ``IFGPaint``-Interface.
+You can implement the ability to paint in any object by implementing the ``IFGColorInterface``.
 Simply override the given functions with the functionality you need and you're done!
 
 The paint gun will now interact with your object, it can do this by using the reflection system.
