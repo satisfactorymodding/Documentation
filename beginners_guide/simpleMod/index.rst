@@ -9,3 +9,4 @@ Your basic mod should implement for everything something and for that we will st
     modinit
     recipe
     item
+    buildable

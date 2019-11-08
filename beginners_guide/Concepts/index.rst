@@ -8,6 +8,7 @@ This is key, not only for registering new Items but also for interacting with ex
 
 .. toctree::
     Code
-    Crafting
     BluePrints
     UObject
+    Crafting
+    FactoryConnectors
