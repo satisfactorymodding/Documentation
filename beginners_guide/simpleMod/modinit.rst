@@ -9,9 +9,13 @@ Our mod name will be ``Doc Mod`` and the pak file name will be ``DocMod_p.pak`` 
 So we create the folder ``Content/FactoryGame/DocMod``.
 And finally in there you now just need to add a new Actor called ``InitMod``
 
+.. image:: CreateInitMod.gif
+
 Add the Init-Events
 -------------------
 This initialization actor needs three custom events you now just need to add by opening the actor class, click on to Event Graph and the r-click into it and then add the custom events with the name ``PreInit``, ``Init`` and ``PostInit``.
 Click on the ``Init`` node and add a new input parameter of type string in the details panel. Do the same for PostInit.
+
+.. image:: ModInit_InitFuncs.jpg
 
 Done, now you will be able to register recipes and other stuff in here.
