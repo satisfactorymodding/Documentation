@@ -12,5 +12,5 @@ Init-Events
 -----------
 There are three init events you will need to add to the actor so that they get executed properly.
 ``PreInit``, ``Init`` and ``PostInit``
-Init and post Init get a FString as parameter which contains a ``,`` sepperated mod name list.
+Init and post Init get a FString as a parameter which contains a ``,`` separated mod name list.
 Init is the ideal place to register new recipes and schematics.
