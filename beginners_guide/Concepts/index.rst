@@ -12,3 +12,5 @@ This is key, not only for registering new Items but also for interacting with ex
     UObject
     Crafting
     FactoryConnectors
+    PowerNetwork
+    Paintable
