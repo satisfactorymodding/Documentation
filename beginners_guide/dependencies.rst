@@ -43,6 +43,8 @@ If not already selected, select ``Desktop development with C++``.
 Now open the sidebar on the right-hand side and select under ``Desktop development with C++`` the option ``VS 2015 C++-Buildtools``.
 Hit save and wait until the installation process finished.
 
+.. tip:: If it doesn't work, you can find the manual download `here <https://www.microsoft.com/de-de/download/details.aspx?id=48145>`_
+
 Wwise
 '''''
 Visit `Wwise.com <https://wwise.com/>`_ and click on the ``Get Wwise`` -> ``download Wwise`` button in the upper right corner.
