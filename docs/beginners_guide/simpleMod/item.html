@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SML" href="../../SML/index.html" />
+    <link rel="next" title="Buildable" href="buildable.html" />
     <link rel="prev" title="Recipe/Schematic" href="recipe.html" /> 
 </head>
 
@@ -94,15 +94,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Creat a simple Mod</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="modinit.html">Mod-Init</a></li>
 <li class="toctree-l3"><a class="reference internal" href="recipe.html">Recipe/Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-recipe">Create a Recipe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-schematic">Create a Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#register-the-schematic">Register the Schematic</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Create an item</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#creating-the-bp-class">Creating the BP-Class</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#describe-the-item">Describe the Item</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#make-the-item-available">Make the item available</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="buildable.html">Buildable</a></li>
 </ul>
 </li>
 </ul>
@@ -186,6 +184,7 @@ We decided to make a new ingot called ‘Doc Ingot’.</p>
 <p>The item system is a bit special but overall we simply just need to describe our item in a <code class="docutils literal notranslate"><span class="pre">FGItemDescriptor</span></code> class.
 To create it go to the content browser in the unreal editor. Go to the Mod-Root and create a new folder and call it f.e. “Items”.
 And create a new BlueprintClass in it. Call it what ever you want, but we will call it <code class="docutils literal notranslate"><span class="pre">Desc_DocItem</span></code> (“Desc” stands for descriptor).</p>
+<img alt="../../_images/CreateDocItem.gif" src="../../_images/CreateDocItem.gif" />
 </div>
 <div class="section" id="describe-the-item">
 <h2>Describe the Item<a class="headerlink" href="#describe-the-item" title="Permalink to this headline">¶</a></h2>
@@ -267,7 +266,7 @@ So just change the outcome of our already created recipe to this item. And you�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../SML/index.html" class="btn btn-neutral float-right" title="SML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="buildable.html" class="btn btn-neutral float-right" title="Buildable" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="recipe.html" class="btn btn-neutral float-left" title="Recipe/Schematic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

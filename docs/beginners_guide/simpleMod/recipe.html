@@ -93,11 +93,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Creat a simple Mod</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="modinit.html">Mod-Init</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Recipe/Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#create-a-recipe">Create a Recipe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#create-a-schematic">Create a Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#register-the-schematic">Register the Schematic</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Recipe/Schematic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-recipe">Create a Recipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-schematic">Create a Schematic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-the-schematic">Register the Schematic</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="item.html">Create an item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buildable.html">Buildable</a></li>
 </ul>
 </li>
 </ul>
@@ -176,9 +179,8 @@
 <p>Recipes describe everything were specific types and amounts of items go in, and a different amount and types of items come out.
 Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.</p>
 <p>Schematics are the science package thingies you do I the hub. Those are your research packages which will add recipes and other function if they get unlocked in the hub.</p>
-</div>
 <div class="section" id="create-a-recipe">
-<h1>Create a Recipe<a class="headerlink" href="#create-a-recipe" title="Permalink to this headline">¶</a></h1>
+<h2>Create a Recipe<a class="headerlink" href="#create-a-recipe" title="Permalink to this headline">¶</a></h2>
 <p>First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards.
 To keep your folder structure organized we add a folder where all our recipes should go.
 That means to create, the folder <code class="docutils literal notranslate"><span class="pre">Content/FactoryGame/DocMod</span></code> which will be your mod-project-root and all our assets will go.
@@ -198,6 +200,11 @@ We add an entry and select for that one <code class="docutils literal notranslat
 </dl>
 </li>
 <li><dl class="simple">
+<dt>M Manufacturing Duration</dt><dd><p>the time you need to craft this recipe, we keep it at 1, cuz we are super pioneers.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
 <dt>M Produced In</dt><dd><p>Here we need to select the machine which will use the recipe like <code class="docutils literal notranslate"><span class="pre">FGWorkBench</span></code>.</p>
 </dd>
 </dl>
@@ -209,10 +216,11 @@ In our case we add an entry with <code class="docutils literal notranslate"><spa
 </dl>
 </li>
 </ul>
+<img alt="../../_images/CreateDocRecipe.gif" src="../../_images/CreateDocRecipe.gif" />
 <p>Ok, now you created your first recipe. Let’s add it to some science and make it available to the game.</p>
 </div>
 <div class="section" id="create-a-schematic">
-<h1>Create a Schematic<a class="headerlink" href="#create-a-schematic" title="Permalink to this headline">¶</a></h1>
+<h2>Create a Schematic<a class="headerlink" href="#create-a-schematic" title="Permalink to this headline">¶</a></h2>
 <p>Science is good, science is important, and so it is in Satisfactory. And if you want the ability to craft something specific, you need to research it. And a schematic is exactly this.
 But it also describes multiple other things like tutorials.
 Science! Similar to recipes we add a folder in the mod-root-folder for our schematics, let’s call him “Schematics”.</p>
@@ -308,7 +316,15 @@ We use <code class="docutils literal notranslate"><span class="pre">hub</span> <
 <p>Finally! What a class. Now we just need to register this schematic in the runtime.</p>
 </div>
 <div class="section" id="register-the-schematic">
-<h1>Register the Schematic<a class="headerlink" href="#register-the-schematic" title="Permalink to this headline">¶</a></h1>
+<h2>Register the Schematic<a class="headerlink" href="#register-the-schematic" title="Permalink to this headline">¶</a></h2>
+<p>Registering a schematic works by using the schematic manager subsystem. To register now a schematic you simply call the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Available</span> <span class="pre">Schematic</span></code> node with the schematic class as input.
+Problem is, if you do this now in every <code class="docutils literal notranslate"><span class="pre">PostInit</span></code> of the <code class="docutils literal notranslate"><span class="pre">InitMod</span></code> it gets added over and over again. To prevent this, we check if the schematic is already “registered” by getting the available and purchased schematics list with the corresponding <code class="docutils literal notranslate"><span class="pre">GetAvailableSchematics</span></code> and <code class="docutils literal notranslate"><span class="pre">GetPurchasedSchematics</span></code> and then we search for our schematic. If it is <strong>not</strong> in one of these lists, then we add it.</p>
+<img alt="../../_images/RegisterSchematic.jpg" src="../../_images/RegisterSchematic.jpg" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The example mods <code class="docutils literal notranslate"><span class="pre">ModInit</span></code> contains a good and dynamic implementation of this, which simply iterrates over an array of classes which contains the schematics to register.</p>
+</div>
+</div>
 </div>
 
 

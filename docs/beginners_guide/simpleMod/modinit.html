@@ -98,10 +98,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="recipe.html">Recipe/Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-recipe">Create a Recipe</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#create-a-schematic">Create a Schematic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recipe.html#register-the-schematic">Register the Schematic</a></li>
 <li class="toctree-l3"><a class="reference internal" href="item.html">Create an item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buildable.html">Buildable</a></li>
 </ul>
 </li>
 </ul>
@@ -184,11 +182,13 @@
 Our mod name will be <code class="docutils literal notranslate"><span class="pre">Doc</span> <span class="pre">Mod</span></code> and the pak file name will be <code class="docutils literal notranslate"><span class="pre">DocMod_p.pak</span></code> that means we need to create a folder in the SF asset root with our name.
 So we create the folder <code class="docutils literal notranslate"><span class="pre">Content/FactoryGame/DocMod</span></code>.
 And finally in there you now just need to add a new Actor called <code class="docutils literal notranslate"><span class="pre">InitMod</span></code></p>
+<img alt="../../_images/CreateInitMod.gif" src="../../_images/CreateInitMod.gif" />
 </div>
 <div class="section" id="add-the-init-events">
 <h2>Add the Init-Events<a class="headerlink" href="#add-the-init-events" title="Permalink to this headline">¶</a></h2>
 <p>This initialization actor needs three custom events you now just need to add by opening the actor class, click on to Event Graph and the r-click into it and then add the custom events with the name <code class="docutils literal notranslate"><span class="pre">PreInit</span></code>, <code class="docutils literal notranslate"><span class="pre">Init</span></code> and <code class="docutils literal notranslate"><span class="pre">PostInit</span></code>.
 Click on the <code class="docutils literal notranslate"><span class="pre">Init</span></code> node and add a new input parameter of type string in the details panel. Do the same for PostInit.</p>
+<img alt="../../_images/ModInit_InitFuncs.jpg" src="../../_images/ModInit_InitFuncs.jpg" />
 <p>Done, now you will be able to register recipes and other stuff in here.</p>
 </div>
 </div>

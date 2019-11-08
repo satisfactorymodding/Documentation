@@ -6,7 +6,7 @@ Recipes are not only used for the craft bench or the workshop, but also for the 
 Schematics are the science package thingies you do I the hub. Those are your research packages which will add recipes and other function if they get unlocked in the hub.
 
 Create a Recipe
-===============
+---------------
 First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards.
 To keep your folder structure organized we add a folder where all our recipes should go.
 That means to create, the folder ``Content/FactoryGame/DocMod`` which will be your mod-project-root and all our assets will go.
@@ -21,16 +21,20 @@ Finally, we can define the recipe description itself. The class and go to the cl
 - M Ingredients
     This is an array of structs containing the information of one crafting component.
     We add an entry and select for that one ``Desc_Leaves`` as the ``Item Class`` and 42 as the ``Amount``.
+- M Manufacturing Duration
+    the time you need to craft this recipe, we keep it at 1, cuz we are super pioneers.
 - M Produced In
     Here we need to select the machine which will use the recipe like ``FGWorkBench``.
 - M Product
     This is again an array of structs containing information of the item type and amount which you will get if you craft this recipe.
     In our case we add an entry with ``Desc_Wood`` as the ``Item Class`` and 1 as the ``Amount``
 
+.. image:: CreateDocRecipe.gif
+
 Ok, now you created your first recipe. Let's add it to some science and make it available to the game.
 
 Create a Schematic
-==================
+------------------
 Science is good, science is important, and so it is in Satisfactory. And if you want the ability to craft something specific, you need to research it. And a schematic is exactly this.
 But it also describes multiple other things like tutorials.
 Science! Similar to recipes we add a folder in the mod-root-folder for our schematics, let's call him "Schematics".
@@ -76,4 +80,10 @@ In it, create again a new BP Class but this time of type ``FGSchematic`` and f.e
 Finally! What a class. Now we just need to register this schematic in the runtime.
 
 Register the Schematic
-======================
+----------------------
+Registering a schematic works by using the schematic manager subsystem. To register now a schematic you simply call the ``Add Available Schematic`` node with the schematic class as input.
+Problem is, if you do this now in every ``PostInit`` of the ``InitMod`` it gets added over and over again. To prevent this, we check if the schematic is already "registered" by getting the available and purchased schematics list with the corresponding ``GetAvailableSchematics`` and ``GetPurchasedSchematics`` and then we search for our schematic. If it is **not** in one of these lists, then we add it.
+
+.. image:: RegisterSchematic.jpg
+
+.. tip:: The example mods ``ModInit`` contains a good and dynamic implementation of this, which simply iterrates over an array of classes which contains the schematics to register.

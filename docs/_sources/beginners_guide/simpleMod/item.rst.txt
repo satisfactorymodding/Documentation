@@ -10,6 +10,8 @@ The item system is a bit special but overall we simply just need to describe our
 To create it go to the content browser in the unreal editor. Go to the Mod-Root and create a new folder and call it f.e. "Items".
 And create a new BlueprintClass in it. Call it what ever you want, but we will call it ``Desc_DocItem`` ("Desc" stands for descriptor).
 
+.. image:: CreateDocItem.gif
+
 Describe the Item
 -----------------
 Now open the class and you should see the default settings of the classes attributes. If not, just click on "Default Settings" and they should appear in the settings browser of the class editor.
