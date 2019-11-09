@@ -51,17 +51,17 @@ If you don't want to do this through templates you can also use the ``superFunc(
 
 *yeah ik, it's weird, but hey! It makes it more easy to use! And if you don't like it, you can just use* ``superFunc(UClass*(*classFunc)())``
 
-.. warning:: Unreals reflection system does not support multi inheritance like c++ does, that means you can't the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.
+.. warning:: Unreals reflection system does not support multi inheritance like c++ does, that means you can't use the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.
 
 Example:
 
 .. code-block:: c++
 
     class UDocClass : public SML::Objects::UObject {}
-    class UDocActor : public SDK::AActor {}
+    class ADocActor : public SDK::AActor {}
 
     SML::Paks::ClassBuilder<UDocClass>::Basic().extend<SML::Objects::UObject>()
-    SML::Paks::ClassBuilder<UDocClass>::Basic().extendSDK<SDK::AActor>();
+    SML::Paks::ClassBuilder<ADocActor>::Basic().extendSDK<SDK::AActor>();
 
 Attributes
 ''''''''''
