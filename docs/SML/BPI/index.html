@@ -202,7 +202,12 @@ Through this you can:</p>
 </div>
 <div class="admonition error">
 <p class="admonition-title">Error</p>
-<p>Please build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.</p>
+<p>Please build/attach things with the provided BuilderClasses only in on <code class="docutils literal notranslate"><span class="pre">UGameEngine::Start</span></code>. Hook it if needed.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="o">::</span><span class="n">subscribe</span><span class="o">&lt;&amp;</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UGameEngine</span><span class="o">::</span><span class="n">Start</span><span class="o">&gt;</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">ret</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">_</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Build/Attach here</span>
+<span class="p">});</span>
+</pre></div>
+</div>
 </div>
 <div class="toctree-wrapper compound">
 <ul>

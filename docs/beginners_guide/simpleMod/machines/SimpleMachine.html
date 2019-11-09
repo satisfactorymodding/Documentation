@@ -181,12 +181,12 @@
 <div class="section" id="create-the-machine">
 <h2>Create the machine<a class="headerlink" href="#create-the-machine" title="Permalink to this headline">¶</a></h2>
 <p>Creating a simple machine is… simple…
-First of all, you need to create again a <a class="reference external" href="../buildable">buildable</a> with descriptor and recipe, but this time use f.e. <a class="reference external" href="Mesh_SimpleMachine.fbx">this</a> as the mesh and <a class="reference external" href="Icon_SimpleMachine.fbx">this</a> as icon.</p>
+First of all, you need to create again a <a class="reference external" href="../buildable">buildable</a> with descriptor and recipe, but this time use f.e. <code class="xref download docutils literal notranslate"><span class="pre">this</span></code> as the mesh and <code class="xref download docutils literal notranslate"><span class="pre">this</span></code> as icon.</p>
 <p>Now we simply want to add the <a class="reference external" href="../../Concepts/FactoryConnector">factory-connectors</a> (conveyor input and output).
 For that add two new components of type <code class="docutils literal notranslate"><span class="pre">FGFactoryConnectionSim</span></code> to the actor and place them in the lower center of the input/output connection points of the mesh, don’t forget to rotate them (currently we dont realy have any reference how you can see in wich direction the connection points to).</p>
 <p>Set the outputs direction to output and the type to Item.
 The inputs type also needs to get set to Item but the direction needs to be input.</p>
-<p>We also want ot make our machine depend on electricity. For that we need to add a <a class="reference external" href="../../Concepts/PowerNetwork">FGPowerConnector</a> at the position of the power connection point of the mesh.
+<p>We also want ot make our machine depend on electricity. For that we need to add a <a class="reference external" href="../../Concepts/PowerNetwork">FGPowerConnectionComponent</a> at the position of the power connection point of the mesh.
 Set <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">Max</span> <span class="pre">Num</span> <span class="pre">Connections</span></code> to something like 1.</p>
 </div>
 <div class="section" id="init-logic">

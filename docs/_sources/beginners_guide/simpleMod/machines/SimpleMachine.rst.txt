@@ -5,7 +5,7 @@ In this chapter we create our first simple machine which simply counts the items
 Create the machine
 ------------------
 Creating a simple machine is... simple...
-First of all, you need to create again a `buildable <../buildable>`_ with descriptor and recipe, but this time use f.e. `this <Mesh_SimpleMachine.fbx>`_ as the mesh and `this <Icon_SimpleMachine.fbx>`_ as icon.
+First of all, you need to create again a `buildable <../buildable>`_ with descriptor and recipe, but this time use f.e. :download:`this <Mesh_SimpleMachine.fbx>` as the mesh and :download:`this <Icon_SimpleMachine.png>` as icon.
 
 Now we simply want to add the `factory-connectors <../../Concepts/FactoryConnector>`_ (conveyor input and output).
 For that add two new components of type ``FGFactoryConnectionSim`` to the actor and place them in the lower center of the input/output connection points of the mesh, don't forget to rotate them (currently we dont realy have any reference how you can see in wich direction the connection points to).
@@ -13,7 +13,7 @@ For that add two new components of type ``FGFactoryConnectionSim`` to the actor 
 Set the outputs direction to output and the type to Item.
 The inputs type also needs to get set to Item but the direction needs to be input.
 
-We also want ot make our machine depend on electricity. For that we need to add a `FGPowerConnector <../../Concepts/PowerNetwork>`_ at the position of the power connection point of the mesh.
+We also want ot make our machine depend on electricity. For that we need to add a `FGPowerConnectionComponent <../../Concepts/PowerNetwork>`_ at the position of the power connection point of the mesh.
 Set ``M Max Num Connections`` to something like 1.
 
 Init logic

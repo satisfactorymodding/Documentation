@@ -235,14 +235,14 @@ If you don’t want to do this through templates you can also use the <code clas
 <p><em>yeah ik, it’s weird, but hey! It makes it more easy to use! And if you don’t like it, you can just use</em> <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Unreals reflection system does not support multi inheritance like c++ does, that means you can’t the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.</p>
+<p>Unreals reflection system does not support multi inheritance like c++ does, that means you can’t use the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.</p>
 </div>
 <p>Example:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span> <span class="p">{}</span>
-<span class="k">class</span> <span class="nc">UDocActor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span> <span class="p">{}</span>
+<span class="k">class</span> <span class="nc">ADocActor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span> <span class="p">{}</span>
 
 <span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">().</span><span class="n">extend</span><span class="o">&lt;</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">()</span>
-<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">().</span><span class="n">extendSDK</span><span class="o">&lt;</span><span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">ADocActor</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">().</span><span class="n">extendSDK</span><span class="o">&lt;</span><span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>

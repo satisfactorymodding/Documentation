@@ -12,7 +12,7 @@ Now we simply also need to add the buildable description by simply filling the d
 Fille ``M Hologram Class`` with the standard ``FGBuildableHologram``, fill ``M Display Name`` with something like "Doc Counter" and ``M Descriptions`` with "this counts items".
 
 As you can see, the actor already contains some components. But not any visuals, so, now add a new static mesh component in the center of the viewport. You need to know that the center is the position where the build gun targets for.
-You can use `this <ExampleBuildableMesh.fbx>`_ example mesh.
+You can use :download:`this <Mesh_DocBuild.fbx>` example mesh.
 
 Make it paintable
 -----------------
@@ -26,6 +26,7 @@ Adding the Descriptor
 ---------------------
 The descriptor is very similar to the ``FGItemDescriptor`` but with some simple additions, a ``FGBuildable``-Class reference, and some Build-Category stuff you can set up how you want to.
 In our case simply add a new BP-Class of type ``FGBuildingDescriptor`` to the same folder as the buildable itself and call it f.e. "Desc_DocBuild".
+You can use :download:`this <Icon_DocBuild.png>` as icon.
 
 .. error:: Make sure you use ``FGBuildingDescriptor`` and not ``FGBuildDescriptor``.
 
