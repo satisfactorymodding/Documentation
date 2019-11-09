@@ -33,12 +33,12 @@ In here you will find multiple attributes with the different properties such an 
     I don't think that your Item is so exciting that it should emit radioactivity, so we set this value to 0.0 because it describes how radioactive this item is.
 - M Conveyor Mesh
     As we know, an item is 3-Dimensional so we need a 3D-model for the item how it should look if it gets transported on a conveyor belt.
-    We have an example model `here <Mesh_DocItem.fbx>`_.
+    We have an example model :download:`here <Mesh_DocItem.fbx>`.
 - M Item Category
     This groups the item into a category, we don't need this so we leave it on "None" and so the item gets categorized under "Other".
 - M Small Icon
     This is a simple texture image of the object used f.e. in the inventory to visualize what the given stack is.
-    We have an image ready for use `here <Icon_DocItem.png>`_.
+    We have an image ready for use :download:`here <Icon_DocItem.png>`.
 - M Big Icon
     This is the same as the small icon but, bigger.
 

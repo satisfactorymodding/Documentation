@@ -24,7 +24,14 @@ The BPI is located under ``assets/BPInterface.h`` in the SML root and also provi
 
 .. warning:: We heavily recommend using the BPI objects instead of the SDK ones cause the SDK is auto-generated and provides less save implementations.
 
-.. error:: Please build/attach things with the provided BuilderClasses only in the first Engine Tick. Hook it if needed.
+.. error::
+    Please build/attach things with the provided BuilderClasses only in on ``UGameEngine::Start``. Hook it if needed.
+    
+    .. code-block:: c++
+
+        ::subscribe<&SML::Objects::UGameEngine::Start>([](void* ret, void* _) {
+            // Build/Attach here
+        });
 
 .. toctree::
     :maxdepth: 2
