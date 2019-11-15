@@ -7,8 +7,10 @@ SML contains multiple key features we use to archive multiple things.
     :maxdepth: 2
 
     SPL/index
+    SBL
     SDK/index
     BPI/index
+    simpleMod/index
 
 Mod "Types"
 -----------

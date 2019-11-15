@@ -9,7 +9,7 @@ This time we create an own folder for the buildable to have textures, meshes and
 Create it in a new folder called "Buildables" in the mod-root-folder, and call itself f.e. "DocBuild". Create the actor class of type ``FGBuildable`` with f.e. the name "Build_DocBuild".
 
 Now we simply also need to add the buildable description by simply filling the default values.
-Fille ``M Hologram Class`` with the standard ``FGBuildableHologram``, fill ``M Display Name`` with something like "Doc Counter" and ``M Descriptions`` with "this counts items".
+Leave ``M Hologram Class`` at Nonde because the ``FGBuildable`` will find the needed value by itself, fill ``M Display Name`` with something like "Doc Counter" and ``M Descriptions`` with "this counts items".
 
 As you can see, the actor already contains some components. But not any visuals, so, now add a new static mesh component in the center of the viewport. You need to know that the center is the position where the build gun targets for.
 You can use :download:`this <Mesh_DocBuild.fbx>` example mesh.
