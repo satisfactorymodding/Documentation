@@ -8,7 +8,7 @@ Basics
 Welcome to the Satisfactory Modding Documentation site! Here you can find lots of information regarding modding `Satisfactory <https://www.satisfactorygame.com/>`_, the factory-building sim by Coffee Stain Studios.
 Modding for Satisfactory is more established than you might think given how long the game has been out. There are already numerous mods released, and there are multiple methods by which you can develop new mods yourself. In this doc we will mainly focus on the general community, ficsit.app and SML.
 
-.. hint:: If you want to take part in this great community, we recommend you to join our `Discord Server <https://discord.gg/xkVJ73E>`_ or the `Ficsit.app Forums <https://forums.ficsit.app/>`.
+.. hint:: If you want to take part in this great community, we recommend you to join our `Discord Server <https://discord.gg/xkVJ73E>`_ or the `Ficsit.app Forums <https://forums.ficsit.app/>`_.
 
 Modding Technologies
 -----------
@@ -17,14 +17,14 @@ Satisfactory Mod Repository `(aka. SMR aka. ficsit.app aka. FICSIT Augmentation 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory. It's easy to upload a mod of your own or write a guide for other users. 
 Uploaded content gets test for malware and other stuff.
-Visit the `ficsit.app <https://ficsit.app/>`_ to learn more.
+Visit `ficsit.app <https://ficsit.app/>`_ to learn more.
 
 Satisfactory Mod Loader `(aka. SML)`
 ''''''''''''''''''''''''''''''''''''
-SML is the most used Mod Loader for Satisfactory and is used by most mods.
+Satisfactory Mod Loader (SML) allows Satisfactory to load additional content and is essential in making most mods work.
 SML provides two key features.
 
-- Loading and initializing mods directly from so called "paks"
+- Loading and initializing mods directly from "pak" files
 - Loading and initializing native mods written in C++
 
 If you're looking to write your own mods, we suggest you start with making pak mods. Learn more in our :doc:`beginners_guide/index` guide.
@@ -32,7 +32,7 @@ If you're looking to write your own mods, we suggest you start with making pak m
 Installing Mods
 ---------------
 If you just want to install mods, this section of the guide is for you.
-First of all, you need to pick a mod that you want to install! Take a look on `SMR <https://ficsit.app/>`. Please note that there are multiple pages of mods you can navigate through with the arrows at the bottom right.
+First of all, you need to pick a mod that you want to install! Take a look on `SMR <https://ficsit.app/>`_. Please note that there are multiple pages of mods you can navigate through with the arrows at the bottom right.
 You should always **read the mod description** because some mods have different installation instructions that need to be followed, such as KronosMod. If you don't do this, the mod won't work!
 Most likely the mod you choose will require you to install SML; we will guide you how to do that.
 
@@ -55,10 +55,10 @@ On ficist.app you just go to your desired mod's page, click on ``versions`` in t
 .. warning:: Always check to make sure that the *SML Version* column for the version you choose matches the version of SML you have installed. You can attempt to install the mod with mismatched versions, but most of the time, it won't work.
 
 Save the zip file to your downloads folder and then open it with a proper zip archive explorer like 7zip.
-It contains multiple files, which include some but not neccesarily all of the following:
+It contains multiple files, which include some but not necessarily all of the following:
 
 - data.json
-    Used by SMR to identify the mod. You don't need ot do anything with this file.
+    Used by SMR to identify the mod. You don't need to do anything with this file.
 - .pak files
     These files contain some mod logic, models, textures and so on. To install them you need to copy them again into the Satisfactory installation folder, but this time under ``Content\Paks``
     Each ``.pak`` file should have a ``.sig`` file with a matching name. If there is no corresponding ``.sig``-file for each of the ``.pak`` files in the archive, you'll need to copy the ``.sig`` file used by Satisfactory (it's called ``FactoryGame.sig``) and rename it to match the ``.pak`` file you're copying in.
@@ -72,7 +72,9 @@ It contains multiple files, which include some but not neccesarily all of the fo
 Installing Mod Dependencies
 ''''''''''''''''''''''''''
 Some mods, such as the Farming Mod, will require you to install other mods in order for them to work. **Read the mod description** on the SMR page to find out if the mod you're installing requires any other mods! People will be very frustrated if you ask them for help and you haven't followed this simple step.
+
 .. image:: https://cdn.discordapp.com/attachments/555782140533407764/641376861753966652/unknown.png
+
 If you see this message, you forgot to install the Satisfactory Item Dictionary mod, a common dependency. Go find it on SMR and install it!
 
 Index
