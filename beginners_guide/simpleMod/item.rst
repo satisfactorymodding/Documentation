@@ -1,5 +1,5 @@
 Create an item
-============
+==============
 Now that you created a custom recipe and schematic, you might want to create a custom Item.
 For this, we need an Idea what name the item should have, how it should look like and stuff like that.
 We decided to make a new ingot called 'Doc Ingot'.

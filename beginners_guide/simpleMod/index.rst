@@ -1,5 +1,5 @@
 Create a Simple Mod
-==================
+===================
 Now that you have learned the core concepts of Satisfactory modding, you can get started on creating your first mod.
 
 To get started, this tutorial will walk you through creating a simple mod that adds the following:

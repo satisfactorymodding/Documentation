@@ -1,13 +1,13 @@
 Recipe vs Schematic
-================
+===================
 'Recipes' are used to define the item input/cost and output of crafting items, buildables, etc. Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.
 
 .. hint:: Note that recipes are used to define both crafting recipes in the craft bench and machines *and* construction prices when using the build gun. All buildables actually have an item equivalent in game as well.
 
-'Schematics' define ``Milestones <https://satisfactory.gamepedia.com/Milestones>``_, the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features. 
+'Schematics' define `Milestones <https://satisfactory.gamepedia.com/Milestones>`_, the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features. 
 
 Initial Mod Setup
----------------
+-----------------
 To keep your folder structure organized, let's create a folder where all of your mod content will go.
 
 Create a folder, for example,``Content/FactoryGame/DocMod``, to serve as your mod-project-root. All of the assets for our mod will go in this folder and will be turned into a pak when we're done.
@@ -89,9 +89,9 @@ Finally! What a class. Now we just need to register this schematic in the runtim
 Register the Schematic
 ----------------------
 Registering a schematic works by using the schematic manager subsystem. To register now a schematic you can simply call the ``Add Available Schematic`` node with the schematic class as input.
-Problem is, if you were  to do just this, every time ``PostInit`` of the ``InitMod``is called (for example when the game loads) the schematic will be added multiple times and show up in the HUB multiple times. To prevent this, we need to check if the schematic is already "registered" by getting the available and purchased schematics list with the corresponding ``GetAvailableSchematics`` and ``GetPurchasedSchematics`` and then we search for our schematic. If it is **not** in one of these lists, then trigger the node to add it.
+Problem is, if you were  to do just this, every time ``PostInit`` of the ``InitMod`` is called (for example when the game loads) the schematic will be added multiple times and show up in the HUB multiple times. To prevent this, we need to check if the schematic is already "registered" by getting the available and purchased schematics list with the corresponding ``GetAvailableSchematics`` and ``GetPurchasedSchematics`` and then we search for our schematic. If it is **not** in one of these lists, then trigger the node to add it.
 
-.. hint:: If you accidentally clutter up a savegame with duplicates of a milestone, you can remove the duplicates using a savegame editor such as one found on ``the ficsit.app tools page <https://ficsit.app/tools>_.
+.. hint:: If you accidentally clutter up a savegame with duplicates of a milestone, you can remove the duplicates using a savegame editor such as one found on `the ficsit.app tools page <https://ficsit.app/tools>`_.
 
 .. image:: RegisterSchematic.jpg
 

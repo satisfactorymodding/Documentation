@@ -16,7 +16,7 @@ Download it and unzip it with your desired tool like 7zip into a temporary folde
 The move the "StarterProject" folder to your desired location and rename the folder like how you want it.
 
 Setting up Wwise
----------------
+----------------
 Sitting up WWise can be difficult but doesn't need to.
 
 Start the Wwise launcher and update it if needed.
@@ -38,7 +38,7 @@ Compile/Start Unreal-Project
 To initiate compiling the unreal-project source and to open the editor just simply open the ``.uproject`` file, hit ``Ok`` of you get prompted if you should rebuild something and the editor should show up.
 
 Setting up Alpakit
------------------
+------------------
 Click on the Alpakit button in the Tool-Bar of the viewport and click on ``Choose folder`` in the upper right-hand corner and select your root satisfactory game installation folder (like ``C:\Program Files\EpicGames\SatisfactoryEarlyAccess\``)
 Check ``Start game after paking`` if you want so.
 And click ``Add mod`` and fill out the dialogue to tell Alpakit to pak everything in the content folder with the path ``/Content/FactoryGame/<your mod name>``
