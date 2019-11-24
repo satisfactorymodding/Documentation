@@ -1,6 +1,8 @@
-Blue Prints
-===========
-``BluePrints`` is a node-based visual coding language for Unreal. It compiles into a kind of bytecode which gets executed by the Unreal BP VM.
+Blueprints
+==========
+The ``Blueprint`` system is a node-based visual coding language for Unreal. Blueprints compile into a variant of bytecode which gets executed by the Unreal Blueprint Virtual Machine.
+
+We'll go over some of the aspects of the Blueprint system here, but if you'd like to learn more, you can read `Unreal's documentation pages <https://docs.unrealengine.com/en-US/Engine/Blueprints/GettingStarted/index.html>`_.
 
 .. tip:: Bytecode is a special fake machine code which gets executed by a machine running in a VM. This allows cross-platform compatibility without the need to compile the code for every platform individually.
 
@@ -8,13 +10,13 @@ Unreal BP VM
 ------------
 This "blueprint-bytecode" needs to get executed by a custom machine cause a normal machine like your CPU can't understand that code. Unreal BP VM is that machine which runs itself in a virtual machine.
 
-This creates a problem. Blueprint code can't use system functions like rendering with the GPU cause it got isolated through this VM. But communication is essential for something like this, unreal uses for this its own reflection-system, the `UObject-System <UObject>`_.
+This creates a problem. Blueprint code can't use system functions like rendering with the GPU since such functions are isolated through this VM. But communication is essential for something like this, unreal uses for this its own reflection-system, the `UObject-System <UObject>`_.
 
 Nodes
 -----
-Other than f.e. scratch, `BluePrints` uses a node system for describing its behaviour.
-Everything is a node, from functions and events to simple operators like addition.
-A node can have multiple inputs and outputs. For values and flow (execution).
+Other than visual languages such as Scratch, the Blueprint system uses a nodes for describing behaviours.
+Everything is a node, from functions and events to simple operators like addition and constant values.
+A node can have multiple inputs and outputs for values and flow (execution).
 
 Pure Nodes
 ''''''''''
@@ -27,9 +29,9 @@ These nodes get connected with lines to describe which output is used for which 
 There are two types of connection lines.
 
 - Execution-Lines
-    They describe which node should get explicitly get executed after the other node finished execution. You can connect multiple outputs to one input, but you cant connect multiple ints to one output because then the flow execution would break up into multiple threads and BP does not support real multithreading.
+    Describe which node should get explicitly get executed after the previous node has finished executing. You can connect multiple outputs to a single input, but you can't connect multiple inputs to one output since this would break the flow execution into multiple threads and BP does not support real multithreading.
 - Data-Lines
-    These lines describe the flow of data like a simple float value. You can connect them, most of the time from one output to multiple inputs, but sometimes you can connect multiple outputs to one input.
+    Describe the flow of data like a simple float value. You can connect one output line to multiple inputs as well as (less commonly used) multiple outputs to one input.
 
 Data Types
 ----------
@@ -42,25 +44,25 @@ Standard types are often types which are directly used for calculations.
 - boolean (bool 8bits)
     Boolean values can store two states true and false. They are mostly used for logical comparisons.
 - integer (int 32bits)
-    Integers are countable (whole) numbers with negative space (-2,-1,0,1,2)
+    Integers are countable (whole) numbers with negative space (-2,147,483,647, ..., -2, -1, 0, 1, 2, ..., 2,147,483,647)
 - float (float 32bit)
-    Floats are like countable numbers but can also be everything between whole numbers (-1,0.5,0,0.3,0,75)
+    Floats are like countable numbers but can also be everything between whole numbers (-1.0, 0.5, 0.0125, 0.3, 75.0)
 - string
-    Strings are sequences of characters like a simple text.
+    Strings are sequences of characters that form text.
 - names
     Names are like strings but the characters are stored globally to make it more optimized and to make renaming easier.
 - vectors
-    Vectors are simply 3 floats, but you can do crazy math with them.
+    Vectors consist of 3 floats grouped for the purposes of vector math.
 - List
-    List of multiple values, sorted by their actual value. If you add a new value, the order can change.
+    List of multiple values, sorted by their actual value. If you add a new value, the order of the list can change.
 - Array
-    this is a list of multiple values of a given type, but every entry also corresponds to index and so the order of values never changes.
+    A list of multiple values of a given type, but every entry also corresponds to index and so the order of values never changes.
 - Map
-    like an array but instead of using numbers as the index, it uses a given type as the key, which is "linked" to value.
+    Similar to an array but instead of using numbers as the index, it uses a given type as the key, which is "linked" to value.
 
 Structs
 '''''''
-Structures are simply just multiple values with different types grouped together.
+Structures are simply multiple types grouped together. A struct can be made up of any number of different types.
 You need a description of a struct to then create instances of it.
 You can then use the description as a data type and the instances as values for the ``Value-Lines``.
 
@@ -75,21 +77,21 @@ When you use the class as the type and the objects as values, these values are j
 
 Functions
 ---------
-Functions are subroutines. Capsulated code that has its own scope and is used more than once and is available to other scopes (function environments and also other f.e. classes).
+Functions are subroutines, capsulated code with its own scope, able to be used more than once, and is available to other scopes (function environments and also other classes, for example).
 
 Macros
 ''''''
-Macros are like functions but without an own scope and are only callable within the class. They work like a template for multiple usages and are also compiled like they were a part of the calling function. Due to this, it can have multiple execution inputs and outputs and also a special "any" type.
+Macros are like functions but without their own scope and are only callable within the class. They work like a template for multiple usages and are also compiled as if they were a part of the calling function. Due to this property, macros can have multiple execution inputs and outputs and also support a special "any" type.
 
 Methods
 '''''''
-These are a special kind of function. They need the context of an object to execute because they can manipulate multiple values of that object. (so they get executes "as onto" an object)
+Methods are a special kind of function that need the context of an object to execute because they can manipulate multiple values of that object. (so they get executes "as onto" an object)
 
 Events
 ''''''
-Events are a special kind of method. This method can't have any output values.
+Events are a special kind of method that can't have any output values.
 
 Delegates
 ---------
-Delegates are holding a list of bound events. When a delegate gets executed, it calls all the bound events with the same input-values. (they can't have output values because ``BluePrints``won't know how to merge all the output values of all these event calls and because they are events and not functions)
+Delegates are holding a list of bound events. When a delegate gets executed, it calls all the bound events with the same input-values. (they can't have output values because ``BluePrints`` won't know how to merge all the output values of all these event calls and because they are events and not functions)
 This is like an array containing a reference to an event and also the corresponding bound context (Object) for use to call these events.
