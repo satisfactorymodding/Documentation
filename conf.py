@@ -4,7 +4,7 @@ import sphinx_rtd_theme
 
 project = 'Satisfactory Modding Documentation'
 copyright = '2019, SatisfactoryModding'
-author = 'Panakotta00, SuperCoder79'
+author = 'Panakotta00, SuperCoder79, Robb'
 
 # -- General configuration ---------------------------------------------------
 
