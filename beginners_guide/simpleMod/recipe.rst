@@ -1,89 +1,100 @@
-Recipe/Schematic
+Recipe vs Schematic
 ================
-Recipes describe everything were specific types and amounts of items go in, and a different amount and types of items come out.
-Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.
+'Recipes' are used to define the item input/cost and output of crafting items, buildables, etc. Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.
 
-Schematics are the science package thingies you do I the hub. Those are your research packages which will add recipes and other function if they get unlocked in the hub.
+.. hint:: Note that recipes are used to define both crafting recipes in the craft bench and machines *and* construction prices when using the build gun. All buildables actually have an item equivalent in game as well.
+
+'Schematics' define ``Milestones <https://satisfactory.gamepedia.com/Milestones>``_, the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features. 
+
+Initial Mod Setup
+---------------
+To keep your folder structure organized, let's create a folder where all of your mod content will go.
+
+Create a folder, for example,``Content/FactoryGame/DocMod``, to serve as your mod-project-root. All of the assets for our mod will go in this folder and will be turned into a pak when we're done.
 
 Create a Recipe
 ---------------
 First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards.
-To keep your folder structure organized we add a folder where all our recipes should go.
-That means to create, the folder ``Content/FactoryGame/DocMod`` which will be your mod-project-root and all our assets will go.
-And now add the folder ``Content/FactoryGame/DocMod/Recipes`` which will contain all our recipes.
+Create a folder, ``Content/FactoryGame/DocMod/Recipes`` which will contain all our recipes.
 
-Now we can create a new BP Class which extends ``FGRecipe``.
+Now, back in Unreal, we can create a new BP Class in this folder which extends ``FGRecipe`` to serve as our recipe.
 
-Finally, we can define the recipe description itself. The class and go to the class defaults and set the properties to the values you want.
+Finally, we can define the recipe description itself. Open up the class and go to the class defaults and set the properties to the values you want.
 
 - M Display Name
-    If you want to define a name check this and type the name in. For our test recipe, we check it and call it "Doc Recipe"
+    If you want to define a name for your recipe, check this and type the name in. For our tutorial recipe, we'll check it and call it "Doc Recipe"
 - M Ingredients
-    This is an array of structs containing the information of one crafting component.
-    We add an entry and select for that one ``Desc_Leaves`` as the ``Item Class`` and 42 as the ``Amount``.
+    This is an array of structs, each of which contains the information of one crafting component. Together, the array forms the input items for the recipe.
+    For this example, we'll add one entry and set ``Desc_Leaves`` as the ``Item Class`` and 42 as the ``Amount``.
 - M Manufacturing Duration
-    the time you need to craft this recipe, we keep it at 1, cuz we are super pioneers.
+    This determines the time it takes for a machine to process this recipe. It also corresponds to the number of clicks required to craft the recipe at a crafting station. We'll keep it at 1 for now, cuz we are super speedy pioneers. TODO Find out seconds here to clicks in bench ratio, probably 1 to 1
 - M Produced In
-    Here we need to select the machine which will use the recipe like ``FGWorkBench``.
+    Here we need to select the machine that can use the recipe, for example, ``FGWorkBench``.
 - M Product
-    This is again an array of structs containing information of the item type and amount which you will get if you craft this recipe.
-    In our case we add an entry with ``Desc_Wood`` as the ``Item Class`` and 1 as the ``Amount``
+    This is again an array of structs containing information regarding the item types and amounts that form the output of recipe.
+    In our case we'll add an entry with ``Desc_Wood`` as the ``Item Class`` and 1 as the ``Amount``
 
 .. image:: CreateDocRecipe.gif
 
-Ok, now you created your first recipe. Let's add it to some science and make it available to the game.
+.. warning:: Note that although recipes with more than out output item type will still compile and load properly, they will crash the game if you try to use them, even if you were to make a modded machine with more than one output to craft it in. If you'd like to make a recipe with more than one output, ask for help with this on the discord, as the only way to do this right now is a bit roundabout until Coffee Stain makes such recipes not crash the game.
+
+Ok, now you've created your first recipe! Next, let's add it to a schematic to make it available ingame.
 
 Create a Schematic
 ------------------
-Science is good, science is important, and so it is in Satisfactory. And if you want the ability to craft something specific, you need to research it. And a schematic is exactly this.
-But it also describes multiple other things like tutorials.
-Science! Similar to recipes we add a folder in the mod-root-folder for our schematics, let's call him "Schematics".
+Schematics are what Satisfactory uses to grant additional recipes and capabilities to the player. Schematics are the 'package' groupings you'll see in the HUB that have rewards associated with them. You'll note that even though alternate recipes are researched at the MAM, you still need to submit items at the HUB to unlock the milestone associated with them.
+Schematics are also used for the Tier 0 tutorial phases.
+To get started, create a folder in your main mod folder for your schematics, for example, ``Content/FactoryGame/DocMod/Schematics``.
 
-In it, create again a new BP Class but this time of type ``FGSchematic`` and f.e. with the name "Schem_Doc". Open it and go again to its defaults.
+Inside this folder create again a new BP Class but this time of type ``FGSchematic`` and f.e. with the name "Schem_Doc". Open it and go again to its defaults.
 
-- M type
-    The type of the schematic like if it is hub upgrade or a tutorial.
-    We use ``hub upgrade``.
+- M Type
+    The type of the schematic, which determines if it's part of the tutorial system or if it's a Milestone.
+    We'll use ``hub upgrade`` because we don't want our schematic to be part of the tutorial phase.
 - M Display Name
-    This is the name of our schematic and how it gets directly displayed to the user. like "Doc Hub Upgrade"
+    The in-game name of our schematic exactly as it is displayed to the user, for example, "Doc Hub Upgrade".
 - M Schematic Category
-    Defines the category in which this schematic gets grouped to. Idk what the best option our case is so, you can decide this time.
+    Defines the category in which this schematic gets grouped into. Go ahead and pick one; it doesn't matter for our example.
 - M Tech Tier
-    Sets the tech tier of the recipe like the tiers in the hub. We use 1 cuz its very early but not in the tutorial.
+    Determines which Tier the schematic will appear under in the HUB. We'll set it to 1 so that our content is available as soon as you finish the tutorial.
 - M Schematic Icon
-    This is the icon used to display the schematic. We can use `this example image <Icon_SchemDoc.png>`_.
+    The icon displayed on the schematic in the HUB. We can use `this example image <Icon_SchemDoc.png>`_.
 - M Depends on Schematic
-    We leave this as it is because we don't depend on the other schematic. The selected schematic needs to be activated that this schematics can get activated.
+    Setting this option will require the selected schematic to be activated first before this one can be activated. We'll leave this empty because we don't our content to require any other particular schematic to be unlocked first.
 - M Additional Schematic Dependencies
-    This is a list of schematics just like ``M Depends on Schematic``
+    Similar to ``M Depends on Schematic``. Additional schematics to be dependent on can be listed here.
 - M Cost
-    This is a list of item amounts which are needed to activate the schematic. We add an entry with 100 ``Desc_Leaves`` and another one with 100 ``FGWood``
+    A list of item amounts which are needed to activate the schematic in the HUB. We'll add two entries, one with 100 ``Desc_Leaves`` and another one with 100 ``FGWood``
 - M Ship Travel Time after Purchase
-    Set this to 100 so that the space ship of the hup will fly away for 100 secs.
+    Determines how long in seconds the HUB will wait before allowing the player to submit another milestone after completing this one. We'll set this to 100 so that the drop pod will fly away for 100 seconds.
 - M Recipes
-    This finally the list of recipes which get unlocked when you activate this schematic. Here we add our ``Desc_DocRecipe`` as an entry.
+    The list of Recipes which will get unlocked when the player completes this schematic. Here we'll add our ``Desc_DocRecipe`` from before as an entry.
 - M Resources to Add to Scanner
-    Simply a list of resource types which should get added to the resource scanner when this schematic gets unlocked. We don't need to add anything.
+    A list of resource types which should get added to the resource scanner when this schematic gets unlocked. We don't need to add anything here.
 - M Unlocks Map
-    If this schematic unlocks the map. Why should your schematic do that? So no, leave it unchecked.
+    If this schematic unlocks the in-game map feature. Why should your schematic do that? So no, leave it unchecked.
 - M Unlocks Build Efficiency
     If this schematic unlocks the build efficiency display. Again, leave it alone.
 - M Unlocks build Overclock
-    If this schematic unlocks the ability to overclock buildings. No, it doesn't.
+    If this schematic unlocks the ability to overclock buildings. Ours doesn't, so we can leave it as is.
 - M Num Inventory Slots to Unlock
-    0, because we don't want to give the player the ability to have more items in his inventory.
+    The number of additional main inventory slots to grant the player. We'll put 0.
 - M Arm Equipment Slots to Unlock
-    again 0, because why should the user be able to have more items in his hands?
+    The number of additional arm equipment slots to grant the player. Another 0 here.
 - M Include In Builds
-    set this to public builds, cause we want it to, be, public.
+    Set this to 'public builds' so that your content is included in the build. Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing from being shipping with the main game.
 
 Finally! What a class. Now we just need to register this schematic in the runtime.
 
 Register the Schematic
 ----------------------
-Registering a schematic works by using the schematic manager subsystem. To register now a schematic you simply call the ``Add Available Schematic`` node with the schematic class as input.
-Problem is, if you do this now in every ``PostInit`` of the ``InitMod`` it gets added over and over again. To prevent this, we check if the schematic is already "registered" by getting the available and purchased schematics list with the corresponding ``GetAvailableSchematics`` and ``GetPurchasedSchematics`` and then we search for our schematic. If it is **not** in one of these lists, then we add it.
+Registering a schematic works by using the schematic manager subsystem. To register now a schematic you can simply call the ``Add Available Schematic`` node with the schematic class as input.
+Problem is, if you were  to do just this, every time ``PostInit`` of the ``InitMod``is called (for example when the game loads) the schematic will be added multiple times and show up in the HUB multiple times. To prevent this, we need to check if the schematic is already "registered" by getting the available and purchased schematics list with the corresponding ``GetAvailableSchematics`` and ``GetPurchasedSchematics`` and then we search for our schematic. If it is **not** in one of these lists, then trigger the node to add it.
+
+.. hint:: If you accidentally clutter up a savegame with duplicates of a milestone, you can remove the duplicates using a savegame editor such as one found on ``the ficsit.app tools page <https://ficsit.app/tools>_.
 
 .. image:: RegisterSchematic.jpg
 
-.. tip:: The example mods ``ModInit`` contains a good and dynamic implementation of this, which simply iterrates over an array of classes which contains the schematics to register.
+.. tip:: The SML example mod's ``ModInit`` class contains a good and dynamic implementation of this, which simply iterates over an array of classes which contains the schematics to register.
+
+And we're set! Our recipe and schematic are registered and should show up in the game now.

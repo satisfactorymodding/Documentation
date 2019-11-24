@@ -10,7 +10,7 @@ To get started, this tutorial will walk you through creating a simple mod that a
 - A basic machine that consumes power and counts the number and types of items that pass through it
 These are listed in order of easiest to most difficult.
 
-.. hint:: Knowledge about 3D modeling is very helpful if you want to add new things to the world. If you have an idea for a mod but aren't experienced with modeling, consider posting it in the ``#ideas-discussion`` channel `Discord server <https://discord.gg/xkVJ73E>`_ or on the `SMR Forums <https://forums.ficsit.app/>`_. You may find an artist willing to help you. You could also learn how to model in a program like Blender, Meshmixer, Maya, etc.
+.. hint:: Knowledge about 3D modeling is very helpful if you want to add new items, buildings, enemies, etc. to the game. If you have an idea for such a mod but aren't experienced with modeling, consider posting it in the ``#ideas-discussion`` channel `Discord server <https://discord.gg/xkVJ73E>`_ or on the `SMR Forums <https://forums.ficsit.app/>`_. You may find an artist willing to help you. You could also learn how to model in a program like Blender, Meshmixer, Maya, etc.
 
 .. toctree::
     modinit

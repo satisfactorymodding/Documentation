@@ -50,7 +50,7 @@ Congrats! The first step is done, installing SML. Now, start up Satisfactory and
 Installing Your Mod of Choice
 '''''''''''''''''''''
 Ok, back to the mod itself.
-On ficist.app you just go to your desired mod's page, click on ``versions`` in the upper right left corner and then click ``download`` on your desired version. Usually this will be the top version on the list.
+On ficsit.app you just go to your desired mod's page, click on ``versions`` in the upper right left corner and then click ``download`` on your desired version. Usually this will be the top version on the list.
 
 .. warning:: Always check to make sure that the *SML Version* column for the version you choose matches the version of SML you have installed. You can attempt to install the mod with mismatched versions, but most of the time, it won't work.
 
