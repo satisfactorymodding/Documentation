@@ -1,6 +1,6 @@
 Code & Content
 ==============
-In Unreal we have generally two types of codes and one type of content.
+On this page we will describe what we refer to as 'content' and 'code.' There are two kinds of code, ``Native Code`` and ``Blueprint Code``.
 
 Content
 -------
@@ -9,32 +9,32 @@ You use these assets to make stuff in your game f.e. visible to the user.
 There are multiple types of assets:
 
 - StaticMesh
-    A simple 3D Object like a .obj or .fbx
+    A model, a 3D object in a file format such as .obj or .fbx
 - Sound
-    Sounds like the background music or footsteps.
+    Audio files to be played in game, for example music or sound effects. Because Satisfactory uses Wwise, it is currently NOT possible for us to add sounds to the game. Ask on the discord if you would like a further explanation as to why this is the case.
 - Skeleton
-    Characters like the player or enemies have a skeleton to tell the engine f.e. where bones and joints are.
+    Characters like the player or enemies have a skeleton to tell the game engine where bones and joints are to enable the a model to be animated.
 - TextureSample
-    Textures like the grass texture, ficsit logo or the items in the inventory are simple images called "Texture Samples"
+    Images such as grass texture, FICSIT logo, and item/building icons are simple images called "Texture Samples"
 - Materials
-    Every surface has a material applied on it, so the renderer does know how he should let the surface look like.
-    Here textures and surface properties like reflection and roughness come together.
-- BluePrints
-    We will discuss this in this `Concept-Page <BluePrints>`_
+    Every surface of a model has a material applied to it that tells the rendering engine how to display the surface.
+    Materials combine image textures with properties such as roughness and reflectiveness to form what is seen in-game.
+- Blueprints
+    A system of programming further described on the `Concept-Page <BluePrints>`_ page.
 
 Native Code
 -----------
-Native code describes code that is written in C++ and can't directly be changed in the Unreal Editor because the Editor itself uses this code.
+The term 'Native code' refers to code written in C++ which can't be directly changed in the Unreal Editor. The editor itself uses C++ code as well.
 This kind of code can interact with the computer on a very low level and is often used when performance is really important.
-Much things of Satisfactory is written in C++ so you will often find out that there is the functionality you cant access from within ``BluePrints``.
-Native code is compiled directly into machine code and that means for every platform you want to compile for, you would need to compile this code separately.
+Much of Satisfactory is written in C++, and you will often find that using native code allows you to access functionality can't with the``Blueprints`` system.
+Native code is compiled directly into machine code, meaning that for every platform (ex. Windows, Linux, Mac) you support, you would need to compile this code separately for each.
 
-.. warning:: This can be a problem for you when the game updates. Because that would mean you need to download the C++ code again and compile it, and this can be difficult if you don't know what you do.
+.. warning:: Native code needs to be updated and recompiled for every Satisfactory update. Be aware of this if you decide to make a mod utilizing native code.
 
-Besides this downside, native code allows you to low-level manipulation of the engine environment and also allows you to implement third-party libraries like discord, curl and Lua.
+Native code allows you to perform low-level manipulation of the engine environment and thus allows you to implement utilize third-party libraries, such as Discord, Curl, Twitch integrations, and Lua.
 
-BluePrint Code
+Blueprint Code
 --------------
-This is a kind of asset which is compiled into the pak files as a kind of bytecode which then gets loaded and linked at runtime through the Unreal BP VM.
+'Blueprint code' refers to code written in the Unreal Engine blueprint scripting system. The blueprint system is a visual scripting language, a high level language that is considerably less efficient than native code but can be much easier to learn and much more convenient to work with. Blueprint code is executed via the Unreal BP VM, meaning recompilation for every platform is not necessary.
 
-.. hint:: To learn more about ``BluePrints`` visit the `Concept-Page <BluePrints>`_ about that topic.
+.. hint:: To learn more about ``Blueprints``, visit the `Concept-Page <BluePrints>`_ about that topic.
