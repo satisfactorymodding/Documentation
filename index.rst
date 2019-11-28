@@ -16,7 +16,8 @@ Modding Technologies
 Satisfactory Mod Repository `(aka. SMR aka. ficsit.app aka. FICSIT Augmentation Database)`
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory. It's easy to upload a mod of your own or write a guide for other users. 
-Uploaded content gets test for malware and other stuff.
+All content uploaded here is manually checked for viruses, malware, etc. before it can be downloaded by any other users.
+You can also visit the SMR forums to ask questions, discuss ideas, and more.
 Visit `ficsit.app <https://ficsit.app/>`_ to learn more.
 
 Satisfactory Mod Loader `(aka. SML)`
