@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Crafting &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Factory-Connectors" href="FactoryConnectors.html" />
+    <link rel="prev" title="UObject-System" href="UObject.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_setup.html">Project-Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Code.html">Code &amp; Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BluePrints.html">Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UObject.html">UObject-System</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Crafting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#items-fgitemdescriptor">Items <cite>(FGItemDescriptor)</cite></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recipes-fgrecipe">Recipes <cite>(FGRecipe)</cite></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FactoryConnectors.html">Factory-Connectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PowerNetwork.html">Power-Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Paintable.html">Paintable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simpleMod/index.html">Create a Simple Mod</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../SML/index.html">SML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+        
+          <li><a href="index.html">Concepts</a> &raquo;</li>
+        
+      <li>Crafting</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/beginners_guide/Concepts/Crafting.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="crafting">
+<h1>Crafting<a class="headerlink" href="#crafting" title="Permalink to this headline">¶</a></h1>
+<p>The crafting system of satisfactory is relatively straight forward and easy to implement.
+Nonetheless, we will guide you through the process of creating and registering new Recipes and Items.</p>
+<div class="section" id="items-fgitemdescriptor">
+<h2>Items <cite>(FGItemDescriptor)</cite><a class="headerlink" href="#items-fgitemdescriptor" title="Permalink to this headline">¶</a></h2>
+<p>The native <code class="docutils literal notranslate"><span class="pre">FGItemDescriptor</span></code> class, who would have thought, describes an Item itself.
+It holds information like:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Name</dt><dd><p>The actual displayed name to the user</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Description</dt><dd><p>A description of the item itself. Most of the time it contains information about its usage but also some useless information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Inventory Icon</dt><dd><p>The icon you can see in your inventory is no live rendering of the item, instead, it’s just a simple image file.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Conveyor Model</dt><dd><p>This is a Static Mesh used to display the item in the 3D Environment like on a Conveyor belt.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Radioactive Decay</dt><dd><p>Some items like Uranium Ore have a radioactive decay, this is simply the nasty invisible shit why you can’t get closer to nuclear reactors.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Energy value (for use as Fuel)</dt><dd><p>Different items have different amounts of energy storage when used as fuel. Coal has f.e. less energy than normal Fuel.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Sometimes you don’t need to define everything. f.e. when you want to create a building descriptor you won’t need a model for conveyors or an energy value cause you don’t want to throw a building into a generator.</p>
+</div>
+<p>This is enough for basic Items, but what’s about more complex ItemDescriptors like equipment?
+For that we have other classes we will discuss later on.
+You can look up how to create a <code class="docutils literal notranslate"><span class="pre">FGItemDescriptor</span></code> in our <a class="reference internal" href="../simpleMod/item.html"><span class="doc">Create-a-Item-Guide</span></a></p>
+</div>
+<div class="section" id="recipes-fgrecipe">
+<h2>Recipes <cite>(FGRecipe)</cite><a class="headerlink" href="#recipes-fgrecipe" title="Permalink to this headline">¶</a></h2>
+<p>Describing recipes for the workbench, buildgun or other machines works through the usage of the native <code class="docutils literal notranslate"><span class="pre">FGRecipe</span></code> class.
+Recipes allow you to describe what items and how many you need to deliver to get the given items with the given amounts.
+Interestingly though is, also buildgun recipes are described in a <code class="docutils literal notranslate"><span class="pre">FGRecipe</span></code>, that means when you want to add a new building to the buildgun you need to create a new <code class="docutils literal notranslate"><span class="pre">FGRecipe</span></code> class with proper default values and then register the recipe.</p>
+<p>Satisfactory uses a recipe manager to register and store all recipes there are. That means when you want to add a normal workbench recipe or a smelting recipe, it doesn’t matter… just create a recipe with your desired descriptors and amounts and then let it register in the manager.
+The machines get their information from this manager so the can give the user a proper choice of what they can craft and what not.
+To determine this, if a machine is capable of crafting this recipe, you will need to pass an object type implementing the “<code class="docutils literal notranslate"><span class="pre">Crafter</span></code>” interface.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="FactoryConnectors.html" class="btn btn-neutral float-right" title="Factory-Connectors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UObject.html" class="btn btn-neutral float-left" title="UObject-System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

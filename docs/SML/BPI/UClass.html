@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>UClass &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Getting Started (SML)" href="../simpleMod/index.html" />
+    <link rel="prev" title="UFunction" href="UFunction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../beginners_guide/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SML</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../SPL/index.html">Satisfactory Pak Loader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SBL.html">Satisfactory Blueprint Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../SDK/index.html">Satisfactory Development Kit</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Blue-Print Interface</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-problem">The Problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#the-solution">The Solution</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#general">General</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="UObject.html">UObject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UField.html">UField</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UProperty.html">UProperty</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UStruct.html">UStruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="UFunction.html">UFunction</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">UClass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simpleMod/index.html">Getting Started (SML)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#mod-types">Mod “Types”</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">SML</a> &raquo;</li>
+        
+          <li><a href="index.html">Blue-Print Interface</a> &raquo;</li>
+        
+      <li>UClass</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/SML/BPI/UClass.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uclass">
+<h1>UClass<a class="headerlink" href="#uclass" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#uclass">UClass</a> is a <a class="reference external" href="UStruct">UStruct</a> containing information about a native class and how to use it properly.
+Every <a class="reference external" href="UObject">UObject</a> is created by a <a class="reference internal" href="#uclass">UClass</a> instance. Such instance contains information like constructor pointer, property/attribute array, functions and name.</p>
+<div class="section" id="containing-information">
+<h2>Containing information<a class="headerlink" href="#containing-information" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl>
+<dt>Name</dt><dd><p>The name of an <a class="reference internal" href="#uclass">UClass</a> not only names it but also gives base information about its usage. Such name has one character based prefix. <code class="docutils literal notranslate"><span class="pre">U</span></code> describes the use as a normal UObject. <code class="docutils literal notranslate"><span class="pre">A</span></code> describes the use as an Actor in a scene.</p>
+<p>f.e. <code class="docutils literal notranslate"><span class="pre">UClass</span></code>, <code class="docutils literal notranslate"><span class="pre">UTutorialObj</span></code> and <code class="docutils literal notranslate"><span class="pre">ATutorialBuilding</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Class Flags</dt><dd><p>This is a flag register about typical stats of a class like if it’s abstract or if its visible to the BP VM.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Cast Flags</dt><dd><p>This is a flag register describes to which basic unreal types a <code class="docutils literal notranslate"><span class="pre">UObject</span></code> of this <code class="docutils literal notranslate"><span class="pre">UClass</span></code> is castable to.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="building">
+<h2>Building<a class="headerlink" href="#building" title="Permalink to this headline">¶</a></h2>
+<p>Building is the most complex thing in the BPI cause there are just so many parameters which need to get set properly.
+The beginning makes the <code class="docutils literal notranslate"><span class="pre">SML::Paks::ClassBuilder</span></code>-Builderclass in <code class="docutils literal notranslate"><span class="pre">assets/BPInterface.h</span></code>
+This builder class is a bit special because it has a template which should be your class you want to reflect.
+The builder class will automatically use the native name of your class to call <code class="docutils literal notranslate"><span class="pre">name(std::string</span> <span class="pre">name)</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your native class name should due to this contain a <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">U</span></code> as prefix. If not, please call the <code class="docutils literal notranslate"><span class="pre">name(std::string</span> <span class="pre">name)</span></code> function manually to set the reflected name to a name with this prefix.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="p">{}</span>
+
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>as you can see you need to use the <code class="docutils literal notranslate"><span class="pre">Basic()</span></code> function to get the proper ClassBuilder reference.
+It’s just a reference because this class builder needs to exist all the time and works like a singleton and this <code class="docutils literal notranslate"><span class="pre">Basic()</span></code> function just initializes the singleton with a basic setup and returns the reference to the singletons instance.</p>
+<div class="section" id="flags">
+<h3>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h3>
+<p>You can define class flags, like if it should be visible, with the flag functions.
+<code class="docutils literal notranslate"><span class="pre">addFlag(SML::Objects::EClassFlags</span> <span class="pre">flags)</span></code>, <code class="docutils literal notranslate"><span class="pre">addFlag(int</span> <span class="pre">flags)</span></code> and <code class="docutils literal notranslate"><span class="pre">removeFlag(SML::Objects::EClassFlags</span> <span class="pre">flags)</span></code> are used to help defining the class-flag-register.
+The same principle applies to class cast flags but with the classes f.e. <code class="docutils literal notranslate"><span class="pre">addCastFlag(...)</span></code></p>
+</div>
+<div class="section" id="extending">
+<h3>Extending<a class="headerlink" href="#extending" title="Permalink to this headline">¶</a></h3>
+<p>You need to explicitly tell the builder which reflected superclass your class has (even if it’s just the basic <a class="reference external" href="UObject">UObject</a>).
+To make this easier the builder class implements two functions which take each of them a class type to execute their <code class="docutils literal notranslate"><span class="pre">StaticClass()</span></code> functions.
+If you don’t want to do this through templates you can also use the <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code> and pass a function pointer returning the <a class="reference internal" href="#uclass">UClass</a> of your superclass.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">extend&lt;class</span> <span class="pre">T&gt;()</span></code> is used if the given class has a function with the declaration <code class="docutils literal notranslate"><span class="pre">UClass*</span> <span class="pre">staticClass()</span></code> to return the <a class="reference internal" href="#uclass">UClass</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extendSDK&lt;class</span> <span class="pre">sdkT&gt;()</span></code> is used if the given class has a function with the declaration <code class="docutils literal notranslate"><span class="pre">SDK::UClass*</span> <span class="pre">StaticClass</span></code> to return the <a class="reference internal" href="#uclass">UClass</a></p></li>
+</ul>
+<p><em>yeah ik, it’s weird, but hey! It makes it more easy to use! And if you don’t like it, you can just use</em> <code class="docutils literal notranslate"><span class="pre">superFunc(UClass*(*classFunc)())</span></code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Unreals reflection system does not support multi inheritance like c++ does, that means you can’t use the extend function twice to have two classes inherited, instead you would probably just overwrite the old one.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span> <span class="p">{}</span>
+<span class="k">class</span> <span class="nc">ADocActor</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span> <span class="p">{}</span>
+
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">().</span><span class="n">extend</span><span class="o">&lt;</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">ADocActor</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">().</span><span class="n">extendSDK</span><span class="o">&lt;</span><span class="n">SDK</span><span class="o">::</span><span class="n">AActor</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="attributes">
+<h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h3>
+<p>Attributes (aka. member-variables) which need to get reflected get defined with the <code class="docutils literal notranslate"><span class="pre">param(SML::Paks::PropertyBuilder</span> <span class="pre">builder)</span></code> function.
+Simply pass the <strong>unbuilt</strong> PropertyBuilder to this function and it gets reflected. If your property needs an offset value and you didn’t manually provide a value, automatically the last available/defined offset gets used. Also, the last available/offset gets increased by the size of the given property.
+The first param uses the size of the superclass as the offset.</p>
+<p>For examples please refer to <a class="reference external" href="UProperty">UProperty</a></p>
+</div>
+<div class="section" id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<p>Functions (static and member) which need to get reflected get defined with the <code class="docutils literal notranslate"><span class="pre">func(SML::Paks::FunctionBuilder</span> <span class="pre">builder)</span></code> function.
+Pass this function the needed FunctionBuilder and it will get registered.</p>
+</div>
+<div class="section" id="interfaces">
+<h3>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h3>
+<p>Because Unreals reflection system doesn’t support multiple inheritances like we know it doesn’t mean there is no.
+Unreal uses interfaces to implement this concept but without any private functions or member variables.</p>
+<p>To declare the implementation of an interface you will need the <code class="docutils literal notranslate"><span class="pre">implementInterface(UInterface*</span> <span class="pre">interface,</span> <span class="pre">size_t</span> <span class="pre">offset)</span></code> function.
+Simply pass this function the <code class="docutils literal notranslate"><span class="pre">UInterface</span></code> and the offset to the vtable-pointer referring to the interface implementation in your class.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The Interface support is very, very difficult because the SDK currently doesn’t provide the information needed to implement this. Only some interfaces are written into SML (like <code class="docutils literal notranslate"><span class="pre">ISaveGame</span></code>) and if your desired interface is not implemented you will need to get the information with Detours and IDA. To find more out pleas talk to the Discord Members.</p>
+</div>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span><span class="p">,</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">ISaveGame</span> <span class="p">{</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">shouldSave</span><span class="p">()</span> <span class="n">overwrite</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">extend</span><span class="o">&lt;</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">implementInterface</span><span class="p">(</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">ISaveGame</span><span class="o">::</span><span class="n">staticInterface</span><span class="p">(),</span> <span class="p">(</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">ISaveGame</span><span class="o">*</span><span class="p">)(</span><span class="n">UDocClass</span><span class="o">*</span><span class="p">)</span><span class="k">nullptr</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constructor">
+<h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h3>
+<p>The constructor of a BPI generated class is very special. We cant use the normal constructor because that one wouldn’t call the right constructors of the child classes.
+That means you need to explicitly set the constructor to member-function of your class with declaration <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">constructor()</span></code> (name not important) and call the <code class="docutils literal notranslate"><span class="pre">constructor(void(BuildClassT::*)())</span></code> to define it.
+Because we can’t use the C++ constructor here (even not the default one) we would need to call the constructors or define them by our self.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to know that the BuilderClass generates a second internal one which manages the pointers, superclass construction and much more, but you’re able to define your own one if you desire to. (We do <strong>not</strong> recommend that)</p>
+</div>
+</div>
+<div class="section" id="destructor">
+<h3>Destructor<a class="headerlink" href="#destructor" title="Permalink to this headline">¶</a></h3>
+<p>The destructor works just like the constructor. But important to note is that you need to call the destructor on every member which needs that. And you need to use the <code class="docutils literal notranslate"><span class="pre">destructor</span></code> function to define it.</p>
+<div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Do not delete the members here! They get (automatically freed by the reflection system! Just call the destructors if needed.</p>
+</div>
+<p>Example (destructor &amp; constructor):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UDocClass</span> <span class="o">:</span> <span class="k">public</span> <span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">testNum</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">testString</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="nf">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">testNum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+        <span class="k">new</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">testString</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">destructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">testString</span><span class="p">.</span><span class="o">~</span><span class="n">string</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SML</span><span class="o">::</span><span class="n">Paks</span><span class="o">::</span><span class="n">ClassBuilder</span><span class="o">&lt;</span><span class="n">UDocClass</span><span class="o">&gt;::</span><span class="n">Basic</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">extend</span><span class="o">&lt;</span><span class="n">SML</span><span class="o">::</span><span class="n">Objects</span><span class="o">::</span><span class="n">UObject</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="p">.</span><span class="n">constructor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UDocClass</span><span class="o">::</span><span class="n">constructor</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">destructor</span><span class="p">(</span><span class="o">&amp;</span><span class="n">UDocClass</span><span class="o">::</span><span class="n">destructor</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finishing">
+<h3>Finishing<a class="headerlink" href="#finishing" title="Permalink to this headline">¶</a></h3>
+<p>To finish building just call the <code class="docutils literal notranslate"><span class="pre">build</span></code> function of the builder class.</p>
+</div>
+<div class="section" id="staticclass">
+<h3>StaticClass<a class="headerlink" href="#staticclass" title="Permalink to this headline">¶</a></h3>
+<p>The classbuilder generate through the template multiple functions specific for the given class like the <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">UClass*</span> <span class="pre">staticClass()</span></code>-function which returns the “StaticClass” of the object.
+Call this function only after build or if you know what you’re doing.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../simpleMod/index.html" class="btn btn-neutral float-right" title="Getting Started (SML)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="UFunction.html" class="btn btn-neutral float-left" title="UFunction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Power-Network &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Paintable" href="Paintable.html" />
+    <link rel="prev" title="Factory-Connectors" href="FactoryConnectors.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_setup.html">Project-Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Concepts</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Code.html">Code &amp; Content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BluePrints.html">Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UObject.html">UObject-System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Crafting.html">Crafting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FactoryConnectors.html">Factory-Connectors</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Power-Network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fgpowerconnectioncomponent">FGPowerConnectionComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fgpowerinfocomponent">FGPowerInfoComponent</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Paintable.html">Paintable</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simpleMod/index.html">Create a Simple Mod</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../SML/index.html">SML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+        
+          <li><a href="index.html">Concepts</a> &raquo;</li>
+        
+      <li>Power-Network</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/beginners_guide/Concepts/PowerNetwork.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="power-network">
+<h1>Power-Network<a class="headerlink" href="#power-network" title="Permalink to this headline">¶</a></h1>
+<p>We currently don’t really know how the power network works, but we do know how we can use it, and in this chapter, we explain it to you.</p>
+<p>The Power-Network consists of three key components.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>UFGPowerCircuit</dt><dd><p>This class manages a power network (aka. PowerCircuit) itself. It gathers data about the current production and consumption of the network and decides what needs to happen.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UFGPowerConnectionComponent</dt><dd><p>This is the component used to connect components/machines. It manages cable connections and hidden connections from other connection components to itself.
+It f.e. limits the number of cables you can attach to it.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>UFGPowerInfoComponent</dt><dd><p>This component represents the needs of a power consumer/producer itself (like production, consumption).
+If you f.e. want to know if your machine has power, you will need to use this component.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="fgpowerconnectioncomponent">
+<h2>FGPowerConnectionComponent<a class="headerlink" href="#fgpowerconnectioncomponent" title="Permalink to this headline">¶</a></h2>
+<p>This class manages is a connection point for wires and hidden connections to “transfer” energy.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>M Max Num Connection Links</dt><dd><p>Max number of connections allowed to get connected to the connections</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Is Hidden Connection</dt><dd><p>If the connections should be hidden (no cables allowed)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Wires</dt><dd><p>The list of connected wires (cables)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Nb Wires connected</dt><dd><p>Number od wires connected to this component</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Circuit ID</dt><dd><p>The ID of the connected power circuit</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Hidden Connections</dt><dd><p>The list of hidden connections (train rails)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="fgpowerinfocomponent">
+<h2>FGPowerInfoComponent<a class="headerlink" href="#fgpowerinfocomponent" title="Permalink to this headline">¶</a></h2>
+<p>This class handles and contains information about the needs and status of a power consumer/producer.</p>
+<p>You need to use the provided member functions (nodes) to set/get data like:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Target consumption</dt><dd><p>The amount of power the power consumer needs to work</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Base Production</dt><dd><p>The amount of power the producer produces definitely (like a geothermal generator) and doesn’t get decreased dynamically like a fuel generator.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Dynamic Production Capacity</dt><dd><p>The max amount of power the producer can provide. (used to limit the dynamic production)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Actual Consumption</dt><dd><p>The consumption used in the last tick of the power grid.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Regulated Dynamic Production</dt><dd><p>The amount of power provided to the power circuit in the last tick.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Has Power</dt><dd><p>If the consumer has actual power</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Paintable.html" class="btn btn-neutral float-right" title="Paintable" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="FactoryConnectors.html" class="btn btn-neutral float-left" title="Factory-Connectors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

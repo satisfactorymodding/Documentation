@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Recipe vs Schematic &mdash; Satisfactory Modding Documentation  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon-32x32.png"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Create an item" href="item.html" />
+    <link rel="prev" title="Mod-Init" href="modinit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Satisfactory Modding Documentation
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../dependencies.html">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_setup.html">Project-Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Concepts/index.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UnrealEditor/index.html">Unreal Editor</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Create a Simple Mod</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="modinit.html">Mod-Init</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Recipe vs Schematic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initial-mod-setup">Initial Mod Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-recipe">Create a Recipe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-schematic">Create a Schematic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-the-schematic">Register the Schematic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="item.html">Create an item</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buildable.html">Buildable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machines/SimpleMachine.html">First Simple Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machines/SimpleInteraction.html">Simple Interaction GUI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../SML/index.html">SML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Satisfactory Modding Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Getting Started</a> &raquo;</li>
+        
+          <li><a href="index.html">Create a Simple Mod</a> &raquo;</li>
+        
+      <li>Recipe vs Schematic</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/beginners_guide/simpleMod/recipe.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="recipe-vs-schematic">
+<h1>Recipe vs Schematic<a class="headerlink" href="#recipe-vs-schematic" title="Permalink to this headline">¶</a></h1>
+<p>‘Recipes’ are used to define the item input/cost and output of crafting items, buildables, etc. Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Note that recipes are used to define both crafting recipes in the craft bench and machines <em>and</em> construction prices when using the build gun. All buildables actually have an item equivalent in game as well.</p>
+</div>
+<p>‘Schematics’ define <a class="reference external" href="https://satisfactory.gamepedia.com/Milestones">Milestones</a>, the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features.</p>
+<div class="section" id="initial-mod-setup">
+<h2>Initial Mod Setup<a class="headerlink" href="#initial-mod-setup" title="Permalink to this headline">¶</a></h2>
+<p>To keep your folder structure organized, let’s create a folder where all of your mod content will go.</p>
+<p>Create a folder, for example,``Content/FactoryGame/DocMod``, to serve as your mod-project-root. All of the assets for our mod will go in this folder and will be turned into a pak when we’re done.</p>
+</div>
+<div class="section" id="create-a-recipe">
+<h2>Create a Recipe<a class="headerlink" href="#create-a-recipe" title="Permalink to this headline">¶</a></h2>
+<p>First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards.
+Create a folder, <code class="docutils literal notranslate"><span class="pre">Content/FactoryGame/DocMod/Recipes</span></code> which will contain all our recipes.</p>
+<p>Now, back in Unreal, we can create a new BP Class in this folder which extends <code class="docutils literal notranslate"><span class="pre">FGRecipe</span></code> to serve as our recipe.</p>
+<p>Finally, we can define the recipe description itself. Open up the class and go to the class defaults and set the properties to the values you want.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>M Display Name</dt><dd><p>If you want to define a name for your recipe, check this and type the name in. For our tutorial recipe, we’ll check it and call it “Doc Recipe”</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Ingredients</dt><dd><p>This is an array of structs, each of which contains the information of one crafting component. Together, the array forms the input items for the recipe.
+For this example, we’ll add one entry and set <code class="docutils literal notranslate"><span class="pre">Desc_Leaves</span></code> as the <code class="docutils literal notranslate"><span class="pre">Item</span> <span class="pre">Class</span></code> and 42 as the <code class="docutils literal notranslate"><span class="pre">Amount</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Manufacturing Duration</dt><dd><p>This determines the time it takes for a machine to process this recipe. It also corresponds to the number of clicks required to craft the recipe at a crafting station. We’ll keep it at 1 for now, cuz we are super speedy pioneers. TODO Find out seconds here to clicks in bench ratio, probably 1 to 1</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Produced In</dt><dd><p>Here we need to select the machine that can use the recipe, for example, <code class="docutils literal notranslate"><span class="pre">FGWorkBench</span></code>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Product</dt><dd><p>This is again an array of structs containing information regarding the item types and amounts that form the output of recipe.
+In our case we’ll add an entry with <code class="docutils literal notranslate"><span class="pre">Desc_Wood</span></code> as the <code class="docutils literal notranslate"><span class="pre">Item</span> <span class="pre">Class</span></code> and 1 as the <code class="docutils literal notranslate"><span class="pre">Amount</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+<img alt="../../_images/CreateDocRecipe.gif" src="../../_images/CreateDocRecipe.gif" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that although recipes with more than out output item type will still compile and load properly, they will crash the game if you try to use them, even if you were to make a modded machine with more than one output to craft it in. If you’d like to make a recipe with more than one output, ask for help with this on the discord, as the only way to do this right now is a bit roundabout until Coffee Stain makes such recipes not crash the game.</p>
+</div>
+<p>Ok, now you’ve created your first recipe! Next, let’s add it to a schematic to make it available ingame.</p>
+</div>
+<div class="section" id="create-a-schematic">
+<h2>Create a Schematic<a class="headerlink" href="#create-a-schematic" title="Permalink to this headline">¶</a></h2>
+<p>Schematics are what Satisfactory uses to grant additional recipes and capabilities to the player. Schematics are the ‘package’ groupings you’ll see in the HUB that have rewards associated with them. You’ll note that even though alternate recipes are researched at the MAM, you still need to submit items at the HUB to unlock the milestone associated with them.
+Schematics are also used for the Tier 0 tutorial phases.
+To get started, create a folder in your main mod folder for your schematics, for example, <code class="docutils literal notranslate"><span class="pre">Content/FactoryGame/DocMod/Schematics</span></code>.</p>
+<p>Inside this folder create again a new BP Class but this time of type <code class="docutils literal notranslate"><span class="pre">FGSchematic</span></code> and f.e. with the name “Schem_Doc”. Open it and go again to its defaults.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>M Type</dt><dd><p>The type of the schematic, which determines if it’s part of the tutorial system or if it’s a Milestone.
+We’ll use <code class="docutils literal notranslate"><span class="pre">hub</span> <span class="pre">upgrade</span></code> because we don’t want our schematic to be part of the tutorial phase.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Display Name</dt><dd><p>The in-game name of our schematic exactly as it is displayed to the user, for example, “Doc Hub Upgrade”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Schematic Category</dt><dd><p>Defines the category in which this schematic gets grouped into. Go ahead and pick one; it doesn’t matter for our example.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Tech Tier</dt><dd><p>Determines which Tier the schematic will appear under in the HUB. We’ll set it to 1 so that our content is available as soon as you finish the tutorial.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Schematic Icon</dt><dd><p>The icon displayed on the schematic in the HUB. We can use <a class="reference external" href="Icon_SchemDoc.png">this example image</a>.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Depends on Schematic</dt><dd><p>Setting this option will require the selected schematic to be activated first before this one can be activated. We’ll leave this empty because we don’t our content to require any other particular schematic to be unlocked first.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Additional Schematic Dependencies</dt><dd><p>Similar to <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">Depends</span> <span class="pre">on</span> <span class="pre">Schematic</span></code>. Additional schematics to be dependent on can be listed here.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Cost</dt><dd><p>A list of item amounts which are needed to activate the schematic in the HUB. We’ll add two entries, one with 100 <code class="docutils literal notranslate"><span class="pre">Desc_Leaves</span></code> and another one with 100 <code class="docutils literal notranslate"><span class="pre">FGWood</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Ship Travel Time after Purchase</dt><dd><p>Determines how long in seconds the HUB will wait before allowing the player to submit another milestone after completing this one. We’ll set this to 100 so that the drop pod will fly away for 100 seconds.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Recipes</dt><dd><p>The list of Recipes which will get unlocked when the player completes this schematic. Here we’ll add our <code class="docutils literal notranslate"><span class="pre">Desc_DocRecipe</span></code> from before as an entry.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Resources to Add to Scanner</dt><dd><p>A list of resource types which should get added to the resource scanner when this schematic gets unlocked. We don’t need to add anything here.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Unlocks Map</dt><dd><p>If this schematic unlocks the in-game map feature. Why should your schematic do that? So no, leave it unchecked.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Unlocks Build Efficiency</dt><dd><p>If this schematic unlocks the build efficiency display. Again, leave it alone.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Unlocks build Overclock</dt><dd><p>If this schematic unlocks the ability to overclock buildings. Ours doesn’t, so we can leave it as is.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Num Inventory Slots to Unlock</dt><dd><p>The number of additional main inventory slots to grant the player. We’ll put 0.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Arm Equipment Slots to Unlock</dt><dd><p>The number of additional arm equipment slots to grant the player. Another 0 here.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>M Include In Builds</dt><dd><p>Set this to ‘public builds’ so that your content is included in the build. Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing from being shipping with the main game.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Finally! What a class. Now we just need to register this schematic in the runtime.</p>
+</div>
+<div class="section" id="register-the-schematic">
+<h2>Register the Schematic<a class="headerlink" href="#register-the-schematic" title="Permalink to this headline">¶</a></h2>
+<p>Registering a schematic works by using the schematic manager subsystem. To register now a schematic you can simply call the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Available</span> <span class="pre">Schematic</span></code> node with the schematic class as input.
+Problem is, if you were  to do just this, every time <code class="docutils literal notranslate"><span class="pre">PostInit</span></code> of the <code class="docutils literal notranslate"><span class="pre">InitMod</span></code> is called (for example when the game loads) the schematic will be added multiple times and show up in the HUB multiple times. To prevent this, we need to check if the schematic is already “registered” by getting the available and purchased schematics list with the corresponding <code class="docutils literal notranslate"><span class="pre">GetAvailableSchematics</span></code> and <code class="docutils literal notranslate"><span class="pre">GetPurchasedSchematics</span></code> and then we search for our schematic. If it is <strong>not</strong> in one of these lists, then trigger the node to add it.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you accidentally clutter up a savegame with duplicates of a milestone, you can remove the duplicates using a savegame editor such as one found on <a class="reference external" href="https://ficsit.app/tools">the ficsit.app tools page</a>.</p>
+</div>
+<img alt="../../_images/RegisterSchematic.jpg" src="../../_images/RegisterSchematic.jpg" />
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The SML example mod’s <code class="docutils literal notranslate"><span class="pre">ModInit</span></code> class contains a good and dynamic implementation of this, which simply iterates over an array of classes which contains the schematics to register.</p>
+</div>
+<p>And we’re set! Our recipe and schematic are registered and should show up in the game now.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="item.html" class="btn btn-neutral float-right" title="Create an item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modinit.html" class="btn btn-neutral float-left" title="Mod-Init" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, SatisfactoryModding
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
