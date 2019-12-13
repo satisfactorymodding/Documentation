@@ -1,0 +1,14 @@
+[[ufield]]
+UField
+------
+
+A link:[UField] is a UObject mainly containing an attribute `next`
+pointing to the next link:[UField] instance.
+
+[[next]]
+Next
+~~~~
+
+The next attribute points to the next link:[UField] in a row. Each
+link:[UField] points to the next one until it reaches nullptr. This
+creates a chain of UFields.

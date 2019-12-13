@@ -1,0 +1,22 @@
+[[uobject]]
+UObject
+-------
+
+A link:[UObject] is the most basic thing in the unreal reflection
+system. Heck, it even gave the system a name, the `UObject-System` which
+is found in the `UObjectCore` of the unreal engine. Every link:[Uobject]
+contains flags and pointers to information which describes the object
+itself (not the class/type).
+
+[[flags]]
+Flags
+~~~~~
+
+The object flags describe their properties. (f.e. if it's abstract)
+
+[[class]]
+Class
+~~~~~
+
+Every link:[UObject] has a valid attribute `clazz` which points to the
+UClass describing the class/type of the link:[UObject]
