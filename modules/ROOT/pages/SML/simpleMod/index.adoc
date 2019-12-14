@@ -1,6 +1,4 @@
-[[getting-started-sml]]
-Getting Started (SML)
----------------------
+= Getting Started (SML)
 
 In this section we will begin to make our first SML mod (aka C++ mod).
 We highly suggest you to have advanced knowledge about C++ because

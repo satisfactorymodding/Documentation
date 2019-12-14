@@ -1,6 +1,4 @@
-[[getting-started]]
-Getting Started
----------------
+= Getting Started
 
 In this section, we will guide you through the process making your first
 mod for Satisfactory and provide important information regarding

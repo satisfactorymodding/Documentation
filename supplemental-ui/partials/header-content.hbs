@@ -1,0 +1,31 @@
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{{or site.url (or siteRootUrl siteRootPath)}}">{{site.title}}</a>
+            <button class="navbar-burger" data-target="topbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="topbar-nav" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">Satisfactory Modding</div>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://github.com/satisfactorymodding">GitHub</a>
+                        <a class="navbar-item" href="https://github.com/satisfactorymodding/SatisfactoryModLoader">Satisfactory Mod Loader</a>
+                        <a class="navbar-item" href="https://ficsit.app">Satisfactory Mod Repository</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">Community</div>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="https://discord.gg/xkVJ73E">Discord</a>
+                        <a class="navbar-item" href="https://forums.ficsit.app">Forums</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

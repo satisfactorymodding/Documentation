@@ -1,32 +1,26 @@
-[[ustruct]]
-UStruct
--------
+= UStruct
 
 A UStruct is simply a special data structure which can hold multiple
-link:UField[UFields] and is self a link:[UField]. These children
-describe the instance and its contents like datatypes, array lengths and
-so on.
+xref:SML/BPI/UField.adoc[UFields] and is self a xref:SML/BPI/UField.adoc[UField].
+These children describe the instance and its contents like datatypes,
+array lengths and so on.
 
-[[children]]
-Children
-~~~~~~~~
+== Children
 
 These children are simply a row of references until the reference of one
 UField is equal to nullptr. The first child in that row is referred by
-the `childs` attribute.
+the `+childs+` attribute.
 
-[[iterating-over-children]]
-Iterating over children
-~~~~~~~~~~~~~~~~~~~~~~~
+== Iterating over children
 
 As already said, the children of a UStruct are additional information of
 a UStruct about its f.e. functions, attributes and components. Each of
 those are represented through an instance of an UField . Important to
-note is that each UField points with the `next` attribute to next one of
-the class. Iterating is simply following this next-pointer until it
+note is that each UField points with the `+next+` attribute to next one
+of the class. Iterating is simply following this next-pointer until it
 reaches nullptr.
 
-[source,sourceCode,c++]
+[source,c++]
 ----
 UStruct* struc;
 UField* field = struc->childs;
@@ -39,7 +33,7 @@ while (field) {
 If you want to also iterate overextended fields, you will need to switch
 to the superclass when the field pointer reaches nullptr.
 
-[source,sourceCode,c++]
+[source,c++]
 ----
 UStruct* struc;
 UField* field = struc->childs;
@@ -54,12 +48,12 @@ while(field || clazz) {
 }
 ----
 
-and because this is so much to write the `SML::Objects::UStruct`
+and because this is so much to write the `+SML::Objects::UStruct+`
 implements a C++ iterator. With that said you can use a c++ for-each
 loop to iterate over the fields of a UStruct recursively with following
 code:
 
-[source,sourceCode,c++]
+[source,c++]
 ----
 UStruct* struc;
 for (UField* field : *struc) {
@@ -67,10 +61,8 @@ for (UField* field : *struc) {
 }
 ----
 
-[[inheritance]]
-Inheritance
-~~~~~~~~~~~
+== Inheritance
 
-To get the superclass of an UClass just simply follow the `super`
+To get the superclass of an UClass just simply follow the `+super+`
 attribute. It contains the pointer to inherited UStruct. Multiple
 inheritances are not possible.

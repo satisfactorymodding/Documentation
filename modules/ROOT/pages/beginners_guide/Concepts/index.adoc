@@ -1,6 +1,4 @@
-[[concepts]]
-Concepts
---------
+= Concepts
 
 The Satisfactory architecture uses multiple concepts, structures and
 subsystems to provide functionality and optimization to the game. As a
@@ -14,7 +12,7 @@ with existing features like the power system without needing to
 implement all of it over and over again.
 
 If you'd like, you can move on to the
-link:Create%20a%20Simple%20Mod[Create a Simple Mod] section, but we
+xref:beginners_guide/simpleMod/index.adoc[Create a Simple Mod] section, but we
 suggest you read through at least a few of these as they will help you
 understand the Simple Mod tutorial on a deeper level and better prepare
 you for writing your own mods.

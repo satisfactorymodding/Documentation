@@ -1,14 +1,10 @@
-[[ufield]]
-UField
-------
+= UField
 
-A link:[UField] is a UObject mainly containing an attribute `next`
-pointing to the next link:[UField] instance.
+A xref:#_ufield[UField] is a UObject mainly containing an attribute
+`+next+` pointing to the next xref:#_ufield[UField] instance.
 
-[[next]]
-Next
-~~~~
+== Next
 
-The next attribute points to the next link:[UField] in a row. Each
-link:[UField] points to the next one until it reaches nullptr. This
-creates a chain of UFields.
+The next attribute points to the next xref:#_ufield[UField] in a row.
+Each xref:#_ufield[UField] points to the next one until it reaches
+nullptr. This creates a chain of [.title-ref]#UFields#.
