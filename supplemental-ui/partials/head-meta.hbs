@@ -1,1 +1,5 @@
 <link rel="icon" href="{{siteRootPath}}/favicon.ico" type="image/x-icon">
+
+<meta property="og:title" content="{{{detag (or page.title defaultPageTitle)}}}{{#if site.title}} :: {{site.title}}{{/if}}">
+<meta property="og:image" content="{{siteRootPath}}/logo.png">
+<meta property="og:description" content="{{#if page.description}}{{detag page.description}}{{else}}{{#unless (eq page.layout '404')}}{{{og-description page.contents}}}{{/unless}}{{/if}}">
