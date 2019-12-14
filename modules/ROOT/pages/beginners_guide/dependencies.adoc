@@ -63,7 +63,7 @@ wait for the installation process to finish.
 This step is only required for users of Visual Studio 2019, since Visual
 Studio 17 should already have this installed. Open the Visual Studio
 installer again and click on the `+change+` button of your installation.
-If not already selected, select `+Desktop development with C+++`. Now
+If not already selected, select `+Desktop development with C+\++`. Now
 open the sidebar on the right-hand side and select under
 `+Desktop development with C+++` the option `+VS 2015 C++-Buildtools+`.
 Hit save and wait for the installation process to finish.
