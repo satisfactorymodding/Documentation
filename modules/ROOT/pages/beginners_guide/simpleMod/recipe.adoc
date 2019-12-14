@@ -74,7 +74,7 @@ M Product::
   we'll add an entry with `+Desc_Wood+` as the `+Item Class+` and 1 as
   the `+Amount+`
 
-image:CreateDocRecipe.gif[image]
+image:beginners_guide/simpleMod/CreateDocRecipe.gif[image]
 
 [WARNING]
 ====
@@ -225,7 +225,7 @@ milestone, you can remove the duplicates using a savegame editor such as
 one found on https://ficsit.app/tools[the ficsit.app tools page].
 ====
 
-image:RegisterSchematic.jpg[image]
+image:beginners_guide/simpleMod/RegisterSchematic.jpg[image]
 
 [TIP]
 ====

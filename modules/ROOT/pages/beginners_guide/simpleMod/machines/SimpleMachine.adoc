@@ -37,7 +37,7 @@ the PowerInfo of the power connector to your added
 `+FGPowerInfoComponent+` and we need to set the target consumption of
 the power-info to something like 1.0.
 
-image:SimpleMachine_Init.jpg[image]
+image:beginners_guide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
 == Grab logic
 
@@ -65,6 +65,6 @@ got from the grab and true.
 If the boolean is false, we just return nothing (the boolean needs to be
 false).
 
-image:SimpleMachine_grab.jpg[image]
+image:beginners_guide/simpleMod/machines/SimpleMachine_grab.jpg[image]
 
 That's it, try out your newly created machine!

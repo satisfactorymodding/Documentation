@@ -20,7 +20,7 @@ as an atlas map.
 This is a simplified representative atlas map for the material you can
 use to UV map your models.
 
-image:Factory_Inst.png[image]
+image:beginners_guide/Concepts/Factory_Inst.png[image]
 
 == Custom implementation
 

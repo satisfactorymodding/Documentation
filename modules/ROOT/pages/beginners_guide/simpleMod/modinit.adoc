@@ -14,7 +14,7 @@ root with our name. So we create the folder
 `+Content/FactoryGame/DocMod+`. And finally in there you now just need
 to add a new Actor called `+InitMod+`
 
-image:CreateInitMod.gif[image]
+image:beginners_guide/simpleMod/CreateInitMod.gif[image]
 
 == Add the Init-Events
 
@@ -23,6 +23,6 @@ add by opening the actor class, click on to Event Graph and the r-click
 into it and then add the custom events with the name `+PreInit+`,
 `+Init+` and `+PostInit+`.
 
-image:ModInit_InitFuncs.jpg[image]
+image:beginners_guide/simpleMod/ModInit_InitFuncs.jpg[image]
 
 Done, now you will be able to register recipes and other stuff in here.

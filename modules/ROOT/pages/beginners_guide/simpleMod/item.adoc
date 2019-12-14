@@ -14,7 +14,7 @@ a new folder and call it f.e. "Items". And create a new BlueprintClass
 in it. Call it what ever you want, but we will call it `+Desc_DocItem+`
 ("Desc" stands for descriptor).
 
-image:CreateDocItem.gif[image]
+image:beginners_guide/simpleMod/CreateDocItem.gif[image]
 
 == Describe the Item
 

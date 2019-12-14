@@ -21,8 +21,8 @@
 *** xref:beginners_guide/simpleMod/recipe.adoc[Recipe vs Schematic]
 *** xref:beginners_guide/simpleMod/item.adoc[Create an Item]
 *** xref:beginners_guide/simpleMod/buildable.adoc[Buildable]
-*** xref:beginners_guide/simpleMod/SimpleMachine.adoc[First Simple Machine]
-*** xref:beginners_guide/simpleMod/SimpleInteraction.adoc[Simple Interaction GUI]
+*** xref:beginners_guide/simpleMod/machines/SimpleMachine.adoc[First Simple Machine]
+*** xref:beginners_guide/simpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
 
 * xref:SML/index.adoc[SML]
 ** xref:SML/SPL/index.adoc[Satisfactory Pak Loader]
