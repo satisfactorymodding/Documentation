@@ -1,7 +1,7 @@
 = Simple Interaction GUI
 
 Let's create a simple interaction GUI for our
-xref:beginners_guide/simpleMod/SimpleMachine.adoc[Simple Machine].
+xref:beginners_guide/simpleMod/machines/SimpleMachine.adoc[Simple Machine].
 We use it to read the current data and to reset the counters.
 
 == The Widget
