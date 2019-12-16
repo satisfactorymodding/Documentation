@@ -5,11 +5,11 @@
 ### Installing
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Building
 
 ```bash
-npm run build
+yarn run build
 ```
