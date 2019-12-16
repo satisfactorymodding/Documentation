@@ -1,2 +1,4 @@
-docs/*
-!docs/.nojekyll
+.idea
+build/
+*.rst
+node_modules/

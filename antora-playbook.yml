@@ -1,0 +1,26 @@
+site:
+  title: Satisfactory Modding Documentation
+  start_page: satisfactory-modding::index.adoc
+
+  ## Used for prod
+  url: https://docs.ficsit.app
+
+  ## Used for dev
+  #url: http://localhost:8000
+
+content:
+  sources:
+    ## Used for prod
+    - url: https://github.com/satisfactorymodding/Documentation.git
+      branches: antora
+      edit_url: '{web_url}/blob/{refname}/{path}'
+
+    ## Used for dev
+    #- url: ./
+    #  branches: HEAD
+
+ui:
+  bundle:
+    url: https://gitlab.com/vilsol/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui

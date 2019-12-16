@@ -1,0 +1,22 @@
+= Unreal Editor
+
+The Unreal Editor got install with the Unreal Engine it self. This is
+your IDE where you will spend the most time in to add especially
+"visible" content called `+assets+`. But it's also used to add simple
+logic to your mod with an integrated visual programming language called
+`+BluePrints+`.
+
+[TIP]
+====
+If you want to learn more about `+BluePrints+` and the so called
+`+UObject-System+` we recommend you the concept pages for
+xref:beginners_guide/Concepts/BluePrints.adoc[BluePrints] and the
+xref:beginners_guide/Concepts/UObject.adoc[UObject-System].
+====
+
+[TIP]
+====
+We recommend the https://academy.unrealengine.com/[Unreal Academy] for
+learning more about the concepts and deep topics of Unreal Engine itself
+(like Particle System, advanced BluePrints, and so on)
+====

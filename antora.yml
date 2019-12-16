@@ -1,0 +1,5 @@
+name: satisfactory-modding
+title: Satisfactory Modding Documentation
+version: 1.0.0
+nav:
+  - modules/ROOT/nav.adoc
