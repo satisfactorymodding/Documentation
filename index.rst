@@ -11,12 +11,13 @@ Modding for Satisfactory is more established than you might think given how long
 .. hint:: If you want to take part in this great community, we recommend you to join our `Discord Server <https://discord.gg/xkVJ73E>`_ or the `Ficsit.app Forums <https://forums.ficsit.app/>`_.
 
 Modding Technologies
------------
+--------------------
 
 Satisfactory Mod Repository `(aka. SMR aka. ficsit.app aka. FICSIT Augmentation Database)`
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory. It's easy to upload a mod of your own or write a guide for other users. 
-Uploaded content gets test for malware and other stuff.
+All content uploaded here is manually checked for viruses, malware, etc. before it can be downloaded by any other users.
+You can also visit the SMR forums to ask questions, discuss ideas, and more.
 Visit `ficsit.app <https://ficsit.app/>`_ to learn more.
 
 Satisfactory Mod Loader `(aka. SML)`
@@ -48,7 +49,7 @@ Follow the folders ``Binaries`` and ``Win64``. Now just copy the ``xinput1_3.dll
 Congrats! The first step is done, installing SML. Now, start up Satisfactory and verify that a ``mods`` folder gets created in your Satisfactory directory.
 
 Installing Your Mod of Choice
-'''''''''''''''''''''
+'''''''''''''''''''''''''''''
 Ok, back to the mod itself.
 On ficsit.app you just go to your desired mod's page, click on ``versions`` in the upper right left corner and then click ``download`` on your desired version. Usually this will be the top version on the list.
 
@@ -70,7 +71,7 @@ It contains multiple files, which include some but not necessarily all of the fo
     Copy these files into the ``mods`` folder. If you don't have this folder, you forgot to run Satisfactory after installing SML.
 
 Installing Mod Dependencies
-''''''''''''''''''''''''''
+'''''''''''''''''''''''''''
 Some mods, such as the Farming Mod, will require you to install other mods in order for them to work. **Read the mod description** on the SMR page to find out if the mod you're installing requires any other mods! People will be very frustrated if you ask them for help and you haven't followed this simple step.
 
 .. image:: https://cdn.discordapp.com/attachments/555782140533407764/641376861753966652/unknown.png

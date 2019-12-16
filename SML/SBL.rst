@@ -1,6 +1,6 @@
 Satisfactory Blueprint Library
 ==============================
-The SBL is used to provide BP-Scripts access to SML features by using the BPI to create custom UClasses.
+The SBL is a component of SML used to provide BP-Scripts access to SML features by using the BPI to create custom UClasses.
 
 DebugLogger
 -----------
