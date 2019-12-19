@@ -10,8 +10,14 @@ site:
 
 content:
   sources:
-    - url: ./
-      branches: HEAD
+    ## Used for prod
+    - url: https://github.com/satisfactorymodding/Documentation.git
+      branches: master
+      edit_url: '{web_url}/blob/{refname}/{path}'
+
+    ## Used for dev
+    #- url: ./
+    #  branches: HEAD
 
 ui:
   bundle:
