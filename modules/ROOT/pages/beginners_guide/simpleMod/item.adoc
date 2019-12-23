@@ -68,6 +68,9 @@ M Conveyor Mesh::
   As we know, an item is 3-Dimensional so we need a 3D-model for the
   item how it should look if it gets transported on a conveyor belt. We
   have an example model `+here <Mesh_DocItem.fbx>+`.
+  Make sure that you check both "Used with Spline Meshes" and "Used
+  with Instanced Static Meshes" for each of the model's materials or
+  the textures won't appear in the game.
 * {blank}
 +
 M Item Category::
