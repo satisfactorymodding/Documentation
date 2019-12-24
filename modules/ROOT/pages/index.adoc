@@ -36,7 +36,12 @@ making pak mods. Learn more in our `+beginners_guide/index+` guide.
 
 == Installing Mods
 
-If you just want to install mods, this section of the guide is for you. First of all, you need to pick a mod that you want to install. Take a look on the SMR. Please note that there are multiple pages of mods you can navigate through with the arrows at the bottom right. You should always read the mod description because some mods have different installation instructions that need to be followed (such as KronosMod). If instructions aren’t followed, the mod won’t work. Most likely the mod you choose will require you to install SML; The purpose of this guide is to help you achieve that goal.
+If you just want to install mods, this section of the guide is for you. First of all, you need to pick a mod
+that you want to install. Take a look on the SMR. Please note that there are multiple pages of mods you can
+navigate through with the arrows at the bottom right. You should always read the mod description because
+some mods have different installation instructions that need to be followed (such as KronosMod).
+If instructions aren’t followed, the mod won’t work. Most likely the mod you choose will require you to install SML;
+The purpose of this guide is to help you achieve that goal.
 
 === Installing SML
 
