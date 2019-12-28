@@ -2,14 +2,12 @@
 
 == Basics
 
-Welcome to the Satisfactory Modding Documentation site! Here you can
-find lots of information regarding modding
-https://www.satisfactorygame.com/[Satisfactory], the factory-building
-sim by Coffee Stain Studios. Modding for Satisfactory is more
-established than you might think given how long the game has been out.
-There are already numerous mods released, and there are multiple methods
-by which you can develop new mods yourself. In this doc we will mainly
-focus on the general community, ficsit.app and SML.
+Welcome to the Satisfactory Modding Documentation site! 
+
+Here you can find lots of information regarding modding https://www.satisfactorygame.com/[Satisfactory], the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios]. Modding for Satisfactory is more established than you might think given how long the game has been out. There are already https://ficsit.app/[numerous mods] released, and there are multiple methods by which you can develop new mods yourself. 
+
+In this doc we will mainly focus on the general community, ficsit.app and SML.
+
 
 [TIP]
 ====
@@ -22,10 +20,7 @@ https://forums.ficsit.app/[Ficsit.app Forums].
 
 === Satisfactory Mod Repository [.title-ref]#(aka. SMR aka. ficsit.app aka. FICSIT Augmentation Database)#
 
-The Satisfactory Mod Repository (SMR) is the most extensive collection
-of mods made for Satisfactory. It's easy to upload a mod of your own or
-write a guide for other users. Uploaded content gets test for malware
-and other stuff. Visit https://ficsit.app/[ficsit.app] to learn more.
+The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory. It’s easy to upload a mod of your own or write a guide for other users. Uploaded content gets tested for malware and other potential issues. Visit https://ficsit.app/[ficsit.app] to learn more.
 
 === Satisfactory Mod Loader [.title-ref]#(aka. SML)#
 
@@ -41,19 +36,16 @@ making pak mods. Learn more in our `+beginners_guide/index+` guide.
 
 == Installing Mods
 
-If you just want to install mods, this section of the guide is for you.
-First of all, you need to pick a mod that you want to install! Take a
-look on https://ficsit.app/[SMR]. Please note that there are multiple
-pages of mods you can navigate through with the arrows at the bottom
-right. You should always *read the mod description* because some mods
-have different installation instructions that need to be followed, such
-as KronosMod. If you don't do this, the mod won't work! Most likely the
-mod you choose will require you to install SML; we will guide you how to
-do that.
+If you just want to install mods, this section of the guide is for you. First of all, you need to pick a mod
+that you want to install. Take a look on the SMR. Please note that there are multiple pages of mods you can
+navigate through with the arrows at the bottom right. You should always read the mod description because
+some mods have different installation instructions that need to be followed (such as KronosMod).
+If instructions aren’t followed, the mod won’t work. Most likely the mod you choose will require you to install SML;
+The purpose of this guide is to help you achieve that goal.
 
 === Installing SML
 
-Again visit https://ficsit.app/[ficsit.app] and open up the menu through
+Visit https://ficsit.app/[ficsit.app] and open up the menu through
 the menu button in the upper left hand corner. Select the
 `+SML Releases+` tab and click on the `+View+` button on the _Latest
 Release_ box (top left). You should now get redirected to the SML GitHub
@@ -66,7 +58,7 @@ in your program folder under `+EpicGames/SatisfactoryEarlyAccess+`.
 Follow the folders `+Binaries+` and `+Win64+`. Now just copy the
 `+xinput1_3.dll+` into that folder.
 
-Congrats! The first step is done, installing SML. Now, start up
+Congratulations! The first step is done, installing SML. Now, start up
 Satisfactory and verify that a `+mods+` folder gets created in your
 Satisfactory directory.
 
