@@ -14,10 +14,15 @@ content:
     - url: https://github.com/satisfactorymodding/Documentation.git
       branches: master
       edit_url: '{web_url}/blob/{refname}/{path}'
-
+    
     ## Used for dev
     #- url: ./
     #  branches: HEAD
+    
+    - url: https://github.com/CoderDE/FicsIt-Networks.git
+      branches: master
+      edit_url: '{web_url}/blob/{refname}/{path}'
+      start_path: docs
 
 ui:
   bundle:
