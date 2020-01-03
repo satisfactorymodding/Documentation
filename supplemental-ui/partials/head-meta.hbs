@@ -1,7 +1,7 @@
 <link rel="icon" href="{{siteRootPath}}/favicon.ico" type="image/x-icon">
 
 <meta property="og:title" content="{{{detag (or page.title defaultPageTitle)}}}{{#if site.title}} :: {{site.title}}{{/if}}">
-<meta property="og:image" content="{{site.url}}/logo.png">
+<meta property="og:image" content="{{#if page.attributes.og-image}}{{page.attributes.og-image}}{{else}}{{site.url}}/logo.png{{/if}}">
 <meta property="og:description" content="{{#if page.description}}{{detag page.description}}{{else}}{{#unless (eq page.layout '404')}}{{{og-description page.contents}}}{{/unless}}{{/if}}">
 
 <link rel="stylesheet" href="{{uiRootPath}}/css/site-extra.css">
