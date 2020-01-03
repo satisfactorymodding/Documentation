@@ -16,4 +16,5 @@ FROM nginx
 
 WORKDIR /app
 
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build/site /usr/share/nginx/html
