@@ -65,6 +65,6 @@ got from the grab and true.
 If the boolean is false, we just return nothing (the boolean needs to be
 false).
 
-image:beginners_guide/simpleMod/machines/SimpleMachine_grab.jpg[image]
+image:beginners_guide/simpleMod/machines/SimpleMachine_Grab.jpg[image]
 
 That's it, try out your newly created machine!
