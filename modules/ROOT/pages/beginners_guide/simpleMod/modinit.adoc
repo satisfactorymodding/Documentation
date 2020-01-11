@@ -26,3 +26,9 @@ into it and then add the custom events with the name `+PreInit+`,
 image:beginners_guide/simpleMod/ModInit_InitFuncs.jpg[image]
 
 Done, now you will be able to register recipes and other stuff in here.
+
+Here is an example InitMod blueprint that adds a schematic if it doesn't already exist:
+
+[pass]
+<iframe class="blueprint" src="https://blueprintue.com/render/2flu6w9o" scrolling="no" allowfullscreen></iframe>
+<div></div>
