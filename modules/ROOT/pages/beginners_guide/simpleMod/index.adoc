@@ -4,12 +4,27 @@ Now that you have learned the core concepts of Satisfactory modding, you
 can get started on creating your first mod.
 
 To get started, this tutorial will walk you through creating a simple
-mod that adds the following: - The required core functions that register
-the mod with the game and allow its content to be added - A custom
-recipe to make 1 Wood from 42 Leaves - A new item, an ingot called a
-'Doc Ingot' - A new buildable object that can be painted with the paint
-gun - A basic machine that consumes power and counts the number and
-types of items that pass through it These are listed in order of easiest
+mod that adds the following:
+
+* {blank}
++
+The required core functions that register the mod with the game and
+allow its content to be added
+* {blank}
++
+A custom recipe to make 1 Wood from 42 Leaves
+* {blank}
++
+A new item, an ingot called a 'Doc Ingot'
+* {blank}
++
+A new buildable object that can be painted with the paint gun
+* {blank}
++
+A basic machine that consumes power and counts the number and
+types of items that pass through it 
+
+These are listed in order of easiest
 to most difficult.
 
 [TIP]
