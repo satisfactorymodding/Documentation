@@ -22,6 +22,15 @@ https://forums.ficsit.app/[Ficsit.app Forums].
 
 The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory. It’s easy to upload a mod of your own or write a guide for other users. Uploaded content gets tested for malware and other potential issues. Visit https://ficsit.app/[ficsit.app] to learn more.
 
+=== Satisfactory Mod Bootstrapper
+
+The Satisfactory Mod Bootstrapper is the holy heart of C++ Modding for Satisfactory.
+Due to technical limitations custom build Unreal Engine C++ module can't get linked normaly by the windows dynamic linker into the game because it is build monolithic.
+This also means that some functions are simply not build into the game were we rly on accessor functions to allow C++ mods to use these functions anyway. (f.e. USceneComponent::SetVisibility)
+In short, the bootstrapper uses third-party librarys to hook the windows dynamic loader and to search in the by CSS provided .pdb for symbol references and returns them back to the dynamic loader.
+So the dynamic loader is able to link the functions of the game to your custom build c++ mod.
+We wont get into detail how it works in this documentation, just accept it as pure magic.
+
 === Satisfactory Mod Loader [.title-ref]#(aka. SML)#
 
 Satisfactory Mod Loader (SML) allows Satisfactory to load additional

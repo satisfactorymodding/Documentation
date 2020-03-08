@@ -27,16 +27,3 @@
 * xref:SML/index.adoc[SML]
 ** xref:SML/SPL/index.adoc[Satisfactory Pak Loader]
 ** xref:SML/SBL.adoc[Satisfactory Blueprint Library]
-
-** xref:SML/BPI/index.adoc[BluePrint Interface]
-
-*** General
-**** xref:SML/BPI/UObject.adoc[UObject]
-**** xref:SML/BPI/UField.adoc[UField]
-**** xref:SML/BPI/UProperty.adoc[UProperty]
-**** xref:SML/BPI/UStruct.adoc[UStruct]
-**** xref:SML/BPI/UFunction.adoc[UFunction]
-**** xref:SML/BPI/UClass.adoc[UClass]
-
-** xref:SML/simpleMod/index.adoc[Getting Started (SML)]
-*** xref:SML/simpleMod/projectSetup.adoc[Project Setup]
