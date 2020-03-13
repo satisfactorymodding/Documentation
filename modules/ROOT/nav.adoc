@@ -1,4 +1,5 @@
 * xref:index.adoc[Introduction]
+* xref:SMLConfiguration.adoc[SML Configuration]
 
 * xref:beginners_guide/index.adoc[Getting Started]
 ** xref:beginners_guide/dependencies.adoc[Dependencies]

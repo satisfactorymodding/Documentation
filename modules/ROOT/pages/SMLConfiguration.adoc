@@ -1,0 +1,44 @@
+= SML Configuration
+
+SML implements configuration system allowing all mods to easily add a coniguration file allowing you to change the behavior of the mods.
+
+== Config Folder
+
+All mods and SML share the same folder with all configuration files in it.
+
+The folder is located under `<game root>/configs`.
+
+== Config File
+
+Every mod and sml use the same format saving and loading configuration files, it's just a simple json format.
+
+These files are located in the <<Config Folder>> and share the same naming scheme `<modid>.json`, the config file for SML is called `SML.json`.
+
+== Configuration of the Modloader
+
+The modloader it self also provides a couple of configuration settings allowing you to controll the loaders behaviour.
+
+[cols="1,1,4a"]
+|===
+|Name |Type |Description
+
+|consoleWindow
+|bool
+|Enables the console window to appear
+
+|debug
+|bool
+|Enables a kind of verbose logging modding
+
+|developmentMode
+|bool
+|Allows to load RAW mods (mod files not archived in a zip) into the game. For those RAW mods, depency checking wont work.
+
+|enableCrashReporter
+|bool
+|enables if the crash reporter from UE should be used to handle fatal exceptions.
+
+|enableSMLCommands
+|bool
+|enables all available SML commands
+|===
