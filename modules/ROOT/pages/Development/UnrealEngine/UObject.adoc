@@ -1,9 +1,3 @@
 = UObject
 
-[WARNING]
-====
-Advanced Topic! This is nothing for newcomers to complex
-Computer/Software architecture.
-====
-
-== UObject-System
+Let's say... it's planned okay xD

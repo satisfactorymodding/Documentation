@@ -25,7 +25,7 @@ BP VM is that machine which runs itself in a virtual machine.
 This creates a problem. Blueprint code can't use system functions like
 rendering with the GPU since such functions are isolated through this
 VM. But communication is essential for something like this, unreal uses
-for this its own reflection-system, the xref:SML/BPI/UObject.adoc[UObject-System].
+for this its own reflection-system, the UObject-System.
 
 == Nodes
 

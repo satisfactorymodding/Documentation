@@ -1,0 +1,6 @@
+= Development
+
+If you don't just want to use alredy made mods, this section is exactly for you!
+Here you can find out everything about making a mod and getting it up and running.
+
+But if you're new to modding. We reccomend you to first try out existing mods.

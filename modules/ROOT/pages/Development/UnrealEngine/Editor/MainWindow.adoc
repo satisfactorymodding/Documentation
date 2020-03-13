@@ -68,5 +68,5 @@ It also has in the left upper corner or in the context menu
 (r-click-menu) the ability to create, import, export, delete or modify
 content.
 
-You can find in the `+Content+`-Root folder all "normal" assets and the
-`+C++-Classes+` root folder contains all c++ classes.
+You can find in the `Content`-Root folder all "normal" assets and the
+`C++-Classes` root folder contains all c++ classes.

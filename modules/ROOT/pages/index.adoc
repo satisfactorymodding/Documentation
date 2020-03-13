@@ -58,7 +58,7 @@ Things the Mod Loader does:
 * Implements a Hooking system for C++ mods
 
 If you're looking to write your own mods, we suggest you start with
-making pak mods first. Learn more in our xref:beginners_guide/index.adoc[Beginners Guide].
+making pak mods first. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
 
 == Installing Mods
 

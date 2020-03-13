@@ -1,0 +1,48 @@
+= Inventory
+
+== Items [.title-ref]#(FGItemDescriptor)#
+
+The native `+FGItemDescriptor+` class, who would have thought, describes
+an Item itself. It holds information like:
+
+* {blank}
++
+Name::
+  The actual displayed name to the user
+* {blank}
++
+Description::
+  A description of the item itself. Most of the time it contains
+  information about its usage but also some useless information.
+* {blank}
++
+Inventory Icon::
+  The icon you can see in your inventory is no live rendering of the
+  item, instead, it's just a simple image file.
+* {blank}
++
+Conveyor Model::
+  This is a Static Mesh used to display the item in the 3D Environment
+  like on a Conveyor belt.
+* {blank}
++
+Radioactive Decay::
+  Some items like Uranium Ore have a radioactive decay, this is simply
+  the nasty invisible shit why you can't get closer to nuclear reactors.
+* {blank}
++
+Energy value (for use as Fuel)::
+  Different items have different amounts of energy storage when used as
+  fuel. Coal has f.e. less energy than normal Fuel.
+
+[TIP]
+====
+Sometimes you don't need to define everything. f.e. when you want to
+create a building descriptor you won't need a model for conveyors or an
+energy value cause you don't want to throw a building into a generator.
+====
+
+This is enough for basic Items, but what's about more complex
+ItemDescriptors like equipment? For that we have other classes we will
+discuss later on. You can look up how to create a `+FGItemDescriptor+`
+in our `+Create-a-Item-Guide <../simpleMod/item>+`

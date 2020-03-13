@@ -35,7 +35,7 @@ Materials::
 * {blank}
 +
 BluePrints::
-  We will discuss this in this xref:beginners_guide/Concepts/BluePrints.adoc[Concept-Page]
+  We will discuss this in this xref:./BluePrints.adoc[Concept-Page]
 
 == Native Code
 
@@ -68,6 +68,6 @@ Unreal BP VM.
 
 [TIP]
 ====
-To learn more about `+BluePrints+` visit the
-xref:beginners_guide/Concepts/BluePrints.adoc[Concept-Page] about that topic.
+To learn more about `BluePrints` visit the
+xref:./BluePrints.adoc[Concept-Page] about that topic.
 ====

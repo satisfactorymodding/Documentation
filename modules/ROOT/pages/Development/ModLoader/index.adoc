@@ -1,8 +1,7 @@
 = SML
 
-The Satisfactory Mod Loader provides utilities for injection, altering
-and removing of Satisfactory Logic assets. SML contains multiple key
-features we use to archive multiple things.
+The Satisfactory Mod Loader provides framework for all the stuff you as modder might encounter
+but unreal doesn't provide help with.
 
 == Mod "Types"
 
@@ -11,11 +10,10 @@ variants have there advantages and disadvantages.
 
 * {blank}
 .dll (C++) Mods::
-  `+.dll+` mods are written in C++ and provide deep access to the
-  Satisfactory runtime.
+  `.dll` s are written in C++ and provide deep access to the
+  Satisfactory runtime and the logic written in there is extremely fast.
 +
 * {blank}
 Pak Mods::
-  Pak Mods are simply mods completly made in the Unreal Editor and
-  provide basic access to Satisfactorys runtime, but not like dlls, pak
-  modding can provide classical assets like meshes, sounds and more.
+  Paks are archives with classical assets like meshes, sounds and more.
+  SML also provides the SPL so you could make a mod without any C++ coding.
