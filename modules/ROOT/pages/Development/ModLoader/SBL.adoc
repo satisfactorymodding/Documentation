@@ -1,0 +1,58 @@
+= Satisfactory Blueprint Library
+
+The SBL is used to provide BP-Scripts access to SML so they don't need to use native code.
+
+The `USMLBlueprintLibrary` provides the functions you can use to interact with SML.
+
+== Logging
+
+The debug logger is used to provide quick usage of the level based
+logging for the the console of SML. It does that by providing multiple
+static functions you can find under `SML/Logging`.
+
+* {blank}
++
+LogInfo(String str, bool ignoreDebugMode)::
+  Logs the given string with the "info-color" but only
+  if debugMode of SML is enabled or ignoreDebugMode is set to true.
+* {blank}
++
+LogWarning(String str)::
+  Logs the given string in the "warning-level".
+* {blank}
++
+LogError(String str)::
+  Logs the given string in the "error-level".
+* {blank}
++
+LogFaral(String str)::
+  Logs the given string in the "fatal-level".
+  But actualy doesn't cause the game to crash.
+
+== Config
+
+The SBL also provides the ability to save and load configurations just in BluePrints.
+
+As `config` you can pass any kind of custom struct.
+But only these types will get parsed properly:
+
+- String
+- Float
+- Integer
+- Bool
+- Array of allowed types
+- other Structs
+
+* {blank}
++
+void SaveConfig(String modid, Struct config)::
+  Dumps the given config struct as a Json and saves it as the config file for the mod with the given name.
+* {blank}
++
+void LoadConfig(String modid, Struct& config)::
+  Parses the config file of the given modid to the attributes of the given config struct.
+  Attributes not existent in the config file wont get changed.
+  (basically if you set default values for the sturct,
+  or just set the structs variables to the values you want to use as default,
+  this would allow you to define default values for the config files)
+  Settings set in the config file wich don't have a corresponding attribute in the config struct simply get ignored.

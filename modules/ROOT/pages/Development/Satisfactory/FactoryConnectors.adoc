@@ -1,5 +1,11 @@
 = Factory-Connectors
 
+[WARNING]
+====
+This Topic is not updated yet to SML 2.0!
+plz stay calmn, wait until it's updated, or just ask on the Modding Discord ^^
+====
+
 Factory connectors are SFs system to transfer items from one machine to
 the next one. Also, conveyors have factory connectors to transfer items
 from a machine into its internal buffer (the belt).
