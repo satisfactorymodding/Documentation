@@ -3,20 +3,6 @@
 To get started with modding of satisfactory you'll need multiple other
 pieces of software downloaded and set up first.
 
-* Satisfactory
-* Unreal Engine 4 (v4.21)
-* Visual Studio >= 2015
-* Visual C++ 15
-* Wwise
-* Satisfactory Mod Loader (`+xinput1_3.dll+`)
-
-[TIP]
-====
-If you want to code something in C++, you'll also need the Satisfactory
-Mod Loader source code, which can be found
-https://github.com/satisfactorymodding/SatisfactoryModLoader[here].
-====
-
 Don't worry, we'll guide you through each step of downloading and
 installing these dependencies.
 
@@ -26,54 +12,36 @@ This should be pretty straightforward. Simply buy, download, and install
 Satisfactory from the Epic Games Launcher. Launch the game to ensure all
 files get set up correctly.
 
-[TIP]
-====
-You should *not* use the Experimental version of the game. Although you
-can make mods for the experimental version, this branch changes more
-often and you'll likely need to edit your mod more often to stay up to
-date with this version.
-====
-
-== Unreal Engine 4
-
-This is much easier than you might think. Again, just go into the Epic
-Games Launcher and then select the Unreal Engine tab at the left-hand
-side of the launcher. Then click on the Download button in the upper
-right-hand corner. A window should pop-up and ask you what version you
-want to download. Select the current engine version of Satisfactory,
-4.21. Also, remember to select your desired installation folder.
-
-[WARNING]
-====
-Unreal Engine 4 is quite a large download, especially if you want to
-install the source and the debug code. Keep this in mind in case you
-want to move the install location later.
-====
-
 == Visual Studio
 
-Visit the https://visualstudio.com/[Visual Studio] website and select
-`+Community+` under `+Visual Studio-IDE+`/`+Download Visual Studio+`,
-then download the installer. Now when you opened it, click again on
-Visual Studio Community and keep the default settings. Hit Install and
-wait for the installation process to finish.
+Visit the website of https://visualstudio.microsoft.com/de/downloads/[MS Visual Studio]
+and download the version you want.
 
-== Visual C++ 15
+Most of the time you want to use the Community version because it's free of charge.
 
-This step is only required for users of Visual Studio 2019, since Visual
-Studio 17 should already have this installed. Open the Visual Studio
-installer again and click on the `+change+` button of your installation.
-If not already selected, select `+Desktop development with C+\++`. Now
-open the sidebar on the right-hand side and select under
-`+Desktop development with C+++` the option `+VS 2015 C++-Buildtools+`.
-Hit save and wait for the installation process to finish.
+Then open the installer and select the packages "C++ Desktopdevelopment"
+and "Gamedevelopment with C++".
+
+Now install the IDE.
+
+== Unreal Engine 4 (Custom Engine)
+
+Because the game uses a modified version of the engine, we modder to need to use a modified version.
+But a more important point for is that we need to compile the native code dynamically.
+Coffee Stain Studios does not wich causes quite some limitations.
+The bootstrapper here is now use to hook the dynamic linker and use the by CSS provided `.pdb`
+to link the monolithic built game and our dynamic build mods.
+The custom engine for modding has also some other changes needed to workaround some technical limitations.
+
+For installing it, just visit the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[GitHub Releases Page]
+and download the installer for the version most suitable for your needs.
+Most of the time you just simply use the latest version.
 
 [TIP]
 ====
-If the automatic installer doesn't work, you can find the manual
-download
-https://www.microsoft.com/de-de/download/details.aspx?id=48145[here from
-Microsoft].
+Download the .exe file wich is a installer for the Engine.
+We highly reccomend using the installer instead of building the Engine itself
+unless you rly want to work on the engine.
 ====
 
 == Wwise
@@ -86,9 +54,5 @@ start with installing the WWise launcher.
 
 == Satisfactory Mod Loader
 
-This step is extremely straight forward. Just visit
-https://ficsit.app/[ficsit.app], open up the menu and click on SML in
-the sidebar. Download the SML version you want your mod to use, we
-recommend always the newest one, move the downloaded `+xinput1_3.dll+`
-file into your Satisfactory installation folder under
-`+Binaries/Win64+`, and you're done!
+Just make sure you have a working "normal" modloader version up and running
+so you can actually test your mod.
