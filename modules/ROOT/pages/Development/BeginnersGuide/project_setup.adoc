@@ -5,27 +5,13 @@ project setup. With a misconfigured or unoptimal setup, you'll lose
 valuable time. That's why we will guide you now through making a good
 project setup for Satisfactory.
 
-== Starter-Project
+== Satisfactory Mod Loader
 
-For beginners, we recommend using the provided Starter Project. It
-contains already a good setup for modding where you can directly dive
-into modding itself.
+The easiest way now for you to create a mod workspace is by cloning
+https://github.com/satisfactorymodding/SatisfactoryModLoader[SML from GitHub].
 
-== Download/Cloning
-
-First, we need to download the starter project. To do that you can
-either use git to clone the repository or download it as a zip file. The
-repository URL is
-https://github.com/satisfactorymodding/SatisfactoryUnrealProject.git If
-you don't know how git works we recommend downloading it as a zip file,
-to do that visit
-https://github.com/satisfactorymodding/SatisfactoryUnrealProject[this]
-site and click on `+Clone or download+` on the right-hand side, after
-that a window should pop-up were you now need to click on
-`+download zip+`. Download it and unzip it with your desired archive
-tool, such as 7zip, into a temporary folder. The move the
-"StarterProject" folder to your desired location and rename the folder
-as desired.
+After that R-Click onto the .uproject file and select `Switch Engine Version...`.
+In the drop down you should select the custom engine version `UE-4.22-CSS` and hit `Ok`.
 
 == Setting up Wwise
 
@@ -36,7 +22,7 @@ can be difficult, but we'll walk through the steps here.
 Start the Wwise launcher that you installed earlier and update it if
 needed. Next, open the Unreal Engine tab in the upper tab-bar. Click on
 the three lines next to the "RECENT UNREAL ENGINE PROJECTS" label and
-click `+Browse for project...+`. Now just select the `+.uproject+` file
+click `Browse for project...`. Now just select the `.uproject` file
 in your mod's project folder. Your project should now appear in the
 Wwise launcher. Click on the "Integrate Wwise into Project..." button.
 
@@ -44,39 +30,77 @@ Click on the blue `+Install Wwise+` button to download and install the
 latest Wwise SDK. If you have already one installed please select the
 version directly under the "UNREAL ENGINE PROJECT" label and select the
 SDK folder in the `+Copy of Wwise SDK files+`. Now click on the small
-arrow down at the end of the `+Wwise Project Path+` field and select
-`+New+`.
+arrow down at the end of the `Wwise Project Path` field and select
+`New`.
 
 If everything worked according to plan, you should now be able to click
-on the blue `+Integrate+` button.
+on the blue `Integrate` button.
 
 [TIP]
 ====
 When downloading or updating a Wwise SDK, select Microsoft
-under`+Deployment Platforms+` because Satisfactory currently supports
+under`Deployment Platforms` because Satisfactory currently supports
 just Windows. You can also deselect all of the plugins listed.
 ====
 
-That's it! If Wwise shows `+Operation completed successfully+` you
+That's it! If Wwise shows `Operation completed successfully` you
 have integrated Wwise into your project.
 
-== Compile/Start Unreal-Project
+== Create a C++ Module (optional)
 
-To initiate compiling the unreal-project source and to open the editor
-just simply open the `+.uproject+` file, hit `+Ok+` of you get prompted
-if you should rebuild something and the editor should show up.
+If you want to write your own C++ code, you need to create a new module.
+
+You can do this by navigating into the projects `/Source` Folder
+were you now need to create a new folder with the module name you want.
+Probably your mod name in caml case.
+
+Now copy the `/Source/SML.build.cs` file into your folder and rename it to `<your folder name>.build.cs`.
+Open it and replace `public class SML : ModuleRules` to `public class <your folder name> : ModuleRules`.
+Then also replace `public SML(ReadOnlyTargetRules ...` with `public <your folder name>(ReadOnlyTargetRules ...`.
+And finally replace `PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame"});`
+with `PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});`
+
+This tells the Unreal Build Tool on wich librarys your Module depends (like the source of Satisfactory and SML)
+
+We are still not done yet, now we need to tell UBT to actually compile and use your module.
+You can do this by opening the `/Source/FactoryGame.Target.cs` and replace
+`ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML" } );` with
+`ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML", "<your folder name>", } );`
+to tell UBT you want to get your module compiled into the final game/mod.
+And now do the same for `/Source/FactoryGameEditor.Target.cs` to tell UBT to compile and use your module in the editor. With out this you would not be able to use f.e. `BlueprintCallable` refelected methods in BP scripts.
+
+== Compile the Project
+
+Now you should compile the project at least once.
+
+Do this by opening the .sln file, make sure you have in the toolbar `Development Editor` and `Win64` selected.
+On the right side in solution explorer just r-click the `FactoryGame` project and hit `Build`.
+
+This creates now the binaries used by the Editor allowing it to interact with the native SML code or native code written f.e. by you.
+
+Important to note is, that if you make your own C++ module you also will need to build the project for `Shipping`
+when you want to test the mod. Because all the unessery editor binaries won't be able to dynamic link with its dependencies
+and the game would crash.
+
+== Open the Unreal Editor
+
+The Editor allows you to easily create new content for the game and helps build your mod.
+It also heavily relys on the C++ project so make sure you don't change stuff in there you should not change.
+
+You can now simply open the Editor by double clicking the .uproject file.
+
+You should now in there create in the asset browser a folder under `/Content/<your mod name>`.
 
 == Setting up Alpakit
 
-Alpakit is a modified version of ue4pak made by Brabb3l and used to make
-building your mod more convenient. Click on the Alpakit button in the
-Tool-Bar of the Unreal viewport and click on `+Choose folder+` in the
-upper right-hand corner and select your root Satisfactory game
-installation folder (like
-`+C:\Program Files\EpicGames\SatisfactoryEarlyAccess\+`) Check
-`+Start game after paking+` if you'd like to do so. Click `+Add mod+`
-and fill out the dialogue to tell Alpakit to pak everything in the
-content folder with the path `+/Content/FactoryGame/<your mod name>+`
+Alpakit is used to make building your mod more convenient.
+Click on the Alpakit button in the Tool-Bar of the Unreal viewport
+and click on `Choose folder` in the upper right-hand corner
+and select your root Satisfactory game installation folder
+(like `C:\Program Files\EpicGames\SatisfactoryEarlyAccess\`)
+Check `Start game after paking` if you'd like to do so.
+Click `Add Mod` and fill out the dialogue to tell Alpakit to pak everything
+in the content folder with the path `+/Content/<your mod name>+`
 
 [NOTE]
 ====
