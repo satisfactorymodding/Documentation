@@ -10,8 +10,8 @@ logic to your mod with an integrated visual programming language called
 ====
 If you want to learn more about `BluePrints` and the so called
 `UObject-System` we recommend you the concept pages for
-xref:../BluePrints.adoc[BluePrints] and the
-xref:../UObject.adoc[UObject-System].
+xref:Development/UnrealEngine/BluePrints.adoc[BluePrints] and the
+xref:Development/UnrealEngine/UObject.adoc[UObject-System].
 ====
 
 [TIP]

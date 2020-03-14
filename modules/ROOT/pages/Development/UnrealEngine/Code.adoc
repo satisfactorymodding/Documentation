@@ -35,7 +35,7 @@ Materials::
 * {blank}
 +
 BluePrints::
-  We will discuss this in this xref:./BluePrints.adoc[Concept-Page]
+  We will discuss this in this xref:Development/UnrealEngine/BluePrints.adoc[Concept-Page]
 
 == Native Code
 
