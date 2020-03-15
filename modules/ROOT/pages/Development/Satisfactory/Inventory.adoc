@@ -54,7 +54,7 @@ This struct connects just a item descriptor and a count of items without a state
 That means, this structure is not used to hold information the representation of a item ingame.
 Instead this is f.e. use in a recipe to define how many items of what type of item you need to bring up to get some different type of item with a different amount of them.
 
-== ItemStack [.title-ref]#(`FInventory`)#
+== ItemStack [.title-ref]#(`FItemStack`)#
 
 This is the brother of ItemAmount but this time it holds a Item and a count.
 That means, this time, it is actually used to hold information about item and its count ingame.

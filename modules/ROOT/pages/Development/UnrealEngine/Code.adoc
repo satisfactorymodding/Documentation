@@ -5,7 +5,7 @@ In Unreal we have generally two types of codes and one type of content.
 == Content
 
 "Content" in terms of 3D models, sounds, textures, materials and so on
-are called `+Assets+`. You use these assets to make stuff in your game
+are called `Assets`. You use these assets to make stuff in your game
 f.e. visible to the user. There are multiple types of assets:
 
 * {blank}
@@ -69,5 +69,5 @@ Unreal BP VM.
 [TIP]
 ====
 To learn more about `BluePrints` visit the
-xref:./BluePrints.adoc[Concept-Page] about that topic.
+xref:/Development/UnrealEngine/BluePrints.adoc[Concept-Page] about that topic.
 ====
