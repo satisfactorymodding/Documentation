@@ -1,0 +1,21 @@
+= Shematics
+
+Schematics are Coffee Stain Studios answer to research.
+Schematics hold information about requirements, visuals and rewards of research milestones.
+
+Everything that is technical progress ingame is a schematic.
+From the analyzing stuff of the M.A.M over the HUB Upgrades to the Tier Stages of the Space Elevator, everything is a Schematic.
+
+The requrements of a schematic are directly set in the schematic, but the rewards are defined by so called "unlocks".
+These unlocks can be everything from new recipes over new buildings to now inventory slots.
+
+== FGUnlock (`UFGUnlock`)
+
+The FGSchematic class holds information about what kind of reward and other special information.
+
+
+
+== FGSchematic (`UFGSchematic`)
+
+The FGSchematic class holds the general information about a research milestone.
+

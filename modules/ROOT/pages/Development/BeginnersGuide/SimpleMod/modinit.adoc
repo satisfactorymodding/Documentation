@@ -9,26 +9,10 @@ events which get in the world-bootup called.
 First of all, we need to create the proper path for the actor. That one
 depends on the mod name, specifically on the name of the pak we will
 provide. Our mod name will be `+Doc Mod+` and the pak file name will be
-`+DocMod_p.pak+` that means we need to create a folder in the SF asset
+`DocMod_p.pak` that means we need to create a folder in the UE asset
 root with our name. So we create the folder
-`+Content/FactoryGame/DocMod+`. And finally in there you now just need
-to add a new Actor called `+InitMod+`
+`Content/DocMod`. And finally in there you now just need to add a new Actor called `InitMod` of type `SMLInitMod`.
 
-image:beginners_guide/simpleMod/CreateInitMod.gif[image]
-
-== Add the Init-Events
-
-This initialization actor needs three custom events you now just need to
-add by opening the actor class, click on to Event Graph and the r-click
-into it and then add the custom events with the name `+PreInit+`,
-`+Init+` and `+PostInit+`.
-
-image:beginners_guide/simpleMod/ModInit_InitFuncs.jpg[image]
+image:BeginnersGuide/simpleMod/CreateInitMod.gif[image]
 
 Done, now you will be able to register recipes and other stuff in here.
-
-Here is an example InitMod blueprint that adds a schematic if it doesn't already exist:
-
-[pass]
-<iframe class="blueprint" src="https://blueprintue.com/render/2flu6w9o" scrolling="no" allowfullscreen></iframe>
-<div></div>

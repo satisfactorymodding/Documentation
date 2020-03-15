@@ -2,7 +2,7 @@
 
 A buildable is simply something you will be able to place with the
 building gun. Even if it is just a foundation, it is still a
-`+FGBuildable+`.
+`FGBuildable`.
 
 == Adding the Actor
 
