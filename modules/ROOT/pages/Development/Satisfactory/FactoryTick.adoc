@@ -1,0 +1,37 @@
+= Factory Tick
+
+As you all are aware of, Coffee Stain Studios added with Update 3 parallelization (aka. Multithreading).
+
+This has mainly something to do with the factory tick.
+
+The factory tick is a special function executed nearly every factory processing cycle.
+These ticks allow factory machines to process stuff, to transfer items, to generate power, etc.
+Now that CSS could (not need to) create multiple threads for processing all of the machines ticks, ans so allowing to get processed by multiple different CPU cores, this can cause some... wierd issues.
+
+[WARNING]
+====
+Factory Tick processing doesn't only happen on newely created threads.
+Some of the ticks (the load blancer decieds wich buildings tick on wich thread) happen on the main thread.
+And the main thread is actually the thread were most of the game play happens.
+The main thread f.e. handles input, rendering, physics updates, etc.
+Because of this, many unreal engine functions implement a system to make sure they get executed on the main thread. A known example is `AActor::SetVisibility` wich can only get executed in the main thread.
+
+This means, if you do call this function in the factory tick, it can happen that at first it looks like it's working, but if you wait, and the load balancer decides to execute your factory tick on a different thread, the game could actually crash.
+====
+
+The factory ticks get processed in multiple threads, and these get created at sometime in the Main Game Loop. When they get executed, only the factory ticks get executed at that time span, nothing else.
+No rendering, no inputs, no nothing. But multiple ticks at the same time.
+
+That means, you can be sure that the changes you do in the factory tick, will be done before anything else except the factory , get excecuted (like visual updates or the "notmal" ticks).
+
+[WARNING]
+====
+This doesn't mean, you can just ignore thread safety!
+That means basically, you need to make sure your tick doesn't write to memory, a other tick could read at the same time.
+This wont happen to often in most cases but it's always good to know about this, so plz do some research about thread safety.
+
+This is also a reason why you should not use Blue Prints for the factory tick!
+In Blue Prints you might not know what is exactly safe to do and what not, its unclear most of the time. Or you can just simply forget about it, and then bad things will happen.
+
+In C++ you can use f.e. mutexes to still write to memory other threads might want to read from/write to at the same time.
+====
