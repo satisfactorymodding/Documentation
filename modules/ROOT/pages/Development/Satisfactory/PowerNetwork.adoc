@@ -3,6 +3,13 @@
 We currently don't really know how the power network works, but we do
 know how we can use it, and in this chapter, we explain it to you.
 
+[WARNING]
+====
+If you want to make changes to the power settings of a machine.
+(Settings values of FGInventoryComponent) and other stuff,
+then you should definetly do this in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick].
+====
+
 The Power-Network consists of three key components.
 
 * {blank}
