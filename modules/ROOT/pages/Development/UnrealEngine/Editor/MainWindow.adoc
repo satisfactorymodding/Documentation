@@ -5,7 +5,7 @@ primary editor features.
 
 == Menu-Bar
 
-image:beginners_guide/UnrealEditor/MainMenuBar.jpg[image]
+image:UnrealEditor/MainMenuBar.jpg[image]
 
 Every window has a menu bar, but the menu bar of the main window is a
 little bit special because it also contains entries for global settings,
@@ -13,7 +13,7 @@ project settings and file management.
 
 == Tab-Bar
 
-image:beginners_guide/UnrealEditor/TabBar.jpg[image]
+image:UnrealEditor/TabBar.jpg[image]
 
 Every window has a tab bar which can hold multiple views/windows. If the
 main window/view get closed (as tab or the containing "real" window) the
@@ -21,7 +21,7 @@ project gets completely closed, also all other windows.
 
 == Viewport
 
-image:beginners_guide/UnrealEditor/MainViewport.jpg[image]
+image:UnrealEditor/MainViewport.jpg[image]
 
 The viewport is simply a preview of the map, where you can place and
 manipulate a world. Cuz we do not have SF world we can't use it there,
@@ -29,7 +29,7 @@ that means the viewport is more or less useless to us.
 
 == Tool-Bar
 
-image:beginners_guide/UnrealEditor/MainToolBar.jpg[image]
+image:UnrealEditor/MainToolBar.jpg[image]
 
 The tool-bar is a strongly simplified version of the menubar and is icon
 base, but its the only place where you can find the access to the
@@ -39,14 +39,14 @@ not useful without a map.
 
 == Outliner
 
-image:beginners_guide/UnrealEditor/MainOutliner.jpg[image]
+image:UnrealEditor/MainOutliner.jpg[image]
 
 The outliner is here again pretty useless because it simply contains the
 list of placed objects in the world.
 
 == Modes
 
-image:beginners_guide/UnrealEditor/MainModes.jpg[image]
+image:UnrealEditor/MainModes.jpg[image]
 
 One more useless view cause we don't have a proper map to edit, but this
 would help you to place things into the world and contains a list of
@@ -54,7 +54,7 @@ basic actors and edit tools for brushes, terrain and so on.
 
 == Content-Browser
 
-image:beginners_guide/UnrealEditor/MainContentBrowser.jpg[image]
+image:UnrealEditor/MainContentBrowser.jpg[image]
 
 Finally a very very useful and important view. This view is simply a
 file browser for all contents of your mod project and SF/UE source like

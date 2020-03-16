@@ -26,7 +26,7 @@
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventory]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting]
-*** xref:Development/Satisfactory/Shematics.adoc[Shematics]
+*** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]

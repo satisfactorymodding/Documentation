@@ -1,4 +1,4 @@
-= Shematics
+= Schematics
 
 Schematics are Coffee Stain Studios answer to research.
 Schematics hold information about requirements, visuals and rewards of research milestones.

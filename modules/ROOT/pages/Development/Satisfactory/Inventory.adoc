@@ -3,7 +3,7 @@
 This page doesn't just describe the inventory itself,
 but also everything else that is used by it.
 
-== Item Descriptor [.title-ref]#(`AFGItemDescriptor`)#
+== Item Descriptor [.title-ref]#(`UFGItemDescriptor`)#
 
 The native `AFGItemDescriptor` class, who would have thought, describes
 an Item itself. It holds information like:

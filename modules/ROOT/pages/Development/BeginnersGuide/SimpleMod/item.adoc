@@ -8,13 +8,14 @@ make a new ingot called 'Doc Ingot'.
 == Creating the BP-Class
 
 The item system is a bit special but overall we simply just need to
-describe our item in a `+FGItemDescriptor+` class. To create it go to
-the content browser in the unreal editor. Go to the Mod-Root and create
-a new folder and call it f.e. "Items". And create a new BlueprintClass
-in it. Call it what ever you want, but we will call it `+Desc_DocItem+`
+describe our item in a xref::/Development/Satisfactory/Inventory.adoc#_item_descriptor_afgitemdescriptor[FGItemDescriptor] class.
+To create it go to the content browser in the unreal editor.
+Go to the Mod-Root and create a new folder and call it f.e. "Items".
+Then create a new BlueprintClass of type `FGItemDescriptor` in it.
+Call it what ever you want, but we will call it `+Desc_DocItem+`
 ("Desc" stands for descriptor).
 
-image:beginners_guide/simpleMod/CreateDocItem.gif[image]
+image:BeginnersGuide/simpleMod/CreateDocItem.gif[image]
 
 == Describe the Item
 
@@ -47,27 +48,27 @@ M Stack Size::
 * {blank}
 +
 M Can get Discarded::
-  Leave this unchecked so that you cant throw the item into the trashcan
+  Uncheck it so that you can't throw the item into the trashcan
   because FicsIt does not waste.
 * {blank}
 +
 M Energy Value::
-  Our it is not organic, so it shouldn't be able to get burned in any
+  Our item is not organic, so it shouldn't be able to get burned in any
   generator. This value describes how much energy this item should
-  release if it gets burned in a generator. And we use 0.0 for that
+  release if it gets burned in a generator. And so we use 0.0 for that
   value.
 * {blank}
 +
 M Radioactive Decay::
   I don't think that your Item is so exciting that it should emit
   radioactivity, so we set this value to 0.0 because it describes how
-  radioactive this item is.
+  radioactive this item should be.
 * {blank}
 +
 M Conveyor Mesh::
   As we know, an item is 3-Dimensional so we need a 3D-model for the
   item how it should look if it gets transported on a conveyor belt. We
-  have an example model `+here <Mesh_DocItem.fbx>+`.
+  have an example model link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocItem.fbx[here].
   Make sure that you check both "Used with Spline Meshes" and "Used
   with Instanced Static Meshes" for each of the model's materials or
   the textures won't appear in the game.
@@ -81,7 +82,7 @@ M Item Category::
 M Small Icon::
   This is a simple texture image of the object used f.e. in the
   inventory to visualize what the given stack is. We have an image ready
-  for use `+here <Icon_DocItem.png>+`.
+  for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
 * {blank}
 +
 M Big Icon::
@@ -92,6 +93,6 @@ M Big Icon::
 The item is available to the user when it gets loaded at least once.
 Because of Unreal loads assets just in time, we somehow need to force
 the asset to get loaded. And we can simply do that when our item gets
-used in a Recipe and this also allows the user to somehow get the item
-xD So just change the outcome of our already created recipe to this
+used in a Recipe and this also allows the user to somehow get the item.
+So just change the outcome of our already created recipe to this
 item. And you're done.

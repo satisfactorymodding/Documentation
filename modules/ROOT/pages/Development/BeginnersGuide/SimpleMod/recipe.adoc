@@ -33,7 +33,7 @@ unlocked with the schematic we will create afterwards. Create a folder,
 `+Content/DocMod/Recipes+` which will contain all our recipes.
 
 Now, back in Unreal, we can create a new BP Class in this folder which
-extends `+FGRecipe+` to serve as our recipe.
+extends xref::/Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[FGRecipe] to serve as our recipe.
 
 Finally, we can define the recipe description itself. Open up the class
 and go to the class defaults and set the properties to the values you
@@ -103,7 +103,7 @@ get started, create a folder in your main mod folder for your
 schematics, for example, `+Content/DocMod/Schematics+`.
 
 Inside this folder create again a new BP Class but this time of type
-`+FGSchematic+` and f.e. with the name "Schem_Doc". Open it and go again
+xref::/Development/Satisfactory/Schematic.adoc[FGSchematic] and f.e. with the name "Schem_Doc". Open it and go again
 to its defaults.
 
 * {blank}
@@ -165,7 +165,8 @@ M Cost::
 * {blank}
 +
 M Unlocks::
-  These are finally the rewards the player will get when unlocking this schematic.
+  This array contains finally the rewards the player will get when unlocking this schematic.
+  It is a array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s.
   There are many different kinds of unlocks we discuss in the schematics page
   but what we add to this array is a `BP Unlock Recipe` were we can then add
   recipes like our newely created one to the array it added.
