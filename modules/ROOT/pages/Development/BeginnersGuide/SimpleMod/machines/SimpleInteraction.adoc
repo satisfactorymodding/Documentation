@@ -1,46 +1,43 @@
 = Simple Interaction GUI
 
 Let's create a simple interaction GUI for our
-xref:beginners_guide/simpleMod/machines/SimpleMachine.adoc[Simple Machine].
+xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[Simple Machine].
 We use it to read the current data and to reset the counters.
 
 == The Widget
 
-The very first thing we do is to create the GUI itself. You do this by
-creating a new BP-Class of type `+FGInteractWidget+`. This mainly works
-like every other regular UMG widget. So we now simply add two TextBlocks
-and a button with a TextBlock in it which has f.e. the content "Rest".
+The very first thing we do is to create the GUI itself.
+You do this by creating a new BP-Class of type `FGInteractWidget`.
+This mainly works like every other regular UMG widget.
+So we now simply add two TextBlocks and a button with a TextBlock in it which has f.e. the content "Rest".
 
-The FGInteractWidget has the `+M Interact Object+`-variable to get the
-object the player interacted with. (aka. our simple machine) You can
-cast it to the simple machine so we can access f.e. the counters.
+The FGInteractWidget has the `M Interact Object`-variable to get the object the player interacted with (aka. our simple machine).
+You can cast it to the simple machine so we can access f.e. the counters.
 
 [TIP]
 ====
-You could cast the `+M Interact Object+` already in one of the
+You could cast the `M Interact Object` already in one of the
 constructor functions and then cache it in a new variable so you don't
 need to cast the object every time.
 ====
 
-Bind the content of the other two TextBlocks to individual
-functions. One of them returns a appened text of f.e. "Count: " and the
-itemCount of the machine. The other could return f.e. typeCount and "
-different Types".
+Bind the content of two new TextBlocks to individual functions.
+One of them returns a appened text of f.e. "Count: " and the itemCount of the machine.
+The other could return f.e. typeCount and "different Types".
+Place theme were ever you want.
 
-Now we have the display of our text, but we still need to add the reset
-functionallity. For that bind a event to the on click event of the
-button and set in there both counters of the machine to 0.
+Now we have the display of our text, but we still need to add the reset functionallity.
+For that bind a event to the on click event of a new button and set in the event both counters of the machine to 0.
 
-We are still not done yet because if you would use it, the user cant rly
-interact with the widget. The reason for that is that we don't caputer
-any input of the user. To fix that you simple need to change some class
-default values.
+We are still not done yet, because if you would use it, the user can't rly
+interact with the widget. The reason for that is that we don't capture any input of the user.
+To fix that you simple need to change some class default values.
 
 * {blank}
 +
 M Use Keyboard::
   Activate this so keystrokes get used to trigger events in out widget.
-  (f.e. `+Esc+` to exit the widget)
+  (f.e. `Esc` to exit the widget)
 * {blank}
 +
 M Use Mouse::
@@ -54,22 +51,21 @@ M Capture Input::
 
 == Make machine interactable
 
-Now we need to make the simple machine interactable. This is very simple
-because we just need to activate `+M Is Useable+` and set
-`+M Interact Widget Class+` to your newly created widget.
+Now we need to make the simple machine interactable.
+This is very simple because we just need to activate `M Is Useable`
+and set `M Interact Widget Class` to your newly created widget.
 
 Done! Now you can interact with your machine by looking at it and
-hitting `+E+`.
+hitting `E`.
 
 == Use the SF Window
 
 You can let your widget look more like the other SF widgets by using the
-"WindowDark" Widget provided by the starter project.
+"WindowDark" Widget provided by the modding starter content.
 
-Just simply use it like every other widget in your interact widget
-(doesn't need to be one) and add the content you want in the widget
-slot. Then you can set the tile by defining the title-variables default
-value.
+Just simply use it like every other widget in your interact widget (doesn't need to be one)
+and add the content you want in the widget slot.
+Then you can set the title by defining the title-variables default value.
 
 [TIP]
 ====
@@ -77,7 +73,7 @@ Most of the time you will add a Canvas Panel and in it other widgets, so
 you can use it like a "normal" widget.
 ====
 
-If you want to add the functionality to close the whole interact
-widget not just the the window, you need to bind the
-`+OnEscapePressed+`-Event of the interact widget (or custom stuff) to
-the `+OnClose+`-Event ot the `+WindowDark+`.
+If you want to add the functionality to close the whole interact widget
+by clicking the "X"-Button, not just the the window,
+you need to bind the `OnEscapePressed`-Event of the interact widget (or custom stuff)
+to the `OnClose`-Event ot the `WindowDark`.
