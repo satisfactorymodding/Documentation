@@ -21,3 +21,31 @@ The machines get their information from this manager so they can give the
 user a proper choice of what they can craft and what not.
 To determine this, if a machine is capable of crafting this recipe, you will need to
 pass an object type implementing the "`Crafter`" interface.
+
+* {blank}
++
+M Display Name::
+  If you want to define a name for your recipe, check this and type the name in.
+* {blank}
++
+M Ingredients::
+  This is an array of structs, each of which contains the information of one crafting component.
+  Together, the array forms the input items for the recipe.
+* {blank}
++
+M Manufacturing Duration::
+  This determines the time it takes for a machine to process this recipe.
+* {blank}
++
+M Manual Manufacturing Multiplier::
+  If you want to use the same recipe for machines and the craft bench,
+  with this value you can define how much longer the crafting of this recipe should take longer int the craft bench.
+* {blank}
++
+M Produced In::
+  Here we need to select the machine that can use the recipe.
+* {blank}
++
+M Product::
+  This is again an array of structs containing information regarding the
+  item types and amounts that form the output of the recipe.

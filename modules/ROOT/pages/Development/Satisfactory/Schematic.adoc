@@ -10,12 +10,84 @@ The requrements of a schematic are directly set in the schematic, but the reward
 These unlocks can be everything from new recipes over new buildings to now inventory slots.
 
 == FGUnlock (`UFGUnlock`)
+This is the class describing a reward you get when a schematic gets unlocked.
+It can be everything from recipes, other schematics to inventory slots.
 
-The FGSchematic class holds information about what kind of reward and other special information.
+CSS already provides a couple of these as native classes but also Blue Print wrapper classes
+allowing for a even easier and better usage in the schematics
+so you don't need to create many custom unlocks derived from the css ones to set the default values.
+Instead the BP wrappers allow you to define these default values in the schematic directly.
 
+This is a list of available unlocks you can use and there BP wrapper:
 
+- UnlockArmEquipmentSlot
+- UnlockBuildEfficency
+- UnlockBuildOverclock
+- UnlockGiveItem
+- UnlockInventorySlot
+- UnlockMap
+- UnlockRecipe
+- UnlockScannableResource
+- UnlockSchematic
+- UnlockSubsystem
 
 == FGSchematic (`UFGSchematic`)
 
 The FGSchematic class holds the general information about a research milestone.
+These research milestones can be everything from a M.A.M analyze, over a HUB Upgrade to a Space Elevator Tier Milestone.
 
+* {blank}
++
+M Type::
+  The type of the schematic, which determines if it's part of the
+  tutorial system or if it's a Milestone or whatever.
+* {blank}
++
+M Display Name::
+  The in-game name of our schematic exactly as it is displayed to the
+  user.
+* {blank}
++
+M Schematic Category::
+  Defines the category in which this schematic gets grouped into.
+* {blank}
++
+M Sub Category::
+  Defines in wich sub groups the schematic should get categorized into.
+* {blank}
++
+M Tech Tier::
+  Determines in which Tier the schematic will appear under in the HUB.
+* {blank}
++
+M Time to Complete::
+  This defines the time how long the space ship will be away after purchase of the schematic.
+M Schematic Icon::
+  The icon displayed on the schematic in the HUB.
+* {blank}
++
+M Depends on Schematic::
+  Setting this option will require the selected schematic to be
+  activated first before this one can be activated.
+  
+* {blank}
++
+M Additional Schematic Dependencies::
+  Similar to `M Depends on Schematic`.
+  Additional schematics to be dependent on can be listed here.
+* {blank}
++
+M Cost::
+  A list of item amounts which are needed to activate the schematic.
+* {blank}
++
+M Unlocks::
+  This array contains the rewards the player will get when unlocking this schematic.
+  It is a array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s.
+* {blank}
++
+M Include In Builds::
+  This defines in wich builds the schematic should be able to get loaded/cooked.
+  Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing
+  from being shippws with the main game.
+  Its reccomended to set this to `Shipping`.
