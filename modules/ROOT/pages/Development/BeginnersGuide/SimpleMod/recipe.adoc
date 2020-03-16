@@ -186,7 +186,7 @@ the runtime.
   and add the schematics to the `M Schematics` array of the InitMod.
   Just go to the defaults page and add it there, they you're good to go.
 
-image:beginners_guide/simpleMod/RegisterSchematic.jpg[image]
+image:BeginnersGuide/simpleMod/RegisterSchematic.jpg[image]
 
 And we're set! Our recipe and schematic are registered and should
 show up in the game now.
