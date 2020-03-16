@@ -18,4 +18,8 @@ yarn install
 ```bash
 yarn run build
 ```
+
 The output files will be in `\build\site`
+
+If this command fails for you, you may need to download an [playbook file specifically for development](https://cdn.discordapp.com/attachments/629385164115673108/689142080043352073/antora-playbook-dev.yml) and put it in the root folder of the repo. To use it, run `yarn run build:dev` instead of the above.
+
