@@ -1,6 +1,8 @@
 * xref:index.adoc[Introduction]
+
 * xref:SMLConfiguration.adoc[SML Configuration]
 
+* xref:SMLChatCommands.adoc[SML Commands]
 
 * xref:Development/index.adoc[Development]
 
