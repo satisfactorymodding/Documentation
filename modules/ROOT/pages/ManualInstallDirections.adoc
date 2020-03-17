@@ -1,0 +1,72 @@
+= Manual Installation Process for SML, Bootstrapper, and Mods
+
+[WARNING]
+====
+We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead, since it vastly simplifies the process of installing, testing, and using mods.
+
+If you're a mod developer, you should still strongly consider using the launcher. You can use `For Mod Developers > Toggle SML always installed` to handle installing SML and the bootstrapper for you.
+
+====
+
+== Installing Mods
+
+If you don't want to use the Launcher for some reason, or you are a mod maker and want to test your mod without it, continue reading below for instructions.
+
+=== Installing Bootstrapper
+
+Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use and download it.
+
+After that you just need to copy the `xinput3_1.dll` to `<game root>/FactoryGame/Binaries/Win64/`
+
+=== Installing SML
+
+Now that you have installed bootstrapper you need to download
+a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
+
+After you have downloaded it, you need to place the file into `<game root>/loaders`.
+
+[TIP]
+====
+If the folder doesn't exist, just create it or start the game with the installed bootstrapper version once.
+====
+
+=== Installing Your Mod of Choice
+
+On https://ficsit.app/[SMR], navigate to your desired mod's page, click on
+`versions` in the upper right left corner and then click `+download+` on your desired version.
+Usually this will be the top version in the list.
+
+[WARNING]
+====
+Always check to make sure that the `SML Version` column for the version
+you choose matches the version of SML you have installed. You can
+attempt to install the mod with mismatched versions, but most of the
+time, it won't work.
+====
+
+Now just copy the downloaded .smod/.zip file into `<game root>/mods`.
+
+[TIP]
+====
+If the folder doesn't exist, just create it or start the game with bootstrapper and SML installed once.
+====
+
+=== Installing "Raw" or WIP mods
+
+If you don't have a .smod/.zip of the mod and the proper data.json file you still can use them.
+
+Just place the .pak, .dll and .pdb files if you need them into the mods folder and start the game with the SML config setting `developmentMode` enabled.
+
+[WARNING]
+====
+SML wont be able to handle dependencies!
+
+That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the launcher instead.
+But you can try to name your files so its name comes after the name of the dependencies if the mod list is sorted after names.
+====
+
+[TIP]
+====
+If you need to know how to enable `developmentMode`,
+please refer to the xref:SMLConfiguration.adoc[SML Configuration Page].
+====
