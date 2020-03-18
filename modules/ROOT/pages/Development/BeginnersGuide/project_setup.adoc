@@ -65,20 +65,24 @@ You can do this by opening the `/Source/FactoryGame.Target.cs` and replace
 to tell UBT you want to get your module compiled into the final game/mod.
 And now do the same for `/Source/FactoryGameEditor.Target.cs` to tell UBT to compile and use your module in the editor. Without doing this, you would not be able to use f.e. `BlueprintCallable` reflected methods in BP scripts.
 
-Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" option.
+== Project Compilation
 
-Unfortunately, you will need to install another version of Unreal Engine to do this. At the time of writing, the custom CSS Unreal Engine version does not properly register itself with your computer, meaning that you cannot use this and other context menu options without another version of Unreal Engine installed. We're working on a better solution for this.
+Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-You can follow the directions https://docs.unrealengine.com/en-US/GettingStarted/Installation/index.html[here] to install another version of Unreal Engine. The version you choose shouldn't matter, but to be safe, pick 4.22, since that's the version the custom CSS build is based around.
+To do this, you'll need to run a command, unless you already have another version of Unreal Engine installed. If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`. Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
 
-Once you've done this, `FactoryGame.uproject` should have a blue 'U' icon (since the regular installer makes the file associations correctly), and you should see additional options in the right click context menu.
+`"<path to your Unreal build tool here (it installed with the custom editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress`
 
-Right-click on the `.uproject` file and select `Switch Engine Version...`.
-In the drop down you should select the custom engine version `UE-4.22-CSS` and hit `Ok`.
+Here is an example of a complete command.
 
-Next, right-click on the `.uproject` file and select `Generate Visual Studio project files`. This can take a while.
+`"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="C:\Users\Rob\Documents\SMLExampleMod\FactoryGame.uproject" -game -rocket -progress`
 
-You'll want to compile the project now to ensure it includes your custom module.
+[WARNING]
+====
+The above command will not work if you copy paste it - you'll need to modify it yourself to point towards your project file and Unreal Engine install.
+====
+
+You'll want to compile the project now to ensure it generates correctly and that it includes your custom module (if you wrote one).
 
 Do this by opening the .sln file, make sure you have in the toolbar `Development Editor` and `Win64` selected.
 On the right side in solution explorer just r-click the `FactoryGame` project and hit `Build`.
@@ -87,8 +91,6 @@ This creates the binaries used by the Editor, allowing it to interact with the n
 
 Make sure to build the project for `Shipping` when you want to test the mod. Without doing so, the editor binaries won't be able to dynamic link with their dependencies,
 and the game will crash.
-
-This concludes the extra setup steps for the custom module.
 
 == Open Unreal Editor
 
@@ -99,7 +101,7 @@ In order to open the project in Unreal Engine, you'll have to open the editor. Y
 
 Once the Unreal Engine editor has launched, open your project by navigating to `Projects` -> `Browse` (bottom right corner) and selecting the file `FactoryGame.uproject` in your mod folder.
 
-You'll be told that some modules were "missing or built with a missing engine version"; press `Yes` and allow it to build. This will take some time, and will drastically increase the size of your mod folder - go find some more lizard doggos to pet.
+You'll might be told that some modules were "missing or built with a missing engine version"; press `Yes` and allow it to build. This will take some time, and will drastically increase the size of your mod folder - go find some more lizard doggos to pet.
 
 You might see a popup that says 'New plugins are available.' You can safely dismiss this popup.
 
