@@ -6,16 +6,16 @@ Schematics hold information about requirements, visuals and rewards of research 
 Everything that is technical progress ingame is a schematic.
 From the analyzing stuff of the M.A.M over the HUB Upgrades to the Tier Stages of the Space Elevator, everything is a Schematic.
 
-The requrements of a schematic are directly set in the schematic, but the rewards are defined by so called "unlocks".
+The requirements of a schematic are directly set in the schematic, but the rewards are defined by so called "unlocks".
 These unlocks can be everything from new recipes over new buildings to now inventory slots.
 
 == FGUnlock (`UFGUnlock`)
 This is the class describing a reward you get when a schematic gets unlocked.
-It can be everything from recipes, other schematics to inventory slots.
+It can be anything from recipes or other schematics to inventory slots.
 
-CSS already provides a couple of these as native classes but also Blue Print wrapper classes
+CSS already provides a couple of these as native classes but also Blueprint wrapper classes
 allowing for a even easier and better usage in the schematics
-so you don't need to create many custom unlocks derived from the css ones to set the default values.
+so you don't need to create many custom unlocks derived from the CSS ones to set the default values.
 Instead the BP wrappers allow you to define these default values in the schematic directly.
 
 This is a list of available unlocks you can use and there BP wrapper:
@@ -53,7 +53,7 @@ M Schematic Category::
 * {blank}
 +
 M Sub Category::
-  Defines in wich sub groups the schematic should get categorized into.
+  Defines in which sub groups the schematic should get categorized into.
 * {blank}
 +
 M Tech Tier::
@@ -62,6 +62,7 @@ M Tech Tier::
 +
 M Time to Complete::
   This defines the time how long the space ship will be away after purchase of the schematic.
+* {blank}
 M Schematic Icon::
   The icon displayed on the schematic in the HUB.
 * {blank}
@@ -69,7 +70,6 @@ M Schematic Icon::
 M Depends on Schematic::
   Setting this option will require the selected schematic to be
   activated first before this one can be activated.
-  
 * {blank}
 +
 M Additional Schematic Dependencies::
@@ -87,7 +87,7 @@ M Unlocks::
 * {blank}
 +
 M Include In Builds::
-  This defines in wich builds the schematic should be able to get loaded/cooked.
+  This defines in which builds the schematic should be able to get loaded/cooked.
   Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing
-  from being shippws with the main game.
-  Its reccomended to set this to `Shipping`.
+  from being shipped with the main game.
+  Its recommended to set this to `Shipping`, otherwise players probably won't be able to use your mod.

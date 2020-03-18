@@ -7,7 +7,7 @@ know how we can use it, and in this chapter, we explain it to you.
 ====
 If you want to make changes to the power settings of a machine.
 (Settings values of FGInventoryComponent) and other stuff,
-then you should definetly do this in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick].
+then you should definitely perform this call in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick].
 ====
 
 The Power-Network consists of three key components.
@@ -29,8 +29,8 @@ UFGPowerConnectionComponent::
 +
 UFGPowerInfoComponent::
   This component represents the needs of a power consumer/producer
-  itself (like production, consumption). If you f.e. want to know if
-  your machine has power, you will need to use this component.
+  itself (like production, consumption). If you want to know if
+  your machine has power or make it consume power, you will need to use this component.
 
 == FGPowerConnectionComponent
 
@@ -60,7 +60,7 @@ M Circuit ID::
 * {blank}
 +
 M Hidden Connections::
-  The list of hidden connections (train rails)
+  The list of hidden connections (f.e. train rails)
 
 == FGPowerInfoComponent
 

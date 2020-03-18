@@ -1,7 +1,7 @@
 = Crafting
 
-The crafting system of satisfactory is relatively straight forward and
-easy to implement.
+The crafting system used by Satisfactory is relatively straightforward and
+easy to add your own recipes to.
 
 == Recipes [.title-ref]#(FGRecipe)#
 
@@ -10,15 +10,15 @@ through the usage of the native `FGRecipe` class.
 Recipes allow you to describe what items and how many you need to deliver
 to get the given items with the given amounts.
 
-Interesting though is, also buildgun recipes are described in a `FGRecipe`,
-that means, when you want to add a new building to the buildgun
-you need to create a new `FGRecipe` class
+It is important to note that buildgun recipes are also described by `FGRecipe`,
+so if you want to add a new building to the buildgun,
+you'll need to create a new `FGRecipe` class
 with proper default values and then register the recipe.
 
 Satisfactory uses a recipe manager to register and store all recipes there are.
-That means when you want to add a normal workbench recipe or a smelting recipe, it doesn't matter... just create a recipe with your desired descriptors and amounts and then let it register in the manager.
+Whether you want to add a normal workbench recipe or a smelting recipe, just create a recipe with your desired descriptors and amounts and then let it register in the manager.
 The machines get their information from this manager so they can give the
-user a proper choice of what they can craft and what not.
+player a proper choice of what they can craft and what not.
 To determine this, if a machine is capable of crafting this recipe, you will need to
 pass an object type implementing the "`Crafter`" interface.
 

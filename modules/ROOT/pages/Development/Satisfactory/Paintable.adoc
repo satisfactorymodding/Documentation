@@ -1,14 +1,15 @@
 = Paintable
 
-Making things paintable is not that difficult as it seems. You can use
-the standard way, or create your implementation.
+Making things paintable is not as difficult as it may seem. You can use
+the standard way, or create your own implementation.
 
 == Standard Material
 
-The standard material (MI_Factory_Base_01) used by SF is the best way to implement the ability
-to paint.
+The standard material (`MI_Factory_Base_01`) used by SF is the easiest way to make your models paintable.
 
-It gets implemented by the `FGBuildable`-class und changes the primary
+To use it, make your models pull their colors from this material file.
+
+It gets implemented by the `FGBuildable` class and changes the primary
 and secondary material parameters of the material. You can
 find it in the content browser under
 `+Content/FactoryGame/-Shared/Material+`.
@@ -25,7 +26,6 @@ image:Satisfactory/MI_Factory_Base_01.png[image]
 
 You can implement the ability to paint in any object by implementing the
 `IFGColorInterface`. Simply override the given functions with the
-functionality you need and you're done!
+functionality you need and you're done. Consider asking about this on the Discord or forums if you need help.
 
-The paint gun will now interact with your object, it can do this by
-using the reflection system.
+The paint gun will now interact with your object, which is done via the reflection system.

@@ -1,39 +1,38 @@
 = Factory-Connectors
 
-Factory connectors are SFs system to transfer items from one machine to the next one.
-Also, conveyors have factory connectors to transfer items from a machine into its internal buffer (the belt).
+Factory connectors are Satisfactory's system for transferring items from one machine to the next.
+Conveyors also utilize factory connectors to transfer items from a machine into its internal buffer (the belt).
 
 The Factory-Connector-System is a pull-based system.
-That means if I a machine has f.e. an empty internal buffer and wants to get filled by a factory connector,
-the machine requests (grabs) an item from the given connector.
-The connector then can reply with nothing or the item it transfers.
+That means if a machine has an empty internal buffer and wants to get filled by a factory connector,
+the machine requests (via a Grab call) an item from the given connector.
+The connector can then reply with nothing (if there aren't any items) or the item it transfers.
 If it returns something, the caller (the machine) needs to
 make sure it does something with that item,
 else the item just disappears.
-The Factory-Connector itself asks in grab the connected
+The Factory-Connector itself asks its connected
 Factory-Connector or it's outer object to return an item.
-A machine (`AFGBuildable`) itself contains a Factory-Connector which contains a
+A machine (`AFGBuildable`) contains a Factory-Connector which contains a
 reference to a connected one, and that one will grab the item from the connected machine (belt).
 
-This is a flow example of a machine output of the grab calls.
+This is a flow example of a machine output of the Grab calls.
 
 A conveyor which has a free space -> FactoryConnector in the conveyor
 which is connected to the machines connector -> Factory-Connector of the
 machine which is connected to the connector of the conveyor -> Machine
 
-This is a flow example of a machine input of the grab calls.
+This is a flow example of a machine input of the Grab calls.
 
 Machine -> Factory-Connector of the machine connected to the connector
 of the conveyor -> Factory-Connector of the conveyor connected to the
 connector of the machine -> Conveyor
 
-If the machine just want to know what it can grab, so it can filter what it allows on the input side,
-before it actually gets transfered and it would need to handle the item, then you can use the peek functions.
-These functions work mostly the same as the grab functions, except they don't actually cause a item transfer to happen.
+If the machine just want to know what it can grab without actually transferring any items, then it can use the Peek functions. An example use case of this is filtering what it allows on the input side.
+These Peek functions work mostly the same as the Grab functions, except they don't actually cause a item transfer to happen.
 
 [WARNING]
 ====
-It is highly reccomended to do item transfers, peeks, etc. in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick].
+It is highly recommended to do item transfers, peeks, etc. in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick] call so that they are optimized for multiple cores.
 ====
 
 == FGFactoryConnection
@@ -44,16 +43,16 @@ Use this directly as a component for you `AFGBuildable`.
 * {blank}
 +
 M Connector::
-  The actual type of connection. (Solid, Liquid or Gas)
+  The material type of connection. (Solid, Liquid, or Gas)
 * {blank}
 +
 M Direction::
   The I/O direction of the factory connector.
-  If it recieves items or if it sends items.
+  If it receives items or if it sends items.
 * {blank}
 +
 M Connector Clearance::
-  After which length the conveyor is allowed to bend.
+  The distance after which the connected conveyor is allowed to bend.
 * {blank}
 +
 M Forward Peek and Grab to Buildable::

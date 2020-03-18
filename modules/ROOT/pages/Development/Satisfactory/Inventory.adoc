@@ -1,4 +1,4 @@
-= Inventory
+= Inventories and Items
 
 This page doesn't just describe the inventory itself,
 but also everything else that is used by it.
@@ -29,19 +29,18 @@ Conveyor Model::
 * {blank}
 +
 Radioactive Decay::
-  Some items like Uranium Ore have a radioactive decay, this is simply
-  the nasty invisible shit why you can't get closer to nuclear reactors.
+  Some items like Uranium Ore cause radiation damage to the player when nearby. This field stores information about the radiation emitted by the item.
 * {blank}
 +
 Energy value (for use as Fuel)::
   Different items have different amounts of energy storage when used as
-  fuel. Coal has f.e. less energy than normal Fuel.
+  fuel. Coal, for example, has less energy than Packaged Fuel when used in a vehicle.
 
 [TIP]
 ====
-Sometimes you don't need to define everything. f.e. when you want to
-create a building descriptor you won't need a model for conveyors or an
-energy value cause you don't want to throw a building into a generator.
+Sometimes you don't need to define all of these fields. For example, when you want to
+create a building descriptor, you won't need a model for conveyors or an
+energy value cause you don't want to throw a building into a generator or move buildings around on belts.
 ====
 
 == Item [.title-ref]#(`FInventoryItem`)#

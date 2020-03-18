@@ -26,7 +26,7 @@
 ***** xref:Development/UnrealEngine/Editor/MainWindow.adoc[Main Window]
 
 *** xref:Development/Satisfactory/index.adoc[Satisfactory]
-**** xref:Development/Satisfactory/Inventory.adoc[Inventory]
+**** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
 **** xref:Development/Satisfactory/Crafting.adoc[Crafting]
 **** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 **** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
