@@ -6,7 +6,7 @@ site:
 content:
   sources:
     - url: ./
-      branches: HEAD
+      branches: HEAD, v1.0.2
 
     - url: https://github.com/CoderDE/FicsIt-Networks.git
       branches: master

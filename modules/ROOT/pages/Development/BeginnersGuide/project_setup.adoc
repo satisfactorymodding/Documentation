@@ -45,11 +45,6 @@ That's it! If Wwise shows "Operation completed successfully," you have integrate
 
 If you want to write your own C++ code, you need to create a new module. If you don't want to do this, or don't know what it means, skip to the next section.
 
-
-+++ <details><summary> +++
-Custom Module Setup Steps
-+++ </summary><div> +++
-
 Note that by doing this, you'll need to follow some extra directions for other steps, which will be listed in their respective sections.
 
 You can create a new module by navigating into the projects `/Source` folder, in which you should create a new folder with the module name you want.
@@ -94,7 +89,6 @@ Make sure to build the project for `Shipping` when you want to test the mod. Wit
 and the game will crash.
 
 This concludes the extra setup steps for the custom module.
-+++ </div></details> +++
 
 == Open Unreal Editor
 
