@@ -57,7 +57,7 @@ Wwise is a sound engine used by Coffee Stain, and in order to develop mods, you'
 
 Visit https://wwise.com/[Wwise.com] and click on the `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner. Click the download button, which will ask you to sing in. Create an account if you don't have one yet, or sign in, to download the launcher. After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar, and select version `2019.1.7.7135` (you might need to change the left dropdown to `All` to do this), then press `Install`. Once presented with options on what to install, make sure that `Authoring` and `SDK (C++)` are checked, then press `Next`. You don't need to add any plugins, so just press `Install` to skip in the bottom left to begin the installation process. Accept any authentication prompts that appear along the way.
+Select `WWISE` from the top bar, and select version `2019.1.7.7135` (you might need to change the left dropdown to `All` to do this), then press `Install`. Once presented with options on what to install, make sure that `Authoring` and `SDK (C++)` packages are checked on the left, and that `Apple` -> `MacOS` and `Microsoft` -> `Windows` -> `Visual Studio 2015` and `Visual Studio 2017` are selected, then press `Next`. You don't need to add any plugins, so just press `Install` to skip in the bottom left to begin the installation process. Accept any authentication prompts that appear along the way.
 
 [WARNING]
 ====
