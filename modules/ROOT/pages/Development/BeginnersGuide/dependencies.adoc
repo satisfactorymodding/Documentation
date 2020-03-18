@@ -50,6 +50,7 @@ The custom engine for modding has also some other changes needed to workaround s
 Most of the time you just simply use the latest version.
 +++ </div></details> +++
 
+Once the installer is done, you'll also need to install a visual studio extension shipped with the editor. Navigate to where you installed the editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal visual studio extension, which will help with debugging.
 
 == Wwise
 
@@ -66,7 +67,7 @@ Make sure that you selected the correct version of Wwise. It's easy to choose th
 
 == Starter Project
 
-To get started developing your mod, it's best to start off with the Starter Project as a base. You can download it from https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[here]. Download `SML-Shipping-Dev-Win64.zip` from the latest release version and unzip it. The starter project is `FactoryGame.uproject`.
+To get started developing your mod, it's best to start off with the Starter Project as a base. You can download it from https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[here]. Download `SML-Shipping-Dev-Win64.zip` from the latest release version and unzip it. The starter project is contained in `FactoryGame.uproject`.
 
 == Satisfactory Mod Loader and Bootstrapper
 
