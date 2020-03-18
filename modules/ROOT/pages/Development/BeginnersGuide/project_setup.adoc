@@ -85,7 +85,7 @@ The above command will not work if you copy paste it - you'll need to modify it 
 You'll want to compile the project now to ensure it generates correctly and that it includes your custom module (if you wrote one).
 
 Do this by opening the .sln file, make sure you have in the toolbar `Development Editor` and `Win64` selected.
-On the right side in solution explorer just r-click the `FactoryGame` project and hit `Build`.
+On the right side in solution explorer just r-click the `FactoryGame` project and hit `Build`. This will take some time; go pet some lizard doggos as you wait.
 
 This creates the binaries used by the Editor, allowing it to interact with the native SML code or native code written by you.
 
