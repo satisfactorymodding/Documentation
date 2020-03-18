@@ -55,13 +55,13 @@ M Ingredients::
 +
 M Manufacturing Duration::
   This determines the time it takes for a machine to process this recipe.
-  We'll keep it at 1 for now, cuz we are super speedy pioneers.
+  We'll keep it at 1 for now, because we are super speedy pioneers.
 * {blank}
 +
 M Manual Manufacturing Multiplier::
   If you want to use the same recipe for machines and the craft bench,
   with this value you can define how much longer the crafting of this recipe should take longer int the craft bench.
-  Cuz we don't have time, we set this to 0 or 1 wich is the default value.
+  Because we don't have time, we set this to 0 or 1 which is the default value.
 * {blank}
 +
 M Produced In::
@@ -125,7 +125,7 @@ M Schematic Category::
 * {blank}
 +
 M Sub Category::
-  Defines in wich sub group the schematic should get categorized.
+  Defines in which sub group the schematic should get categorized.
   We leave this array empty.
 * {blank}
 +
@@ -136,14 +136,14 @@ M Tech Tier::
 * {blank}
 +
 M Time to Complete::
-  Remember that anyoing time whene you purchased a schematic
+  Remember that annoying time when you purchased a schematic
   and the space ship leaves you for a couple of minutes
   were you are simply not able to purchase any further schematics?
   This is exactly the value defining how long you will be annoyed.
   We will set it, to... let's say... 10.
 M Schematic Icon::
   The icon displayed on the schematic in the HUB.
-  We can use link:Icon_SchemDoc.png[this example image].
+  We can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image].
 * {blank}
 +
 M Depends on Schematic::
@@ -169,7 +169,7 @@ M Unlocks::
   It is a array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s.
   There are many different kinds of unlocks we discuss in the schematics page
   but what we add to this array is a `BP Unlock Recipe` were we can then add
-  recipes like our newely created one to the array it added.
+  recipes like our newly created one to the array it added.
 * {blank}
 +
 M Include In Builds::
