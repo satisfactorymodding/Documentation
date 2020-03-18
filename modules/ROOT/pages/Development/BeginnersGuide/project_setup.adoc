@@ -111,6 +111,8 @@ You might see a popup that says 'New plugins are available.' You can safely dism
 
 To get started, you should create a new folder within Unreal Engine via the Content Browser pane, and call it your mod name. It will end up in `/Content/<your mod name>`.
 
+Now is a good time to familiarize yourself with the Unreal Engine editor through various other tutorials. We suggest you take the 'Welcome to the Unreal Editor' guided tutorial that the editor should be telling you about if you haven't taken or dismissed it yet.
+
 == Setting up Alpakit
 
 Alpakit is a tool made by the modding community to make building and testing your mod more convenient.
@@ -121,6 +123,7 @@ Check `Start Game` if you'd like the game to be launched after you pack your mod
 Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
 Finally, add your mod within the `Mods` section and fill out the Name field with the name of folder you created earlier with your mod name. 
 This will tell Alpakit to pak everything in the content folder under the path `+/Content/<your mod name>+`
+You shouldn't need to configure any Overwrite Paths for now.
 
 [NOTE]
 ====
