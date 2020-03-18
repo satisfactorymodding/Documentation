@@ -1,7 +1,6 @@
 = Create a Simple Mod
 
-Now that you have learned the core concepts of Satisfactory modding, you
-can get started on creating your first mod.
+Now that you have learned the core concepts of Satisfactory modding, you can get started on creating your first mod.
 
 To get started, this tutorial will walk you through creating a simple
 mod that adds the following:
@@ -24,8 +23,7 @@ A new buildable object that can be painted with the paint gun
 A basic machine that consumes power and counts the number and
 types of items that pass through it 
 
-These are listed in order of easiest
-to most difficult.
+These are listed in order of easiest to most difficult.
 
 [TIP]
 ====
@@ -34,6 +32,6 @@ items, buildings, enemies, etc. to the game. If you have an idea for
 such a mod but aren't experienced with modeling, consider posting it in
 the `+#ideas-discussion+` channel on the https://discord.gg/xkVJ73E[Discord
 server] or in the https://forums.ficsit.app/[SMR Forums]. You may find
-an artist willing to help you. You could also learn how to model in a
+an artist willing to work with you on a project. You could also learn how to model in a
 program like Blender, Meshmixer, Maya, etc.
 ====

@@ -1,0 +1,3 @@
+= Modding concepts
+
+In this section, we will provide information about many internal Satisfactory and Unreal Engine systems, as well as other important information regarding modding. Reading these sections will likely help you the most if you're looking to make something specific that isn't covered in the getting started tutorials.
