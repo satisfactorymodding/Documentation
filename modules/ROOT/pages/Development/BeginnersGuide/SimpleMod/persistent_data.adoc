@@ -1,0 +1,7 @@
+= Persistent Data via the Save File
+
+This page will be written soon™.
+
+The value you want to save might be saveable by marking the 'SaveGame' checkbox in the editor.
+
+https://cdn.discordapp.com/attachments/555515791592652823/689963218130698266/unknown.png

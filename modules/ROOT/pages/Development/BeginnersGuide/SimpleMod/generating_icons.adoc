@@ -1,0 +1,3 @@
+= Generating Item and Building Icon Files
+
+This doc page is coming soon. Ask about this in the discord if you need help on this for now.

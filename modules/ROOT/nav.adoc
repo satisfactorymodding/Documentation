@@ -14,6 +14,9 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
+*** xref:Development/BeginnersGuide/SimpleMod/generating_icons.adoc[Generating Icon Images]
+*** xref:Development/BeginnersGuide/SimpleMod/MAM_research.adoc[MAM Integration]
+*** xref:Development/BeginnersGuide/SimpleMod/persistent_data.adoc[Persistent Data]
 
 ** xref:Development/modding_concepts.adoc[Modding Concepts]
 *** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
