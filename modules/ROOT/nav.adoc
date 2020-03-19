@@ -17,6 +17,7 @@
 *** xref:Development/BeginnersGuide/SimpleMod/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/SimpleMod/MAM_research.adoc[MAM Integration]
 *** xref:Development/BeginnersGuide/SimpleMod/persistent_data.adoc[Persistent Data]
+*** xref:Development/BeginnersGuide/SimpleMod/implementing_config.adoc[Adding Config Files]
 
 ** xref:Development/modding_concepts.adoc[Modding Concepts]
 *** xref:Development/UnrealEngine/index.adoc[Unreal Engine]

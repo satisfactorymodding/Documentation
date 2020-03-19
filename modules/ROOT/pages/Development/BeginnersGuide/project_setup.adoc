@@ -82,6 +82,11 @@ Here is an example of a complete command.
 The above command will not work if you copy paste it - you'll need to modify it yourself to point towards your project file and Unreal Engine install.
 ====
 
+[WARNING]
+====
+Make sure you run the above command from Command Prompt and not Powershell. It is not correctly formatted for Powershell.
+====
+
 You'll want to compile the project now to ensure it generates correctly and that it includes your custom module (if you wrote one).
 
 Do this by opening the .sln file, make sure you have in the toolbar `Development Editor` and `Win64` selected.

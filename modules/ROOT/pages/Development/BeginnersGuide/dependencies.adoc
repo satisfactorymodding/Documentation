@@ -5,6 +5,8 @@ To get started with modding Satisfactory, you'll need multiple other pieces of s
 
 Don't worry, we'll guide you through each step of downloading and installing these dependencies.
 
+This can be a very lengthy process, so if you have to work on something else, make a note of where you left off so it's easier to resume.
+
 [TIP]
 ====
 If you'd prefer a different format of guide, you can find a video guide https://www.youtube.com/watch?v=-HVw6-3Awqs[here]. Do note that the video guide may be out of date compared to the steps listed here.
@@ -40,7 +42,7 @@ Once you've done that, go to the https://github.com/SatisfactoryModdingUE/Unreal
 (Optional reading) More info about the custom version:
 +++ </summary><div> +++
 You'll notice that the custom unreal engine version is actually built by the developers of SML.
-The way SML 2.0 is written allows modders to do almost anything Coffee Stain Studios developers can to the game. Unfortunately, to get this working, SML developers must build a custom version of Unreal Engine on top of writing all of the SML code. People writing mods don't have to compile 
+The way SML 2.0 is written allows modders to do almost anything Coffee Stain Studios developers can to the game. Unfortunately, to get this working, SML developers must build a custom version of Unreal Engine on top of writing all of the SML code. People writing mods don't have to compile the whole engine themselves, thankfully, since they can just use versions built by the SML developers.
 But a more important point for is that we need to compile the native code dynamically.
 Coffee Stain Studios does not which causes quite some limitations.
 The bootstrapper here is now use to hook the dynamic linker and use the by CSS provided `.pdb`
@@ -49,6 +51,8 @@ The custom engine for modding has also some other changes needed to workaround s
 
 Most of the time you just simply use the latest version.
 +++ </div></details> +++
+
+This install process, and opening Unreal for the first time afterwards, can take some time.
 
 Once the installer is done, you'll also need to install a visual studio extension shipped with the editor. Navigate to where you installed the editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal visual studio extension, which will help with debugging.
 
