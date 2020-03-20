@@ -1,0 +1,9 @@
+= Save Game
+
+This page is a work in progress. When complete, it will cover:
+
+- What checking the save game checkbox actually does, and that you need to do so for data to be saved
+- That you need to implement the IFGSaveGame Interface
+- What Unreal serialization is and what you need be aware of (how it works just in short)
+- What the counterparts are in C++
+- Where to find the save game file

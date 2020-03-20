@@ -32,6 +32,7 @@
 **** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 **** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
 **** xref:Development/Satisfactory/Paintable.adoc[Paintable]
+**** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 
 *** xref:Development/ModLoader/index.adoc[Mod Loader]
 **** xref:Development/ModLoader/SPL.adoc[Satisfactory Pak Loader]
