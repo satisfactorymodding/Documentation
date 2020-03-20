@@ -1,5 +1,0 @@
-= Using Config Files
-
-This page is a work in progress.
-
-For now, some of the information relating to implementing mod config can be found xref:SMLConfiguration.adoc[here] and xref:Development/ModLoader/SBL.adoc#_config[here].
