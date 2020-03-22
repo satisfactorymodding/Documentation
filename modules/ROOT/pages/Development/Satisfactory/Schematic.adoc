@@ -1,13 +1,15 @@
 = Schematics
 
-Schematics are Coffee Stain Studios answer to research.
-Schematics hold information about requirements, visuals and rewards of research milestones.
+Schematics are Coffee Stain Studios' answer to a research system.
+Schematics hold information about requirements, visuals, and rewards of research milestones.
 
 Everything that is technical progress ingame is a schematic.
-From the analyzing stuff of the M.A.M over the HUB Upgrades to the Tier Stages of the Space Elevator, everything is a Schematic.
+From the analyzing stuff in the M.A.M, to the HUB Upgrades, to a AWESOME Shop purchases, to the Tier stages of the Space Elevator, everything is a Schematic.
 
-The requirements of a schematic are directly set in the schematic, but the rewards are defined by so called "unlocks".
-These unlocks can be everything from new recipes over new buildings to now inventory slots.
+The requirements (item costs, prerequisites, time) of a schematic are directly set in the schematic, but the rewards are defined by so called "unlocks".
+These unlocks can be anything from new recipes over new buildings to now inventory slots.
+
+If you want to implement custom milestones or M.A.M researches in your mod, you'll need to make schematics.
 
 == FGUnlock (`UFGUnlock`)
 This is the class describing a reward you get when a schematic gets unlocked.
@@ -18,34 +20,57 @@ allowing for a even easier and better usage in the schematics
 so you don't need to create many custom unlocks derived from the CSS ones to set the default values.
 Instead the BP wrappers allow you to define these default values in the schematic directly.
 
-This is a list of available unlocks you can use and there BP wrapper:
+Below is a list of available unlocks you can use and their BP wrappers:
 
-- UnlockArmEquipmentSlot
-- UnlockBuildEfficency
-- UnlockBuildOverclock
-- UnlockGiveItem
-- UnlockInventorySlot
-- UnlockMap
-- UnlockRecipe
-- UnlockScannableResource
-- UnlockSchematic
-- UnlockSubsystem
+[cols="1,4a"]
+|===
+|BP Wrapper |Description of Function
+
+|UnlockArmEquipmentSlot
+|Gives the player additional arm equipment slots. Having more than 6 causes the inventory screen to look weird, but they still work.
+
+|UnlockBuildEfficency
+|
+
+|UnlockBuildOverclock
+|
+
+|UnlockGiveItem
+|
+
+|UnlockInventorySlot
+|Gives the player additional inventory slots. 
+
+|UnlockMap
+|Allows the player to access the ingame minimap screen. The base game already does this with the map research.
+
+|UnlockRecipe
+|Unlocks crafting or building recipes for use by the player.
+
+|UnlockScannableResource
+|Adds a resource to the resource scanner.
+
+|UnlockSchematic
+|Unlocks another FGSchematic when this one is completed.
+
+|UnlockSubsystem
+|
+|===
 
 == FGSchematic (`UFGSchematic`)
 
 The FGSchematic class holds the general information about a research milestone.
-These research milestones can be everything from a M.A.M analyze, over a HUB Upgrade to a Space Elevator Tier Milestone.
+These research milestones can be anything from a M.A.M research node, to a HUB Upgrade, to a Space Elevator Tier.
 
 * {blank}
 +
 M Type::
   The type of the schematic, which determines if it's part of the
-  tutorial system or if it's a Milestone or whatever.
+  tutorial system, M.A.M, AWESOME Shop, a Milestone, etc.
 * {blank}
 +
 M Display Name::
-  The in-game name of our schematic exactly as it is displayed to the
-  user.
+  The in-game name of our schematic exactly as it is displayed to the player.
 * {blank}
 +
 M Schematic Category::
@@ -61,15 +86,15 @@ M Tech Tier::
 * {blank}
 +
 M Time to Complete::
-  This defines the time how long the space ship will be away after purchase of the schematic.
+  This defines the time how long the space ship will be away after purchase of the schematic, or how long it takes the M.A.M to process the research node.
 * {blank}
 M Schematic Icon::
-  The icon displayed on the schematic in the HUB.
+  The icon displayed on the schematic in the HUB or M.A.M.
 * {blank}
 +
 M Depends on Schematic::
   Setting this option will require the selected schematic to be
-  activated first before this one can be activated.
+  activated first before this one can be activated. This is used in the M.A.M to create prerequisites.
 * {blank}
 +
 M Additional Schematic Dependencies::
@@ -78,7 +103,7 @@ M Additional Schematic Dependencies::
 * {blank}
 +
 M Cost::
-  A list of item amounts which are needed to activate the schematic.
+  A list of item amounts which are required to purchase the schematic.
 * {blank}
 +
 M Unlocks::
