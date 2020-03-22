@@ -1,6 +1,6 @@
 = Mod-Init
 
-Our mod must has a starting point from which everything else gets invoked. If we don't have one, then the mod's content will never be added to the game during loading.
+Our mod must have a starting point from which everything else gets invoked. If we don't have one, then the mod's content will never be added to the game during loading.
 In our case this the `InitMod`-Actor from SPL. That dude will implement events which get in the world-bootup called.
 
 == Initial Mod Setup
