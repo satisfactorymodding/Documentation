@@ -1,42 +1,41 @@
 = Multiplayer
 
-Adding Multiplayer support to mods is just like adding multiplayer support to unreal engine.
+Adding Multiplayer support to mods is just like adding multiplayer support to other Unreal Engine projects.
 
-Because it is realy the same we wont discuss how replication works in here,
-you should realy read through https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[unreals documentation about replication] first.
+We won't discuss how replication works in here, so you should _really_ read through https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[Unreal's documentation about replication] before continuing.
 
 [WARNING]
 ====
-Again, please read first the unreal https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[documentation] and https://wiki.unrealengine.com/Replication[wiki] about replication first
-before continueing with this guide!!!
+Again, please read first the Unreal https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[documentation] and https://wiki.unrealengine.com/Replication[Wiki] about replication first
+before continuing with this guide! Replication can be a difficult concept to understand, but understanding it is crucial to making your mods support multiplayer.
 ====
 
 There are still some parts that are very difficult to archive, and how to work around them, we will discuss in here further.
 
-== Client-to-Server RPC
+== Client-to-Server Remote Procedure Calling
 
-You might have noticed that triggering a remote procedure call doesn't work that easily.
-The reason is simple, as you might be aware of, to be able to call a RPC from the client, the calling object needs to be the authority of the object.
-This is only the case if the object is somehow owned by the player connection. The player controller is f.e. owned by the player connection.
+You might have noticed that triggering a Remote Procedure Call (RPC) isn't as straightforward as it may first appear.
+The reason is simple: as you might be aware, to be able to call a RPC from the client, the calling object needs to be the authority of the object.
+This is only the case if the object is somehow owned by the player connection. The player controller, for example, is owned by the player connection.
 
 Our problem now is, we are not able to add more functionality to the player controller and so we are not able to add functions
 in the player connection owning scope.
 
-CSS was so nice and has implemented a system that allows us to add functionallity owned by the player connection afterwards in runtime.
-This system are the `Remote Call Objects`.
+CSS was so nice and has implemented a system that allows us to add functionality owned by the player connection afterwards in runtime.
+This system is implemented through `Remote Call Objects`.
 
 Remote Call Objects (aka. RCOs) get created by the CSS code in runtime individually once for every player controller there is.
-They will get created, replicated and then owned by the player controller.
+They get created, replicated, and then become owned by their respective player controllers.
 
 Now, the client owning the player controller is able to get the RCO instance by passing the class of the RCO to the `AFGPlayerController::GetRemoteCallObjectByClass` function.
-With that RCO reference, you will be able to call anywere RPCs of the RCO, even in the GUI which exists only on the client side.
+With that RCO reference, you will be able to call anywhere RPCs of the RCO, even in the GUI which exists only on the client side.
 
 But before any client can even do that, you need to tell the game to create these RCO instances when a player spawns.
 You simply need to register your RCO class by calling the `AFGGameMode::RegisterRemoteCallObjectClass` function.
-CSS reccomends to call this function in `AFGGameMode::PostLogin` when `AFGGameMode::IsMainMenuGameMode` returns false and the game instance has authority of the game mode (if it is host).
+CSS recommends to call this function in `AFGGameMode::PostLogin` when `AFGGameMode::IsMainMenuGameMode` returns false and the game instance has authority of the game mode (if it is host).
 But it should also be fine to call it on server one time before it could get used by something.
 
-Here is a example C++ code we use in the StartupModule function to register a RCO:
+Here is some example C++ code we use in the StartupModule function to register a RCO:
 
 [source,c++]
 ----
@@ -50,9 +49,8 @@ SUBSCRIBE_METHOD("?PostLogin@AFGGameMode@@UEAAXPEAVAPlayerController@@@Z", AFGGa
 The RCO itself just needs to derive from `FGRemoteCallObject` and then contains the RPCs
 you want to be able to call as client.
 
-If you directly just try it,
-it still wont work because unreal is weird and we still need to do one more thing.
-You will need to any kind of `UPROPERTY` to the RCO, wich is replicated.
+If you were to try this as is, it still won't work because Unreal is weird and we still need to do one more thing.
+You will need to add any kind of `UPROPERTY` to the RCO, which is replicated.
 That also means you need to add it to the `GetLifetimeReplicatedProps` function.
 This property just needs to exist, you don't need to do anything with it.
 
@@ -74,11 +72,11 @@ public:
 ----
 
 The parameters of the RPC are just examples, but most of the time you actually want to pass one context parameter so you can change the state of the given context.
-f.e. with this function we might allow the GUI to be able to reset the counter of the machine passed.
-without the context it wont be able to know of wich machine it shoudl reset the counter.
+With this example function we might allow the GUI to be able to reset the counter of the machine passed.
+Without the context it won't be able to know of which machine it should reset the counter of.
 
-We don't care about the implementation of the RPC cause thats just completely up to you,
-but is a short example for the `GetLifetimeReplicatedProps` function.
+The implementation of the RPC is not covered in this tutorial because that's completely up to you to decide,
+but below is a short example for the `GetLifetimeReplicatedProps` function.
 
 [source,c++]
 ----
@@ -89,20 +87,18 @@ void UDocModRCO::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifeti
 }
 ----
 
-Now in the GUI or where every you need to call the RPC,
-you can just get the first player controller of the world
-and then call the `AFGPlayerController::GetRemoteCallObjectByClass` function
-and pass the class of your RCO to get the instance of the RCO for the client.
+Now in the GUI or wherever you need to call the RPC, you can just get the first player controller of the world
+and then call the `AFGPlayerController::GetRemoteCallObjectByClass` function and pass the class of your RCO to get the instance of the RCO for the client.
 
 Here is a example calling the RPC in C++:
 
 [source,c++]
 ----
-ADocMachine* machine = GetMachine(); // we just get from somewere the context object
-UWorld* world = machine->GetWorld(); // just get the world from anywere like a world context
+ADocMachine* machine = GetMachine(); // get the context object from somewhere 
+UWorld* world = machine->GetWorld(); // get the world context from anywhere, like a world 
 UDocModRCO* rco = Cast<AFGPlayerController>(world->GetFirstPlayerController())->GetRemoteCallObjectByClass(UDocModRCO::StaticClass()); // get the RCO instance from the player controller
 rco->SetSomeStuffOfTheDocMachineRPC(machine, false); // call the RPC of the RCO
 ----
 
 You might also want check if `AFGPlayerController::GetRemoteCallObjectByClass` actually returns something.
-This might happen, that it returns nothing (nullptr), when f.e. the RCO is not registered yet.
+If it returns nothing (nullptr) under various conditions, such as when the RCO is not registered yet.
