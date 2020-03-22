@@ -1,18 +1,25 @@
 = Mod-Init
 
-Like everything, a mod has a start where everything else gets invoked.
-In our case this the InitMod-Actor from SPL. That dude will implement
-events which get in the world-bootup called.
+Our mod must has a starting point from which everything else gets invoked. If we don't have one, then the mod's content will never be added to the game during loading.
+In our case this the `InitMod`-Actor from SPL. That dude will implement events which get in the world-bootup called.
+
+== Initial Mod Setup
+
+To keep your folder structure organized, let's create a folder where all
+of your mod content will go. This folder will have the name of your mod as the name, and for this tutorial, we'll use the name "DocMod" as an example.
+
+Create a folder, for example,`+Content/DocMod+`, to serve as
+your mod-project-root. All of the assets for our mod will go in this
+folder and will be turned into a pak when we're done.
 
 == Create the Actor
 
-First of all, we need to create the proper path for the actor. That one
-depends on the mod name, specifically on the name of the pak we will
-provide. Our mod name will be `+Doc Mod+` and the pak file name will be
-`DocMod_p.pak` that means we need to create a folder in the UE asset
-root with our name. So we create the folder
-`Content/DocMod`. And finally in there you now just need to add a new Actor called `InitMod` of type `SMLInitMod`.
+First of all, we need to create the proper path for the actor. The path for the actor will
+depend on the mod name, specifically on the name of the pak we will
+provide to the end user. Our mod name will be `+DocMod+` and the pak file name will be
+`DocMod_p.pak`, so we need to create a folder in the UE asset
+root with that name. So we create the folder `Content/DocMod`, and within it a new Actor called `InitMod` of type `SMLInitMod`.
 
 image:BeginnersGuide/simpleMod/CreateInitMod.gif[image]
 
-Done, now you will be able to register recipes and other stuff in here.
+Done! Now you will be able to register recipes and other stuff from here.
