@@ -65,11 +65,13 @@ You can do this by opening the `/Source/FactoryGame.Target.cs` and replace
 to tell UBT you want to get your module compiled into the final game/mod.
 And now do the same for `/Source/FactoryGameEditor.Target.cs` to tell UBT to compile and use your module in the editor. Without doing this, you would not be able to use f.e. `BlueprintCallable` reflected methods in BP scripts.
 
-== Project Compilation
+== Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-To do this, you'll need to run a command, unless you already have another version of Unreal Engine installed. If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`. Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
+To do this, you'll need to run a command, unless you already have another version of Unreal Engine installed. If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`.  Go ahead and skip down to the xref:#_project_compilation[next section] if this works for you.
+
+Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
 
 `"<path to your Unreal build tool here (it installed with the custom editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress`
 
@@ -86,6 +88,8 @@ The above command will not work if you copy paste it - you'll need to modify it 
 ====
 Make sure you run the above command from Command Prompt and not Powershell. It is not correctly formatted for Powershell.
 ====
+
+== Project Compilation
 
 You'll want to compile the project now to ensure it generates correctly and that it includes your custom module (if you wrote one).
 
