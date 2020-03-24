@@ -1,0 +1,75 @@
+= Uploading your mod to Satisfactory Mod Repository (ficsit.app)
+
+Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
+Mods uploaded to SMR will automatically work with the xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager]. All mods available to SMR are checked
+for potential security concern, so having your mod on SMR means that users can trust that it is secure.
+
+The process of uploading your mod is fairly straightforward. First, sign into SMR with an existing Github, Google, or Facebook account. 
+
+== Creating Your Mod Page
+
+Before you can upload a version of your mod for users to download, you'll have to create the mod page and get it approved first. 
+
+On the front page of SMR, click `New Mod` in the top right corner to get started. 
+
+Provide a name, short description, and long description for your mod. The name is the title that will appear in the mod list and browser. The short description is the summary text that will show up below the mod icon. The long description supports Markdown formatting (help on the https://ficsit.app/help[help page]) and is shown when the user clicks to 'View' your mod. You can edit all of these later.
+
+Next, you can upload an image to use as the display image for your mod, and a link to your source code if it is hosted on a site like GitHub or similar.
+
+Once you click Submit, your mod will be submitted for approval. The approval process is generally quite quick, and exists to make sure that users aren't uploading content that violates SMR's terms and conditions.
+
+== Data.json Format
+
+While you wait for your mod to be approved, you can start working on the files you'll need to upload the first version of your mod to SMR.
+
+SMR requires you to include an additional file with your mod to provide some additional info.
+This file will come in the form of a `.json` that is zipped together with your mod pak file.
+
+You can see an example of a completed data.json https://ficsit.app/help[here].
+You can also paste your data.json into the box on the right of that same page, 
+which will help you identify errors with your json before you attempt to upload it.
+
+Below is a quick explanation of the fields and what they do.
+
+[cols="1,4a"]
+|===
+|Parameter |Description of Function
+
+|mod_id
+|
+
+|mod_reference
+|
+
+|name
+| The name of your mod
+
+|version
+| Version number for the mod. Should always increase with new releases.
+
+|sml_version
+| Version number of SML required to run the mod. Players are allowed to use newer versions than the number you specify, but not older versions.
+
+|description
+| A short description of the mod
+
+|authors
+| A list of authors and contributors to the mod
+
+|objects
+| A manifest of all files within the zip. See the example for formatting.
+
+|dependencies
+| Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
+
+|optional_dependencies
+|
+
+
+|===
+
+When you update a new version of your mod in the future, the only thing in `data.json` that you'll need to change is likely the `version` number. 
+
+== Uploading a Version
+
+
