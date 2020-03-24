@@ -67,7 +67,7 @@ This means,
 when you have information you want to keep between game sessions, you should implement `IFGSaveInterface`
 and return on `ShouldSave` true.
 
-[Warning]
+[WARNING]
 ====
 `FGBuildable` implements `IFGSaveInterface` already, but it doesn't return true in `ShouldSave`,
 so please make sure you overwrite the function and return true.
@@ -84,15 +84,14 @@ In the first step the UMap gets loaded and unserialized to the UWorld
 that means this doesn't load the save game, just the by CSS predefined map)
 
 After that the save game gets loaded.
-The seccond step now spawns all additional actors into the world.
+The second step now spawns all additional actors into the world.
 So their constructors get executed and those create now subobjects like actor components, attributes, etc.
 
 The third step is to load the saved variable values.
-It sets the values of the newley spawned actors but also of the subobject of them and even the already
-existent actors in the world.
+It sets the values of the newly spawned actors, their subjects, and the some of the existing actors in the world.
 
 Now as the forth and last step all the begin play functions get called and the components and actors start to tick.
 
-With that, the save game got loaded.
+The save game is now loaded and ready to play.
 
-In this whole process some functions of the IFGSaveInterface might got called to additonally inform the actors of the different load states and for custom serialization.
+During this process some functions of the `IFGSaveInterface` might get called to additionally inform the actors of the different load states and for custom serialization.
