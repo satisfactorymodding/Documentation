@@ -10,7 +10,7 @@ Making use of the standard material (`MI_Factory_Base_01`) used by SF is the eas
 To use it, make your models pull their colors from this material file.
 
 It gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. You can find it in the content browser under
-`+Content/FactoryGame/-Shared/Material+`.
+`+Content/FactoryGame/-Shared/Material+`. If you don't see it there, you can create another material with the same name in the same location and the game will override it on launch.
 
 This material also implements multiple other surface materials you can use. It works as an atlas map.
 

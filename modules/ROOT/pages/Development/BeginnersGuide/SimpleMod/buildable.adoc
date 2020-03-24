@@ -14,7 +14,7 @@ Next, create the actor class of type `FGBuildable` with f.e. the name "Build_Doc
 This is the actual building object in which the model and factory logic are defined, among other things.
 
 Now we need to populate the buildable description by simply filling the default values.
-Leave `M Hologram Class` at None because the `FGBuildable` will automatically find the needed value by itself,
+Set `M Hologram Class` to `FGBuildableHologram`, which will cause the `FGBuildable` to automatically find the hologram by itself,
 fill `M Display Name` with something like "Doc Buildable"
 and `M Description` with "An example building that showcases the MI_Factory_Base_01 material.".
 
@@ -46,7 +46,7 @@ xref:Development/Satisfactory/Paintable.adoc[Paintable concept page].
 == Adding the Descriptor
 
 The descriptor we need for buildables is `FGBuildingDescriptor`
-wich is very similar to the `FGItemDescriptor` (it even derives from it)
+which is very similar to the `FGItemDescriptor` (it even derives from it)
 but with some simple additions: a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor)
 and some Build-Category stuff that you can set up as you see fit.
 
