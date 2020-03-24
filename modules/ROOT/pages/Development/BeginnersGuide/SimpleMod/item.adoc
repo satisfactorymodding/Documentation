@@ -1,26 +1,23 @@
-= Create an item
+= Create an Item
 
-Now that you created a custom recipe and schematic, you might want to
-create a custom Item. For this, we need an Idea what name the item
-should have, how it should look like and stuff like that. We decided to
-make a new ingot called 'Doc Ingot'.
+Now that you've created a custom recipe and schematic, you might want to
+create a custom Item. For this tutorial, we'll make an item named 'Doc Item'.
 
 == Creating the BP-Class
 
-The item system is a bit special but overall we simply just need to
+The item system is a bit complex, but to summarize it, we simply need to
 describe our item in a xref::/Development/Satisfactory/Inventory.adoc#_item_descriptor_afgitemdescriptor[FGItemDescriptor] class.
-To create it go to the content browser in the unreal editor.
-Go to the Mod-Root and create a new folder and call it f.e. "Items".
+To create it, go to the content browser in the Unreal editor.
+Go to the Mod-Root and create a new folder and call it "Items" to keep with our organization pattern so far.
 Then create a new BlueprintClass of type `FGItemDescriptor` in it.
-Call it what ever you want, but we will call it `+Desc_DocItem+`
-("Desc" stands for descriptor).
+We will call it `+Desc_DocItem+` to follow Unreal's naming convention ("Desc" stands for descriptor).
 
 image:BeginnersGuide/simpleMod/CreateDocItem.gif[image]
 
 == Describe the Item
 
-Now open the class and you should see the default settings of the
-classes attributes. If not, just click on "Default Settings" and they
+Open the class and you should see the default settings of the
+classes' attributes. If not, just click on "Default Settings" and they
 should appear in the settings browser of the class editor. In here you
 will find multiple attributes with the different properties such an Item
 can have.
@@ -34,65 +31,59 @@ M Use Display Name and Description::
 * {blank}
 +
 M Display Name::
-  Set this to "Doc Item" so that the item gets called like that ingame.
+  The item's name in game. We'll set this to "Doc Item".
 * {blank}
 +
 M Description::
-  This should get set to a simple description of the item. In our case,
+  Set this to a simple description of the item. In our case,
   we use the text "This is the starter Item of the SFM-Doc."
 * {blank}
 +
 M Stack Size::
-  Set this to f.e. Big, this is just a simple description of how big you
-  should be able to stack this item.
+  Satisfactory has hardcoded item stack sizes. Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 100,000 (Fluid). Go ahead and pick one as you see fit.
 * {blank}
 +
-M Can get Discarded::
-  Uncheck it so that you can't throw the item into the trashcan
-  because FicsIt does not waste.
+M Can be Discarded::
+  Self explanatory. We'll uncheck it so that you can't throw the item into the trashcan. Ficsit does not waste.
 * {blank}
 +
 M Energy Value::
-  Our item is not organic, so it shouldn't be able to get burned in any
-  generator. This value describes how much energy this item should
-  release if it gets burned in a generator. And so we use 0.0 for that
-  value.
+  This value describes how much energy this item should release if it gets burned in a generator. 
+  Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any
+  generator, so we'll use 0.0 for that value.
 * {blank}
 +
 M Radioactive Decay::
-  I don't think that your Item is so exciting that it should emit
-  radioactivity, so we set this value to 0.0 because it describes how
-  radioactive this item should be.
+  If set to a value greater than 0, the item will cause the player to take radiation damage. We'll leave this at 0 for ease of testing our mod. Values should not be greater than 1.
 * {blank}
 +
 M Conveyor Mesh::
   As we know, an item is 3-Dimensional so we need a 3D-model for the
   item how it should look if it gets transported on a conveyor belt. We
-  have an example model link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocItem.fbx[here].
-  Make sure that you check both "Used with Spline Meshes" and "Used
-  with Instanced Static Meshes" for each of the model's materials or
-  the textures won't appear in the game.
+  have an example model you can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocItem.fbx[here]. Import this the same way you imported the category image in the Recipe vs Schematic tutorial.
+  Make sure that you edit each of the materials that were imported with the model and mark both "Used with Spline Meshes" and "Used
+  with Instanced Static Meshes" in the `Details` -> `Usage` pane for each material. If you don't do this, the textures won't appear correctly in the game.
 * {blank}
 +
 M Item Category::
   This groups the item into a category, we don't need this so we leave
-  it on "None" and so the item gets categorized under "Other".
+  it on "None", resulting in the item being categorized under "Other" ingame.
 * {blank}
 +
 M Small Icon::
   This is a simple texture image of the object used f.e. in the
   inventory to visualize what the given stack is. We have an image ready
-  for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
+  for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here]. When using your own models, 
+  you can follow the tutorial xref:Development/BeginnersGuide/SimpleMod/generating_icons.adoc[here] to generate icons that look like the ones in game.
 * {blank}
 +
 M Big Icon::
-  This is the same as the small icon but, bigger.
+  This is the same as the small icon but can be higher resolution. Let's just use the same icon file as before for simplicity.
 
-== Make the item available
+== Make the Item Available
 
 The item is available to the user when it gets loaded at least once.
-Because of Unreal loads assets just in time, we somehow need to force
-the asset to get loaded. And we can simply do that when our item gets
-used in a Recipe and this also allows the user to somehow get the item.
-So just change the outcome of our already created recipe to this
-item. And you're done.
+Because Unreal loads assets with a just in time method, we somehow need to force
+the asset to be loaded. One way we can do that is by having our item used in a Recipe. 
+Conveniently, we're already planning to have the item be usable in a recipe so that the player can obtain it.
+Change the outcome of our already created recipe to this new item, or create a new recipe for it if you'd like to practice that. And you're done! Go ahead and Alpakit and check out your fancy new item in game.
