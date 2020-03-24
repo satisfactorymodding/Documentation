@@ -25,7 +25,7 @@
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
-*** xref:Development/Satisfactory/Crafting.adoc[Crafting]
+*** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]

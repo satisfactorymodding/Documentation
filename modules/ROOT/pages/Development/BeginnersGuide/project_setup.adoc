@@ -135,4 +135,9 @@ You shouldn't need to configure any Overwrite Paths for now.
 Alpakit automatically copies the `+.sig+` files and the `+.pak+` files to your SF installation, in addition to cooking and paking the files as needed.
 ====
 
+== Enable SML Developer Mode
+
+You'll need to change one of the SML config settings to make SML load with your mod while you're developing it. 
+Go to your Satisfactory install folder and edit `SML.cfg` within the `configs` folder. Set `developmentMode` to true, then save and close the file.
+
 That should be it. Your mod project should now be set up and ready to go.
