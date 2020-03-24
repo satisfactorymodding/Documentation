@@ -6,10 +6,10 @@ items and types of items that pass through it, outputting them again on the othe
 == Create the machine
 
 Creating a simple machine is fairly straightforward. First of all,
-you'll need to create again a xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable]
-with descriptor and recipe, but this time use f.e.
-link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_SimpleMachine.fbx[this] as the mesh and
-link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] as icon.
+you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable]
+with descriptor and recipe, but this time use 
+link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_SimpleMachine.fbx[this] (TODO make this mesh) as the mesh and
+link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TODO make this icon) as icon so that it looks a bit more like a machine.
 
 Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors]
 (conveyor input and outputs).
