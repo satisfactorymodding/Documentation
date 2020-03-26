@@ -2,6 +2,7 @@
 * xref:SMLConfiguration.adoc[SML Configuration]
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
+* xref:UploadToSMR.adoc[Uploading to SMR]
 * xref:Development/index.adoc[Development]
 
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
