@@ -24,8 +24,8 @@ project gets completely closed, also all other windows.
 image:UnrealEditor/MainViewport.jpg[image]
 
 The viewport is simply a preview of the map, where you can place and
-manipulate a world. Cuz we do not have SF world we can't use it there,
-that means the viewport is more or less useless to us.
+manipulate a world. We don't have access to the Satisfactory map source files like Coffee Stain does,
+so this viewport is more or less useless to us. Our work will take place mainly in other windows.
 
 == Tool-Bar
 
@@ -34,15 +34,15 @@ image:UnrealEditor/MainToolBar.jpg[image]
 The tool-bar is a strongly simplified version of the menubar and is icon
 base, but its the only place where you can find the access to the
 `+Alpakit+` window. The Tool-bar contains mainly shortcuts for the
-project settings, c++ building and source control, the rest ist mostly
-not useful without a map.
+project settings, c++ building and source control, the remaining features are mostly
+not useful without a map as mentioned above in the Viewport section.
 
 == Outliner
 
 image:UnrealEditor/MainOutliner.jpg[image]
 
-The outliner is here again pretty useless because it simply contains the
-list of placed objects in the world.
+The outliner is here again pretty useless because it contains the
+list of placed objects in the world, and again, we don't have the map files.
 
 == Modes
 
@@ -58,7 +58,7 @@ image:UnrealEditor/MainContentBrowser.jpg[image]
 
 Finally a very very useful and important view. This view is simply a
 file browser for all contents of your mod project and SF/UE source like
-C++ classes.
+C++ classes, models and textures, etc.
 
 In the left half, you can see a tree structure based folder explorer
 where you can select a folder which contents get the displayed on the
