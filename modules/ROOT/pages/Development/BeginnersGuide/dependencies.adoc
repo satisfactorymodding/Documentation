@@ -1,0 +1,84 @@
+
+= Dependencies
+
+To get started with modding Satisfactory, you'll need multiple other pieces of software installed first.
+
+Don't worry, we'll guide you through each step of downloading and installing these dependencies.
+
+This can be a very lengthy process, so if you have to work on something else, make a note of where you left off so it's easier to resume.
+
+[TIP]
+====
+If you'd prefer a different format of guide, you can find a video guide https://www.youtube.com/watch?v=-HVw6-3Awqs[here]. Do note that the video guide may be out of date compared to the steps listed here.
+====
+
+== Satisfactory
+
+This one should be pretty straightforward, and odds are, you've already done it. Simply buy, download, and install
+Satisfactory from the Epic Games Launcher. Launch the game at least once to ensure all
+files get set up correctly.
+
+== Visual Studio
+
+Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
+and download the version you want. We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge.
+
+Run the installer, and agree to prompts you receive along the way. Select the packages "C++ Desktop development"
+and "Game development with C++". You might have to scroll a bit to find them.
+
+If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
+
+Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
+
+== Unreal Engine 4 (Custom Engine)
+
+Because Satisfactory uses a modified version of Unreal Engine, we modders need to be using that same version as well to develop our mods.
+
+You'll need to register your GitHub account with Epic Games to be able to download this special version. Directions on how to do so can be found https://www.unrealengine.com/en-US/ue4-on-github[here].
+
+If the page says, "Sorry, the service is temporarily unavailable. Please try back later." try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
+
+Once you've done that, go to the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project] and download `UnrealEngine-CSS-Editor-Win64.exe`, then run it to install the Unreal Engine editor for this custom version.
+
++++ <details><summary> +++
+(Optional reading) More info about the custom version:
++++ </summary><div> +++
+You'll notice that the custom unreal engine version is actually built by the developers of SML.
+The way SML 2.0 is written allows modders to do almost anything Coffee Stain Studios developers can to the game. Unfortunately, to get this working, SML developers must build a custom version of Unreal Engine on top of writing all of the SML code. People writing mods don't have to compile the whole engine themselves, thankfully, since they can just use versions built by the SML developers.
+But a more important point for is that we need to compile the native code dynamically.
+Coffee Stain Studios does not which causes quite some limitations.
+The bootstrapper here is now use to hook the dynamic linker and use the by CSS provided `.pdb`
+to link the monolithic built game and our dynamic build mods.
+The custom engine for modding has also some other changes needed to workaround some technical limitations.
+
+Most of the time you just simply use the latest version.
++++ </div></details> +++
+
+This install process, and opening Unreal for the first time afterwards, can take some time.
+
+Once the installer is done, you'll also need to install a visual studio extension shipped with the editor. Navigate to where you installed the editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal visual studio extension, which will help with debugging.
+
+== Wwise
+
+Wwise is a sound engine used by Coffee Stain, and in order to develop mods, you'll need to install and integrate Wwise with your mod project.
+
+Visit https://wwise.com/[Wwise.com] and click on the `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner. Click the download button, which will ask you to sing in. Create an account if you don't have one yet, or sign in, to download the launcher. After you finished downloading Wwise, open the installer.
+
+Select `WWISE` from the top bar, and select version `2019.1.7.7135` (you might need to change the left dropdown to `All` to do this), then press `Install`. Once presented with options on what to install, make sure that `Authoring` and `SDK (C++)` packages are checked on the left, and that `Apple` -> `MacOS` and `Microsoft` -> `Windows` -> `Visual Studio 2015` and `Visual Studio 2017` are selected, then press `Next`. You don't need to add any plugins, so just press `Install` to skip in the bottom left to begin the installation process. Accept any authentication prompts that appear along the way.
+
+[WARNING]
+====
+Make sure that you selected the correct version of Wwise. It's easy to choose the wrong version on accident.
+====
+
+== Starter Project
+
+To get started developing your mod, it's best to start off with the Starter Project as a base. You can download it from https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[here]. Download `SML-Shipping-Dev-Win64.zip` from the latest release version and unzip it. The starter project is contained in `FactoryGame.uproject`.
+
+== Satisfactory Mod Loader and Bootstrapper
+
+xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager] offers a convenient developer mode that automatically installs the correct version of SML and the bootstrapper for you. To enable it, use `For Mod Developers` -> `Toggle SML always installed`. If you're using Satisfactory Mod Manager, you can skip the below steps and move on to the next page of the tutorial. 
+
+If you're not using the launcher, you'll need to obtain https://github.com/SatisfactoryModding/SatisfactoryModBootstrapper/releases[xinput1_3.dll and msdia140.dll] (bootstrapper and a dependency of it) and put them in your `FactoryGame/Binaries/Win64/` folder (the game install directory). Additionally, you have to obtain https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[the mod loader itself] and put it in `/loaders/`. You'll also have to manually update all three of these as new releases come out, and manually remove them if you wish to disable mods.
+
+Because you probably don't want to create a proper .zip file for you mod when you test it, then you should just simply activate the xref:ManualInstallDirections.adoc#_installing_raw_or_wip_mods[development mode] allowing for usage of raw mods.

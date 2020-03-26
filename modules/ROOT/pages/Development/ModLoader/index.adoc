@@ -1,0 +1,19 @@
+= SML
+
+The Satisfactory Mod Loader provides framework for all the stuff you as modder might encounter
+but unreal doesn't provide help with.
+
+== Mod "Types"
+
+There are two main ways to load a mod into a game, each of those
+variants have there advantages and disadvantages.
+
+* {blank}
+.dll (C++) Mods::
+  `.dll` s are written in C++ and provide deep access to the
+  Satisfactory runtime and the logic written in there is extremely fast.
++
+* {blank}
+Pak Mods::
+  Paks are archives with classical assets like meshes, sounds and more.
+  SML also provides the SPL so you could make a mod without any C++ coding.

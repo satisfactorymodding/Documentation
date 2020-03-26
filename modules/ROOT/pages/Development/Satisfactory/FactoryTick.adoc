@@ -1,0 +1,39 @@
+= Factory Tick
+
+As you may be aware, Coffee Stain Studios added parallelization (aka. Multithreading) in Update 3.
+
+This system relies on the Factory Tick to function.
+
+The Factory Tick is a special function executed nearly every factory processing cycle.
+These ticks allow factory machines to process stuff, transfer items, generate power, etc. when Unreal Engine would normally tell them to sleep because they're far away from the player.
+Note that CSS _could_ create multiple threads for processing all of the machines ticks, therefore allowing to get processed by multiple different CPU cores. Without further work on the feature, however, this wouldn't work out well since there would be lots of synchronization issues.
+
+[WARNING]
+====
+Factory Tick processing doesn't only happen on newly created threads.
+Some of the ticks (the load balancer decides which buildings tick on which thread) happen on the main thread.
+And the main thread is actually the thread were most of the game play happens.
+The main thread f.e. handles input, rendering, physics updates, etc.
+Because of this, many unreal engine functions implement a system to make sure they get executed on the main thread. An example of one of these functions is `AActor::SetVisibility`, which can only get executed in the main thread.
+
+This means that, if you do call this function from within a Factory Tick, it could at first look like it's working, but if you wait, and the load balancer decides to execute your Factory Tick on a different thread, the game could actually crash.
+
+As such, you should not call these special functions from Factory Ticks. Instead, restructure your code so that it can be performed from the main thread.
+====
+
+The factory ticks get processed in multiple threads, and these get created at sometime in the Main Game Loop. When they get executed, only the factory ticks get executed at that time span, nothing else.
+No rendering, no inputs, no nothing. But multiple ticks at the same time.
+
+That means, you can be sure that the changes you do in the factory tick, will be done before anything else except the factory , get executed (like visual updates or the "normal" Unreal Engine ticks).
+
+[WARNING]
+====
+This doesn't mean that you can just ignore thread safety!
+That means that you need to make sure your tick doesn't write to memory, since another Factory Tick could read at the same time.
+This won't happen too often in most cases, but it's always good to know about this, so please do some research about thread safety.
+
+This is also a reason why you should not use Blueprint coding for the Factory Tick!
+In Blueprints, you might not know what is exactly safe to do and what not, and it's unclear or unlabeled most of the time. If you were to just forget about it, bad things are bound to happen.
+
+In C++ you can implement multithreading solutions such as mutexes to still write to memory other threads might want to read from/write to at the same time, which is why it is suggested you write Factory Tick related code there.
+====

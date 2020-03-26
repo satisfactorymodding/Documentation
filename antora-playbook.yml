@@ -12,7 +12,7 @@ content:
   sources:
     ## Used for prod
     - url: https://github.com/satisfactorymodding/Documentation.git
-      branches: master
+      branches: master, v1.0.2
       edit_url: '{web_url}/blob/{refname}/{path}'
     
     ## Used for dev

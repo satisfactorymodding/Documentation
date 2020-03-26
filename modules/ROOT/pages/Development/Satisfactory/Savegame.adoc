@@ -1,0 +1,97 @@
+= Save Game
+
+Save Games are crucial for keeping state information of machines and such between game sessions.
+The save games contain information about stuff like what items are in your inventory.
+Normally Satisfactory saves the current game state periodically every 5 minutes as an autosave.
+And, of course, you can save the game state yourself by pressing the Save button in game.
+
+You can find your save files in `%localappdata%/FactoryGame/Saved/SaveGames/`
+
+But what actually happens when you push this magical "Save" button?
+
+== How is the game state saved?
+
+Saving the game state is, in a nutshell, pretty easy.
+You just simply iterate over all objects in the world
+and convert them to data you can write to a file, like a string.
+
+Unreal converts its objects to a string which is json formatted.
+
+This process of converting a `UObject` to this json string is called serialization.
+
+The complicated part about saving is optimizing it.
+For Satisfactory, it makes absolutely no sense to serialize every god damn object there is in the world.
+Because some of them get automatically spawned on the game boot up
+or they don't contain information that actually needs to get saved.
+F.e. we don't store every tree in the game to the save file, but what we actually do is,
+when the player removes a tree by cutting it down, we store the information that the tree is not there any more.
+Basically, exactly the opposite, we store that there is no information.
+We also don't care about the terrain because the user can't change it, and so, it is always the same
+so we don't need to serialize it.
+Think about how much bigger save files would be if the game had to store 'yes, this is here' for every single tree, bush, rock, etc. 
+Instead, that sort of information is saved in the world map file that Satisfactory uses for every save game.
+A constructor, on the other hand, is not placed directly on boot up of the game. It's placed by the player, and can have any number of settings, 
+so we need to store information about it and its settings in the game state.
+
+Also, Actors (such as machines) generally consist of multiple components, some of which we want to store in the save, some of which we don't.
+We'd want to save a UFGInventoryComponent, for example, but we don't care about a StaticMesh because it always gets created in runtime and is the same between all machines of that type.
+
+== The SaveGame UProperty Flag
+
+Not all attributes of a object get serialized,
+only UProperties marked with the `SaveGame`-Flag get actually serialized.
+
+When working with Blueprints you can add this flag by opening the advanced property settings and checking the `SaveGame` box.
+
+When working with C++ you should follow the directions below for using `IFGSaveInterface`.
+
+[WARNING]
+====
+Make sure you have not set the `SkipSerialization` flag on the property or the object.
+This would end in the save system wanting to save but the Unreal serializer just ignoring your data.
+
+But by default, it shouldn't be set.
+====
+
+== The IFGSaveInterface
+
+The save system of Satisfactory uses the IFGSaveInterface to filter now between objects we need to save,
+and objects we don't need to save.
+
+On of the most important functions is the `bool ShouldSave() const` function,
+which returns true when the object should get saved.
+This can be dependent on the sate of the object, like the trees.
+The trees only return true if they are actually chopped down ingame.
+
+This means,
+when you have information you want to keep between game sessions, you should implement `IFGSaveInterface`
+and return on `ShouldSave` true.
+
+[WARNING]
+====
+`FGBuildable` implements `IFGSaveInterface` already, but it doesn't return true in `ShouldSave`,
+so please make sure you overwrite the function and return true.
+====
+
+All of the other functions allow you to further customize the serialization and filter process
+when the save state gets stored or loaded.
+
+== Loading a Save Game
+
+When a save game gets loaded, it goes through multiple steps until the player is allowed to play on the map again.
+In the first step the UMap gets loaded and unserialized to the UWorld
+(this unserialization happens because the map is also just a serialized world,
+that means this doesn't load the save game, just the by CSS predefined map)
+
+After that the save game gets loaded.
+The second step now spawns all additional actors into the world.
+So their constructors get executed and those create now subobjects like actor components, attributes, etc.
+
+The third step is to load the saved variable values.
+It sets the values of the newly spawned actors, their subjects, and the some of the existing actors in the world.
+
+Now as the forth and last step all the begin play functions get called and the components and actors start to tick.
+
+The save game is now loaded and ready to play.
+
+During this process some functions of the `IFGSaveInterface` might get called to additionally inform the actors of the different load states and for custom serialization.
