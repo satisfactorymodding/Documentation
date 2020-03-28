@@ -15,7 +15,8 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
-*** xref:Development/BeginnersGuide/SimpleMod/generating_icons.adoc[Generating Icon Images]
+*** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
+*** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Vanilla Content]
 
 ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
 *** xref:Development/UnrealEngine/Code.adoc[Code]
