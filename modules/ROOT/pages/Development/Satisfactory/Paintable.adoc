@@ -13,7 +13,9 @@ image:https://puu.sh/FqmRX/e4368f7a35.png[example1]
 
 image:https://cdn.discordapp.com/attachments/693305049534955581/693719977865510952/unknown.png[example2]
 
-An example mesh that does this is is presented on the xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial page].
+An example mesh that does this is is presented on the xref:Development/BeginnersGuide/SimpleMod/buildable.adoc#_make_it_paintable[Buildable tutorial page].
+
+Learning how to UV map is outside of the scope of this documentation. You can find information on how to edit the UV mappings of your model by searching "<your 3D model editor of choice here> uv mapping tutorial" online, for example "blender UV mapping tutorial".
 
 It gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. You can find it in the content browser under
 `+Content/FactoryGame/-Shared/Material+`. If you don't see it there, you can create another material with the same name in the same location and the game will override it on launch.
@@ -22,13 +24,12 @@ This material also implements multiple other surface materials (that don't get c
 
 image:Satisfactory/MI_Factory_Base_01.png[image]
 
-Once you have brought your model into Unreal Engine, you must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. If this does not exist, create a placeholder material in its place and it will point to the correct texture within the game. 
+Once you have brought your model into Unreal Engine, you must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. Again, if this does not exist, create a placeholder material in its place and it will point to the correct texture within the game. 
 
 [WARNING]
 ====
 More than one `MI_Factory_Base_01` material may appear in your search. Make sure you select the one located at `/Game/FactoryGame/-Shared/Material`. Hover over it in the picker to check the path.
 ====
-
 
 Do note that when placing things with the Build Gun they are always given the `MI_Factory_Base_01` material in the preview hologram. If the hologram shows the correct texture but your placed object does not, you still do not have your object configured correctly.
 
