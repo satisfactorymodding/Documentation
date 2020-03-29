@@ -7,14 +7,30 @@ the standard way, or create your own implementation.
 
 Making use of the standard material (`MI_Factory_Base_01`) used by SF is the easiest way to make your models paintable.
 
-To use it, make your models pull their colors from this material file.
+To use it, make your models pull their colors from this material file. To do this, make the UV maps of your models line up with certain regions of the texture so that they gain their color. Here are 2 examples of what this would look like in practice: 
+
+image:https://puu.sh/FqmRX/e4368f7a35.png[example1]
+
+image:https://cdn.discordapp.com/attachments/693305049534955581/693719977865510952/unknown.png[example2]
+
+An example mesh that does this is is presented on the xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial page].
 
 It gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. You can find it in the content browser under
 `+Content/FactoryGame/-Shared/Material+`. If you don't see it there, you can create another material with the same name in the same location and the game will override it on launch.
 
-This material also implements multiple other surface materials you can use. It works as an atlas map.
+This material also implements multiple other surface materials (that don't get changed by the paint gun) that you can use. It works as an atlas map.
 
 image:Satisfactory/MI_Factory_Base_01.png[image]
+
+Once you have brought your model into Unreal Engine, you must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. If this does not exist, create a placeholder material in its place and it will point to the correct texture within the game. 
+
+[WARNING]
+====
+More than one `MI_Factory_Base_01` material may appear in your search. Make sure you select the one located at `/Game/FactoryGame/-Shared/Material`. Hover over it in the picker to check the path.
+====
+
+
+Do note that when placing things with the Build Gun they are always given the `MI_Factory_Base_01` material in the preview hologram. If the hologram shows the correct texture but your placed object does not, you still do not have your object configured correctly.
 
 == Custom implementation
 
