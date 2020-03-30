@@ -47,13 +47,15 @@ xref:Development/Satisfactory/Paintable.adoc[Paintable concept page].
 
 == Adding the Descriptor
 
-The descriptor we need for buildables is `FGBuildingDescriptor`
-which is very similar to the `FGItemDescriptor` (it even derives from it)
-but with some simple additions: a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor)
+Similar to how we created a descriptor for our item, we now need to create one for our buildable of type `FGBuildingDescriptor`.
+
+Simply add a new BP-Class of type `FGBuildingDescriptor` to the same folder as the buildable itself
+and call it f.e. "Desc_DocBuild".
+
+The building descriptor is very similar to the item descriptor - it even derives from it. It comes with a few extra fields, such as a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor)
 and some Build-Category stuff that you can set up as you see fit.
 
-In our case simply add a new BP-Class of type `FGBuildingDescriptor` to the same folder as the buildable itself
-and call it f.e. "Desc_DocBuild". You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
+Just like our item, it requires an icon file. You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
 
 [IMPORTANT]
 ====
