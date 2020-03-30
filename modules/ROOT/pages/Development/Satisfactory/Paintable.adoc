@@ -5,9 +5,13 @@ the standard way, or create your own implementation.
 
 == Standard Material
 
-Making use of the standard material (`MI_Factory_Base_01`) used by SF is the easiest way to make your models paintable.
+Making use of the standard material (`MI_Factory_Base_01`) used by Satisfactory is the easiest way to make your models paintable.
 
-To use it, make your models pull their colors from this material file. To do this, make the UV maps of your models line up with certain regions of the texture so that they gain their color. Here are 2 examples of what this would look like in practice: 
+This material also implements multiple other surface materials (that don't get changed by the paint gun) that you can use. It works based off a system called a https://en.wikipedia.org/wiki/Texture_atlas[texture atlas], in which multiple textures are present in a single texture file.
+
+image:Satisfactory/MI_Factory_Base_01.png[image]
+
+To make use of this material, make the parts of your models that you want to use these textures pull from this material file. To do this, make the UV maps of your models line up with the region of the texture atlas with the texture you want. Here are 2 examples of what this would look like in practice: 
 
 image:https://puu.sh/FqmRX/e4368f7a35.png[example1]
 
@@ -17,12 +21,9 @@ An example mesh that does this is is presented on the xref:Development/Beginners
 
 Learning how to UV map is outside of the scope of this documentation. You can find information on how to edit the UV mappings of your model by searching "<your 3D model editor of choice here> uv mapping tutorial" online, for example "blender UV mapping tutorial".
 
-It gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. You can find it in the content browser under
-`+Content/FactoryGame/-Shared/Material+`. If you don't see it there, you can create another material with the same name in the same location and the game will override it on launch.
+Do note that your models can have more than one material, and as such you can have parts of your models pull from your own custom textures and parts of your model pull from `MI_Factory_Base_01` to support painting only parts of the model.
 
-This material also implements multiple other surface materials (that don't get changed by the paint gun) that you can use. It works as an atlas map.
-
-image:Satisfactory/MI_Factory_Base_01.png[image]
+You can find it in the content browser under `+Content/FactoryGame/-Shared/Material+`. If you don't see it there, you can create another material with the same name in the same location and the game will override it on launch.
 
 Once you have brought your model into Unreal Engine, you must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. Again, if this does not exist, create a placeholder material in its place and it will point to the correct texture within the game. 
 
@@ -33,9 +34,22 @@ More than one `MI_Factory_Base_01` material may appear in your search. Make sure
 
 Do note that when placing things with the Build Gun they are always given the `MI_Factory_Base_01` material in the preview hologram. If the hologram shows the correct texture but your placed object does not, you still do not have your object configured correctly.
 
+The below image contains a comparison between the ingame appearance of the texture (left) and the appearance in the image file (right) with standard paint in standard mid-day lighting in game. Note that some regions of the texture atlas obtain scratches and blemishes, and some appear much darker in game than their image counterpart.
+
+image:https://cdn.discordapp.com/attachments/693305049534955581/694062994593677392/MI_Factory_Base_Compare.png[paint_comparison]
+
+[NOTE]
+====
+When using the paint gun in game, the top left corner square will be recolored to match the primary color, and the middle left square is the secondary color. 
+====
+
 == Custom implementation
 
 You can implement the ability to paint in any object by implementing the
 `IFGColorInterface`. Simply override the given functions with the functionality you need and you're done. Consider asking about this on the Discord or forums if you need help.
 
 The paint gun will now interact with your object, which is done via the reflection system.
+
+Behind the scenes, the standard texture gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. 
+
+
