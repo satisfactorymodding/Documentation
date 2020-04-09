@@ -42,6 +42,8 @@ You will probably have to check your email and confirm from there, as well as ma
 
 Once you've done that, go to the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project] and download `UnrealEngine-CSS-Editor-Win64.exe`, then run it to install the Unreal Engine editor for this custom version.
 
+If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and Github, and be sure that you followed the above steps.
+
 +++ <details><summary> +++
 (Optional reading) More info about the custom version:
 +++ </summary><div> +++
