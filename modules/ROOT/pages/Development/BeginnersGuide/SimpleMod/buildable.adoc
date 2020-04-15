@@ -29,7 +29,9 @@ This Actor is also where you can define the snapping mesh and the clearance mesh
 
 We want to make our buildable xref:Development/Satisfactory/Paintable.adoc[paintable], meaning, able to be painted it with the paint gun.
 Because the `FGBuidable`-class already provides a basic implementation for that, we just need our buildable's mesh to use the `MI_Factory_Base_01` material.
-The provided example mesh already provides a proper UV map for said material, so you should be set.
+The provided example mesh already provides a proper UV map for said material, so you will not need to edit the UVs of the provided mesh. You will need to do so for your own models. More info on how this works is on the xref:Development/Satisfactory/Paintable.adoc[Paintable] documentation page. 
+
+You must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. If this does not exist, create a placeholder material in its place, and it will point to the correct texture within the game. 
 
 [WARNING]
 ====
@@ -45,13 +47,15 @@ xref:Development/Satisfactory/Paintable.adoc[Paintable concept page].
 
 == Adding the Descriptor
 
-The descriptor we need for buildables is `FGBuildingDescriptor`
-which is very similar to the `FGItemDescriptor` (it even derives from it)
-but with some simple additions: a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor)
+Similar to how we created a descriptor for our item, we now need to create one for our buildable of type `FGBuildingDescriptor`.
+
+Simply add a new BP-Class of type `FGBuildingDescriptor` to the same folder as the buildable itself
+and call it f.e. "Desc_DocBuild".
+
+The building descriptor is very similar to the item descriptor - it even derives from it. It comes with a few extra fields, such as a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor)
 and some Build-Category stuff that you can set up as you see fit.
 
-In our case simply add a new BP-Class of type `FGBuildingDescriptor` to the same folder as the buildable itself
-and call it f.e. "Desc_DocBuild". You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
+Just like our item, it requires an icon file. You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
 
 [IMPORTANT]
 ====

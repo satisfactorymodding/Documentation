@@ -38,7 +38,14 @@ You'll need to register your GitHub account with Epic Games to be able to downlo
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later." try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
 
+You will probably have to check your email and confirm from there, as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
+
 Once you've done that, go to the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project] and download `UnrealEngine-CSS-Editor-Win64.exe`, then run it to install the Unreal Engine editor for this custom version.
+
+[WARNING]
+====
+If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and GitHub, and be sure that you followed the above steps. The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo.
+====
 
 +++ <details><summary> +++
 (Optional reading) More info about the custom version:
@@ -62,7 +69,7 @@ Once the installer is done, you'll also need to install a visual studio extensio
 
 Wwise is a sound engine used by Coffee Stain, and in order to develop mods, you'll need to install and integrate Wwise with your mod project.
 
-Visit https://wwise.com/[Wwise.com] and click on the `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner. Click the download button, which will ask you to sing in. Create an account if you don't have one yet, or sign in, to download the launcher. After you finished downloading Wwise, open the installer.
+Visit https://wwise.com/[Wwise.com] and click on the `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner. Click the download button, which will ask you to sign in. Create an account if you don't have one yet, or sign in, to download the launcher. After you finished downloading Wwise, open the installer.
 
 Select `WWISE` from the top bar, and select version `2019.1.7.7135` (you might need to change the left dropdown to `All` to do this), then press `Install`. Once presented with options on what to install, make sure that `Authoring` and `SDK (C++)` packages are checked on the left, and that `Apple` -> `MacOS` and `Microsoft` -> `Windows` -> `Visual Studio 2015` and `Visual Studio 2017` are selected, then press `Next`. You don't need to add any plugins, so just press `Install` to skip in the bottom left to begin the installation process. Accept any authentication prompts that appear along the way.
 

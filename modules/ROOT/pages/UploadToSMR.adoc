@@ -55,8 +55,9 @@ Below is a quick explanation of the fields and what they do.
 |authors
 | A list of authors and contributors to the mod
 
+
 |objects
-| A manifest of all files (except data.json itself) within the zip you upload. See the example for formatting. dll files are of type `sml_mod`s and paks are of type `pak`.
+| A manifest of all files (except data.json itself) within the zip you upload. See the example for formatting. dll files are of type `sml_mod`s and paks are of type `pak`. You can also give each file a `loading_priority` inside the metadata tag, a number greater than or equal to 0 that defines what priority the mod is loaded with. Higher numbers means it will load later, overwriting content added by other mods if needed. You will need to set this to something greater than 0 if you want your mod to overwrite Vanilla content as well. See the below example.
 
 |dependencies
 | Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
@@ -86,7 +87,8 @@ Example minimal data.json:
     },
     {
       "type": "pak",
-      "path": "BaseMod.pak"
+      "path": "BaseMod.pak",
+	  "loading_priority":1
     }
   ],
   "dependencies": {
