@@ -23,8 +23,8 @@ files get set up correctly.
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
 and download the version you want. We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge.
 
-Run the installer, and agree to prompts you receive along the way. Select the packages "C++ Desktop development"
-and "Game development with C++". You might have to scroll a bit to find them.
+Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development"
+and "Game development with C + +". You might have to scroll a bit to find them.
 
 If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
 
