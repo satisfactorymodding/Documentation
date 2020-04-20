@@ -15,7 +15,6 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
-*** xref:Development/BeginnersGuide/SimpleMod/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Vanilla Content]
 
@@ -42,7 +41,6 @@
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
 *** xref:Development/Satisfactory/Paintable.adoc[Paintable]
-*** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 
@@ -50,4 +48,3 @@
 *** xref:Development/ModLoader/SPL.adoc[Satisfactory Pak Loader]
 *** xref:Development/ModLoader/SBL.adoc[Satisfactory Blueprint Library]
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
-*** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
