@@ -37,7 +37,7 @@ image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
 == Grab logic
 
-The grab function of the `FGBuildable` gets executed by the output
+The `FactoryGrabOutput` function of the `FGBuildable` gets executed by the output
 connector when a new item gets requested. To add logic to it, we simply need to override it.
 
 Because we want to store the count of items transferred
