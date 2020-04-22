@@ -35,6 +35,26 @@ These Peek functions work mostly the same as the Grab functions, except they don
 It is highly recommended to do item transfers, peeks, etc. in the xref:/Development/Satisfactory/FactoryTick.adoc[Factory Tick] call so that they are optimized for multiple cores.
 ====
 
+== Grab & Peak
+
+The `FGBuildable` adds two functions.
+
+=== `FactoryGrabOutput`
+
+This function gets called by `FGFactoryConnector`s which have the `mForwardPeekAndGrabToBuildable` option enabled.
+Information about what connector wants to grab is passed and the function returns what actually gets grabed.
+
+[WARNING]
+====
+If you interact with a inventory or what ever, you need to make sure that you have removed the item from it,
+else the component could grab indefinetly, and that's not what we want.
+====
+
+===  `FactoryPeekOutput`
+
+This function works just like `FactoryGrabOutput` but there you shoul not remove the item from your inventory or what ever.
+This function is only used to allow the output to check what it can grab if it wants to.
+
 == FGFactoryConnection
 
 A `UFGFactoryConnectionComponent` is a `USceneComponent` used to implement a Factory-Connector.
