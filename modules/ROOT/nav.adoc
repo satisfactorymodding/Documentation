@@ -40,3 +40,4 @@
 *** xref:Development/ModLoader/SPL.adoc[Satisfactory Pak Loader]
 *** xref:Development/ModLoader/SBL.adoc[Satisfactory Blueprint Library]
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
+*** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
