@@ -20,6 +20,12 @@ the command wont get executed.
 - `Mod Id`
 +
 This needs to be your Mod Id, it allows SML to differentiate between the different Mods.
++
+[WARNING]
+====
+Make sure the mod id is valid! If it's not, it will crash.
+====
+
 - `Command Name`
 +
 This is finally the name of your command you want to add.
@@ -51,3 +57,4 @@ This subsystem allows you to register a chat command instance manually,
 to get registered commands to executed a command and most importantly,
 it provides the `ParsePlayerName` function wich allows you to get the AFGPlayerController
 based on the player name. Used to parse the player name passed as command argument.
+It also allows you to parse selectors like @all and @self.
