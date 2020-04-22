@@ -41,7 +41,7 @@ We highly recommend you to use the launcher for installing mods, as it simplifie
 
 If you'd like to write a mod of your own, this section is for you.
 
-The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML and the bootstrapper for you. To enable it, use `For Mod Developers > Toggle SML always installed`.
+The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML and the bootstrapper for you. To enable it, change `Configs` to `development`.
 
 If you're looking to write your own mods, we suggest you start with
 making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
