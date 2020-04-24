@@ -1,0 +1,39 @@
+= C++ Modding
+
+C++ modding is the holy grale of modding. It allows you to make way faster executed code.
+Many people prefer coding in text form more. And also you can access every aspect of the game,
+there are still features not exposed to Blueprints.
+
+But don't forget, BP is still usefull for quick stuff or things that don't need to be performant (like UI).
+
+== Dll, pdb & more
+
+When you compile your C++ code to the final binaries (stuff that actually is used by the game)
+you will get a dynamic linked library (`.dll`).
+This file is also the file you need to ship the in your mod.
+You need to add it also to your `data.json` as `sml_mod` object.
+
+This file comes with a companion, the `.pdb` file.
+This file holds additional information about the original source code
+and allows you to debug your code more easily in runtime.
+You can ship this file with your mod, but don't need to.
+It also doesn't needed to get added to the `data.json`.
+
+We wont go into more details about general technical stuff about C++,
+if you want to learn more you should just browse the web, there are quite some good resources.
+But not only is knowledge about {cpp} important, knowledge about C++ in unreal is also quite important.
+You can find a quick guide in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
+
+== Warning
+
+Due to technical limitations there are some functions/features of Satisfactory and Unreal Engine 4
+we are not able to access or need to use a work around.
+
+If you experience a crash or some undfined behaviour while using a function from UE4 or SF
+you should read the javadoc comment added to the function. Sometimes it will tell you that it doesn't work
+and you should use the workaround written.
+
+If it still doesn't work, and you are **absolutely sure** that you use it correctly,
+contact the devs on the discord for further advice.
+
+This is the world we live in right now, and we can't do much about it.
