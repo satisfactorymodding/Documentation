@@ -34,11 +34,10 @@ Below is a quick explanation of the fields and what they do.
 |===
 |Parameter |Description of Function
 
-|mod_id
-| The unique identifier of your mod. After you create your mod page, you will be presented with this identifier when you go to upload a new version.
-
 |mod_reference
-| The unique name for your mod. Used to tell SML which folder to load.
+| The unique name for your mod.
+Used by everything as the identifier for your mod.
+Tells SML in which folder your InitMod is located and also what name your C++ module has.
 
 |name
 | The name of your mod that will be displayed to users. This should match your mod name on SMR.
