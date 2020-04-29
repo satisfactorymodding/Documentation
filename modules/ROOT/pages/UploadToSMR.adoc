@@ -38,7 +38,7 @@ Below is a quick explanation of the fields and what they do.
 | The unique identifier of your mod. After you create your mod page, you will be presented with this identifier when you go to upload a new version.
 
 |mod_reference
-| The unique name for your mod. 
+| The unique name for your mod. Used to tell SML which folder to load.
 
 |name
 | The name of your mod that will be displayed to users. This should match your mod name on SMR.
@@ -61,9 +61,10 @@ Below is a quick explanation of the fields and what they do.
 
 |dependencies
 | Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
+SML will then load these mods before your mod.
 
 |optional_dependencies
-| Mod IDs of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
+| Mod references of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
 
 |===
 
@@ -77,7 +78,7 @@ Example minimal data.json:
   "mod_reference": "BaseMod",
   "name": "BaseMod",
   "version": "0.0.1",
-  "sml_version": "2.0.0",
+  "sml_version": "2.1.0",
   "description": "A basic mod created to showcase SML's functionality.",
   "authors": ["SuperCoder79"],
   "objects": [
@@ -88,7 +89,9 @@ Example minimal data.json:
     {
       "type": "pak",
       "path": "BaseMod.pak",
-	  "loading_priority":1
+	  "metadata": {
+        "loading_priority": 1
+      }
     }
   ],
   "dependencies": {
