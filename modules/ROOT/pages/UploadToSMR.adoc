@@ -61,9 +61,10 @@ Below is a quick explanation of the fields and what they do.
 
 |dependencies
 | Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
+SML will then load these mods before your mod.
 
 |optional_dependencies
-| Mod IDs of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
+| Mod references of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
 
 |===
 
@@ -88,7 +89,9 @@ Example minimal data.json:
     {
       "type": "pak",
       "path": "BaseMod.pak",
-	  "loading_priority":1
+	  "metadata": {
+        "loading_priority": 1
+      }
     }
   ],
   "dependencies": {
