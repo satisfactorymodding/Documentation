@@ -5,8 +5,8 @@ mod for Satisfactory and provide important information regarding modding.
 
 == Mod Reference
 
-When need to talk about the `mod reference` first befor we continue,
-because we will use it more often.
+We need to talk about the `mod reference` first befor we continue,
+because we will use it quite often.
 
 The mod reference is more strictly typed version of your mod name basically.
 This mod reference will then be used in class names, file names, folder names and other places.
