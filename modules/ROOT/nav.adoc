@@ -17,7 +17,9 @@
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Vanilla Content]
-*** xref:Development/BeginnersGuide/Cpp/index.adoc[C++ Modding]
+
+** xref:Development/Cpp/index.adoc[C++ Modding]
+*** xref:Development/Cpp/setup.adoc[Setup]
 
 ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
 *** xref:Development/UnrealEngine/Code.adoc[Code]

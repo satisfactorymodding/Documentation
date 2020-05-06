@@ -41,30 +41,6 @@ If everything worked according to plan, you should now be able to click on the b
 
 That's it! If Wwise shows "Operation completed successfully," you have integrated Wwise into your project.
 
-== Create a C++ Module (optional)
-
-If you want to write your own C++ code, you need to create a new module. If you don't want to do this, or don't know what it means, skip to the next section.
-
-Note that by doing this, you'll need to follow some extra directions for other steps, which will be listed in their respective sections.
-
-You can create a new module by navigating into the projects `/Source` folder, in which you should create a new folder with the module name you want.
-We advise you to follow camelCaseNamingConventions.
-
-Now copy the `/Source/SML.Build.cs` file into your folder and rename it to `<your folder name>.Build.cs`.
-Open it and replace `public class SML : ModuleRules` to `public class <your folder name> : ModuleRules`.
-Then also replace `public SML(ReadOnlyTargetRules ...` with `public <your folder name>(ReadOnlyTargetRules ...`.
-And finally replace `PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame"});`
-with `PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});`
-
-This tells the Unreal Build Tool on which libraries your Module depends (like the source of Satisfactory and SML)
-
-We are still not done yet, now we need to tell UBT to actually compile and use your module.
-You can do this by opening the `/Source/FactoryGame.Target.cs` and replace
-`ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML" } );` with
-`ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML", "<your folder name>", } );`
-to tell UBT you want to get your module compiled into the final game/mod.
-And now do the same for `/Source/FactoryGameEditor.Target.cs` to tell UBT to compile and use your module in the editor. Without doing this, you would not be able to use f.e. `BlueprintCallable` reflected methods in BP scripts.
-
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" tool. 

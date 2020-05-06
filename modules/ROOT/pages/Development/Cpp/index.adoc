@@ -1,6 +1,6 @@
 = C++ Modding
 
-C++ modding is the holy grale of modding. It allows you to make way faster executed code.
+{cpp} modding is the holy grale of modding. It allows you to make way faster executed code.
 Many people prefer coding in text form more. And also you can access every aspect of the game,
 there are still features not exposed to Blueprints.
 
@@ -8,7 +8,7 @@ But don't forget, BP is still usefull for quick stuff or things that don't need 
 
 == Dll, pdb & more
 
-When you compile your C++ code to the final binaries (stuff that actually is used by the game)
+When you compile your {cpp} code to the final binaries (stuff that actually is used by the game)
 you will get a dynamic linked library (`.dll`).
 This file is also the file you need to ship the in your mod.
 You need to add it also to your `data.json` as `sml_mod` object.
@@ -19,9 +19,9 @@ and allows you to debug your code more easily in runtime.
 You can ship this file with your mod, but don't need to.
 It also doesn't needed to get added to the `data.json`.
 
-We wont go into more details about general technical stuff about C++,
+We wont go into more details about general technical stuff about {cpp},
 if you want to learn more you should just browse the web, there are quite some good resources.
-But not only is knowledge about {cpp} important, knowledge about C++ in unreal is also quite important.
+But not only is knowledge about {cpp} important, knowledge about {cpp} in unreal is also quite important.
 You can find a quick guide in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
 
 == Warning

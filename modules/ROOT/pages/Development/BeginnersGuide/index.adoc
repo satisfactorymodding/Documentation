@@ -2,3 +2,20 @@
 
 In this section, we will guide you through the process making your first
 mod for Satisfactory and provide important information regarding modding.
+
+== Mod Reference
+
+When need to talk about the `mod reference` first befor we continue,
+because we will use it more often.
+
+The mod reference is more strictly typed version of your mod name basically.
+This mod reference will then be used in class names, file names, folder names and other places.
+
+Basically the mod reference is your mod name in caml-case
+and not containing any special characters like (` `, `+`, `#`, `.`, `ß`, ...).
+
+Example:
+Mod Name: `Example Mod`
+Mod Reference: `ExampleMod`
+
+We would reccomend to begin with a uper-case latter so it fits better into a combination of multiple strings (f.e. `FExampleModModule`)

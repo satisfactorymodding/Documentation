@@ -14,6 +14,19 @@ On the front page of SMR, click `New Mod` in the top right corner to get started
 
 Provide a name, short description, and long description for your mod. The name is the title that will appear in the mod list and browser. The short description is the summary text that will show up below the mod icon. The long description supports Markdown formatting (help on the https://ficsit.app/help[help page]) and is shown when the user clicks to 'View' your mod. You can edit all of these later.
 
+But one thing is very important, that is the `mod_reference`.
+The mod reference is just like your name, and it should be, but without special character like spaces.
+This mod reference will also be used by SML to define in which folder
+in the Unreal Content your Mod Init is located
+or what name your {cpp} module has so it can do all the mod init stuff.
+
+[WARNING]
+====
+You can't change the mod reference after you have added your mod to SMR!
+
+So make sure it is correct! At least five times!
+====
+
 Next, you can upload an image to use as the display image for your mod, and a link to your source code if it is hosted on a site like GitHub or similar.
 
 Once you click Submit, your mod page will be created. You still need to upload a version for your mod to be usable by players.

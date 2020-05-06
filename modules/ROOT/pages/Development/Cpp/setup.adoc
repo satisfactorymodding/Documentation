@@ -1,0 +1,177 @@
+= Setup
+
+You should setup the project for BP modding first, like shown in the xref:Development/BeginnersGuide/project_setup.adoc[beginners guide].
+
+== Basics
+
+To build {cpp} unreal uses it's own written build pipline called "Unreal Build Tool" (aka. UBT).
+UBT then does copying of files, running UHT and the build for the desired platform automatically when told to.
+UHT is a tool called "Unreal Header Tool" which analyzes the source code you have written and replaces specific macros, like the `UFUNCTION`-Macro, with automatically generated code
+and also generates seperate files containing even more additional automatically generated code.
+
+You will run UBT for the "Development Editor"-Configuration automatically
+when you try to open the `.uproject` file or when you f.e. run any build in the VS-Solution.
+
+UBT uses multiple files placed into your source code for configuration of the source component you make.
+
+`Targets` are UBTs "programs" you code.
+Most of the time, like in our modding case, there are two `targets`.
+One target is for compiling our `modules` compatible with the Unreal Editor,
+another target is for compiling our `modules` compatible with the final game.
+You can find the configuration files for them in the `/Source`-Folder of your project.
+The target configuration are mostly named
+like this `<ModuleName>.Target.cs` for the "shipping" configuration
+and like this `<ModuleName>Editor.Target.cs` for the "development editor" configuration.
+
+`Modules` are UBTs components of programs. Each target depends on at least one `module`.
+A `module` can be librarys, the unreal engine it self, plugins, the headers of Satisfactory or your mod code.
+Most `modules` are located in its own folder in the `/Source`-Folder of the project.
+The Satisfactory headers we use to reference functions and data structures
+are contained in the "FactoryGame" `module` located under `/Source/FactoryGame`.
+Each `module` folder then has again a configuration file in its root folder.
+For the "FactoryGame" `module` this will be the file `/Source/FactoryGame/FactoryGame.build.cs`.
+In those configuration files you also define dependecies of the module like the unreal engien itself,
+SF or thirdparty libraries you might want to include.
+
+== Creating the Mod-Module
+
+First you should navigate to the `/Source` folder of your project
+and create a folder called just like your mod reference.
+Then add a new file called `<your mod reference>.Build.cs`.
+In it, you will need to add the configuration text.
+
+Just use this example and replace all `<mod reference>` with your actual mod reference.
+[source,c#]
+----
+using UnrealBuildTool;
+using System.IO;
+using System;
+
+public class <mod reference> : ModuleRules
+{
+    public <mod reference>(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		PublicDependencyModuleNames.AddRange(new string[] {
+            "Core", "CoreUObject",
+            "Engine",
+            "InputCore",
+            "OnlineSubsystem", "OnlineSubsystemUtils", "OnlineSubsystemNULL",
+            "SignificanceManager",
+            "PhysX", "APEX", "PhysXVehicles", "ApexDestruction",
+            "AkAudio",
+            "ReplicationGraph",
+            "UMG",
+            "AIModule",
+            "NavigationSystem",
+            "AssetRegistry",
+            "GameplayTasks",
+            "AnimGraphRuntime",
+            "Slate", "SlateCore",
+            "Json"
+            });
+
+
+        if (Target.Type == TargetRules.TargetType.Editor) {
+			PublicDependencyModuleNames.AddRange(new string[] {"OnlineBlueprintSupport", "AnimGraph"});
+		}
+        PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});
+
+        bEnableExceptions = true;
+        bUseRTTI = true;
+    }
+}
+----
+
+This configuration will add the basic unreal engine framework, Satisfactory and
+the Mod Loader as dependencies to your module and it will also setup some other usefull stuff for you.
+
+If you know what you do, you can also change some stuff.
+
+Now you will need to add the module source code.
+
+Do this by creating a file called `<your mod reference>Module.h` and fill it with this template.
+Replace `<mod reference>` with your actual mod reference.
+[source,cpp]
+----
+#pragma once
+
+#include "Modules/ModuleManager.h"
+
+class F<mod reference>Module : public FDefaultGameModuleImpl {
+public:
+	virtual void StartupModule() override;
+
+	virtual bool IsGameModule() const override { return true; }
+};
+----
+
+And we need a second file called `<your mod reference>Module.cpp` and fill that on with this template.
+Again, replace `<mod reference>` with your actual mod reference.
+[source,cpp]
+----
+#include "<mod reference>Module.h"
+
+void F<mod reference>Module::StartupModule() {
+	
+}
+
+IMPLEMENT_GAME_MODULE(<mod reference>Module, <mod reference>);
+----
+
+== Adding the Module to the Targets
+
+Now that you created your module,
+you will need to add it to the default targets so it actually gets built when you run UBT.
+
+For that you will need to open the target configurations under `/Source/FactoryGame.Target.cs`
+and `/Source/FactoryGameEditor.Target.cs` and do the following changes each.
+
+Search for
+[source,c#]
+----
+ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML", "ExampleMod" } );
+----
+(around line 15 and 11)
+and add a string with your mod reference to the array literal like this:
+[source,c#]
+----
+ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML", "ExampleMod", "ModReference" } );
+----
+(the mod reference used was `ModReference`, you need to change it to your own one)
+
+== Finishing
+
+Now that you have added your module folder, configuration, source and added it to the targets,
+you should now go back to the root folder of your project and right click the `.uproject` file.
+Then select `Generate Visual Studio project files...`
+to regenerate the VS-Solution now with your module.
+
+You should then be able to start working on your {cpp} code for your mod.
+
+[WARNING]
+====
+Make always sure you code in a custom created module!
+Never code in any other module!
+====
+
+== Adding a Class
+
+When you want to add a class you have mainly two safe ways to go.
+
+1. Navigate to the folder were you want to add your class in the windows explorer
+and create the `.cpp`-File and the `.h`-File manually.
+Fill them with a template code or just directly the class you need.
+2. Open the unreal editor and open the "tree view" of the content browser.
+Then navigate to the `C++-Classes` root folder and open the folder named with your mod reference.
+In there r-click into empty space and hit `New {cpp}-Class`.
+Then select your desired base class, hit next and name your class.
+Change the other settings as your desire and finish with `create class`.
+
+[WARNING]
+====
+Make sure you rly select your custom {cpp}-module!
+
+image:Cpp/EditorCreateClass.jpg[image]
+====
