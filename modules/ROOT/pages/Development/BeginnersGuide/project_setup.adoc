@@ -41,6 +41,8 @@ If everything worked according to plan, you should now be able to click on the b
 
 That's it! If Wwise shows "Operation completed successfully," you have integrated Wwise into your project.
 
+image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
+
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" tool. 
