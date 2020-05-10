@@ -1,39 +1,36 @@
 = C++ Modding
 
-{cpp} modding is the holy grale of modding. It allows you to make way faster executed code.
-Many people prefer coding in text form more. And also you can access every aspect of the game,
-there are still features not exposed to Blueprints.
+{cpp} modding is the holy grail of Satisfactory modding. As opposed to the visual programming style of the Blueprints system,
+text-based {cpp} code can be compiled into far more efficient code. Additionally, with {cpp} mods, you have access to modify
+nearly every aspect of the game, whereas there are still many features not exposed to Blueprints.
 
-But don't forget, BP is still usefull for quick stuff or things that don't need to be performant (like UI).
+That being said, Blueprint scripting is still very useful for quick stuff, or for things that don't need to be high performance (like UI).
 
 == Dll, pdb & more
 
-When you compile your {cpp} code to the final binaries (stuff that actually is used by the game)
-you will get a dynamic linked library (`.dll`).
-This file is also the file you need to ship the in your mod.
-You need to add it also to your `data.json` as `sml_mod` object.
+When you compile your {cpp} code into the final binaries (stuff that actually is used by the game) you will get a Dynamic Link Library (`.dll`) file.
+When you distribute your mod, you will have to make sure it includes this file. You will need to add it also to your `data.json` as an `sml_mod` object. More info on the upload process can be found on the xref:UploadToSMR.adoc[Uploading to SMR page.]
 
-This file comes with a companion, the `.pdb` file.
-This file holds additional information about the original source code
-and allows you to debug your code more easily in runtime.
+This file comes with a companion, the Program Database (`.pdb`) file.
+This file holds additional information about the original source code and allows you to debug your code more easily in runtime.
 You can ship this file with your mod, but don't need to.
-It also doesn't needed to get added to the `data.json`.
+If you do decide to ship it, it doesn't needed to be added to the `data.json` file.
 
-We wont go into more details about general technical stuff about {cpp},
-if you want to learn more you should just browse the web, there are quite some good resources.
-But not only is knowledge about {cpp} important, knowledge about {cpp} in unreal is also quite important.
-You can find a quick guide in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
+We won't go into detail about the general technical stuff aspects of {cpp} in this documentation.
+If you want to learn more about that, there are plenty of good resources available elsewhere on the Internet.
+In order to write {cpp} mods, you will require both general {cpp} knowledge, and knowledge about how {cpp} applies to Unreal Engine systems.
+You can find a quick guide to the Unreal portion in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
 
 == Warning
 
-Due to technical limitations there are some functions/features of Satisfactory and Unreal Engine 4
-we are not able to access or need to use a work around.
+Due to technical limitations, there are some functions/features of Satisfactory and Unreal Engine 4 that
+we are not able to access or need to use a work around to call correctly.
 
-If you experience a crash or some undfined behaviour while using a function from UE4 or SF
-you should read the javadoc comment added to the function. Sometimes it will tell you that it doesn't work
-and you should use the workaround written.
+If you experience a crash or some undefined behavior while using a function from UE4 or Satisfactory,
+you should read the javadoc comment that has been added to the function. Sometimes the comment will tell you that it doesn't work
+and suggest you use the workaround written in the comment.
 
 If it still doesn't work, and you are **absolutely sure** that you use it correctly,
-contact the devs on the discord for further advice.
+contact the devs on the Discord for further advice.
 
 This is the world we live in right now, and we can't do much about it.
