@@ -5,17 +5,24 @@ mod for Satisfactory and provide important information regarding modding.
 
 == Mod Reference
 
-We need to talk about the `mod reference` first befor we continue,
-because we will use it quite often.
+We need to talk about the concept of a `mod reference` before we continue because we will use it quite often.
 
-The mod reference is more strictly typed version of your mod name basically.
-This mod reference will then be used in class names, file names, folder names and other places.
+Your mod reference is essentially your mod's unique name. This mod reference will then be used in class names, file names, folder names and other places.
+When you upload your mod to the Satisfactory Mod Repository for other people to use, you'll need to provide your mod reference there as well. More info on the upload process can be found xref:UploadToSMR.adoc[here], but we suggest you actually write a mod first before trying to upload one.
+Your Unreal content folder will need to have the mod reference as the folder name, and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
 
-Basically the mod reference is your mod name in caml-case
-and not containing any special characters like (` `, `+`, `#`, `.`, `ß`, ...).
+Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
 
-Example:
-Mod Name: `Example Mod`
-Mod Reference: `ExampleMod`
+We strongly suggest that you follow upper https://en.wikipedia.org/wiki/Camel_case[Camel Case] naming conventions, that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
 
-We would reccomend to begin with a uper-case latter so it fits better into a combination of multiple strings (f.e. `FExampleModModule`)
+Here are a few possible examples of mod names and suggested mod references.
+
+*Mod Name:* `Example Mod`
+
+*Mod Reference:* `ExampleMod`
+
+*Mod Name:* `Rob's very cool mod`
+
+*Mod Reference:* `RobsVeryCoolMod`
+
+Note the exclusion of the apostrophe.
