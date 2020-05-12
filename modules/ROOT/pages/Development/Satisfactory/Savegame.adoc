@@ -76,6 +76,17 @@ so please make sure you overwrite the function and return true.
 All of the other functions allow you to further customize the serialization and filter process
 when the save state gets stored or loaded.
 
+
+== Where Modded Save Content Ends Up
+
+If you'd like, you can take a look at some of your modded saves in a save editor to how and where they save their data.
+
+Generally, content created by mods appears under `Game/<mod_reference>/` tag.
+
+Here is a screenshot from https://github.com/Goz3rr/SatisfactorySaveEditor/[SatisfactorySaveEditor] displaying data from a mod with the reference NogsOres.
+
+image:https://i.imgur.com/0sdahyB.png[image]
+
 == Loading a Save Game
 
 When a save game gets loaded, it goes through multiple steps until the player is allowed to play on the map again.
