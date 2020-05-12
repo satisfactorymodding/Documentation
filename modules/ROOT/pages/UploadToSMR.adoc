@@ -50,6 +50,7 @@ Below is a quick explanation of the fields and what they do.
 | The unique name for your mod.
 Used by everything as the identifier for your mod.
 Tells SML in which folder your InitMod is located and also what name your C++ module has.
+Again, you can read up on it xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
 
 |name
 | The name of your mod that will be displayed to users. This should match your mod name on SMR.
