@@ -30,7 +30,16 @@ Here is a small list of some features you should learn before going further:
 - std::set (whats the differrence to std::vector)
 - smart pointers
 
-The unreal engine synonyms for those concepts (the UE implementation of them)& other stuff:
+The unreal engine synonyms for those concepts (the UE implementation of them):
+
+- std::string -> FString
+- std::vector -> TArray
+- std::set -> TSet
+- std::(unordered_)set<T> -> TSet<T>
+- std::(unordered_)map<K, V> -> TMap<K, V>
+- Unreal Smart Pointers
+
+Other stuff added only by UE or generall programming concepts:
 
 - what is a UObject/UProperty/UFunction (reflection system)
 - what is a AActor
