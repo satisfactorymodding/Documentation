@@ -5,3 +5,20 @@ If you'd like to make your own mod, this section of the docs is for you!
 Here you can find information regarding making mods and getting your development environment up and running. Check out the subcategories on the left to get started.
 
 If you're just looking to play Satisfactory with mods, check out how to install mods xref:index.adoc#_for_users[here] instead.
+
+== Resources
+
+Here is a list of known good resources about making mods for SF, UE4, C++ and 3D Modeling:
+
+- https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
++
+A good YT-Channel showing a more in-depth look at features of UE4 (BP only).
+- https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g[Virtus Learning Hub]
++
+A "general" tutorial series channel for UE game development (covers also some C++)
+- https://www.youtube.com/channel/UCYoV5-xnSC2BGseQ_nHWufw[Miles Nocte]
++
+A tutorial channel for SF modding.
+- http://academy.unrealengine.com/[Unreal Engine Academy]
++
+A neat learning platform made from Epic Games them self for learning Unreal Engine.

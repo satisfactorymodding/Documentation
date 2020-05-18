@@ -6,6 +6,44 @@ nearly every aspect of the game, whereas there are still many features not expos
 
 That being said, Blueprint scripting is still very useful for quick stuff, or for things that don't need to be high performance (like UI).
 
+== Requirements
+
+Well, since this is a very advanced topic, we reccomend you to learn {cpp}
+and {cpp} for unreal engine first.
+
+Here is a small list of some features you should learn before going further:
+
+{Cpp} specific:
+
+- if/else
+- while
+- for
+- for each
+- lambda functions
+- pointers
+- references
+
+{Cpp} concepts which are used but are implemented differently in unreal engine:
+
+- std::string
+- std::vector
+- std::set (whats the differrence to std::vector)
+- smart pointers
+
+The unreal engine synonyms for those concepts (the UE implementation of them)& other stuff:
+
+- what is a UObject/UProperty/UFunction (reflection system)
+- what is a AActor
+- what does garbage collection mean and how does it work and how do you use it
+
+Then you have a very very solid ground to start modding.
+
+-> that also means you can skip quite some stuff and then just learn about it when you rly need to, it's just, if you know what you can do and how the stuff works, you might will use a way more easy approach in developing your mod as when you only have a very very basic understanding...
+
+But dont read through that once and then start working on a mod, instead, make a sepperate unreal {cpp} project, try there the stuff out you have learned on one topic, until you master it and then progress to the next topic...
+
+Learning by doing basically ^^
+
 == Dll, pdb & more
 
 When you compile your {cpp} code into the final binaries (stuff that actually is used by the game) you will get a Dynamic Link Library (`.dll`) file.
