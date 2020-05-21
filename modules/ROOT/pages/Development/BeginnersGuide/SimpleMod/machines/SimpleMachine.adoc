@@ -20,6 +20,7 @@ don't forget to rotate them.
 
 Set the output's direction to output and the type to Item.
 The inputs type also needs to get set to Item but the direction needs to be input.
+Both need to have the `M Forward Peek And Grab to Buildable` checked.
 
 We also want to make our machine depend on electricity.
 For that we need to `+ Add Component` a xref:Development/Satisfactory/PowerNetwork.adoc[FGPower Connection]
