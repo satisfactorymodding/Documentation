@@ -127,7 +127,7 @@ void F<mod reference>Module::StartupModule() {
 	
 }
 
-IMPLEMENT_GAME_MODULE(<mod_reference>Module, <mod_reference>);
+IMPLEMENT_GAME_MODULE(F<mod_reference>Module, <mod_reference>);
 ----
 
 == Adding the Module to the Targets
