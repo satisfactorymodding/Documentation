@@ -40,7 +40,7 @@ M Description::
 * {blank}
 +
 M Stack Size::
-  Satisfactory has hardcoded item stack sizes. Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 100,000 (Fluid). Go ahead and pick one as you see fit.
+  Satisfactory has hardcoded item stack sizes. Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 50,000 (Fluid). Go ahead and pick one as you see fit.
 * {blank}
 +
 M Can be Discarded::

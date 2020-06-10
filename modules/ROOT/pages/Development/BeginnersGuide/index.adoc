@@ -2,3 +2,27 @@
 
 In this section, we will guide you through the process making your first
 mod for Satisfactory and provide important information regarding modding.
+
+== Mod Reference
+
+We need to talk about the concept of a `mod reference` before we continue because we will use it quite often.
+
+Your mod reference is essentially your mod's unique name. This mod reference will then be used in class names, file names, folder names and other places.
+When you upload your mod to the Satisfactory Mod Repository for other people to use, you'll need to provide your mod reference there as well. More info on the upload process can be found xref:UploadToSMR.adoc[here], but we suggest you actually write a mod first before trying to upload one.
+Your Unreal content folder will need to have the mod reference as the folder name, and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
+
+Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
+
+We strongly suggest that you follow upper https://en.wikipedia.org/wiki/Camel_case[Camel Case] naming conventions, that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
+
+Here are a few possible examples of mod names and suggested mod references.
+
+*Mod Name:* `Example Mod`
+
+*Mod Reference:* `ExampleMod`
+
+*Mod Name:* `Rob's very cool mod`
+
+*Mod Reference:* `RobsVeryCoolMod`
+
+Note the exclusion of the apostrophe.

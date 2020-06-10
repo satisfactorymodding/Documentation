@@ -11,6 +11,8 @@ This material also implements multiple other surface materials (that don't get c
 
 image:Satisfactory/MI_Factory_Base_01.png[image]
 
+Please note that some of the other screenshots on this page were taken with a previous version of the MI_Factory_Base_01 material. The above image is the most up to date version.
+
 To make use of this material, make the parts of your models that you want to use these textures pull from this material file. To do this, make the UV maps of your models line up with the region of the texture atlas with the texture you want. Here are 2 examples of what this would look like in practice: 
 
 image:https://puu.sh/FqmRX/e4368f7a35.png[example1]
