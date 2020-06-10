@@ -8,29 +8,32 @@ That being said, Blueprint scripting is still very useful for quick stuff, or fo
 
 == Requirements
 
-Well, since this is a very advanced topic, we reccomend you to learn {cpp}
-and {cpp} for unreal engine first.
+Well, since this is a very advanced topic, we recommend you to learn {cpp}
+and {cpp} for Unreal Engine first.
 
-Here is a small list of some features you should learn before going further:
+We have compiled a list of some helpful learning resources xref:Development/index.adoc#_resources[here], but you will probably want to search out some more on your own.
+
+Here is a list of some concepts you should learn before going further:
 
 {Cpp} specific:
 
-- if/else
-- while
-- for
-- for each
-- lambda functions
-- pointers
-- references
+* If/Else
+* Loop Structures
+** While
+** For
+** For Each
+* Lambda Functions
+* Pointers
+* References
 
-{Cpp} concepts which are used but are implemented differently in unreal engine:
+{Cpp} concepts which are used but are implemented differently in Unreal Engine:
 
 - std::string
 - std::vector
-- std::set (whats the differrence to std::vector)
-- smart pointers
+- std::set (And the differences between it and std::vector)
+- Smart Pointers
 
-The unreal engine synonyms for those concepts (the UE implementation of them):
+The Unreal Engine synonyms for the aforementioned concepts (the UE implementation of them):
 
 - std::string -> FString
 - std::vector -> TArray
@@ -39,19 +42,15 @@ The unreal engine synonyms for those concepts (the UE implementation of them):
 - std::(unordered_)map<K, V> -> TMap<K, V>
 - Unreal Smart Pointers
 
-Other stuff added only by UE or generall programming concepts:
+Other stuff added only by UE or general programming concepts:
 
-- what is a UObject/UProperty/UFunction (reflection system)
-- what is a AActor
-- what does garbage collection mean and how does it work and how do you use it
+- What a UObject/UProperty/UFunction (reflection system) is
+- What an AActor is
+- What garbage collection means, how it works, and how to make use of it
 
-Then you have a very very solid ground to start modding.
+If you have a good understanding of most these concepts, then you have a very solid foundation from which to start modding. If so, this is likely not your first time working on a project or mod like this, and you'll be able to judge what content you can skip over and learn when needed.
 
--> that also means you can skip quite some stuff and then just learn about it when you rly need to, it's just, if you know what you can do and how the stuff works, you might will use a way more easy approach in developing your mod as when you only have a very very basic understanding...
-
-But dont read through that once and then start working on a mod, instead, make a sepperate unreal {cpp} project, try there the stuff out you have learned on one topic, until you master it and then progress to the next topic...
-
-Learning by doing basically ^^
+We can not understate the value of learning through doing. Especially if just starting out with these concepts, we suggest that instead of immediately beginning working on a mod, taking the time to make a separate Unreal {cpp} project for testing and practice. Try out working with the concepts mentioned above before trying to make use of them in a mod.
 
 == Dll, pdb & more
 
