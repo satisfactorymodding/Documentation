@@ -82,9 +82,6 @@ public class <mod_reference> : ModuleRules
 			PublicDependencyModuleNames.AddRange(new string[] {"OnlineBlueprintSupport", "AnimGraph"});
 		}
         PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});
-
-        bEnableExceptions = true;
-        bUseRTTI = true;
     }
 }
 ----
@@ -149,7 +146,28 @@ and add a string with your mod reference to the array literal like this:
 ----
 ExtraModuleNames.AddRange( new string[] { "FactoryGame", "SML", "ExampleMod", "mod_reference" } );
 ----
-(the mod reference used was `mod_reference`; make sure you use your own mod reference instead)
+(the mod reference used was `mod_reference`, make sure you use your own mod reference instead)
+
+== Adding the Module to the UProject
+
+Next we need to tell the Unreal Editor to use our editor module.
+For this open up the `FactoryGame.uproject` file in your project root.
+In the `Modules` array, add your module with your `mod_reference` as name, `Runtime` as Type and `Default` as LoadingPhase.
+Like this:
+[source,json]
+----
+"Modules": [
+	{
+	...
+	},
+	{
+		"Name": "<mod_reference>",
+		"Type": "Runtime",
+		"LoadingPhase": "Default"
+	}
+]
+----
+(the name used was `<mod_reference>`, make sure you use your own mod reference instead)
 
 == Finishing Up
 
