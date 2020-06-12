@@ -7,7 +7,7 @@ the standard way, or create your own implementation.
 
 Making use of the standard material (`MI_Factory_Base_01`) used by Satisfactory is the easiest way to make your models paintable.
 
-This material also implements multiple other surface materials (that don't get changed by the paint gun) that you can use. It works based off a system called a https://en.wikipedia.org/wiki/Texture_atlas[texture atlas], in which multiple textures are present in a single texture file.
+This material also implements multiple other surface materials (that don't get changed by the paint gun) that you can use. It works based off a system called a https://en.wikipedia.org/wiki/Texture_atlas[texture atlas], in which multiple textures are present in a single texture file. If you'd like, you can read more about texture atlases and how they apply to game development https://blog.immersed.team/texture-atlasing-an-inside-look-at-optimizing-3d-worlds-8a07145856d7[here]. Do note that aforementioned link is for Unity, but the process is basically the same.
 
 image:Satisfactory/MI_Factory_Base_01.png[image]
 
