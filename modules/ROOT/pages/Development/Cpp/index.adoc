@@ -52,6 +52,11 @@ If you have a good understanding of most these concepts, then you have a very so
 
 We can not understate the value of learning through doing. Especially if just starting out with these concepts, we suggest that instead of immediately beginning working on a mod, taking the time to make a separate Unreal {cpp} project for testing and practice. Try out working with the concepts mentioned above before trying to make use of them in a mod.
 
+The following resources may be helpful for you in the creation of your {cpp} mods:
+
+* Satisfactory Headers: https://sf-headers.ficsit.app/
+* SDK Headers: https://sdk-headers.ficsit.app/
+
 == Dll, pdb & more
 
 When you compile your {cpp} code into the final binaries (stuff that actually is used by the game) you will get a Dynamic Link Library (`.dll`) file.
