@@ -84,4 +84,15 @@ and suggest you use the workaround written in the comment.
 If it still doesn't work, and you are **absolutely sure** that you use it correctly,
 contact the devs on the Discord for further advice.
 
+You can also open the bootstrapper log you can find under `<SF installation>/pre-launch-debug.log`.
+This log will contain information about the special linkage the bootstrapper performs.
+If your mod requires to call a function of SF that is not compiled into their binaries,
+f.e. when the function is marked as `inline`, then it will create a log entry starting with
+`[FATAL] Executable missing symbol with mangled name`.
+This will you also tell you the mangled symbol name it was not able to find.
+You can still run the game but when your mod calls this function, the game will crash.
+The crash will happen without the crash reporter, that means you should then checkout
+the pre-launch-debug.log because it will also tell you which symbol got called.
+This information is will be very useful to fix the bug so keep it ready when asking on discord.
+
 This is the world we live in right now, and we can't do much about it.
