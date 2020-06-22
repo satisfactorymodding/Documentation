@@ -20,6 +20,7 @@
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
+*** xref:Development/Cpp/hooking.adoc[Hooking]
 
 ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
 *** xref:Development/UnrealEngine/Code.adoc[Code]
