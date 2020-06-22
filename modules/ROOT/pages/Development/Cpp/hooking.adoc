@@ -1,0 +1,250 @@
+= Hooking
+
+Hooking is a C++ only feature of SML allowing you to attach a custom function body to a existing function.
+
+All C/C++-Function hook stuff you can find in `#include <mod/hooks.h>`.
+All BP function hook stuff you can find in `#include <mod/blueprint_hooking.h>`.
+
+== C/C++-Function hooks
+
+The hooking interface provides 4 ways of hooking functions with each one of them having again
+two types for call order.
+
+If multiple hooks get attached to the same function, these hooks will then get called in the order they were registered.
+
+There is a normal hook which gets called before the actual function gets called.
+Through this you are able to prevent the final function call and you are also able to overwrite
+the return value.
+If you cancel the execution of the final function, this can also cause the following hooks to not get called.
+That means also your hook doesn't necesserly always get called when SF tries to call it,
+because another hook might prevent this from happening.
+The normal hooks signature is `void(CallScope<HookFuncSignature>&, hookFuncParams)`.
+If you hook a member function, the `this` pointer is handles like a parameter and is the first parameter used.
+As long as you don't cancel the final function execution, or do it your self by calling the scope object,
+the final function will get implicitly get called after your hook function returns.
+
+[WARNING]
+====
+**Sometimes** when you use a custom type like a structure as return value, the game can crash!
+So try to avoid hooking functions which return structs. Including FString!
+====
+
+The call scope object allows you to:
+
+- Cancel the final function execution (if the hook function returns void).
++
+[source,cpp]
+----
+void hook(CallScope<...>& Scope, int exampleArg)
+ scope.Cancel();
+}
+----
+- Call the next hooks and the final function within your body.
+Calling the scope need to have all the same parameters as the func hook signature.
++
+[WARNING]
+====
+This only works with a return type of void.
+====
++
+[source,cpp]
+----
+void hook(CallScope<void(int)>& Scope, int exampleArg)
+	// stuff before final function call
+	scope(exampleArg); // call following hooks (final function might get called as long as following hooks dont cancel/overwrite it)
+	// stuff after final function call
+}
+----
+You can also use after this type of call the call scopes `getResult` function to get the return value of the hooks/final function as long as the to hook functions signature does not return void.
+- Override the return value befor the final call (causes the final call to not occur)
++
+[source,cpp]
+----
+void hook(CallScope<int(int)>& Scope, int exampleArg)
+	// final function might get called
+	scope.Override(customReturnValue);
+	// final function wont get called anymore
+}
+----
+
+Since you still want to make sure your hook gets called,
+no care about if the final function got called or not we introduce the "after" hooks.
+These hooks get all called after the normal hook calls and only allow you to
+read the paramters as well as the resulting return value.
+That means you can't influnce the final function call.
+These also don't use the CallScope object, instead the first paramter of your hooks signature
+is the return value following by the function call parameters.
+
+[source,cpp]
+----
+void hook(int returnValue, int exampleArg) {
+	// do some stuff
+}
+----
+
+=== Hook Types
+
+With hook types we mean the ways of attaching a hook to a function.
+This also might change the underlying way of working so there are key differences
+between different types of hooks.
+
+Be aware that type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
+Also the Hook function is a std::function that means it can by any type a std::function can accept, like function pointers, function pointers with bound place holder or even lambdas.
+
+[NOTE]
+====
+For "after" hooks, add the `_AFTER` postfix to the macro names.
+But also be aware that the hook function signature changes accordingly!
+====
+
+=== Type: SUBSCRIBE_METHOD
+
+The `SUBSCRIBE_METHOD`-Macro attaches a hook to the given function passed by pointer.
+SML will take that function pointer and find the symbol namem so bootstrapper can then redirect
+the function calls for that symbol to SML's hook framework.
+
+Usage goes as following:
+[source,cpp]
+----
+#include <mod/hooks.h>
+
+class SomeClass {
+public:
+	int MemberFunction(int arg1);
+	static void StaticFunction();
+}
+
+void registerHooks() {
+	SUBSCRIBE_METHOD(SomeClass::MemberFunction, [](auto& scope, SomeClass* self, int arg1) {
+		// do some nice stuff there
+	})
+
+	SUBSCRIBE_METHOD(SomeClass::StaticFunction, [](auto& scope) {
+		// do some nice stuff there
+	})
+}
+----
+
+[WARNING]
+====
+Hooking overloaded function might not work as intended since the compiler has no clue what exact symbol you now want to hook.
+Fot that you should have an look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
+to explicitly set the symbol you want to hook.
+====
+
+=== Type: SUBSCRIBE_VIRTUAL_FUNCTION
+
+The `SUBSCRIBE_VIRTUAL_FUNCTION`-Macro attaches the given hook to the given function passed
+by pointer in the virtual table of the given class.
+This happens by SML reading the function symbol and class name so bootstrapper can then
+change the the virtual table entry to the proper function of the SML hooking framework.
+
+That also means, you change the virtual table of only the given table,
+if you alow want to change the virtual table entry of other classes you need to hook them
+seperately.
+
+Usage goes as following:
+
+[source,cpp]
+----
+#include <mod/hooks.h>
+
+class SomeClass {
+public:
+	virtual int MemberFunction(int arg1);
+}
+
+class SomeChild : pulic SomeClass {
+public:
+	virtual int MemberFunction(int arg1) override;
+}
+
+void registerHooks() {
+	SUBSCRIBE_VIRTUAL_FUNCTION(SomeClass, SomeClass::MemberFunction, [](auto& scope, SomeClass* self, int arg1) {
+		// do some nice stuff there
+	})
+
+	SomeClass parent;
+	parent->MemberFunction(0); // hook gets called
+	SomeChild c;
+	c->MemberFunction(1); // hook does not get called
+}
+----
+
+=== Type: SUBSCRIBE_METHOD_MANUAL
+
+[WARNING]
+====
+Obtaining the needed mangled symbol name is an andvanced topic!
+So plz only use it if you are at least a little bit familiar with dissasemblies.
+====
+
+[WARNING]
+====
+The after hook macro is called `SUBSCRIBE_METHOD_AFTER_MANUAL`.
+====
+
+The `SUBSCRIBE_METHOD_MANUAL` works just like the `SUBSCRIBE_METHOD` but it instead allows you
+to explicitly define the symbol to hook.
+You still need to provide a function pointer which is used to determine the signature
+of the function you want to hook so the template functions and classes know what to do.
+
+The symbol name is mangled and can be obtained with https://www.hex-rays.com/products/ida/support/download_freeware/[IDA].
+To do so, open IDA an click at the welcome page on `new`.
+Then select the file under `<SF installation>/FactoryGame/Binaries/Win64/FactoryGame-Win64-Shipping.exe` and hit ok.
+Then you need to wait quite a while.
+When it is finished, you can find a list of all functions on the right hand side.
+Search for the function you want to hook, double click on it.
+The main view will show you the dissasembly.
+In there search for the function name and signature, emidiatly under it you can find the
+mangled symbol name.
+image:Cpp/IDA_Symbol.jpg[image]
+
+Usage goes as following:
+[source,cpp]
+----
+#include <mod/hooks.h>
+
+#include "FGBuildableGeneratorFuel"
+
+void registerHooks() {
+	SUBSCRIBE_METHOD_MANUAL("?BeginPlay@AFGBuildableGeneratorFuel@@UEAAXXZ", FGBuildableGeneratorFuel::BeginPlay, [](auto& scope, FGBuildableGeneratorFuel* self) {
+		// do some nice stuff there
+	})
+}
+----
+
+== Blueprint-Hooking
+
+Blueprint function hooking works by changing the instructions of a Blueprint UFunction
+so that first your hook gets called.
+
+The hook function signature is `void(FBlueprintHookHelper&)`.
+This helper structure provides a couple of functions allowing you to read and write data
+to local function (including parameters), output parameters and accessing the context pointer.
+
+You can attach a hook with the `HookBlueprintFunction`-Macro which takes a pointer
+to the UFunction you want to attach the hook to.
+
+Usage goes as following:
+[source,cpp]
+----
+#include <mod/blueprint_hooks.h>
+
+void registerHooks() {
+	UClass* SomeClass = ...;
+	UFinction* SomeFunc = SomeClass->FindFunctionByName(TEXT("TestFunc"));
+
+	HookBlueprintFunction(SomeFunc, [](FBlueprintHookHelper& helper) {
+		UObject* ctx = helper.GetContext(); // the object this function got called onto
+		FString* localStr = helper.GetLocalVarPtr<FString>("StrVariable"); // getting the pointer to a local variable
+		FString* output = helper.GetOutVariablePtry<FString>("OutValue"); // getting the pointer to a output variable
+		// do some nice stuff there
+	})
+}
+----
+
+[WARNING]
+====
+You can also provide a count of instruction as third parameter to hook as instruction based offset from the top. But we highly encourage you to not do so unless you know what you exactly do!
+====
