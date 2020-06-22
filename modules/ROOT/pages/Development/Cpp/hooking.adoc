@@ -10,7 +10,7 @@ All BP function hook stuff you can find in `#include <mod/blueprint_hooking.h>`.
 The hooking interface provides 4 ways of hooking functions with each one of them having again
 two types for call order.
 
-If multiple hooks get attached to the same function, these hooks will then get called after each other.
+If multiple hooks get attached to the same function, these hooks will then get called in the order they were registered.
 
 There is a normal hook which gets called before the actual function gets called.
 Through this you are able to prevent the final function call and you are also able to overwrite
@@ -22,6 +22,13 @@ The normal hooks signature is `void(CallScope<HookFuncSignature>&, hookFuncParam
 If you hook a member function, the `this` pointer is handles like a parameter and is the first parameter used.
 As long as you don't cancel the final function execution, or do it your self by calling the scope object,
 the final function will get implicitly get called after your hook function returns.
+
+[WARNING]
+====
+**Sometimes** when you use a custom type like a structure as return value, the game can crash!
+So try to avoid hooking functions which return structs. Including FString!
+====
+
 The call scope object allows you to:
 
 - Cancel the final function execution (if the hook function returns void).
@@ -34,6 +41,11 @@ void hook(CallScope<...>& Scope, int exampleArg)
 ----
 - Call the next hooks and the final function within your body.
 Calling the scope need to have all the same parameters as the func hook signature.
++
+[WARNING]
+====
+This only works with a return type of void.
+====
 +
 [source,cpp]
 ----
@@ -52,18 +64,6 @@ void hook(CallScope<int(int)>& Scope, int exampleArg)
 	// final function might get called
 	scope.Override(customReturnValue);
 	// final function wont get called anymore
-}
-----
-- Override the return value after final call.
-+
-[source,cpp]
-----
-void hook(CallScope<int(int)>& Scope, int exampleArg)
-	// stuff before final function call
-	scope(exampleArg); // call following hooks + final function
-	// stuff after final function call
-	scope.Override(customReturnValue); // override existing return value with the new one
-	// more stuff after final function call
 }
 ----
 
