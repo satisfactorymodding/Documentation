@@ -48,3 +48,101 @@ Attributes not existent in the config file wont get changed.
 or just set the structs variables to the values you want to use as default,
 this would allow you to define default values for the config files)
 Settings set in the config file wich don't have a corresponding attribute in the config struct simply get ignored.
+
+=== `void StructToJson(String& String, bool UsePrettyPropertyNames, Struct Strucure)`
+Converts the given structure to a string. If use pretty property names is enabled, the property names will look more human readable.
+
+=== `void StructFromJson(String String, bool UsePrettyPropertyNames, Struct& Structure)`
+Converts the given json string to a structure. Make sure that use pretty property names is enabled if it was also neabled while creating the string.
+
+== Mod Registry Utily
+
+There are functions allowing you to interact with the Mod Registry and other Mod info
+aswell as helper functions for converting information you might need handle to a
+more usefull format.
+
+=== `Version ParseVersionString(String String)`
+This function allows you to easily convert a string encoded version like `1.2.3`
+to a version structure.
+
+=== `String Conv_VersionToString(FVersion Version)`
+This function allows you to convert a version structure
+to a human readable version string like `1.2.3`.
+
+=== `bool IsModLoaded(String ModId)`
+This function takes a mod reference as input and checks
+if any kind of mod with that reference got loaded or not.
+
+=== `Array<String> GetLoadedMods()`
+This function returns the mod references of all currently loaded mods in an array.
+
+=== `ModInfo GetLoadedModInfo(String ModId)`
+This function allows you to access additional information about the mod with the given reference.
+
+=== `Texture2D LoadModIconTexture(String ModId, Texture2D FallbackIcon)`
+This function allows you to load the mod icon of the mod witht the given reference as a Texture2D.
+If no Texture or mod is found, the function will return the fallback icon.
+
+=== `Version GetSMLVersion()`
+This function allows you to retrieve the version of the currently installed mod loader.
+
+=== `Version GetBootstrapperVersion()`
+This function allows you to retrieve the version of the currently installed bootstrapper.
+
+=== `bool GetDevelopmentModEnabled()`
+This function allows you to easily check if the SML development mode is activated.
+
+== FVersion
+
+This struct contains information about a SemVer compatible version in a parsed state.
+
+=== Member Fields
+
+* int64 Major (read only)
++
+The major SemVer version number
+* int64 Minor (read only)
++
+The minor SemVer version number
+* int64 Patch (read only)
++
+The SemVer parch number
+* String Type (read only)
++
+The version type of this SemVer version.
++
+Can be:
++
+** "alpha"
+** "beta"
+** "release"
+
+* String BuildInfo (read only)
++
+Additional information to the version build.
+
+== FModInfo
+
+This struct contains infromation about a loaded mod.
+Mainly contents of the data.json of the mod.
+
+=== Member Fields
+
+- String Modid (read only)
++
+The mod reference
+- String Name (read only)
++
+The display name of the mod
+- Version Version (read only)
++
+The version of the mod
+- String Description (read only)
++
+The description of the mod
+- Array<String> Authors (read only)
++
+The names of the authors of the mod in a list.
+- String Credits (read only)
++
+Credits of the mod
