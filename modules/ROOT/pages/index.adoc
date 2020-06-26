@@ -46,6 +46,9 @@ The Satisfactory Mod Manager offers a convenient developer mode that automatical
 If you're looking to write your own mods, we suggest you start with
 making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
 
+If you're looking to make models, it's best to learn how to put a mod together first.
+Once you've completed the `Buildable` step in `Beginners Guide`, then check out our xref:Development/Modeling/index.adoc[Modeling Guide].
+
 === Installing Your "Raw" or WIP Mods
 
 If you don't have a .smod/.zip of the mod and the proper data.json file, you still can use them for testing and such.
