@@ -39,9 +39,8 @@ We cannot use features like the xref:Development/Satisfactory/Paintable.adoc[Pai
 . Open your modding project and let it import any changes it finds
 . There are now several important materials to point out
 .. `FactoryGame\Utils\Materials\MI_MachineStarter.uasset` Whenever creating a new buildable, if you want to use an AO bake make a copy of this
-.. `FactoryGame\-Shared\Material\MI_Factory_Base_01_Emsiv_AO` If you do not have a custom AO bake instead target this material for your buildable
-.. `FactoryGame\-Shared\Material\MI_Factory_Base_01` If you do not have AO, or strong emissive lights target this material for your buildable
-.. `FactoryGame\Buildable\-Shared\Material\Decal_Normal` This is the material to use for projecting normal decals onto meshes for extra detail
+.. `FactoryGame\-Shared\Material\MI_Factory_Base_01` If you do not have AO, target this material instead for your new buildable
+.. `FactoryGame\Buildable\-Shared\Material\Decal_Normal` This is the material to use for projecting "normal" decals onto meshes for extra detail
 .. `FactoryGame\Buildable\-Shared\Material\DecalColor_Masked` This is the material to use for coloured decals and signs on your mesh
 .. `FactoryGame\Buildable\-Shared\Material\Decal_Color` Opaque version of DecalColor_Masked, cheaper but will show black instead of transparency
 
@@ -51,7 +50,7 @@ Fixing it is optional as it will work correctly ingame anyways, but if you wish 
 . Setup the material proxies as laid out https://github.com/DavidHGillen/Satisfactory_ModelingTools/blob/master/README.md[here]
 . If you don't have the modeling tools, pick a temporary folder for export. You cannot directly export those textures into the modding project as the path will be wrong
 . Open the `Game` folder from the export and you should see a `FactoryGame` folder
-. Copy that folder so it overwrites the `Content\FactoryGame` in your modding project
+. Copy `FactoryGame` so it overwrites the `Content\FactoryGame` in your modding project
 
 Now we're done setting up our material references and look alikes.
 

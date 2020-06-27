@@ -34,6 +34,11 @@ Normal Map Decals::
   https://www.youtube.com/watch?v=66IGMnPgEW0[Youtube walkthrough]
 * {blank}
 +
+Lightmap UVs::
+  Give every portion of the mesh unique surface area so that lighting calculations can save information to the right spots without issues.
+  https://www.youtube.com/watch?v=UnUn4nRoh-E[Youtube Example]
+* {blank}
++
 Ambient Occlusion Bake::
   Help the lighting engine do a better job by making a texture to describe where the nooks, crannies, and edges of meshes are.
   https://www.katsbits.com/tutorials/blender/baking-ambient-occlusion.php[Tutorial Article]
