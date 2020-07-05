@@ -1,0 +1,37 @@
+= Subsystems
+
+Subsystems are actors existing in the world only once and are used as a per world instance general manager.
+These subsystems are accessible from anywere were you have a world context available (f.e. actors).
+Subsystems allow you f.e. to implement custom game state information you want to have saved to the save
+or when you want to manage multiple actors or a system from one point.
+
+f.e. Light It Up uses a group system wich is globaly unified were every lamp can access the same group.
+LIU now uses a system to provided one point were every lamp can get the information
+about the current group settings.
+
+== UModSubsystemHolder
+
+If you want to have a subsystem you need at least one class inherited from this holder class.
+These holders will spawn and store the references to the subsystems.
+
+It has a `InitSubsystems` where you then need to spawn the subsystems you want to add
+and then store the references in attributes.
+
+Later somewere else you can use the static `K2_GetModSubsystemHolder` function
+to get a reference to your holder which then has attributes holding references to your subsystems.
+
+For registering a subsystem holder you can just add it to the `M Mod Subsystem` array of the InitMod.
+
+== Spawning a Subsystem
+
+A subsystem it self is a actor inheriting from AFGSubsystem.
+You can also use save game to store data to save states.
+
+When you spawn one in a subsystem holder you should use the `UModSubsystemHolder::SpawnSubsystem` function.
+Cause it also checks if the subsystem is already spawned (f.e. loaded from save state)
+and returns just the reference to it.
+
+[WARNING]
+====
+Spawning it in BP you should use the `UModSubsystemHolder::K2_SpawnSubsystem` function.
+====
