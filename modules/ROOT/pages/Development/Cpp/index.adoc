@@ -1,0 +1,82 @@
+= C++ Modding
+
+{cpp} modding is the holy grail of Satisfactory modding. As opposed to the visual programming style of the Blueprints system,
+text-based {cpp} code can be compiled into far more efficient code. Additionally, with {cpp} mods, you have access to modify
+nearly every aspect of the game, whereas there are still many features not exposed to Blueprints.
+
+That being said, Blueprint scripting is still very useful for quick stuff, or for things that don't need to be high performance (like UI).
+
+== Requirements
+
+Well, since this is a very advanced topic, we recommend you to learn {cpp}
+and {cpp} for Unreal Engine first.
+
+We have compiled a list of some helpful learning resources xref:Development/index.adoc#_resources[here], but you will probably want to search out some more on your own.
+
+Here is a list of some concepts you should learn before going further:
+
+{Cpp} specific:
+
+* If/Else
+* Loop Structures
+** While
+** For
+** For Each
+* Lambda Functions
+* Pointers
+* References
+
+{Cpp} concepts which are used but are implemented differently in Unreal Engine:
+
+- std::string
+- std::vector
+- std::set (And the differences between it and std::vector)
+- Smart Pointers
+
+The Unreal Engine synonyms for the aforementioned concepts (the UE implementation of them):
+
+- std::string -> FString
+- std::vector -> TArray
+- std::set -> TSet
+- std::(unordered_)set<T> -> TSet<T>
+- std::(unordered_)map<K, V> -> TMap<K, V>
+- Unreal Smart Pointers
+
+Other stuff added only by UE or general programming concepts:
+
+- What a UObject/UProperty/UFunction (reflection system) is
+- What an AActor is
+- What garbage collection means, how it works, and how to make use of it
+
+If you have a good understanding of most these concepts, then you have a very solid foundation from which to start modding. If so, this is likely not your first time working on a project or mod like this, and you'll be able to judge what content you can skip over and learn when needed.
+
+We can not understate the value of learning through doing. Especially if just starting out with these concepts, we suggest that instead of immediately beginning working on a mod, taking the time to make a separate Unreal {cpp} project for testing and practice. Try out working with the concepts mentioned above before trying to make use of them in a mod.
+
+== Dll, pdb & more
+
+When you compile your {cpp} code into the final binaries (stuff that actually is used by the game) you will get a Dynamic Link Library (`.dll`) file.
+When you distribute your mod, you will have to make sure it includes this file. You will need to add it also to your `data.json` as an `sml_mod` object. More info on the upload process can be found on the xref:UploadToSMR.adoc[Uploading to SMR page.]
+
+This file comes with a companion, the Program Database (`.pdb`) file.
+This file holds additional information about the original source code and allows you to debug your code more easily in runtime.
+You can ship this file with your mod, but don't need to.
+If you do decide to ship it, it doesn't needed to be added to the `data.json` file.
+
+We won't go into detail about the general technical stuff aspects of {cpp} in this documentation.
+If you want to learn more about that, there are plenty of good resources available elsewhere on the Internet.
+In order to write {cpp} mods, you will require both general {cpp} knowledge, and knowledge about how {cpp} applies to Unreal Engine systems.
+You can find a quick guide to the Unreal portion in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
+
+== Warning
+
+Due to technical limitations, there are some functions/features of Satisfactory and Unreal Engine 4 that
+we are not able to access or need to use a work around to call correctly.
+
+If you experience a crash or some undefined behavior while using a function from UE4 or Satisfactory,
+you should read the javadoc comment that has been added to the function. Sometimes the comment will tell you that it doesn't work
+and suggest you use the workaround written in the comment.
+
+If it still doesn't work, and you are **absolutely sure** that you use it correctly,
+contact the devs on the Discord for further advice.
+
+This is the world we live in right now, and we can't do much about it.

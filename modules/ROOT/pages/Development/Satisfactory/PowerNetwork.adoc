@@ -52,7 +52,7 @@ M Wires::
 * {blank}
 +
 M Nb Wires connected::
-  Number od wires connected to this component
+  Number of wires connected to this component
 * {blank}
 +
 M Circuit ID::

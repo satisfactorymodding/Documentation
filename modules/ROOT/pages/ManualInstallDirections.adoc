@@ -4,7 +4,7 @@
 ====
 We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead, since it vastly simplifies the process of installing, testing, and using mods.
 
-If you're a mod developer, you should still strongly consider using the launcher. You can use `For Mod Developers > Toggle SML always installed` to handle installing SML and the bootstrapper for you.
+If you're a mod developer, you should still strongly consider using the launcher. You need to change `Configs` to `development` to handle installing SML and the bootstrapper for you.
 
 ====
 
@@ -16,7 +16,7 @@ If you don't want to use the Launcher for some reason, or you are a mod maker an
 
 Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use and download it.
 
-After that you just need to copy the `xinput3_1.dll` to `<game root>/FactoryGame/Binaries/Win64/`
+After that you just need to copy the `xinput1_3.dll` and the `msdia140.dll` to `<game root>/FactoryGame/Binaries/Win64/`
 
 === Installing SML
 

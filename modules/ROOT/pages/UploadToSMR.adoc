@@ -14,9 +14,21 @@ On the front page of SMR, click `New Mod` in the top right corner to get started
 
 Provide a name, short description, and long description for your mod. The name is the title that will appear in the mod list and browser. The short description is the summary text that will show up below the mod icon. The long description supports Markdown formatting (help on the https://ficsit.app/help[help page]) and is shown when the user clicks to 'View' your mod. You can edit all of these later.
 
+One of the most important fields on this screen is the `mod_reference` field.
+Explained in more detail in the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide], your mod reference is your mod's unique name.
+As a reminder, your mod's Content folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
+Your mod reference can not contain special characters or spaces.
+
+[WARNING]
+====
+**You can't change the mod reference after you have added your mod to SMR!**
+
+So make sure it is correct! At least five times! And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section] again to make sure you understand what other parts of your mod need to use this same value.
+====
+
 Next, you can upload an image to use as the display image for your mod, and a link to your source code if it is hosted on a site like GitHub or similar.
 
-Once you click Submit, your mod page will be created. You still need to upload a version for your mod to be usable by players.
+Once you click Submit, your mod page will be created. You still need to upload a version for your mod to be usable by players. This version submission process will be covered in the following sections.
 
 == Data.json Format
 
@@ -34,11 +46,11 @@ Below is a quick explanation of the fields and what they do.
 |===
 |Parameter |Description of Function
 
-|mod_id
-| The unique identifier of your mod. After you create your mod page, you will be presented with this identifier when you go to upload a new version.
-
 |mod_reference
-| The unique name for your mod. 
+| The unique name for your mod.
+Used by everything as the identifier for your mod.
+Tells SML in which folder your InitMod is located and also what name your C++ module has.
+Again, you can read up on it xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
 
 |name
 | The name of your mod that will be displayed to users. This should match your mod name on SMR.
@@ -61,9 +73,10 @@ Below is a quick explanation of the fields and what they do.
 
 |dependencies
 | Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
+SML will then load these mods before your mod.
 
 |optional_dependencies
-| Mod IDs of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
+| Mod references of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
 
 |===
 
@@ -77,7 +90,7 @@ Example minimal data.json:
   "mod_reference": "BaseMod",
   "name": "BaseMod",
   "version": "0.0.1",
-  "sml_version": "2.0.0",
+  "sml_version": "2.1.0",
   "description": "A basic mod created to showcase SML's functionality.",
   "authors": ["SuperCoder79"],
   "objects": [
@@ -88,7 +101,9 @@ Example minimal data.json:
     {
       "type": "pak",
       "path": "BaseMod.pak",
-	  "loading_priority":1
+	  "metadata": {
+        "loading_priority": 1
+      }
     }
   ],
   "dependencies": {
