@@ -14,16 +14,15 @@ If you don't want to use the Launcher for some reason, or you are a mod maker an
 
 === Installing Bootstrapper
 
-Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use and download it.
+Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use (usually the latest) and download it.
 
 After that you just need to copy the `xinput1_3.dll` and the `msdia140.dll` to `<game root>/FactoryGame/Binaries/Win64/`
 
 === Installing SML
 
-Now that you have installed bootstrapper you need to download
-a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
+Now that you have installed the bootstrapper, you need to download a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
 
-After you have downloaded it, you need to place the file into `<game root>/loaders`.
+Once you're on the GitHub releases page for the bootstrapper, download the file `UE4-SML-Win64-Shipping.dll` as well as the `SML.pak` and save it into the `<game root>/loaders` folder. As a player, you do not need any of the other files from the download page, only the `.dll` and `.pak` file.
 
 [TIP]
 ====

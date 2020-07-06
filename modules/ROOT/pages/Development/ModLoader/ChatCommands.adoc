@@ -1,0 +1,60 @@
+= Chat Commands
+
+SML adds a system allowing you to add your own chat commands.
+
+== AChatCommandInstanceParent
+
+You might think "wtf is this?"... well, this is the class you need inherit from
+for each chat command you want to implement in BP.
+
+This classs contains some attributes you need to set to tell SML
+what name your command f.e. has.
+
+- `Only Usable by Player`
++
+this allows you to make sure only players can execute the command.
+- `Min Number Of Arguments`
++
+If the number of arguments used to execute the command is lower than this value,
+the command wont get executed.
+- `Mod Id`
++
+This needs to be your Mod Id, it allows SML to differentiate between the different Mods.
++
+[WARNING]
+====
+Make sure the mod id is valid! If it's not, it will crash.
+====
+
+- `Command Name`
++
+This is finally the name of your command you want to add.
+- `Aliases`
++
+This is a list alternative Command Names for your command.
+You will be able to use them to call the same command.
+- `Usage`
++
+This is the discription of your command how it should get used by the player.
+
+To give the command now some functionallity,
+you just need to override the `Execute Command` function and add your own logic to it.
+
+The Function gets the command sender, the command arguments and the used alias as function parameters and returns if something and what in the execution didn't work.
+
+After that you need to register your command.
+You can do that by simply adding it to the `M Chat Commands` array of your InitMod.
+
+== UCommandSender
+
+This class represents a chat command sender and allows you to get abstract information about the sender.
+
+A sender could be f.e. the player.
+
+== AChatCommandSubsystem
+
+This subsystem allows you to register a chat command instance manually,
+to get registered commands to executed a command and most importantly,
+it provides the `ParsePlayerName` function wich allows you to get the AFGPlayerController
+based on the player name. Used to parse the player name passed as command argument.
+It also allows you to parse selectors like @all and @self.
