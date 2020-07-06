@@ -22,7 +22,7 @@ After that you just need to copy the `xinput1_3.dll` and the `msdia140.dll` to `
 
 Now that you have installed the bootstrapper, you need to download a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
 
-Once you're on the GitHub releases page for the bootstrapper, download the file `UE4-SML-Win64-Shipping.dll` and save it into the `<game root>/loaders` folder. As a player, you do not need any of the other files from the download page, only the `.dll` file.
+Once you're on the GitHub releases page for the bootstrapper, download the file `UE4-SML-Win64-Shipping.dll` as well as the `SML.pak` and save it into the `<game root>/loaders` folder. As a player, you do not need any of the other files from the download page, only the `.dll` and `.pak` file.
 
 [TIP]
 ====
