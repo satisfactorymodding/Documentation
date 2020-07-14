@@ -1,0 +1,28 @@
+= Resource Sink
+
+Right now you were not able to put custom items into the resource sink
+to gather coupon points.
+
+SML provides a facility for you to load a list of item descriptors
+referred with their new associated count of coupon points you get
+when you recycle the item for the first time.
+
+== Data Table
+
+If you want to define the amount of coupon points,
+you will need to create a data table with
+`Resource Sink Point Data` as type of row.
+
+In the data table now add for each item descriptor you want to add
+a new row, select for `Item Class` your descriptor
+and change `Points` to the amount of coupons you want.
+
+With that the data we need is fully created.
+
+== Registering the Data Table
+
+Now we just need to tell SF to load the contents of the data table.
+We do this by using the InitMod actor.
+Simply set the `M Resource Sink Item Points Data Table` variable in the defaults tab
+to your own just created data table.
+SML will read the contents and adds them to the resource sink.
