@@ -69,3 +69,30 @@ But you can try to name your files so its name comes after the name of the depen
 If you need to know how to enable `developmentMode`,
 please refer to the xref:SMLConfiguration.adoc[SML Configuration Page].
 ====
+
+== Installing mods on Linux (Steam) as a player - SML version 2.2.1
+
+[WARNING]
+====
+_THIS IS UNSUPPORTED -> NO SUPPORT SHOULD BE EXPECTED FOR ANYONE ATTEMPTING THIS_.
+====
+
+. `cd <game root>/FactoryGame/Binaries/Win64`
+. Navigate to https://github.com/satisfactorymodding/SatisfactoryModBootstrapper/releases/tag/v2.0.11 and download into the `./Win64` folder:
+. . `msdia140.dll`
+. . `xinput1_3.dll`
+. `mkdir -p <game root>/loaders && cd <game root>/loaders`
+.  Navigate to https://github.com/satisfactorymodding/SatisfactoryModLoader/releases/tag/2.2.1 and download into the `./loaders` folder:
+. . `SML.pak`
+. . `UE4-SML-Win64-Shipping.dll`
+. `mkdir -p <game root/mods`
+. For each mod you want to install:
+. . First navigate to its page on https://ficsit.app, and go to `Versions` tab.
+. . Then download the version matching your SML version (step 4) into `<game root>/mods`¹.
+
+[TIP]
+====
+If you want to restore the game to its vanilla glory, (at the time of this writing it was enough to) re-name/move the `<game root>/loaders` folder!
+====
+
+1: This does not account for any mod-dependencies resolving performed by SMM.
