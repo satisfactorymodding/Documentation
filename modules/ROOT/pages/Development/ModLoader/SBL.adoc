@@ -26,7 +26,7 @@ Causes the game to crash.
 
 == Config
 
-The SBL also provides the ability to save and load configurations just in BluePrints.
+The SBL also provides the ability to save and load configurations in Blueprints.
 
 As `config` you can pass any kind of custom struct.
 But only these types will get parsed properly:
@@ -35,52 +35,51 @@ But only these types will get parsed properly:
 - Float
 - Integer
 - Bool
-- Array of allowed types
 - other Structs
+- Array of any of the above allowed types
 
 === `void SaveConfig(String modid, Struct config)`
 Dumps the given config struct as a Json and saves it as the config file for the mod with the given name.
   
 === `void LoadConfig(String modid, Struct& config)`
-Parses the config file of the given modid to the attributes of the given config struct.
-Attributes not existent in the config file wont get changed.
+Parses the config file of the given mod id to the attributes of the given config struct.
+Attributes not existent in the config file won't get changed.
 (basically if you set default values for the struct,
-or just set the structs variables to the values you want to use as default,
+or just set the structs' variables to the values you want to use as default,
 this would allow you to define default values for the config files)
-Settings set in the config file wich don't have a corresponding attribute in the config struct simply get ignored.
+Settings set in the config file which don't have a corresponding attribute in the config struct simply get ignored.
 
-=== `void StructToJson(String& String, bool UsePrettyPropertyNames, Struct Strucure)`
-Converts the given structure to a string. If use pretty property names is enabled, the property names will look more human readable.
+=== `void StructToJson(String& String, bool UsePrettyPropertyNames, Struct Structure)`
+Converts the given structure to a string, storing it at the passed String address. If UsePrettyPropertyNames is true, the property names will look more human readable.
 
 === `void StructFromJson(String String, bool UsePrettyPropertyNames, Struct& Structure)`
-Converts the given json string to a structure. Make sure that use pretty property names is enabled if it was also neabled while creating the string.
+Converts the given json String to a structure. Make sure that UsePrettyPropertyNames is enabled if it was enabled when producing the json via StructToJson.
 
-== Mod Registry Utily
+== Mod Registry Utility
 
-There are functions allowing you to interact with the Mod Registry and other Mod info
-aswell as helper functions for converting information you might need handle to a
-more usefull format.
+There are functions allowing you to interact with the Mod Registry and obtain other mod info
+as well as helper functions for converting this information between different display formats.
 
-=== `Version ParseVersionString(String String)`
+=== `xref:#_fversion[FVersion] ParseVersionString(String String)`
 This function allows you to easily convert a string encoded version like `1.2.3`
 to a version structure.
 
-=== `String Conv_VersionToString(FVersion Version)`
+=== `String Conv_VersionToString(xref:#_fversion[FVersion] Version)`
 This function allows you to convert a version structure
 to a human readable version string like `1.2.3`.
 
 === `bool IsModLoaded(String ModId)`
-This function takes a mod reference as input and checks
+This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference] as input and checks
 if any kind of mod with that reference got loaded or not.
 
 === `Array<String> GetLoadedMods()`
-This function returns the mod references of all currently loaded mods in an array.
+This function returns the xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod references] of all currently loaded mods in an array.
 
 === `ModInfo GetLoadedModInfo(String ModId)`
 This function allows you to access additional information about the mod with the given reference.
 
 === `Texture2D LoadModIconTexture(String ModId, Texture2D FallbackIcon)`
-This function allows you to load the mod icon of the mod witht the given reference as a Texture2D.
+This function allows you to load the mod icon of the mod with the given reference as a Texture2D.
 If no Texture or mod is found, the function will return the fallback icon.
 
 === `Version GetSMLVersion()`
@@ -94,7 +93,7 @@ This function allows you to easily check if the SML development mode is activate
 
 == FVersion
 
-This struct contains information about a SemVer compatible version in a parsed state.
+This struct contains information about a xref:https://semver.org/[SemVer] compatible version in a parsed state.
 
 === Member Fields
 
@@ -106,7 +105,7 @@ The major SemVer version number
 The minor SemVer version number
 * int64 Patch (read only)
 +
-The SemVer parch number
+The SemVer patch number
 * String Type (read only)
 +
 The version type of this SemVer version.
@@ -123,18 +122,18 @@ Additional information to the version build.
 
 == FModInfo
 
-This struct contains infromation about a loaded mod.
+This struct contains information about a loaded mod.
 Mainly contents of the data.json of the mod.
 
 === Member Fields
 
-- String Modid (read only)
+- String ModId (read only)
 +
-The mod reference
+The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
 - String Name (read only)
 +
 The display name of the mod
-- Version Version (read only)
+- FVersion Version (read only)
 +
 The version of the mod
 - String Description (read only)
