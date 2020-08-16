@@ -1,32 +1,30 @@
 = Hooking
 
-Hooking is a C++ only feature of SML allowing you to attach a custom function body to a existing function.
+Hooking is a C++ exclusive feature of SML that allows you to attach a custom function body to a existing function.
 
-All C/C++-Function hook stuff you can find in `#include <mod/hooks.h>`.
-All BP function hook stuff you can find in `#include <mod/blueprint_hooking.h>`.
+All C/C++ functioning hooking stuff can be found in `#include <mod/hooks.h>`.
+All Blueprint function hook stuff can be found in `#include <mod/blueprint_hooking.h>`.
 
-== C/C++-Function hooks
+== C/C++ Function Hooks
 
-The hooking interface provides 4 ways of hooking functions with each one of them having again
-two types for call order.
+The hooking interface provides distinct 3 ways of hooking functions, each of which have two types of call order.
 
-If multiple hooks get attached to the same function, these hooks will then get called in the order they were registered.
+If multiple hooks are attached to the same function, these hooks will then get called in the order they were registered.
 
 There is a normal hook which gets called before the actual function gets called.
-Through this you are able to prevent the final function call and you are also able to overwrite
-the return value.
-If you cancel the execution of the final function, this can also cause the following hooks to not get called.
-That means also your hook doesn't necesserly always get called when SF tries to call it,
-because another hook might prevent this from happening.
-The normal hooks signature is `void(CallScope<HookFuncSignature>&, hookFuncParams)`.
-If you hook a member function, the `this` pointer is handles like a parameter and is the first parameter used.
-As long as you don't cancel the final function execution, or do it your self by calling the scope object,
-the final function will get implicitly get called after your hook function returns.
+Through this hook you are able to prevent the final function call and you are also able to overwrite the return value.
+If you cancel the execution of the final function, you can prevent the following hooks from being called.
+Keep in mind that this means that another hook can prevent your hooks from being called by Satisfactory.
+The normal hook's signature is `void(CallScope<HookFuncSignature>&, hookFuncParams)`.
+If you hook a member function, the `this` pointer is handled like a parameter and is the first parameter used.
+As long as you don't cancel the final function execution, or do it yourself by calling the scope object,
+the final function will be implicitly called after your hook function returns.
 
 [WARNING]
 ====
-**Sometimes** when you use a custom type like a structure as return value, the game can crash!
-So try to avoid hooking functions which return structs. Including FString!
+**Sometimes** when hooking functions that return custom types such as structs and FStrings, the game can unexpectedly crash!
+The cause of this is not fully known and often depends on the function being hooked.
+As such, try to avoid hooking functions that return said custom types wherever possible.
 ====
 
 The call scope object allows you to:
@@ -51,12 +49,12 @@ This only works with a return type of void.
 ----
 void hook(CallScope<void(int)>& Scope, int exampleArg)
 	// stuff before final function call
-	scope(exampleArg); // call following hooks (final function might get called as long as following hooks dont cancel/overwrite it)
+	scope(exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
 }
 ----
 You can also use after this type of call the call scopes `getResult` function to get the return value of the hooks/final function as long as the to hook functions signature does not return void.
-- Override the return value befor the final call (causes the final call to not occur)
+- Override the return value before the final call (causes the final call to not occur)
 +
 [source,cpp]
 ----
@@ -70,9 +68,9 @@ void hook(CallScope<int(int)>& Scope, int exampleArg)
 Since you still want to make sure your hook gets called,
 no care about if the final function got called or not we introduce the "after" hooks.
 These hooks get all called after the normal hook calls and only allow you to
-read the paramters as well as the resulting return value.
-That means you can't influnce the final function call.
-These also don't use the CallScope object, instead the first paramter of your hooks signature
+read the parameters as well as the resulting return value.
+That means you can't influence the final function call.
+These also don't use the CallScope object, instead the first parameter of your hooks signature
 is the return value following by the function call parameters.
 
 [source,cpp]
@@ -82,14 +80,13 @@ void hook(int returnValue, int exampleArg) {
 }
 ----
 
-=== Hook Types
+=== The 3 Hook Types
 
-With hook types we mean the ways of attaching a hook to a function.
-This also might change the underlying way of working so there are key differences
-between different types of hooks.
+By 'hook types' we mean the different ways of attaching a hook to a function.
+Each attachment method works differently under the hood, and it's important to pay attention to the key differences between the different types of hooks.
 
 Be aware that type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
-Also the Hook function is a std::function that means it can by any type a std::function can accept, like function pointers, function pointers with bound place holder or even lambdas.
+Note that the Hook function is a std::function, which means that it can be any type a std::function can accept, such as function pointers, function pointers with bound placeholders, or even lambdas.
 
 [NOTE]
 ====
@@ -100,7 +97,7 @@ But also be aware that the hook function signature changes accordingly!
 === Type: SUBSCRIBE_METHOD
 
 The `SUBSCRIBE_METHOD`-Macro attaches a hook to the given function passed by pointer.
-SML will take that function pointer and find the symbol namem so bootstrapper can then redirect
+SML will take that function pointer and find the symbol name so bootstrapper can then redirect
 the function calls for that symbol to SML's hook framework.
 
 Usage goes as following:
@@ -128,7 +125,7 @@ void registerHooks() {
 [WARNING]
 ====
 Hooking overloaded function might not work as intended since the compiler has no clue what exact symbol you now want to hook.
-Fot that you should have an look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
+For that you should have an look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
 to explicitly set the symbol you want to hook.
 ====
 
@@ -140,8 +137,8 @@ This happens by SML reading the function symbol and class name so bootstrapper c
 change the the virtual table entry to the proper function of the SML hooking framework.
 
 That also means, you change the virtual table of only the given table,
-if you alow want to change the virtual table entry of other classes you need to hook them
-seperately.
+if you allow want to change the virtual table entry of other classes you need to hook them
+separately.
 
 Usage goes as following:
 
@@ -154,7 +151,7 @@ public:
 	virtual int MemberFunction(int arg1);
 }
 
-class SomeChild : pulic SomeClass {
+class SomeChild : public SomeClass {
 public:
 	virtual int MemberFunction(int arg1) override;
 }
@@ -175,8 +172,8 @@ void registerHooks() {
 
 [WARNING]
 ====
-Obtaining the needed mangled symbol name is an andvanced topic!
-So plz only use it if you are at least a little bit familiar with dissasemblies.
+Obtaining the needed mangled symbol name is an advanced topic!
+So please only use it if you are at least a little bit familiar with disassembles.
 ====
 
 [WARNING]
@@ -191,12 +188,12 @@ of the function you want to hook so the template functions and classes know what
 
 The symbol name is mangled and can be obtained with https://www.hex-rays.com/products/ida/support/download_freeware/[IDA].
 To do so, open IDA an click at the welcome page on `new`.
-Then select the file under `<SF installation>/FactoryGame/Binaries/Win64/FactoryGame-Win64-Shipping.exe` and hit ok.
+Then select the file under `<SF installation>/FactoryGame/Binaries/Win64/FactoryGame-Win64-Shipping.exe` and hit OK.
 Then you need to wait quite a while.
 When it is finished, you can find a list of all functions on the right hand side.
 Search for the function you want to hook, double click on it.
-The main view will show you the dissasembly.
-In there search for the function name and signature, emidiatly under it you can find the
+The main view will show you the disassembly.
+In there search for the function name and signature, immediately under it you can find the
 mangled symbol name.
 image:Cpp/IDA_Symbol.jpg[image]
 
@@ -246,5 +243,6 @@ void registerHooks() {
 
 [WARNING]
 ====
-You can also provide a count of instruction as third parameter to hook as instruction based offset from the top. But we highly encourage you to not do so unless you know what you exactly do!
+You can also provide a count of instruction as third parameter to hook as instruction based offset from the top.
+But we highly encourage you to not do so unless you know what you exactly do!
 ====
