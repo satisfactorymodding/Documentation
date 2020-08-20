@@ -4,28 +4,38 @@ If you're trying to get a handle on the Satisfactory visual style for custom and
 == Industrial Sci-Fi
 Satisfactory's style sits in a bit of a grey zone on the edge of popular styles like CyberPunk.
 Similar to Cyberpunk its futuristic, impersonal, detailed, industrial, and fits well with Brutalism.
-But it shares many traits with styles like SteamPunk where it focuses on designs and mechanisms that should of been supplanted by new technology.
+While it shares the glib attitude about corporate overlords, there is one particular sticking  point in the design.
+Satisfactory has a Retro-Future aesthetic and focuses on designs, mechanisms, and processes that have already been supplanted by new technology.
 
-Satisfactory uses similar approaches to steampunk where it extrapolates how more modern ideas may be implemented with older designs.
-Everything is quite bright, clean, and well maintained though, unlike the general dirt and oppression of cyberpunk.
-Often parts of Cyberpunk designs are the complete immersion in digital life and neon signs in the sky.
-Satisfactory explicitly shuns many of these Sci-Fi tropes and styles.
-Note the general absence of lasers, holograms, plasma, lumifibre, and digital things.
-While present in vehicle paths, build gun, xeno-basher, ADA, etc. They are not used in the majority of the buildings, items, and their designs.
-Even when Sci-Fi and digital things surface they're given an older or less sophisticated flair, like a Windows XP desktop background, or obvious text to speech synthesis.
+Like many retro-future aesthetics it extrapolates how more modern ideas may be implemented with older designs.
+Everything is quite bright, clean, and well maintained a stark contrast to the general dirt and oppression of cyberpunk.
+Many parts of Cyberpunk designs are the complete immersion in cybernetic and digital life, robots and neon signs in the sky.
+Satisfactory explicitly shuns many of these Sci-Fi tropes and styles in gameplay and visuals.
+Note the general absence of lasers, holograms, plasma, lumifibre, and digital/robotic things.
+Vehicle paths and the build gun use hologram, the xeno-basher and foundries glow, and ADA is a digital assistant, etc.
+But look closer. Vehicles use wheels, the xeno-basher is only a big taser, we have a Windows XP desktop background, ADA is using Google Text to Speech (literally).
+This is not a future we'll reach, we have to rewind technology 30 years to even get on the right path to this point.
+
+Further Satisfactory embraces the intricacies of the industrial process.
+We've all spent time watching the machine's animations, we love watching the first motor go down a conveyer belt.
+The fantasy being sold and glorified to the end user is one of a giant machine with a thousand moving parts.
+Seeing the motion, seeing the process, understanding the steps involved.
+When designing items for Satisfactory its important to show the user the industrial process at work.
+Its a game for the people that can binge watch "How its made" videos on youtube.
 
 At every opportunity Satisfactory focuses on industrial designs, machines, and mechanisms of the 90's to 00's when they were new and cool.
-While it embraces Sci-Fi it keeps a leash on it to prevent it from running away into energy beams and warp drive.
+While it embraces Sci-Fi it keeps a leash on it to prevent it from running away into energy beams, AI drones, and warp drive.
 It's a style of Industrial Sci-Fi Retro Futurism that asks, what if heavy industry could of landed on other planets in the 90's.
 
 == Technical implementation
-Due to the sheer number of elements the game intends to display technical implementation feeds back into visuals.
+Due to the sheer number of elements the game intends to display, the eventual technical implementation feeds back into visuals.
 The strong corporate presences of Ficsit excuses modular and colourful designs.
-The Brand Identity allows the underlying rendering to use modular assets and shared materials extensively.
-Instanced rendering systems like medium polygon objects and limited texture sources.
-Medium poly modeling with texture atlas decals plays into this setup perfectly.
-Further medium poly approaches excel at large complex areas with physical details or spots of interest.
-This matches up exactly with the look large industrial machines with panels and warning labels.
+The Brand Identity allows the underlying rendering to use modular visuals and shared materials extensively.
+Instanced rendering systems (how to display a lot of something) prefer medium polygon objects and limited texture sources.
+Satisfactory's medium poly modeling with texture atlas based decals ends up playing into this setup perfectly.
+Further this modeling approach excels at large complex areas with physical details or spots of interest.
+This matches up exactly with the look of large industrial machines with panels and warning labels.
+Unfortunately this makes the workflow a little non standard, but its full of excellent choices.
 
 == Case Studies
 Without the authors original notes its often helpful to work backwards from their final decisions, this section is for a few deep dives of specific choices.
@@ -47,3 +57,5 @@ They push the silhouette out giving it interest and shape, but also making the m
 Interestingly after shunning many Maglev and monorail train shapes, because of their modern design, the design of mono-rails are brought back.
 This more modern rail design and the Sci-Fi engine help solidify the train into the future which without would essentially be from the 90's.
 This balance of futuristic and past industrial styles is where Satisfactory is best represented.
+
+

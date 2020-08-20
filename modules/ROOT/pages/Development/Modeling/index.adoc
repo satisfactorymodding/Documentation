@@ -7,8 +7,7 @@ It is essential you have a modding environment and working mod to test you chang
 
 While we're not going to teach you how to model, that's too big of a concept to fit in these docs, if you're just getting started try some intro to Blender tutorials before continuing further.
 
-Even if you do know how to model there may be some concepts/processes the game is using you might want to lookup/practice.
-Below is a list of some major technologies or techniques you should at least be aware of.
+Even if you do know how to model there may be some concepts/processes the game is using you might want to lookup/practice. Below is a list of some major technologies or techniques you should at least be aware of.
 
 * {blank}
 +
@@ -45,3 +44,5 @@ Ambient Occlusion Bake::
 
 == Help
 Keep in mind these are common techniques and many more resources are available to learn from. Feel free to ask for help in the `+#help-making-mods+` channel on the https://discord.gg/xkVJ73E[Discord server] or in the https://forums.ficsit.app/[SMR Forums]
+
+

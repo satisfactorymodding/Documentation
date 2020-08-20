@@ -1,69 +1,46 @@
 = First Simple Machine
 
-In this chapter we'll create a simple machine which simply counts the
-items and types of items that pass through it, outputting them again on the other side.
+In this chapter we'll create a simple machine which simply counts the items and types of items that pass through it, outputting them again on the other side. 
 
 == Create the machine
 
-Creating a simple machine is fairly straightforward. First of all,
-you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable]
-with descriptor and recipe, but this time use 
-link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_SimpleMachine.fbx[this] (TODO make this mesh) as the mesh and
-link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TODO make this icon) as icon so that it looks a bit more like a machine.
+First thing to make our counting machine, you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] with descriptor and recipe, but this time use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_SimpleMachine.fbx[this] (TODO make this mesh) as the mesh and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TODO make this icon) as icon so that it looks a bit more like a machine.
 
-Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors]
-(conveyor input and outputs).
-For that add two new components of type `FGFactoryConnectionComponent` to the actor
-and place them in the lower center of the input/output connection points of the mesh,
-don't forget to rotate them.
+As this is a simple counting machine we're using FGBuildable as our base class; however, if we were making a machine that produces or mines for things we should look for a better starting point in the available classes. For now to make sure we're looking at the same thing during the tutorial stick to FGBuildable.
 
-Set the output's direction to output and the type to Item.
-The inputs type also needs to get set to Item but the direction needs to be input.
+Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors] (conveyor input and outputs).
+For that add two new components of type `FGFactoryConnectionComponent` to the actor and place them where it looks appropriate, rotate them so that their positive x faces the correct direction.
 
-We also want to make our machine depend on electricity.
-For that we need to add a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerConnectionComponent]
-at the position of the power connection point of the mesh.
-Set `M Max Num Connections` to something like 1 (to allow only one cable to get connected).
+Set the output component's property called `direction` to output and the `type` to Item. Do the same for the input component, but change its direction property to input.
+For the output component, also be sure to check the `M Forward Peek and Grab to Buildable` box. This will let our counting code work.
+
+We also want to make our machine depend on electricity. For that we need to add two more components.
+First is a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerConnection] place it at the position of the power connecter visual of the mesh. Set `M Max Num Connections` to 1 so it behaves like other machines (it could easily be higher).
+Second add a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerInfo] component. With several other types of base class this will exist automatically, but as we chose FGBuildable we need to add one ourselves. It does not have a physical position and doesn't need to be moved or have any settings change.
 
 == Init logic
 
-The init logic happens in the `BeginPlay` event and initializes the
-base state of the factory (also based on the save information).
-There is not that much we need to do here.
-The only thing we need to do is to set the PowerInfo of the power connector to your added
-`FGPowerInfoComponent` and we need to set the target consumption of the power-info to something like 1.0.
+The init logic happens in the `BeginPlay` event and initializes the base state of the factory (also based on the save information). There is not that much we need to do here.
+The only thing we need to do is to set the PowerInfo on the PowerConnection and configure the target consumption of power to something like 1.0.
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
 == Grab logic
 
-The `FactoryGrabOutput` function of the `FGBuildable` gets executed by the output
-connector when a new item gets requested. To add logic to it, we simply need to override it.
+The `FGBuildable` class provides a `FactoryGrabOutput` function that will get executed by our output connector when a new item gets requested. Connecting a belt will cause a new item to be requested at the speed of the belt. It wont know how to respond to a request by default, to control how our machine behaves we'll need to setup and override of the `FactoryGrabOutput` function.
 
-Because we want to store the count of items transferred
-and the count of different item-types,
-we will need to add a new global integer variable,
-let's call it "itemAmount"
-and a array of `+FGItem+`-Classes, call it "itemTypes".
+Because we want to store the count of items transferred and the count of different item-types, we will need to add a new global integer variable, let's call it "itemAmount" and a array of `+FGItem+`-Classes, call it "itemTypes".
 
-Now, in the grab logic, first we check if the machine has power.
-We do this by using the "HasPower"-node of the `FGPowerInfoComponent`.
-If it returns false, we return nothing and the boolean is false.
+Now, in the grab logic, first we check if the machine has power. We do this by using the "HasPower"-node of the `FGPowerInfoComponent`. If it responds false, we return nothing and set the output to false. But if it's true, we use the grab function of the input connector to request a new item.
 
-But if it's true, we use the grab function of the input connector to request a new item.
+If the input grab boolean is true, we increase the "itemAmount" integer by one and add the item unique to the "itemTypes". Now we simply log "itemAmount" and the size of the "itemTypes"-array. After that we return the item we got from the grab and set the output boolean to true.
 
-If the boolean is true, we increase the "itemAmount" integer by one
-and add the item unique to the "itemTypes".
-Now we simply log "itemAmount" and the size of the "itemTypes"-array.
-After that we return the item we got from the grab and true.
+If the input grab boolean is false, we just return nothing and the output boolean is set to false.
 
-If the boolean is false, we just return nothing (the boolean needs to be
-false).
-
-This basically checks if we have power, if we do, it trys to get a item from the input,
-if that is not the case, we do nothing.
-But if we get a item, we count it and then return it to the output.
+Overall the logic becomes: checks if we have power. If we do, try and get a item from the input. If there's no item, we do nothing. But if we get a item, we count it and then return it to the output.
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.jpg[image]
 
-That's it, try out your newly created machine!
+That's should be it, try out your newly created machine!
+
+
