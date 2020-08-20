@@ -1,19 +1,28 @@
 = Setting up a workflow
-Getting your custom models into the game has a few steps along the way.
-This process will guide those who already know how to use Blender and already have a modding environment setup.
+
+Getting your custom models into the game has a few steps along the way. This process will guide those who already know how to use Blender and already have a modding environment setup. It may help to read about the xref:Development/Modeling/MainMaterials.adoc[different content pipelines] to get some context.
 
 == Configuring Blender fbx export
+
 This is focused on setting up export for Blender 2.8 or later, but it may assist the right settings in other programs.
+Because we're in UE 4.22 we can't use the newer Unreal Blender tools.
 
 . Open up Blender
-. Set your `Properties Panel > Scene Properties > Units > Unit System` to `Metric`
-. Select the content you wish to export
+. Open up your `Properties Panel > Scene Properties > Units`
+.. Ensure the `Unit System` is set to `Metric`
+.. Ensure the `Unit Scale` is set to `0.01` (1/100)
+.. If you had to adjust these you will need to scale your mesh and apply it. Your animations will also have to be redone.
+.. You may also have issues viewing your model, press `n` in a 3D viewport and adjust your `View > View > Clip Start/End` values.
+. Select the objects you wish to export
 . Open `File > Export > FBX`
 . On the export options on the right, set the following.
 .. In the topmost dropdown pick `Restore Operator Defaults` or your UE4 preset if you have one
 .. Change `Include > Selected Objects` to true
-.. For Objects types only `Armature` and `Mesh` should be on (blue)
+.. For Object types only `Armature` and `Mesh` should be on (blue)
 .. Change `Geometry > Smoothing` to `Face`
+.. Check `Bake Animation`, and there's a decision to make
+... Only one of `All Actions` or `NLA Strips` should be checked to prevent duplicates.
+... Its personal preference but NLA strips are more complex so I recommend unchecking them.
 .. Back in the topmost dropdown click the plus
 .. Save this as your default UE4 export and reuse it in the future
 . Make sure your filename and path are correct
@@ -23,40 +32,13 @@ This is focused on setting up export for Blender 2.8 or later, but it may assist
 ====
 Every time you export you should re-select the preset from the dropdown.
 
-Blender will revert to default export options without warning or obvious changes often, it's safest to re-apply the preset every export.
+Blender will revert to default export options without warning or obvious changes often, it's safest to develop the habit of re-applying the preset every export.
 ====
 
-== Creating Material references
-For a variety of performance reasons we want to use existing shaders and textures whenever possible.
-Distributing a game's content outside of the game itself is illegal.
-We'll use information the mod community has found to create a "look alike" so our mods can target the real thing in-game.
-We cannot use features like the xref:Development/Satisfactory/Paintable.adoc[Painting System] without look alike references.
-
-. Close the modding project
-. Download https://github.com/DavidHGillen/Satisfactory_ModelingTools/blob/master/LookalikeMaterials.zip[this zip]
-.. You may want the whole https://github.com/DavidHGillen/Satisfactory_ModelingTools/blob/master/README.md[project] too, but we only need the zip for this step.
-. Extract the zip so that the zip's `Content` folder replaces the `Content` folder in the root of your modding project
-. Open your modding project and let it import any changes it finds
-. There are now several important materials to point out
-.. `FactoryGame\Utils\Materials\MI_MachineStarter.uasset` Whenever creating a new buildable, if you want to use an AO bake make a copy of this
-.. `FactoryGame\-Shared\Material\MI_Factory_Base_01` If you do not have AO, target this material instead for your new buildable
-.. `FactoryGame\Buildable\-Shared\Material\Decal_Normal` This is the material to use for projecting "normal" decals onto meshes for extra detail
-.. `FactoryGame\Buildable\-Shared\Material\DecalColor_Masked` This is the material to use for coloured decals and signs on your mesh
-.. `FactoryGame\Buildable\-Shared\Material\Decal_Color` Opaque version of DecalColor_Masked, cheaper but will show black instead of transparency
-
-You will notice the decal materials do not have correct textures.
-Fixing it is optional as it will work correctly ingame anyways, but if you wish to correct it:
-
-. Setup the material proxies as laid out https://github.com/DavidHGillen/Satisfactory_ModelingTools/blob/master/README.md[here]
-. If you don't have the modeling tools, pick a temporary folder for export. You cannot directly export those textures into the modding project as the path will be wrong
-. Open the `Game` folder from the export and you should see a `FactoryGame` folder
-. Copy `FactoryGame` so it overwrites the `Content\FactoryGame` in your modding project
-
-Now we're done setting up our material references and look alikes.
-
 == Importing meshes and using material instances
+
 The last step of the process is bringing a mesh into unreal and swapping it to correct materials/material instances.
-While you can probably import just fine without any changes there's several things to look out for 
+While you can probably import just fine without any changes there's several things to look out for: 
 
 * Make sure the `Mesh` section has these settings beyond the obvious like LODs or vertex colours if you have them
 ** Only check `Skeletal Mesh` if you have animations data or need it to animate
@@ -67,19 +49,18 @@ While you can probably import just fine without any changes there's several thin
 * Make sure `Material` section has these settings
 ** `Search Location` set to `All Assets`
 ** `Material Import Method` set to `Do Not Create Materials`
+* If importing a skeletal mesh there's a couple more
+** Make sure `Mesh > Use T0 as Ref Pose` is checked
+** If your mesh has animations make sure `Import Animations` is checked
 
-Hopefully it will of found the correct decal materials, but if it hasn't those should be easy enough to hook up.
-Track down the `FactoryGame\Buildable\-Shared\Material\` from setup as these are our decal materials.
-Set your mesh to use the appropriate decal materials from that folder.
-The tricky one is the machine's main material as the correct process varies a bit depending upon needs.
+Hopefully it will of found the correct materials, but if it hasn't those should be easy enough to hook up. Track down the xref:Development/Modeling/MainMaterials.adoc[correct materials] and set them on your mesh.
 
-Best final in-game quality results will be achieved with custom lightmap uvs and a AO bake onto that UV set.
-If you don't know how to do that there's many tutorials/tools for AO baking and lightmap UVs online.
-If you've made your model like that, then find `Utils\Materials\MI_MachineStarter.uasset` in the content browser.
-*Copy* this material instance into your mod folder. Assign your custom AO texture to the material instance and adjust the other parameters to taste.
-Now assign your customized material instance to your mesh, don't forget to rename it.
-Remember this has to be in your mod's folder because we're shipping a new Material Instance.
+[WARNING]
+====
+The import menu for a static mesh and a skeletal mesh are different menus with many similar options. E.G. Setting import normals for a static mesh will not be remembered for a skeletal mesh despite being remembered between different static meshes.
+====
 
-If you're not doing anything advanced like an AO bake then we can borrow an existing material.
-Instead of finding the above material instead find `FactoryGame\-Shared\Material\MI_Factory_Base_01` and target that for your base material.
-Do not copy, move, rename, or edit it. Remember we're reusing an existing material that exists already in the base game.
+Best final in-game quality results will be achieved with custom lightmap uvs and a AO bake onto that UV set. If you don't know how to do that there's many tutorials/tools for AO baking and lightmap UVs online.
+Once you have all your new materials made or existing materials assigned you're good to go. Remember the new meshes and materials have to be in your mod's folder, but the existing game materials should not be in your mod folder.
+
+
