@@ -9,13 +9,16 @@ It's important to understand the UE4 concept of https://docs.unrealengine.com/en
 ====
 
 == Factory Machine (MI_Factory_Base_01)
-Main material used on most buildable factory parts and recommended material for most content. Works with the painting system. Uses an atlas of several material types, expects decals to be added with `DecalColor_Masked` and `Decal_Normal` to add detail, is responsible for the metal texture on most machines. Several materials are based off the one master material, the simple hierarchy looks like this.
-. Material `/Game/FactoryGame/MasterMaterials/MM_Factory`
-.. Material Instance `/Game/FactoryGame/-Shared/Material/MI_Factory_Base_01`
-... Material Instance `/Game/FactoryGame/-Shared/Material/MI_Factory_Base_01_Emsiv_AO`
+Main material used on most buildable factory parts and recommended material for most content. Works with the painting system. Uses an atlas of several material types, expects decals to be added with `DecalColor_Masked` and `Decal_Normal` to add detail, is responsible for the metal texture on most machines.
+
+Several materials are based off the one master material, the simple hierarchy looks like this.
+
+- `/FactoryGame/MasterMaterials/MM_Factory` Master Material
+- `/FactoryGame/-Shared/Material/MI_Factory_Base_01` Instance of MM_Factory
+- `/FactoryGame/-Shared/Material/MI_Factory_Base_01_Emsiv_AO` Instance of MI_Factory_Base_01
 
 === Inner workings
-At runtime the game creates a texture atlas which contain the base colours from several parameters, notably the primary and secondary colour. Several other textures are then overlaid and mixed to create proper PBR surfaces for use in the game. A full list of parameters and their expected uses can be found by looking in the material editor of the version in the sample project.
+At runtime the game creates a texture atlas which contains the base colours from several parameters, notably the primary and secondary colour. Several other textures are then overlaid and mixed to create proper PBR surfaces for use in the game. A full list of parameters and their expected uses can be found by looking in the material editor of the version in the sample project.
 
 Notably the master material is not the one applied to most machines and instead material instances that customize the properties like bloom, AO maps, and overlay density are created.
 
@@ -26,7 +29,7 @@ Do you have a custom AO bake you wish to apply to your model?
 
 *No?* Apply `MI_Factory_Base_01` directly as your base material and do not create any instances.
 
-*Yes?* Create a material instance of `MI_Factory_Base_01_Emsiv_AO` and apply your AO map to it and customize the AO settings to taste. If you don't wish to create your own material instance you may copy `/Game/Utils/Materials/MI_MachineStarter` into your mod folder and rename it, but you will need to set the custom AO map still.
+*Yes?* Create a material instance of `MI_Factory_Base_01_Emsiv_AO` and apply your AO map to it and customize the AO settings to taste. If you don't wish to create your own material instance you may copy `/Utils/Materials/MI_MachineStarter` into your mod folder and rename it, but you will need to set the custom AO map still.
 
 
 == Color Decals (DecalColor_Masked)
@@ -38,7 +41,7 @@ Satisfactory uses a deferred rendering pipeline, this means that new data can be
 UV channel 0 is used for the textures.
 
 === How to use
-When making your mesh float geometry above your regular surface, use small values but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/Game/FactoryGame/Buildable/-Shared/Material/DecalColor_Masked` material in editor. Or if your decals lack any transparent elements you may use the `/Game/FactoryGame/Buildable/-Shared/Material/Decal_Color` material instead.
+When making your mesh float geometry above your regular surface, use small values but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/FactoryGame/Buildable/-Shared/Material/DecalColor_Masked` material in editor. Or if your decals lack any transparent elements you may use the `/FactoryGame/Buildable/-Shared/Material/Decal_Color` material instead.
 
 
 == Normal Decals (Decal_Normal)
@@ -52,7 +55,7 @@ When applying normals SF doesn't merge with existing normals but instead overwri
 UV channel 0 is used for the textures.
 
 === How to use
-When making your mesh float geometry above your regular surface, use small values but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/Game/FactoryGame/Buildable/-Shared/Material/Decal_Normal` material in editor.
+When making your mesh float geometry above your regular surface, use small values but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/FactoryGame/Buildable/-Shared/Material/Decal_Normal` material in editor.
 
 It is possible, and expected, to mirror flip and stretch the normal decals. Several details are half details that are mirrored against themselves and others use https://en.wikipedia.org/wiki/9-slice_scaling["9-slice"] like approaches to stretch the parts of the mesh needed to reshape the detail. However, take care with your vertex normals. The vertex normals of your decal geometry should be as similar as possible to the underlying normals else visible seams appear at decal edges.
 
@@ -62,21 +65,26 @@ Second most common material approach, used in situations where the Factory Mater
 
 === Inner workings
 The main Albedo texture is multiplied into the paint colours gated by the texture's alpha. The alpha value is packed to allow for selection between several paint colours:
-. 0.50 < x <= 1.0 : Albedo
-. 0.25 < x < 0.50 : Primary paint color
-. 0.00 < x < 0.25 : Secondary paint color
+
+- 0.50 < x <= 1.0 : Albedo
+- 0.25 < x < 0.50 : Primary paint color
+- 0.0 <= x < 0.25 : Secondary paint color
+
 A custom normal map is also expected and should be specified.
 The third custom texture is a channel packed surface property texture with the following properties:
-. `R:` Metalness
-. `G:` Roughness
-. `B:` Ambient Occlusion
+
+- `R:` Metalness
+- `G:` Roughness
+- `B:` Ambient Occlusion
 
 UV channel 0 is used for all textures.
 
 === How to use
 Setup a PBR painting workflow like Substance or Quixel and then configure its outputs to match what is listed in the Inner workings. Once your output textures are made, import them into your mod.
 
-Next step is to either create a material instance of a material instance of `MM_Factory_Baked` that's already ingame. If you don't make an instance of an instance then the painting system will not work. My recommendation is to copy `/Game/Utils/Materials/MI_BakedStarter` into your mod folder and rename it. Once you have the material instance swap all texture targets to yours instead of the placeholders its currently pointing at.
+Next step is to either create a material instance of a material instance of `MM_Factory_Baked` that's already ingame. If you don't make a custom instance of a base game instance then the painting system will not work.
+
+My recommendation is to instead copy `/Utils/Materials/MI_BakedStarter` into your mod folder and rename it. Once you have the material instance swap all texture targets to yours instead of the placeholders its currently pointing at.
 
 
 == Factory Glass (MM_FactoryGlass)
@@ -90,7 +98,8 @@ The normal and refraction textures are hard coded and not parameters that can be
 
 === How to use
 Apply a material instance of MM_FactoryGlass to LOD0. Add LODs to your model and tweak the model LOD timing and the materials fading to match up. On the new LOD model when, everything is opaque, switch to a material instance of MM_FactoryGlass_LOD. Keep the settings as identical as you can in both to reduce popping.
-The wavy textures may seem overly harsh with the default settings on a new material instance. `/Game/Utils/Materials/` has a material instance you can copy with more common parameters compared to the other in-game glass.
+
+The wavy textures may seem overly harsh with the default settings on a new material instance. `/Utils/Materials/` has two material instances you can copy with more common parameters compared to the other in-game glass. `MI_StarterGlass` for the transparent version and `MI_StarterGlass_LOD` for the distant LOD version.
 
 
 == Fog Plane (InputFog)
@@ -100,7 +109,7 @@ Used to fade objects to black as they enter belt connectors or other parts of a 
 Simple Unreal Depth fog
 
 === How to use
-Apply the material `/Game/FactoryGame/Buildable/-Shared/Material/InputFog` to a mesh where you want the fading to start. It will take a short distance to fade 100% so the mesh surface should be away from the actual vanishing point.
+Apply the material `/FactoryGame/Buildable/-Shared/Material/InputFog` to a mesh where you want the fading to start. It will take a short distance to fade 100% so the mesh surface should be away from the actual vanishing point.
 
 The material can be applied directly to your static mesh, a custom static mesh, or the `InputFogPlane` mesh of which several instances are then placed in your blueprint. All 3 approaches are used interchangeably in game. As there are negligible pros/cons to each approach do whichever you find easiest.
 

@@ -14,17 +14,15 @@ If you'd prefer a different format of guide, you can find a video guide https://
 
 == Satisfactory
 
-This one should be pretty straightforward, and odds are, you've already done it. Simply buy, download, and install
-Satisfactory from the Epic Games Launcher. Launch the game at least once to ensure all
-files get set up correctly.
+This one should be pretty straightforward, and odds are, you've already done it. Simply buy, download, and install Satisfactory from the Epic Games Launcher or Steam.
+Launch the game at least once to ensure all files get set up correctly.
 
 == Visual Studio
 
-Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
-and download the version you want. We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
+Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
+We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
 
-Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development"
-and "Game development with C + +". You might have to scroll a bit to find them.
+Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development" and "Game development with C + +". You might have to scroll a bit to find them.
 
 If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
 

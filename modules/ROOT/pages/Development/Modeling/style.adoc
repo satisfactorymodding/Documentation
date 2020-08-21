@@ -2,60 +2,41 @@
 If you're trying to get a handle on the Satisfactory visual style for custom and new assets and want some pointers then keep reading.
 
 == Industrial Sci-Fi
-Satisfactory's style sits in a bit of a grey zone on the edge of popular styles like CyberPunk.
-Similar to Cyberpunk its futuristic, impersonal, detailed, industrial, and fits well with Brutalism.
-While it shares the glib attitude about corporate overlords, there is one particular sticking  point in the design.
-Satisfactory has a Retro-Future aesthetic and focuses on designs, mechanisms, and processes that have already been supplanted by new technology.
+Satisfactory's style sits in a bit of a grey zone on the edge of popular styles like CyberPunk. Similar to Cyberpunk its futuristic, impersonal, detailed, industrial, and fits well with Brutalism.
+While it shares the glib attitude about corporate overlords, there is one particular sticking point in the design. Satisfactory has a clean Retro-Future aesthetic and focuses on designs, mechanisms, and processes that have already been supplanted by new technology.
 
-Like many retro-future aesthetics it extrapolates how more modern ideas may be implemented with older designs.
-Everything is quite bright, clean, and well maintained a stark contrast to the general dirt and oppression of cyberpunk.
-Many parts of Cyberpunk designs are the complete immersion in cybernetic and digital life, robots and neon signs in the sky.
-Satisfactory explicitly shuns many of these Sci-Fi tropes and styles in gameplay and visuals.
-Note the general absence of lasers, holograms, plasma, lumifibre, and digital/robotic things.
-Vehicle paths and the build gun use hologram, the xeno-basher and foundries glow, and ADA is a digital assistant, etc.
-But look closer. Vehicles use wheels, the xeno-basher is only a big taser, we have a Windows XP desktop background, ADA is using Google Text to Speech (literally).
-This is not a future we'll reach, we have to rewind technology 30 years to even get on the right path to this point.
+Like many retro-future aesthetics it extrapolates how more modern ideas may be implemented with older designs. Everything is quite bright, clean, and well maintained a stark contrast to the general dirt and oppression of cyberpunk. Hard edges and thin bevels, 45 degree turns. No smooth eggshell finishes or organic forms in sight.
 
-Further Satisfactory embraces the intricacies of the industrial process.
-We've all spent time watching the machine's animations, we love watching the first motor go down a conveyer belt.
-The fantasy being sold and glorified to the end user is one of a giant machine with a thousand moving parts.
-Seeing the motion, seeing the process, understanding the steps involved.
-When designing items for Satisfactory its important to show the user the industrial process at work.
-Its a game for the people that can binge watch "How its made" videos on youtube.
+Many parts of Cyberpunk designs are the complete immersion in cybernetic and digital life, robots and neon signs in the sky. Satisfactory explicitly shuns many of these Sci-Fi tropes and styles in gameplay and visuals. Note the general absence of lasers, holograms, plasma, lumifibre, and digital/robotic things.
+Sure vehicle paths and the build gun use holograms, the xeno-basher and foundries glow, and ADA is a digital assistant, etc. But look closer. Vehicles use wheels, the xeno-basher is only a big taser, we have a Windows XP desktop background, ADA is using Google Text to Speech (literally). This is not a future we'll reach, we have to rewind technology 30 years to even get on the right path to this point.
 
-At every opportunity Satisfactory focuses on industrial designs, machines, and mechanisms of the 90's to 00's when they were new and cool.
-While it embraces Sci-Fi it keeps a leash on it to prevent it from running away into energy beams, AI drones, and warp drive.
-It's a style of Industrial Sci-Fi Retro Futurism that asks, what if heavy industry could of landed on other planets in the 90's.
+Further Satisfactory embraces the intricacies of the industrial process. We've all spent time watching the machine's animations, we love watching the first motor go down a conveyer belt.
+The fantasy being sold and glorified to the end user is one of a giant machine with a thousand moving parts. Seeing the motion, seeing the process, understanding the steps involved. When designing content for Satisfactory its important to show the user the industrial process at work. Its a game for the people that can binge watch "How its made" videos on youtube.
+
+At every opportunity Satisfactory focuses on industrial designs, machines, and mechanisms of the 90's to 00's when they were new and cool. While it embraces Sci-Fi it keeps a leash on it to prevent it from running away into energy beams, AI drones, and warp drive. It's a style of Industrial Sci-Fi Retro Futurism that asks, what if heavy industry could of landed on other planets in the 90's.
 
 == Technical implementation
 Due to the sheer number of elements the game intends to display, the eventual technical implementation feeds back into visuals.
 The strong corporate presences of Ficsit excuses modular and colourful designs.
+
 The Brand Identity allows the underlying rendering to use modular visuals and shared materials extensively.
-Instanced rendering systems (how to display a lot of something) prefer medium polygon objects and limited texture sources.
-Satisfactory's medium poly modeling with texture atlas based decals ends up playing into this setup perfectly.
-Further this modeling approach excels at large complex areas with physical details or spots of interest.
+Instanced rendering systems (how to display a lot of something) prefer medium polygon objects and limited texture sources. Satisfactory's medium poly modeling (with texture atlas based decals) ends up playing into this setup perfectly. Further this modeling approach excels at large complex areas with physical details or spots of interest.
 This matches up exactly with the look of large industrial machines with panels and warning labels.
-Unfortunately this makes the workflow a little non standard, but its full of excellent choices.
+Unfortunately this makes the workflow a little non standard, but its full of excellent choices. Before shunning the workflow and doing a unique unwrap consider leaning into the limits for style's sake.
 
 == Case Studies
 Without the authors original notes its often helpful to work backwards from their final decisions, this section is for a few deep dives of specific choices.
 
 === Train System
 The train system's visual design in Satisfactory clearly demonstrates the aesthetic choices being made and how to mix in Sci-Fi into 90s industrial.
-When choosing a design for trains there are a lot of types to choose from, diesel trains are synonymous with heavy industry and the inspiration is clear.
-So rather than anything like a Maglev, or Electric train design the final design is heavily reminiscent of diesel locomotives, despite being electric in game.
+When choosing a design for trains there are a lot of types to choose from, diesel trains are synonymous with heavy industry and the inspiration is clear. So rather than anything like a Maglev, or Electric train design the final design is heavily reminiscent of diesel locomotives, despite being electric in game.
 
-Further, it's more similar to the 90's and 00 era of design than even other angular designs.
-More modern and older designs both feature more gradual curves, and/or more plain undetailed space.
-While better for efficiency or implying futuristic shapes the angular 90's design was prioritized.
-Unfortunately and entirely normal diesel locomotive would look out of place and imply it needed fuel.
+Further, it's more similar to the 90's and 00 era of design than even other angular designs. More modern and older designs both feature more gradual curves, and/or more plain undetailed space. While better for efficiency or implying futuristic shapes, the angular 90's design was prioritized.
+Of note though, an entirely normal diesel locomotive would look out of place and imply it needed packaged fuel.
 
-Taking some of the back planar areas of the train and adding in Classic glowing Sci-Fi engines helps reinvent the design.
-Importantly though, the glowing engines do not fit neatly inside the machine.
-They push the silhouette out giving it interest and shape, but also making the more cutting edge parts look less refined and industrial.
+Taking some of the back planar areas of the train and adding in Classic glowing Sci-Fi engines helps reinvent the design. This also helps stop assumptions it would need diesel fuel.
+Importantly though, the glowing engines do not fit neatly inside the machine. They push the silhouette out giving it interest and shape, but also making the more cutting edge parts look less refined and industrial.
 
-Interestingly after shunning many Maglev and monorail train shapes, because of their modern design, the design of mono-rails are brought back.
-This more modern rail design and the Sci-Fi engine help solidify the train into the future which without would essentially be from the 90's.
-This balance of futuristic and past industrial styles is where Satisfactory is best represented.
+Interestingly after shunning many Maglev and monorail train shapes, because of their modern design, the design of mono-rails are brought back. This more modern rail design and the Sci-Fi engine help solidify the train into the future, as without these changes would essentially be from the 90's. This balance of futuristic and past industrial styles is where Satisfactory is best represented and is a style to strive for.
 
 

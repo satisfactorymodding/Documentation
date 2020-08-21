@@ -1,6 +1,6 @@
 = Setting up a workflow
 
-Getting your custom models into the game has a few steps along the way. This process will guide those who already know how to use Blender and already have a modding environment setup. It may help to read about the xref:Development/Modeling/MainMaterials.adoc[different content pipelines] to get some context.
+Getting your custom models into the game has a few steps along the way. This process will guide those who already know how to use Blender and already have a modding environment setup. It may help to read about the xref:Development/Modeling/MainMaterials.adoc[different material setups] to get some context.
 
 == Configuring Blender fbx export
 
@@ -41,7 +41,7 @@ The last step of the process is bringing a mesh into unreal and swapping it to c
 While you can probably import just fine without any changes there's several things to look out for: 
 
 * Make sure the `Mesh` section has these settings beyond the obvious like LODs or vertex colours if you have them
-** Only check `Skeletal Mesh` if you have animations data or need it to animate
+** Only check `Skeletal Mesh` if you have animation data or need a skeleton
 ** `Remove Degenerates` is checked
 ** Only check `Generate Lightmap UVs` if you haven't made a custom AO bake
 ** `Normal Import Method` is `Import Normals`
@@ -61,6 +61,7 @@ The import menu for a static mesh and a skeletal mesh are different menus with m
 ====
 
 Best final in-game quality results will be achieved with custom lightmap uvs and a AO bake onto that UV set. If you don't know how to do that there's many tutorials/tools for AO baking and lightmap UVs online.
+
 Once you have all your new materials made or existing materials assigned you're good to go. Remember the new meshes and materials have to be in your mod's folder, but the existing game materials should not be in your mod folder.
 
 

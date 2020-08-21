@@ -4,7 +4,7 @@ In this chapter we'll create a simple machine which simply counts the items and 
 
 == Create the machine
 
-First thing to make our counting machine, you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] with descriptor and recipe, but this time use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_SimpleMachine.fbx[this] (TODO make this mesh) as the mesh and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TODO make this icon) as icon so that it looks a bit more like a machine.
+First thing to make our counting machine, you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] with descriptor and recipe, but this time use link:{attachmentsdir}/BeginnersGuide/simpleMod/SM_SampleMachine.fbx[this] as the mesh and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TODO make this icon) as icon so that it looks a bit more like a machine.
 
 As this is a simple counting machine we're using FGBuildable as our base class; however, if we were making a machine that produces or mines for things we should look for a better starting point in the available classes. For now to make sure we're looking at the same thing during the tutorial stick to FGBuildable.
 
