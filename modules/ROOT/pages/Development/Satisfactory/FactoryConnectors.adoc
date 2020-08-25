@@ -52,7 +52,7 @@ else the component could grab indefinetly, and that's not what we want.
 
 ===  `FactoryPeekOutput`
 
-This function works just like `FactoryGrabOutput` but there you shoul not remove the item from your inventory or what ever.
+This function works just like `FactoryGrabOutput` but there you should not remove the item from your inventory or what ever.
 This function is only used to allow the output to check what it can grab if it wants to.
 
 == FGFactoryConnection
