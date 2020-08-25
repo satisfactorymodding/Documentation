@@ -13,17 +13,20 @@ link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] (TOD
 
 Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors]
 (conveyor input and outputs).
-For that add two new components of type `FGFactoryConnectionComponent` to the actor
-and place them in the lower center of the input/output connection points of the mesh,
+For that `+ Add Component` of type `FGFactory Connection` to the actor and name it "Connection Input".
+Duplicate it and rename the duplication to "Connection Output".
+Place them in the lower center of the input/output connection points of the mesh,
 don't forget to rotate them.
 
 Set the output's direction to output and the type to Item.
 The inputs type also needs to get set to Item but the direction needs to be input.
+Both need to have the `M Forward Peek And Grab to Buildable` checked.
 
 We also want to make our machine depend on electricity.
-For that we need to add a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerConnectionComponent]
+For that we need to `+ Add Component` a xref:Development/Satisfactory/PowerNetwork.adoc[FGPower Connection]
 at the position of the power connection point of the mesh.
 Set `M Max Num Connections` to something like 1 (to allow only one cable to get connected).
+You also need to `+ Add Component` a `FGPower Info` that will serve to retrieve the power information of our Buildable.
 
 == Init logic
 
@@ -31,20 +34,24 @@ The init logic happens in the `BeginPlay` event and initializes the
 base state of the factory (also based on the save information).
 There is not that much we need to do here.
 The only thing we need to do is to set the PowerInfo of the power connector to your added
-`FGPowerInfoComponent` and we need to set the target consumption of the power-info to something like 1.0.
+`FGPowerInfo` and we need to set the target consumption of the power-info to something like 1.0.
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
+(Logic in the Event Graph)
 
 == Grab logic
 
 The `FactoryGrabOutput` function of the `FGBuildable` gets executed by the output
 connector when a new item gets requested. To add logic to it, we simply need to override it.
 
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_Override.jpg[image]
+
 Because we want to store the count of items transferred
 and the count of different item-types,
 we will need to add a new global integer variable,
 let's call it "itemAmount"
-and a array of `+FGItem+`-Classes, call it "itemTypes".
+and a array of `+FGItem Descriptor+`-Classes, call it "itemTypes".
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_Variables.jpg[image]
 
 Now, in the grab logic, first we check if the machine has power.
 We do this by using the "HasPower"-node of the `FGPowerInfoComponent`.
