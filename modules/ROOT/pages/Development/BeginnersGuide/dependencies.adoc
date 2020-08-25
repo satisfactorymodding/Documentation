@@ -14,17 +14,15 @@ If you'd prefer a different format of guide, you can find a video guide https://
 
 == Satisfactory
 
-This one should be pretty straightforward, and odds are, you've already done it. Simply buy, download, and install
-Satisfactory from the Epic Games Launcher. Launch the game at least once to ensure all
-files get set up correctly.
+This one should be pretty straightforward, and odds are, you've already done it. Simply buy, download, and install Satisfactory from the Epic Games Launcher or Steam.
+Launch the game at least once to ensure all files get set up correctly.
 
 == Visual Studio
 
-Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
-and download the version you want. We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge.
+Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
+We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
 
-Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development"
-and "Game development with C + +". You might have to scroll a bit to find them.
+Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development" and "Game development with C + +". You might have to scroll a bit to find them.
 
 If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
 
@@ -61,7 +59,7 @@ The custom engine for modding has also some other changes needed to workaround s
 Most of the time you just simply use the latest version.
 +++ </div></details> +++
 
-This install process, and opening Unreal for the first time afterwards, can take some time.
+This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
 
 Once the installer is done, you'll also need to install a visual studio extension shipped with the editor. Navigate to where you installed the editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal visual studio extension, which will help with debugging.
 
@@ -89,3 +87,5 @@ xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager] offe
 If you're not using the launcher, you'll need to obtain https://github.com/SatisfactoryModding/SatisfactoryModBootstrapper/releases[xinput1_3.dll and msdia140.dll] (bootstrapper and a dependency of it) and put them in your `FactoryGame/Binaries/Win64/` folder (the game install directory). Additionally, you have to obtain https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[the mod loader itself] and put it in `/loaders/`. You'll also have to manually update all three of these as new releases come out, and manually remove them if you wish to disable mods.
 
 Because you probably don't want to create a proper .zip file for you mod when you test it, then you should just simply activate the xref:ManualInstallDirections.adoc#_installing_raw_or_wip_mods[development mode] allowing for usage of raw mods.
+
+Now the dependencies are installed move onto xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].

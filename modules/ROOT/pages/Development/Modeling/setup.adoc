@@ -1,0 +1,67 @@
+= Setting up a workflow
+
+Getting your custom models into the game has a few steps along the way. This process will guide those who already know how to use Blender and already have a modding environment setup. It may help to read about the xref:Development/Modeling/MainMaterials.adoc[different material setups] to get some context.
+
+== Configuring Blender fbx export
+
+This is focused on setting up export for Blender 2.8 or later, but it may assist the right settings in other programs.
+Because we're in UE 4.22 we can't use the newer Unreal Blender tools.
+
+. Open up Blender
+. Open up your `Properties Panel > Scene Properties > Units`
+.. Ensure the `Unit System` is set to `Metric`
+.. Ensure the `Unit Scale` is set to `0.01` (1/100)
+.. If you had to adjust these you will need to scale your mesh and apply it. Your animations will also have to be redone.
+.. You may also have issues viewing your model, press `n` in a 3D viewport and adjust your `View > View > Clip Start/End` values.
+. Select the objects you wish to export
+. Open `File > Export > FBX`
+. On the export options on the right, set the following.
+.. In the topmost dropdown pick `Restore Operator Defaults` or your UE4 preset if you have one
+.. Change `Include > Selected Objects` to true
+.. For Object types only `Armature` and `Mesh` should be on (blue)
+.. Change `Geometry > Smoothing` to `Face`
+.. Check `Bake Animation`, and there's a decision to make
+... Only one of `All Actions` or `NLA Strips` should be checked to prevent duplicates.
+... Its personal preference but NLA strips are more complex so I recommend unchecking them.
+.. Back in the topmost dropdown click the plus
+.. Save this as your default UE4 export and reuse it in the future
+. Make sure your filename and path are correct
+. Click `Export FBX` and you're done
+
+[WARNING]
+====
+Every time you export you should re-select the preset from the dropdown.
+
+Blender will revert to default export options without warning or obvious changes often, it's safest to develop the habit of re-applying the preset every export.
+====
+
+== Importing meshes and using material instances
+
+The last step of the process is bringing a mesh into unreal and swapping it to correct materials/material instances.
+While you can probably import just fine without any changes there's several things to look out for: 
+
+* Make sure the `Mesh` section has these settings beyond the obvious like LODs or vertex colours if you have them
+** Only check `Skeletal Mesh` if you have animation data or need a skeleton
+** `Remove Degenerates` is checked
+** Only check `Generate Lightmap UVs` if you haven't made a custom AO bake
+** `Normal Import Method` is `Import Normals`
+* Ensure that `Miscellaneous > Convert Scene` is checked
+* Make sure `Material` section has these settings
+** `Search Location` set to `All Assets`
+** `Material Import Method` set to `Do Not Create Materials`
+* If importing a skeletal mesh there's a couple more
+** Make sure `Mesh > Use T0 as Ref Pose` is checked
+** If your mesh has animations make sure `Import Animations` is checked
+
+Hopefully it will of found the correct materials, but if it hasn't those should be easy enough to hook up. Track down the xref:Development/Modeling/MainMaterials.adoc[correct materials] and set them on your mesh.
+
+[WARNING]
+====
+The import menu for a static mesh and a skeletal mesh are different menus with many similar options. E.G. Setting import normals for a static mesh will not be remembered for a skeletal mesh despite being remembered between different static meshes.
+====
+
+Best final in-game quality results will be achieved with custom lightmap uvs and a AO bake onto that UV set. If you don't know how to do that there's many tutorials/tools for AO baking and lightmap UVs online.
+
+Once you have all your new materials made or existing materials assigned you're good to go. Remember the new meshes and materials have to be in your mod's folder, but the existing game materials should not be in your mod folder.
+
+

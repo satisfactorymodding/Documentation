@@ -14,7 +14,9 @@ If you'd prefer a different format of guide, you can find a video guide https://
 
 You should have already downloaded the starter project in the previous steps of the tutorial. Unzip `SML-Shipping-Dev-Win64.zip` to get the starter project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
 
-This will be the folder that all of your mod's files will be put into, so extract the folder somewhere convenient for you where you can find it later, such as your Documents folder. You may want to consider using version control software such as Git to manage your mod's files, but that is outside the scope of this tutorial. Rename the folder to the name of your mod, or something like `ExampleMod`, so you can tell it apart from any other mods you make.
+This will be the folder that all of your mod's files will be put into, so extract the folder somewhere convenient for you where you can find it later, such as your Documents folder. Of note, keep the directory as short as possible, when packing some filenames can get long so a very nested location may cause issues.
+
+You may want to consider using version control software such as Git to manage your mod's files, but that is outside the scope of this tutorial. Rename the folder to the name of your mod, or something like `ExampleMod`, so you can tell it apart from any other mods you make.
 
 == Setting up Wwise
 
@@ -88,7 +90,7 @@ In order to open the project in Unreal Engine, you'll have to open the editor. Y
 
 Once the Unreal Engine editor has launched, open your project by navigating to `Projects` -> `Browse` (bottom right corner) and selecting the file `FactoryGame.uproject` in your mod folder.
 
-You'll might be told that some modules were "missing or built with a missing engine version"; press `Yes` and allow it to build. This will take some time, and will drastically increase the size of your mod folder - go find some more lizard doggos to pet.
+You might be told that some modules were "missing or built with a missing engine version"; press `Yes` and allow it to build. This will take some time, and will drastically increase the size of your mod folder - go find some more lizard doggos to pet.
 
 You might see a popup that says 'New plugins are available.' You can safely dismiss this popup.
 
