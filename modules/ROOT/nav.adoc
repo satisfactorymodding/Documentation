@@ -15,12 +15,18 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
+*** xref:Development/BeginnersGuide/SimpleMod/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Vanilla Content]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/hooking.adoc[Hooking]
+
+** xref:Development/Modeling/index.adoc[3D Modeling]
+*** xref:Development/Modeling/setup.adoc[Workflow Setup]
+*** xref:Development/Modeling/MainMaterials.adoc[Main Materials]
+*** xref:Development/Modeling/style.adoc[Style Guide]
 
 ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
 *** xref:Development/UnrealEngine/Code.adoc[Code]
@@ -37,6 +43,7 @@
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
 *** xref:Development/Satisfactory/Paintable.adoc[Paintable]
+*** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 
