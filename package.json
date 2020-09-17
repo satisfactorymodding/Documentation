@@ -6,12 +6,12 @@
   "scripts": {
     "build": "antora antora-playbook.yml --clean --fetch",
     "build:ci": "antora antora-playbook-ci.yml --clean --fetch",
-	"build:dev": "antora antora-playbook-dev.yml --clean --fetch",
+    "build:dev": "antora antora-playbook-dev.yml --clean --fetch",
     "serve": "ws -d build/site"
   },
   "devDependencies": {
-    "@antora/cli": "^2.3.1",
-    "@antora/site-generator-default": "^2.3.1",
-    "local-web-server": "^3.0.7"
+    "@antora/cli": "^2.3.4",
+    "@antora/site-generator-default": "^2.3.4",
+    "local-web-server": "^4.2.1"
   }
 }
