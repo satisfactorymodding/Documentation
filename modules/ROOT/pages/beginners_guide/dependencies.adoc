@@ -92,3 +92,4 @@ the sidebar. Download the SML version you want your mod to use, we
 recommend always the newest one, move the downloaded `+xinput1_3.dll+`
 file into your Satisfactory installation folder under
 `+Binaries/Win64+`, and you're done!
+Note: You don't have to do this with the latest versions of SMM.
