@@ -40,6 +40,8 @@ The building descriptor is very similar to the item descriptor - it even derives
 
 Just like our item, it requires an icon file. You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
 
+You should also add an appropriate subcategory in the `m Sub Categories` field for your building.
+
 [IMPORTANT]
 ====
 Make sure you use `FGBuildingDescriptor` and _not_ `FGBuildDescriptor`.
