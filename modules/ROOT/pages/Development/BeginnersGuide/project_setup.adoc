@@ -53,11 +53,15 @@ To do this, you'll need to run a command, unless you already have another versio
 
 Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
 
-`"<path to your Unreal build tool here (it installed with the custom editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress`
+```
+"<path to your Unreal build tool here (it installed with the custom editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
+```
 
 Here is an example of a complete command.
 
-`"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="C:\Users\Rob\Documents\SMLExampleMod\FactoryGame.uproject" -game -rocket -progress`
+```
+"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="C:\Users\Rob\Documents\SMLExampleMod\FactoryGame.uproject" -game -rocket -progress
+```
 
 [WARNING]
 ====
