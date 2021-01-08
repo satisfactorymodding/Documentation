@@ -148,7 +148,7 @@ You should be all set now - press Submit!
 
 == Awaiting Approval
 
-If you've uploaded a pak only mod, you're all set, and your mod is ready for download and use! Regardless, we still suggest you read the below. If you've uploaded a C++ mod, however, you'll have to wait for it to be approved before users can download it. The approval process is generally quite quick, and exists to make sure that users aren't uploading content that violates SMR's terms and conditions or harms players' computers.
+If you've uploaded a pak only mod, you're all set, and your mod is ready for download and use! Regardless, we still suggest you read the below. If you've uploaded a C++ mod, however, you'll have to wait for it to be approved by the automated approval process before users can download it. The approval process is generally quite quick, about 1 to 3 minutes, and exists to make sure that users aren't uploading content that violates SMR's terms and conditions or harms players' computers.
 
 In the mean time, we strongly suggest you take a look at your mod description and consider adding additional information to it. The mod description is what most players will see when deciding whether or not they want to use your mod, so keep it organized, and try to leave a good first impression! We suggest taking the following steps to encourage users to try out your mod:
 
