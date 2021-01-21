@@ -163,3 +163,128 @@ The names of the authors of the mod in a list.
 - String Credits (read only)
 +
 Credits of the mod
+
+== Blueprint Reflection Library
+
+The `Blueprint Reflection Library` provides a couple function for interacting with the unreal reflection system from within Blueprints.
+
+=== `ReflectedObject ReflectObject(Object Object)`
+Allocates a reflected object wrapper for the given object.
+
+=== `ReflectObject ReflectStruct(DynamicStructInfo StructInfo)`
+Allocates a reflected object wrapper for the given struct.
+
+=== `Object DeflectObject(ReflectedObject ReflectedObject)`
+Deflects reflected object wrapper to the raw object pointer.
+
+=== `void DeflectStruct(ReflectedObject ReflectedObject, out DynamicStructInfo StructInfo)`
+Deflects reflected object wrapper into the passed struct out variable.
+
+=== `Array<ReflectedPropertyInfo> GetReflectedProperties(ReflectedObject ReflectedObject)`
+Returns a list of reflected properties provided by the given object
+
+=== `uint8 GetByteProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the byte property with the given name at the given array index in the given reflected object.
+
+=== `void SetByteProperty(ReflectedObject ReflectedObject, String PropertyName, uint8 Value, int ArrayIndex)`
+Updates the value of the byte property with the given name at the given array index in the given reflected object.
+
+=== `int64 GetInt64Property(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the 64-bit signed integer property with the given name at the given array index in the given reflected object.
+
+=== `void SetInt64Property(ReflectedObject ReflectedObject, String PropertyName, int64 Value, int ArrayIndex)`
+Updates the value of the 64-bit signed integer property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `int32 GetInt32Property(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the 32-bit signed integer property with the given name at the given array index in the given reflected object.
+
+=== `void SetInt32Property(ReflectedObject ReflectedObject, String PropertyName, int32 Value, int ArrayIndex)`
+Updates the value of the 32-bit signed integer property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `float GetFloatProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the floating point property with the given name at the given array index in the given reflected object.
+
+=== `void SetFloatProperty(ReflectedObject ReflectedObject, String PropertyName, float Value, int ArrayIndex)`
+Updates the value of the floating point property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `String GetStringProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the string property with the given name at the given array index in the given reflected object.
+
+=== `void SetStringProperty(ReflectedObject ReflectedObject, String PropertyName, String Value, int ArrayIndex)`
+Updates the value of the string property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `bool GetBoolProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the boolean property with the given name at the given array index in the given reflected object.
+
+=== `void SetBoolProperty(ReflectedObject ReflectedObject, String PropertyName, bool Value, int ArrayIndex)`
+Updates the value of the boolean property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Name GetNameProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the name property with the given name at the given array index in the given reflected object.
+
+=== `void SetNameProperty(ReflectedObject ReflectedObject, String PropertyName, Name Name, int ArrayIndex)`
+Updates the value of the name property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Text GetTextProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the text property with the given name at the given array index in the given reflected object.
+
+=== `void SetTextProperty(ReflectedObject ReflectedObject, String PropertyName, Text Text, int ArrayIndex)`
+Updates the value of the text property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Object GetObjectProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the object property with the given name at the given array index in the given reflected object.
+
+=== `void SetObjectProperty(ReflectedObject ReflectedObject, String PropertyName, Object Object, int ArrayIndex)`
+Updates the value of the object property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `FReflectedObject GetStructProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the struct property with the given name at the given array index in the given reflected object.
+
+=== `void SetStructProperty(ReflectedObject ReflectedObject, String PropertyName, FReflectedObject Struct, int ArrayIndex)`
+Updates the value of the struct property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `ReflectedEnumValue GetEnumProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the enum property with the given name at the given array index in the given reflected object.
+
+=== `void SetEnumProperty(ReflectedObject ReflectedObject, String PropertyName, ReflectedEnumValue Value, int ArrayIndex)`
+Updates the value of the enum property with the given name at the given array index in the given reflected object to the given new value.
+
+== `ReflectedObject`
+Describes a reflected object.
+
+== `ReflectedEnumValue`
+Describes a reflected enumeration value.
+
+=== `Enum EnumerationType`
+The unreal type of the enumeration.
+
+=== `int64 RawEnumValue`
+The enumeration value represented as raw integer.
+
+== `Reflected Property Info`
+Describes a single reflected property accessible to blueprints.
+
+=== `Name PropertyName`
+The name of the property.
+
+=== `ReflectedPropertyType PropertyType`
+The type of the reflected property.
+
+=== `int32 ArrayDim`
+Dimensions of the fixed-size property array.
+
+=== `ReflectedPropertyType`
+Enum that describes the type of the reflected property.
+
+- Invalid
+- Byte
+- Int
+- Int64
+- Float
+- String
+- Boolean
+- Name
+- Text
+- Struct
+- Object
+- Enum

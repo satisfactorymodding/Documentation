@@ -1,0 +1,36 @@
+= Registry
+
+The SML provides a couple registry mechanisms for quick and easy content management.
+
+== Remote Call Object Registry
+
+The `Remote Call Object Registry` is a Game Instance Subsystem that automatically registers all listed
+remote call objects in the Satisfactory Play Character.
+
+You can use the `Register Remote Call Object`-Function to add the class of a remote call object to the registry, so it gets automatically registered in the player.
+
+== Subsystem Holder Registry
+
+The `Subsystem Holder Registry` ia a Game Instance Subsystem that automatically registers all listed subsystem holders to the mod loader lifecycle.
+So that the holders get manged by SML.
+
+You can use the `Register Subsystem Holder`-Function to add the class of a subsystem holder to the registry, so it gets automatically managed by SML.
+
+== Mod Key Bind Registry
+
+The `Mod Key Bind Registry` is a blueprint function library that provides a couple of functions
+that allow you to easily add your own key bindings and axis bindings to the game.
+
+=== `RegisterModKeyBind(String ModReference, InputActionKeyMapping KeyMapping, Text DisplayName)`
+Register given key mapping and associates it with mod reference provided.
+The action name should be unique and start with a "ModReference." prefix to avoid conflicts with other mods.
+This function will throw an exception if the action name doesn't start with the prefix described above.
+You can only register two keys with the same name, and one of them should be a keyboard action and another is a gamepad action (optional).
+
+=== `RegisterModAxisBind(String ModReference, InputAxisKeyMapping PositiveAxisMapping, InputAxisKeyMapping NegativeAxisMapping, Text PositiveDisplayName, Text NegativeDisplayName)`
+Registers the given axis key mappings and associate them with the given mod reference.
+The axis names should be unique and start with a "ModReference." prefix to avoid conflicts with other mods.
+This function will an throw exception if the axis names don't start with the prefix described above.
+Both axis mappings should have equal action names, too.
+Satisfactory requires all axis binds to have 2 keys with opposite directions, and they will be displayed as 2 keys in the control options too.
+You can only register two axis binding pairs, and one of them should be a keyboard axis and another is a gamepad axis (optional).
