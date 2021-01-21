@@ -49,6 +49,6 @@
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
-*** xref:Development/ModLoader/SBL.adoc[Satisfactory Blueprint Library]
+*** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]

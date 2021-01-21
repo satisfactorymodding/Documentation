@@ -1,18 +1,24 @@
-= Satisfactory Blueprint Library
+= Blueprint Library
 
-The SBL is used to provide BP-Scripts access to SML so they don't need to use native code.
-
-The `USMLBlueprintLibrary` provides the functions you can use to interact with SML.
+The SML provides some blueprint function libraries allowing you to interact with the engine, satisfactory or the loader way more easily with blueprints.
 
 == Logging
 
-The debug logger is used to provide quick usage of the level based
-logging for the the console of SML. It does that by providing multiple
-static functions you can find under `SML/Logging`.
+The mod loader provides a blueprint function library `Blueprint Logging Library` that exposes some logging features to blueprints.
+This allows you to log things in different verbosity states.
+
+If you want to log something in C++, pleas use unreal's default way of logging.
+Preferly creation your own log category for your mod.
 
 === `LogInfo(String str, bool ignoreDebugMode)`
 Logs the given string with the "info-color" but only
 if debugMode of SML is enabled or ignoreDebugMode is set to true.
+
+=== `LogVerbose(String str)`
+Logs the given string in the "verbose-level".
+
+=== `LogDisplay(String str)`
+Logs the given string in the "display-level".
 
 === `LogWarning(String str)`
 Logs the given string in the "warning-level".
@@ -55,41 +61,53 @@ Converts the given structure to a string, storing it at the passed String addres
 === `void StructFromJson(String String, bool UsePrettyPropertyNames, Struct& Structure)`
 Converts the given json String to a structure. Make sure that UsePrettyPropertyNames is enabled if it was enabled when producing the json via StructToJson.
 
-== Mod Registry Utility
+== Blueprint Mod Loading Library
 
-There are functions allowing you to interact with the Mod Registry and obtain other mod info
-as well as helper functions for converting this information between different display formats.
+The `Blueprint Mod Loading Library` provides functions to interact with the modloading process.
 
-=== `xref:#_fversion[FVersion] ParseVersionString(String String)`
-This function allows you to easily convert a string encoded version like `1.2.3`
-to a version structure.
-
-=== `String Conv_VersionToString(xref:#_fversion[FVersion] Version)`
-This function allows you to convert a version structure
-to a human readable version string like `1.2.3`.
-
-=== `bool IsModLoaded(String ModId)`
+=== `bool IsModLoaded(String ModReference)`
 This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference] as input and checks
 if any kind of mod with that reference got loaded or not.
 
 === `Array<String> GetLoadedMods()`
 This function returns the xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod references] of all currently loaded mods in an array.
 
-=== `ModInfo GetLoadedModInfo(String ModId)`
+=== `ModInfo GetLoadedModInfo(String ModReference)`
 This function allows you to access additional information about the mod with the given reference.
 
-=== `Texture2D LoadModIconTexture(String ModId, Texture2D FallbackIcon)`
+=== `Texture2D LoadModIconTexture(String ModReference, Texture2D FallbackIcon)`
 This function allows you to load the mod icon of the mod with the given reference as a Texture2D.
 If no Texture or mod is found, the function will return the fallback icon.
 
 === `Version GetSMLVersion()`
 This function allows you to retrieve the version of the currently installed mod loader.
 
-=== `Version GetBootstrapperVersion()`
-This function allows you to retrieve the version of the currently installed bootstrapper.
-
-=== `bool GetDevelopmentModEnabled()`
+=== `bool IsDevelopmentModEnabled()`
 This function allows you to easily check if the SML development mode is activated.
+
+=== `Map<Name, String> GetExtraModLoaderAttributes()`
+Returns extra attributes exposed by the mod loader implementation.
+
+== Version Library
+
+The `Blueprint Version Library` provides a couple of functions that allow you to interact with the version system more easily and generally helps you out with some stuff.
+
+=== `bool ParseVersionString(String String, out Version OutVersion, out String ErrorMessage)`
+This function tries to create a FVersion object from the provided string.
+Returns true if able to convert the string successfully and if not, sets the ErrorMessage accordingly.
+
+=== `String Conv_VersionToString(FVersion Version)`
+Converts the given version structure to a string.
+
+=== `bool ParseVersionRangeString(String String, out VersionRange OutVersionRange, out String OutErrorMessage)`
+Tries to convert the given string into a Version Range struct.
+Returns true if it was able to do so, and if not, sets the error message accordingly.
+
+=== `String Conv_VersionRangeToString(FVersionRange VersionRange)`
+Converts the given version range structure to a string.
+
+=== `bool Matches(VersionRange VersionRange, Version Version)`
+Returns true if the provided version matches the given version range.
 
 == FVersion
 
