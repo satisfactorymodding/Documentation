@@ -22,7 +22,6 @@ With that the data we need is fully created.
 == Registering the Data Table
 
 Now we just need to tell SF to load the contents of the data table.
-We do this by using the InitMod actor.
-Simply set the `M Resource Sink Item Points Data Table` variable in the defaults tab
-to your own just created data table.
+We do this by using the xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module] .
+Simply set the `mResourceSinkItemPointsTable` variable to your created data table.
 SML will read the contents and adds them to the resource sink.

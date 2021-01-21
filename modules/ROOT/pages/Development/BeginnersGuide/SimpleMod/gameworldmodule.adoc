@@ -1,0 +1,16 @@
+= Init Game World
+
+Our mod must have a starting point from which everything else gets invoked. If we don't have one, then the mod's content will never be added to the game during loading.
+In our case this is the `InitGameWorld` Blueprint.
+
+== Initial Mod Setup
+
+To keep your folder structure organized, let's create a folder where all of your mod content will go. This folder will be named like your mod, and for this tutorial, we'll use the name "DocMod" as an example.
+
+Create a folder, for example,`+Content/DocMod+`, to serve as your mod-project-root. All of the assets for our mod will go in this folder and will be turned into a pak when we're done.
+
+== Create the Class
+
+First of all, we need to create the proper path for the class. The path for the class will depend on the mod name, specifically on the name of the mod reference we will use to identify our mod. Our mod name will be `+Doc Mod+` and the mod reference will be `DocMod`, so we need to create a folder in the UE asset root with that name. So we create the folder `Content/DocMod`, and within it a new Blueprint called `InitGameWorld` of type `GameWorldModule`.
+
+Done! Now you will be able to register recipes and other stuff from here.

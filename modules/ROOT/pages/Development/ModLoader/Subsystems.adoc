@@ -20,7 +20,7 @@ and then store the references in attributes.
 Later somewere else you can use the static `K2_GetModSubsystemHolder` function
 to get a reference to your holder which then has attributes holding references to your subsystems.
 
-For registering a subsystem holder you can just add it to the `M Mod Subsystem` array of the InitMod class.
+For registering a subsystem holder you can just add it to the `Mod Subsystems` array of the GameInstanceModule.
 
 == Spawning a Subsystem
 

@@ -43,7 +43,7 @@ you just need to override the `Execute Command` function and add your own logic 
 The Function gets the command sender, the command arguments and the used alias as function parameters and returns if something and what in the execution didn't work.
 
 After that you need to register your command.
-You can do that by simply adding it to the `M Chat Commands` array of your InitMod.
+You can do that by simply adding it to the `M Chat Commands` array of your xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule.
 
 == UCommandSender
 

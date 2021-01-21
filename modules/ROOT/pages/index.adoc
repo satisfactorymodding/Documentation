@@ -79,9 +79,10 @@ It also provides a framework for functionally many mods need but are not provide
 
 Things the Mod Loader does:
 
-* Starts the ModInit of pak mods
+* Provided Startup Places for the mods
 * Unpacks and mounts .zip packaged mods
 * Manages mod dependencies
 * Provides a basic interface for pak mods to interact with some native code
 * Implements a Hooking system for C++ mods
-
+* Provides a Interface for simple loading of new SF content
+* Provides a configuration system
