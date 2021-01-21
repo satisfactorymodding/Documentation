@@ -2,7 +2,7 @@
 
 SML adds a system allowing you to add your own chat commands.
 
-== AChatCommandInstanceParent
+== AChatCommandInstance
 
 You might think "wtf is this?"... well, this is the class you need inherit from
 for each chat command you want to implement in BP.
@@ -17,15 +17,6 @@ this allows you to make sure only players can execute the command.
 +
 If the number of arguments used to execute the command is lower than this value,
 the command wont get executed.
-- `Mod Id`
-+
-This needs to be your Mod Id, it allows SML to differentiate between the different Mods.
-+
-[WARNING]
-====
-Make sure the mod id is valid! If it's not, it will crash.
-====
-
 - `Command Name`
 +
 This is finally the name of your command you want to add.
