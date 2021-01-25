@@ -34,3 +34,122 @@ This function will an throw exception if the axis names don't start with the pre
 Both axis mappings should have equal action names, too.
 Satisfactory requires all axis binds to have 2 keys with opposite directions, and they will be displayed as 2 keys in the control options too.
 You can only register two axis binding pairs, and one of them should be a keyboard axis and another is a gamepad axis (optional).
+
+== Mod Content Registry
+The Mod Content Registry is a subsystem and manages registration and lifetime of any kind of modded content.
+
+All content you create and add with your mod that is of supported types should be registered with the registry.
+Meaning, you should **not** register it yourself in the games subsystems.
+
+This is necessary, so it is correctly saved, loaded and identified by the game and other mods.
+
+If you don't need any dynamic behaviors, you should use properties in InitGameWorld instead of calling methods on this object directly
+
+[WARNING]
+====
+Content can only be registered before a save is loaded,
+after that moment, the registry is frozen and no changes can be made after that!
+====
+
+Registered content is then also tracked automatically for changes/overwrites if possible.
+By f.e. looking up Alpakit overwrite data.
+
+You can use it's `Get(UObject*)`-Function to get a instance of the registry.
+
+=== `RegisterSchematic(FName ModReference, TSubclassOf<UFGSchematic> Schematic)`
+Registers the given schematic.
+
+It additionally also registers referenced recipes and items automatically.
+
+You should also provide your mod reference, so the content can get associated properly.
+
+=== `RegisterResearchTree(FName ModReference, TSubclassOf<UFGResearchTree> ResearchTree)`
+Registers the given research tree.
+
+It additionally also registers referenced schematics automatically.
+
+You should also provide your mod reference, so the content can get associated properly.
+
+Nodes should be type of default BPD_ResearchTreeNode.
+
+=== `RegisterRecipe(FName ModReference, TSubclassOf<UFGRecipe> Recipe)`
+Registers the given recipe.
+
+It additionally also registers referenced items automatically.
+
+You should also provide your mod reference, so the content can get associated properly.
+
+=== `RegisterResourceSinkItemPointTable(FName ModReference, UDataTable* PointTable)`
+Registers the given resource sink item point table.
+
+You should also provide your mod reference, so the content can get associated properly.
+
+=== `TArray<FItemRegistrationInfo> GetLoadedItemDescriptors()`
+Returns a list of all currently loaded item descriptors.
+
+=== `TArray<FItemRegistrationInfo> GetObtainableItemDescriptors()`
+Returns a list of all item descriptors that are referenced as product in recipes.
+
+=== `FItemRegistrationInfo GetItemDescriptorInfo(TSubclassOf<UFGItemDescriptor> ItemDescriptor)`
+Returns the registration info of the given item descriptor.
+
+=== `TArray<FRecipeRegistrationInfo> GetRegisteredRecipes()`
+Returns a list of all currently registered recipes.
+
+=== `FRecipeRegistrationInfo GetRecipeInfo(TSubclassOf<UFGRecipe> Recipe)`
+Returns the registration info of the given recipe.
+
+=== `TArray<FResearchTreeRegistrationInfo> GetRegisteredResearchTrees()`
+Returns a list of all currently registered research trees.
+
+=== `FResearchTreeRegistrationInfo GetResearchTreeRegistrationInfo(TSubclassOf<UFGResearchTree> ResearchTree)`
+Returns the registration info of the given research tree.
+
+=== `TArray<FSchematicRegistrationInfo> GetRegisteredSchematics()`
+Returns a list of all currently registered schematics.
+
+=== `FSchematicRegistrationInfo GetSchematicRegistrationInfo(TSubclassOf<UFGSchematic> Schematic)`
+Returns the registration info of the given schematic.
+
+=== `bool IsRecipeRegistered(TSubclassOf<UFGRecipe> Recipe)`
+Allows checking if the given recipe is already registered.
+
+=== `bool IsSchematicRegistered(TSubclassOf<UFGSchematic> Schematic)`
+Allows checking if the given schematic is already registered.
+
+=== `bool IsResearchTreeRegistered(TSubclassOf<UFGResearchTree> Recipe)`
+Allows checking if the given research tree is already registered.
+
+=== `FBasicRegistrationInfo`
+This struct is the base struct for all registration info structures.
+It holds information about the actual object it holds information for, and it references the registering mod.
+
+==== `FName ModReference`
+The mod reference of the mod that originally registered this content.
+
+==== `FName OverwrittenByModReference`
+If the object was overwritten, this holds the reference to the mod owning the overwritten asset.
+
+==== `UClass* RegisterdObject`
+The object/content this registration info holds registry information about.
+
+=== `FItemRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
+This struct holds registry information for `UFGItemDescriptors`.
+
+==== `TArray<TSubclassOf<UFGRecipe>> ReferencedBy`
+Holds a list of recipes that reference this item.
+
+=== `FRecipeRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
+This struct holds registry information for `UFGRecipes`.
+
+==== `TArray<TSubclassOf<UFGSchematic>> ReferencedBy`
+Holds a list of schematics that reference this recipe.
+
+=== `FSchematicRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
+This struct holds registry information for `UFGSchematics`.
+
+==== `TArray<TSubclassOf<UFGResearchTree>> ReferencedBy`
+Holds a list of research trees that reference this schematic.
+
+=== `FResearchTreeRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
+This struct holds registry information for `UFGResearchTrees`.
