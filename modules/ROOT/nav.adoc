@@ -51,5 +51,6 @@
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 *** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
+*** xref:Development/ModLoader/Configuration.adoc[Configuration]
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
