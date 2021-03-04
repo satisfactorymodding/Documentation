@@ -1,27 +1,40 @@
 = Resource Sink
 
-Right now you were not able to put custom items into the resource sink
-to gather coupon points.
+By default, modded items can't be fed into the AWESOME Sink
+to gather coupon points since they have no associated point values.
 
-SML provides a facility for you to load a list of item descriptors
-referred with their new associated count of coupon points you get
-when you recycle the item for the first time.
+If you'd like your mod's items to be sinkable, you need to
+specify how many points they provide when sinked.
+
+SML provides a facility for you to easily load a list of FGItemDescriptors
+and assign points values to them through the use of a Data Table. Only
+one of these tables can exist per mod.
 
 == Data Table
 
-If you want to define the amount of coupon points,
-you will need to create a data table with
-`Resource Sink Point Data` as type of row.
+To get started, go to a Content Browser window in the editor and add a new Data Table asset (it's an Advanced Asset in the Miscellaneous category). You'll be prompted to select a Row Structure, pick `Resource Sink Points Data` from the dropdown.
+Call it "Points_YourModName" or similar so it's easy to find later.
 
-In the data table now add for each item descriptor you want to add
-a new row, select for `Item Class` your descriptor
-and change `Points` to the amount of coupons you want.
+You'll need to create a row in the data table for each item you
+want to be sinkable. The `Row Name` does not matter, the `Item Class` should be 
+the FGItemDescriptor of the item, and the `Points` column is how many points it's worth
+in the sink. You can go to the https://satisfactory.gamepedia.com/AWESOME_Sink#Points_generated_per_item[Satisfactory Wiki] to see how many
+points each vanilla item is worth for comparison. Consider making your item worth more
+points than the sum of its components to encourage crafting and sinking
+it as opposed to just sinking the raw materials. You can see the "point profit"
+of various vanilla recipes https://satisfactory.gamepedia.com/AWESOME_Sink#Recipe_point_improvement_ratios[here] for comparison.
 
-With that the data we need is fully created.
+There is an additional column, `Overridden Resource Sink Points`. This should always
+be set to -1. CSS uses a script to automatically calculate point values for them,
+and they use this column to manually override their generated values. Since we
+are specifying our values by hand, we don't have any use for this column.
+If you were to specify a value other than -1, the game would select the higher
+point value of the two fields.
 
 == Registering the Data Table
 
-Now we just need to tell SF to load the contents of the data table.
-We do this by using the xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module] .
-Simply set the `mResourceSinkItemPointsTable` variable to your created data table.
-SML will read the contents and adds them to the resource sink.
+Now we just need to tell Satisfactory to load the contents of the data table.
+Thankfully, SML can do this for you using the xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module].
+Simply set the `M Resource Sink Item Points Data Table` variable in the defaults tab
+(in the Advanced subsection) to your own just created data table.
+SML will read the contents and adds them to the resource sink systems for you.
