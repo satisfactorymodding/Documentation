@@ -7,48 +7,61 @@ consistnt across different mods.
 
 == AChatCommandInstance
 
-This is the class you need inherit from
-for each chat command you want to implement in BP.
+Each chat command you want to implement in BP should inherit from `AChatCommandInstance`.
 
-This class contains some attributes you need to set to tell SML
-what name your command f.e. has.
+This class contains some attributes you need to set to tell SML about your command:
 
 - `Only Usable by Player`
 +
-this allows you to make sure only players can execute the command.
+This allows you to make sure only players can execute the command,
+as opposed to other mods calling them.
 - `Min Number Of Arguments`
 +
 If the number of arguments used to execute the command is lower than this value,
 the command wont get executed.
 - `Command Name`
 +
-This is finally the name of your command you want to add.
+This is the name of your command you want to add.
+It will be what the user types to run the command.
 - `Aliases`
 +
 This is a list alternative Command Names for your command.
-You will be able to use them to call the same command.
+You will be able to use them in place of the Command Name when running the command.
 - `Usage`
 +
 This is the description of your command how it should get used by the player.
+It will be displayed in help menus and when the command is not given enough arguments.
+You should provide a description of what the command does, what each parameter is,
+and possibly an example valid command.
 
 To give the command now some functionality,
 you just need to override the `Execute Command` function and add your own logic to it.
 
-The Function gets the command sender, the command arguments and the used alias as function parameters and returns if something and what in the execution didn't work.
+This function receives the command sender, the command arguments, and the used alias (if any)
+and should either return COMPLETED in the case of success, or, in the case of an error,
+logging an error about what in the execution didn't work and returning
+UNCOMPLETED, INSUFFICIENT_PERMISSIONS, or BAD_ARGUMENTS.
 
-After that you need to register your command.
-You can do that by simply adding it to the `M Chat Commands` array of your xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module].
+After that you need to register your command for SML to be able to load it.
+You can do that by simply adding it to the `M Chat Commands` array of your
+xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module].
 
 == UCommandSender
 
-This class represents a chat command sender and allows you to get abstract information about the sender.
+This class represents the sender of a chat command
+and allows you to get abstract information about the sender.
 
-A sender could be f.e. the player.
+A sender could be a player, for example.
 
 == AChatCommandSubsystem
 
-This subsystem allows you to register a chat command instance manually,
-to get registered commands to executed a command and most importantly,
-it provides the `ParsePlayerName` function which allows you to get the AFGPlayerController
-based on the player name. Used to parse the player name passed as command argument.
-It also allows you to parse selectors like @all and @self.
+This subsystem provides a number of helpful chat command utilities.
+It allows you to...
+
+* Register a chat command instance manually
+* Get a list of registered commands
+* Executed a command programatically
+* Access the `ParsePlayerName` function, which allows you to get the `AFGPlayerController`
+based on the player name. 
+** This is generally used to parse the player name that was passed as command argument.
+It also allows you to parse selectors in the command like @all and @self.
