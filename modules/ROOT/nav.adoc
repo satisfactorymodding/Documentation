@@ -17,7 +17,7 @@
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
 *** xref:Development/BeginnersGuide/SimpleMod/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
-*** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Vanilla Content]
+*** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Content]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]

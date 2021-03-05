@@ -1,5 +1,12 @@
 = Subsystems
 
+[TIP]
+====
+If you're looking for the subsystems that SML provides by default,
+check out the
+xref:Development/ModLoader/Registry.adoc[Registry page].
+====
+
 Subsystems are actors that exist only once in the world
 (think https://en.wikipedia.org/wiki/Singleton_pattern[Singletons]) 
 as an instance general manager. These subsystems are accessible from anywhere you
