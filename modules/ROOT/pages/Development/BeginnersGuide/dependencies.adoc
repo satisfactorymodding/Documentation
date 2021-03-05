@@ -9,7 +9,9 @@ This can be a very lengthy process, so if you have to work on something else, ma
 
 [TIP]
 ====
-If you'd prefer a different format of guide, you can find a video guide https://www.youtube.com/watch?v=-HVw6-3Awqs[here]. Do note that the video guide may be out of date compared to the steps listed here.
+If you'd prefer a different format of guide, you can find a video guide https://www.youtube.com/watch?v=-HVw6-3Awqs[here].
+**As of SML 3.0.0, these tutorials are partially out of date, but many of the concepts will still carry over.**
+Be sure to read over the steps here as well to be sure you're doing things correctly.
 ====
 
 == Satisfactory

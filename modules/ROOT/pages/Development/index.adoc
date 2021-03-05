@@ -19,6 +19,7 @@ A "general" tutorial series channel for UE game development (also covers some C+
 - https://www.youtube.com/channel/UCYoV5-xnSC2BGseQ_nHWufw[Miles Nocte's Channel]
 +
 A series of SF modding tutorials made by MilesNocte, a member of our community.
+**As of SML 3.0.0, these tutorials are partially out of date, but many of the concepts will still carry over.**
 - http://academy.unrealengine.com/[Unreal Engine Academy]
 +
 A neat learning platform made by Epic Games for learning Unreal Engine.
