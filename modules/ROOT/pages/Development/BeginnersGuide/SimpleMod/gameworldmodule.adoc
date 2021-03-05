@@ -1,7 +1,14 @@
 = Init Game World
 
-Our mod must have a starting point from which everything else gets invoked. If we don't have one, then the mod's content will never be added to the game during loading.
+Our mod must have a starting point from which everything else gets invoked.
+If we don't have one, then our mod's content will never be added to the game during loading!
 In our case this is the `InitGameWorld` Blueprint.
+
+[NOTE]
+====
+If you're interested in how the content loading system works,
+you can read more on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+====
 
 == Initial Mod Setup
 
@@ -11,6 +18,22 @@ Create a folder, for example,`+Content/DocMod+`, to serve as your mod-project-ro
 
 == Create the Class
 
-First of all, we need to create the proper path for the class. The path for the class will depend on the mod name, specifically on the name of the mod reference we will use to identify our mod. Our mod name will be `+Doc Mod+` and the mod reference will be `DocMod`, so we need to create a folder in the UE asset root with that name. So we create the folder `Content/DocMod`, and within it a new Blueprint called `InitGameWorld` of type `GameWorldModule`.
+First of all, we need to create the proper path for the class. The path for the class will depend on the mod name, specifically on the name of the mod reference we will use to identify our mod. Our mod name will be `+Doc Mod+` and the mod reference will be `DocMod`, so we need to create a folder in the UE asset root with that name.
+
+We create the folder by going to the Content folder in a Content Browser within the Unreal Engine editor, then right clicking and selecting `New Folder` at the top. Name the folder your mod reference, in our case `DocMod`.
+
+[WARNING]
+====
+Be sure to read the notes on xref:Development/BeginnersGuide/index.html#_mod_reference[Mod References]
+if you have not yet done so. It is critical that your mod reference follows these format rules.
+====
+
+This folder is where you will be putting most of the assets (models, blueprints, textures, etc.) that your mod uses.
+
+Now we need to create our `InitGameWorld` Blueprint so that SML can load our mod's content into the game.
+
+Within your folder folder, right click and select `Blueprint Class`, then start typing `GameWorldModule`
+in the All Classes search box. Once it comes up, select it and press the green Select button to create
+the blueprint. Name it `InitGameWorld`
 
 Done! Now you will be able to register recipes and other stuff from here.

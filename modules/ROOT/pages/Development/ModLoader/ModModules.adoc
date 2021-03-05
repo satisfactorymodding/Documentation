@@ -1,35 +1,54 @@
 = Mod Modules
 
-Mod Modules are system provided by SML that allows for simple hooking into the engine life-cylcle
-at key locations important for Satisfactory Modding.
+Mod Modules are a system provided by SML that allows for simple hooking into the engine life-cycle
+at key locations important for Satisfactory modding.
 
-This is done by placing classes at specific location which will then automatically get loaded.
+This is done by placing classes at specific locations in your mod files
+which will then be automatically loaded by SML at the correct times.
 
 Instances and Functions of these classes are then called automatically when such a life-cycle location is reached.
 
-With this you have as a modder more control over the initialization of your content.
+This system allows you as a modder more control over the initialization of your content.
+
+There are currently 3 types of Mod Modules:
+
+* <<Game Instance Module (`UGameInstanceModule`), InitGameInstance>>, called once while the game is launching.
+* <<World Module (`UWorldModule`), InitMenuWorld>>, called once when any kind of world is loaded, usually the main menu.
+* <<Game World Module (`UGameWorldModule`), InitGameWorld>>, called once whenever a save is loaded.
+
+You can read more about them in the sections below.
+
+Assuming that a player launches the game and then loads a save file from the main menu,
+they will be called in the following order: InitGameInstance, InitMenuWorld, InitGameWorld.
 
 == Module Discovery
 
-The system is able to automatically discover the given modules (or lifecycle-hooks) by using the unreal object path.
-That means, it will try to find for each loaded mod, a class of the given module type at a specific location.
+SML is able to automatically discover the given modules
+(or lifecycle-hooks) by using the Unreal object path.
+That means, for each loaded mod, it will try to find a class of the given module type at a specific location.
+In order to use one of these modules, just create an actor or C++ class with the
+correct name in the correct location.
 
 The paths for such modules are:
 
-- `/Game/<mod reference>/<module name>`
+- For Blueprint:
 +
-This essentially is in the unreal editor the path `/Content/<mod reference>/<module name>`.
+`/Game/<mod reference>/<module name>`
++
+This essentially is in the Unreal editor the path `/Content/<mod reference>/<module name>`.
 +
 You should use this location usually when implementing a module within Blueprints.
 +
-f.e. `/Game/ExampleMod/InitGameInstance`
-- `/Script/<mod reference>.<module name><mod reference>`
+For example, ExampleMod's InitGameInstance module would have the path `/Game/ExampleMod/InitGameInstance`
+- For C++: 
++
+`/Script/<mod reference>.<module name><mod reference>`
 +
 This is basically the path a native (C++) class with the name `U<module name><mod reference>`.
 +
 So you just need to create a UClass of the given module type and that name, and then you should be done.
 +
-f.e.
+ExampleMod's InitGameInstance module would look like this:
 [source, cpp]
 UClASS()
 class UInitGameInstanceExampleMod : public UInitGameInstance {
@@ -38,9 +57,10 @@ class UInitGameInstanceExampleMod : public UInitGameInstance {
 
 == Dispatch Lifecycle Event
 
-The `DispatchLifecycleEvent` is a function taht every mod module can override and that is called in the different phases of the given "life-cycle locations".
+The `DispatchLifecycleEvent` is a function that every Mod Module can override.
+The events are called in the different phases of the given "life-cycle locations".
 
-There are three phases that each "life-cycle location" have:
+Each "life-cycle location" has the following 3 phases:
 
 - Construction
 - Initialization
@@ -54,46 +74,57 @@ and then do your custom initialization logic.
 == Game Instance Module (`UGameInstanceModule`)
 **Module Name (for discovery): `InitGameInstance`**
 
-The game instance module is module that is bound to the Game Instance which ultimately means,
-that it gets called once per game session.
+The Game Instance Module is bound to the Game Instance.
+This ultimately means that it gets called once per game session.
+In order for this module to be called again, you'd have to re-launch Satisfactory.
 
 It also provides some standard handling of things you might need to register at this point like:
 
-- Custom Mod Configurations
+- xref:Development/ModLoader/Configuration.adoc[Custom Mod Configurations]
 - Custom Keybindings
-- Subsystems
+- xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 - Global Item Tooltip Providers
 - Custom Axis Bindings
 
-You can register them by simply adding your classes to the given variables in the constructor of your class.
+You can register them by simply adding your classes to the given variables in the constructor of your class,
+or the defaults of your actor if you're using Blueprint.
 
-The module also provides the `GetGameInstance`-Function that allows you to get the game instance
+The module also provides the `GetGameInstance`-Function which allows you to get the game instance
 triggering the module.
-You should use this f.e. in your custom lifecycle event handling.
+You should use this capability in your custom lifecycle event handling, for example.
 
 == World Module (`UWorldModule`)
 **Module Name (for discovery): `InitMenuWorld`**
 
-This module is attached to any kind of world.
+The World Module is attached to any kind of world. Note that if the world is a game world,
+<<Game World Module (`UGameWorldModule`), Game Modules>> will be called instead.
 
 That means it gets constructed and destroyed together with its relative world instance.
 
-This module is ideally used for things that need to be initialized in the menu.
+This module is usually used for things that need to be initialized in the main menu.
+If you wanted to add something to the main menu scene, this would be the place to do it.
+
+If the user returns to the main menu, after exiting a save, for example,
+this Module will be called again.
 
 == Game World Module (`UGameWorldModule`)
 **Module Name (for discovery): `InitGameWorld`**
 
-The game world module is attached to any kind of world that actually is a game world (the normal game world in which you play the actual game, not a menu or whatever).
+The Game World Module is attached to any kind of world that actually is a game world
+(the normal game world in which you play the actual game, not a menu or whatever).
 
-Lifetime is the same as for <<World Module (`UWorldModule`), World Modules>>, which it even inherits.
+Its lifetime is the same as that of <<World Module (`UWorldModule`), World Modules>>, which it inherits from.
 
-This module is ideally used for things that need to be initialized at the loading phase of any save or world the user actually plays the game.
+This module is ideally used for things that need to be initialized at the
+loading phase of any save or world the user actually plays the game.
+
+If the user were to load a save file (including autosaves) this module will be called again.
 
 It also provides some standard handling of things you might need to register at this point like:
 
 - Schematics
-- Research Trees
-- Chat Commands
-- Resource Sink Item Points Tables
+- MAM Research Trees
+- xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
+- xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink Item Points Tables]
 
 You can register them by simply adding your classes to the given variables in the constructor of your class.
