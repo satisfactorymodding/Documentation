@@ -7,6 +7,13 @@ specified by the user.
 
 The mod can then access the configuration and its values to then change its behavior depending on this static user input.
 
+[TIP]
+====
+If you are looking to implement configs with Blueprints,
+you should read about the helper functions provided by the 
+xref:Development/ModLoader/BlueprintInterface.adoc#_config[SML Blueprint Interface].
+====
+
 == Configuration Manager
 
 The configuration manager is a engine subsystem that manages all configurations loaded into the game.

@@ -1,17 +1,23 @@
 = Blueprint Library
 
-The SML provides some blueprint function libraries allowing you to interact with the engine, satisfactory or the loader way more easily with blueprints.
+SML provides numerous helpful blueprint function libraries,
+allowing you to interact with the engine,
+Satisfactory, or the mod loader itself from blueprints with relative ease.
 
 == Logging
 
-The mod loader provides a blueprint function library `Blueprint Logging Library` that exposes some logging features to blueprints.
-This allows you to log things in different verbosity states.
+The mod loader provides a blueprint function library `Blueprint Logging Library`
+that exposes some logging features to blueprints.
+This allows you to log things in different verbosity states,
+which can be controlled from the SML config file.
 
-If you want to log something in C++, pleas use unreal's default way of logging.
-Preferly creation your own log category for your mod.
+If you want to log something from C++, we suggest you use
+Unreal's default logging systems instead.
+It would be best to create your own log category for your mod.
+You can read more about that in Unreal's documentation.
 
 === `LogInfo(String str, bool ignoreDebugMode)`
-Logs the given string with the "info-color" but only
+Logs the given string with the "info-color," but only
 if debugMode of SML is enabled or ignoreDebugMode is set to true.
 
 === `LogVerbose(String str)`
@@ -32,42 +38,60 @@ Causes the game to crash.
 
 == Config
 
-The SBL also provides the ability to save and load configurations in Blueprints.
+The Blueprint Interface also provides the ability to save and load configurations via Blueprint.
 
 As `config` you can pass any kind of custom struct.
-But only these types will get parsed properly:
+But only the following types will be parsed properly:
 
 - String
 - Float
 - Integer
 - Bool
 - other Structs
-- Array of any of the above allowed types
+- Arrays of any of the above allowed types
+
+You should create a custom Structure (Create Advanced Asset > Blueprints > Structure)
+to hold all of the configs for your mod 
+
+Here is an example of a Blueprint function that that can be called to reload config.
+Note that this function simply returns the loaded config struct - what is done with
+the values is handled by the caller of the function.
+Notice the usage of variables and the separation of the variable wires.
+The struct variable is read from multiple times as opposed to the wire being reused.
+This is intentional, since reusing the wire means that the loaded config values don't get used.
+image:ModLoader/BlueprintInterface_ConfigExample.png[image]
 
 === `void SaveConfig(String modid, Struct config)`
 Dumps the given config struct as a Json and saves it as the config file for the mod with the given name.
-  
+You can find it in the configs folder of your Satisfactory install.
+
 === `void LoadConfig(String modid, Struct& config)`
-Parses the config file of the given mod id to the attributes of the given config struct.
-Attributes not existent in the config file won't get changed.
-(basically if you set default values for the struct,
-or just set the structs' variables to the values you want to use as default,
-this would allow you to define default values for the config files)
-Settings set in the config file which don't have a corresponding attribute in the config struct simply get ignored.
+Parses the config file of the given mod id to the attributes of the passed in config struct.
+You should pass it a variable that contains an instance of your config struct.
+It will then modify that instance to have the values read from the config file.
+You can define the default values for each property in your custom struct definition.
+Settings not present in the config file will be left unmodified in the config struct.
+Settings present in the config file which don't have a corresponding attribute in the config struct simply get ignored.
 
 === `void StructToJson(String& String, bool UsePrettyPropertyNames, Struct Structure)`
-Converts the given structure to a string, storing it at the passed String address. If UsePrettyPropertyNames is true, the property names will look more human readable.
+Converts the given structure to a string, storing it at the passed String address.
+If UsePrettyPropertyNames is true, the property names will look more human readable.
+
+Note that the SaveConfig function does this automatically.
 
 === `void StructFromJson(String String, bool UsePrettyPropertyNames, Struct& Structure)`
-Converts the given json String to a structure. Make sure that UsePrettyPropertyNames is enabled if it was enabled when producing the json via StructToJson.
+Converts the given json String to a structure.
+Make sure that UsePrettyPropertyNames is enabled if it was enabled when producing the json via StructToJson.
+
+Note that the LoadConfig function does this automatically.
 
 == Blueprint Mod Loading Library
 
 The `Blueprint Mod Loading Library` provides functions to interact with the modloading process.
 
 === `bool IsModLoaded(String ModReference)`
-This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference] as input and checks
-if any kind of mod with that reference got loaded or not.
+This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+as input and checks if any kind of mod with that reference got loaded or not.
 
 === `Array<String> GetLoadedMods()`
 This function returns the xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod references] of all currently loaded mods in an array.
@@ -82,7 +106,7 @@ If no Texture or mod is found, the function will return the fallback icon.
 === `Version GetSMLVersion()`
 This function allows you to retrieve the version of the currently installed mod loader.
 
-=== `bool IsDevelopmentModEnabled()`
+=== `bool IsDevelopmentModeEnabled()`
 This function allows you to easily check if the SML development mode is activated.
 
 === `Map<Name, String> GetExtraModLoaderAttributes()`
