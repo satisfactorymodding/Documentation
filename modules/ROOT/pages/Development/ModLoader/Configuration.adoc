@@ -5,7 +5,7 @@ The SML adds a neat configuration system that allows you to easily define a conf
 These configuration files are then loaded automatically on game boot and override the default values with the values
 specified by the user.
 
-The mod can then access the configuration and its values to then change its behaviour depending on this static user input.
+The mod can then access the configuration and its values to then change its behavior depending on this static user input.
 
 == Configuration Manager
 
@@ -13,7 +13,7 @@ The configuration manager is a engine subsystem that manages all configurations 
 
 It will then be able to load and save registered configurations.
 
-The registerd mod configurations can get marked as dirty.
+The registered mod configurations can get marked as dirty.
 This means that the user applied changes to the configuration values and that these changes need to be saved.
 
 When loading a configuration, first the configuration value gets loaded based on default values.
@@ -27,7 +27,7 @@ The value is then basically the actual information which should be structured li
 Reloads all registered mod configurations from disk.
 Optionally saving changes to the schema.
 
-=== `FLushPendingSaves()`
+=== `FlushPendingSaves()`
 Saves all changes in the loaded config instances to the filesystem.
 
 === `MarkConfigurationDirty(FConfigId ConfigId)`

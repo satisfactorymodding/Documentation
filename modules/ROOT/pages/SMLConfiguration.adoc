@@ -1,6 +1,6 @@
 = SML Configuration
 
-Through SML's configuration file system, it' easy for mod developers to create config files for their mods, and easy for users to change mod settings.
+Through SML's configuration file system, it's easy for mod developers to create config files for their mods, and easy for users to change mod settings.
 
 == Config Folder
 

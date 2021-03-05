@@ -75,14 +75,18 @@ We wont get into further detail as to how it works in this documentation. If you
 
 Satisfactory Mod Loader (SML) allows Satisfactory to load additional
 content and is essential in making most mods work.
-It also provides a framework for functionally many mods need but are not provided by CSS or UE4.
+It also provides a framework for functionally many mods need but are
+not provided by CSS or UE4.
 
 Things the Mod Loader does:
 
-* Provided Startup Places for the mods
-* Unpacks and mounts .zip packaged mods
+* Provides a startup location for mods
+* Unpacks and mounts .zip (and .smod) packaged mods
 * Manages mod dependencies
 * Provides a basic interface for pak mods to interact with some native code
-* Implements a Hooking system for C++ mods
-* Provides a Interface for simple loading of new SF content
-* Provides a configuration system
+* Implements a hooking system for C++ mods
+* Provides system for...
+    ** Simple loading of new SF content
+    ** Mods to easily create and load xref:/Development/ModLoader/Configuration.adoc[configuration files]
+    ** Mods to register xref:/Development/ModLoader/ChatCommands.adoc[commands that can be run from the in-game chat]
+* More!

@@ -1,13 +1,16 @@
 = Chat Commands
 
 SML adds a system allowing you to add your own chat commands.
+It is highly recommended that you use this system as opposed to
+writing your own so that the behavior of chat commands is
+consistnt across different mods.
 
 == AChatCommandInstance
 
-You might think "wtf is this?"... well, this is the class you need inherit from
+This is the class you need inherit from
 for each chat command you want to implement in BP.
 
-This classs contains some attributes you need to set to tell SML
+This class contains some attributes you need to set to tell SML
 what name your command f.e. has.
 
 - `Only Usable by Player`
@@ -26,15 +29,15 @@ This is a list alternative Command Names for your command.
 You will be able to use them to call the same command.
 - `Usage`
 +
-This is the discription of your command how it should get used by the player.
+This is the description of your command how it should get used by the player.
 
-To give the command now some functionallity,
+To give the command now some functionality,
 you just need to override the `Execute Command` function and add your own logic to it.
 
 The Function gets the command sender, the command arguments and the used alias as function parameters and returns if something and what in the execution didn't work.
 
 After that you need to register your command.
-You can do that by simply adding it to the `M Chat Commands` array of your xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule.
+You can do that by simply adding it to the `M Chat Commands` array of your xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[Game World Module].
 
 == UCommandSender
 
@@ -46,6 +49,6 @@ A sender could be f.e. the player.
 
 This subsystem allows you to register a chat command instance manually,
 to get registered commands to executed a command and most importantly,
-it provides the `ParsePlayerName` function wich allows you to get the AFGPlayerController
+it provides the `ParsePlayerName` function which allows you to get the AFGPlayerController
 based on the player name. Used to parse the player name passed as command argument.
 It also allows you to parse selectors like @all and @self.
