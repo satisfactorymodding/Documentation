@@ -1,3 +1,27 @@
-= Overwriting Base Game Content
+= Overwriting Base Game and Other Mod Content
 
-For the time being, please follow MilesNocte's video tutorial https://www.youtube.com/watch?v=woXwvkewh2A[here].
+
+[WARNING]
+====
+This page is a work in progess.
+Please ask about this on the discord if you'd like to do this.
+====
+
+It is possible to overwrite content from the base game or from other mods.
+This is not recommended as opposed to creating your own content that extends it,
+because mods that overwrite the same thing will likely be incompatible with each other.
+
+Consider using the TweakIt mod by Feyko (ask about it on the Discord),
+as it may be an easier way to modify content, depending on what you're trying to do.
+
+If you still want to overwrite content without using TweakIt,
+the correct mechanism for doing so is a Class Default Override (CDO).
+
+To perform a CDO modification, get the class default object of the
+class you're trying to override and change the relevant properties.
+
+This can be done via C++ or in Blueprint with some yet-to-be-written SML helper functions.
+
+Keep in mind that when performing a CDO,
+you're not actually 'overriding' anything,
+you're just overwriting property values on "archetype" objects.

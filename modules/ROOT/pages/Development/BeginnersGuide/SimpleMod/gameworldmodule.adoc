@@ -24,7 +24,7 @@ We create the folder by going to the Content folder in a Content Browser within 
 
 [WARNING]
 ====
-Be sure to read the notes on xref:Development/BeginnersGuide/index.html#_mod_reference[Mod References]
+Be sure to read the notes on xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
 if you have not yet done so. It is critical that your mod reference follows these format rules.
 ====
 
