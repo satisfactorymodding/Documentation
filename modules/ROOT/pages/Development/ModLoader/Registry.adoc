@@ -25,10 +25,16 @@ You can use the `Register Subsystem Holder`-Function to add the class of a subsy
 == Mod Key Bind Registry
 
 The `Mod Key Bind Registry` is a blueprint function library that provides a couple of functions
-that allow you to easily add your own key bindings and axis bindings to the game.
+that allow you to easily add your own key bindings and axis bindings to the game via the UE
+https://docs.unrealengine.com/en-US/InteractiveExperiences/Input/index.html?utm_source=editor&utm_medium=docs[ActionMappings]
+and AxisMappings system.
 
-Users of your mod can edit these keybinds from the in-game keybind screen in the options screen.
-Your keybinds will show up with the given display name grouped in a category with your mod's name.
+Since we don't have direct access to the Satisfactory project file, we can't add them directly to
+Project Settings > Engine > Input > Bindings, so instead we add them through this SML registry.
+
+Users of your mod can edit these keybinds from the in-game keybindings screen in the options.
+Your keybinds will show up with the given display name grouped in a category with your mod's name,
+and their set values will persist between sessions of the game.
 
 === `RegisterModKeyBind(String ModReference, InputActionKeyMapping KeyMapping, Text DisplayName)`
 Register a given key mapping and associates it with mod reference provided.

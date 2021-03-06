@@ -1,11 +1,14 @@
 = Configuration
 
-The SML adds a neat configuration system that allows you to easily define a config structure based on default values which can then be changed by the user through files in the file system.
+SML adds a neat configuration system that allows you to easily define
+a config structure based on default values which can then be changed
+by the user via editing json files in the file system.
 
-These configuration files are then loaded automatically on game boot and override the default values with the values
-specified by the user.
+These configuration files are then loaded automatically on game boot
+and override the default values with the values specified by the user.
 
-The mod can then access the configuration and its values to then change its behavior depending on this static user input.
+The mod can then access this configuration data to
+change its behavior depending on this static user input.
 
 [TIP]
 ====
@@ -24,11 +27,12 @@ The registered mod configurations can get marked as dirty.
 This means that the user applied changes to the configuration values and that these changes need to be saved.
 
 When loading a configuration, first the configuration value gets loaded based on default values.
-Then, or when the manager gets told to, it will load the configuration file, parse it and store changes defined in these config files to the loaded config value.
+Then, or when the manager gets told to, it will load the configuration file, parse it and make the changes
+defined in these config files to the loaded configuration value.
 
-So you need to differentiate between schema and value.
-The Scheme works like a class or declaration of how the configuration is structured and what attributes it has.
-The value is then basically the actual information which should be structured like described in the schema.
+It is important to differentiate between 'schema' and 'value' of the configuration.
+The Schema works like a class or declaration of how the configuration is structured and what attributes it has.
+The value is then basically the actual config values, which should be structured as described in the schema.
 
 === `ReloadModConfigurations(bool bSaveOnSchemaChange)`
 Reloads all registered mod configurations from disk.
