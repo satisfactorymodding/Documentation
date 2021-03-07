@@ -2,10 +2,11 @@
 
 [WARNING]
 ====
-We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead, since it vastly simplifies the process of installing, testing, and using mods.
+We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead,
+since it vastly simplifies the process of installing, testing, and using mods.
 
-If you're a mod developer, you should still strongly consider using the launcher. You need to change `Configs` to `development` to handle installing SML and the bootstrapper for you.
-
+If you're a mod developer, you should still strongly consider using the launcher.
+You need to change your selected profile to `development` to handle installing SML and the bootstrapper for you.
 ====
 
 == Installing Mods
