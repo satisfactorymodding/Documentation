@@ -55,7 +55,10 @@
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 
-* xref:CommunityResources/index.adoc[Community Resources]** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
+** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
+** xref:Development/MultiplayerTesting.adoc[Testing in Multiplayer]
+
+* xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]

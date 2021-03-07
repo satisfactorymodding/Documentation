@@ -1,0 +1,55 @@
+= Extracting Game Files
+
+Having access to the model and texture files used by Coffee Stain
+can be a valuable resource for creating content for your own mods.
+This page contains instructions on how to view and extract various game assets.
+
+As a reminder, redistributing these assets should not be done without permission,
+as they are copyrighted content of Coffee Stain Studios.
+
+== Extracting Specific Models or Textures
+
+[TIP]
+====
+If you're looking to use parts of base game machines such as item
+and fluid ports, power connectors, or more, consider taking a look at
+xref:CommunityResources/ModelingTools.adoc[AngryBeaver's ModelingTools].
+====
+
+The tool https://www.gildor.org/en/projects/umodel[UModel]
+can be used to view game pak file content,
+and offers options for exporting meshes, skeletons, textures, etc. for use in other programs.
+Tutorials for using UModel are plentiful online,
+and a quick search can help you export for the modeling software of your choice.
+
+Make sure to select Unreal Engine version 4.25 when opening Satisfactory pak files.
+
+If you don't see 4.25 as an option, you are running an older version of UModel
+and you should download it again from the link above.
+
+== Extracting Sounds/Music
+
+Because Satisfactory uses the Wwise sound system,
+extracting game sound files is a different process compared to many other Unreal Engine games. 
+
+Thankfully, GitHub user AyrA has created a tool that can extract some of the game's sound files from the pak for you.
+You can either
+https://cable.ayra.ch/satisfactory/editor[download the save editor the tool is bundled with]
+to get the audio files yourself, or
+https://cable.ayra.ch/satisfactory/satsound/[play and export the sounds directly from your web browser].
+
+== Generating a Complete Starter Project
+
+The Starter Project provided on the SML releases page excludes
+game models, textures, etc. for copyright and download size reasons.
+In their place, the starter project includes empty "placeholder" assets
+that, at runtime, will be resolved into the correct assets if you were to reference them,
+or simply excludes the asset from the project (which is the case for many textures).
+
+It is possible to create a personal version of the starter project
+that includes most of these base game files accessible from within the editor.
+This version of the project would include models, textures, and other resources
+instead of their placeholder versions, allowing you to view them in-editor.
+
+Generating this special project file takes a significant amount of time and disk space.
+If you'd like to do this, please ask about it on our Discord server in the `#help-making-mods` channel.
