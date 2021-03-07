@@ -1,0 +1,14 @@
+= AngryBeaver's ModelingTools
+
+image:https://cdn.discordapp.com/attachments/601030071221878784/776993445566480415/unknown.png[image]
+
+Community member AngryBeaver maintains a repository of re-modeled 'pieces'
+of base Satisfactory buildings that are quite useful in creating your own
+factory building models. 
+
+These re-models have been optimized to have fewer vertices than the
+pieces of machines that one could take off of Satisfactory machines
+exported via UModel, an they still look great!
+
+You can read more about the Modeling Tools on its
+https://github.com/DavidHGillen/Satisfactory_ModelingTools[GitHub page].

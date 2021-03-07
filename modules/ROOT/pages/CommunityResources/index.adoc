@@ -1,0 +1,18 @@
+= Community Resources
+
+====
+"Modding is not just about the programming / scripting side" - Pleasure 2020
+====
+
+This section is a continual work in progress,
+and will contain information about and links to resources helpful for creating
+models, textures, user interfaces, and the other content for your mod.
+Many of these resources have been made or gathered by the community,
+and if you'd like to list another resource here or write a guide,
+feel free to pull request the docs repo (press Edit This Page in the top right corner)
+or contact us on the Discord with suggestions.
+
+[NOTE]
+====
+The `#modding-resources` channel on the Discord has additional resources that you may find helpful.
+====

@@ -1,0 +1,8 @@
+= SFUKIT
+
+Community members Deantendo and Treelo maintain a "build your own" UI kit
+that can be used to help integrate your mod's UI with Satisfactory's.
+The files are vector-based and will require Adobe Photoshop CC 2018 or later to open.
+
+You can get the files and read more on 
+the UI kit's https://github.com/deantendo/sfuikit[GitHub page].
