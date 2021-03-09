@@ -66,6 +66,8 @@ Again, you can read up on it xref:Development/BeginnersGuide/index.adoc#_mod_ref
 to be playable with each other in multiplayer. You can think about it like a protocol version.
 
 You can also use `*` to define a server only modification.
+This means that clients in multiplayer are not required to have the mod to join,
+and SML does not care what version they have, assuming they even have it installed.
 
 |description
 | A short description of the mod
