@@ -11,8 +11,17 @@ The process of uploading your mod is fairly straightforward. First, sign into SM
 Before you can upload a version of your mod for users to download, you'll have to create the mod page and get it approved first. 
 
 On the front page of SMR, click `New Mod` in the top right corner to get started. 
+Next, provide a name, short description, and long description for your mod.
 
-Provide a name, short description, and long description for your mod. The name is the title that will appear in the mod list and browser. The short description is the summary text that will show up below the mod icon. The long description supports Markdown formatting (help on the https://ficsit.app/help[help page]) and is shown when the user clicks to 'View' your mod. You can edit all of these later.
+* The 'name' is the title that will appear in the mod list and browser.
+* The 'short description' is the summary text that will show up below the mod icon.
+* The 'long description' supports Markdown formatting (help on the https://ficsit.app/help[help page])
+and is shown when the user clicks to 'View' your mod.
+You should provide a means of contacting you
+(preferably your Discord user tag, so staff and users can identify you on the modding discord)
+and a means of reporting bugs, such as a GitHub issues page or contact info.
+
+You can edit all of these fields later.
 
 One of the most important fields on this screen is the `mod_reference` field.
 Explained in more detail in the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide], your mod reference is your mod's unique name.
@@ -26,9 +35,19 @@ Your mod reference can not contain special characters or spaces.
 So make sure it is correct! At least five times! And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section] again to make sure you understand what other parts of your mod need to use this same value.
 ====
 
-Next, you can upload an image to use as the display image for your mod, and a link to your source code if it is hosted on a site like GitHub or similar.
+Next, you can upload an image to use as the display image for your mod,
+and a link to your source code if it is hosted on a site like GitHub or similar.
+We strongly encourage you to release your source code, as it allows others
+to learn from your work and helps other developers debug mod compatibility.
 
-Once you click Submit, your mod page will be created. You still need to upload a version for your mod to be usable by players. This version submission process will be covered in the following sections.
+Once you click Submit, your mod page will be created.
+You still need to upload a version for your mod to be usable by players.
+Until then, your mod will be marked as Outdated since there are no compatible versions.
+This version submission process will be covered in the following sections.
+
+If you'd like, you can click 'Edit Mod' and hide your mod from discovery.
+This is helpful for making a library mod, for example,
+or if you need to split your mod into multiple sub-mods.
 
 == Data.json Format
 
@@ -39,6 +58,12 @@ This file will come in the form of a `.json` that is zipped together with your m
 You can see an example of a completed data.json https://ficsit.app/help[here].
 You can also paste your data.json into the box on the right of that same page, 
 which will help you identify errors with your json before you attempt to upload it.
+
+When you pak your mod with Alpakit, it will automatically create a folder for you
+that contains your `.pak` file and an `incomplete-data.json`, which can be found
+at `<project folder>\Mods\<your mod reference>`. However, this file is missing
+many useful fields and may be out of the date with the specifications here,
+so you will still have to edit it yourself.
 
 Below is a quick explanation of the fields and what they do.
 
@@ -53,13 +78,19 @@ Tells SML in which folder your Mod Modules are located and also what name your C
 Again, you can read up on it xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
 
 |name
-| The name of your mod that will be displayed to users. This should match your mod name on SMR.
+| The name of your mod that will be displayed to users.This should match your mod name on SMR.
 
 |version
-| Version number for the mod. Should always increase with new releases, and should follow the https://semver.org/[semver] format, ex. 2.0.0
+| Version number for the mod. Should always increase with new releases,
+and should follow the https://semver.org/[semver] format, ex. `2.0.0`.
+As a rule of thumb, version `1.0.0` should be released when you are confident
+you won't have many updates in the future.
+Note that `0.10.0` is a valid semver version,
+`1.0.0` does not necessarily have to come after `0.9.0`.
 
 |sml_version
-| Version number of SML required to run the mod. Players are allowed to use newer versions than the number you specify, but not older versions. You can see a list of all released SML versions https://ficsit.app/sml-versions[here]. Also must follow the https://semver.org/[semver] format.
+| This field is now deprecated.
+You should list SML as a depencency instead (see Dependencies below).
 
 |remote_version
 | Version number defined by your mod which is used for allowing different version of the mod
@@ -70,13 +101,19 @@ This means that clients in multiplayer are not required to have the mod to join,
 and SML does not care what version they have, assuming they even have it installed.
 
 |description
-| A short description of the mod
+| A short description of the mod. You can use \n for newline.
+It will appear on the main menu mods list screen for your mod.
+Keep in mind that people who see this field already have the mod installed.
+Consider adding a means of contacting you with bug reports here.
 
 |authors
-| A list of authors and contributors to the mod
+| A list of authors and contributors to the mod.
+It will appear on the main menu mods list screen for your mod.
 
 |credits
 | A string containing some additional credit information about the mod.
+It will appear on the main menu mods list screen for your mod.
+There is not much display space for this field, so consider putting info in the description as well.
 
 |resources
 | A object containing archive root relative paths to files mainly used for
@@ -86,32 +123,50 @@ and SML does not care what version they have, assuming they even have it install
 
 - icon
 +
-Points to a image file of type jpg, png or bmp used as icon in the ingame mod list.
+Points to a image file of type jpg, png, or bmp used as icon in the main menu mod list.
 
 |objects
-| A manifest of all files (except data.json itself) within the zip you upload. See the example for formatting. Dll files are of type `sml_mod`s and paks are of type `pak`. You can also give each file a `loading_priority` inside the metadata tag, a number greater than or equal to 0 that defines what priority the mod is loaded with. Higher numbers means it will load later, overwriting content added by other mods if needed. You will need to set this to something greater than 0 if you want your mod to overwrite Vanilla content as well. See the below example.
+| A manifest of all files (except data.json itself) within the zip you upload.
+See the example for formatting.
+Dll files are of type `sml_mod` and paks are of type `pak`.
+You can also optionally give each file a `loading_priority` inside the metadata tag,
+a number greater than or equal to 0 that defines what priority the mod is loaded with.
+Higher numbers means it will load later, overwriting content added by other mods if needed.
+You will need to set this to something greater than 0 if you want your mod to overwrite Vanilla content as well.
+See the below example.
 
 |dependencies
-| Mod IDs of other mods that this mod requires be installed to function. The Mod Manager will automatically fetch these other mods for players.
+| Mod IDs of other mods that this mod requires be installed to function.
+The Mod Manager will automatically fetch these other mods for players.
 SML will then load these mods before your mod.
+These version numbers must also follow the https://semver.org/[semver] format.
+
+You must always have at least one dependency listed - SML itself.
+For example, use 
+[source, json]
+----
+"SML": "^3.0.0"
+----
+to allow SML versions 3.0.0 or newer.
+You can see a list of all released SML versions https://ficsit.app/sml-versions[here].
 
 |optional_dependencies
 | Mod references of other mods that this mod lists as being optional to use. The Mod Manager will _not_ automatically fetch these other mods for players.
 
 |===
 
-An example data.json with minimal info is presented here:
+An example data.json for a combined C++/Blueprint mod is presented here:
+
 +++ <details><summary> +++
-Example minimal data.json:
+Example data.json:
 +++ </summary><div> +++
 ....
 {
   "mod_id": "6gDfrm1m1fgAqV",
   "mod_reference": "BaseMod",
   "name": "BaseMod",
-  "version": "0.0.1",
-  "sml_version": "2.1.0",
-  "remote_version": "0.1.2",
+  "version": "0.1.2",
+  "remote_version": "0.1.0",
   "description": "A basic mod created to showcase SML's functionality.",
   "authors": ["SuperCoder79"],
   "objects": [
@@ -122,15 +177,16 @@ Example minimal data.json:
     {
       "type": "pak",
       "path": "BaseMod.pak",
-	  "metadata": {
+      "metadata": {
         "loading_priority": 1
       }
     }
   ],
   "resources": {
-	"icon": "BaseMod_Icon.png"
+  "icon": "BaseMod_Icon.png"
   },
   "dependencies": {
+    "SML": "^3.0.0"
   },
   "optional_dependencies": {
   }
@@ -138,11 +194,21 @@ Example minimal data.json:
 ....
 +++ </div></details> +++
 
-When you update a new version of your mod in the future, the only thing in `data.json` that you'll need to change is likely the `version` number. 
+When you update a new version of your mod in the future,
+the only thing in `data.json` that you'll need to change is likely the `version` number. 
 
 == Uploading a Version
 
-Once you have finished formatting your data.json, you will need to package your mod into a zip file for uploading. Put the data.json and any pak and/or dll files for your mod into a folder and zip it, then upload it in the `Version File` field.
+Once you have finished formatting your data.json,
+you will need to package your mod into a zip file for uploading.
+Put the data.json and any pak and/or dll files for your mod into a folder and zip it,
+then upload it in the `Version File` field.
+
+[NOTE]
+====
+You do not need to include your `.sig` file in your upload.
+SML automatically generates it.
+====
 
 Put "Alpha", "Beta", "Release", etc. in the stability field so that users know how far along in development you consider this version of your mod to be.
 
