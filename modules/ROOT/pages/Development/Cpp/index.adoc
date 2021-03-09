@@ -54,8 +54,9 @@ We can not understate the value of learning through doing. Especially if just st
 
 The following resources may be helpful for you in the creation of your {cpp} mods:
 
-* Satisfactory Headers: https://sf-headers.ficsit.app/
-* SDK Headers: https://sdk-headers.ficsit.app/
+* CSS has been kind enough to provide us with the Satisfactory {cpp} headers.
+You can find them in the `CommunityResources` folder of your install.
+* You can find the `.pdb` files for the game in your install's Binaries folder.
 
 == Dll, pdb & more
 
