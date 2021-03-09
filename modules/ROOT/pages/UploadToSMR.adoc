@@ -60,10 +60,9 @@ You can also paste your data.json into the box on the right of that same page,
 which will help you identify errors with your json before you attempt to upload it.
 
 When you pak your mod with Alpakit, it will automatically create a folder for you
-that contains your `.pak` file and an `incomplete-data.json`, which can be found
-at `<project folder>\Mods\<your mod reference>`. However, this file is missing
-many useful fields and may be out of the date with the specifications here,
-so you will still have to edit it yourself.
+that contains your `.pak` file and an `data.json`, which can be found
+at `<project folder>\Mods\<your mod reference>`. However, you should still read about
+the fields of data.json below and modify them if desired.
 
 Below is a quick explanation of the fields and what they do.
 
@@ -87,10 +86,6 @@ As a rule of thumb, version `1.0.0` should be released when you are confident
 you won't have many updates in the future.
 Note that `0.10.0` is a valid semver version,
 `1.0.0` does not necessarily have to come after `0.9.0`.
-
-|sml_version
-| This field is now deprecated.
-You should list SML as a depencency instead (see Dependencies below).
 
 |remote_version
 | Version number defined by your mod which is used for allowing different version of the mod
