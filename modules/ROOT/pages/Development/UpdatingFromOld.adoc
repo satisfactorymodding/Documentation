@@ -1,0 +1,72 @@
+= Updating from SML 2.2.1
+
+A lot of things have changed both behind the scenes and on the
+surface to allow for SML to work with the new engine update and
+modular build of Satisfactory, and all mods must be updated for these changes.
+
+These changes are quite beneficial for modding, and grant mods
+a lot more control over the game.
+
+In addition to changes to Unreal Engine itself between versions
+4.22 and 4.25, there have been numerous changes made to SML itself.
+We will only go into the SML and Satisfactory-specific differences here,
+as Unreal Engine documentation covers the engine differences.
+
+To update an existing mod to SML 3.0.X,
+there are a number things you'll have to change in your mod.
+
+We suggest setting up a fresh Unreal project for this update.
+
+[NOTE]
+====
+We strongly suggest you go through the
+xref:Development/BeginnersGuide/index.adoc[Getting Started tutorial]
+again, as it has been updated for the new SML version as well.
+====
+
+== Dependency Installation
+
+You will need to download and install a new copy of the editor build for the new engine from
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
+
+== Key Concepts
+
+At the very least, you will have to do the following:
+
+* Create a new Unreal Plugin through the default Editor UI,
+which has some extra steps if you have a C++ mod.
+* Change over your InitMod to the new Mod Modules system (read more below)
+* The `sml_version` field is no longer supported in data.json files.
+Instead, SML should be listed as a dependency.
+See xref:UploadToSMR.adoc[Uploading to SMR].
+
+A number of other concepts that your mod may or may not make use of have changed.
+Read below to see if you need to make changes to your mod.
+
+[WARNING]
+====
+Although we have done our best to make this list up to complete,
+we may have missed some things that this update changes.
+If you encounter SML changes not listed here, please contact us on the Discord
+so that we can add them to this list, or add it yourself via 'Edit this Page.'
+====
+
+* InitMod is no more, and has been supplanted by the Mod Modules system.
+Most things that involved InitMod now involve the
+xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[InitGameWorld Module].
+* InitMenu has also been replaced by the Mod Modules system.
+Check out the xref:Development/ModLoader/ModModules.adoc#_menu_world_module_umenuworldmodule[InitMenuWorld Module] page.
+* The mod configuration system works slightly differently.
+All mod config structs should now extend xref:Development/ModLoader/Configuration.adoc[UModConfiguration].
+* There is now a system built into SML for making custom key bindings that work with
+the base game key binding menu. Read more about it on the
+xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry] page.
+* 
+
+== Fun Facts
+
+Some assorted notes from Arch:
+
+- One thing worth mentioning is that SML now runs in "full mode" even inside of the editor.
+Except that patches are not really registered because we don't have real FG code there.
+That would allow us to have a very smooth transition to working PIE once CSS gives us an editor build of the FactoryGame module.

@@ -3,8 +3,10 @@
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
 * xref:UploadToSMR.adoc[Uploading to SMR]
+
 * xref:Development/index.adoc[Development]
 
+** xref:Development/UpdatingFromOld.adoc[_Updating from SML 2.2.1_]
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
