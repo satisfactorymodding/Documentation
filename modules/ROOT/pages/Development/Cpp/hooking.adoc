@@ -103,7 +103,7 @@ the function calls for that symbol to SML's hook framework.
 Usage goes as following:
 [source,cpp]
 ----
-#include <mod/hooks.h>
+#include "SML/mod/hooking.h"
 
 class SomeClass {
 public:
@@ -144,7 +144,7 @@ Usage goes as following:
 
 [source,cpp]
 ----
-#include <mod/hooks.h>
+#include "SML/mod/hooking.h"
 
 class SomeClass {
 public:
@@ -200,7 +200,7 @@ image:Cpp/IDA_Symbol.jpg[image]
 Usage goes as following:
 [source,cpp]
 ----
-#include <mod/hooks.h>
+#include "SML/mod/hooking.h"
 
 #include "FGBuildableGeneratorFuel"
 
@@ -226,7 +226,7 @@ to the UFunction you want to attach the hook to.
 Usage goes as following:
 [source,cpp]
 ----
-#include <mod/blueprint_hooks.h>
+#include "SML/mod/blueprint_hooking.h"
 
 void registerHooks() {
 	UClass* SomeClass = ...;
