@@ -48,6 +48,7 @@
 *** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
+*** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]

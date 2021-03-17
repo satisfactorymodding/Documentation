@@ -1,0 +1,10 @@
+= Make Things Chainsawable
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+See this message chain on the Discord for how to make custom foliage interact with the chainsaw.
+
+https://discord.com/channels/555424930502541343/555515791592652823/779248979816218635

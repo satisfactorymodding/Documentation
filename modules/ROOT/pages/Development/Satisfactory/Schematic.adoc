@@ -29,14 +29,14 @@ Below is a list of available unlocks you can use and their BP wrappers:
 |UnlockArmEquipmentSlot
 |Gives the player additional arm equipment slots. Having more than 6 causes the inventory screen to look weird, but they still work.
 
-|UnlockBuildEfficency
-|
+|UnlockBuildEfficiency
+|Allows the player to see the calculated values in machine UIs regarding how many items are being produced/consumed per second. The base game already does this in one of the early tiers.
 
 |UnlockBuildOverclock
-|
+|Allows the player to access machine overclock/underclock settings. The base game already does this with power shard research.
 
 |UnlockGiveItem
-|
+|Gives the player an item when the schematic is unlocked.
 
 |UnlockInventorySlot
 |Gives the player additional inventory slots. 
