@@ -12,32 +12,50 @@ In addition to changes to Unreal Engine itself between versions
 We will only go into the SML and Satisfactory-specific differences here,
 as Unreal Engine documentation covers the engine differences.
 
-To update an existing mod to SML 3.0.X,
-there are a number things you'll have to change in your mod.
-
-We suggest setting up a fresh Unreal project for this update.
+To update your SML 2.0 mod to SML 3.0,
+there are a number things you'll have to change in your existing mod files.
 
 [NOTE]
 ====
 We strongly suggest you go through the
 xref:Development/BeginnersGuide/index.adoc[Getting Started tutorial]
 again, as it has been updated for the new SML version as well.
+
+You can stop once you reach step TODO.
+You should read the rest of this page first, though.
 ====
 
-== Dependency Installation
+== New Editor Build
 
 You will need to download and install a new copy of the editor build for the new engine from
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
 
+If you would like to keep the old SML 2.21 version of the editor
+and have both copies installed on your computer (helpful when updating your mod)
+you can rename the folder `C:\Program Files\Unreal Engine - CSS` to
+`C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
+To launch the old editor, you can run
+`C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
+
 == Key Concepts
 
-At the very least, you will have to do the following:
+SML3.0 has changed mods over to be Unreal Plugins, which is how mods work in most
+other Unreal games, and how the eventual officially supported mods will work.
 
+This means that instead of mod content being mounted in `Content/<mod reference>`
+it will now be in `Plugins/<mod reference>/Content`.
+
+To update your mod, you will have to do at minimum the following steps:
+
+* Install the new editor from the link above
+* Perform the setup steps described in the
+xref:Development/BeginnersGuide/index.adoc[Getting Started guide],
+which includes getting the new SML version and project.
 * Create a new Unreal Plugin through the default Editor UI,
 which has some extra steps if you have a C++ mod.
 * Change over your InitMod to the new Mod Modules system (read more below)
-* The `sml_version` field is no longer supported in data.json files.
-Instead, SML should be listed as a dependency.
+* Fill out the fields in your mod's Plugin Manifest
+(which has replaced the `data.json` system)
 See xref:UploadToSMR.adoc[Uploading to SMR].
 
 A number of other concepts that your mod may or may not make use of have changed.
@@ -61,7 +79,7 @@ All mod config structs should now extend xref:Development/ModLoader/Configuratio
 * There is now a system built into SML for making custom key bindings that work with
 the base game key binding menu. Read more about it on the
 xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry] page.
-* 
+
 
 == Fun Facts
 

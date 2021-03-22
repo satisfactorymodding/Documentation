@@ -13,15 +13,9 @@ You need to change your selected profile to `development` to handle installing S
 
 If you don't want to use the Launcher for some reason, or you are a mod maker and want to test your mod without it, continue reading below for instructions.
 
-=== Installing Bootstrapper
-
-Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use (usually the latest) and download it.
-
-After that you just need to copy the `xinput1_3.dll` and the `msdia140.dll` to `<game root>/FactoryGame/Binaries/Win64/`
-
 === Installing SML
 
-Now that you have installed the bootstrapper, you need to download a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
+You need to download a version of SML compatible with your game from https://ficsit.app/sml-versions[SMR].
 
 Once you're on the GitHub releases page for the bootstrapper, download the file `UE4-SML-Win64-Shipping.dll` as well as the `SML.pak` and save it into the `<game root>/loaders` folder. As a player, you do not need any of the other files from the download page, only the `.dll` and `.pak` file.
 
@@ -59,7 +53,7 @@ Just place the .pak, .dll and .pdb files if you need them into the mods folder a
 
 [WARNING]
 ====
-SML wont be able to handle dependencies!
+SML itself will not handle nor fetch mod dependencies!
 
 That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the launcher instead.
 But you can try to name your files so its name comes after the name of the dependencies if the mod list is sorted after names.
@@ -72,6 +66,11 @@ please refer to the xref:SMLConfiguration.adoc[SML Configuration Page].
 ====
 
 == Installing mods on Linux (Steam) as a player - SML version 2.2.1
+
+[WARNING]
+====
+This was written for SML 2.2.1 and is likely out of date.
+====
 
 [WARNING]
 ====
