@@ -38,18 +38,21 @@ attempt to install the mod with mismatched versions, but most of the
 time, it won't work.
 ====
 
-Now just copy the downloaded .smod/.zip file into `<game root>/mods`.
+Now just copy the downloaded .smod/.zip file into `<game root>/FactoryGame/Mods`.
 
 [TIP]
 ====
-If the folder doesn't exist, just create it or start the game with bootstrapper and SML installed once.
+Note that this folder is within the FactoryGame folder and _not_ your game root folder -
+where it was in previous SML versions.
+
+If the folder doesn't exist, just create it. 
 ====
 
 === Installing "Raw" or WIP mods
 
-If you don't have a .smod/.zip of the mod and the proper data.json file you still can use them.
+If you don't have a .smod/.zip of the mod you still can use them.
 
-Just place the .pak, .dll and .pdb files if you need them into the mods folder and start the game with the SML config setting `developmentMode` enabled.
+Just place the mod's plugin folder into `<game root>/FactoryGame/Mods` and start the game with the SML config setting `developmentMode` enabled.
 
 [WARNING]
 ====
