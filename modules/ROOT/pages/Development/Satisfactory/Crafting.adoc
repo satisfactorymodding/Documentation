@@ -39,7 +39,7 @@ M Manufacturing Duration::
 +
 M Manual Manufacturing Multiplier::
   If you want to use the same recipe for machines and the craft bench,
-  with this value you can define how much longer the crafting of this recipe should take longer int the craft bench.
+  with this value you can define how much longer the crafting of this recipe should take longer in the craft bench.
 * {blank}
 +
 M Produced In::
