@@ -7,6 +7,14 @@ This page contains instructions on how to view and extract various game assets.
 As a reminder, redistributing these assets should not be done without permission,
 as they are copyrighted content of Coffee Stain Studios.
 
+[TIP]
+====
+If you're just looking to re-use the exact
+same icon, mesh etc. as something in the base game for your mod,
+you should check out the
+xref:Development/ReuseGameFiles.adoc[Reusing Game Files page] instead.
+====
+
 == Extracting Specific Models or Textures
 
 [TIP]
@@ -26,6 +34,18 @@ Make sure to select Unreal Engine version 4.25 when opening Satisfactory pak fil
 
 If you don't see 4.25 as an option, you are running an older version of UModel
 and you should download it again from the link above.
+
+You can find a brief tutorial on how to track down an asset for export on the
+xref:Development/ReuseGameFiles.adoc#_example_static_mesh_reuse[Reusing Game Files page].
+
+Once you have found the asset you want to export, open it in UModel's UE Viewer
+and use `Tools` -> `Export Current Object` and you will be presented with
+some options for export.
+We suggest exporting as Static Meshes as `glTF 2.0`
+so that software such as Blender can open them easily.
+
+Note that not all of the content you can extract in this manner is directly useful.
+For example, directly exporting an `FGItemDescriptor` is not really helpful.
 
 == Extracting Sounds/Music
 

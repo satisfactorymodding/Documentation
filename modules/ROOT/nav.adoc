@@ -58,6 +58,7 @@
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 
+** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/MultiplayerTesting.adoc[Testing in Multiplayer]
 
