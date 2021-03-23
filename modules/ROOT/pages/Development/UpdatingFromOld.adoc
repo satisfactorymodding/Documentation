@@ -47,7 +47,8 @@ it will now be in `Plugins/<mod reference>/Content`.
 
 To update your mod, you will have to do at minimum the following steps:
 
-* Install the new editor from the link above
+* Uninstall your current version of the engine/editor
+* Install the new engine/editor from the link above
 * Perform the setup steps described in the
 xref:Development/BeginnersGuide/index.adoc[Getting Started guide],
 which includes getting the new SML version and project.
