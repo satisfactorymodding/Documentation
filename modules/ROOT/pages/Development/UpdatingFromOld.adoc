@@ -30,12 +30,15 @@ You should read the rest of this page first, though.
 You will need to download and install a new copy of the editor build for the new engine from
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
 
-If you would like to keep the old SML 2.21 version of the editor
+If you would like to keep the old SML 2.2.1 version of the editor
 and have both copies installed on your computer (helpful when updating your mod)
 you can rename the folder `C:\Program Files\Unreal Engine - CSS` to
 `C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
 To launch the old editor, you can run
 `C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
+We *strongly* suggest that you keep the old SML 2.2.1 editor installed
+until you are done porting your mods so that you can reference settings and BP code
+that have been removed in SML 3, ex. InitMod.
 
 == Key Concepts
 
@@ -47,7 +50,8 @@ it will now be in `Plugins/<mod reference>/Content`.
 
 To update your mod, you will have to do at minimum the following steps:
 
-* Uninstall your current version of the engine/editor
+* Rename the install folder of your current version of the engine/editor
+(described above) so you can reference it while updating
 * Install the new engine/editor from the link above
 * Perform the setup steps described in the
 xref:Development/BeginnersGuide/index.adoc[Getting Started guide],
