@@ -31,4 +31,14 @@
             </div>
         </div>
     </nav>
+    <div id="old-version-warning" class="version-warning hidden">
+        You are currently viewing an outdated version of the docs!
+        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the latest.</a>
+    </div>
+    <script>
+        var pageLocation = window.location.href;
+        if(pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
+            document.querySelector("#old-version-warning").classList.remove("hidden")
+        }
+    </script>
 </header>

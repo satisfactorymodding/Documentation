@@ -99,3 +99,18 @@ iframe.blueprint + div:after {
     top: -0.5rem;
     font-style: italic;
 }
+.version-warning {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: orangered;
+    color: #6A0E0E;
+}
+
+.version-warning a {
+    color: #6A0E0E;
+}
+
+.hidden {
+    display: none;
+}
