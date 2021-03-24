@@ -1,5 +1,33 @@
 = Updating from SML 2.2.1
 
+[WARNING]
+====
+⚠⚠ **ECOSYSTEM IS NOT YET READY FOR MOD DISTRIBUTION TO END USERS** ⚠⚠
+
+SMM and SMR are still being worked on to support new mod distribution format.
+Ficsit.app will not recognize your mod if you try to upload it now!
+You should restrain from distributing your mods publicly now, until the rest of the system is ready.
+
+We will make a public announcement when that happens.
+====
+
+[WARNING]
+====
+⚠⚠ **MODDED CONTENT CAN'T BE LOADED FROM SAVE FILES** ⚠⚠
+
+The main reason we have not announced to the general public that mods are ready yet is because content from mods can't be loaded from save files at all!
+
+If you load a save in this update, even one made in Update 4, modded content will NOT load in at ALL.
+
+You will need to write your own SML Chat Commands to give yourself modded items for testing,
+or craft them in-game through normal methods.
+We suggest making 'testing recipes' that you will not ship with the mod to ease this process.
+
+We are already in contact with CSS about this, and they will be pushing an update in the next few days to fix this.
+
+Keep this in mind while updating your mods to SML3. Issues with saves are likely not your fault.
+====
+
 A lot of things have changed both behind the scenes and on the
 surface to allow for SML to work with the new engine update and
 modular build of Satisfactory, and all mods must be updated for these changes.
@@ -15,15 +43,34 @@ as Unreal Engine documentation covers the engine differences.
 To update your SML 2.0 mod to SML 3.0,
 there are a number things you'll have to change in your existing mod files.
 
-[NOTE]
-====
-We strongly suggest you go through the
-xref:Development/BeginnersGuide/index.adoc[Getting Started tutorial]
-again, as it has been updated for the new SML version as well.
+We're still working on updating the docs, so make sure to check here regularly to avoid missing something! Keep your eyes on `#modding-info-feed` on the Discord for pushes to the docs, and let us know if you have trouble with something.
 
-You can stop once you reach step TODO.
-You should read the rest of this page first, though.
-====
+== Steps to Update
+
+SML3.0 has changed mods over to be Unreal Plugins, which is how mods work in most
+other Unreal games, and how the eventual officially supported mods will work.
+
+This means that instead of mod content being mounted in `Content/<mod reference>`
+it will now be in `Plugins/<mod reference>/Content`.
+
+SML3.0 has a system to automatically redirect old modded content to their new locations,
+so this Should™ mean that, assuming you put assets in the same places within your
+plugin as they were in your SML2.0 content folder, SML2.0 saves will eventually work in SML3.0
+(see disclaimer at the top of the page about current save-related issues).
+
+To update your mod, you will have to do, at minimum, the following steps:
+
+* Rename the install folder of your current version of the engine/editor
+(described in the section below) so you can reference it while updating
+* Install the new engine/editor as described in the section below
+* Perform the project setup steps described in the Getting Started guide,
+which includes getting the new SML version and new starter project,
+as well as integrating a new Wwise version.
+* Create a new 'Blank' Unreal Plugin through the default Editor UI,
+which has some extra steps if you have a C++ mod.
+* Change over your old InitMod to the new Mod Modules system (read more below)
+* Fill out the fields in your mod's Plugin Manifest
+(which has replaced the `data.json` system).
 
 == New Editor Build
 
@@ -36,32 +83,33 @@ you can rename the folder `C:\Program Files\Unreal Engine - CSS` to
 `C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
 To launch the old editor, you can run
 `C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
+
 We *strongly* suggest that you keep the old SML 2.2.1 editor installed
 until you are done porting your mods so that you can reference settings and BP code
-that have been removed in SML 3, ex. InitMod.
+that have been removed in SML 3.0, ex. InitMod.
 
-== Key Concepts
+== Project Setup
 
-SML3.0 has changed mods over to be Unreal Plugins, which is how mods work in most
-other Unreal games, and how the eventual officially supported mods will work.
+Now that you have the new editor version, you can head over to the
+xref:Development/BeginnersGuide/index.adoc[Getting Started guide]
+to set up the project for the new engine version.
 
-This means that instead of mod content being mounted in `Content/<mod reference>`
-it will now be in `Plugins/<mod reference>/Content`.
+You can stop following the guide once you reach 'Recipe vs Schematic.'
 
-To update your mod, you will have to do at minimum the following steps:
+Be aware that we **will** be releasing updated versions of the starter project,
+so you may need to perform the setup process again in the future.
 
-* Rename the install folder of your current version of the engine/editor
-(described above) so you can reference it while updating
-* Install the new engine/editor from the link above
-* Perform the setup steps described in the
-xref:Development/BeginnersGuide/index.adoc[Getting Started guide],
-which includes getting the new SML version and project.
-* Create a new Unreal Plugin through the default Editor UI,
-which has some extra steps if you have a C++ mod.
-* Change over your InitMod to the new Mod Modules system (read more below)
-* Fill out the fields in your mod's Plugin Manifest
-(which has replaced the `data.json` system)
-See xref:UploadToSMR.adoc[Uploading to SMR].
+Note that placeholder assets in the starter project
+have not yet been updated to include Update 4 content.
+If you're looking to use new items from the Update 4,
+you will need to create stub blueprints for them yourself.
+You can read more about this
+xref:Development/ReuseGameFiles.doc[on the Reusing Base Game Files page].
+
+But don't worry, we are working hard on updating the project,
+and upcoming versions will include even more content than the old ones did.
+
+== Changed Concepts
 
 A number of other concepts that your mod may or may not make use of have changed.
 Read below to see if you need to make changes to your mod.
@@ -84,11 +132,109 @@ All mod config structs should now extend xref:Development/ModLoader/Configuratio
 * There is now a system built into SML for making custom key bindings that work with
 the base game key binding menu. Read more about it on the
 xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry] page.
+* This list is not yet complete.
+Please read the "Update Notes from the Discord" section below.
 
+== New/Updated Docs Pages of Note
+
+Here are a few notable docs pages outside of the tutorial that have been created or updated for SML3.0:
+
+Development
+
+* xref:Development/ModLoader/ModModules.adoc[Mod Modules]
+* xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
+* Keybind System and xref:Development/ModLoader/Configuration.adoc[Configuration] (same page)
+* xref:Development/ModLoader/Subsystems.adoc[Subsystems]
+* xref:Development/ModLoader/Registry.adoc[Registry]
+
+* Creating Placeholder Assets and xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files] (same page)
+* xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
+* xref:Development/MultiplayerTesting.adoc[Testing in Multiplayer]
+
+Community Resources
+
+* xref:CommunityResources/index.adoc[Community Resources]
+** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
+** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
+** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
+
+== Update Notes from the Discord
+
+This section is a copy of the announcement recently posted on the Discord.
+It contains some information that has not yet been incorporated into the docs.
+It has been posted again here for your convenience.
+
+```
+
+Hey @\moddevs! We're happy to announce that SML and toolkit transition to Update 4 and the new 4.25 engine has finished!
+You can now start porting your mods to make them available to the end users sooner, while we are polishing the rest of the modding ecosystem.
+
+DISCLAIMERS:
+======================================================
+⚠⚠ECOSYSTEM IS NOT YET READY FOR MOD DISTRIBUTION TO END USERS⚠⚠
+
+SMM and SMR are still being worked on to support new mod distribution format.
+Ficsit.app will not recognize your mod if you try to upload it now!
+You should restrain from distributing your mods publicly now, until the rest of the system is ready.
+
+We will make a public announcement when that happens.
+======================================================
+⚠⚠MODDED CONTENT CAN'T BE LOADED FROM SAVE FILES⚠⚠
+
+The main reason we have not announced to the general public that mods are ready yet is because content from mods can't be loaded from save files at all!
+
+If you load a save in this update, even one made in Update 4, modded content will NOT load in at ALL.
+
+You will need to write your own SML Chat Commands to give yourself modded items for testing,
+or craft them in-game through normal methods.
+We suggest making 'testing recipes' that you will not ship with the mod to ease this process.
+
+We are already in contact with CSS about this, and they will be pushing an update in the next few days to fix this.
+
+Keep this in mind while updating your mods to SML3. Issues with saves are likely not your fault.
+======================================================
+
+The rough process of updating your mod to SML3.0 is described in the docs here: https://docs.ficsit.app/satisfactory-modding/latest/Development/UpdatingFromOld.html
+
+Below, you can find the major changes in SML v3.0.0 as described by Archengius:
+
+NEW MODULE SYSTEM 
+ - InitMods have been replaced by the new system of modules. There are 3 types of modules, loading at the different moments of the game: game instance (initialized once per game launch, accessible globally), game world (initialized every time game world is loaded) and menu world.
+ - Modules can be located under any paths with any names, you no longer have to name your modules like InitMod for them to get hooked by SML, only thing you need is to set "Is Root Module" check on them.
+ - Modules can have submodules loaded by calling "Load Module". Submodules can register do everything root modules do, including registering content, checking configuration and so on.
+ - Modules of other mods are easily retrievable from anywhere, allowing easy cross-mod integration and communication routines to be implemented. See documentation for examples and possible use cases.
+
+NEW MOD LOADING 
+ - SML no longer handles any of the mod loading, now it is handled by the Unreal Engine itself and its plugin system. Mods are now located under FactoryGame/Mods and represent folder hierarchies.
+ - It allows loading any external plugins into the game as mods, including plugins from UE marketplace or other games. Try new things and go wild!
+ - Mod content is now strictly isolated from the basegame and other plugins, each mod's content is mounted separately as /ModReference/ now. You can still access contents of the base game and other games as usual, though.
+ - Alpakit has been reworked to support packaging of the mods using new system. In comparison to the old system, there are some new features: mods now have their assets indexed in Asset Registry, can include any external files for their own needs, can include UE configurations and additional binaries.
+ - Overwrites have been removed. Use new Reflection Blueprint Library functionality to replace them, and BP hooking and C++ for additional functionality not covered by BP reflection.
+
+NEW SML API: CONTENT REGISTRY, AND MORE! 
+ - Most of the SML APIs have been majorly redesigned to allow better editor and cross-mod compatibility, which resulted in them being migrated to UE subsystems. You can read more about UE subsystems in it's documentation.
+ - NEW: Configuration API. New configuration API allows defining configuration scheme in a new format, specifying additional metadata required for automatically generating User Interface for changing configuration right in the game! NOTE: UI feature is not enabled for now and is still being actively worked on.
+ - NEW: Content Registry API. You can now register your content conditionally, e.g change which schematics, research trees or recipes your mod registers based on external conditions like current mod configuration and so on.  It provides huge boost to modularity and configurability of the mods, and also allows implementing cross-mod integration when other mods are present.  As a bonus, it also allows registering alternate recipes and resource sink shop schematics!
+ - NEW: Blueprint Reflection API. Several functions of the Unreal Reflection System have been exposed to blueprints to allow building better functionality without using C++ code. See Blueprint Reflection Library documentation for a list of accessible methods and properties.
+
+
+NEW DOCUMENTATION AND SML PROJECT 
+ - New documentation can be viewed on https://docs.ficsit.app/. We're still working on updating it and covering new topic, so make sure to check it regularly to avoid missing something! Keep your eyes on #modding-info-feed for pushes to the docs.
+* You need to have the latest release of Modded Unreal Engine 4.25, download it from the github. IMPORTANT: Make sure to keep old engine by renaming folder with it, it will make your life much easier when migrating mod content, since you cannot open some of the blueprints based on classes nonexistent in the new SML version (most obvious example would be InitMod and InitMenu)
+ - You can get new SML project on SML github (https://github.com/satisfactorymodding/SatisfactoryModLoader). MAKE SURE TO CHANGE BRANCH TO "sml-dev" BEFORE DOWNLOADING!
+ - Creation of the mods in new SML version is done by opening the editor, clicking on "Plugins" button in one of the drop-down menus and then using "New Plugin" button to create your new mod. Make sure to use "Content Only" or "Blank"
+presets for your newly created plugin.
+ - You might need to click on Content Browser options -> Show Plugins Content to view contents of your mod. You can browse to them by clicking on the Content Browser root folder and selecting <Your Mod Name> Content there
+ - Satisfactory assets HAVE NOT BEEN UPDATED TO U4 YET. If you're looking to use new items from the Update 4, you will need to create stub blueprints for them yourself. But don't worry, we are working hard on updating project, and new version will include even more content than the old one did.
+ - Keep questions related to SML v3.0.0 and U4 transition in #development.
+
+HAPPY MODDING!!!
+
+```
 
 == Fun Facts
 
-Some assorted notes from Arch:
+Some assorted notes from Archengius:
 
 - One thing worth mentioning is that SML now runs in "full mode" even inside of the editor.
 Except that patches are not really registered because we don't have real FG code there.
