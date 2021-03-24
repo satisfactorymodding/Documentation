@@ -41,7 +41,7 @@ We highly recommend you to use the launcher for installing mods, as it simplifie
 
 If you'd like to write a mod of your own, this section is for you.
 
-The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML and the bootstrapper for you. To enable it, change `Configs` to `development`.
+The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML. To enable it, change `Configs` to `development`.
 
 If you're looking to write your own mods, we suggest you start with
 making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
@@ -51,37 +51,24 @@ Once you've completed the `Buildable` step in `Beginners Guide`, then check out 
 
 === Installing Your "Raw" or WIP Mods
 
-If you don't have a .smod/.zip of the mod and the proper data.json file, you still can use them for testing and such.
+If you don't have a packaged mod already, create one with Alpakit.
 
-Just place the .pak, .dll and .pdb files if you need them into the mods folder and start the game with the SML config setting `developmentMode` enabled.
-
-If you need to know how to enable `developmentMode`,
-please refer to the xref:SMLConfiguration.adoc[SML Configuration Page].
+If you have and packaged mod (.zip archived mod),
+then you simply unpack the .zip into the `<SF install dir>/FactoryGame/Mods/<ModName>`.
+Make sure that `<ModName>` Contains directly contents were the `.uplugin` file is located.
 
 == Modding Technologies
 
 If you'd like to learn more about how modding works internally, this is the section for you.
 
-=== Satisfactory Mod Bootstrapper
-
-The Satisfactory Mod Bootstrapper is the holy heart of C++ Modding for Satisfactory.
-Due to technical limitations, custom built Unreal Engine C++ modules can't get linked by the Windows dynamic linker into the game because the game is built monolithic.
-This also means that some functions are simply not built into the game. We rely on accessor functions to allow C++ mods to use these functions anyway. An example of one of these functions is `USceneComponent::SetVisibility`.
-In short, the bootstrapper uses third-party libraries to hook the Windows dynamic loader and to search in the by CSS provided .pdb for symbol references and returns them back to the dynamic loader.
-As a result, the dynamic loader is able to link the functions of the game to built C++ mods.
-We wont get into further detail as to how it works in this documentation. If you're interested in more details, please reach out to us on the discord.
-
 === Satisfactory Mod Loader [.title-ref]#(aka. SML)#
 
-Satisfactory Mod Loader (SML) allows Satisfactory to load additional
-content and is essential in making most mods work.
-It also provides a framework for functionally many mods need but are not provided by CSS or UE4.
+Satisfactory Mod Loader (SML) provides a framework for mods to be more easily be able
+to load into systems provided by the game and to interact with each other.
+It also provides many helper features to assist in mod development.
 
-Things the Mod Loader does:
+=== Alpakit
 
-* Starts the ModInit of pak mods
-* Unpacks and mounts .zip packaged mods
-* Manages mod dependencies
-* Provides a basic interface for pak mods to interact with some native code
-* Implements a Hooking system for C++ mods
-
+The Alpakit is an Unreal Engine Plugin allowing you to easily cook and package your
+mod for deployment and distribution.
+It is also able to directly install it into your game installation for you.

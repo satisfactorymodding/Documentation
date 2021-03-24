@@ -4,7 +4,7 @@ Making things paintable is not as difficult as it may seem. You can use the exis
 
 == Existing Materials
 
-Making use of the xref:Development/Modeling/MasterMaterial.adoc[existing materials] used by Satisfactory is the easiest way to make your models paintable.
+Making use of the xref:Development/Modeling/MainMaterials.adoc[existing materials] used by Satisfactory is the easiest way to make your models paintable.
 Simply use one of the paintable materials on a static mesh in your blueprint and the game will find it and apply the correct materials with the paint gun.
 Its important that when importing a mesh you do not import and use new materials. Instead point your meshes at the correct materials or your material instances already in the project.
 

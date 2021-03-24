@@ -1,0 +1,143 @@
+= Reusing Base Game Files
+
+Sometimes you may want want to reuse the game's
+icons, meshes, gui, etc. for content in your own mod.
+Doing this is a fairly straightforward process,
+and you do not need to extract any files from the game to do so.
+
+As an example, you could reuse the base game's
+https://satisfactory.gamepedia.com/HUB_Parts[HUB Parts] icon and mesh
+for your custom items as a placeholder until you have created assets of your own.
+
+When you use the method described on this page to re-use base game content,
+you do not need to be concerned about shipping copyrighted files with your mod,
+since this process does not actually include the game's files in your own.
+
+[TIP]
+====
+If you're looking to make some changes to the
+base game files before using them for your mod,
+you should check out the
+xref:Development/ExtractGameFiles.adoc[Extracting Game Files page] instead.
+====
+
+== The Placeholder System
+
+The Starter Project provided on the SML releases page excludes
+game models, textures, etc. for copyright and download size reasons.
+In their place, the starter project includes empty "placeholder" assets
+that, at runtime, will be resolved into the correct assets if you were to reference them,
+or simply excludes the asset from the project (which is the case for many textures).
+These placeholder assets have the exact same name and Blueprint Path
+as the real asset, but contain the bare minimum information (usually just the name)
+required to identify the content within the editor, and nothing more.
+
+The placeholder system is what allows you to list base game items in
+xref:Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[Recipes] of your own creation.
+The Starter Project includes `FGItemDescriptor` placeholders for most base game items.
+
+If the game has updated since you downloaded your copy of the starter project,
+or you are looking for some less commonly used assets,
+you may be missing some of these placeholders.
+In this case, you can create the placeholder yourself by finding the correct path
+to the asset with UModel, then creating an asset of the same type
+with the same name in that location. This process is described below.
+
+== Example Static Mesh and Icon Reuse
+
+As an example, let's say you wanted to reuse the static mesh and icon from the
+https://satisfactory.gamepedia.com/HUB_Parts[HUB Parts]
+component mentioned earlier.
+
+The first step is to track down the location of the asset in the base game.
+This is done by figuring out the Blueprint Path of the asset via the
+https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+finding the content on a
+https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
+https://www.gildor.org/en/projects/umodel[UModel]
+(the case for most GUI elements).
+
+image:ReuseContent/WikiHubPartsBox.png[HUB Parts on the Satisfactory Wiki]
+
+
+_HUB Parts on the Satisfactory Wiki_
+
+Next, you can go to that blueprint path in UModel to find out
+what the paths of the relevant static mesh and icon objects are.
+
+For the HUB Parts, this path is
+`/Game/FactoryGame/Resource/Parts/HUBParts/Desc_HUBParts.Desc_HUBParts_C`,
+so we should go to
+`\Game\FactoryGame\Resource\Parts\HUBParts`
+in UModel to find the relevant files.
+
+image:ReuseContent/UModelFoundPath.png[HUB Parts inside of UModel]
+
+
+_HUB Parts inside of the UModel package browser_
+
+Lo and behold, here is the `FGItemDescriptor` of the hub parts, its static mesh,
+and folders that contain its Material Instance, textures, and icons.
+
+If you want, you can open up the asset to view and make sure you've found
+the right thing.
+
+image:ReuseContent/UModelHubParts.png[HUB Parts in the UModel Viewer]
+
+
+_HUB Parts in the UModel UE Viewer_
+
+Now that you've found the location of the asset in the base game,
+you're ready to set up the placeholder for it. Within your editor,
+you should go to the same path that you followed in UModel, creating
+folders with the exact same name if needed to reach your destination.
+
+Since we are looking to reuse the static mesh and icons of the HUB parts
+for our example, we'll need to put a Static Mesh called `SM_HubParts_01` at the path
+`/Game/FactoryGame/Resource/Parts/HUBParts/`
+and a Texture called `IconDesc_HubParts_256` at the path 
+`/Game/FactoryGame/Resource/Parts/HUBParts/UI/`.
+
+[TIP]
+====
+Notice that the actual content you use for the content you are
+creating a placeholder for _does not matter at all_ - just that it
+has the correct name, path, and asset type as the content you want to reference.
+====
+
+For the mesh, we can reuse the
+link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[Plantpot of Knowledge]
+from the
+xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial],
+which you can copy in from the ExampleMod in your project, or redownload from the above link.
+
+For the icon texture, we can reuse the 
+link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[Soon™ Icon]
+from the
+xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe/Schematic tutorial],
+which you can copy in from the ExampleMod in your project or redownload from the above link.
+
+image:ReuseContent/PlaceholderMesh.png[Final Placeholder Mesh]
+image:ReuseContent/PlaceholderIcon.png[Final Placeholder Icon]
+
+Note that these screenshots also contain placeholders
+of some other files related to the HUB Parts.
+You do not need to have placeholders for everything,
+just the content you want to reference.
+
+Once these placeholder assets are created,
+you can refer to them from elsewhere in your mod project.
+When you pack your mod, these placeholders will not be packed,
+and at runtime they will point to the assets from the base game
+and contain the correct textures, meshes, descriptors, etc.
+in place of whatever you used for the placeholder.
+
+== Generating a Complete Starter Project
+
+It is possible to create a personal version of the starter project
+that includes most of these base game files accessible from within the editor.
+This version of the project would include models, textures, and other resources
+instead of their placeholder versions, allowing you to view them in-editor.
+
+You can read more about this in its section on the 
+xref:Development/ExtractGameFiles.adoc#_generating_a_complete_starter_project[Extracting Game Files page].

@@ -1,11 +1,19 @@
-= Setting up a workflow
+= Setting Up a Workflow
 
 Getting your custom models into the game has a few steps along the way. This process will guide those who already know how to use Blender and already have a modding environment setup. It may help to read about the xref:Development/Modeling/MainMaterials.adoc[different material setups] to get some context.
 
-== Configuring Blender fbx export
+== Configuring Blender FBX Export
 
 This is focused on setting up export for Blender 2.8 or later, but it may assist the right settings in other programs.
-Because we're in UE 4.22 we can't use the newer Unreal Blender tools.
+
+[TIP]
+====
+This portion of the documentation was written back when Satisfactory was on UE 4.22.
+Now that Satisfactory has updated to UE 4.25, we are able to make use of the new
+Unreal Blender addons, which require UE 4.23 or newer to function.
+You can find out more about them https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons[here]
+if you're interested, but know that this section of the docs is not yet updated with them in mind.
+====
 
 . Open up Blender
 . Open up your `Properties Panel > Scene Properties > Units`

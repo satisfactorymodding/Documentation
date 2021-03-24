@@ -1,12 +1,12 @@
 = SML Configuration
 
-Through SML's configuration file system, it' easy for mod developers to create config files for their mods, and easy for users to change mod settings.
+Through SML's configuration file system, it's easy for mod developers to create config files for their mods, and easy for users to change mod settings.
 
 == Config Folder
 
 The config files for all mods (and SML itself) reside in the same configuration file folder.
 
-The folder is located under `<game root>/configs`.
+The folder is located under `<game root>/FactoryGame/Configs`.
 
 == Config File
 
@@ -24,29 +24,24 @@ SML itself also provides a couple of configuration settings, allowing you to con
 |===
 |Name |Type |Default |Description
 
-|enableSMLCommands
+|enableCheatConsoleCommands
 |bool
 |true
 |Enables all available SML chat commands, a list of which can be found xref:SMLChatCommands.adoc[here].
 
-|enableCrashReporter
-|bool
-|true
-|Controls if the crash reporter from UE should be used to handle fatal exceptions. This is off by default, since we don't want to confuse CSS with modded crash reports.
-
 |developmentMode
 |bool
 |false
-|Allows to load RAW mods (mod files not archived in a smod/zip) into the game. For those RAW mods, dependency checking won't work, so you'll need to make sure all dependencies are installed yourself. When development mode is enabled, `Development mode enabled` will appear on the main menu in the bottom left.
-
-|debug
-|bool
-|false
-|Enables a more verbose log in the console window
+|Leave this at false, otherwise the game will load very slowly. It is necessary for part of SML development.
 
 |consoleWindow
 |bool
 |false
 |Toggles whether or not the external SML console window is visible.
+
+|disabledChatCommands
+|string array
+|[]
+|Allows you to disable certain chat commands by simply putting the console command into the string list.
 
 |===

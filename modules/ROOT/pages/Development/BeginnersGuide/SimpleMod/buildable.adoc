@@ -15,7 +15,7 @@ Set `M Hologram Class` to `FGBuildableHologram`, which will cause the `FGBuildab
 Fill `M Display Name` with something like "Doc Buildable" and `M Description` with "An example building that showcases the MI_Factory_Base_01 material.".
 
 As you can see in the `Components` pane in the top left, the actor already contains a few components. But not any visuals, so, now add a new static mesh component in the center of the viewport. The build gun uses the origin when targeting the mesh to be built or snapped.
-You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh] for your buildable.
+You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh], the Plantpot of Knowledge, for your buildable.
 
 This Actor is also where you can define the snapping area and the clearance area, but we won't do that for now. Look to other machines and examples for inspiration as there are several relevant settings to make those behaviours work correctly.
 
@@ -39,6 +39,8 @@ Simply add a new Blueprint of type `FGBuildingDescriptor` to the same folder as 
 The building descriptor is very similar to the item descriptor - it even derives from it. It comes with a few extra fields, such as a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor) and some Build-Category stuff that you can set up as you see fit.
 
 Just like our item, it requires an icon file. You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
+
+You should also add an appropriate subcategory in the `m Sub Categories` field for your building.
 
 [IMPORTANT]
 ====

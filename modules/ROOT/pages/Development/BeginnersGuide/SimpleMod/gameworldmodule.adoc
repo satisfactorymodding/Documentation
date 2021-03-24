@@ -1,0 +1,102 @@
+= Init Game World
+
+Our mod must have a starting point from which everything else gets invoked.
+If we don't have one, then our mod's content will never be added to the game during loading!
+In our case this is the `InitGameWorld` Blueprint.
+
+[NOTE]
+====
+If you're interested in how the content loading system works,
+you can read more on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+====
+
+== Initial Mod Setup
+
+Since SML3.0, mods are now Unreal plugins,
+and their loading is handled by Unreal itself.
+
+First off, we'll need to create the Unreal Plugin for our mod.
+You can do this by clicking
+`Edit` -> `Plugins` -> `New Plugin` -> `Blank Plugin` in the Unreal Editor.
+
+The name of your plugin _must_ be your mod's
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
+For this documentation example, you can use `DocMod` as the mod reference.
+When you start on your own mod, you will have to create a new plugin
+with a mod reference other than this.
+
+You can fill out the Descriptor Data, or leave it blank, as we can edit that later.
+
+Leave "Show Content Directory" checked and press `Create Plugin`.
+
+This should have created a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
+
+[TIP]
+====
+If you consider to Open Source your mod. Or simply want to use a version control system like Git,
+this folder would be ideal for you to create the repository.
+
+That would mean, if you work on multiple mods,
+you only need one full project setup and for each Mod you have your own plugin folder and repository.
+====
+
+Your new plugin should now appear at the bottom of the plugins list in the Project > Other category. You might have to scroll a bit to find it.
+
+Next, click `Edit...` to edit more of your mod's plugin settings.
+
+Here, you can fill out some additional details for your mod.
+Since we're working on an example mod right now,
+most of these fields are not relevant to us.
+You should be sure to set `Category` to `Modding`
+and `Version` to `1.0.0`,
+which sorts your mod to appear with other mods
+in the Modding section of the Plugins list.
+
+These fields will be explained further when you prepare to upload your mod for others to use.
+
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
+
+== Create the Class
+
+It's time to create the InitGameWorld blueprint for our mod!
+
+You might need to click on `View Options` -> `Show Plugins Content`
+in a Content Browser to view the contents of your mod.
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
+
+You can find your mod in the `<Your Mod Reference> Content`
+subfolder of the Content Browser root folder.
+
+This folder is where you will be putting most of the assets (models, blueprints, textures, etc.) that your mod uses.
+
+[WARNING]
+====
+Be sure to read the notes on
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
+if you have not yet done so.
+It is critical that your mod reference follows these format rules.
+====
+
+Now we need to create our `InitGameWorld` Blueprint so that SML can load our mod's content into the game.
+
+Within your mod's content folder,
+right click and select `Blueprint Class` under `Create Basic Asset`.
+Click the triangle to close the Common Classes section,
+and click the other triangle to expand the All Classes section.
+Start typing `GameWorldModule` into the search box.
+Once it comes up, select it and press the green Select button to create the blueprint.
+Name it `InitGameWorld`.
+
+image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
+
+You will be able to register recipes and other content from this module.
+
+Next, double click on the module to open up its blueprint settings.
+
+To make sure that SML automatically detects and loads our InitGameWorld,
+we must be sure to mark that it is the Root Module.
+
+image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
+
+If you'd like to learn more about root modules, you can read about it on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+Otherwise, let's get on to creating our first modded content - a custom recipe!

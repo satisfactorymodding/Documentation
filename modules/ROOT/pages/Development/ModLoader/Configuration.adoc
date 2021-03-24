@@ -1,0 +1,171 @@
+= Configuration
+
+SML adds a neat configuration system that allows you to easily define
+a config structure based on default values which can then be changed
+by the user via editing json files in the file system.
+
+These configuration files are then loaded automatically on game boot
+and override the default values with the values specified by the user.
+
+The mod can then access this configuration data to
+change its behavior depending on this static user input.
+
+[TIP]
+====
+If you are looking to implement configs with Blueprints,
+you should read about the helper functions provided by the 
+xref:Development/ModLoader/BlueprintInterface.adoc#_config[SML Blueprint Interface].
+====
+
+== Configuration Manager
+
+The configuration manager is a engine subsystem that manages all configurations loaded into the game.
+
+It will then be able to load and save registered configurations.
+
+The registered mod configurations can get marked as dirty.
+This means that the user applied changes to the configuration values and that these changes need to be saved.
+
+When loading a configuration, first the configuration value gets loaded based on default values.
+Then, or when the manager gets told to, it will load the configuration file, parse it and make the changes
+defined in these config files to the loaded configuration value.
+
+It is important to differentiate between 'schema' and 'value' of the configuration.
+The Schema works like a class or declaration of how the configuration is structured and what attributes it has.
+The value is then basically the actual config values, which should be structured as described in the schema.
+
+=== `ReloadModConfigurations(bool bSaveOnSchemaChange)`
+Reloads all registered mod configurations from disk.
+Optionally saving changes to the schema.
+
+=== `FlushPendingSaves()`
+Saves all changes in the loaded config instances to the filesystem.
+
+=== `MarkConfigurationDirty(FConfigId ConfigId)`
+Marks the configuration referenced by the given ID as dirty and pending save.
+
+=== `FillConfigurationStruct(FConfigId ConfigId, <struct>)`
+Fills the passed struct with data obtained from the active configuration referenced by the given config id.
+
+=== `UUserWidget CreateConfigurationWidget(FConfigId ConfigId, UUserWidget Outer)`
+Creates a configuration widget hierarchy for the active configuration referenced by the given config id.
+
+=== `RegisterModConfiguration(FConfigId ConfigId, SubclassOf<UModConfiguration> Configuration)`
+Registers the given configuration under the given config ID.
+
+Should only be called on start-up.
+
+== FConfigId
+An identifier for a configuration consisting of the mod the configuration is part of and a category.
+
+=== `FString ModReference`
+The mod reference referencing the parent mod of this configuration.
+
+=== `FString ConfigCategory`
+The category or name for this configuration. This basically allows you to further identify multiple configurations for the same mod.
+
+== UModConfiguration
+A `UModConfiguration` is essentially the object that holds the whole schema of a configuration.
+
+It works like a descriptor, meaning, the structure only needs to be defined in the class (aka default object)
+so we can simply reference the schema (aka mod configuration) by just passing the UClass around.
+
+That means if you want to define your own configuration schema, you need to create new class based on this one.
+Then apply the changes (defining the schema itself and additional metadata) in the default values or the constructor.
+
+=== `FString DisplayName`
+Display of this configuration, as it will be visible to the user.
+
+=== `FString Description`
+The description of this configuration shown to the user.
+
+=== `UConfigPropertySection RootSection`
+Holds the root "node" of your configuration schema.
+
+This is an instancable variable, meaning, you can create inline an instance of this object and define its default values in the editors "defaults" panel.
+
+== `UConfigProperty`
+A config property is essentially a node of a configuration schema, describing a specific value.
+
+This used for creating the config value in the end.
+
+Default values of child classes are also instancable, so you can further define the schema.
+
+=== `FString DisplayName`
+The display name of this property that is shown to the user.
+
+=== `FString Tooltip`
+The short description of this property that is shown to the user when he hovers over the property.
+
+=== `SubclassOf<UConfigValue> GetValueClass()`
+Allows to retrieve the type of the configuration value the property is based on.
+
+=== `ApplayDefaultPropertyValue(UConfigValue Value)`
+Fills the given config value object with the default value of this property.
+
+=== `UConfigValue CreateNewValue(UObject Outer)`
+Creates a new config value based on the type of this property and fills it with the default value defined by this property.
+
+=== `UUserWidget CreateEditorWidget(UUserWidget* ParentWidget)`
+Creates a widget instance that allows for editing config values described by this property.
+
+=== `FConfigVariableDescriptor CreatePropertyDescriptor(UConfigGenerationContext Context, FString OuterPath)`
+Creates a config property descriptor for code generation.
+
+== Config Property Children
+There are multiple classes inheriting `<<_uconfigproperty, UConfigProperty>>` describing a specific type of property.
+
+There are classes for all main primitives like:
+
+* bool
+* int
+* float
+* string
+* class
+* color
+
+There are also two special ones that allow for more complex configuration structures.
+
+=== `UConfigPropertyArray`
+A config value array allows you to store multiple values of the same type in a list.
+
+For this you have the `ElementValue` attribute, with which you can define the type of these list entries.
+
+The list is dynamic, meaning, the amount of entries in the list can vary depending on what the user defined.
+
+=== `UConfigPropertySection`
+A config value section allows you to store multiple values of different types in one object.
+
+For each entry you can have there is one property describing the type of this entry.
+
+So with this you can basically have nested configurations allowing for more complex configuration structures.
+
+== Config Values
+For each <<_uconfigproperty>> there is a value counterpart.
+
+It essentially holds then a value described by the property.
+
+Like the actual state, or... configuration loaded from the file / default values.
+
+=== `UConfigProperty GetAssociatedProperty()`
+Returns the property that describes this value.
+
+=== `FString DescribeValue()`
+Converts the value into a string.
+
+Useful for debugging purposes.
+
+=== `URawFormatValue Serialize(UObject Outer)`
+Converts the value into the raw configuration format.
+
+=== `Deserialize(URawFormatValue Value)`
+Converts the given value in the raw configuration format to the type of this value and stores it in this value object.
+
+=== `FillConfigStruct(FReflectedObject ReflectedObject, FString VariableName)`
+Fills the given config struct with the data provided by the referencing property and this value.
+
+=== `InitializedFromProperty()`
+Gets called when the config value is initialized with the associated property.
+
+=== `MarkDirty()`
+Marks the value as dirty, e.g. that it needs to be synced with the file system.

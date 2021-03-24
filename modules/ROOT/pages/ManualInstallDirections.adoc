@@ -2,32 +2,40 @@
 
 [WARNING]
 ====
-We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead, since it vastly simplifies the process of installing, testing, and using mods.
+We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead,
+since it vastly simplifies the process of installing, testing, and using mods.
 
-If you're a mod developer, you should still strongly consider using the launcher. You need to change `Configs` to `development` to handle installing SML and the bootstrapper for you.
-
+If you're a mod developer, you should still strongly consider using the launcher.
+You can to change your selected profile to `development` to handle installing SML for you.
 ====
 
 == Installing Mods
 
-If you don't want to use the Launcher for some reason, or you are a mod maker and want to test your mod without it, continue reading below for instructions.
-
-=== Installing Bootstrapper
-
-Visit https://ficsit.app/bootstrap-versions[SMR/bootstrap-versions] to find the bootstrapper version you want to use (usually the latest) and download it.
-
-After that you just need to copy the `xinput1_3.dll` and the `msdia140.dll` to `<game root>/FactoryGame/Binaries/Win64/`
+If you don't want to use the Mod Manager for some reason, or you are a mod maker and want to test your mod without it, continue reading below for instructions.
 
 === Installing SML
 
-Now that you have installed the bootstrapper, you need to download a version of SML compatible with that bootstrapper version and with your game from https://ficsit.app/sml-versions[SMR].
+First, you need to download a version of SML compatible with your game from https://ficsit.app/sml-versions[SMR].
 
-Once you're on the GitHub releases page for the bootstrapper, download the file `UE4-SML-Win64-Shipping.dll` as well as the `SML.pak` and save it into the `<game root>/loaders` folder. As a player, you do not need any of the other files from the download page, only the `.dll` and `.pak` file.
+If you want to download the latest development version of SML,
+it can be found
+https://ci.ficsit.app/job/SML2/job/sml-dev/[here].
+Only do this if you know what you're doing,
+and be sure to test with a released version of SML
+before distributing your mod.
+
+To install SML, unzip the file into Mods folder at `<game root>/FactoryGame/Mods`.
+If the folder doesn't exist, just create it.
 
 [TIP]
 ====
-If the folder doesn't exist, just create it or start the game with the installed bootstrapper version once.
+Note that this folder is within the FactoryGame folder and _not_ your game root folder -
+where it was in previous SML versions.
 ====
+
+When you're done, you should have this folder structure:
+
+image:ManualInstall/sml_folder_example.png[SML Folder]
 
 === Installing Your Mod of Choice
 
@@ -43,34 +51,29 @@ attempt to install the mod with mismatched versions, but most of the
 time, it won't work.
 ====
 
-Now just copy the downloaded .smod/.zip file into `<game root>/mods`.
+Now just unzip the downloaded .smod/.zip file into `<game root>/FactoryGame/Mods`.
 
-[TIP]
-====
-If the folder doesn't exist, just create it or start the game with bootstrapper and SML installed once.
-====
+When you're done, you should have roughly the following folder structure:
 
-=== Installing "Raw" or WIP mods
-
-If you don't have a .smod/.zip of the mod and the proper data.json file you still can use them.
-
-Just place the .pak, .dll and .pdb files if you need them into the mods folder and start the game with the SML config setting `developmentMode` enabled.
+image:ManualInstall/mod_in_folder_example.png[A mod in the folder]
 
 [WARNING]
 ====
-SML wont be able to handle dependencies!
+SML itself will not handle nor fetch mod dependencies!
 
 That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the launcher instead.
 But you can try to name your files so its name comes after the name of the dependencies if the mod list is sorted after names.
 ====
 
-[TIP]
-====
-If you need to know how to enable `developmentMode`,
-please refer to the xref:SMLConfiguration.adoc[SML Configuration Page].
-====
-
 == Installing mods on Linux (Steam) as a player - SML version 2.2.1
+
+[WARNING]
+====
+This was written for SML 2.2.1 and is out of date.
+
+Please contact us with revised Linux directions to put here,
+or send a PR via Edit This Page.
+====
 
 [WARNING]
 ====

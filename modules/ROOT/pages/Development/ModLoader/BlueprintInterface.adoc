@@ -1,0 +1,314 @@
+= Blueprint Library
+
+SML provides numerous helpful blueprint function libraries,
+allowing you to interact with the engine,
+Satisfactory, or the mod loader itself from blueprints with relative ease.
+
+== Logging
+
+The mod loader provides a blueprint function library `Blueprint Logging Library`
+that exposes some logging features to blueprints.
+This allows you to log things in different verbosity states,
+which can be controlled from the SML config file.
+
+If you want to log something from C++, we suggest you use
+Unreal's default logging systems instead.
+It would be best to create your own log category for your mod.
+You can read more about that in Unreal's documentation.
+
+=== `LogInfo(String str, bool ignoreDebugMode)`
+Logs the given string with the "info-color," but only
+if debugMode of SML is enabled or ignoreDebugMode is set to true.
+
+=== `LogVerbose(String str)`
+Logs the given string in the "verbose-level".
+
+=== `LogDisplay(String str)`
+Logs the given string in the "display-level".
+
+=== `LogWarning(String str)`
+Logs the given string in the "warning-level".
+
+=== `LogError(String str)`
+Logs the given string in the "error-level".
+
+=== `LogFatal(String str)`
+Logs the given string in the "fatal-level".
+Causes the game to crash.
+
+== Config
+
+The Blueprint Interface also provides the ability to save and load configurations via Blueprint.
+
+As `config` you can pass any kind of custom struct.
+But only the following types will be parsed properly:
+
+- String
+- Float
+- Integer
+- Bool
+- other Structs
+- Arrays of any of the above allowed types
+
+You should create a custom Structure (Create Advanced Asset > Blueprints > Structure)
+to hold all of the configs for your mod 
+
+Here is an example of a Blueprint function that that can be called to reload config.
+Note that this function simply returns the loaded config struct - what is done with
+the values is handled by the caller of the function.
+Notice the usage of variables and the separation of the variable wires.
+The struct variable is read from multiple times as opposed to the wire being reused.
+This is intentional, since reusing the wire means that the loaded config values don't get used.
+image:ModLoader/BlueprintInterface_ConfigExample.png[image]
+
+=== `void SaveConfig(String modid, Struct config)`
+Dumps the given config struct as a Json and saves it as the config file for the mod with the given name.
+You can find it in the configs folder of your Satisfactory install.
+
+=== `void LoadConfig(String modid, Struct& config)`
+Parses the config file of the given mod id to the attributes of the passed in config struct.
+You should pass it a variable that contains an instance of your config struct.
+It will then modify that instance to have the values read from the config file.
+You can define the default values for each property in your custom struct definition.
+Settings not present in the config file will be left unmodified in the config struct.
+Settings present in the config file which don't have a corresponding attribute in the config struct simply get ignored.
+
+=== `void StructToJson(String& String, bool UsePrettyPropertyNames, Struct Structure)`
+Converts the given structure to a string, storing it at the passed String address.
+If UsePrettyPropertyNames is true, the property names will look more human readable.
+
+Note that the SaveConfig function does this automatically.
+
+=== `void StructFromJson(String String, bool UsePrettyPropertyNames, Struct& Structure)`
+Converts the given json String to a structure.
+Make sure that UsePrettyPropertyNames is enabled if it was enabled when producing the json via StructToJson.
+
+Note that the LoadConfig function does this automatically.
+
+== Blueprint Mod Loading Library
+
+The `Blueprint Mod Loading Library` provides functions to interact with the modloading process.
+
+=== `bool IsModLoaded(String ModReference)`
+This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+as input and checks if any kind of mod with that reference got loaded or not.
+
+=== `Array<String> GetLoadedMods()`
+This function returns the xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod references] of all currently loaded mods in an array.
+
+=== `ModInfo GetLoadedModInfo(String ModReference)`
+This function allows you to access additional information about the mod with the given reference.
+
+=== `Texture2D LoadModIconTexture(String ModReference, Texture2D FallbackIcon)`
+This function allows you to load the mod icon of the mod with the given reference as a Texture2D.
+If no Texture or mod is found, the function will return the fallback icon.
+
+=== `Version GetSMLVersion()`
+This function allows you to retrieve the version of the currently installed mod loader.
+
+=== `bool IsDevelopmentModeEnabled()`
+This function allows you to easily check if the SML development mode is activated.
+
+=== `Map<Name, String> GetExtraModLoaderAttributes()`
+Returns extra attributes exposed by the mod loader implementation.
+
+== Version Library
+
+The `Blueprint Version Library` provides a couple of functions that allow you to interact with the version system more easily and generally helps you out with some stuff.
+
+=== `bool ParseVersionString(String String, out Version OutVersion, out String ErrorMessage)`
+This function tries to create a FVersion object from the provided string.
+Returns true if able to convert the string successfully and if not, sets the ErrorMessage accordingly.
+
+=== `String Conv_VersionToString(FVersion Version)`
+Converts the given version structure to a string.
+
+=== `bool ParseVersionRangeString(String String, out VersionRange OutVersionRange, out String OutErrorMessage)`
+Tries to convert the given string into a Version Range struct.
+Returns true if it was able to do so, and if not, sets the error message accordingly.
+
+=== `String Conv_VersionRangeToString(FVersionRange VersionRange)`
+Converts the given version range structure to a string.
+
+=== `bool Matches(VersionRange VersionRange, Version Version)`
+Returns true if the provided version matches the given version range.
+
+== FVersion
+
+This struct contains information about a xref:https://semver.org/[SemVer] compatible version in a parsed state.
+
+=== Member Fields
+
+* int64 Major (read only)
++
+The major SemVer version number
+* int64 Minor (read only)
++
+The minor SemVer version number
+* int64 Patch (read only)
++
+The SemVer patch number
+* String Type (read only)
++
+The version type of this SemVer version.
++
+Can be:
++
+** "alpha"
+** "beta"
+** "release"
+
+* String BuildInfo (read only)
++
+Additional information to the version build.
+
+== FModInfo
+
+This struct contains information about a loaded mod.
+Mainly contents of the data.json of the mod.
+
+=== Member Fields
+
+- String ModId (read only)
++
+The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+- String Name (read only)
++
+The display name of the mod
+- FVersion Version (read only)
++
+The version of the mod
+- String Description (read only)
++
+The description of the mod
+- Array<String> Authors (read only)
++
+The names of the authors of the mod in a list.
+- String Credits (read only)
++
+Credits of the mod
+
+== Blueprint Reflection Library
+
+The `Blueprint Reflection Library` provides a couple function for interacting with the unreal reflection system from within Blueprints.
+
+=== `ReflectedObject ReflectObject(Object Object)`
+Allocates a reflected object wrapper for the given object.
+
+=== `ReflectObject ReflectStruct(DynamicStructInfo StructInfo)`
+Allocates a reflected object wrapper for the given struct.
+
+=== `Object DeflectObject(ReflectedObject ReflectedObject)`
+Deflects reflected object wrapper to the raw object pointer.
+
+=== `void DeflectStruct(ReflectedObject ReflectedObject, out DynamicStructInfo StructInfo)`
+Deflects reflected object wrapper into the passed struct out variable.
+
+=== `Array<ReflectedPropertyInfo> GetReflectedProperties(ReflectedObject ReflectedObject)`
+Returns a list of reflected properties provided by the given object
+
+=== `uint8 GetByteProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the byte property with the given name at the given array index in the given reflected object.
+
+=== `void SetByteProperty(ReflectedObject ReflectedObject, String PropertyName, uint8 Value, int ArrayIndex)`
+Updates the value of the byte property with the given name at the given array index in the given reflected object.
+
+=== `int64 GetInt64Property(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the 64-bit signed integer property with the given name at the given array index in the given reflected object.
+
+=== `void SetInt64Property(ReflectedObject ReflectedObject, String PropertyName, int64 Value, int ArrayIndex)`
+Updates the value of the 64-bit signed integer property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `int32 GetInt32Property(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the 32-bit signed integer property with the given name at the given array index in the given reflected object.
+
+=== `void SetInt32Property(ReflectedObject ReflectedObject, String PropertyName, int32 Value, int ArrayIndex)`
+Updates the value of the 32-bit signed integer property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `float GetFloatProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the floating point property with the given name at the given array index in the given reflected object.
+
+=== `void SetFloatProperty(ReflectedObject ReflectedObject, String PropertyName, float Value, int ArrayIndex)`
+Updates the value of the floating point property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `String GetStringProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the string property with the given name at the given array index in the given reflected object.
+
+=== `void SetStringProperty(ReflectedObject ReflectedObject, String PropertyName, String Value, int ArrayIndex)`
+Updates the value of the string property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `bool GetBoolProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the boolean property with the given name at the given array index in the given reflected object.
+
+=== `void SetBoolProperty(ReflectedObject ReflectedObject, String PropertyName, bool Value, int ArrayIndex)`
+Updates the value of the boolean property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Name GetNameProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the name property with the given name at the given array index in the given reflected object.
+
+=== `void SetNameProperty(ReflectedObject ReflectedObject, String PropertyName, Name Name, int ArrayIndex)`
+Updates the value of the name property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Text GetTextProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the text property with the given name at the given array index in the given reflected object.
+
+=== `void SetTextProperty(ReflectedObject ReflectedObject, String PropertyName, Text Text, int ArrayIndex)`
+Updates the value of the text property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `Object GetObjectProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the object property with the given name at the given array index in the given reflected object.
+
+=== `void SetObjectProperty(ReflectedObject ReflectedObject, String PropertyName, Object Object, int ArrayIndex)`
+Updates the value of the object property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `FReflectedObject GetStructProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the struct property with the given name at the given array index in the given reflected object.
+
+=== `void SetStructProperty(ReflectedObject ReflectedObject, String PropertyName, FReflectedObject Struct, int ArrayIndex)`
+Updates the value of the struct property with the given name at the given array index in the given reflected object to the given new value.
+
+=== `ReflectedEnumValue GetEnumProperty(ReflectedObject ReflectedObject, String PropertyName, int ArrayIndex)`
+Retrieves the value of the enum property with the given name at the given array index in the given reflected object.
+
+=== `void SetEnumProperty(ReflectedObject ReflectedObject, String PropertyName, ReflectedEnumValue Value, int ArrayIndex)`
+Updates the value of the enum property with the given name at the given array index in the given reflected object to the given new value.
+
+== `ReflectedObject`
+Describes a reflected object.
+
+== `ReflectedEnumValue`
+Describes a reflected enumeration value.
+
+=== `Enum EnumerationType`
+The unreal type of the enumeration.
+
+=== `int64 RawEnumValue`
+The enumeration value represented as raw integer.
+
+== `Reflected Property Info`
+Describes a single reflected property accessible to blueprints.
+
+=== `Name PropertyName`
+The name of the property.
+
+=== `ReflectedPropertyType PropertyType`
+The type of the reflected property.
+
+=== `int32 ArrayDim`
+Dimensions of the fixed-size property array.
+
+=== `ReflectedPropertyType`
+Enum that describes the type of the reflected property.
+
+- Invalid
+- Byte
+- Int
+- Int64
+- Float
+- String
+- Boolean
+- Name
+- Text
+- Struct
+- Object
+- Enum

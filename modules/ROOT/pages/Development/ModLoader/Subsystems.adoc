@@ -1,40 +1,57 @@
 = Subsystems
 
-Subsystems are actors existing in the world only once and are used as a per world instance general manager.
-These subsystems are accessible from anywere were you have a world context available (f.e. actors).
-Subsystems allow you f.e. to implement custom game state information you want to have saved to the save
-or when you want to manage multiple actors or a system from one centeral point.
+[TIP]
+====
+If you're looking for the subsystems that SML provides by default,
+check out the
+xref:Development/ModLoader/Registry.adoc[Registry page].
+====
 
-f.e. Light It Up uses a group system wich is globaly unified were every lamp can access the same group.
-LIU now uses a system to provided one point were every lamp can get the information
-about the current group settings.
+Subsystems are actors that exist only once in the world
+(similar to https://en.wikipedia.org/wiki/Singleton_pattern[Singletons], but not quite)
+as an instance general manager. These subsystems are accessible from anywhere you
+have a world context available (f.e. actors).
+Subsystems allow you to implement custom game state information,
+for example, that you want to have saved to the save file, or when you
+want to manage multiple actors or some system from one central point.
 
-== UModSubsystemHolder
+For example, the mod Light It Up uses subsystems to create a lamp group system.
+With this system, every lamp can get information about the current group settings
+without storing that data again in each lamp instance.
 
-If you want to have a subsystem you need at least one class inherited from this holder class.
-These holders will spawn and store the references to the subsystems.
+== Using UModSubsystemHolder
 
-It has a `InitSubsystems` where you then need to spawn the subsystems you want to add
-and then store the references in attributes.
+If you want to have a subsystem you will need at least one class
+that inherits the `UModSubsystemHolder` class.
+These holders will spawn and store the references to the subsystems your mod uses.
 
-Later somewere else you can use the static `K2_GetModSubsystemHolder` function
-to get a reference to your holder which then has attributes holding references to your subsystems.
+It has an `InitSubsystems` function in which you need to spawn the
+subsystems you want to add and then store the references in attributes.
 
-For registering a subsystem holder you can just add it to the `M Mod Subsystem` array of the InitMod class.
+To register a subsystem holder, you should add it to the `Mod Subsystems` array of the
+xref:Development/ModLoader/ModModules.adoc#_game_instance_module_ugameinstancemodule[Game Instance Module].
+
+You can use the static `K2_GetModSubsystemHolder` function
+to get your holders from other places in the code.
+This function returns a reference to your holder,
+which itself has attributes references to the subsystems you initialized in it.
 
 == Spawning a Subsystem
 
-A subsystem it self is a actor inheriting from AFGSubsystem.
-You can also use save game to store data to save states.
+A subsystem itself is an actor inheriting from `AFGSubsystem`.
+You can also use subsystems to store data to save states.
 
-When you spawn one in a subsystem holder you should use the `UModSubsystemHolder::SpawnSubsystem` function.
-Cause it also checks if the subsystem is already spawned (f.e. loaded from save state)
-and returns just the reference to it.
-The first paramter of the function is a reference to your variable which will then reference the
-newly spawned or found subsystem. The second paramter tells the function for which class to actuall look
-for or which class needs to be created. The third paramter is just a name for the actor.
+To spawn one in a subsystem holder (in the InitSubsystems function)
+you should use the `UModSubsystemHolder::SpawnSubsystem` function.
+This function checks if the subsystem is already spawned (f.e. loaded from the save state)
+and returns the reference to it instead of creating a new one.
+The first parameter of the function is a reference to your variable which will then reference the
+newly spawned or found subsystem.
+The second parameter tells the function for which class to actually look for
+or which class needs to be created.
+The third parameter is just a name for the actor.
 
 [WARNING]
 ====
-For spawning it in BP you should use the `UModSubsystemHolder::K2_SpawnSubsystem` function.
+To spawn a subsystem in BP you should use the `UModSubsystemHolder::K2_SpawnSubsystem` function.
 ====
