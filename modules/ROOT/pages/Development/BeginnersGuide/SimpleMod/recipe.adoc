@@ -1,6 +1,13 @@
 = Recipe vs Schematic
 
-'Recipes' are used to define the item input/cost and output of crafting items, buildables, etc. Recipes are not only used for the craft bench or the workshop, but also for the build gun, smelters, manufacturers and more.
+Before we create our first recipe,
+it's important to note the difference between
+a 'recipe' and a 'schematic.'
+
+In Satisfactory, 'Recipes' are used to define the item input/cost
+and output of crafting items, buildables, etc.
+Recipes are not only used for the craft bench or the workshop,
+but also for the build gun, smelters, manufacturers and more.
 You can read more about recipes on the xref:Development/Satisfactory/Crafting.adoc[Crafting page].
 
 [TIP]
@@ -15,7 +22,7 @@ You can read more about schematics on the xref:Development/Satisfactory/Schemati
 == Create a Recipe
 
 First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards. We're going to make some new leaf based recipes to start.
-Create a folder, `+Content/DocMod/Recipes+` which will contain all our recipes.
+Create a folder, `+DocMod Content/Recipes+` which will contain all our recipes.
 
 Now in Unreal, we need to create a new Blueprint Class in this folder which extends xref::/Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[FGRecipe] to serve as our recipe. Call it something like Recipe_Doc to follow Coffee Stain's naming pattern.
 
@@ -56,13 +63,16 @@ M Product::
 
 image:BeginnersGuide/simpleMod/CreateDocRecipe.gif[image]
 
+
+_Note: this gif is slightly out of date as of SML 3.0_
+
 Ok, now you've created your first recipe! Next, let's add it to a schematic to make it available in game.
 
 == Create a Schematic
 
 Schematics are what Satisfactory uses to grant recipes and capabilities to the player. Schematics are the milestones you'll see in the HUB, the Tier 0 tutorial phases, M.A.M researches, alternate recipe researches, and more. If the player is unlocking an item, building, or any recipe it's probably be granted by a schematic.
 
-To get started, create a folder in your main mod folder for your schematics, for example, `+Content/DocMod/Schematics+`. Inside this folder create again a new BP Class but this time of type xref::/Development/Satisfactory/Schematic.adoc[FGSchematic] and f.e. with the name "Schem_Doc". Open it and go again to its defaults.
+To get started, create a folder in your main mod folder for your schematics, for example, `+DocMod Content/Schematics+`. Inside this folder create again a new BP Class but this time of type xref::/Development/Satisfactory/Schematic.adoc[FGSchematic] and f.e. with the name "Schem_Doc". Open it and go again to its defaults.
 
 * {blank}
 +

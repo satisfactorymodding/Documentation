@@ -10,6 +10,9 @@ Then create a new Blueprint of type `FGItemDescriptor` in the folder. We'll call
 
 image:BeginnersGuide/simpleMod/CreateDocItem.gif[image]
 
+
+_Note: this gif is slightly out of date as of SML 3.0_
+
 == Describe the Item
 
 Open the class and you should see the default settings of the classes' attributes. If not, just click on "Default Settings" and they should appear in the settings browser of the class editor. In here you will find multiple attributes with the different properties such an Item can have.

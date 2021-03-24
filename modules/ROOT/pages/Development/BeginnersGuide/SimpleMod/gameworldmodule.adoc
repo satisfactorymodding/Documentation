@@ -12,28 +12,80 @@ you can read more on the xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 
 == Initial Mod Setup
 
-To keep your folder structure organized, let's create a folder where all of your mod content will go. This folder will be named like your mod, and for this tutorial, we'll use the name "DocMod" as an example.
+Since SML3.0, mods are now Unreal plugins,
+and their loading is handled by Unreal itself.
 
-Create a folder, for example,`+Content/DocMod+`, to serve as your mod-project-root. All of the assets for our mod will go in this folder and will be turned into a pak when we're done.
+First off, we'll need to create the Unreal Plugin for our mod.
+You can do this by clicking
+`Edit` -> `Plugins` -> `New Plugin` -> `Blank Plugin` in the Unreal Editor.
+
+The name of your plugin _must_ be your mod's
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
+For this documentation example, you can use `DocMod` as the mod reference.
+When you start on your own mod, you will have to create a new plugin
+with a mod reference other than this.
+
+You can fill out the Descriptor Data, or leave it blank, as we can edit that later.
+
+Leave "Show Content Directory" checked and press `Create Plugin`.
+
+Your new plugin should now appear at the bottom of the plugins list in the Project > Other category. You might have to scroll a bit to find it.
+
+Next, click `Edit...` to edit more of your mod's plugin settings.
+
+Here, you can fill out some additional details for your mod.
+Since we're working on an example mod right now,
+most of these fields are not relevant to us.
+You should be sure to set `Category` to `Modding`
+and `Version` to `1.0.0`,
+which sorts your mod to appear with other mods
+in the Modding section of the Plugins list.
+
+These fields will be explained further when you prepare to upload your mod for others to use.
+
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
 
 == Create the Class
 
-First of all, we need to create the proper path for the class. The path for the class will depend on the mod name, specifically on the name of the mod reference we will use to identify our mod. Our mod name will be `+Doc Mod+` and the mod reference will be `DocMod`, so we need to create a folder in the UE asset root with that name.
+It's time to create the InitGameWorld blueprint for our mod!
 
-We create the folder by going to the Content folder in a Content Browser within the Unreal Engine editor, then right clicking and selecting `New Folder` at the top. Name the folder your mod reference, in our case `DocMod`.
+You might need to click on `View Options` -> `Show Plugins Content`
+in a Content Browser to view the contents of your mod.
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
 
-[WARNING]
-====
-Be sure to read the notes on xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
-if you have not yet done so. It is critical that your mod reference follows these format rules.
-====
+You can find your mod in the `<Your Mod Reference> Content`
+subfolder of the Content Browser root folder.
 
 This folder is where you will be putting most of the assets (models, blueprints, textures, etc.) that your mod uses.
 
+[WARNING]
+====
+Be sure to read the notes on
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
+if you have not yet done so.
+It is critical that your mod reference follows these format rules.
+====
+
 Now we need to create our `InitGameWorld` Blueprint so that SML can load our mod's content into the game.
 
-Within your folder folder, right click and select `Blueprint Class`, then start typing `GameWorldModule`
-in the All Classes search box. Once it comes up, select it and press the green Select button to create
-the blueprint. Name it `InitGameWorld`
+Within your mod's content folder,
+right click and select `Blueprint Class` under `Create Basic Asset`.
+Click the triangle to close the Common Classes section,
+and click the other triangle to expand the All Classes section.
+Start typing `GameWorldModule` into the search box.
+Once it comes up, select it and press the green Select button to create the blueprint.
+Name it `InitGameWorld`.
 
-Done! Now you will be able to register recipes and other stuff from here.
+image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
+
+You will be able to register recipes and other content from this module.
+
+Next, double click on the module to open up its blueprint settings.
+
+To make sure that SML automatically detects and loads our InitGameWorld,
+we must be sure to mark that it is the Root Module.
+
+image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
+
+If you'd like to learn more about root modules, you can read about it on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+Otherwise, let's get on to creating our first modded content - a custom recipe!
