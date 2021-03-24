@@ -29,6 +29,17 @@ You can fill out the Descriptor Data, or leave it blank, as we can edit that lat
 
 Leave "Show Content Directory" checked and press `Create Plugin`.
 
+This should have created a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
+
+[TIP]
+====
+If you consider to Open Source your mod. Or simply want to use a version control system like Git,
+this folder would be ideal for you to create the repository.
+
+That would mean, if you work on multiple mods,
+you only need one full project setup and for each Mod you have your own plugin folder and repository.
+====
+
 Your new plugin should now appear at the bottom of the plugins list in the Project > Other category. You might have to scroll a bit to find it.
 
 Next, click `Edit...` to edit more of your mod's plugin settings.

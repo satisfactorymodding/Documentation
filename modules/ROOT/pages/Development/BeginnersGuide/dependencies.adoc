@@ -25,11 +25,17 @@ Launch the game at least once to ensure all files get set up correctly.
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
 We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
 
-Run the installer, and agree to prompts you receive along the way. Select the packages "C + + Desktop development" and "Game development with C + +". You might have to scroll a bit to find them.
+Run the installer, and agree to prompts you receive along the way. Select the packages "{cpp} Desktop development" and "Game development with {cpp}". You might have to scroll a bit to find them.
 
 If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
 
 Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
+
+[TIP]
+====
+An alternative to visual studio which is very popular among {cpp} modders is https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
+If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
+====
 
 == Unreal Engine 4 (Custom Engine)
 
@@ -99,7 +105,7 @@ xref:ManualInstallDirections.adoc[manual install directions]
 once you have a mod plugin to test.
 ====
 
-xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
+xref:index.adoc#_satisfactory_mod_manager_title_refaka_smm[Satisfactory Mod Manager]
 offers a convenient developer mode that
 automatically installs the correct version of SML and helps manage mod files for you.
 To enable it, change your selected profile to `development`.
