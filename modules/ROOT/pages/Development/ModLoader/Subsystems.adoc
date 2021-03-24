@@ -8,7 +8,7 @@ xref:Development/ModLoader/Registry.adoc[Registry page].
 ====
 
 Subsystems are actors that exist only once in the world
-(think https://en.wikipedia.org/wiki/Singleton_pattern[Singletons]) 
+(similar to https://en.wikipedia.org/wiki/Singleton_pattern[Singletons], but not quite)
 as an instance general manager. These subsystems are accessible from anywhere you
 have a world context available (f.e. actors).
 Subsystems allow you to implement custom game state information,
