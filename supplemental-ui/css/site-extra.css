@@ -99,6 +99,11 @@ iframe.blueprint + div:after {
     top: -0.5rem;
     font-style: italic;
 }
+
+.footer a {
+    color: #fff;
+}
+
 .version-warning {
     padding-top: 5px;
     padding-bottom: 5px;
