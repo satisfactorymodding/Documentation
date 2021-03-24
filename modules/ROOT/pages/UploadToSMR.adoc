@@ -1,5 +1,11 @@
 = Uploading your mod to Satisfactory Mod Repository (ficsit.app)
 
+[WARNING]
+====
+As of SML3.0, the `data.json` system has been replaced with the Unreal plugin manifest.
+This page is no longer relevant and still needs to be updated.
+====
+
 Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
 Mods uploaded to SMR will automatically work with the xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager]. All mods available to SMR are checked
 for potential security concern, so having your mod on SMR means that users can trust that it is secure.
