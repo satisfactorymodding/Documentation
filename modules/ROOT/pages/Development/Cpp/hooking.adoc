@@ -1,5 +1,11 @@
 = Hooking
 
+[WARNING]
+====
+This page has not yet been updated for SML3.0 concepts,
+so it may be slightly out of date.
+====
+
 Hooking is a C++ exclusive feature of SML that allows you to attach a custom function body to a existing function.
 
 All C/C++ functioning hooking stuff can be found in `#include "NativeHookManager.h"`.

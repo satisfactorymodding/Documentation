@@ -107,7 +107,7 @@ If you are familiar with version control software,
 you may want to clone the repo instead,
 which simplifies the process of updating your project later.
 
-== Satisfactory Mod Loader and Bootstrapper
+== Satisfactory Mod Loader
 
 [WARNING]
 ====

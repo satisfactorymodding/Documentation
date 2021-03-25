@@ -15,7 +15,7 @@ This list may not be up to date; we suggest you check currently loaded commands 
 |Command |Description
 
 |info
-|Prints information about the SML and bootstrapper version. Also lists all currently loaded mods.
+|Prints information about the SML version. Also lists all currently loaded mods.
 
 |help
 |Lists all available commands and gives a short description of their function.

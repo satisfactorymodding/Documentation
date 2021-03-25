@@ -11,6 +11,9 @@ that exposes some logging features to blueprints.
 This allows you to log things in different verbosity states,
 which can be controlled from the SML config file.
 
+The output will be displayed in the SML console (if enabled in your config)
+and in FactoryGame.log in your game install folder.
+
 If you want to log something from C++, we suggest you use
 Unreal's default logging systems instead.
 It would be best to create your own log category for your mod.

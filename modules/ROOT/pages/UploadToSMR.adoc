@@ -2,7 +2,9 @@
 
 [WARNING]
 ====
-As of SML3.0, the `data.json` system has been replaced with the Unreal plugin manifest.
+As of SML3.0, the `data.json` system has been replaced
+with the Unreal plugin manifest.
+This page has not yet been updated to reflect this change.
 ====
 
 Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
