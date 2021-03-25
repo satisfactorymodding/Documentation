@@ -122,6 +122,8 @@ If you encounter SML changes not listed here, please contact us on the Discord
 so that we can add them to this list, or add it yourself via 'Edit this Page.'
 ====
 
+* The Bootstraper is no longer needed, and has been removed.
+Unreal Engine and SML now take care of what it used to do.
 * InitMod is no more, and has been supplanted by the Mod Modules system.
 Most things that involved InitMod now involve the
 xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[InitGameWorld Module].
@@ -132,7 +134,13 @@ All mod config structs should now extend xref:Development/ModLoader/Configuratio
 * There is now a system built into SML for making custom key bindings that work with
 the base game key binding menu. Read more about it on the
 xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry] page.
-* This list is not yet complete.
+* Alpakit Overrides/Overwrites have been replaced with
+the new Reflection Blueprint Library functionality,
+and by BP hooking and C++ for additional functionality not covered by BP reflection.
+They did not work consistently anyways. Read the 
+xref:Development/BeginnersGuide/overwriting.adoc[Overwriting page]
+and ask about this on the discord if you have to do this.
+* _This list is not complete._
 Please read the "Update Notes from the Discord" section below.
 
 == New/Updated Docs Pages of Note
