@@ -3,8 +3,7 @@
 [WARNING]
 ====
 As of SML3.0, the `data.json` system has been replaced
-with the Unreal plugin manifest.
-This page has not yet been updated to reflect this change.
+with the Unreal plugin manifest. 
 ====
 
 Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
@@ -58,15 +57,18 @@ or if you need to split your mod into multiple sub-mods.
 
 == UPlugin File
 
-Every unreal engine plugin, which satisfactory also are, require to have and
-`<mod reference>.uplugin` file.
+Every Unreal Engine plugin is require to have a
+`<mod reference>.uplugin` file,
+and Satisfactory mods are no exception.
 This file is json formatted and holds information about the mod like version, credits, links and more.
 
-You can read about all the different settings https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here]. But SML and SMR require you to have even more fields in your plugin descriptor file.
+You can read about all the different settings
+https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
+Note that SML and SMR require you to include additional fields in your plugin descriptor file.
 
-Most importantly a mod dependency list and a SemVersion of the mod.
+The most important of these is a mod dependency list and a SemVersion for the mod.
 
-The following parameters are required to be added additionally:
+Below is a descrption of all extra fields SML and SMR require:
 
 [cols="1,4a"]
 |===
@@ -100,16 +102,16 @@ The Prefix `^` allows any kind of patch number (third number in a version like `
 But if it exists our mod might be able to unlock more functionality that depends on it.
 
 !bIsBasePlugin
-! This boolean property should be set to true for all plugin dependencies that are no mod dependencies.
+! This boolean property should be set to true for all plugin dependencies that are not mod dependencies.
 
 !===
 
 |===
 
-An example data.json for a combined C++/Blueprint mod is presented here:
+An example .uplugin for a combined C++/Blueprint mod is presented here:
 
 +++ <details><summary> +++
-Example data.json:
+Example .uplugin:
 +++ </summary><div> +++
 ....
 {
@@ -179,8 +181,3 @@ In the mean time, we strongly suggest you take a look at your mod description an
 - List the features of your mod, and how to unlock them for use ingame. Consider listing what tiers the content is unlocked at.
 
 - Credit other users that contributed ideas, models, etc. by name and/or by link.
-
-
-
-
-
