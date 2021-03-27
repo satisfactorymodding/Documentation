@@ -51,13 +51,40 @@ These commands can be run *from the in-game developer console* which is opened w
 To use these, you must have `enableCheatConsoleCommands` enabled in the
 xref:SMLConfiguration.adoc[SML config].
 
-A full list can be found
+This list consists of some of the more useful ones, but there are more.
+
+A full list Satisfactory-specific cheats can be found
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/sml-dev/Source/FactoryGame/Public/FGCheatManager.h[here].
-This list consists of some of the more useful ones.
+
+The native Unreal cheats
+(https://github.com/SatisfactoryModdingUE/UnrealEngine/blob/4.25.3-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here])
+can also be used. Note that to view this link,
+you must be signed into a GitHub account registered with Epic Games,
+otherwise it will display as a 404 page.
+The process to register your account can be found
+xref:Development/BeginnersGuide/dependencies.adoc#_unreal_engine_4_custom_engine[here].
 
 [cols="2,4a,1"]
 |===
 |Command |Description |Category
+
+// From UE CheatManager
+
+|Teleport
+| Teleports you to where your cursor is looking.
+No range limit.
+Be careful of teleporting outside of the map on accident.
+| Cheat Manager
+
+|God
+| Toggles god mode, making you immune to damage.
+| Cheat Manager
+
+|CheatScript <ScriptName, string>
+| Executes commands listed in `CheatScript.ScriptName` ini section of DefaultGame.ini
+| (Unspecified)
+
+// From FGCheatManager
 
 |NoMessages <true/false>
 | Disables ADA messages on unlocks.
