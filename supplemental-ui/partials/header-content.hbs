@@ -32,13 +32,21 @@
         </div>
     </nav>
     <div id="old-version-warning" class="version-warning hidden">
-        You are currently viewing an outdated version of the docs!
-        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the latest.</a>
+        You are currently viewing an <strong>outdated</strong> version of the docs!<br>
+        <i><a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the latest.</a></i>
+    </div>
+    <div id="dev-version-warning" class="version-warning hidden">
+        You are currently viewing the <strong>in-development</strong> version of the docs!<br>
+        Information here could be inconsistent with other pages,
+        or apply to features that have not been released yet.<br>
+        <i><a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the stable docs.</a></i>
     </div>
     <script>
         var pageLocation = window.location.href;
         if(pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
-            document.querySelector("#old-version-warning").classList.remove("hidden")
+            document.querySelector("#old-version-warning").classList.remove("hidden");
+        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")){
+            document.querySelector("#dev-version-warning").classList.remove("hidden");
         }
     </script>
 </header>
