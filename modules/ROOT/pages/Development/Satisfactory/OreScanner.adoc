@@ -1,0 +1,11 @@
+= Ore Scanner
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+In order to add a custom ore node type to the ore scanner,
+you should grant the player a schematic with an 
+xref:Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]
+of type UnlockScannableResource.
