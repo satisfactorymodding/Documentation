@@ -90,14 +90,65 @@ that have been removed in SML 3.0, ex. InitMod.
 
 == Project Setup
 
+=== Set Up New Project
+
 Now that you have the new editor version, you can head over to the
 xref:Development/BeginnersGuide/index.adoc[Getting Started guide]
 to set up the project for the new engine version.
 
-You can stop following the guide once you reach 'Recipe vs Schematic.'
-
 Be aware that we **will** be releasing updated versions of the starter project,
-so you may need to perform the setup process again in the future.
+so you may need to perform the setup process again in the future,
+or will need to bring in updated files to your starter project.
+If you are reading this far, you are likely an experienced modder,
+and as such we suggest you use Git to clone the starter project repo
+as opposed to downloading a zip of it.
+This vastly simplifies the process of updating the project,
+but could cause you to encounter merge conflicts down the line.
+
+You can stop following the Getting Started Guide once you reach 'Recipe vs Schematic.'
+
+Then, return here for an explanation of how to safely move your content over
+from SML2 without losing it.
+
+=== Porting Your Old Assets
+
+Here is a summary of the steps you can use to port your old SML2 content to the new project
+without having to recreate every asset.
+Order is very important here.
+
+1. Optionally, clone the SML3 starter project instead of downloading zip.
+The reasons for doing this are described above
+2. Create a new content folder in the SML3 starter project
+that is in the same place as stuff was in your SML2 starter project.
+ex /Content/ArmorModules
+3. If you have {cpp} content,
+move it over as well and make sure it compiles first before continuing.
+4. In your system file explorer,
+*copy* the content from your SML2 project to that folder in your SML3 project
+(Copy, not move, so you can do it again if you make a mistake)
+5. Take note of any errors that occur with your content and consider fixing them now
+(if they don't require SML3 concepts to resolve the errors)
+6. Within the SML3 UE editor,
+create your Unreal plugin if you haven't yet,
+which will make a plugin content folder for it.
+7. Within the SML3 UE editor,
+use its Move functionality to move things from the old content folder
+ex.`/Content/ArmorModules` to the new *plugin* content folder
+ex. `/Plugins/ArmorModules/Content`.
+This means that UE should hopefully fix the bindings and references stuff for you.
+You can either do this via the usual 'move'
+or you can try right clicking on the folder and picking 'migrate...' (I (Robb) haven't tried this yet)
+8. Right click on the old content folder and choose
+'fix up redirectors in folder'
+9. Fix any errors your content may be experiencing.
+10. Open your old SML2 editor to view your old InitMod
+and re-create its logic in your new GameWorldModule (within the SML3 editor, of course).
+
+If you would like support with this,
+or encounter issues following this process,
+please ask on the #developers channel on the discord.
+
+=== Note on Placeholders
 
 Note that placeholder assets in the starter project
 have not yet been updated to include Update 4 content.
@@ -105,6 +156,8 @@ If you're looking to use new items from the Update 4,
 you will need to create stub blueprints for them yourself.
 You can read more about this
 xref:Development/ReuseGameFiles.adoc[on the Reusing Base Game Files page].
+Instead of trying to placeholder a mesh or texture,
+you will be placeholdering an FGItemDescriptor or similar.
 
 But don't worry, we are working hard on updating the project,
 and upcoming versions will include even more content than the old ones did.
