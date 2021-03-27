@@ -1,4 +1,14 @@
-= SML Chat Commands
+= SML Commands
+
+[TIP]
+====
+If you're looking to create your own chat commands, check out
+xref:Development/ModLoader/ChatCommands.adoc[this page].
+====
+
+SML adds two kinds of commands to the game by default, xref:#_chat_commands[*Chat Commands*] and xref:_console_cheat_commands[*Console Cheat Commands*].
+
+== Chat Commands
 
 To use SML chat commands, type them into the chat within Satisfactory prefixed by a `/`.
 
@@ -6,16 +16,18 @@ For example, to run the 'help' command, you'd enter `/help` into chat.
 
 Note that only the player who runs the command will see the command output.
 
-== Standard Commands
+These commands can be run *from the ingame chat window* prefixed with a `/`.
 
-This list may not be up to date; we suggest you check currently loaded commands via `/help`.
+This list may not be up to date.
+We suggest you check currently loaded commands via `/help`.
 
 [cols="1,4a"]
 |===
 |Command |Description
 
 |info
-|Prints information about the SML version. Also lists all currently loaded mods.
+|Prints information about the SML version.
+Also lists all currently loaded mods.
 
 |help
 |Lists all available commands and gives a short description of their function.
@@ -24,21 +36,194 @@ This list may not be up to date; we suggest you check currently loaded commands 
 |Provides a list of currently connected players.
 |===
 
-== Development Mode Only commands
+// == Development Mode Only commands
 
-To enable these commands, you must have the `developmentMode` setting enabled in the xref:SMLConfiguration.adoc[SML config file]. This list may not be up to date, and commands listed here may not function as expected.
+// To enable these commands, you must have the `developmentMode` setting enabled in the xref:SMLConfiguration.adoc[SML config file]. This list may not be up to date, and commands listed here may not function as expected.
 
-[cols="1,4a"]
+// [cols="1,4a"]
+// |===
+// |Command |Description
+
+// |None at the moment.
+// |
+// |===
+
+== Console Cheat Commands
+
+These commands can be run *from the ingame developer console* which is opened when you press the grave/tilde key, aka. ``` or `~`
+
+To use these, you must have `enableCheatConsoleCommands` enabled in the
+xref:SMLConfiguration.adoc[SML config].
+
+A full list can be found
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/sml-dev/Source/FactoryGame/Public/FGCheatManager.h[here].
+This list consists of some of the more useful ones.
+
+[cols="2,4a,1"]
 |===
-|Command |Description
+|Command |Description |Category
 
-|research_unlock
-|
+|NoMessages <true/false>
+| Disables ADA messages on unlocks.
+| (Unspecified)
 
-|research_load
-|
+|GiveAvailableSchematics 
+| Gives access to all currently purchaseable schematics in the game (including modded ones).
+It's recommended that you run `NoMessages true` first.
+| Research
 
-|research_test
-|
+|ResetGamePhases
+| Resets your space elevator progress.
+Does not affect unlocked milestones.
+| Research
+
+|SetNextGamePhase
+| Completes the next available space elevator tier.
+Does not grant any milestones.
+| Research
+
+|GiveSchematicsOfTier <int, tier number in HUB>
+| Unlocks all milestones in the specified tier number.
+It's recommended that you run `NoMessages true` first.
+| Research
+
+|GiveActiveMilestoneSchematic
+| Immediately completes the selected milestone in the HUB.
+| Research
+
+|CompleteResearch 
+| Immediately completes ongoing MAM research.
+| (Unspecified)
+
+|NoCost <true/false>
+| Enables or disables the NoCost cheat,
+which is saved in the save file,
+and persists even when mods are uninstalled.
+When enabled, no items are required to build things with the build gun.
+Crafting stations still require ingredients.
+| Resources
+
+|NoPower <true/false>
+| Enables or disables the NoPower cheat,
+which is saved in the save file,
+and persists even when mods are uninstalled.
+When enabled, buildings still require a power connection,
+but they require no electricity to run.
+Vehicles also do not require fuel.
+| Resources
+
+|TurboProductionMode <true/false>
+| When enabled, all items craft instantly in the workbench and workshop.
+Buildings are unaffected.
+| World/Time
+
+|GiveItemStacks <Blueprint Path> <Number of Stacks>
+| Adds a number of full stacks of an item to the player's inventory.
+If the inventory isn't big enough to hold it all,
+extra slots will be granted as well.
+You can find an item's Blueprint Path on the
+https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+finding the content on a
+https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
+https://www.gildor.org/en/projects/umodel[UModel].
+| Resources
+
+|GiveItemsSingle <Blueprint Path> <Number of Items>
+| Adds a number of individual items to the player's inventory.
+Unlike `GiveItemStacks`, if the inventory can't hold the items,
+the inventory will NOT be expanded.
+You can find an item's Blueprint Path on the
+https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+finding the content on a
+https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
+https://www.gildor.org/en/projects/umodel[UModel].
+| Resources
+
+|GiveResourceSinkCoupons <Amount>
+| Adds AWESOME Sink coupons to the pool that can be printed at an AWESOME Sink.
+Does not affect how many points it takes to earn the next coupon.
+| Resources
+
+|Slomo <Multiplier>
+| Speeds up or slows down the entire game by the given multiplier.
+This includes player movement, particles, animations, etc.
+It has an effect on building operation rate,
+but not as pronounced as one may expect.
+For example, `10.0` makes Copper Sheets craft in
+around 3.5 seconds instead of the 6 seconds they take at `1.0`.
+| World/Time
+
+|SetTimeOfDay <Hour> <Minute>
+| Sets the world time of day in 24 hour time format.
+| World/Time
+
+|SetTimeSpeedMultiplier <Multiplier>
+| Sets a world time of day speed multiplier.
+Set it to 0 to freeze the day/night cycle altogether.
+| (Unspecified)
+
+|EnableBuildableTick <true/false>
+| Enables/disables AFGBuildable ticking,
+which controls if buildings are animated.
+They will still produce items at their regular rate
+even when this is set to `false`.
+| Factory:Uncommon
+
+|PlayerFly <true/false>
+| Enables/disables the vanilla flying cheat.
+| Player/Camera
+
+|PlayerNoClipModeOnFly <true/false>
+| Enables/disables noclip when in cheat fly mode.
+| Player/Camera
+
+|FlipVehicle
+| Flips the vehicle you are currently in by 180 degrees.
+If you're upright already, it will flip you upside down.
+| (Unspecified)
+
+|ResetAllFactoryLegsToZero <true/false>
+| Makes the support legs on all buildings reset to their default height.
+The boolean argument controls if it should "repopulateEmptyLegs,"
+presumably if they were deleted somehow.
+| (Unspecified)
+
+|RebuildFactoryLegsOneTileAroundPlayer
+| Recalculates the support legs on buildings near the player.
+If the gap is too large, they will just reset to zero.
+| (Unspecified)
+
+|FillAllFreightCars <percent full, float>
+| Fills all freight cars in the map with a nameless,
+descriptionless placeholder item.
+The argument controls how close to full they are, with 1.0 being 100%
+Freight cars that already had items in them when this command was run
+will have the items emptied instead of set to the fill percentage.
+| (Unspecified)
+
+|EmptyAllFreightCars
+| Empties all freight cars in the map of their contents.
+| (Unspecified)
+
+|HideAllBuildings <true/false>
+| Hides or shows all factory buildings.
+They still have collision.
+| Display
+
+|ShowFactoryOnly <true/false>
+| Hides or shows all terrain, including the skybox and its light.
+Disables your flashlight when enabled.
+It still has collision.
+| Display
+
+|ForceSpawnCreatures
+| Forces active spawners to spawn creatures
+even if the creature isn't set to spawn yet
+(because of day/night restrictions etc.)
+| World/Time
+
+// Crashes/bad
+
+// `OpenModMap` takes you to the menu from a save and does nothing once there?
+
 |===
-

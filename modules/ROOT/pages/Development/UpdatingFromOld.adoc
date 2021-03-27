@@ -19,9 +19,10 @@ The main reason we have not announced to the general public that mods are ready 
 
 If you load a save in this update, even one made in Update 4, modded content will NOT load in at ALL.
 
-You will need to write your own SML Chat Commands to give yourself modded items for testing,
+You will need to either use
+xref:SMLChatCommands.adoc#_console_cheat_commands[SML Console Cheat Commands]
+to give yourself modded items for testing,
 or craft them in-game through normal methods.
-We suggest making 'testing recipes' that you will not ship with the mod to ease this process.
 
 We are already in contact with CSS about this, and they will be pushing an update in the next few days to fix this.
 
