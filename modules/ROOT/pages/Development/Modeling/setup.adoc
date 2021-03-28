@@ -11,14 +11,15 @@ This is focused on setting up export for Blender 2.8 or later, but it may assist
 This portion of the documentation was written back when Satisfactory was on UE 4.22.
 Now that Satisfactory has updated to UE 4.25, we are able to make use of the new
 Unreal Blender addons, which require UE 4.23 or newer to function.
-You can find out more about them https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons[here]
+You can find out more about them
+https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons[here]
 if you're interested, but know that this section of the docs is not yet updated with them in mind.
 ====
 
 . Open up Blender
 . Open up your `Properties Panel > Scene Properties > Units`
-.. Ensure the `Unit System` is set to `Metric`
-.. Ensure the `Unit Scale` is set to `0.01` (1/100)
+.. Ensure the `Unit System` is set to `Metric` (Unreal uses centimeters as its unit)
+.. Ensure the `Unit Scale` is set to `0.01` (1/100) so that animation data saves correctly.
 .. If you had to adjust these you will need to scale your mesh and apply it. Your animations will also have to be redone.
 .. You may also have issues viewing your model, press `n` in a 3D viewport and adjust your `View > View > Clip Start/End` values.
 . Select the objects you wish to export
