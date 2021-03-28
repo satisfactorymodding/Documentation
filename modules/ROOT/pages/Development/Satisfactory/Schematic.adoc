@@ -77,33 +77,26 @@ M Schematic Category::
   Defines the category in which this schematic gets grouped into.
 * {blank}
 +
-M Sub Category::
-  Defines in which sub groups the schematic should get categorized into.
+M Sub Categories::
+  Array, defines in which sub groups the schematic should get categorized into.
 * {blank}
 +
 M Tech Tier::
   Determines in which Tier the schematic will appear under in the HUB.
+  0 is during the 'tutorial' and displays the Upgrade HUB button instead of the launch button.
 * {blank}
 +
 M Time to Complete::
-  This defines the time how long the space ship will be away after purchase of the schematic, or how long it takes the M.A.M to process the research node.
+  This defines the time (in seconds)
+  the space ship will be away after purchase of the schematic,
+  or how long it takes the M.A.M to process the research node.
 * {blank}
 M Schematic Icon::
   The icon displayed on the schematic in the HUB or M.A.M.
 * {blank}
 +
-M Depends on Schematic::
-  Setting this option will require the selected schematic to be
-  activated first before this one can be activated. This is used in the M.A.M to create prerequisites.
-* {blank}
-+
-M Additional Schematic Dependencies::
-  Similar to `M Depends on Schematic`.
-  Additional schematics to be dependent on can be listed here.
-* {blank}
-+
 M Cost::
-  A list of item amounts which are required to purchase the schematic.
+  An array of item amounts which are required to purchase the schematic.
 * {blank}
 +
 M Unlocks::
@@ -111,8 +104,23 @@ M Unlocks::
   It is a array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s.
 * {blank}
 +
+M Schematic Dependencies::
+  This array allows for a schematic's to be hidden until either other
+  schematics are purchased (`BPSchematicPurchasedDependency`)
+  or a specific item is picked up (`BPItemPickedUpDependency`).
+
+  All items of the array must be satisfied for the schematic to be visible.
+  
+  Both allow you to select multiple schematics/items.
+  If you enable Require All, all of the Schematics/Items
+  in that group must be purchased/found for the schematic to be visible.
+  If Require All is not checked, only one is required.
+  Note that items that you use as a Item Pickup dependency must have the `HasPickedUpItem`
+  flag set on their item descriptors for their pickup to be tracked and this requirement to work.
+* {blank}
++
 M Include In Builds::
   This defines in which builds the schematic should be able to get loaded/cooked.
   Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing
   from being shipped with the main game.
-  Its recommended to set this to `Shipping`, otherwise players probably won't be able to use your mod.
+  Its recommended to set this to `PublicBuilds`, otherwise players probably won't be able to use your mod.
