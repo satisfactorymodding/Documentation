@@ -211,7 +211,7 @@ Development
 
 * Creating Placeholder Assets and xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files] (same page)
 * xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
-* xref:Development/MultiplayerTesting.adoc[Testing in Multiplayer]
+* xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
 Community Resources
 
