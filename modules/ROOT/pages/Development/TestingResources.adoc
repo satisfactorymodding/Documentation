@@ -66,10 +66,9 @@ as opposed to the main menu, cutting down on load time and clicks when testing y
 To do this, you'll need to either create a file with some configuration settings
 or add them to the default game configuration.
 
-== Option 1 - Custom Configuration with Startup Script
-
-Create a configuration file in a convenient location
-that contains the following info:
+To get started, create a `.ini` file in a convenient location
+(such as your Satisfactory game install directory)
+that contains the following:
 
 ```
 [/Script/EngineSettings.GameMapsSettings]
@@ -82,10 +81,46 @@ In place of `LastLight_autosave_0` you should put the name of your desired save 
 Note that loading last autosaves of a map works as well if you format it correctly.
 The example will load the latest autosave of a save called `LastLight`.
 
-To launch the game with these settings,
-you will need to launch the game from command line
+There are a few other flags you can use as well:
+
++++ <details><summary> +++
+FG Map Options Switches from Archengius:
++++ </summary><div> +++
+....
+Switches found in AFGGameMode::InitGame:
+
+?skipOnboarding (skip landing animation)
+?allowPossessAny (allow possessing any pawn on the map, even if player ids don't match)
+?loadgame=<SaveGame Name Here Without Path and extension>
+?startloc<Start Location Tag Name> (see AFGGameMode::ChoosePlayerStart_Implementation)
+?sessionName=<Session Name> (sets mSaveSessionName, so apparently it determines autosave file name and probably name visible to other players?)
+?DayLength=<Day Length In Minutes>
+?NightLength=<Night Length In Minutes>
+
+General notes:
+  Regarding Start Location Tag Name:
+      - TRADING_POST is the hub APlayerStart actor tag
+      - Any APlayerStart actor with matching PlayerStartTag is selected
+  Regarding Session Name:
+      - Apparently there is a system of "bundled saves" that I know nothing about. Further investigation is required.
+
+Switches found in AFGGameSession:
+
+?Visibility=SV_Private/SV_Public (Session visibility)
+?adminpassword=<Admin Password used in console command AdminLogin to gain host privileges>
+
+There is also ?bUseIpSockets linked with offline sessions
+Apparently it disables EOS sockets and makes the game fall back to normal IPv4 sockets
+....
++++ </div></details> +++
+
+You can launch the game with these settings in one of two ways.
+
+== Option 1 - Custom Configuration with Startup Script
+
+You can launch the game from command line
 with the path to your configuration file
-in the `EngineINI` command flag.
+specified in the `EngineINI` command flag.
 
 For example, if your file was called `LoadMapEngineConfiguration.ini`,
 your launch command could look like this:
@@ -99,10 +134,9 @@ so that it points to where you have the game installed.
 
 == Option 2 - Add to Default Game Configuration
 
+Instead of creating a new file for your configuration,
+you can edit your default game configuration, found at
+`%APPDATA%/Local/FactoryGame/Saved/WindowsNoEditor/Engine.ini`.
+
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
-
-You need to use the same configuration settings as Option 1,
-but instead of creating a new file for them,
-you need to edit your default game configuration, found at
-`%APPDATA%/Local/FactoryGame/Saved/WindowsNoEditor/Engine.ini`.
