@@ -1,23 +1,16 @@
-= Init Game World
+= Plugin Setup and Init Game World
 
-Our mod must have a starting point from which everything else gets invoked.
-If we don't have one, then our mod's content will never be added to the game during loading!
-In our case this is the `InitGameWorld` Blueprint.
+To get started with our mod, we'll need to make a new Unreal plugin.
+Every mod you make should be a separate Unreal plugin.
 
-[NOTE]
-====
-If you're interested in how the content loading system works,
-you can read more on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
-====
-
-== Initial Mod Setup
+== Unreal Plugin Creation
 
 Since SML3.0, mods are now Unreal plugins,
 and their loading is handled by Unreal itself.
 
 First off, we'll need to create the Unreal Plugin for our mod.
 You can do this by clicking
-`Edit` -> `Plugins` -> `New Plugin` -> `Blank Plugin` in the Unreal Editor.
+`Edit` -> `Plugins` -> `New Plugin` -> `Content Only Plugin` in the Unreal Editor.
 
 The name of your plugin _must_ be your mod's
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
@@ -25,22 +18,21 @@ For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
 
+[WARNING]
+====
+Be sure to read the notes on
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
+if you have not yet done so.
+It is critical that your mod reference follows these format rules.
+====
+
 You can fill out the Descriptor Data, or leave it blank, as we can edit that later.
 
 Leave "Show Content Directory" checked and press `Create Plugin`.
 
-This should have created a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
-
-[TIP]
-====
-If you consider to Open Source your mod. Or simply want to use a version control system like Git,
-this folder would be ideal for you to create the repository.
-
-That would mean, if you work on multiple mods,
-you only need one full project setup and for each Mod you have your own plugin folder and repository.
-====
-
-Your new plugin should now appear at the bottom of the plugins list in the Project > Other category. You might have to scroll a bit to find it.
+Your new plugin should now appear at the bottom of the plugins list
+in the Project > Other category. Hooray!
+You might have to scroll a bit to find it.
 
 Next, click `Edit...` to edit more of your mod's plugin settings.
 
@@ -56,28 +48,49 @@ These fields will be explained further when you prepare to upload your mod for o
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
 
-== Create the Class
-
-It's time to create the InitGameWorld blueprint for our mod!
+Creating your plugin will create a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
 
 You might need to click on `View Options` -> `Show Plugins Content`
-in a Content Browser to view the contents of your mod.
+in a Content Browser to view the contents of your mod in the Unreal Editor.
 image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
 
 You can find your mod in the `<Your Mod Reference> Content`
 subfolder of the Content Browser root folder.
 
-This folder is where you will be putting most of the assets (models, blueprints, textures, etc.) that your mod uses.
+This folder is where you will be putting most of the assets
+(models, blueprints, textures, etc.) that your mod uses.
 
-[WARNING]
+[TIP]
 ====
-Be sure to read the notes on
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
-if you have not yet done so.
-It is critical that your mod reference follows these format rules.
+If you want to Open Source your mod,
+or simply want to use a version control system like Git,
+this folder is the ideal place for you to create the repository.
+
+Using version control is essential for collaborating on a mod with others,
+it helps write patch notes when you release an update,
+and you can use it to go back to previous versions of your files if something breaks.
+
+If you work on multiple mods,
+you only need one full project setup
+(which can be the cloned SatisfactoryModLoader repository)
+and each mod that you make will be a plugin in this project setup.
+The plugin's folder would be the version control repository for that mod.
 ====
 
-Now we need to create our `InitGameWorld` Blueprint so that SML can load our mod's content into the game.
+== Create Game World Module
+
+Now that we've created our plugin,
+we must create a starting point from which everything else gets invoked.
+If we don't have one, then our mod's content will never be added to the game during loading!
+In our case this is the `InitGameWorld` Blueprint, which is a Game World Module.
+
+[NOTE]
+====
+If you're interested learning about the other types of Modules
+and how the content loading system works,
+you can read more on the
+xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+====
 
 Within your mod's content folder,
 right click and select `Blueprint Class` under `Create Basic Asset`.
@@ -98,5 +111,6 @@ we must be sure to mark that it is the Root Module.
 
 image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
 
-If you'd like to learn more about root modules, you can read about it on the xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
+If you'd like to learn more about root modules, you can read about it on the
+xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 Otherwise, let's get on to creating our first modded content - a custom recipe!
