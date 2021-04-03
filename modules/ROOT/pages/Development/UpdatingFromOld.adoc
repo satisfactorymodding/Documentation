@@ -67,7 +67,7 @@ To update your mod, you will have to do, at minimum, the following steps:
 * Perform the project setup steps described in the Getting Started guide,
 which includes getting the new SML version and new starter project,
 as well as integrating a new Wwise version.
-* Create a new 'Blank' Unreal Plugin through the default Editor UI,
+* Create a new 'Content Only' Unreal Plugin through the default Editor UI,
 which has some extra steps if you have a C++ mod.
 * Change over your old InitMod to the new Mod Modules system (read more below)
 * Fill out the fields in your mod's Plugin Manifest
