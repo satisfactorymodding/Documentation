@@ -158,9 +158,10 @@ if you'd like the game to be launched after you pack your mod files,
 or leave it on 'Do not launch' if desired.
 Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
 
-Right now you should see two items in a searchable list -
-`Example Mod (ExampleMod)` and `Satisfactory Mod Loader (SML)`.
-This is the list of all mods present in your project.
+Right now you should see three items in a searchable list -
+`Example Mod (ExampleMod)`, `Satisfactory Mod Loader (SML)`,
+and `SML Editor (SMLEditor)`.
+This is the list of all mods (and modding editor plugins) present in your project.
 They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
