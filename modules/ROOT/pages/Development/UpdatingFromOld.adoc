@@ -76,16 +76,36 @@ which has some extra steps if you have a C++ mod.
 You will need to download and install a new copy of the editor build for the new engine from
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
 
-If you would like to keep the old SML 2.2.1 version of the editor
-and have both copies installed on your computer (helpful when updating your mod)
-you can rename the folder `C:\Program Files\Unreal Engine - CSS` to
-`C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
-To launch the old editor, you can run
-`C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
-
 We *strongly* suggest that you keep the old SML 2.2.1 editor installed
 until you are done porting your mods so that you can reference settings and BP code
 that have been removed in SML 3.0, ex. InitMod.
+
+If you would like to keep the old SML 2.2.1 version of the editor
+and have both copies installed on your computer (helpful when updating your mod)
+you should do the following:
+
+1. Navigate to your install folder
+(probably `C:\Program Files\Unreal Engine - CSS`)
+2. Run SetupScripts\Unregister.bat
+(might need to do this as admin)
+3. Rename the install folder to
+`C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
+4. Run SetupScripts\Register.bat from the new location
+(might need to do this as admin)
+5. Now, to launch the old editor, you can run
+`C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
+6. Install the new editor build from the link above.
+7. Optionally, edit your Start Menu shortcuts
+(probably in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs`)
+so that you have one for the old editor and one for the new editor
+
+[NOTE]
+====
+If you have previously moved the editor folder without doing the `Unregister.bat` step,
+you may experience issues with the editor thinking Unreal projects are an incorrect version.
+To resolve this, perform the Unregister step for the old editor version.
+This should not be required for the new editor version.
+====
 
 == Project Setup
 
