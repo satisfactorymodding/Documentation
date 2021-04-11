@@ -223,7 +223,8 @@ Development
 
 * xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 * xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
-* Keybind System and xref:Development/ModLoader/Configuration.adoc[Configuration] (same page)
+* xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Key and Axis Binding System]
+and xref:Development/ModLoader/Configuration.adoc[Configuration]
 * xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 * xref:Development/ModLoader/Registry.adoc[Registry]
 

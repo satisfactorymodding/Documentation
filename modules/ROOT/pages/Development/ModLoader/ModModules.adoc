@@ -100,10 +100,9 @@ It will persist through world reloads and can be accessed without world context.
 It also provides some standard handling of things you might need to register at this point like:
 
 - xref:Development/ModLoader/Configuration.adoc[Custom Mod Configurations]
-- Custom Keybindings
+- xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Custom Keybindings and Axis Bindings]
 - xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 - Global Item Tooltip Providers
-- Custom Axis Bindings
 
 You can register them by simply adding your classes to the given variables in the constructor of your class,
 or the defaults of your actor if you're using Blueprint.

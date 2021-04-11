@@ -1,8 +1,17 @@
 = Configuration
 
+[NOTE]
+====
+If you are looking to implement configurable keybindings,
+check out the Mod Key Bind Registry section on the 
+xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry page].
+====
+
 SML adds a neat configuration system that allows you to easily define
-a config structure based on default values which can then be changed
-by the user via editing json files in the file system.
+a config structure based on default values.
+These defaults can then be changed by the user,
+either from the in-game Mods menu,
+or via editing json files in their file system.
 
 These configuration files are then loaded automatically on game boot
 and override the default values with the values specified by the user.
@@ -10,11 +19,68 @@ and override the default values with the values specified by the user.
 The mod can then access this configuration data to
 change its behavior depending on this static user input.
 
+== Using the Mod Configuration system
+
+1. Create a new blueprint that extends ModConfiguration.
+Call it "<your mod reference>_Config" or similar.
+2. Set the 'Mod Reference' to your mod reference
+and configure the display name and description as desired.
+3. Set the Root Section to `BP Config Property Section`
+4. Your config items go in the Root Section's "Section Properties"
+Left is the property name, right is the type
+If you want to have sub-categories in your config,
+use property type `BP Config Property Section` again.
+You can define custom widgets for your config properties if desired,
+otherwise SML will automatically select one for you based on the property type.
+5. Right click on your configuration asset from the content browser
+
+* If you want your configuration accessible in {cpp},
+choose "Generate {cpp} Configuration Header,"
+then save the header in your plugin's source folders.
+
+* Next, select "Regenerate Configuration Structs,"
+and SML will generate your mod's config struct for you. Very convenient!
+Note that you will need to do this every time you make changes to your config.
+
+6. You need to create a Game Instance Module for your mod,
+if you haven't already made one yet,
+and specify your config under Mod Configurations there.
+Make sure to mark it as the root module if you've just made it.
+
+You can use the fancy SML Menu Preview Widget to view your mod config as it would appear in the game!
+In a content editor, go to `SMLEditor Content/Menu Preview` and right click on SML_MenuPreviewWidget,
+then choose Run Editor Utility Widget. You should probably make the window fullscreen.
+
+To look at your mod's config in the previewer,
+select your ModConfiguration in the content browser,
+then press the Set Selected Mod Config button inside the preview window.
+Scroll down to see the config UI.
+
+Check out the ExampleMod's configs for a great demo of all the valid fields and how they appear in the editor.
+Be sure to check out the custom widget (with custom button) for something cool.
+
+For a demonstration of how to read configuration values with Blueprint code,
+check out how ExampleMod does it in `ExampleModGameInstanceModule`.
+
+
+
+== Interacting with the Config System in {cpp}
+
+[WARNING]
+====
+This section was written while the SML Configuration system was still being developed.
+As such, these partially out of date, and are still being worked on.
+If you would like to use this system, see
+https://discord.com/channels/555424930502541343/555515791592652823/826653787514470450[this message chain]
+and ask on the discord for help.
+====
+
 [TIP]
 ====
 If you are looking to implement configs with Blueprints,
 you should read about the helper functions provided by the 
-xref:Development/ModLoader/BlueprintInterface.adoc#_config[SML Blueprint Interface].
+xref:Development/ModLoader/BlueprintInterface.adoc#_config[SML Blueprint Interface]
+and check out the ExampleMod.
 ====
 
 == Configuration Manager
