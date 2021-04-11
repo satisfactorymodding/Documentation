@@ -109,13 +109,6 @@ which simplifies the process of updating your project later.
 
 == Satisfactory Mod Loader
 
-[WARNING]
-====
-SML 3.0 Note: Follow the
-xref:ManualInstallDirections.adoc[manual install directions]
-once you have a mod plugin to test.
-====
-
 xref:index.adoc#_satisfactory_mod_manager_title_refaka_smm[Satisfactory Mod Manager]
 offers a convenient developer mode that
 automatically installs the correct version of SML and helps manage mod files for you.
@@ -123,8 +116,11 @@ To enable it, change your selected profile to `development`.
 If you're using Satisfactory Mod Manager,
 you can skip the below steps and move on to the next page of the tutorial. 
 
-If you're not using the launcher, you'll need to follow the xref:ManualInstallDirections.adoc[manual install directions] to get the relevant files set up.
+If you're not using the mod manager, you'll need to follow the
+xref:ManualInstallDirections.adoc[manual install directions]
+to get the relevant files set up.
 
-Because you probably don't want to create a proper .zip file for you mod when you test it, then you should just simply activate the xref:ManualInstallDirections.adoc[development mode] allowing for usage of raw mods.
+Alternatively, once your modding environment is set up,
+you can use Alpakit to automatically build and install SML.
 
 Now that all the dependencies are installed, you can move onto xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].

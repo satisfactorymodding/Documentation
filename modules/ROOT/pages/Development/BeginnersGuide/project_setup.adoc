@@ -168,6 +168,13 @@ in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
 
+Note that if you have not yet installed SML for your game files,
+you can use Alpakit to build SML for you and put it in the right folder.
+This could cause problems if your copy of the starter project
+is not up to date with the latest SML changes,
+in which case you should either update your starter project
+or use the Mod Manager's `development` profile to install it fot you.
+
 == Ready to Rumble
 
 That should be it. Your mod project should now be set up and ready to go!
