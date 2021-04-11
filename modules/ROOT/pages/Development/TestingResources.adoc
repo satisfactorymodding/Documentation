@@ -116,7 +116,7 @@ Apparently it disables EOS sockets and makes the game fall back to normal IPv4 s
 
 You can launch the game with these settings in one of two ways.
 
-== Option 1 - Custom Configuration with Startup Script
+=== Option 1 - Custom Configuration with Startup Script
 
 You can launch the game from command line
 with the path to your configuration file
@@ -132,7 +132,7 @@ your launch command could look like this:
 Note that you will have to modify this example command
 so that it points to where you have the game installed.
 
-== Option 2 - Add to Default Game Configuration
+=== Option 2 - Add to Default Game Configuration
 
 Instead of creating a new file for your configuration,
 you can edit your default game configuration, found at
