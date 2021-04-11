@@ -105,9 +105,13 @@ Each plugin should be listed as an object with the following properties:
 !SemVersion
 ! Version number for the mod dependency. Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
-f.e. `>=1.2.3`. will allow all semversions higher than (and including) `1.2.3`.
 
-The Prefix `^` allows any number in the 'patch' field (aka third number in a semversion, the `3` in `1.2.3`.)
+The prefix `^` allows any number in the 'patch' field
+(aka third number in a semversion, the `3` in `1.2.3`.)
+
+The prefix `>=` will allow all semversions higher (and including) than the one listed.
+Unless you have a very specific reason for doing so,
+you should probably use the `^` prefix instead.
 
 !bIsOptional
 ! This boolean property can be set to true if the dependency is not required.
