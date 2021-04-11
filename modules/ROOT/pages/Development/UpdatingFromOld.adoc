@@ -53,10 +53,9 @@ other Unreal games, and how the eventual officially supported mods will work.
 This means that instead of mod content being mounted in `Content/<mod reference>`
 it will now be in `Plugins/<mod reference>/Content`.
 
-SML3.0 has a system to automatically redirect old modded content to their new locations,
-so this Should™ mean that, assuming you put assets in the same places within your
-plugin as they were in your SML2.0 content folder, SML2.0 saves will eventually work in SML3.0
-(see disclaimer at the top of the page about current save-related issues).
+SML3.0 has a system to automatically redirect old modded content to their new locations.
+This means that, assuming you put assets in the same places within your
+plugin as they were in your SML2.0 content folder, modded content in SML2.0 saves will work in SML3.0.
 
 To update your mod, you will have to do, at minimum, the following steps:
 
