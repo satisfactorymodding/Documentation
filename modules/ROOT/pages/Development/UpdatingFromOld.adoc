@@ -9,24 +9,20 @@ Ficsit.app will not recognize your mod if you try to upload it now!
 You should restrain from distributing your mods publicly now, until the rest of the system is ready.
 
 We will make a public announcement when that happens.
+
+In the mean time, you can **upload your mods the the staging version of SMR**
+as a test, which can be done https://ficsit.dev/[here].
+
+Check the Discord for a special build of SMM that connects to staging SMR
+instead of the live version.
 ====
 
-[WARNING]
+[NOTE]
 ====
-⚠⚠ **MODDED CONTENT CAN'T BE LOADED FROM SAVE FILES** ⚠⚠
+**Save Issue Resolved**
 
-The main reason we have not announced to the general public that mods are ready yet is because content from mods can't be loaded from save files at all!
-
-If you load a save in this update, even one made in Update 4, modded content will NOT load in at ALL.
-
-You will need to either use
-xref:SMLChatCommands.adoc#_console_cheat_commands[SML Console Cheat Commands]
-to give yourself modded items for testing,
-or craft them in-game through normal methods.
-
-We are already in contact with CSS about this, and they will be pushing an update in the next few days to fix this.
-
-Keep this in mind while updating your mods to SML3. Issues with saves are likely not your fault.
+There was previously an issue that prevented any modded saves from being loaded.
+This has since been resolved. Happy modding!
 ====
 
 A lot of things have changed both behind the scenes and on the
@@ -44,7 +40,10 @@ as Unreal Engine documentation covers the engine differences.
 To update your SML 2.0 mod to SML 3.0,
 there are a number things you'll have to change in your existing mod files.
 
-We're still working on updating the docs, so make sure to check here regularly to avoid missing something! Keep your eyes on `#modding-info-feed` on the Discord for pushes to the docs, and let us know if you have trouble with something.
+We're still working on updating the docs,
+so make sure to check here regularly to avoid missing something!
+Keep your eyes on `#modding-info-feed` on the Discord for pushes to the docs,
+and let us know if you have trouble with something.
 
 == Steps to Update
 
