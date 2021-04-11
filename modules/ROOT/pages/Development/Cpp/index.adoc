@@ -4,6 +4,8 @@
 ====
 This page has not yet been updated for SML3.0 concepts,
 so it may be slightly out of date.
+Check the xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
+for details about what has changed between the versions.
 ====
 
 {cpp} modding is the holy grail of Satisfactory modding. As opposed to the visual programming style of the Blueprints system,

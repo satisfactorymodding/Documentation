@@ -4,6 +4,8 @@
 ====
 This page has not yet been updated for SML3.0 concepts,
 so it may be slightly out of date.
+Check the xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
+for details about what has changed between the versions.
 ====
 
 In order to get started with C++ modding, you should first begin by performing the setup the project for a Blueprint-based modding project, as shown in the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
