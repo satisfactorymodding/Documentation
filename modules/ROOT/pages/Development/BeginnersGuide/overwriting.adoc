@@ -1,10 +1,15 @@
 = Overwriting Base Game and Other Mod Content
 
+[WARNING]
+====
+As of SML3.0, this feature is still being developed.
+**Trying to do this (at the time of writing) will lock up the game.**
+====
 
 [WARNING]
 ====
 This page is a work in progess.
-Please ask about this on the discord if you'd like to do this.
+Please ask on the Discord if you'd like to do this.
 ====
 
 It is possible to overwrite content from the base game or from other mods.
