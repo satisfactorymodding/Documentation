@@ -43,6 +43,10 @@ In this case, you can create the placeholder yourself by finding the correct pat
 to the asset with UModel, then creating an asset of the same type
 with the same name in that location. This process is described below.
 
+If you are missing an `FGItemDescriptor` placeholder,
+you can also create it using the same process.
+You'll be placeholdering the descriptor instead of a mesh or texture, though.
+
 == Example Static Mesh and Icon Reuse
 
 As an example, let's say you wanted to reuse the static mesh and icon from the

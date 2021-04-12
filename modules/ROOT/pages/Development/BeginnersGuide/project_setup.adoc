@@ -158,20 +158,24 @@ if you'd like the game to be launched after you pack your mod files,
 or leave it on 'Do not launch' if desired.
 Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
 
-Right now you should see two items in a searchable list -
-`Example Mod (ExampleMod)` and `Satisfactory Mod Loader (SML)`.
-This is the list of all mods present in your project.
+Right now you should see three items in a searchable list -
+`Example Mod (ExampleMod)`, `Satisfactory Mod Loader (SML)`,
+and `SML Editor (SMLEditor)`.
+This is the list of all mods (and modding editor plugins) present in your project.
 They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
 
-== Enable SML Developer Mode
+Note that if you have not yet installed SML for your game files,
+you can use Alpakit to build SML for you and put it in the right folder.
+This could cause problems if your copy of the starter project
+is not up to date with the latest SML changes,
+in which case you should either update your starter project
+or use the Mod Manager's `development` profile to install it fot you.
 
-You'll need to change one of the SML config settings to make SML load with your mod while you're developing it. 
-Go to your Satisfactory install folder and edit `SML.cfg` within the `configs` folder. Set `developmentMode` to true, then save and close the file.
-If you don't see this file yet, try running the game with SML installed first.
+== Ready to Rumble
 
 That should be it. Your mod project should now be set up and ready to go!
 In the next sections, we'll run through a couple common modding examples
@@ -180,4 +184,5 @@ to demonstrate how to get started making a mod.
 The Starter Project also includes and ExampleMod that you can look at,
 which includes the examples described in this documentation,
 as well as a few things that don't have pages yet.
+It also has some examples of {cpp} mod functionality.
 Consider looking around in there after completing some of these tutorials.

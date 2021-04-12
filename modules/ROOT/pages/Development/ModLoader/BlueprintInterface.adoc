@@ -11,6 +11,9 @@ that exposes some logging features to blueprints.
 This allows you to log things in different verbosity states,
 which can be controlled from the SML config file.
 
+The output will be displayed in the SML console (if enabled in your config)
+and in FactoryGame.log in your game install folder.
+
 If you want to log something from C++, we suggest you use
 Unreal's default logging systems instead.
 It would be best to create your own log category for your mod.
@@ -37,6 +40,15 @@ Logs the given string in the "fatal-level".
 Causes the game to crash.
 
 == Config
+
+[WARNING]
+====
+This section was written while the SML Configuration system was still being developed.
+As such, these partially out of date, and are still being worked on.
+If you would like to use this system, you should **read
+xref:Development/ModLoader/Configuration.adoc[this page] first,**
+and reach out on the Discord if you have questions.
+====
 
 The Blueprint Interface also provides the ability to save and load configurations via Blueprint.
 

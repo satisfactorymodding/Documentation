@@ -36,6 +36,13 @@ Users of your mod can edit these keybinds from the in-game keybindings screen in
 Your keybinds will show up with the given display name grouped in a category with your mod's name,
 and their set values will persist between sessions of the game.
 
+In order to get the keybinds to show up correctly inside the Blueprint editor,
+you may still have to add them to the Bindings section described above.
+
+Once the keybinds are set up, they should show up when you type their name into the new node dialog.
+For example, if you named a keybind `DocMod.DebugPrint` then you can search
+`DocMod.DebugPrint` and the node for the DocMod.DebugPrint Action Event will show up.
+
 === `RegisterModKeyBind(String ModReference, InputActionKeyMapping KeyMapping, Text DisplayName)`
 Register a given key mapping and associates it with mod reference provided.
 The action name (part of the `InputActionKeyMapping`) should be unique and start with a "ModReference."

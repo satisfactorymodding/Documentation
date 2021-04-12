@@ -9,23 +9,20 @@ Ficsit.app will not recognize your mod if you try to upload it now!
 You should restrain from distributing your mods publicly now, until the rest of the system is ready.
 
 We will make a public announcement when that happens.
+
+In the mean time, you can **upload your mods the the staging version of SMR**
+as a test, which can be done https://ficsit.dev/[here].
+
+Check the Discord for a special build of SMM that connects to staging SMR
+instead of the live version.
 ====
 
-[WARNING]
+[NOTE]
 ====
-⚠⚠ **MODDED CONTENT CAN'T BE LOADED FROM SAVE FILES** ⚠⚠
+**Save Issue Resolved**
 
-The main reason we have not announced to the general public that mods are ready yet is because content from mods can't be loaded from save files at all!
-
-If you load a save in this update, even one made in Update 4, modded content will NOT load in at ALL.
-
-You will need to write your own SML Chat Commands to give yourself modded items for testing,
-or craft them in-game through normal methods.
-We suggest making 'testing recipes' that you will not ship with the mod to ease this process.
-
-We are already in contact with CSS about this, and they will be pushing an update in the next few days to fix this.
-
-Keep this in mind while updating your mods to SML3. Issues with saves are likely not your fault.
+There was previously an issue that prevented any modded saves from being loaded.
+This has since been resolved. Happy modding!
 ====
 
 A lot of things have changed both behind the scenes and on the
@@ -43,7 +40,10 @@ as Unreal Engine documentation covers the engine differences.
 To update your SML 2.0 mod to SML 3.0,
 there are a number things you'll have to change in your existing mod files.
 
-We're still working on updating the docs, so make sure to check here regularly to avoid missing something! Keep your eyes on `#modding-info-feed` on the Discord for pushes to the docs, and let us know if you have trouble with something.
+We're still working on updating the docs,
+so make sure to check here regularly to avoid missing something!
+Keep your eyes on `#modding-info-feed` on the Discord for pushes to the docs,
+and let us know if you have trouble with something.
 
 == Steps to Update
 
@@ -53,10 +53,9 @@ other Unreal games, and how the eventual officially supported mods will work.
 This means that instead of mod content being mounted in `Content/<mod reference>`
 it will now be in `Plugins/<mod reference>/Content`.
 
-SML3.0 has a system to automatically redirect old modded content to their new locations,
-so this Should™ mean that, assuming you put assets in the same places within your
-plugin as they were in your SML2.0 content folder, SML2.0 saves will eventually work in SML3.0
-(see disclaimer at the top of the page about current save-related issues).
+SML3.0 has a system to automatically redirect old modded content to their new locations.
+This means that, assuming you put assets in the same places within your
+plugin as they were in your SML2.0 content folder, modded content in SML2.0 saves will work in SML3.0.
 
 To update your mod, you will have to do, at minimum, the following steps:
 
@@ -66,7 +65,7 @@ To update your mod, you will have to do, at minimum, the following steps:
 * Perform the project setup steps described in the Getting Started guide,
 which includes getting the new SML version and new starter project,
 as well as integrating a new Wwise version.
-* Create a new 'Blank' Unreal Plugin through the default Editor UI,
+* Create a new 'Content Only' Unreal Plugin through the default Editor UI,
 which has some extra steps if you have a C++ mod.
 * Change over your old InitMod to the new Mod Modules system (read more below)
 * Fill out the fields in your mod's Plugin Manifest
@@ -77,27 +76,98 @@ which has some extra steps if you have a C++ mod.
 You will need to download and install a new copy of the editor build for the new engine from
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
 
-If you would like to keep the old SML 2.2.1 version of the editor
-and have both copies installed on your computer (helpful when updating your mod)
-you can rename the folder `C:\Program Files\Unreal Engine - CSS` to
-`C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
-To launch the old editor, you can run
-`C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
-
 We *strongly* suggest that you keep the old SML 2.2.1 editor installed
 until you are done porting your mods so that you can reference settings and BP code
 that have been removed in SML 3.0, ex. InitMod.
 
+If you would like to keep the old SML 2.2.1 version of the editor
+and have both copies installed on your computer (helpful when updating your mod)
+you should do the following:
+
+1. Navigate to your install folder
+(probably `C:\Program Files\Unreal Engine - CSS`)
+2. Run SetupScripts\Unregister.bat
+(might need to do this as admin)
+3. Rename the install folder to
+`C:\Program Files\Unreal Engine - CSS_2-2-1\` or similar.
+4. Run SetupScripts\Register.bat from the new location
+(might need to do this as admin)
+5. Now, to launch the old editor, you can run
+`C:\Program Files\Unreal Engine - CSS_2-2-1\Engine\Binaries\Win64\UE4Editor.exe`.
+6. Install the new editor build from the link above.
+7. Optionally, edit your Start Menu shortcuts
+(probably in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs`)
+so that you have one for the old editor and one for the new editor
+
+[NOTE]
+====
+If you have previously moved the editor folder without doing the `Unregister.bat` step,
+you may experience issues with the editor thinking Unreal projects are an incorrect version.
+To resolve this, perform the Unregister step for the old editor version.
+This should not be required for the new editor version.
+====
+
 == Project Setup
+
+=== Set Up New Project
 
 Now that you have the new editor version, you can head over to the
 xref:Development/BeginnersGuide/index.adoc[Getting Started guide]
 to set up the project for the new engine version.
 
-You can stop following the guide once you reach 'Recipe vs Schematic.'
-
 Be aware that we **will** be releasing updated versions of the starter project,
-so you may need to perform the setup process again in the future.
+so you may need to perform the setup process again in the future,
+or will need to bring in updated files to your starter project.
+If you are reading this far, you are likely an experienced modder,
+and as such we suggest you use Git to clone the starter project repo
+as opposed to downloading a zip of it.
+This vastly simplifies the process of updating the project,
+but could cause you to encounter merge conflicts down the line.
+
+You can stop following the Getting Started Guide once you reach 'Recipe vs Schematic.'
+
+Then, return here for an explanation of how to safely move your content over
+from SML2 without losing it.
+
+=== Porting Your Old Assets
+
+Here is a summary of the steps you can use to port your old SML2 content to the new project
+without having to recreate every asset.
+Order is very important here.
+
+1. Optionally, clone the SML3 starter project instead of downloading zip.
+The reasons for doing this are described above
+2. Create a new content folder in the SML3 starter project
+that is in the same place as stuff was in your SML2 starter project.
+ex /Content/ArmorModules
+3. If you have {cpp} content,
+move it over as well and make sure it compiles first before continuing.
+4. In your system file explorer,
+*copy* the content from your SML2 project to that folder in your SML3 project
+(Copy, not move, so you can do it again if you make a mistake)
+5. Take note of any errors that occur with your content and consider fixing them now
+(if they don't require SML3 concepts to resolve the errors)
+6. Within the SML3 UE editor,
+create your Unreal plugin if you haven't yet,
+which will make a plugin content folder for it.
+7. Within the SML3 UE editor,
+use its Move functionality to move things from the old content folder
+ex.`/Content/ArmorModules` to the new *plugin* content folder
+ex. `/Plugins/ArmorModules/Content`.
+This means that UE should hopefully fix the bindings and references stuff for you.
+You can either do this via the usual 'move'
+or you can try right clicking on the folder and picking 'migrate...' (I (Robb) haven't tried this yet)
+8. Right click on the old content folder and choose
+'fix up redirectors in folder'
+9. Fix any errors your content may be experiencing.
+10. Open your old SML2 editor to view your old InitMod
+and re-create its logic in your new GameWorldModule (within the SML3 editor, of course).
+
+If you would like support with this,
+or encounter issues following this process,
+please ask on the #developers channel on the discord.
+
+=== Note on Placeholders
 
 Note that placeholder assets in the starter project
 have not yet been updated to include Update 4 content.
@@ -105,6 +175,8 @@ If you're looking to use new items from the Update 4,
 you will need to create stub blueprints for them yourself.
 You can read more about this
 xref:Development/ReuseGameFiles.adoc[on the Reusing Base Game Files page].
+Instead of trying to placeholder a mesh or texture,
+you will be placeholdering an FGItemDescriptor or similar.
 
 But don't worry, we are working hard on updating the project,
 and upcoming versions will include even more content than the old ones did.
@@ -122,6 +194,8 @@ If you encounter SML changes not listed here, please contact us on the Discord
 so that we can add them to this list, or add it yourself via 'Edit this Page.'
 ====
 
+* The Bootstraper is no longer needed, and has been removed.
+Unreal Engine and SML now take care of what it used to do.
 * InitMod is no more, and has been supplanted by the Mod Modules system.
 Most things that involved InitMod now involve the
 xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[InitGameWorld Module].
@@ -132,7 +206,13 @@ All mod config structs should now extend xref:Development/ModLoader/Configuratio
 * There is now a system built into SML for making custom key bindings that work with
 the base game key binding menu. Read more about it on the
 xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Registry] page.
-* This list is not yet complete.
+* Alpakit Overrides/Overwrites have been replaced with
+the new Reflection Blueprint Library functionality,
+and by BP hooking and C++ for additional functionality not covered by BP reflection.
+They did not work consistently anyways. Read the 
+xref:Development/BeginnersGuide/overwriting.adoc[Overwriting page]
+and ask about this on the discord if you have to do this.
+* _This list is not complete._
 Please read the "Update Notes from the Discord" section below.
 
 == New/Updated Docs Pages of Note
@@ -143,13 +223,14 @@ Development
 
 * xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 * xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
-* Keybind System and xref:Development/ModLoader/Configuration.adoc[Configuration] (same page)
+* xref:Development/ModLoader/Registry.adoc#_mod_key_bind_registry[Key and Axis Binding System]
+and xref:Development/ModLoader/Configuration.adoc[Configuration]
 * xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 * xref:Development/ModLoader/Registry.adoc[Registry]
 
 * Creating Placeholder Assets and xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files] (same page)
 * xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
-* xref:Development/MultiplayerTesting.adoc[Testing in Multiplayer]
+* xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
 Community Resources
 
