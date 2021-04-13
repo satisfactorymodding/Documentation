@@ -68,9 +68,8 @@ https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugi
 or at the {cpp} reference
 https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
 
-If your mod has {cpp} code, make sure that you list your
-xref:Development/ModLoader/ModModules.adoc[Mod Modules]
-in the Modules plugin descriptor section.
+If your mod has {cpp} code, make sure that you list a
+UBT Module in the Modules plugin descriptor section.
 The examples below will demonstrate this.
 
 Note that SML and SMR require you to include additional fields in your plugin descriptor file.

@@ -29,12 +29,19 @@ and wait for both copies of the game to load.
 
 3. Open up your save file in either copy of the game. 
 
-4. Once you've loaded in, go to the second game instance and open the console by pressing
-Ctrl+Shift+L, then the ` (backtick/grave) key.
-(NOTE: this seems to work only with the Windows UK keyboard Layout,
-not a physical one, but in Windows set it to UK keyboard layout).
+4. Once you've loaded in, go to the second game instance
+and open the console by pressing the ` (backtick/grave) key.
 Then type in `open 127.0.0.1` and hit enter.
 The second instance will now connect to the game hosted by the first instance.
+[NOTE]
+====
+Using backtick to open the console seems to work only with the Windows UK keyboard Layout,
+not a physical one, but in Windows set it to UK keyboard layout.
+On some other keyboard layouts, F2 works instead.
+If you are having trouble opening the console,
+you can edit the settings in Satisfactory's `Input.ini` file
+to change the console key to another key of your choice.
+====
 
 === Powershell Launch Script
 
