@@ -28,10 +28,10 @@ If you choose to do this, the plugin folder that you create later
 will serve as your repo folder.
 You may wish to clone the starer project repo as opposed to using the downloaded zip.
 
-You can use this starer project for developing multiple mods,
-since each mod will be its own separate plugin folder within this project.
+You can use this starter project for developing multiple mods at once,
+since each mod will be its own separate Plugin folder within the project.
 
-Feel free to name the extracted `SML-Shipping-Dev-Win64` folder to whatever you like.
+Feel free to rename the extracted `SML-Shipping-Dev-Win64` folder to whatever you like.
 
 == Setting up Wwise
 
