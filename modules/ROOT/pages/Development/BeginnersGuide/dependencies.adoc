@@ -86,7 +86,7 @@ Accept any authentication prompts that appear along the way.
 [WARNING]
 ====
 Make sure that you selected the correct version of Wwise.
-It's easy to choose the wrong version on accident.
+It's easy to choose the wrong version by accident.
 ====
 
 == Starter Project
