@@ -85,20 +85,23 @@ Accept any authentication prompts that appear along the way.
 
 [WARNING]
 ====
-Make sure that you selected the correct version of Wwise. It's easy to choose the wrong version on accident.
+Make sure that you selected the correct version of Wwise.
+It's easy to choose the wrong version on accident.
 ====
 
 == Starter Project
 
-To get started developing your mod, it's best to start off with the Starter Project as a base.
-You can download it from https://github.com/satisfactorymodding/SatisfactoryModLoader/releases[here].
-Download `SML-Shipping-Dev-Win64.zip` or `SML.zip` from the latest release version and unzip it.
+To get started developing your mod, start off with the Starter Project as a base.
+You can find it on the Satisfactory Modding GitHub, or download it directly via 
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+// Download `SML-Shipping-Dev-Win64.zip` or `SML.zip` from the latest release version and unzip it.
 // You can download it via GitHub from https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/sml-dev.zip[here].
 The starter project itself is contained in `FactoryGame.uproject`,
-and this download contains the SML-related plugins already loaded.
+and this download contains the relevant SML-related plugins already loaded.
+After it finishes downloading, you should unzip it.
 
-If you are familiar with version control software,
-we suggest you clone the repo instead,
+If you are familiar with version control software, we suggest you
+https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo instead],
 which simplifies the process of updating your project later.
 Check on the discord to find out which branch to clone,
 although it's most likely `master`.
