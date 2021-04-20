@@ -54,6 +54,13 @@ which has some extra steps if you have a C++ mod.
 * Fill out the fields in your mod's Plugin Manifest
 (which has replaced the `data.json` system).
 
+[WARNING]
+====
+If you have a C++ mod, be sure to specify your Modules correctly
+in the Modules section of the plugin manifest. See the
+xref:UploadToSMR.adoc#_important_c_fields[Uploading to SMR] page for examples
+====
+
 == New Editor Build
 
 You will need to download and install a new copy of the editor build for the new engine from

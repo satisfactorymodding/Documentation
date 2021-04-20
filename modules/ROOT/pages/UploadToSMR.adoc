@@ -68,10 +68,6 @@ https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugi
 or at the {cpp} reference
 https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
 
-If your mod has {cpp} code, make sure that you list a
-UBT Module in the Modules plugin descriptor section.
-The examples below will demonstrate this.
-
 === Special Fields
 
 Note that SML and SMR require you to include additional fields in your plugin descriptor file.
@@ -104,6 +100,7 @@ You can list other mod references (or Unreal Plugins) here,
 and SMM will know to download when installing your mod.
 If you add a plugin with a Mod Reference,
 this basically makes the listed mod a dependency for your mod.
+
 **The SML plugin should also always be listed here,**
 allowing you specify what SML versions your mod supports.
 Each plugin should be listed as an object with the following properties:
@@ -149,6 +146,13 @@ See the Plugins SemVersion item above for the format for this field.
 and can be absent on remote clients altogether.
 
 |===
+
+
+=== Important {cpp} Fields
+
+If your mod has {cpp} code, make sure that you list a
+UBT Module in the Modules plugin descriptor section.
+The examples below will demonstrate this.
 
 
 === Examples
