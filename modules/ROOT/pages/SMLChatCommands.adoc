@@ -149,6 +149,8 @@ https://satisfactory.gamepedia.com/[Satisfactory Wiki],
 finding the content on a
 https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
 https://www.gildor.org/en/projects/umodel[UModel].
+You can also use it to give yourself additional inventory slots
+via `GiveItemStacks "" numberOfSlots`
 | Resources
 
 |GiveItemsSingle <Blueprint Path> <Number of Items>
