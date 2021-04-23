@@ -64,7 +64,8 @@ This folder is where you will be putting most of the assets
 ====
 If you want to Open Source your mod,
 or simply want to use a version control system like Git,
-this folder is the ideal place for you to create the repository.
+the mod's plugin folder (containing the `.uplugin file`)
+is the ideal place for you to create the repository.
 
 Using version control is essential for collaborating on a mod with others,
 it helps write patch notes when you release an update,

@@ -11,13 +11,6 @@ This page will list a couple of helpful resources for testing your mods.
 
 === Instructions
 
-[NOTE]
-====
-This section is a work in progress. It currently just consists of a modified version of
-https://discord.com/channels/555424930502541343/689188183048585244/782335816629223475[this message]
-in the Discord.
-====
-
 Run 2 games of Satisfactory for multiplayer testing in a few easy steps!
 
 1. Create a new Powershell script with the contents of the below 
@@ -29,12 +22,20 @@ and wait for both copies of the game to load.
 
 3. Open up your save file in either copy of the game. 
 
-4. Once you've loaded in, go to the second game instance and open the console by pressing
-Ctrl+Shift+L, then the ` (backtick/grave) key.
-(NOTE: this seems to work only with the Windows UK keyboard Layout,
-not a physical one, but in Windows set it to UK keyboard layout).
+4. Once you've loaded in, go to the second game instance
+and open the console by pressing the ` (backtick/grave) key.
 Then type in `open 127.0.0.1` and hit enter.
 The second instance will now connect to the game hosted by the first instance.
+
+[NOTE]
+====
+Using backtick to open the console seems to work only with the Windows UK keyboard Layout,
+not a physical one, but in Windows set it to UK keyboard layout.
+On some other keyboard layouts, F2 works instead.
+If you are having trouble opening the console,
+you can edit the settings in Satisfactory's `Input.ini` file
+to change the console key to another key of your choice.
+====
 
 === Powershell Launch Script
 
@@ -51,11 +52,11 @@ function BGProcess(){
     Start-Process -NoNewWindow @args
 }
 
-BGProcess "$($GameDir)\FactoryGame\Binaries\Win64\FactoryGame-Win64-Shipping.exe" $Args1
+BGProcess "$($GameDir)\FactoryGame.exe" $Args1
 
 sleep -m 5000
 
-BGProcess "$($GameDir)\FactoryGame\Binaries\Win64\FactoryGame-Win64-Shipping.exe" $Args2
+BGProcess "$($GameDir)\FactoryGame.exe" $Args2
 ----
 
 == Automatically Load a Map on Launch

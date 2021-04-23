@@ -1,22 +1,5 @@
 = Updating from SML 2.2.1
 
-[WARNING]
-====
-⚠⚠ **ECOSYSTEM IS NOT YET READY FOR MOD DISTRIBUTION TO END USERS** ⚠⚠
-
-SMM and SMR are still being worked on to support new mod distribution format.
-Ficsit.app will not recognize your mod if you try to upload it now!
-You should restrain from distributing your mods publicly now, until the rest of the system is ready.
-
-We will make a public announcement when that happens.
-
-In the mean time, you can **upload your mods the the staging version of SMR**
-as a test, which can be done https://ficsit.dev/[here].
-
-Check the Discord for a special build of SMM that connects to staging SMR
-instead of the live version.
-====
-
 [NOTE]
 ====
 **Save Issue Resolved**
@@ -70,6 +53,13 @@ which has some extra steps if you have a C++ mod.
 * Change over your old InitMod to the new Mod Modules system (read more below)
 * Fill out the fields in your mod's Plugin Manifest
 (which has replaced the `data.json` system).
+
+[WARNING]
+====
+If you have a C++ mod, be sure to specify your Modules correctly
+in the Modules section of the plugin manifest. See the
+xref:UploadToSMR.adoc#_important_c_fields[Uploading to SMR] page for examples
+====
 
 == New Editor Build
 

@@ -68,14 +68,17 @@ https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugi
 or at the {cpp} reference
 https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
 
-If your mod has {cpp} code, make sure that you list your
-xref:Development/ModLoader/ModModules.adoc[Mod Modules]
-in the Modules plugin descriptor section.
-The examples below will demonstrate this.
+=== Special Fields
 
 Note that SML and SMR require you to include additional fields in your plugin descriptor file.
 
 The most important of these is a mod dependency list and a SemVersion for the mod.
+
+[WARNING]
+====
+Make sure that you have SML listed as an item in the Plugins field,
+as explained below.
+====
 
 Below is a descrption of all extra fields SML and SMR require:
 
@@ -97,6 +100,9 @@ You can list other mod references (or Unreal Plugins) here,
 and SMM will know to download when installing your mod.
 If you add a plugin with a Mod Reference,
 this basically makes the listed mod a dependency for your mod.
+
+**The SML plugin should also always be listed here,**
+allowing you specify what SML versions your mod supports.
 Each plugin should be listed as an object with the following properties:
 [cols="1,4a"]
 !===
@@ -122,9 +128,43 @@ But if it exists, our mod might be able to unlock more functionality that depend
 For example, regular Unreal Engine plugins your mod requires.
 SMM will not attempt to download these because they aren't mods.
 
+!Enabled
+! This field is not given any extra functionality by SML,
+but we have listed it here as well in order to draw extra attention to it.
+This should be set to `true` in every plugin item.
+
 !===
 
+|RemoteVersionRange
+| A Semver range of versions accepted from the remote clients.
+This requires other players to have a certain version of the
+mod installed to be able to join hosts.
+See the Plugins SemVersion item above for the format for this field.
+
+|AcceptsAnyRemoteVersion
+| This should be true if the mod is client/server side only
+and can be absent on remote clients altogether.
+
 |===
+
+
+=== Important {cpp} Fields
+
+If your mod has {cpp} code, make sure that you list a
+UBT Module in the Modules plugin descriptor section.
+The examples below will demonstrate this.
+
+
+=== Examples
+
+[NOTE]
+====
+You can check if your mod's uplugin file is in the correct
+format with the https://ficsit.app/help[validator on the SMR help page]).
+If it fails validation, keep your eyes out for things like missing commas
+and mismatched braces and brackets.
+Consider asking on the Discord if you get stuck on this step.
+====
 
 Some example `.uplugin`s are presented here:
 
@@ -135,7 +175,7 @@ Example Blueprint mod .uplugin:
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "0.2",
+	"VersionName": "0.2.1",
 	"SemVersion": "0.2.1",
 	"FriendlyName": "Example Mod",
 	"Description": "This is a random Blueprint mod.",
@@ -149,11 +189,20 @@ Example Blueprint mod .uplugin:
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"RemoteVersionRange": "^0.2.1",
+	"AcceptsAnyRemoteVersion": false,
 	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.0.0",
+			"bIsOptional": false,
+			"Enabled": true
+		},
 		{
 			"Name": "DependingMod",
 			"SemVersion": "^1.3.0",
-			"bIsOptional": false
+			"bIsOptional": false,
+			"Enabled": true
 		}
 	]
 }
@@ -167,7 +216,7 @@ Example {cpp}/Blueprint mod .uplugin:
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "0.2",
+	"VersionName": "0.2.1",
 	"SemVersion": "0.2.1",
 	"FriendlyName": "Example Mod",
 	"Description": "This is a random example C++ and Blueprint mod.",
@@ -181,6 +230,8 @@ Example {cpp}/Blueprint mod .uplugin:
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"RemoteVersionRange": "^0.2.1",
+	"AcceptsAnyRemoteVersion": false,
 	"Modules": [
 		{
 			"Name": "ExampleMod",
@@ -190,9 +241,16 @@ Example {cpp}/Blueprint mod .uplugin:
 	],
 	"Plugins": [
 		{
+			"Name": "SML",
+			"SemVersion": "^3.0.0",
+			"bIsOptional": false,
+			"Enabled": true
+		},
+		{
 			"Name": "DependingMod",
 			"SemVersion": "^1.3.0",
-			"bIsOptional": false
+			"bIsOptional": false,
+			"Enabled": true
 		}
 	]
 }
