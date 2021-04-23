@@ -22,7 +22,7 @@ You should have already downloaded the starter project in the previous steps of 
 This will be the folder that all of your mod's files will be put into,
 so extract the folder somewhere convenient for you where you can find it later,
 such as your Documents folder.
-Of note - keep the directory as short as possible.
+Of note - keep the file path as short as possible.
 When packing Unreal projects, some filenames can get long,
 so a very nested location may cause issues.
 
@@ -121,22 +121,47 @@ Make sure you run the above command from Command Prompt and not Powershell. It i
 
 == Project Compilation
 
-You'll want to compile the project now to ensure it generates correctly.
+Next up is compiling the project from Visual Studio.
+It is possible for Unreal to compile the project as well on launch,
+but if there is an error,
+Unreal will give a very vague report as to what went wrong.
+As such, it's best to just always compile from Visual Studio
+so you don't have to build a second time to see the error report.
 
-Do this by opening the .sln file, make sure you have in the toolbar `Development Editor` and `Win64` selected.
-On the right side in Solution Explorer just right click on
+Open up the the .sln file in your project folder.
+Once Visual Studio loads,
+make sure that you have `Development Editor`
+and `Win64` selected in the top toolbar.
+On the right side in Solution Explorer, right click on
 the `FactoryGame` project and hit `Build`.
 This will take some time; go pet some lizard doggos as you wait.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the blue bar at the bottom of Visual Studio goes away.
-You can monitor its progress from the Output log if desired.
+You can monitor its progress from the Output log window if desired.
 
-This creates the binaries used by the Editor,
-allowing it to interact with the native SML code or native code written by you.
+After it completes, you should select `Shipping` in the toolbar and start another build.
+Building both of these is required for the editor to function correctly,
+and for you to be able to distribute your mod.
 
-When you want to test the mod, make sure to build the project for `Shipping`.
-Without doing so, the editor binaries won't be able to dynamic link with their dependencies,
-and the game will crash.
+[WARNING]
+====
+Some important notes for the future:
+
+After updates to SML that change the editor,
+or your own {cpp} code that changes editor functionality,
+you must close the Editor and rebuild `Development Editor`
+from Visual Studio for the changes to take effect.
+
+When you want to test or release your mod, make sure to build the project for `Shipping`.
+Without doing so, your mod will be missing important files.
+====
+
+If you see errors related to `AkAudio` or similar, you need to go back
+and re-do the Wwise integration step
+
+If you encounter issues during this step, consider asking for help on the Discord.
+
+Now that you've built the binaries, you Editor should open without any issues.
 
 == Open Unreal Editor
 
