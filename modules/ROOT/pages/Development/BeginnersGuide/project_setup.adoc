@@ -17,7 +17,7 @@ Be sure to read over the steps here as well to be sure you're doing things corre
 
 == Starter Project
 
-You should have already downloaded the starter project in the previous steps of the tutorial. Unzip `SML-Shipping-Dev-Win64.zip` (or `SatisfactoryModLoader-sml-dev.zip` of you downloaded a development build) to get the starter project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
+You should have already downloaded the Starter Project in the previous steps of the tutorial. Unzip `SML-Shipping-Dev-Win64.zip` (or `SatisfactoryModLoader-sml-dev.zip` of you downloaded a development build) to get the Starter Project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
 
 This will be the folder that all of your mod's files will be put into,
 so extract the folder somewhere convenient for you where you can find it later,
@@ -31,9 +31,9 @@ such as Git, to manage your mod's files,
 but doing so is outside the scope of this tutorial.
 If you choose to do this, the plugin folder that you create later
 will serve as your repo folder.
-You may wish to clone the starer project repo as opposed to using the downloaded zip.
+You may wish to clone the Starter Project repo as opposed to using the downloaded zip.
 
-You can use this starter project for developing multiple mods at once,
+You can use this Starter Project for developing multiple mods at once,
 since each mod will be its own separate Plugin folder within the project.
 
 Feel free to rename the extracted `SML-Shipping-Dev-Win64` folder to whatever you like.
@@ -100,7 +100,7 @@ To do this, you'll need to run a command, unless you already have another versio
 Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
 
 ```
-"<path to your Unreal build tool here (it installed with the custom editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
+"<path to your Unreal build tool here (it installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
 
 Here is an example of a complete command.
@@ -125,7 +125,7 @@ Next up is compiling the project from Visual Studio.
 It is possible for Unreal to compile the project as well on launch,
 but if there is an error,
 Unreal will give a very vague report as to what went wrong.
-As such, it's best to just always compile from Visual Studio
+As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
 Open up the the .sln file in your project folder.
@@ -147,8 +147,8 @@ and for you to be able to distribute your mod.
 ====
 Some important notes for the future:
 
-After updates to SML that change the editor,
-or your own {cpp} code that changes editor functionality,
+After updates to SML that change the Editor,
+or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
@@ -157,7 +157,7 @@ Without doing so, your mod will be missing important files.
 ====
 
 If you see errors related to `AkAudio` or similar, you need to go back
-and re-do the Wwise integration step
+and re-do the Wwise integration step.
 
 If you encounter issues during this step, consider asking for help on the Discord.
 
@@ -169,7 +169,7 @@ The Unreal Editor allows you to create new content for the game and helps build 
 It also heavily relies on the C++ project,
 so make sure you don't change stuff in there unless you know what you're doing.
 
-In order to open the project in Unreal Engine, you'll have to open the Unreal editor.
+In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
 You can find it by searching for it in the Windows search bar
 (it should appear as Unreal Engine - CSS)
 or by navigating to where you installed it,
@@ -192,7 +192,7 @@ xref:#_project_compilation[compile the editor from Visual Studio]
 to find out why it's erroring and return here when finished with that step.
 Consider seeking help on the Discord if you are stuck here.
 
-Once you load into the editor,
+Once you load into the Editor,
 you might see a popup that says 'New plugins are available.'
 You can safely dismiss this popup.
 
@@ -230,10 +230,10 @@ You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files
 
 Note that if you have not yet installed SML for your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
-This could cause problems if your copy of the starter project
+This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
-in which case you should either update your starter project
-or use the Mod Manager's `development` profile to install it fot you.
+in which case you should either update your Starter Project
+or use the Mod Manager's `development` profile to install it for you.
 
 == Ready to Rumble
 
