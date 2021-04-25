@@ -62,11 +62,11 @@ https://cable.ayra.ch/satisfactory/satsound/[play and export the sounds directly
 
 The Starter Project provided on the SML releases page excludes
 game models, textures, etc. for copyright and download size reasons.
-In their place, the starter project includes empty "placeholder" assets
+In their place, the Starter Project includes empty "placeholder" assets
 that, at runtime, will be resolved into the correct assets if you were to reference them,
 or simply excludes the asset from the project (which is the case for many textures).
 
-It is possible to create a personal version of the starter project
+It is possible to create a personal version of the Starter Project
 that includes most of these base game files accessible from within the editor.
 This version of the project would include models, textures, and other resources
 instead of their placeholder versions, allowing you to view them in-editor.

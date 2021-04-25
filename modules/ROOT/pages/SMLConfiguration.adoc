@@ -12,7 +12,7 @@ The folder is located under `<game root>/FactoryGame/Configs`.
 
 SML's configuration system uses json format.
 
-All config files are located in the aforementioned <<Config Folder>> and share the same naming scheme, `<modid>.cfg`. The config file for SML is called `SML.cfg`.
+All config files are located in the aforementioned <<Config Folder>> and share the same naming scheme, `<ModID>.cfg`. The config file for SML is called `SML.cfg`.
 
 If you don't see a mod's config file listed here, it's most likely because the mod doesn't have a config file.
 

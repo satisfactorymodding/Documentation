@@ -53,9 +53,9 @@ Once you've completed the `Buildable` step in `Beginners Guide`, then check out 
 
 If you don't have a packaged mod already, create one with Alpakit.
 
-If you have and packaged mod (.zip archived mod),
+If you have a packaged mod (.zip archived mod),
 then you simply unpack the .zip into the `<SF install dir>/FactoryGame/Mods/<ModName>`.
-Make sure that `<ModName>` Contains directly contents were the `.uplugin` file is located.
+Make sure that the `.uplugin` file is contained _directly_ within the `<ModName>` folder.
 
 == Modding Technologies
 
@@ -63,8 +63,8 @@ If you'd like to learn more about how modding works internally, this is the sect
 
 === Satisfactory Mod Loader [.title-ref]#(aka. SML)#
 
-Satisfactory Mod Loader (SML) provides a framework for mods to be more easily be able
-to load into systems provided by the game and to interact with each other.
+Satisfactory Mod Loader (SML) provides a framework that makes it easier for mods to be able 
+to load into systems provided by the game, and to interact with each other.
 It also provides many helper features to assist in mod development.
 
 === Alpakit

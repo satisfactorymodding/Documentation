@@ -46,12 +46,12 @@ Also lists all currently loaded mods.
 
 == Console Cheat Commands
 
-These commands can be run *from the in-game developer console* which is opened when you press the grave/tilde key, aka. ``` or `~`
+These commands can be run *from the in-game developer console* which is opened when you press the grave/tilde key (``` or `~`), or when you press F2.
 
 To use these, you must have `enableCheatConsoleCommands` enabled in the
 xref:SMLConfiguration.adoc[SML config].
 
-This list consists of some of the more useful ones, but there are more.
+This list consists of some of the most useful ones, but there are more.
 
 A full list Satisfactory-specific cheats can be found
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/sml-dev/Source/FactoryGame/Public/FGCheatManager.h[here].
@@ -73,7 +73,7 @@ xref:Development/BeginnersGuide/dependencies.adoc#_unreal_engine_4_custom_engine
 |Teleport
 | Teleports you to where your cursor is looking.
 No range limit.
-Be careful of teleporting outside of the map on accident.
+Be careful of teleporting outside of the map by accident.
 | Cheat Manager
 
 |God
