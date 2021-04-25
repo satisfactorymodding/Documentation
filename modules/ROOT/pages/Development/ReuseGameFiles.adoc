@@ -25,7 +25,7 @@ xref:Development/ExtractGameFiles.adoc[Extracting Game Files page] instead.
 
 The Starter Project provided on the SML releases page excludes
 game models, textures, etc. for copyright and download size reasons.
-In their place, the starter project includes empty "placeholder" assets
+In their place, the Starter Project includes empty "placeholder" assets
 that, at runtime, will be resolved into the correct assets if you were to reference them,
 or simply excludes the asset from the project (which is the case for many textures).
 These placeholder assets have the exact same name and Blueprint Path
@@ -36,7 +36,7 @@ The placeholder system is what allows you to list base game items in
 xref:Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[Recipes] of your own creation.
 The Starter Project includes `FGItemDescriptor` placeholders for most base game items.
 
-If the game has updated since you downloaded your copy of the starter project,
+If the game has updated since you downloaded your copy of the Starter Project,
 or you are looking for some less commonly used assets,
 you may be missing some of these placeholders.
 In this case, you can create the placeholder yourself by finding the correct path
@@ -138,7 +138,7 @@ in place of whatever you used for the placeholder.
 
 == Generating a Complete Starter Project
 
-It is possible to create a personal version of the starter project
+It is possible to create a personal version of the Starter Project
 that includes most of these base game files accessible from within the editor.
 This version of the project would include models, textures, and other resources
 instead of their placeholder versions, allowing you to view them in-editor.

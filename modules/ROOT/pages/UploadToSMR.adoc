@@ -8,7 +8,7 @@ with the Unreal plugin manifest.
 
 Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
 Mods uploaded to SMR will automatically work with the xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager]. All mods available to SMR are checked
-for potential security concern, so having your mod on SMR means that users can trust that it is secure.
+for potential security concerns, so having your mod on SMR means users can trust that it is safe and secure.
 
 The process of uploading your mod is fairly straightforward. First, sign into SMR with an existing Github, Google, or Facebook account. 
 
@@ -32,7 +32,7 @@ You can edit all of these fields later.
 One of the most important fields on this screen is the `mod_reference` field.
 Explained in more detail in the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide], your mod reference is your mod's unique name.
 As a reminder, your mod's Content folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
-Your mod reference can not contain special characters or spaces.
+Your mod reference cannot contain special characters or spaces.
 
 [WARNING]
 ====
@@ -80,7 +80,7 @@ Make sure that you have SML listed as an item in the Plugins field,
 as explained below.
 ====
 
-Below is a descrption of all extra fields SML and SMR require:
+Below is a description of all extra fields SML and SMR require:
 
 [cols="1,4a"]
 |===
@@ -276,7 +276,7 @@ You should be all set now - press Submit!
 
 If you've uploaded a pak only mod, you're all set, and your mod is ready for download and use! Regardless, we still suggest you read the below. If you've uploaded a C++ mod, however, you'll have to wait for it to be approved by the automated approval process before users can download it. The approval process is generally quite quick, about 1 to 3 minutes, and exists to make sure that users aren't uploading content that violates SMR's terms and conditions or harms players' computers.
 
-In the mean time, we strongly suggest you take a look at your mod description and consider adding additional information to it. The mod description is what most players will see when deciding whether or not they want to use your mod, so keep it organized, and try to leave a good first impression! We suggest taking the following steps to encourage users to try out your mod:
+In the meantime, we strongly suggest you take a look at your mod description and consider adding additional information to it. The mod description is what most players will see when deciding whether or not they want to use your mod, so keep it organized, and try to leave a good first impression! We suggest taking the following steps to encourage users to try out your mod:
 
 - Check your grammar and spelling! Consider asking someone else to proofread your description. It's an easy thing to do, and having correct grammar makes you appear more professional.
 
@@ -286,6 +286,6 @@ In the mean time, we strongly suggest you take a look at your mod description an
 
 - Explain concepts or features of your mod that may be unclear to the user. Unless you write documentation or a https://ficsit.app/guides[guide] for how to use your mod, players might have some trouble figuring out how to use all of the amazing new content in your mod.
 
-- List the features of your mod, and how to unlock them for use ingame. Consider listing what tiers the content is unlocked at.
+- List the features of your mod, and how to unlock them for use in-game. Consider listing what tiers the content is unlocked at.
 
 - Credit other users that contributed ideas, models, etc. by name and/or by link.
