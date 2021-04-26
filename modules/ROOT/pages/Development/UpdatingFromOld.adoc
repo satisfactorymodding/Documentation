@@ -46,7 +46,7 @@ To update your mod, you will have to do, at minimum, the following steps:
 (described in the section below) so you can reference it while updating
 * Install the new engine/editor as described in the section below
 * Perform the project setup steps described in the Getting Started guide,
-which includes getting the new SML version and new starter project,
+which includes getting the new SML version and new Starter Project,
 as well as integrating a new Wwise version.
 * Create a new 'Content Only' Unreal Plugin through the default Editor UI,
 which has some extra steps if you have a C++ mod.
@@ -105,11 +105,11 @@ Now that you have the new editor version, you can head over to the
 xref:Development/BeginnersGuide/index.adoc[Getting Started guide]
 to set up the project for the new engine version.
 
-Be aware that we **will** be releasing updated versions of the starter project,
+Be aware that we **will** be releasing updated versions of the Starter Project,
 so you may need to perform the setup process again in the future,
-or will need to bring in updated files to your starter project.
+or will need to bring in updated files to your Starter Project.
 If you are reading this far, you are likely an experienced modder,
-and as such we suggest you use Git to clone the starter project repo
+and as such we suggest you use Git to clone the Starter Project repo
 as opposed to downloading a zip of it.
 This vastly simplifies the process of updating the project,
 but could cause you to encounter merge conflicts down the line.
@@ -125,10 +125,10 @@ Here is a summary of the steps you can use to port your old SML2 content to the 
 without having to recreate every asset.
 Order is very important here.
 
-1. Optionally, clone the SML3 starter project instead of downloading zip.
-The reasons for doing this are described above
-2. Create a new content folder in the SML3 starter project
-that is in the same place as stuff was in your SML2 starter project.
+1. Optionally, clone the SML3 Starter Project instead of downloading zip.
+The reasons for doing this are described above.
+2. Create a new content folder in the SML3 Starter Project
+that is in the same place as stuff was in your SML2 Starter Project.
 ex /Content/ArmorModules
 3. If you have {cpp} content,
 move it over as well and make sure it compiles first before continuing.
@@ -159,7 +159,7 @@ please ask on the #developers channel on the discord.
 
 === Note on Placeholders
 
-Note that placeholder assets in the starter project
+Note that placeholder assets in the Starter Project
 have not yet been updated to include Update 4 content.
 If you're looking to use new items from the Update 4,
 you will need to create stub blueprints for them yourself.

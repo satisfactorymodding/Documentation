@@ -7,6 +7,8 @@ Don't worry, we'll guide you through each step of downloading and installing the
 
 This can be a very lengthy process, so if you have to work on something else, make a note of where you left off so it's easier to resume.
 
+Beware that the modding environment can take up a lot of space once everything is installed and built - 30+ GB is possible. Keep this in mind when deciding where put all your files - don't keep them on a drive with very little space left. 
+
 [TIP]
 ====
 If you'd prefer a different format of guide, you can find a video guide
@@ -35,7 +37,7 @@ Continue through the rest of the prompts to install Visual Studio. Downloading a
 
 [TIP]
 ====
-An alternative to visual studio which is very popular among {cpp} modders is https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
+An alternative to Visual Studio which is very popular among {cpp} modders is https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
 If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
 ====
 
@@ -56,9 +58,9 @@ Once you've done that, go to the https://github.com/SatisfactoryModdingUE/Unreal
 If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and GitHub, and be sure that you followed the above steps. The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo.
 ====
 
-This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
+This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening Unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
 
-Once the installer is done, you'll also need to install a visual studio extension shipped with the editor. Navigate to where you installed the editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal visual studio extension, which will help with debugging.
+Once the installer is done, you'll also need to install a Visual Studio extension shipped with the Editor. Navigate to where you installed the Editor, probably something like `C:\Program Files\Unreal Engine - CSS\`, and then navigate to the folder `\Engine\Extras\UnrealVS\`. Open the sub folder for the version of Visual Studio you have installed (probably 2019) and run the .vsix installer to install the Unreal Visual Studio extension, which will help with debugging.
 
 == Wwise
 
@@ -94,11 +96,10 @@ It's easy to choose the wrong version by accident.
 To get started developing your mod, start off with the Starter Project as a base.
 You can find it on the Satisfactory Modding GitHub, or download it directly via 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
-// Download `SML-Shipping-Dev-Win64.zip` or `SML.zip` from the latest release version and unzip it.
-// You can download it via GitHub from https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/sml-dev.zip[here].
-The starter project itself is contained in `FactoryGame.uproject`,
+
+The Starter Project itself is contained in `FactoryGame.uproject`,
 and this download contains the relevant SML-related plugins already loaded.
-After it finishes downloading, you should unzip it.
+Don't do anything with the downloaded zip file yet - this will be covered on the next page, Project Setup.
 
 If you are familiar with version control software, we suggest you
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo instead],

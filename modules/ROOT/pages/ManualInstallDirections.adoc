@@ -19,9 +19,9 @@ If you don't want to use the Mod Manager for some reason, or you are a mod maker
 ====
 If you already have your development environment set up,
 you can simply use Alpakit to build SML for you and put it in the right folder.
-Note that this could cause problems if your copy of the starter project
+Note that this could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
-in which case you should either update your starter project
+in which case you should either update your Starter Project
 or follow the steps below instead.
 ====
 
@@ -30,7 +30,7 @@ First, you need to download a version of SML compatible with your game from http
 If you want to download the latest development version of SML,
 it can be found
 https://ci.ficsit.app/job/SML2/job/sml-dev/[here].
-Only do this if you know what you're doing,
+Only do this if you know what you are doing,
 and be sure to test with a released version of SML
 before distributing your mod.
 
@@ -55,7 +55,7 @@ Usually this will be the top version in the list.
 
 [WARNING]
 ====
-Always check to make sure that the `SML Version` column for the version
+Always check to make sure that the `SML Version` column for the mod version
 you choose matches the version of SML you have installed. You can
 attempt to install the mod with mismatched versions, but most of the
 time, it won't work.
@@ -71,8 +71,8 @@ image:ManualInstall/mod_in_folder_example.png[A mod in the folder]
 ====
 SML itself will not handle nor fetch mod dependencies!
 
-That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the launcher instead.
-But you can try to name your files so its name comes after the name of the dependencies if the mod list is sorted after names.
+That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the mod manager instead.
+You can try to name your files so the mod's name comes after the name of its dependencies, if the mod list is sorted by names.
 ====
 
 == Installing mods on Linux (Steam) as a player - SML version 2.2.1
