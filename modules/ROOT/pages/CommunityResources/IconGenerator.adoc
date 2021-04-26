@@ -2,7 +2,7 @@
 
 Community member Nog has created an editor plugin that allows you to semi-automatically
 create icon images from item and building descriptors at a number of resolutions.
-This is helpful if you've created already a model for your content and you want
+This is helpful if you've already created a model for your content and you want
 to create UI icons for it that are consistent with those from the base game.
 
 You can read more about how to install and use the plugin on its

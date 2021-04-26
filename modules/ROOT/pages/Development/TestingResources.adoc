@@ -116,7 +116,7 @@ FG Map Options Switches from Archengius:
 Switches found in AFGGameMode::InitGame:
 
 ?skipOnboarding (skip landing animation)
-?allowPossessAny (allow possessing any pawn on the map, even if player ids don't match)
+?allowPossessAny (allow possessing any pawn on the map, even if player IDs don't match)
 ?loadgame=<SaveGame Name Here Without Path and extension>
 ?startloc<Start Location Tag Name> (see AFGGameMode::ChoosePlayerStart_Implementation)
 ?sessionName=<Session Name> (sets mSaveSessionName, so apparently it determines autosave file name and probably name visible to other players?)
