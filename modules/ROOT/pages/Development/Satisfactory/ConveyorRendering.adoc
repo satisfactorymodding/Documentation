@@ -1,0 +1,82 @@
+= Conveyor Rendering
+
+Introduced with Update 4 new complex high performance item conveyer rendering was introduced to work with the instancing in this version of Unreal Engine.
+Below are the details of how to setup content to use this new system and how it works, if not setup correctly items on conveyors wont render properly like below.
+
+image:Satisfactory/ConveyorProblem.jpg[image]
+
+For a finished example check the `/Utils/Materials/` folder in your Unreal project.
+
+== Mesh Requirements
+
+Inside of the xref::/Development/Satisfactory/Inventory.adoc#_item_descriptor_afgitemdescriptor[FGItemDescriptor] point to the mesh intended for use on ground and on conveyors.
+This will be the same mesh as there is no way to distinguish each independently.
+
+To fit inside belt edges and inside of a machine opening the mesh should fit inside of:
+
+`X: +- 1m, Y: +- 0.74m, Z: 0m to +1.6m`
+
+It is recommended to be smaller than this, especially in X to avoid clipping on corners and slopes. Consider looking at the ore and silica models.
+
+== Material Requirements
+
+This mesh file MUST point to a Root Material with the properties described below.
+If the material doesn't have the config defined below it will not look correct on conveyors, but will look fine on the ground.
+
+You should have three textures for your material Albedo, Normal, and Reflection.
+All of the following materials are instances of xref::/Development/Modeling/MainMaterials.adoc#_factory_baked_mm_factorybaked[Factory Baked] with different settings.
+Reference that article for details on what should be in each texture.
+
+=== Root Material
+
+image:Satisfactory/ConveyorSettings_Root.png[image]
+
+Create an instance of Factory_Baked.
+Setup the material to use all the textures you've imported, and ensure that `bIsConveyorItem = false`.
+There's one more thing to set, but it can't be setup until the Conveyor LOD materials exist.
+
+=== Conveyor LOD1 Material
+
+image:Satisfactory/ConveyorSettings_LOD1.png[image]
+
+Duplicate the Root material made above, or create a new instance of Factory Baked and setup the textures.
+The most important change to this material is the enabling of the two flags shown above, `bIsConveyorItem = true` and `bUseRotation = true`.
+Of note, bUseRotation may not be visible until bIsConveyorItem is turned on.
+
+Do not worry if the preview mesh starts flickering, disappearing, or rotating weirdly, this is an artifact of the shader needing a conveyor system that doesn't exist till its ingame.
+
+=== Conveyor LOD2 Material
+
+image:Satisfactory/ConveyorSettings_LOD2.png[image]
+
+Create the third and final material, the only difference from the LOD1 material is that it must have `bIsConveyorItem = true` and `bUseRotation = false` to avoid errors.
+
+You can reuse the same textures and will likely have the same visual issues.
+
+=== Asset Data
+
+image:Satisfactory/ConveyorAssetData.png[image]
+
+In order for the conveyor system to find the materials we need to add custom data to the root material, the one the mesh is referencing.
+As shown in the picture above, go to the `General` section and add a `Asset User Data` of type `FG Conveyor Item User Data`.
+As the mesh already knows about the root material this will only point to the Conveyor LOD materials.
+
+Current best practice requires the `M Conveyor Instance` and `M Mid Conveyor Instance` be set to LOD1, and `M Far Conveyor Instance` set to LOD2.
+
+== How it works (Advanced)
+
+Coffee Stain Studios has provided an in-depth guide that informed this article ( https://drive.google.com/file/d/1JsAlduRg7-KV0jxEUjK-LLANwHUH7gRZ/view[#PraiseBen] ).
+
+The TLDR; summary is that each conveyer belt writes information to a global texture file to track the orientation and location of the objects on it.
+This underlying texture is part of the reason behind the strict adherence to limits on belt length.
+
+Each item instance on a conveyor is told roughly where along the belt it is.
+Then the Factory_Baked shader using the knowledge of where on the belt it is, and the textures referencing position and orientation of the belt generates an offset.
+This offset is then fed into the Unreal World Position Offset system to make the items appear to be on the belt at the right point.
+
+When an object is placed on a belt the root material is examined for the custom asset data.
+If it's found the system hooks up the targeted materials for the conveyor system to feed their information into.
+
+If the data is not found then empty materials with debug textures are used.
+If the data is found but the materials are misconfigured the items will end up rendering at 0,0,0.
+

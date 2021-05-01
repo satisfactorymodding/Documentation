@@ -54,9 +54,8 @@ M Radioactive Decay::
 * {blank}
 +
 M Conveyor Mesh::
-  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt. So we'll have to pick a 3D model.
-  We have an example model you can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocItem.fbx[here]. Import this the same way you imported the category image in the Recipe vs Schematic tutorial.
-  Make sure that you edit each of the materials that were imported with the model and mark both "Used with Spline Meshes" and "Used with Instanced Static Meshes" in the `Details` -> `Usage` pane for each material. If you don't do this, the textures won't appear correctly in the game.
+  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt.
+  We'll cover this fully in a couple of moments as to make it render fast it takes a couple of steps to setup.
 * {blank}
 +
 M Item Category::
@@ -74,6 +73,16 @@ M Big Icon::
   This is the same as the small icon but can be higher resolution.
   The recommend size is 256px for regular items, 512px for buildgun items.
   Let's just use the same icon file as before for simplicity.
+
+== Make the Item Work on Conveyors
+
+So we'll have to pick a 3D model. We have an example model and textures you can use link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
+Import these the same way you imported the category image in the Recipe vs Schematic tutorial, put them in a Folder together.
+Next we'll need to make some materials to use these textures, we have to make them ourselves not import them otherwise they wont render properly on belts. 
+
+Like many of the more complex parts of the game, this process has its own article to help you: xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
+If you're unsure about how to create material instances or assign textures check out this https://www.youtube.com/watch?v=qus9WjHX4_4[external tutorial].
+Do not try to edit the Master Material as any changes will not show up in your mod and it is already accurate to game content.
 
 == Make the Item Available
 
