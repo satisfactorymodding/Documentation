@@ -24,7 +24,7 @@ Inventory Icon::
 * {blank}
 +
 Conveyor Model::
-  This is a Static Mesh used to display the item in the 3D Environment, if meant to be displayed on a conveyor belt please see xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
+  This is a Static Mesh used to display the item in world and for use by the xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] system.
 * {blank}
 +
 Radioactive Decay::

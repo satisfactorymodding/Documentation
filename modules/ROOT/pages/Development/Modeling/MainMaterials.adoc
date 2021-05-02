@@ -69,7 +69,7 @@ It is possible, and expected, to mirror flip and stretch the normal decals. Seve
 This material handles several separate use cases; items in world, items on belts, small detailed machines, and more. Works with the painting and conveyor systems. Requires unique textures per mesh to take advantage of. Never used directly and always used via material instances. Common examples are pipe connectors, power poles, and any conveyor belt item.
 
 === Inner workings
-The full internal workings of this material post Update 4.2 were provide by CSS (#PraiseBen) and are available to be viewed in Unreal.
+The full internal workings of this material post Update 4.2 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project.
 
 When marked as paintable the main Albedo texture is multiplied into the paint colours gated by the texture's alpha. The alpha value is packed to allow for selection between several paint colours, these thresholds can be adjusted using the primary and secondary bias values, below are the defaults:
 
