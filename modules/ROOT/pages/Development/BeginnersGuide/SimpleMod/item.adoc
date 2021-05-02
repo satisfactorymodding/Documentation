@@ -54,9 +54,9 @@ M Radioactive Decay::
 * {blank}
 +
 M Conveyor Mesh::
-  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt. So we'll have to pick a 3D model.
-  We have an example model you can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocItem.fbx[here]. Import this the same way you imported the category image in the Recipe vs Schematic tutorial.
-  Make sure that you edit each of the materials that were imported with the model and mark both "Used with Spline Meshes" and "Used with Instanced Static Meshes" in the `Details` -> `Usage` pane for each material. If you don't do this, the textures won't appear correctly in the game.
+  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt.
+  Items use the mesh you specify here when you've dropped them on the ground and for display on conveyors.
+  We'll cover this fully further down on the page, as setting it up to render correctly takes a couple of extra steps.
 * {blank}
 +
 M Item Category::
@@ -67,7 +67,7 @@ M Item Category::
 M Small Icon::
   This is a simple texture image of the object used in the inventory to visualize what the given stack is.
   The recommend size is 64px for regular items, 256px for buildgun items.
-  We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here]. When using your own models, you can follow the tutorial xref:Development/BeginnersGuide/SimpleMod/generating_icons.adoc[here] to generate icons that look like the ones in game.
+  We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here]. When using your own models, you can follow the tutorial xref:Development/BeginnersGuide/generating_icons.adoc[here] to generate icons that look like the ones in game.
 * {blank}
 +
 M Big Icon::
@@ -75,11 +75,42 @@ M Big Icon::
   The recommend size is 256px for regular items, 512px for buildgun items.
   Let's just use the same icon file as before for simplicity.
 
+== Make the Item Work on Conveyors
+
+In order to avoid having your item display as the default flat white cube
+when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh. 
+We have an example model and textures you can use
+link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
+Import these the same way you imported the category image in the Recipe vs Schematic tutorial.
+Put them in a Folder together somewhere within your plugin folder.
+Next we'll need to make some materials to use these textures,
+we have to make them ourselves not import them otherwise they wont render properly on belts. 
+
+Like many of the more complex parts of the game, this process has its own article to help you:
+xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
+If you're unsure about how to create material instances or assign textures, check out this
+https://www.youtube.com/watch?v=qus9WjHX4_4[external video tutorial].
+Do not try to edit the Master Material as any changes will not show up in your mod
+and it is already accurate to game content.
+
+[TIP]
+====
+If you don't want to make a custom mesh for items you create in the future, consider
+xref:Development/ReuseGameFiles.adoc[reusing the mesh]
+of a nondescript base game item, such as the
+https://satisfactory.fandom.com/wiki/HUB_Parts[HUB Parts],
+as opposed to leaving it as the default white cube.
+====
+
 == Make the Item Available
 
 The item is available to the user when it gets loaded at least once.
-Because Unreal loads assets with a just in time method, we somehow need to force the asset to be loaded. One way we can do that is by having our item used in a Recipe. 
-Conveniently, we're already planning to have the item be usable in a recipe so that the player can obtain it. Change the outcome of our already created recipe to this new item, or create a new recipe for it if you'd like to practice that.
+Because Unreal loads assets with a just in time method,
+we somehow need to force the asset to be loaded.
+One way we can do that is by having our item used in a Recipe. 
+Conveniently, we're already planning to have the item be usable in a recipe so that the player can obtain it.
+Change the outcome of our already created recipe to this new item,
+or create a new recipe for it if you'd like to practice that.
 
 And you're done! Go ahead and Alpakit and check out your fancy new item in game.
 
