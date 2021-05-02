@@ -84,7 +84,8 @@ The 'ReflectionMap' texture is a channel packed surface property texture (MREO) 
 - `B:` Emission Mask
 - `A:` Ambient Occlusion
 
-For full information on how to setup the material to perform as a Conveyor item please reference the xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] page.
+For full information on how to setup the material to perform as a Conveyor Item, please reference the
+xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] page.
 
 UV channel 0 is used for all textures.
 
