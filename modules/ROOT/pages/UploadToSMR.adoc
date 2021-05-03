@@ -175,8 +175,8 @@ Example Blueprint mod .uplugin:
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "0.2.1",
-	"SemVersion": "0.2.1",
+	"VersionName": "6.2.1",
+	"SemVersion": "6.2.1",
 	"FriendlyName": "Example Mod",
 	"Description": "This is a random Blueprint mod.",
 	"Category": "Modding",
@@ -216,8 +216,8 @@ Example {cpp}/Blueprint mod .uplugin:
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "0.2.1",
-	"SemVersion": "0.2.1",
+	"VersionName": "6.2.1",
+	"SemVersion": "6.2.1",
 	"FriendlyName": "Example Mod",
 	"Description": "This is a random example C++ and Blueprint mod.",
 	"Category": "Modding",
