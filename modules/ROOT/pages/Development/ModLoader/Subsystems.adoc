@@ -19,17 +19,23 @@ For example, the mod Light It Up uses subsystems to create a lamp group system.
 With this system, every lamp can get information about the current group settings
 without storing that data again in each lamp instance.
 
+== Registering a Subsystem
 
-== Spawning a Subsystem
+If you want to have a subsystem you will need at least one class that inherits the `ModSubsystem` class. 
 
-A subsystem itself is an actor inheriting from `ModSubsystem`.
-You can also use subsystems to store data to save states.
-
-The subsystem should be registered as a property in `GameWorldModule`
+To register a subsystem, you should add it to the `Mod Subsystems` array of the
+xref:Development/ModLoader/ModModules.adoc#_game_instance_module_ugameinstancemodule[Game World Module].
 
 image:Satisfactory/Subsystems/Subsystems_gwm.PNG[GameWorldModule]
 
 The subsystems are held by the `SubsystemActorManager`, that can be obtained using the `GetSubsystemActorManager` function.
+
+image:Satisfactory/Subsystems/Subsystems_sam_node.PNG[GameWorldModule]
+
+== Referencing a Subsystem
+
+A subsystem itself is an actor inheriting from `ModSubsystem`.
+You can also use subsystems to store data to save states.
 
 You should use the `GetSubsystemActor` function to reference your desired subsystem.
 
