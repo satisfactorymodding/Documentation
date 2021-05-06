@@ -29,10 +29,12 @@ The subsystem should be registered as a property in `SML.GameWorldModule`
 
 image:Satisfactory/Subsystems/Subsystems_gwm.PNG[GameWorldModule]
 
-You should use the `GetSubsystemActor` function to reference your subsystem.
+The subsystems are held by the `SubsystemActorManager`, that can be obtained using the `GetSubsystemActorManager` function.
+
+You should use the `GetSubsystemActor` function to reference your desired subsystem.
 
 image:Satisfactory/Subsystems/Subsystems_sam.PNG[GameWorldModule]
 
-* The first parameter of the function is a reference to your `SubsystemActorManager` acquired using the function `GetSubsystemActorManager`.
+* The first parameter of the function is a reference to your `SubsystemActorManager` acquired using the `GetSubsystemActorManager` function.
 * The second parameter is just a name for the actor in this example `ExampleSubsystem`.
 
