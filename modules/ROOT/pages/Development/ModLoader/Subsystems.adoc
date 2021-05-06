@@ -22,10 +22,10 @@ without storing that data again in each lamp instance.
 
 == Spawning a Subsystem
 
-A subsystem itself is an actor inheriting from `SML.ModSubsystem`.
+A subsystem itself is an actor inheriting from `ModSubsystem`.
 You can also use subsystems to store data to save states.
 
-The subsystem should be registered as a property in `SML.GameWorldModule`
+The subsystem should be registered as a property in `GameWorldModule`
 
 image:Satisfactory/Subsystems/Subsystems_gwm.PNG[GameWorldModule]
 
