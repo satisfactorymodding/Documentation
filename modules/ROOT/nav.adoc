@@ -39,6 +39,7 @@
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
+*** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
