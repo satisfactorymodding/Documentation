@@ -17,7 +17,7 @@ Be sure to read over the steps here as well to be sure you're doing things corre
 
 == Starter Project
 
-You should have already downloaded the Starter Project in the previous steps of the tutorial. Unzip `SML-Shipping-Dev-Win64.zip` (or `SatisfactoryModLoader-sml-dev.zip` of you downloaded a development build) to get the Starter Project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
+You should have already downloaded the Starter Project in the previous steps of the tutorial. If you downloaded the Starter Project as a zip, unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
 
 This will be the folder that all of your mod's files will be put into,
 so extract the folder somewhere convenient for you where you can find it later,
