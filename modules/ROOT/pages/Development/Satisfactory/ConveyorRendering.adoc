@@ -13,7 +13,7 @@ For a finished example, check the `/Utils/Materials/` folder in your starter Unr
 == Mesh Requirements
 
 As covered in the
-xref:/Development/BeginnersGuide/simpleMod/item.adoc[Getting Started Guide],
+xref:/Development/BeginnersGuide/SimpleMod/recipe.adoc[Getting Started Guide],
 the `M Conveyor Mesh` field of
 xref::/Development/Satisfactory/Inventory.adoc#_item_descriptor_afgitemdescriptor[FGItemDescriptor]s
 must point to the mesh intended for use when both dropped ground and on conveyors.
