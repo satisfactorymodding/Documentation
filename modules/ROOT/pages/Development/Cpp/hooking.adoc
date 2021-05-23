@@ -88,7 +88,7 @@ void hook(int returnValue, int exampleArg) {
 }
 ----
 
-=== The 3 Hook Types
+=== The 2 Hook Types
 
 By 'hook types' we mean the different ways of attaching a hook to a function.
 Each attachment method works differently under the hood, and it's important to pay attention to the key differences between the different types of hooks.
@@ -176,49 +176,6 @@ void registerHooks() {
 }
 ----
 
-=== Type: SUBSCRIBE_METHOD_MANUAL
-
-[WARNING]
-====
-Obtaining the needed mangled symbol name is an advanced topic!
-So please only use it if you are at least a little bit familiar with disassembles.
-====
-
-[WARNING]
-====
-The after hook macro is called `SUBSCRIBE_METHOD_AFTER_MANUAL`.
-====
-
-The `SUBSCRIBE_METHOD_MANUAL` works just like the `SUBSCRIBE_METHOD` but it instead allows you
-to explicitly define the symbol to hook.
-You still need to provide a function pointer which is used to determine the signature
-of the function you want to hook so the template functions and classes know what to do.
-
-The symbol name is mangled and can be obtained with https://www.hex-rays.com/products/ida/support/download_freeware/[IDA].
-To do so, open IDA an click at the welcome page on `new`.
-Then select the file under `<SF installation>/FactoryGame/Binaries/Win64/FactoryGame-Win64-Shipping.exe` and hit OK.
-Then you need to wait quite a while.
-When it is finished, you can find a list of all functions on the right hand side.
-Search for the function you want to hook, double click on it.
-The main view will show you the disassembly.
-In there search for the function name and signature, immediately under it you can find the
-mangled symbol name.
-image:Cpp/IDA_Symbol.jpg[image]
-
-Usage goes as following:
-[source,cpp]
-----
-#include "SML/mod/hooking.h"
-
-#include "FGBuildableGeneratorFuel"
-
-void registerHooks() {
-	SUBSCRIBE_METHOD_MANUAL("?BeginPlay@AFGBuildableGeneratorFuel@@UEAAXXZ", FGBuildableGeneratorFuel::BeginPlay, [](auto& scope, FGBuildableGeneratorFuel* self) {
-		// do some nice stuff there
-	})
-}
-----
-
 == Blueprint-Hooking
 
 Blueprint function hooking works by changing the instructions of a Blueprint UFunction
@@ -254,3 +211,34 @@ void registerHooks() {
 You can also provide a count of instruction as third parameter to hook as instruction based offset from the top.
 But we highly encourage you to not do so unless you know what you exactly do!
 ====
+
+== Protected/Private Function Hooking
+
+If the function you are attempting to hook is protected or private to that specific class, you must use the `friend` declaration.
+
+This also means that you can only hook this function from a class, not global scope.
+
+For example, let's assume you have a class called `MyWatcher` in a namespace called `MyMod`, and you wish to hook the function `EnterChatMessage` from `AFGPlayerController` class.
+
+You must first edit the `FGPlayerController.h` header and add the following block of code to it:
+[source,cpp]
+----
+namespace MyMod
+{
+    class MyWatcher;
+}
+----
+
+Then you have to add the `friend` declaration to the class itself, in result, it should look like this:
+[source,cpp]
+----
+...
+
+class FACTORYGAME_API AFGPlayerController : public AFGPlayerControllerBase
+{
+	GENERATED_BODY()
+public:
+	friend MyMod::MyWatcher;
+
+...
+----
