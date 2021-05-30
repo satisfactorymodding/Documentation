@@ -83,6 +83,7 @@ We have an example model and textures you can use
 link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
 Import these the same way you imported the category image in the Recipe vs Schematic tutorial.
 Put them in a Folder together somewhere within your plugin folder.
+Open the MREO texture we'll use for the Reflection map and turn sRGB off.
 Next we'll need to make some materials to use these textures,
 we have to make them ourselves not import them otherwise they wont render properly on belts. 
 
