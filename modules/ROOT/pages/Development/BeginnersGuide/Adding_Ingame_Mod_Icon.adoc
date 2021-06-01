@@ -1,0 +1,48 @@
+= Adding In-game Mod Icon
+
+
+When checking the mod list ingame we would find something like this associated with our mod:
+
+image:AddingModIcon/NoIngameModIcon.jpg[Ingame Icon]
+
+If that's the case it probably means we didn't setup a proper icon for our Mod as it doesn't automatically gets included with Alpakit.
+
+== Setup
+
+First we need a png file that we'll be using as an Icon for our mod.
+
+Let's navigate to our SML project (where the FactoryGame.uproject file is located) and from there go to /Plugins/<mod_reference> where <mod_reference> it's the reference name we gave to our mod. We should now be in the folder where our .uplugin file is located.
+
+Now let's create 2 folders:
+
+- Config
+- Resources
+
+[WARNING]
+====
+Be sure that the folder names are as shown above
+====
+
+Our folder should now look like this
+
+image:AddingModIcon/FolderCreated.jpg[Folder Created]
+
+In our "Resources" folder we will put our Icon and rename it to "Icon128.png". This name is necessary to have it recognized.
+
+Now we need to tell Alpakit to include our "Resources" folder in the mod when paking it. To do this, inside the "Config" folder, we need to create a text file inside of which we'll insert this script
+
+[source,text]
+----
+[StageSettings]
++AdditionalNonUSFDirectories=Resources
+----
+
+the attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+
+We pass it the "Resources" value which is the folder we wish to include (the one containing our Mod Icon).
+
+Save the text file we created, renaming it as "PluginSettings" and change its extension to .ini
+
+== Conclusions
+
+Now you can Alpakit your mod again and the icon should be visible in the Mod List
