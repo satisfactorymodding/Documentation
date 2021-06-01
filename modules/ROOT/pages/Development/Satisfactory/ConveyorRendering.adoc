@@ -95,7 +95,7 @@ and `M Far Conveyor Instance` set to LOD2.
 == How It Works (Advanced)
 
 Coffee Stain Studios has provided an in-depth guide that informed the creation of this article
-( https://drive.google.com/file/d/1JsAlduRg7-KV0jxEUjK-LLANwHUH7gRZ/view[#PraiseBen] ).
+(https://drive.google.com/file/d/1JsAlduRg7-KV0jxEUjK-LLANwHUH7gRZ/view[#PraiseBen]).
 
 To summarize the article, each conveyer belt writes information to a global texture file
 to track the orientation and location of the objects on it.

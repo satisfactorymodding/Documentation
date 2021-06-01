@@ -87,7 +87,7 @@ Accept any authentication prompts that appear along the way.
 [TIP]
 ====
 
-if you are getting a checksum error during Wwise integration, installing any other version should fix the problem
+If you are getting a checksum error during Wwise integration, installing any other version should fix the problem
 
 ====
 

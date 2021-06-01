@@ -46,10 +46,14 @@ SF or third party libraries you might want to include.
 == Creating the Mod-Module
 
 To start off, navigate to the base folder of your mod, the location of your `FactoryGame.uproject` and `FactoryGame.sln` files.
-Then Navigate to the path 'Plugins/<mod_reference>/' where your '<mod_reference>.uplugin' file is located. Create a new folder named 'Source' inside of which we should create a subfolder, the name of which will be your mod reference.
+Then navigate to the path 'Plugins/<mod_reference>/' where your '<mod_reference>.uplugin' file is located.
+Create a new folder named 'Source' inside of which we should create a subfolder, the name of which will be your mod reference.
 As a reminder, the concept of a mod reference is explained xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
 Within this folder, you should create a new file called `<your mod reference>.Build.cs`.
-You can do this by creating a new text file and then changing the extension to a `.cs` file, for example. If you chose to create the file in this manner, we suggest you turn on https://support.winzip.com/hc/en-us/articles/115011457948-How-to-configure-Windows-to-show-file-extensions-and-hidden-files[showing file name extensions] to assist with this.
+You can do this by creating a new text file and then changing the extension to a `.cs` file, for example.
+If you chose to create the file in this manner, we suggest you turn on
+https://support.winzip.com/hc/en-us/articles/115011457948-How-to-configure-Windows-to-show-file-extensions-and-hidden-files[showing file name extensions]
+to assist with this.
 
 Within this new file you will need to add the following configuration text.
 
