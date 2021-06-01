@@ -9,6 +9,11 @@ If you want to re-use other existing materials or textures that are not currentl
 It's important to understand the UE4 concept of https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
 ====
 
+[WARNING]
+====
+Both Normal maps and Surface Maps should have sRGB disabled. Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked. Albedo should still be sRGB.
+====
+
 == Factory Machine (MI_Factory_Base_01)
 Main material used on most buildable factory parts and recommended material for most building content. Works with the painting system. Uses an atlas of several material types, expects decals to be added with `DecalColor_Masked` and `Decal_Normal` to add detail, is responsible for the metal texture on most machines.
 
@@ -77,7 +82,7 @@ When marked as paintable the main Albedo texture is multiplied into the paint co
 - 0.25 < x < 0.50 : Primary paint color
 - 0.0 <= x < 0.25 : Secondary paint color
 
-The 'ReflectionMap' texture is a channel packed surface property texture (MREO) with the following properties:
+The 'ReflectionMap' is a Linear Texture (sRGB off) which is channel packed surface property texture (MREO) with the following properties:
 
 - `R:` Metalness
 - `G:` Roughness

@@ -1,0 +1,67 @@
+= Third Party Libraries
+
+To add a third party library to your mod, you must add it as a module under your UPlugin.
+
+== Module Definition
+
+You must first create a directory structure that follows this example: `Plugins/<mod_reference>/Source/ThirdParty/<third_party>Library/` and place a file named after that library in the directory called `<third_party>Library.Build.cs`
+
+The file must contain a class named after the module, and references to any include paths and library paths.
+
+Here is an example where all source files are placed in `inc` and compiled libraries (`.lib`) are placed in `x64/Release`:
+
+[source,cpp]
+----
+using System.IO;
+using UnrealBuildTool;
+
+public class <third_party>Library : ModuleRules
+{
+    public <third_party>Library(ReadOnlyTargetRules Target) : base(Target)
+    {
+        Type = ModuleType.External;
+        PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
+        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "x64", "Release"));
+    }
+}
+----
+
+== Module Usage
+
+After you have defined the third party module, you need to reference it in your plugins base modules `<mod_reference>Library.Build.cs` file as a public dependency.
+
+[source,cpp]
+----
+PublicDependencyModuleNames.AddRange(new string[] {"<third_party>Library"});
+----
+
+== Import Errors
+
+Unreal Engine has stricter standards about what warnings are treated as errors, but some libraries ignore those warnings as they are non-critical to their use case.
+
+In those cases, you need to wrap any imports from that library in several layers of compatibility macros and headers.
+
+[source,cpp]
+----
+#include "Windows/WindowsHWrapper.h"
+#include "Windows/AllowWindowsPlatformTypes.h"
+#include "Windows/AllowWindowsPlatformAtomics.h"
+
+PRAGMA_PUSH_PLATFORM_DEFAULT_PACKING
+THIRD_PARTY_INCLUDES_START
+
+#pragma push_macro("check")
+#undef check
+
+<your_imports_here>
+
+#pragma pop_macro("check")
+
+THIRD_PARTY_INCLUDES_END
+PRAGMA_POP_PLATFORM_DEFAULT_PACKING
+
+#include "Windows/HideWindowsPlatformAtomics.h"
+#include "Windows/HideWindowsPlatformTypes.h"
+----
+
+If even after wrapping the imports you are getting errors from compiling the library, you will need to fix those errors and recompile the library.

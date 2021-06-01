@@ -74,8 +74,7 @@ Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
 After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar, and select version `2021.1.0.7575`
-(you might need to change the left dropdown to `All` to do this), then press `Install`.
+Select `WWISE` from the top bar, then press `Install`.
 Once presented with options on what to install,
 make sure that `Authoring` and `SDK (C++)` packages are checked on the left,
 and that `Apple` -> `MacOS` and
@@ -85,10 +84,11 @@ You don't need to add any plugins,
 so just press `Install` to skip in the bottom left to begin the installation process.
 Accept any authentication prompts that appear along the way.
 
-[WARNING]
+[TIP]
 ====
-Make sure that you selected the correct version of Wwise.
-It's easy to choose the wrong version by accident.
+
+If you are getting a checksum error during Wwise integration, installing any other Wwise version should fix the problem.
+
 ====
 
 == Starter Project
