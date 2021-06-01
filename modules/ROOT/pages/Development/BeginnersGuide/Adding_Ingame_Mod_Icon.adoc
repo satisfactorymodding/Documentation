@@ -3,7 +3,7 @@
 
 When checking the mod list ingame we would find something like this associated with our mod:
 
-image:AddingModIcon/IngameModIcon.jpg[Ingame Icon]
+image:AddingModIcon/NoIngameModIcon.jpg[Ingame Icon]
 
 If that's the case it probably means we didn't setup a proper icon for our Mod as it doesn't automatically gets included with Alpakit.
 
@@ -20,14 +20,14 @@ Now let's create 2 folders:
 
 [WARNING]
 ====
-Be sure that the folder name are as shown above
+Be sure that the folder names are as shown above
 ====
 
 Our folder should now look like this
 
 image:AddingModIcon/FolderCreated.jpg[Folder Created]
 
-In our "Resources" folder we will put our Icon and rename it as "Icon128.png". This name is necessary to have have it recognized.
+In our "Resources" folder we will put our Icon and rename it to "Icon128.png". This name is necessary to have it recognized.
 
 Now we need to tell Alpakit to include our "Resources" folder in the mod when paking it. To do this, inside the "Config" folder, we need to create a text file inside of which we'll insert this script
 
