@@ -19,6 +19,7 @@
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
 *** xref:Development/BeginnersGuide/SimpleMod/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
+*** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Content]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
