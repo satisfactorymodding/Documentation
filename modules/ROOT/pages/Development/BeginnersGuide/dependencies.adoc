@@ -49,7 +49,7 @@ You'll need to register your GitHub account with Epic Games to be able to downlo
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later." try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
 
-You will probably have to check your email and confirm from there, as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
+**You will also have to check your email and confirm the linkage from there**. Make sure you're logged into your linked GitHub account when you follow the upcoming link.
 
 Once you've done that, go to the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project] and download `UnrealEngine-CSS-Editor-Win64.exe`, then run it to install the Unreal Engine editor for this custom version.
 
