@@ -55,7 +55,7 @@ Once you've done that, go to the https://github.com/SatisfactoryModdingUE/Unreal
 
 [WARNING]
 ====
-If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and GitHub, and be sure that you followed the above steps. The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo.
+If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and GitHub, and be sure that you followed the above steps, including checking your inbox for an invitation to join the @EpicGames organization. The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo.
 ====
 
 This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening Unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
