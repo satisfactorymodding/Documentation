@@ -81,7 +81,7 @@ You can reuse the same textures you used for LOD1, and will likely have the same
 
 === Asset Data
 
-image:Satisfactory/ConveyorAssetData.png[image]
+image:Satisfactory/ConveyorAssetDataExample.png[image]
 
 In order for the conveyor system to find the materials,
 we need to add custom data to the root material - the one the mesh is referencing.
