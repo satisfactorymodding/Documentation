@@ -29,9 +29,9 @@ Launch the game at least once to ensure all files get set up correctly.
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
 We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
 
-Run the installer, and agree to prompts you receive along the way. Select the packages "{cpp} Desktop development" and "Game development with {cpp}". You might have to scroll a bit to find them.
+Run the installer, and agree to prompts you receive along the way.  From the "Workloads" page select the "Desktop & Mobile > Desktop development with {cpp}" and "Gaming > Game development with {cpp}". You might have to scroll a bit to find them.
 
-If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two packages and add them to your installation.
+If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two workloads and add them to your installation.
 
 Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
 
@@ -45,7 +45,7 @@ If you consider using it, make sure you still have the necessary VS-{cpp} packag
 
 Because Satisfactory uses a modified version of Unreal Engine, we modders need to be using that same version as well to develop our mods.
 
-You'll need to register your GitHub account with Epic Games to be able to download this special version. Directions on how to do so can be found https://www.unrealengine.com/en-US/ue4-on-github[here].
+You'll need to register your GitHub account with Epic Games and join the [Epic Games GitHub organization](https://github.com/epicgames) to be able to download this special version. Directions on how to do so can be found https://www.unrealengine.com/en-US/ue4-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later." try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
 
@@ -55,7 +55,9 @@ Once you've done that, go to the https://github.com/SatisfactoryModdingUE/Unreal
 
 [WARNING]
 ====
-If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account. Check for emails from both Epic and GitHub, and be sure that you followed the above steps. The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo.
+If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account.  The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo and is not part of the correct organization.
+
+Check for emails from both Epic and GitHub, and be sure that you followed the above steps.  You can verify that you've correctly joined the GitHub organization by checking for "EpicGames" on the [GitHub Account Organizations page](https://github.com/settings/organizations).  If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 ====
 
 This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening Unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
