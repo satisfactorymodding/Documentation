@@ -65,14 +65,15 @@ Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
 You'll have to again select version `2021.1.0.7575`
-(you might need to change the left dropdown to `All` to do this). 
+(you will need to change the left dropdown to `All` to do this).
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
 is set to `4.25.3-CSS`.
 
-If Wwise tells you that you need to modify your installation in a yellow warning box,
-go ahead and follow what it says for this step.
+If you missed a required component as part of the Wwise installation, it may show 
+a yellow warning box indicating what's missing as well as a button to "Modify" the
+installation.  Go ahead and follow what it says for this step.
 If Wwise warns you that it could not find an installation in a red warning box,
 be sure that you have selected the correct version as stated above.
 If you see a blue box offering both "Modify" and "Add Plug-in",
@@ -88,7 +89,6 @@ Do so, and agree to the terms to start the process.
 That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
 
-The below gif is slightly outdated - be sure to choose version `2021.1.0.7575`.
 image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
 
 == Generate Visual Studio Files
