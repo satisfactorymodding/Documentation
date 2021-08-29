@@ -44,6 +44,10 @@ and `Version` to `1.0.0`,
 which sorts your mod to appear with other mods
 in the Modding section of the Plugins list.
 
+Note that if you give your mod an icon image here, you'll have to follow
+xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[a few extra steps]
+for it to show up in game.
+
 These fields will be explained further when you prepare to upload your mod for others to use.
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]

@@ -1,0 +1,71 @@
+= Adding an In-Game Mod Icon
+
+The in-game mods list, accessible from the main menu, allows you to view and configure all loaded mods.
+
+The mods list also displays image icons for installed mods,
+or the following placeholder image if none was found:
+
+image:AddingModIcon/NoIngameModIcon.jpg[Ingame Icon]
+
+Even if you have correctly set your plugin's icon in the Unreal editor,
+there's still a couple steps needed for Alpakit to recognize it
+and package it with your mod.
+
+
+== Setup
+
+First, we need a png file to use as the Icon for our mod.
+You can re-use the same one you plan to use when
+xref:UploadToSMR.adoc[uploading your mod to SMR],
+but you might need to resize it for use here - this icon should be a maximum of 128x128 pixels. 
+
+Let's navigate to our SML project (where the FactoryGame.uproject file is located)
+and from there go to `/Plugins/<mod_reference>`
+(read more on mod references xref:Development/BeginnersGuide/index.adoc#_mod_reference[here]).
+We should now be in the folder where our mod's .uplugin file is located.
+
+Next, let's create 2 folders within our mod plugin folder:
+
+- `Resources`
+- `Config`
+
+[WARNING]
+====
+Be sure that the folder names exactly match those shown above.
+====
+
+Our folder should now look like this:
+
+image:AddingModIcon/FolderCreated.jpg[Folder Created]
+
+In our "Resources" folder we will put our Icon and rename it to `Icon128.png`.
+If the icon is given any other file name, the Unreal editor and game will not recognize it
+and will fall back to default icon instead.
+
+Now we need to tell Alpakit to include our "Resources" folder in the mod when paking it.
+To do this, inside the "Config" folder, we need to create the file `PluginSettings.ini`.
+
+You can do this by creating a new text file and then changing the extension to a `.ini` file, for example.
+If you chose to create the file in this manner, we suggest you turn on
+https://support.winzip.com/hc/en-us/articles/115011457948-How-to-configure-Windows-to-show-file-extensions-and-hidden-files[showing file name extensions]
+to assist with this.
+
+Inside the file, insert the following lines:
+
+[source,text]
+----
+[StageSettings]
++AdditionalNonUSFDirectories=Resources
+----
+
+The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+
+We pass it the "Resources" value which is the folder we wish to include (the one containing our Mod Icon).
+
+== Making Sure It Worked
+
+After making these changes, you should be able to pack your mod again from the editor.
+If everything worked, your mod icon should now show on the in-game menu. Hooray!
+
+If the icon still doesn't show, go back and ensure that you have the correct file and folder names,
+and that the image is of the correct size and format.
