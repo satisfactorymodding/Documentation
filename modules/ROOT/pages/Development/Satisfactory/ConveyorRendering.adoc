@@ -1,5 +1,10 @@
 = Conveyor Rendering
 
+[NOTE]
+====
+Ben (CSS employee) has confirmed that this system will be changing in a future update, and that these steps will soon change, or may no longer be required. Consider waiting to set up these conveyor materials until the new system is released.
+====
+
 Introduced with Update 4 was a new complex, high performance rendering system for item conveyers.
 It was created to keep the game performing well given the mesh instancing behavior changes in Unreal Engine 4.25.3.
 Below are the details of how to set up modded content to use this new system, as well as details on how it works.
