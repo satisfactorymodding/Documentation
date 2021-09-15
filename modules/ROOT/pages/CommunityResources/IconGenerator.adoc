@@ -6,4 +6,6 @@ This is helpful if you've already created a model for your content and you want
 to create UI icons for it that are consistent with those from the base game.
 
 You can read more about how to install and use the plugin on its
-https://github.com/Nogg-aholic/NogsIconMaker[GitHub page].
+https://github.com/Nogg-aholic/EditorIconMaker[GitHub page].
+
+Documentation for this tool is still a work in progress. A guide for how to use it can be found xref:Development/BeginnersGuide/generating_icons.adoc[here].
