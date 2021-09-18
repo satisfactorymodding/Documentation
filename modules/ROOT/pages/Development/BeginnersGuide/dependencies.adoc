@@ -35,6 +35,14 @@ If you already have Visual Studio installed, you can run the installer again and
 
 Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
 
+
+[TIP]
+====
+You will find the 2017 compilers under the Individual Components when modify the VS 2019 installation.
+Check out the "Compiler, Buildtools and Runtimes" section. There you will find the entry "MSVC v141 - VS 2017 C++ - x64/x86-Buildtools (v14.16)".
+Hovering the Mouse over it will confirm that his are the Compiler and libraries you are looking for.
+====
+
 [TIP]
 ====
 An alternative to Visual Studio which is very popular among {cpp} modders is https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
