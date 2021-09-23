@@ -24,7 +24,7 @@ content:
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
-    - url: https://github.com/mrhid6/SF_Mod_RefinedPower.git
+    - url: https://git.hostxtra.co.uk/publicrefinedrd/refinedrddocs.git
       branches: master
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
