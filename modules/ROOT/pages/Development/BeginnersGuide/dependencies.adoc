@@ -115,7 +115,7 @@ which simplifies the process of updating your project later.
 Check on the discord to find out which branch to clone,
 although it's most likely `master`.
 
-== Satisfactory Mod Loader
+== Satisfactory Mod Manager
 
 xref:index.adoc#_satisfactory_mod_manager_title_refaka_smm[Satisfactory Mod Manager]
 offers a convenient developer mode that
