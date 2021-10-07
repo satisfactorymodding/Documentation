@@ -6,7 +6,7 @@ Please contact us on the
 [Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E) (preferred) or the [Ficsit.app forums](https://forums.ficsit.app/) (not checked very often)
 with questions and suggestions.
 
-We attempt to use [Semantic Line Break format](https://sembr.org/)in the source files, but this is only loosely followed.
+We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files, but this is only loosely followed.
 
 Pull requests should target the `dev` branch.
 
