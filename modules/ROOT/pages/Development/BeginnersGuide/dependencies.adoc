@@ -27,7 +27,7 @@ Launch the game at least once to ensure all files get set up correctly.
 == Visual Studio
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
-We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
+We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the https://visualstudio.microsoft.com/vs/older-downloads/[2017 compilers]. 
 
 Run the installer, and agree to prompts you receive along the way.  From the "Workloads" page select the "Desktop & Mobile > Desktop development with {cpp}" and "Gaming > Game development with {cpp}". You might have to scroll a bit to find them.
 
