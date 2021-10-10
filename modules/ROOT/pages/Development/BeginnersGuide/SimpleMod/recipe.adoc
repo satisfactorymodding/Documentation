@@ -109,7 +109,9 @@ M Time to Complete::
 M Schematic Icon::
   The icon displayed on a HUB milestone or M.A.M. Research.
   We can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
-  You should make another folder (say `Content/DocMod/Icons`) to hold your mod's icon files and import there.
+  You should make another folder (say `Content/DocMod/Icons`) to hold your mod's icon files.
+  You can import the image into your project by navigating to your destination folder in the Unity Editor Content Browser and then dragging and dropping the file from a File Explorer window.
+  Once the image has been imported successfully, it can be selected as M Schematic Icon using the drop-down menu.
 * {blank}
 +
 M Cost::
