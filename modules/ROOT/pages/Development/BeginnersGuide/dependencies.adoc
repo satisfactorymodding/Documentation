@@ -27,7 +27,7 @@ Launch the game at least once to ensure all files get set up correctly.
 == Visual Studio
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
-We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the 2017 compilers.
+We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the https://visualstudio.microsoft.com/vs/older-downloads/[2017 compilers]. 
 
 Run the installer, and agree to prompts you receive along the way.  From the "Workloads" page select the "Desktop & Mobile > Desktop development with {cpp}" and "Gaming > Game development with {cpp}". You might have to scroll a bit to find them.
 
@@ -114,6 +114,14 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo ins
 which simplifies the process of updating your project later.
 Check on the discord to find out which branch to clone,
 although it's most likely `master`.
+
+[WARNING]
+====
+DEPENDING ON THE UNREAL VERSION YOU DOWNLOADED, THERE ARE DIFFERENT STARTER PROJECTS
+`jenkins-UE-4.25.3-CSS-44` -> use the `master` branch
+`jenkins-UE-4.26.1-CSS-54` -> use the `sml-dev` branch
+This is a temporary measure while the Update 5 engine update modding tools are in development
+====
 
 == Satisfactory Mod Manager
 
