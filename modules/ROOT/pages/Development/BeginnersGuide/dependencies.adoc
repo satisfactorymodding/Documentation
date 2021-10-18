@@ -123,7 +123,7 @@ DEPENDING ON THE UNREAL VERSION YOU DOWNLOADED, THERE ARE DIFFERENT STARTER PROJ
 This is a temporary measure while the Update 5 engine update modding tools are in development
 ====
 
-== Satisfactory Mod Loader
+== Satisfactory Mod Manager
 
 xref:index.adoc#_satisfactory_mod_manager_title_refaka_smm[Satisfactory Mod Manager]
 offers a convenient developer mode that

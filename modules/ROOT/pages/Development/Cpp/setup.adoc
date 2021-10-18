@@ -52,7 +52,7 @@ As a reminder, the concept of a mod reference is explained xref:Development/Begi
 Within this folder, you should create a new file called `<your mod reference>.Build.cs`.
 You can do this by creating a new text file and then changing the extension to a `.cs` file, for example.
 If you chose to create the file in this manner, we suggest you turn on
-https://support.winzip.com/hc/en-us/articles/115011457948-How-to-configure-Windows-to-show-file-extensions-and-hidden-files[showing file name extensions]
+https://www.howtogeek.com/205086/beginner-how-to-make-windows-show-file-extensions/[showing file name extensions]
 to assist with this.
 
 Within this new file you will need to add the following configuration text.
@@ -66,7 +66,7 @@ using System;
 
 public class <mod_reference> : ModuleRules
 {
-    public <mod reference>(ReadOnlyTargetRules Target) : base(Target)
+    public <mod_reference>(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
@@ -139,24 +139,21 @@ void F<mod reference>Module::StartupModule() {
 IMPLEMENT_GAME_MODULE(F<mod_reference>Module, <mod_reference>);
 ----
 
-== Adding the Module to the UProject
+== Adding the Module to the UPlugin
 
 Next we need to tell the Unreal Editor to use our editor module.
-For this open up the `FactoryGame.uproject` file in your project root.
-In the `Modules` array, add your module with your `mod_reference` as name, `Runtime` as Type and `Default` as LoadingPhase.
+For this open up the `<mod_reference>.uplugin` file in your plugin root.
+Add the `Modules` array in the root json, then add your module with your `mod_reference` as name, `Runtime` as Type and `Default` as LoadingPhase.
 Like this:
 [source,json]
 ----
 "Modules": [
-	{
-	...
-	},
-	{
-		"Name": "<mod_reference>",
-		"Type": "Runtime",
-		"LoadingPhase": "Default"
-	}
-]
+        {
+            "Name": "<mod_reference>",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
 ----
 (the name used was `<mod_reference>`, make sure you use your own mod reference instead)
 
