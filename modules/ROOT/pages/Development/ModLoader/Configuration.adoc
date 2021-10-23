@@ -64,22 +64,33 @@ check out how ExampleMod does it in `ExampleModGameInstanceModule`.
 
 == Interacting with the Config System in Blueprints
 
+The following image shows how to interact with the Configuration System from Blueprints
+image:ModLoader/NewConfigurationSystemExample.png[image]
+
+Below is a text explanation of the above image
+
 === `Creating a reference to your config`
-* Inside your blueprint add a node called MC to ConfigProperty then set the class to your configuration class you created previously
-* From the node just created drag off the pin and created a cast node 'BP_ConfigPropertySection'
+To interact with your config, you first need to create a reference to it:
+* Inside your blueprint, add a node called 'MC to ConfigProperty' and set the input class to your configuration's class
+* From the node you just created, drag off the output pin and create a cast node to 'BP_ConfigPropertySection'
+
+=== `Creating a reference to a property`
+To create a reference to a property in your config, you will need a reference to a ConfigPropertySection. See the above section if you haven't done so already
+* From the ConfigPropertySection, search for the node "To Section". The input this node requires is the key of the property you want to retrieve
 
 === `Get Value`
-* From you BP Config Property Section pin, search for "To Section". The key required is the String value you put into your Mod Configuration BP
-* From the "To Section" node pin you have to convert to a variable type, this type would be the same type you specified in your Mod Configurtion. Search for "CP to" and select your type of variable you need, this will return the value saved in your config
+To get the value of a property from your config, you will need a reference to that property. See the above section if you haven't done so already
+* Drag from the "To Section" node output pin and search for "CP to". This should list a number of "CP to " nodes followed by a type. Select the type of the config property you're trying to get the value from. The output pin of the "CP to" node will give you the value of the config property.
 
 === `Set Value`
-* From you BP Config Property Section pin, search for "To Section". The key required is the String value you put into your Mod Configuration BP
-* From the "To Section" node pin you have to cast to a variable type, this type would be the same type you specified in your Mod Configurtion. Search for "BP_ConfigProperty" and select your type of variable you need.
-*From your Cast pin search for "Set Value" and assign the new value you wish to set
+To set the value of a property from your config, you will need a reference to that property. See the "Creating a reference to a property" section above if you haven't done so already
+* You first have to cast your property to the correct type. Drag from the "To Section" node output pin and search for "BP_ConfigProperty". This should list a number of cast nodes to different BP_ConfigProperty classes. Select the type of the config property you're trying to get the value from.
+* From your Cast output pin search for "Set Value" and assign the new value you wish to set
 
-=== `Save config after setting`
-* From you BP Config Property Section pin, search for "Mark Dirty" and select function named "Mark Dirty" (not "Mark Property Dirty")
-* That's it the file will be saved and updated to any changes you make is 'Set Value' section
+=== `Saving your config after changing a value`
+You need to explicitly tell the configuration system to save changes. You will need a reference to your config. See the "Creating a reference to your config" section above if you haven't done so already
+* Drag from the output pin of the To Instance node you created and search for the function "Mark Dirty". This will save the whole config.
+You can also save just one property if you want to. To do that, use the "Mark Property Dirty" function with the output from the "To Section" node as an input.
 
 == Interacting with the Config System in {cpp}
 
