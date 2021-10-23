@@ -47,8 +47,10 @@ if you haven't already made one yet,
 and specify your config under Mod Configurations there.
 Make sure to mark it as the root module if you've just made it.
 
+== Preview your Config
+
 You can use the fancy SML Menu Preview Widget to view your mod config as it would appear in the game!
-In a content editor, go to `SMLEditor Content/Menu Preview` and right click on SML_MenuPreviewWidget,
+In a content browser, navigate to `SMLEditor Content/Menu Preview` and right click on SML_MenuPreviewWidget,
 then choose Run Editor Utility Widget. You should probably make the window fullscreen.
 
 To look at your mod's config in the previewer,
@@ -56,41 +58,61 @@ select your ModConfiguration in the content browser,
 then press the Set Selected Mod Config button inside the preview window.
 Scroll down to see the config UI.
 
-Check out the ExampleMod's configs for a great demo of all the valid fields and how they appear in the editor.
-Be sure to check out the custom widget (with custom button) for something cool.
-
-For a demonstration of how to read configuration values with Blueprint code,
-check out how ExampleMod does it in `ExampleModGameInstanceModule`.
-
 == Interacting with the Config System in Blueprints
 
-The following image shows how to interact with the Configuration System from Blueprints
+The following image shows how to interact with the Configuration System from Blueprints.
 image:ModLoader/NewConfigurationSystemExample.png[image]
 
-Below is a text explanation of the above image
+Below is a text explanation of the above image.
 
-=== `Creating a reference to your config`
+=== Creating a reference to your config
+
 To interact with your config, you first need to create a reference to it:
+
 * Inside your blueprint, add a node called 'MC to ConfigProperty' and set the input class to your configuration's class
 * From the node you just created, drag off the output pin and create a cast node to 'BP_ConfigPropertySection'
 
-=== `Creating a reference to a property`
-To create a reference to a property in your config, you will need a reference to a ConfigPropertySection. See the above section if you haven't done so already
-* From the ConfigPropertySection, search for the node "To Section". The input this node requires is the key of the property you want to retrieve
+=== Creating a reference to a property
 
-=== `Get Value`
-To get the value of a property from your config, you will need a reference to that property. See the above section if you haven't done so already
+To create a reference to a property in your config, you will need a reference to a ConfigPropertySection.
+See the above section if you haven't done so already
+
+* From the ConfigPropertySection, search for the node "To Section". The string input this node requires is the key of the property you want to retrieve
+
+=== Get Value
+
+To get the value of a property from your config, you will need a reference to that property.
+See the above section if you haven't done so already
+
 * Drag from the "To Section" node output pin and search for "CP to". This should list a number of "CP to " nodes followed by a type. Select the type of the config property you're trying to get the value from. The output pin of the "CP to" node will give you the value of the config property.
+* If you have nested layers of Config Sections in your config, you can use another cast to 'BP_ConfigPropertySection', and then keep going as needed to get to the final value.
 
-=== `Set Value`
-To set the value of a property from your config, you will need a reference to that property. See the "Creating a reference to a property" section above if you haven't done so already
+=== Set Value
+
+To set the value of a property from your config, you will need a reference to that property.
+See the "Creating a reference to a property" section above if you haven't done so already
+
 * You first have to cast your property to the correct type. Drag from the "To Section" node output pin and search for "BP_ConfigProperty". This should list a number of cast nodes to different BP_ConfigProperty classes. Select the type of the config property you're trying to get the value from.
 * From your Cast output pin search for "Set Value" and assign the new value you wish to set
 
-=== `Saving your config after changing a value`
-You need to explicitly tell the configuration system to save changes. You will need a reference to your config. See the "Creating a reference to your config" section above if you haven't done so already
+=== Saving your config after changing a value
+
+If you make a change to a config property from your code and want it saved,
+you must explicitly tell the configuration system to save changes.
+You'll need a reference to your config;
+see the "Creating a reference to your config" section above if you haven't done so already.
+
 * Drag from the output pin of the To Instance node you created and search for the function "Mark Dirty". This will save the whole config.
+
 You can also save just one property if you want to. To do that, use the "Mark Property Dirty" function with the output from the "To Section" node as an input.
+
+=== Further Examples
+
+Check out the ExampleMod's configs for a great demo of all the valid fields and how they appear in the editor.
+Be sure to check out the custom widget (with custom button) for something cool.
+
+For a more detailed demonstration of how to read configuration values from Blueprint code,
+check out how ExampleMod does it in `ExampleModGameInstanceModule`
 
 == Interacting with the Config System in {cpp}
 
