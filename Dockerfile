@@ -1,5 +1,7 @@
 FROM node:alpine as build
 
+ARG BUILD=build
+
 WORKDIR /app
 
 COPY package.json package.json
@@ -9,7 +11,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn run build
+RUN yarn run $BUILD
 
 
 FROM nginx
