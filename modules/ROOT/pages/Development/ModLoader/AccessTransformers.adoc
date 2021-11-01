@@ -1,0 +1,52 @@
+= Access Transformers
+
+UE-CSS 4.25.3 build 42 adds a new feature: the ability to make accessors for fields/add friend classes/make properties BlueprintReadWrite without modifying the game headers.
+
+== Config File
+
+The config file goes in YourPlugin\Config, named AccessTransformers.ini with the following format.
+[source,ini]
+----
+[AccessTransformers]
+Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
+Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
+BlueprintReadWrite=(Class="AFGSomeClass", Property="mSomeProperty")
+----
+
+You can have multiple (or none) of each of the access transformer types (friend, accessor, and BlueprintReadWrite), but they should all be under the same [AccessTransformers] section header.
+
+[NOTE]
+====
+You still have to build for Development when you want the properties you made BlueprintReadWrite to show up in the editor.
+====
+
+== Definitions
+
+**Friend**: Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to access all private fields and methods.
+
+**Accessor**: Creates public `FORCEINLINE PropertyType GetSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }`.
+
+**BlueprintReadWrite**: Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints (it cannot be added to a non-UPROPERTY field). It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game), so that no changes to the game headers are required.
+
+[WARNING]
+====
+Rider will not find the generated getters and setters and show private fields as private for friended classes because it completely ignores the .generated.h file in which the modified UHT generates them. Visual Studio does not have this problem. The code will still compile, but Rider will still show the accessed fields as errors
+====
+
+[WARNING]
+====
+This can't modify engine classes since UHT will not generate .generated.h for the engine classes in the prebuilt engine 
+====
+
+== Example
+
+This is an example of the AccessTransformers.ini file from Area Actions 2.0
+[source,ini]
+----
+[AccessTransformers]
+Friend=(Class="AFGBuildableFactory", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="AFGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
+Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
+Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
+----

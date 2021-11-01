@@ -1,17 +1,9 @@
 = Hooking
 
-[WARNING]
-====
-This page has not yet been updated for SML3.0 concepts,
-so it may be slightly out of date.
-Check the xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
-for information on what has changed between the versions.
-====
-
 Hooking is a C++ exclusive feature of SML that allows you to attach a custom function body to a existing function.
 
-All C/C++ functioning hooking stuff can be found in `#include "NativeHookManager.h"`.
-All Blueprint function hook stuff can be found in `#include "BlueprintHookManager.h"`.
+All C/C++ functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
+All Blueprint function hook stuff can be found in `#include "Patching/BlueprintHookManager.h"`.
 
 == C/C++ Function Hooks
 
@@ -41,7 +33,7 @@ The call scope object allows you to:
 +
 [source,cpp]
 ----
-void hook(CallScope<...>& Scope, int exampleArg)
+void hook(CallScope<...>& Scope, class* exampleClass, int exampleArg)
  scope.Cancel();
 }
 ----
@@ -55,9 +47,9 @@ This only works with a return type of void.
 +
 [source,cpp]
 ----
-void hook(CallScope<void(int)>& Scope, int exampleArg)
+void hook(CallScope<void(int)>& Scope, class* exampleClass, int exampleArg)
 	// stuff before final function call
-	scope(exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
+	scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
 }
 ----
@@ -66,7 +58,7 @@ You can also use after this type of call the call scopes `getResult` function to
 +
 [source,cpp]
 ----
-void hook(CallScope<int(int)>& Scope, int exampleArg)
+void hook(CallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 	// final function might get called
 	scope.Override(customReturnValue);
 	// final function wont get called anymore
@@ -96,6 +88,11 @@ Each attachment method works differently under the hood, and it's important to p
 Be aware that type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
 Note that the Hook function is a std::function, which means that it can be any type a std::function can accept, such as function pointers, function pointers with bound placeholders, or even lambdas.
 
+[WARNING]
+====
+If your mod is not C\++ only, meaning it is Blueprint **and** C++, you should surround your hook functions with `#if !WITH_EDITOR`, remembering to place `#endif` after the end of your hook function. Failure to do so may prevent the Unreal Editor from opening.
+====
+
 [NOTE]
 ====
 For "after" hooks, add the `_AFTER` postfix to the macro names.
@@ -111,7 +108,7 @@ the function calls for that symbol to SML's hook framework.
 Usage goes as following:
 [source,cpp]
 ----
-#include "SML/mod/hooking.h"
+#include "Patching/NativeHookManager.h"
 
 class SomeClass {
 public:
@@ -122,24 +119,24 @@ public:
 void registerHooks() {
 	SUBSCRIBE_METHOD(SomeClass::MemberFunction, [](auto& scope, SomeClass* self, int arg1) {
 		// do some nice stuff there
-	})
+	});
 
 	SUBSCRIBE_METHOD(SomeClass::StaticFunction, [](auto& scope) {
 		// do some nice stuff there
-	})
+	});
 }
 ----
 
 [WARNING]
 ====
-Hooking overloaded function might not work as intended since the compiler has no clue what exact symbol you now want to hook.
+Hooking an overloaded function might not work as intended since the compiler has no clue what exact symbol you now want to hook.
 For that you should have an look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
 to explicitly set the symbol you want to hook.
 ====
 
-=== Type: SUBSCRIBE_VIRTUAL_FUNCTION
+=== Type: SUBSCRIBE_METHOD_VIRTUAL
 
-The `SUBSCRIBE_VIRTUAL_FUNCTION`-Macro attaches the given hook to the given function passed
+The `SUBSCRIBE_METHOD_VIRTUAL`-Macro attaches the given hook to the given function passed
 by pointer in the virtual table of the given class.
 This happens by SML reading the function symbol and class name so bootstrapper can then
 change the the virtual table entry to the proper function of the SML hooking framework.
@@ -152,7 +149,7 @@ Usage goes as following:
 
 [source,cpp]
 ----
-#include "SML/mod/hooking.h"
+#include "Patching/NativeHookManager.h"
 
 class SomeClass {
 public:
@@ -165,9 +162,9 @@ public:
 }
 
 void registerHooks() {
-	SUBSCRIBE_VIRTUAL_FUNCTION(SomeClass, SomeClass::MemberFunction, [](auto& scope, SomeClass* self, int arg1) {
+	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, SomeClass, [](auto& scope, SomeClass* self, int arg1) {
 		// do some nice stuff there
-	})
+	});
 
 	SomeClass parent;
 	parent->MemberFunction(0); // hook gets called
@@ -191,16 +188,16 @@ to the UFunction you want to attach the hook to.
 Usage goes as following:
 [source,cpp]
 ----
-#include "SML/mod/blueprint_hooking.h"
+#include "Patching/BlueprintHookManager.h"
 
 void registerHooks() {
 	UClass* SomeClass = ...;
-	UFinction* SomeFunc = SomeClass->FindFunctionByName(TEXT("TestFunc"));
+	UFunction* SomeFunc = SomeClass->FindFunctionByName(TEXT("TestFunc"));
 
 	HookBlueprintFunction(SomeFunc, [](FBlueprintHookHelper& helper) {
 		UObject* ctx = helper.GetContext(); // the object this function got called onto
 		FString* localStr = helper.GetLocalVarPtr<FString>("StrVariable"); // getting the pointer to a local variable
-		FString* output = helper.GetOutVariablePtry<FString>("OutValue"); // getting the pointer to a output variable
+		FString* output = helper.GetOutVariablePtr<FString>("OutValue"); // getting the pointer to a output variable
 		// do some nice stuff there
 	})
 }
@@ -220,6 +217,13 @@ This also means that you can only hook this function from a class, not global sc
 
 For example, let's assume you have a class called `MyWatcher` in a namespace called `MyMod`, and you wish to hook the function `EnterChatMessage` from `AFGPlayerController` class.
 
+In your AccessTransformers.ini file you would create the entry:
+[source,ini]
+----
+Friend=(Class="AFGPlayerController", FriendClass="MyWatcher")
+----
+
+Alternatively, you can edit the header directly.
 You must first edit the `FGPlayerController.h` header and add the following block of code to it:
 [source,cpp]
 ----
