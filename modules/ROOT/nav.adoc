@@ -26,7 +26,6 @@
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/hooking.adoc[Hooking]
 *** xref:Development/Cpp/thirdparty.adoc[Third Party Libraries]
-*** xref:Development/Cpp/accesstransformers.adoc[Access Transformers]
 
 ** xref:Development/Modeling/index.adoc[3D Modeling]
 *** xref:Development/Modeling/setup.adoc[Workflow Setup]
@@ -62,6 +61,7 @@
 *** xref:Development/ModLoader/Configuration.adoc[Configuration]
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
+*** xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
 
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
