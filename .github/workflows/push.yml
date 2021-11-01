@@ -1,6 +1,8 @@
 name: Push
 
-on: push
+on:
+  push:
+  repository_dispatch:
 
 env:
   REGISTRY: ghcr.io
