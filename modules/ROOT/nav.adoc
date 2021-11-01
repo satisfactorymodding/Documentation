@@ -26,6 +26,7 @@
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/hooking.adoc[Hooking]
 *** xref:Development/Cpp/thirdparty.adoc[Third Party Libraries]
+*** xref:Development/Cpp/accesstransformers.adoc[Access Transformers]
 
 ** xref:Development/Modeling/index.adoc[3D Modeling]
 *** xref:Development/Modeling/setup.adoc[Workflow Setup]
