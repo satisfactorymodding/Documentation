@@ -1,11 +1,11 @@
 = Hooking
 
-Hooking is a C++ exclusive feature of SML that allows you to attach a custom function body to a existing function.
+Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom function body to a existing function.
 
-All C/C++ functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
+All C/{cpp} functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
 All Blueprint function hook stuff can be found in `#include "Patching/BlueprintHookManager.h"`.
 
-== C/C++ Function Hooks
+== C/{cpp} Function Hooks
 
 The hooking interface provides distinct 3 ways of hooking functions, each of which have two types of call order.
 
@@ -80,7 +80,7 @@ void hook(int returnValue, int exampleArg) {
 }
 ----
 
-=== The 2 Hook Types
+=== The 2 Types of Hooks
 
 By 'hook types' we mean the different ways of attaching a hook to a function.
 Each attachment method works differently under the hood, and it's important to pay attention to the key differences between the different types of hooks.
@@ -90,7 +90,7 @@ Note that the Hook function is a std::function, which means that it can be any t
 
 [WARNING]
 ====
-If your mod is not C\++ only, meaning it is Blueprint **and** C++, you should surround your hook functions with `#if !WITH_EDITOR`, remembering to place `#endif` after the end of your hook function. Failure to do so may prevent the Unreal Editor from opening.
+If your mod is not {cpp} only, meaning it is Blueprint **and** {cpp}, you should surround your hook functions with `#if !WITH_EDITOR`, remembering to place `#endif` after the end of your hook function. Failure to do so may prevent the Unreal Editor from opening.
 ====
 
 [NOTE]
@@ -106,6 +106,7 @@ SML will take that function pointer and find the symbol name so bootstrapper can
 the function calls for that symbol to SML's hook framework.
 
 Usage goes as following:
+
 [source,cpp]
 ----
 #include "Patching/NativeHookManager.h"
@@ -217,13 +218,14 @@ This also means that you can only hook this function from a class, not global sc
 
 For example, let's assume you have a class called `MyWatcher` in a namespace called `MyMod`, and you wish to hook the function `EnterChatMessage` from `AFGPlayerController` class.
 
+The suggested method of doing this is with xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 In your AccessTransformers.ini file you would create the entry:
 [source,ini]
 ----
 Friend=(Class="AFGPlayerController", FriendClass="MyWatcher")
 ----
 
-Alternatively, you can edit the header directly.
+Alternatively, you can edit the header files directly. This is not advisable for reasons described in more detail on the xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers] page.
 You must first edit the `FGPlayerController.h` header and add the following block of code to it:
 [source,cpp]
 ----

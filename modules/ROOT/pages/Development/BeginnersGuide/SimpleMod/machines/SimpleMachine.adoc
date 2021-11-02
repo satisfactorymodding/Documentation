@@ -33,6 +33,7 @@ There is not that much we need to do here.
 The only thing we need to do is to set the PowerInfo on the PowerConnection and configure the target consumption of the `FGPowerInfo` to something like 1.0.
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
+
 (Logic in the Event Graph)
 
 == Grab logic
