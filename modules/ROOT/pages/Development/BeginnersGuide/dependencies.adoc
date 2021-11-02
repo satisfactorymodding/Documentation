@@ -58,20 +58,31 @@ If the page says, "Sorry, the service is temporarily unavailable. Please try bac
 
 You will probably have to check your email and confirm from there, as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
 
-Once you've done that, go to the https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project] and download `UnrealEngine-CSS-Editor-Win64.exe`, `UnrealEngine-CSS-Editor-Win64-1.bin` and `UnrealEngine-CSS-Editor-Win64-2.bin`, then run it to install the Unreal Engine editor for this custom version.
+Once you've done that, go to the
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
+and download `UnrealEngine-CSS-Editor-Win64.exe`, `UnrealEngine-CSS-Editor-Win64-1.bin` and `UnrealEngine-CSS-Editor-Win64-2.bin`,
+then run it to install the Unreal Engine editor for this custom version.
 
 [WARNING]
 ====
-If the installation program asks you to select the folder with the next medium files, select the folder were the two `.bin` files are located.
+If you see a "404 This is not the web page you are looking for" error,
+then you didn't finish linking your account.
+The page is _not_ dead, this is what GitHub displays as a security measure
+when someone tries to access a private repo and is not part of the correct organization.
 
-Additionally, make sure you name the files exactly as above, otherwise the installation program might not be able to find the two `.bin` files.
+Check for emails from both Epic and GitHub, and be sure that you followed the above steps.
+You can verify that you've correctly joined the GitHub organization by checking for "EpicGames" on the
+https://github.com/settings/organizations[GitHub Account Organizations page].
+If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 ====
 
 [WARNING]
 ====
-If you see a "404 This is not the web page you are looking for" error, then you didn't finish linking your account.  The page is _not_ dead, this is what GitHub displays as a security measure when someone tries to access a private repo and is not part of the correct organization.
+If the installer asks you to select the folder with the next medium files,
+select the folder that contains the two `.bin` files you downloaded.
 
-Check for emails from both Epic and GitHub, and be sure that you followed the above steps.  You can verify that you've correctly joined the GitHub organization by checking for "EpicGames" on the [GitHub Account Organizations page](https://github.com/settings/organizations).  If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
+Additionally, make sure to name the downloaded files exactly as stated above,
+otherwise the installer may be unable to locate the two `.bin` files.
 ====
 
 This install process, and opening Unreal for the first time afterwards, can take some time. Don't worry about opening Unreal yet though. It will probably ask you to compile things you haven't properly set up yet.
