@@ -187,6 +187,7 @@ You can attach a hook with the `HookBlueprintFunction`-Macro which takes a point
 to the UFunction you want to attach the hook to.
 
 Usage goes as following:
+
 [source,cpp]
 ----
 #include "Patching/BlueprintHookManager.h"
@@ -220,6 +221,7 @@ For example, let's assume you have a class called `MyWatcher` in a namespace cal
 
 The suggested method of doing this is with xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 In your AccessTransformers.ini file you would create the entry:
+
 [source,ini]
 ----
 Friend=(Class="AFGPlayerController", FriendClass="MyWatcher")
@@ -227,6 +229,7 @@ Friend=(Class="AFGPlayerController", FriendClass="MyWatcher")
 
 Alternatively, you can edit the header files directly. This is not advisable for reasons described in more detail on the xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers] page.
 You must first edit the `FGPlayerController.h` header and add the following block of code to it:
+
 [source,cpp]
 ----
 namespace MyMod
@@ -236,6 +239,7 @@ namespace MyMod
 ----
 
 Then you have to add the `friend` declaration to the class itself, in result, it should look like this:
+
 [source,cpp]
 ----
 ...
