@@ -1,8 +1,8 @@
 = Access Transformers
 
-UE-CSS 4.25.3 build 42 adds a new feature: the ability to make accessors for fields/add friend classes/make properties BlueprintReadWrite without modifying the game headers.
+UE-CSS 4.25.3 build 42 adds a new feature: the ability to make accessors for fields, add friend classes, and make properties BlueprintReadWrite without modifying the game headers.
 
-This ability, called the **Access Transformer** system, is beneficial because it allows you to essentially make header accessor edits without the cost of having to deal with merge conflicts when bringing in updated SML and game headers later down the line. It also makes it easier to collaborate with other developers, because header edits are made in files outside of the plugin directory, meaning they would not be included in plugin (mod) source code repositories. Access transformers are defined in a file within the plugin directory, so they would be included in repositories.
+This ability, called the **Access Transformer** system, is beneficial because it allows you to essentially make header accessor edits without the cost of having to deal with merge conflicts when bringing in updated SML and game headers later down the line. It also makes it easier to collaborate with other developers, because normal header edits are made in files outside of the plugin directory, meaning they would not be included in plugin (mod) source code repositories. Access transformers are defined in a file within the plugin directory, so they can easily be included in repositories.
 
 == Config File
 
@@ -25,11 +25,29 @@ After making changes in this file, you still have to build for Development for t
 
 == Definitions
 
-**Friend**: Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to access all private fields and methods.
+=== Friend
 
-**Accessor**: Creates public `FORCEINLINE PropertyType GetSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }`.
+Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to access all private fields and methods of AFGSomeClass.
 
-**BlueprintReadWrite**: Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints (it cannot be added to a non-UPROPERTY field). It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game), so that no changes to the game headers are required.
+=== Accessor
+
+Creates the public methods `FORCEINLINE PropertyType GetSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }`.
+
+This is beneficial when you are trying to access a field and you are not in a class to use Friend for. Below is an example from PowerSuit for the FEquipmentStats struct.
+
+[source,cpp]
+----
+// Instead of this ...
+SuitCostToUse = Parent->EquipmentParent->mCostToUse;
+// ... use ths
+SuitCostToUse = Parent->EquipmentParent.GetCostToUse();
+----
+
+Note that the generated methods lack the `m` from the original property name.
+
+=== BlueprintReadWrite
+
+Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints (it cannot be added to a non-UPROPERTY field). It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game), so that no changes to the game headers are required.
 
 [WARNING]
 ====
@@ -41,7 +59,7 @@ Rider will not find the generated getters and setters, and will still show priva
 Access Transformers can't modify engine classes, since the UHT will not generate `.generated.h` files for the engine classes when using a prebuilt engine. It has not been tested if they would work on a source built engine.
 ====
 
-== Example
+== Examples
 
 Below is an example of the AccessTransformers.ini file from Area Actions 2.0
 
