@@ -68,6 +68,7 @@
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
 * xref:CommunityResources/index.adoc[Community Resources]
+** xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit]
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
