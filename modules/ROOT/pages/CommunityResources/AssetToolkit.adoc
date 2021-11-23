@@ -40,11 +40,14 @@ The Asset Toolkit consists of two plugins,
 a dumper, to be installed in the game,
 and an asset generator, to be installed in the editor.
 Both are contained in the https://github.com/Archengius/UEAssetToolkit[Asset Toolkit repository].
-Download a zip of the repository and extract it somewhere, or clone it if desired.
+Download a zip of the repository and extract it inside the Plugins directory of your starter project,
+or clone it if desired.
 
 === Installing the Asset Generator
 
-Place **both** the `AssetGenerator` **and** `AssetDumper` folders from the repo in your modding project's `Plugins` folder.
+Place the Asset Toolkit repository folder in your modding project's `Plugins` folder.
+Unreal Engine is capable of detecting plugins inside folders,
+so you can leave the sub-folders inside.
 
 After doing this,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
