@@ -41,7 +41,6 @@
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
-*** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
@@ -53,6 +52,7 @@
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
+*** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
