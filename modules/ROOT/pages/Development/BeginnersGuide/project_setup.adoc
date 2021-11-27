@@ -128,7 +128,7 @@ Unreal will give a very vague report as to what went wrong.
 As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
-Open up the the .sln file in your project folder.
+Open up the .sln file in your project folder.
 Once Visual Studio loads,
 make sure that you have `Development Editor`
 and `Win64` selected in the top toolbar.
@@ -161,7 +161,7 @@ and re-do the Wwise integration step.
 
 If you encounter issues during this step, consider asking for help on the Discord.
 
-Now that you've built the binaries, you Editor should open without any issues.
+Now that you've built the binaries, your Editor should open without any issues.
 
 == Open Unreal Editor
 
