@@ -69,7 +69,7 @@ You'll have to again select version `2021.1.0.7575`
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `4.25.3-CSS`.
+is set to `4.26.1-CSS`.
 
 If you missed a required component as part of the Wwise installation, it may show 
 a yellow warning box indicating what's missing as well as a button to "Modify" the

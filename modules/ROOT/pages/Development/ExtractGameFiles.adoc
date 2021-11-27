@@ -30,9 +30,9 @@ and offers options for exporting meshes, skeletons, textures, etc. for use in ot
 Tutorials for using UModel are plentiful online,
 and a quick search can help you export for the modeling software of your choice.
 
-Make sure to select Unreal Engine version 4.25 when opening Satisfactory pak files.
+Make sure to select Unreal Engine version 4.26 when opening Satisfactory pak files.
 
-If you don't see 4.25 as an option, you are running an older version of UModel
+If you don't see 4.26 as an option, you are running an older version of UModel
 and you should download it again from the link above.
 
 You can find a brief tutorial on how to track down an asset for export on the
