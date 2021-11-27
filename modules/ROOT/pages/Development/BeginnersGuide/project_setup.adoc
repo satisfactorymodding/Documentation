@@ -9,7 +9,7 @@ project setup for Satisfactory.
 ====
 If you'd prefer a different format of guide, you can find a video guide
 https://youtu.be/-HVw6-3Awqs?t=249[here].
-**As of SML 3.0.0, these tutorials are out of date,
+**As of SML 3.0.0, these video tutorials are out of date,
 but some of the concepts will still carry over.**
 If you get stuck in the video tutorials, return here and follow these guides instead.
 Be sure to read over the steps here as well to be sure you're doing things correctly.
