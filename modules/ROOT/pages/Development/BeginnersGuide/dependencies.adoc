@@ -100,7 +100,7 @@ Wwise is a sound engine used by Coffee Stain,
 and in order to develop mods,
 you'll need to install and integrate Wwise with your mod project.
 
-Visit https://wwise.com/[Wwise.com] and click on the
+Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
 `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner.
 Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
