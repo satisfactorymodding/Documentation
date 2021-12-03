@@ -35,6 +35,11 @@ If you already have Visual Studio installed, you can run the installer again and
 
 Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
 
+[WARNING]
+====
+You will also need the .NET SDK, version 4.6 or higher (but not v5). If you do not know if you have that SDK, the VS installer should provide an option to install it. It is recommended to tick it.
+====
+
 [TIP]
 ====
 You will find the 2017 compilers under the Individual Components when modify the VS 2019 installation.
