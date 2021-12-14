@@ -13,7 +13,7 @@ Beware that the modding environment can take up a lot of space once everything i
 ====
 If you'd prefer a different format of guide, you can find a video guide
 https://www.youtube.com/watch?v=-HVw6-3Awqs[here].
-**As of SML 3.0.0, these tutorials are out of date,
+**As of SML 3.0.0, these video tutorials are out of date,
 but some of the concepts will still carry over.**
 If you get stuck in the video tutorials, return here and follow these guides instead.
 Be sure to read over the steps here as well to be sure you're doing things correctly.
@@ -34,6 +34,11 @@ Run the installer, and agree to prompts you receive along the way.  From the "Wo
 If you already have Visual Studio installed, you can run the installer again and choose `Modify` to select these two workloads and add them to your installation.
 
 Continue through the rest of the prompts to install Visual Studio. Downloading and installing Visual Studio can take a while, so we advise you to find some lizard doggos to pet while you wait, or working on some of the other install steps below.
+
+[WARNING]
+====
+You will also need the .NET SDK, version 4.6 or higher (but not v5). If you do not know if you have that SDK, the VS installer should provide an option to install it. It is recommended to tick it.
+====
 
 [TIP]
 ====
@@ -95,7 +100,7 @@ Wwise is a sound engine used by Coffee Stain,
 and in order to develop mods,
 you'll need to install and integrate Wwise with your mod project.
 
-Visit https://wwise.com/[Wwise.com] and click on the
+Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
 `+Get Wwise+` -> `+Download Wwise+` button in the upper right corner.
 Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
@@ -139,14 +144,6 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo ins
 which simplifies the process of updating your project later.
 Check on the discord to find out which branch to clone,
 although it's most likely `master`.
-
-[WARNING]
-====
-DEPENDING ON THE UNREAL VERSION YOU DOWNLOADED, THERE ARE DIFFERENT STARTER PROJECTS
-`jenkins-UE-4.25.3-CSS-44` -> use the `master` branch
-`jenkins-UE-4.26.1-CSS-54` -> use the `sml-dev` branch
-This is a temporary measure while the Update 5 engine update modding tools are in development
-====
 
 == Satisfactory Mod Manager
 

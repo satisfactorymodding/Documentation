@@ -6,7 +6,7 @@ site:
 content:
   sources:
     - url: ./
-      branches: HEAD, v2.2.1, v2.1.1, v2.0.0, v1.0.2
+      branches: HEAD, v3.1.1, v2.2.1, v2.1.1, v2.0.0, v1.0.2
 
     - url: https://github.com/CoderDE/FicsIt-Networks.git
       branches: master
@@ -24,7 +24,7 @@ content:
       start_path: docs
       
     - url: https://github.com/porisius/FicsitRemoteMonitoring.git
-      branches: main
+      branches: main,dev
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 

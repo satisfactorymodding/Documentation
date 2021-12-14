@@ -1,8 +1,10 @@
-= Conveyor Rendering
+= Conveyor Rendering (Outdated)
 
-[NOTE]
+[WARNING]
 ====
-Ben (CSS employee) has confirmed that this system will be changing in a future update, and that these steps will soon change, or may no longer be required. Consider waiting to set up these conveyor materials until the new system is released.
+Ben (CSS employee) has confirmed that, as of Update 5, this system is no longer in place.
+Conveyor items should now work with their mConveyorMesh field set in their descriptors.
+This page is kept around for historical reference purposes.
 ====
 
 Introduced with Update 4 was a new complex, high performance rendering system for item conveyers.

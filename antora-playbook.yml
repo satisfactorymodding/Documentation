@@ -12,7 +12,7 @@ content:
   sources:
     ## Used for prod
     - url: https://github.com/satisfactorymodding/Documentation.git
-      branches: master, v2.2.1, v2.1.1, v2.0.0, v1.0.2
+      branches: master, v3.1.1, v2.2.1, v2.1.1, v2.0.0, v1.0.2
       edit_url: '{web_url}/blob/{refname}/{path}'
 
     ## Used for dev
@@ -35,7 +35,7 @@ content:
       start_path: docs
       
     - url: https://github.com/porisius/FicsitRemoteMonitoring.git
-      branches: main
+      branches: main, dev
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 

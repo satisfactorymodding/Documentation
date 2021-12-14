@@ -9,7 +9,7 @@ project setup for Satisfactory.
 ====
 If you'd prefer a different format of guide, you can find a video guide
 https://youtu.be/-HVw6-3Awqs?t=249[here].
-**As of SML 3.0.0, these tutorials are out of date,
+**As of SML 3.0.0, these video tutorials are out of date,
 but some of the concepts will still carry over.**
 If you get stuck in the video tutorials, return here and follow these guides instead.
 Be sure to read over the steps here as well to be sure you're doing things correctly.
@@ -18,6 +18,11 @@ Be sure to read over the steps here as well to be sure you're doing things corre
 == Starter Project
 
 You should have already downloaded the Starter Project in the previous steps of the tutorial. If you downloaded the Starter Project as a zip, unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
+
+[WARNING]
+====
+By default, Windows marked files downloaded from the internet as "blocked". You will run into problems later on because of this. To get around this issues, right-click the zip and "unblock" it before unzipping it.
+====
 
 This will be the folder that all of your mod's files will be put into,
 so extract the folder somewhere convenient for you where you can find it later,
@@ -69,7 +74,7 @@ You'll have to again select version `2021.1.0.7575`
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `4.25.3-CSS`.
+is set to `4.26.1-CSS`.
 
 If you missed a required component as part of the Wwise installation, it may show 
 a yellow warning box indicating what's missing as well as a button to "Modify" the
@@ -128,7 +133,7 @@ Unreal will give a very vague report as to what went wrong.
 As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
-Open up the the .sln file in your project folder.
+Open up the .sln file in your project folder.
 Once Visual Studio loads,
 make sure that you have `Development Editor`
 and `Win64` selected in the top toolbar.
@@ -161,7 +166,7 @@ and re-do the Wwise integration step.
 
 If you encounter issues during this step, consider asking for help on the Discord.
 
-Now that you've built the binaries, you Editor should open without any issues.
+Now that you've built the binaries, your Editor should open without any issues.
 
 == Open Unreal Editor
 

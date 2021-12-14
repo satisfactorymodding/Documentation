@@ -3,10 +3,12 @@
 Documentation for Satisfactory Mod Loader (SML) and Satisfactory modding.
 Master branch is live on https://docs.ficsit.app/.
 Please contact us on the
-[Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E) (preferred) or the [Ficsit.app forums](https://forums.ficsit.app/) (not checked very often)
-with questions and suggestions.
+[Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E) (preferred)
+or the [Ficsit.app forums](https://forums.ficsit.app/) (not checked very often)
+with questions and suggestions, or contribute via PRs (see below).
 
-We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files, but this is only loosely followed.
+We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,
+but this is only loosely followed.
 
 Pull requests should target the `dev` branch.
 
@@ -16,6 +18,17 @@ to verify that the pages are displaying as expected.
 
 Documentation for other mods is also served through the same site.
 If you have written documentation for your mod and would like it to be added, contact us.
+
+## Contributing
+
+We greatly appreciate any contributions you may have to the docs.
+Even if you only have the rough outline of a page done,
+feel free to contact us on the Discord and we'll help you turn it into a full page.
+
+The easiest way to contribute is to make a fork of the repo,
+then use a Pull Request targeting the `Dev` branch for us to review the changes.
+
+Send us a message on the Discord if we don't review it within a day or two.
 
 ## Development Setup
 
@@ -57,3 +70,22 @@ yarn run build:dev
 ```
 
 The output HTML files for both commands can be found in `\build\site`.
+
+## Adding Docs for Another Mod
+
+If you'd like, you can write docs for other mods and have them be included on the live site.
+
+Mods that have done this include FicsIt-Networks, Refined Power, Ficsit Remote Monitoring, TweakIt, and more.
+
+Contact us for more details if you'd like to set this up.
+
+## Adding new version branches
+
+We typically create new version branches once a new major or minor version of SML has released.
+The goal is to provide a point of reference in the docs for working with older versions.
+
+In order to add a new frozen version branch of the docs...
+
+1. Create a tag on a commit on the `master` branch following the name format `vX.X.X`, for example, `v3.1.1`
+2. Add the tag name to front of the branches list in `antora-playbook.yml` and `antora-playbook-ci.yml`, after the HEAD item
+3. You're good to go - CI will take care of deploying it for you.
