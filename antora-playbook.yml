@@ -40,8 +40,8 @@ content:
       start_path: docs
 
     - url: https://gitlab.kmods.de/Kyrium/kbfldocs.git
-      branches: master
-      edit_url: '{web_url}/blob/{refname}/{path}'
+      branches: main
+      edit_url: '{web_url}/-/blob/{refname}/{path}'
       start_path: docs
 
 ui:
