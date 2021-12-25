@@ -39,6 +39,11 @@ content:
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
+    - url: https://gitlab.kmods.de/Kyrium/kbfldocs.git
+      branches: master
+      edit_url: '{web_url}/blob/{refname}/{path}'
+      start_path: docs
+
 ui:
   bundle:
     url: https://gitlab.com/vilsol/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
