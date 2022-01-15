@@ -39,9 +39,9 @@ content:
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
-    - url: https://gitlab.kmods.de/Kyrium/kbfldocs.git
+    - url: https://github.com/Kyri123/KMods-Docs.git
       branches: main
-      edit_url: '{web_url}/-/blob/{refname}/{path}'
+      edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
 ui:
