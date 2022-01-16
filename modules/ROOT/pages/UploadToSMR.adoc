@@ -194,7 +194,7 @@ Example Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.0.0",
+			"SemVersion": "^3.3.0",
 			"bIsOptional": false,
 			"Enabled": true
 		},
@@ -242,7 +242,7 @@ Example {cpp}/Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.0.0",
+			"SemVersion": "^3.3.0",
 			"bIsOptional": false,
 			"Enabled": true
 		},
