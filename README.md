@@ -77,7 +77,13 @@ If you'd like, you can write docs for other mods and have them be included on th
 
 Mods that have done this include FicsIt-Networks, Refined Power, Ficsit Remote Monitoring, TweakIt, and more.
 
-Contact us for more details if you'd like to set this up.
+Contact us for more details if you'd like to set this up. The general steps are below:
+
+- Create a repository with your documentation files
+- [Enable github actions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) on your repository
+- Edit the `antora-playbook-ci.yml` and `antora-playbook.yml` files to add your repo as a Source. Follow the format of the other mods already listed there
+- Make sure you can build this docs repo locally with your site added as a source
+- PR the `Dev` branch with your changes to the playbook files.
 
 ## Adding new version branches
 
