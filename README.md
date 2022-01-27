@@ -82,7 +82,8 @@ Contact us for more details if you'd like to set this up. The general steps are 
 - Create a repository with your documentation files
 - [Enable github actions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository) on your repository
 - Edit the `antora-playbook-ci.yml` and `antora-playbook.yml` files to add your repo as a Source. Follow the format of the other mods already listed there
-- Make sure you can build this docs repo locally with your site added as a source
+- Make sure you can build this docs repo locally with your site added as a source. Run the `build` task defined in `package.json` to do this. Consider temporarily commenting out other mods' repos to speed this up.
+- If you want the deployed copy to automatically update when you push changes to your repo, you should set up an Actions file similar to [this one](.github/workflows/SubModPush.yml.example) and contact us on the Discord to get a token to [add to your secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) so the Actions file can function.
 - PR the `Dev` branch with your changes to the playbook files.
 
 ## Adding new version branches
