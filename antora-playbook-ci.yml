@@ -22,7 +22,7 @@ content:
       branches: main
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
-      
+
     - url: https://github.com/porisius/FicsitRemoteMonitoring.git
       branches: main,dev
       edit_url: '{web_url}/blob/{refname}/{path}'
@@ -32,6 +32,11 @@ content:
       branches: main
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
+
+    - url: https://github.com/budak7273/ContentLib_Documentation.git
+      branches: main
+      edit_url: '{web_url}/blob/{refname}/{path}'
+      start_path: /
 
 ui:
   bundle:
