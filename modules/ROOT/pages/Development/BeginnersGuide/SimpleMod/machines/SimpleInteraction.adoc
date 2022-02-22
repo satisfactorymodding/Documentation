@@ -29,7 +29,7 @@ To fix that you'll need to change some of the class default values on the widget
 * {blank}
 +
 M Use Keyboard::
-  Activate this so keystrokes get used to trigger events in out widget. (`Esc` to exit the widget)
+  Activate this so keystrokes get used to trigger events in our widget. (`Esc` to exit the widget)
 * {blank}
 +
 M Use Mouse::
