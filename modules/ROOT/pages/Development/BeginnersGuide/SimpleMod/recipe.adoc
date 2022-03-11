@@ -47,7 +47,7 @@ M Manufacturing Duration::
 * {blank}
 +
 M Manual Manufacturing Multiplier::
-  If you want to use the same recipe for machines and the craft bench, with this value you can define how much longer the crafting of this recipe should take longer in the craft bench. 
+  If you want to use the same recipe for machines and the craft bench, with this value you can define how much longer the crafting of this recipe should take in the craft bench. 
   Because we don't have time, we set this to 0.
   With the multiplier set to the default of 0, the number of clicks to craft is the number of seconds it takes to craft divided by two.
 * {blank}

@@ -4,7 +4,7 @@ Next up, we'll make a buildable. A buildable is simply anything you will be able
 
 A buildable is fairly similar to an Item with a few more values to configure and a few to ignore. There's also a hologram which controls its placement.
 We don't need a conveyor mesh for our building, since our buildings probably shouldn't be moving around as items on conveyor belts.
-This time we'll create an separate folder for each of our buildable to have textures, meshes, and so on in one place. Create new folder called "Buildables" in your mod's root folder, then create another folder for our Buildable. Let's call it "DocBuild".
+This time we'll create a separate folder for each of our buildable to have textures, meshes, and so on in one place. Create new folder called "Buildables" in your mod's root folder, then create another folder for our Buildable. Let's call it "DocBuild".
 
 == Adding the Actor
 
