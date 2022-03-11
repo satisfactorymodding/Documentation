@@ -82,13 +82,16 @@ sleep -m 5000
 BGProcess "$($GameDir)\FactoryGame.exe" $Args2
 ----
 
-[TIP]
-====
+=== Launch Script Enhancments
+
 Unreal supports https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/CommandLineArguments/[many]
 other command-line arguments, some of which may prove to be useful with MP testing.
 For example, `-WinX=0 -WinY=0` will open the game in the top left corner of the screen.
 Similar arugments also exist for the console window (`ConsoleX` and `ConsoleY`).
 You can also specifiy what resolution you want the game to run at: `-WinX=1280 -WinY=720`.
+
+If you want windows to open on other monitors, you will need to use either negative or larger numbers for the arguments.
+The top left corner of your primary monitor is X=0, Y=0.
 
 Combining these options, you could end up with launch args like those shown below,
 which will give each instance as much space as possible (while accounting for Title Bar and Start Menu height) on a 3440x1440 resolution screen:
@@ -97,7 +100,6 @@ which will give each instance as much space as possible (while accounting for Ti
 $Args1 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username1+'"', "-WinX=0", "-WinY=32", "ResX=1720", "ResY=1360"
 $Args2 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username2+'"', "-WinX=1720", "-WinY=32", "ResX=1720", "ResY=1360"
 ----
-====
 
 == Automatically Load a Map on Launch
 
