@@ -37,7 +37,7 @@ Continue through the rest of the prompts to install Visual Studio. Downloading a
 
 [WARNING]
 ====
-You will also need the .NET Framework, version 4.6 or higher (but not Core/v5). If you do not know if you have .Net Framework, the VS installer should provide an option to install it. It is recommended to tick it.
+You will also need the .NET Framework SDK, version 4.6 or higher (but not Core/v5). If you do not know if you have the .NET Framework SDK, the VS installer should provide an option to install it. It is recommended to tick it.
 ====
 
 [TIP]

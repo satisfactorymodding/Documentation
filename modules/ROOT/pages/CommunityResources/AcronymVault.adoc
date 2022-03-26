@@ -28,9 +28,9 @@ Although it is possible to create a mod that does not depend on SML, they are ve
 Its public source code can be found on
 https://github.com/satisfactorymodding/SatisfactoryModLoader[GitHub].
 
-=== Satisfactory Mod Repository (SMR) aka Ficsit.app
+=== Satisfactory Mod Repository (SMR) aka ficsit.app
 
-Ficsit.app, or the Satisfactory Mod Repository, is the website at which mods, this documentation, guides, and more are hosted.
+https://ficsit.app[ficsit.app], or the Satisfactory Mod Repository, is the website at which mods, this documentation, guides, and more are hosted.
 
 You can find the source code for the 
 https://github.com/satisfactorymodding/smr-frontend[frontend]
@@ -48,7 +48,7 @@ https://github.com/satisfactorymodding/SatisfactoryModManager[GitHub].
 
 === Satisfactory Save Editor (SSE)
 
-This name, and acronym, has been claimed by a number of save editor tools.
+This name, and acronym, has been claimed by a number of save editor tools. It is most often used when referring to Goz3rr's editor
 
 * https://github.com/Goz3rr/SatisfactorySaveEditor[Goz3rr's editor]
 * https://cable.ayra.ch/satisfactory/editor.php[AyrA's editor]
