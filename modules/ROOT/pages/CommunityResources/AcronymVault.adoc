@@ -1,0 +1,86 @@
+= Satisfactory Acronym Vault (SAV)
+
+This page exists to helps remember the excessive amount of acronyms used in our community.
+
+Originally a
+https://github.com/satisfactorymodding/SatisfactoryAcronymVault[GitHub repository of its own],
+it has been merged with the docs.
+
+Feel free to suggest changes on our Discord, or pull request them (Edit This Page in the top right), to help keep this page up to date.
+
+== In-Use Acronyms
+
+These acronyms are still actively in use.
+
+=== Coffee Stain Studios (CSS)
+
+_Not_ https://www.w3.org/Style/CSS/Overview.en.html[cascading style sheets].
+
+https://www.coffeestainstudios.com/[Coffee Stain Studios]
+is the Swedish game developer that created Satisfactory.
+
+=== Satisfactory Mod Loader (SML)
+
+This is the community-created mod responsible for loading other mods and providing an easy way for them to register content, configurations, and more.
+
+Although it is possible to create a mod that does not depend on SML, they are very uncommon, as there are few reasons to do so.
+
+Its public source code can be found on
+https://github.com/satisfactorymodding/SatisfactoryModLoader[GitHub].
+
+=== Satisfactory Mod Repository (SMR) aka Ficsit.app
+
+Ficsit.app, or the Satisfactory Mod Repository, is the website at which mods, this documentation, guides, and more are hosted.
+
+You can find the source code for the 
+https://github.com/satisfactorymodding/smr-frontend[frontend]
+and https://github.com/satisfactorymodding/smr-api[backend]
+on their respective GitHub repositories.
+
+=== Satisfactory Mod Manager (SMM)
+
+Satisfactory Mod Manager handles all the steps of installing mods in Satisfactory for you!
+It works closely with SMR to function.
+SMM is only responsible for downloading the mods - it has no presence in a running game. SML is responsible for loading mod files at runtime.
+
+Its public source code can be found on
+https://github.com/satisfactorymodding/SatisfactoryModManager[GitHub].
+
+=== Satisfactory Save Editor (SSE)
+
+This name, and acronym, has been claimed by a number of save editor tools.
+
+* https://github.com/Goz3rr/SatisfactorySaveEditor[Goz3rr's editor]
+* https://cable.ayra.ch/satisfactory/editor.php[AyrA's editor]
+
+=== Satisfactory Calculator and Interactive Map (SCIM)
+
+https://satisfactory-calculator.com/[Satisfactory Calculator and Interactive Map]
+is a tool made by Anthor,
+and allows designing production lines, performing some save editing operations, and much more.
+
+The https://github.com/AnthorNet/SC-ProductionPlanner[Production Planner]
+and https://github.com/AnthorNet/SC-InteractiveMap[Interactive Map]
+portions each have their own GitHub repositories.
+
+=== Satisfactory Server Manager (SSM)
+
+Satisfactory Server Manager is a webpage
+designed to manage and control multiple satisfactory dedicated server instances.
+
+Its public source code can be found on
+https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
+
+== Outdated Acronyms
+
+These acronyms, for one reason or another, are no longer in use.
+They are kept here for historical purposes.
+
+* SMB = https://github.com/satisfactorymodding/SatisfactoryModBootstrapper[Satisfactory Mod Bootstrapper] (Obsoleted by SML improvements)
+* SPL = Satisfactory Pak Loader (Merged into SML)
+* BPI = Blueprint Interface (Merged into SML)
+* SBL = Satisfactory Blueprint Library (Merged into SML)
+* SPM = Satisfactory Pak Modding (General term for pak modding)
+* SID = https://github.com/satisfactorymodding/SatisfactoryItemDictionary[Satisfactory Item Dictionary] (Outdated)
+* SMI = Satisfactory Mod Injector (Obsoleted by SML improvements)
+
