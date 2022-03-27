@@ -1,11 +1,19 @@
-= Nog's Icon Generator
+= Icon Generation
 
-Community member Nog has created an editor plugin that allows you to semi-automatically
+Some community members have created editor plugins that allow you to semi-automatically
 create icon images from item and building descriptors at a number of resolutions.
-This is helpful if you've already created a model for your content and you want
+This is helpful if you've already created a model for your content, and you want
 to create UI icons for it that are consistent with those from the base game.
+
+== Kyrium's Icon Generator
+
+Kyrium's tool captures images using a render target, allowing capture of materials with opacity.
+
+You can learn more about how to download and use the plugin on its https://gitlab.kmods.de/Kyrium/kiconmaker[Gitlab page].
+
+== Nog's Icon Generator
+
+Nog's tool uses Unreal screenshots to produce images.
 
 You can read more about how to install and use the plugin on its
 https://github.com/Nogg-aholic/EditorIconMaker[GitHub page].
-
-Documentation for this tool is still a work in progress. A guide for how to use it can be found xref:Development/BeginnersGuide/generating_icons.adoc[here].
