@@ -21,7 +21,13 @@ is the Swedish game studio that created Satisfactory.
 
 === Satisfactory Mod Loader (SML)
 
-This is the community-created mod responsible for loading other mods and providing an easy way for them to register content, configurations, and more.
+SML is a community-created mod that provides
+an easy way for other mods to register content,
+interface with the game, offer user-facing configuration options, and more.
+
+Ironically, SML has changed so much since its creation that it is no longer responsible for loading mods.
+Thanks to the helpful folks at CSS, mods are now Unreal Engine plugins,
+and no longer require any special injection code to load.
 
 Although it is possible to create a mod that does not depend on SML, they are very uncommon, as there are few reasons to do so.
 
