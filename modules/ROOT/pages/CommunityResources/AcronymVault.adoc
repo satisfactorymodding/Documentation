@@ -17,7 +17,7 @@ These acronyms are still actively in use.
 _Not_ https://www.w3.org/Style/CSS/Overview.en.html[cascading style sheets].
 
 https://www.coffeestainstudios.com/[Coffee Stain Studios]
-is the Swedish game developer that created Satisfactory.
+is the Swedish game studio that created Satisfactory.
 
 === Satisfactory Mod Loader (SML)
 
