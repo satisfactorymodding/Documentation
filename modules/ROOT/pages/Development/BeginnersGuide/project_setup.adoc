@@ -69,8 +69,9 @@ Now select the `FactoryGame.uproject` file in your mod's project folder.
 Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
-You'll have to again select version `2021.1.0.7575`
-(you will need to change the left dropdown to `All` to do this).
+Change the left hand drop-down to `All`.
+Then select the same version you installed earlier `2021.1.0.7575`. 
+The version number may have additional numbers on the end of it e.g. `2021.1.0.7575.1234` but as long as it starts with `2021.1.0.7575` it should work.
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
