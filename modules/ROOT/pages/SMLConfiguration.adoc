@@ -26,7 +26,7 @@ SML itself also provides a couple of configuration settings, allowing you to con
 
 |enableCheatConsoleCommands
 |bool
-|true
+|false
 |Enables all available SML console cheat commands, a list of which can be found xref:SMLChatCommands.adoc#_console_cheat_commands[here].
 
 |developmentMode
