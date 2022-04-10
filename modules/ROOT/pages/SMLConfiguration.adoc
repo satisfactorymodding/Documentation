@@ -42,7 +42,7 @@ It is necessary for part of SML development.
 
 |disabledChatCommands
 |string array
-|[]
+|[ ]
 |Allows you to disable certain chat commands by simply putting the command into the string array.
 In Multiplayer, if the host lists commands here, they will also be disabled for clients.
 
