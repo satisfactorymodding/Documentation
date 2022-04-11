@@ -32,27 +32,29 @@
                 </div>
             </div>
         </div>
+        <div id="old-version-warning" class="version-warning hidden" style="max-height:2.5rem">
+            You are currently viewing an <strong>outdated</strong> version of the docs!<br>
+            <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
+                Click here to view the latest.
+            </a>
+        </div>
+        <div id="dev-version-warning" class="version-warning hidden" style="max-height:5.5rem">
+            You are currently viewing the <strong>in-development</strong> version of the docs!<br>
+            Information here could be inconsistent with other pages,
+            or apply to features that have not been released yet.<br>
+            <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
+                Click here to view the stable docs.
+            </a>
+        </div>
     </nav>
-    <div id="old-version-warning" class="version-warning hidden">
-        You are currently viewing an <strong>outdated</strong> version of the docs!<br>
-        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
-            Click here to view the latest.
-        </a>
-    </div>
-    <div id="dev-version-warning" class="version-warning hidden">
-        You are currently viewing the <strong>in-development</strong> version of the docs!<br>
-        Information here could be inconsistent with other pages,
-        or apply to features that have not been released yet.<br>
-        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
-            Click here to view the stable docs.
-        </a>
-    </div>
     <script>
         var pageLocation = window.location.href;
-        if(pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
+        if (pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
             document.querySelector("#old-version-warning").classList.remove("hidden");
-        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")){
+            document.querySelector("header.header").style['margin-bottom'] = '2.5rem';
+        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")) {
             document.querySelector("#dev-version-warning").classList.remove("hidden");
+            document.querySelector("header.header").style['margin-bottom'] = '5.5rem';
         }
     </script>
 </header>

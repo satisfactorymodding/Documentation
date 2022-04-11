@@ -104,12 +104,17 @@ iframe.blueprint + div:after {
     color: #fff;
 }
 
+.navbar {
+    flex-wrap: wrap;
+}
+
 .version-warning {
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
     background: orangered;
     color: #6A0E0E;
+    flex-basis: 100%;
 }
 
 .version-warning a {
