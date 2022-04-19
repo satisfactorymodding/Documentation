@@ -69,54 +69,31 @@ image:ManualInstall/mod_in_folder_example.png[A mod in the folder]
 
 [WARNING]
 ====
-SML itself will not handle nor fetch mod dependencies!
+SML will not fetch mod dependencies for you!
 
-That means if your mod has other mods as dependencies, we can't be sure it will be loaded after the dependencies. This is another reason to use the mod manager instead.
-You can try to name your files so the mod's name comes after the name of its dependencies, if the mod list is sorted by names.
+That means if your mod has other mods as dependencies,
+you must track down all dependency mods yourself.
+This is another reason to use the mod manager instead,
+as it will handle that for you.
 ====
 
-== Installing mods on Linux (Steam) as a player - SML version 2.2.1
+== Installing Mods on Linux
 
 [WARNING]
 ====
-This was written for SML 2.2.1 and is out of date.
+No Linux manual install directions have been written yet for SML 3,
+and they have changed vastly from SML 2,
+making the old directions entirely irrelevant.
 
 Please contact us with revised Linux directions to put here,
-or send a PR via Edit This Page.
+or send a PR via 'Edit This Page' in the top right.
 ====
 
-[WARNING]
-====
-_THIS IS UNSUPPORTED -> NO SUPPORT SHOULD BE EXPECTED FOR ANYONE ATTEMPTING THIS_.
-====
+You should use Satisfactory Mod Manager to install mods on Linux, where it works out of the box.
+Information for downloading SMM can be found xref:index.adoc[on the docs homepage].
 
-. `cd <game root>/FactoryGame/Binaries/Win64`
-. Navigate to https://github.com/satisfactorymodding/SatisfactoryModBootstrapper/releases/latest^1^  and download into the `./Win64` folder:
-. . `msdia140.dll`
-. . `xinput1_3.dll`
-. `mkdir -p <game root>/loaders && cd <game root>/loaders`
-.  Navigate to https://github.com/satisfactorymodding/SatisfactoryModLoader/releases/latest^2^ and download into the `./loaders` folder:
-. . `SML.pak`
-. . `UE4-SML-Win64-Shipping.dll`
-. `mkdir -p <game root/mods`
-. For each mod you want to install:
-. . First navigate to its page on https://ficsit.app, and go to `Versions` tab.
-. . Then download the version matching your SML version (step 4) into `<game root>/mods`^3^.
+== Installing Mods on Dedicated Servers
 
-1: 22.07.2020 this worked for https://github.com/satisfactorymodding/SatisfactoryModBootstrapper/releases/tag/v2.0.11[this specific version].
-2: 22.07.2020 this worked for https://github.com/satisfactorymodding/SatisfactoryModLoader/releases/tag/2.2.1[this specific version].
-3: This does not account for any mod-dependencies resolving performed by SMM.
-
-'''
-
-When launching the game via Steam, the following instructions (taken from https://github.com/satisfactorymodding/SatisfactoryModManager/issues/47#issuecomment-650519513[here]) are necessary:
-
-. Right-click Satisfactory in your Steam Library
-. Open `Properties`
-. Click `Set Launch Options...` button
-. Enter the following string into the text field and save: `WINEDLLOVERRIDES="msdia140.dll,xinput1_3.dll=n,b" %command%`
-
-[TIP]
-====
-If you want to restore the game to its vanilla glory, (at the time of this writing it was enough to) re-name/move the `<game root>/loaders` folder!
-====
+Dedicated servers do not yet support mods.
+Join the https://discord.gg/xkVJ73E[Discord Server] if you want to follow or contribute to development progress.
+This section of the docs will be updated when that changes.
