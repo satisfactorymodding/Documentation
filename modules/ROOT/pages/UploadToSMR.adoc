@@ -1,11 +1,5 @@
 = Uploading your mod to Satisfactory Mod Repository (ficsit.app)
 
-[WARNING]
-====
-As of SML3.0, the `data.json` system has been replaced
-with the Unreal plugin manifest. 
-====
-
 Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
 Mods uploaded to SMR will automatically work with the xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager]. All mods available to SMR are checked
 for potential security concerns, so having your mod on SMR means users can trust that it is safe and secure.
@@ -60,10 +54,13 @@ or if you need to split your mod into multiple sub-mods.
 Every Unreal Engine plugin is require to have a
 `<mod reference>.uplugin` file,
 and Satisfactory mods are no exception.
-This file is json formatted and holds information about the mod like version, credits, links and more.
+This file is json formatted and holds information about the mod,
+such as its version number, dependencies, credits, links, and more.
 
-You can read about all the different settings
-at the Plugins documentation
+The file will be automatically generated for you by the editor,
+but you'll have to modify couple fields yourself.
+
+You can read about all the different Unreal settings available at the Plugins documentation
 https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugindescriptorfiles[here]
 or at the {cpp} reference
 https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
@@ -82,7 +79,7 @@ as explained below.
 
 Below is a description of all extra fields SML and SMR require:
 
-[cols="1,4a"]
+[cols="3,8a"]
 |===
 |Parameter |Description of Function
 
@@ -108,6 +105,13 @@ Each plugin should be listed as an object with the following properties:
 !===
 !Parameter !Description of Function
 
+!Name
+! The
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference of the plugin]
+you are listing as a dependency.
+
+This field is required.
+
 !SemVersion
 ! Version number for the mod dependency. Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
@@ -115,23 +119,32 @@ You can prefix the version number with a comparison operator to allow a range of
 The prefix `^` allows any number in the 'patch' field
 (aka third number in a semversion, the `3` in `1.2.3`.)
 
-The prefix `>=` will allow all semversions higher (and including) than the one listed.
+The prefix `>=` will allow all semversions higher than (and including) the one listed.
 Unless you have a very specific reason for doing so,
 you should probably use the `^` prefix instead.
 
+This field is required.
+
 !bIsOptional
-! This boolean property can be set to true if the dependency is not required.
+! This boolean property can be set to `true` if the dependency is not required.
 But if it exists, our mod might be able to unlock more functionality that depends on it.
 
+This field is optional, and defaults to `false` if unspecified.
+
 !bIsBasePlugin
-! This boolean property should be set to true for all plugin dependencies that are not mod dependencies.
+! This boolean property should be set to `true` for all plugin dependencies that are not *mod* dependencies.
 For example, regular Unreal Engine plugins your mod requires.
 SMM will not attempt to download these because they aren't mods.
+
+This field is optional, and defaults to `false` if unspecified.
 
 !Enabled
 ! This field is not given any extra functionality by SML,
 but we have listed it here as well in order to draw extra attention to it.
 This should be set to `true` in every plugin item.
+
+This field is required, and Satisfactory will fail to launch if it is omitted,
+citing the offending uplugin file in the error message.
 
 !===
 
@@ -141,9 +154,14 @@ This requires other players to have a certain version of the
 mod installed to be able to join hosts.
 See the Plugins SemVersion item above for the format for this field.
 
+This field is optional, and defaults to your SemVersion if unspecified.
+
 |AcceptsAnyRemoteVersion
-| This should be true if the mod is client/server side only
-and can be absent on remote clients altogether.
+| When `true`, when a multiplayer client joins,
+the check for if both host and client have the mod is installed is skipped.
+You can use this to create client-side or server-side only mods.
+
+This field is optional, and defaults to `false` if unspecified.
 
 |===
 
