@@ -28,14 +28,14 @@ or follow the steps below instead.
 First, you need to download a version of SML compatible with your game from https://ficsit.app/sml-versions[SMR].
 
 If you want to download the latest development version of SML,
-it can be found
-https://ci.ficsit.app/job/SML2/job/sml-dev/[here].
+you can build them yourself with the Unreal editor, or get them from the CI artifacts
+https://github.com/satisfactorymodding/SatisfactoryModLoader/actions/workflows/build.yml[here].
 Only do this if you know what you are doing,
 and be sure to test with a released version of SML
 before distributing your mod.
 
 To install SML, unzip the file into Mods folder at `<game root>/FactoryGame/Mods`.
-If the folder doesn't exist, just create it.
+If the folder doesn't exist yet, create it.
 
 [TIP]
 ====
