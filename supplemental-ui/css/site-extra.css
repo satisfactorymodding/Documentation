@@ -112,8 +112,13 @@ iframe.blueprint + div:after {
     color: #6A0E0E;
 }
 
-.version-warning a {
-    color: #6A0E0E;
+.version-warning input {
+    background-color: #656565;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 .hidden {

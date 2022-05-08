@@ -32,21 +32,50 @@
         </div>
     </nav>
     <div id="old-version-warning" class="version-warning hidden">
-        You are currently viewing an <strong>outdated</strong> version of the docs!<br>
-        <i><a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the latest.</a></i>
+        <br> <br> <br>
+        <h2>⚠️ You are currently viewing an OUTDATED version of the docs! ⚠️</h2>
+        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
+            <input type='button' value='Oops! Take me to latest!' id='old-oops-button'/>
+        </a>
+        <input type='button' value='Dismiss' onclick="hide_old_version_warning();" />
+        <br> <br> <br>
     </div>
     <div id="dev-version-warning" class="version-warning hidden">
-        You are currently viewing the <strong>in-development</strong> version of the docs!<br>
-        Information here could be inconsistent with other pages,
-        or apply to features that have not been released yet.<br>
-        <i><a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">Click here to view the stable docs.</a></i>
+        <h3> You are currently viewing the IN-DEVELOPMENT version of the docs!<br>
+            Information here could be inconsistent with other pages,
+            or involve features that have not been released yet.<br></h3>
+        <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
+            <input type='button' value='Oops! Take me to stable!'/>
+        </a>
+        <input type='button' value='Dismiss' onclick="hide_dev_version_warning();" />
+        <br> <br> <br>
     </div>
     <script>
+        function show_old_version_warning() {
+            document.querySelector('#old-version-warning').classList.remove("hidden");
+            console.log("Showing outdated warning banner");
+        }
+
+        function hide_old_version_warning() {
+            document.querySelector('#old-version-warning').classList.add("hidden");
+            console.log("Hiding outdated warning banner");
+        }
+
+        function show_dev_version_warning() {
+            document.querySelector('#dev-version-warning').classList.remove("hidden");
+            console.log("Showing dev warning banner");
+        }
+
+        function hide_dev_version_warning() {
+            document.querySelector('#old-version-warning').classList.add("hidden");
+            console.log("Hiding dev warning banner");
+        }
+
         var pageLocation = window.location.href;
-        if(pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
-            document.querySelector("#old-version-warning").classList.remove("hidden");
-        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")){
-            document.querySelector("#dev-version-warning").classList.remove("hidden");
+        if (pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
+            show_old_version_warning();
+        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")) {
+            show_dev_version_warning();
         }
     </script>
 </header>
