@@ -53,6 +53,7 @@
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
+*** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
