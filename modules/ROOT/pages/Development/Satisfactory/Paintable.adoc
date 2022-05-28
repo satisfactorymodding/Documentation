@@ -1,19 +1,45 @@
-= Paintable
+= Paintable Materials & Tintable Lights
 
 Making things paintable is not as difficult as it may seem. You can use the existing materials, or create your own implementation.
 
 == Existing Materials
 
 Making use of the xref:Development/Modeling/MainMaterials.adoc[existing materials] used by Satisfactory is the easiest way to make your models paintable.
-Simply use one of the paintable materials on a static mesh in your blueprint and the game will find it and apply the correct materials with the paint gun.
-Its important that when importing a mesh you do not import and use new materials. Instead point your meshes at the correct materials or your material instances already in the project.
+Simply use a paintable material on a mesh in your blueprint and the game will find it and apply the correct parameters from the customizer / light panel.
+Its important that when importing a mesh you do not import and use new materials. Instead point your meshes at the correct existing materials or your material instances which point to their materials.
 
-== Custom implementation
+== New Custom Materials
+
+If the xref:Development/Modeling/MainMaterials.adoc[existing materials] don't do what you need and you need a special new feature you can make new materials respond to the painting system. New materials limit the best performance the game can have so consider adding them carefully.
+
+For Primary and Secondary paint colours find the corresponding Material Function (MF_Get-------Color) and use it in your node graph.
+
+For the Light colour you can use MF_HasPower and unfortunately there's no convenient node for the light colour, but it works identically to the other nodes, reference the list below for the correct values, or look at MM_Factory_Array.
+
+== Making Any Class Paintable
 
 You can implement the ability to paint in any object by implementing the `IFGColorInterface`. Simply override the given functions with the functionality you need and you're done. Consider asking about this on the Discord or forums if you need help.
 
-The paint gun will now interact with your object, which is done via the reflection system.
+The customizer will now interact with your object, which is done via the reflection system.
 
-Behind the scenes, the standard texture gets implemented by the `FGBuildable` class and changes the primary and secondary material parameters of the material. 
+== Behind The Scenes
 
+The Update 5 Customizer changes provided a new and unified way of setting properties for customization. Every standard material is monitoring what's know as "Per Instance Custom Data", this is data that's provided to the instancing system to allow each and every object to receive unique parameters but still render in a fast instanced manner. This means the system is two disconnected parts working in sync. Code will set the parameters, materials and other objects will read them.
+
+Coffee Stain Studios has an intended layout for the parameters found on objects, this is what the customizer is setting on objects and the materials are responding to. Below is the currently known mapping of these parameters:
+
+- `0` PrimaryPaint ( R )
+- `1` PrimaryPaint ( G )
+- `2` PrimaryPaint ( B )
+- `3` SecondaryPaint ( R )
+- `4` SecondaryPaint ( G )
+- `5` SecondaryPaint ( B )
+- `6` HasPower
+- `7` Pattern ID ( Floor Markings )
+- `8` Material ID ( Floor Markings )
+- `9` ???
+- `10` ???
+- `11` Light Colour ( R )
+- `12` Light Colour ( G )
+- `13` Light Colour ( B )
 
