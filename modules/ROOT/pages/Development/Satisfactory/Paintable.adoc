@@ -16,6 +16,11 @@ For Primary and Secondary paint colours find the corresponding Material Function
 
 For the Light colour you can use MF_HasPower and unfortunately there's no convenient node for the light colour, but it works identically to the other nodes, reference the list below for the correct values, or look at MM_Factory_Array.
 
+[NOTE]
+====
+When making new materials it's important to properly set the https://docs.unrealengine.com/5.0/en-US/unreal-engine-material-properties/#usage[usage flags] for Satisfactory. The Game uses a lot of instances, and splines, so be sure to check Instanced Static Mesh, and think about on what the material is used.
+====
+
 == Making Any Class Paintable
 
 You can implement the ability to paint in any object by implementing the `IFGColorInterface`. Simply override the given functions with the functionality you need and you're done. Consider asking about this on the Discord or forums if you need help.
