@@ -81,13 +81,26 @@ In order to avoid having your item display as the default flat white cube
 when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh. 
 We have an example model and textures you can use
 link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
-Import these the same way you imported the category image in the Recipe vs Schematic tutorial.
-Put them in a Folder together somewhere within your plugin folder.
+We'll put them in a Folder together somewhere within your plugin folder, but first!
+Importing a mesh and textures has a couple extra things we need to pay attention to.
 
-We also need to make sure Unreal handles our textures properly. Open the MREO texture we'll use for the Reflection map and turn sRGB off.
-This is important to do so the values the artists used are the ones the game uses.
-Unreal notices normal maps and sets this automatically, but it can't notice several of the other linear textures.
-Because of that you'll have to remember to do this for every non Albedo texture you bring in.
+Import just the Mesh, and pay attention on the dialog that pops up.
+We should make sure that it does not create a material, because we want to use https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
+Uncheck the parameter pictured below and instead create a material instance of MM_Factory_Baked and set it on the mesh.
+Keep it open once made because next we'll need to do the textures it needs.
+
+image:BeginnersGuide/simpleMod/NoMaterialImport.png[image]
+
+Now import the 3 textures, we need to make sure Unreal handles our textures properly.
+Open the imported Item_MREO texture, and set sRGB to off.
+We have to do this because the texture contains special data in each channel, not a normal colour.
+The xref:Development/Modeling/MainMaterials.adoc[Main Materials] page has more details about what's going on.
+
+image:BeginnersGuide/simpleMod/sRGB_Off.png[image]
+
+Now just feed the textures into the material instance we made. This is pretty standard to the way unreal does things so if you're a little confused standard Unreal tutorials will help! But we also have very specific settings on our material because of the way the asset was made. Whoever is making your assets will tell you what to do, if they don't know what anything means after reading about the main materials then come join us on Discord. For now just follow this image.
+
+image:BeginnersGuide/simpleMod/MaterialInstanceSettings.png[image]
 
 [TIP]
 ====
