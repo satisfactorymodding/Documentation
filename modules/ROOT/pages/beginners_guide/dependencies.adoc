@@ -78,11 +78,10 @@ Microsoft].
 
 == Wwise
 
-Visit https://www.audiokinetic.com/en/products/wwise[audiokinetic.com] and click on the
-`+download Wwise+` button in the lower left half of the screen. Now select the correct platform (Mac OS, or Windows)
-and click on the `+download Wwise Launcher+` button in the middle of the screen. Now the website
-should ask you to log in, follow the given steps.
-After you finished downloading Wwise, open the installer and
+Visit https://wwise.com/[Wwise.com] and click on the `+Get Wwise+` ->
+`+download Wwise+` button in the upper right corner. Now the website
+should ask you to log in. Click on `+Sign in+` and follow the given
+steps. After you finished downloading Wwise, open the installer and
 start with installing the WWise launcher.
 
 == Satisfactory Mod Loader
