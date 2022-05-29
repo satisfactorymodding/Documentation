@@ -54,7 +54,7 @@ M Radioactive Decay::
 * {blank}
 +
 M Conveyor Mesh::
-  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt.
+  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyor belt.
   Items use the mesh you specify here when you've dropped them on the ground and for display on conveyors.
   We'll cover this fully further down on the page, as setting it up to render correctly takes a couple of extra steps.
 * {blank}
@@ -75,24 +75,32 @@ M Big Icon::
   The recommend size is 256px for regular items, 512px for buildgun items.
   Let's just use the same icon file as before for simplicity.
 
-== Make the Item Work on Conveyors
+== Item Visuals In World
 
 In order to avoid having your item display as the default flat white cube
 when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh. 
 We have an example model and textures you can use
 link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
-Import these the same way you imported the category image in the Recipe vs Schematic tutorial.
-Put them in a Folder together somewhere within your plugin folder.
-Open the MREO texture we'll use for the Reflection map and turn sRGB off.
-Next we'll need to make some materials to use these textures,
-we have to make them ourselves not import them otherwise they wont render properly on belts. 
+We'll put them in a Folder together somewhere within your plugin folder, but first!
+Importing a mesh and textures has a couple extra things we need to pay attention to.
 
-Like many of the more complex parts of the game, this process has its own article to help you:
-xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
-If you're unsure about how to create material instances or assign textures, check out this
-https://www.youtube.com/watch?v=qus9WjHX4_4[external video tutorial].
-Do not try to edit the Master Material as any changes will not show up in your mod
-and it is already accurate to game content.
+Import just the Mesh, and pay attention on the dialog that pops up.
+We should make sure that it does not create a material, because we want to use https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
+Uncheck the parameter pictured below and instead create a material instance of MM_Factory_Baked and set it on the mesh.
+Keep it open once made because next we'll need to do the textures it needs.
+
+image:BeginnersGuide/simpleMod/NoMaterialImport.png[image]
+
+Now import the 3 textures, we need to make sure Unreal handles our textures properly.
+Open the imported Item_MREO texture, and set sRGB to off.
+We have to do this because the texture contains special data in each channel, not a normal colour.
+The xref:Development/Modeling/MainMaterials.adoc[Main Materials] page has more details about what's going on.
+
+image:BeginnersGuide/simpleMod/sRGB_Off.png[image]
+
+Now just feed the textures into the material instance we made. This is pretty standard to the way unreal does things so if you're a little confused standard Unreal tutorials will help! But we also have very specific settings on our material because of the way the asset was made. Whoever is making your assets will tell you what to do, if they don't know what anything means after reading about the main materials then come join us on Discord. For now just follow this image.
+
+image:BeginnersGuide/simpleMod/MaterialInstanceSettings.png[image]
 
 [TIP]
 ====
