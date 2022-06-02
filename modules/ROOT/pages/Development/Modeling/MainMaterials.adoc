@@ -11,31 +11,31 @@ It's important to understand the UE4 concept of https://docs.unrealengine.com/en
 
 [WARNING]
 ====
-Both Normal maps and Surface Maps should have sRGB disabled. Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked. Albedo should still be sRGB.
+Normal maps, AO Masks, and Surface Maps should have sRGB disabled. Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked. Albedo however should still be sRGB.
 ====
 
-== Factory Machine (MI_Factory_Base_01)
+== Factory Machine/Array (MM_Factory_Array)
 Main material used on most buildable factory parts and recommended material for most building content. Works with the painting system. Uses an atlas of several material types, expects decals to be added with `DecalColor_Masked` and `Decal_Normal` to add detail, is responsible for the metal texture on most machines.
 
-Several materials are based off the one master material, the simple hierarchy looks like this.
+Several materials are based off the one master material, many exist for legacy purposes to not break old content, for example.
 
-- `/FactoryGame/MasterMaterials/MM_Factory` Master Material
-- `/FactoryGame/-Shared/Material/MI_Factory_Base_01` Instance of MM_Factory
+- `/FactoryGame/MasterMaterials/MM_Factory_Array` Master Material
+- `/FactoryGame/-Shared/Material/MI_Factory_Base_01` Instance of MM_Factory_Array
 - `/FactoryGame/-Shared/Material/MI_Factory_Base_01_Emsiv_AO` Instance of MI_Factory_Base_01
 
 === Inner workings
 At runtime the game creates a texture atlas which contains the base colours from several parameters, notably the primary and secondary colour. Several other textures are then overlaid and mixed to create proper PBR surfaces for use in the game. A full list of parameters and their expected uses can be found by looking in the material editor of the version in the sample project.
 
-Notably the master material is not directly applied to most machines and instead material instances that customize the properties like bloom, AO maps, and overlay density are created.
+Notably the master material is not directly applied to most machines and instead material instances that customize the properties like bloom, composite color, and overlay density are created.
 
-UV channel 0 is used for mapping the main surface, UV channel 1 is sometimes used for adding an AO map. Vertex colours are ignored.
+UV channel 0 is used for mapping the main surface, UV channel 1 was previously for adding an AO map; however, that is no longer done. Vertex colours are ignored.
 
 === How to use
-Do you have a custom AO bake you wish to apply to your model?
+Do you wish to customize some properties not covered by the painting system like composite_color (I.E. The awesome sink does this)?
 
 *No?* Apply `MI_Factory_Base_01` directly as your base material and do not create any instances.
 
-*Yes?* Create a material instance of `MI_Factory_Base_01_Emsiv_AO` and apply your AO map to it and customize the AO settings to taste. If desired you may copy `/Utils/Materials/MI_MachineStarter` into your mod folder and rename it, but you will need to set the custom AO map still.
+*Yes?* Create a material instance of `MI_Factory_Base_01` and apply your custom settings. If desired you may copy `/Utils/Materials/MI_MachineStarter` into your mod folder and rename it, but you will need to adjust custom settings still.
 
 
 == Color Decals (DecalColor_Masked)
@@ -65,29 +65,28 @@ This material performs a depth hack and may appear over other surfaces when view
 UV channel 0 is used for the textures.
 
 === How to use
-When making your mesh float geometry above your regular surface, use small values but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/FactoryGame/Buildable/-Shared/Material/Decal_Normal` material in editor.
+When making your mesh, make floating geometry above your regular surface to hold the decal. Use small distances but not microscopic (~1 millimeter not micrometers). Adjust the UVs to show the decal in full or part as desired. Apply the `/FactoryGame/Buildable/-Shared/Material/Decal_Normal` material in editor.
 
-It is possible, and expected, to mirror flip and stretch the normal decals. Several details are half details that are mirrored against themselves and others use https://en.wikipedia.org/wiki/9-slice_scaling["9-slice"] like approaches to stretch the parts of the mesh needed to reshape the detail. However, take care with your vertex normals. The vertex normals of your decal geometry should be as similar as possible to the underlying normals else visible seams appear at decal edges.
+It is possible, and expected, to mirror flip and stretch the normal decals. Several details are half details that are mirrored against themselves and others use https://en.wikipedia.org/wiki/9-slice_scaling["9-slice"] like approaches to stretch the parts of the mesh needed to reshape the detail. However, take care with your vertex normals. The vertex normals of your decal geometry should be as similar as possible to the underlying normals else visible seams appear at decal edges. If using Blender you may want to use the "Transfer Data" modifier.
 
 
 == Factory Baked (MM_FactoryBaked)
 This material handles several separate use cases; items in world, items on belts, small detailed machines, and more. Works with the painting and conveyor systems. Requires unique textures per mesh to take advantage of. Never used directly and always used via material instances. Common examples are pipe connectors, power poles, and any conveyor belt item.
 
 === Inner workings
-The full internal workings of this material post Update 4.2 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project.
+The full internal workings of this material for Update 4.2 & 5.0 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project. Importantly this material went under major changes, 'Legacy' behaviour is 4.2 and documented behaviour is 5.0. Pre 4.2 behaviour is not longer available.
 
-When marked as paintable the main Albedo texture is multiplied into the paint colours gated by the texture's alpha. The alpha value is packed to allow for selection between several paint colours, these thresholds can be adjusted using the primary and secondary bias values, below are the defaults:
+When marked as paintable the main Albedo texture is faded out to match the primary or secondary colour. This is done via the 'AOMasks' Texture's channel packing:
 
-- 0.50 < x <= 1.0 : Albedo
-- 0.25 < x < 0.50 : Primary paint color
-- 0.0 <= x < 0.25 : Secondary paint color
+- `R:` AO
+- `G:` PaintPrimary
+- `B:` PaintSecondary
 
-The 'ReflectionMap' is a Linear Texture (sRGB off) which is channel packed surface property texture (MREO) with the following properties:
+The 'ReflectionMap' is a Linear Texture (sRGB off) which is channel packed texture. Just like AOMasks; however, it targets different properties. You can tell what the packing is by looking at a textures suffix, commonly MRE for baked materials.
 
 - `R:` Metalness
 - `G:` Roughness
 - `B:` Emission Mask
-- `A:` Ambient Occlusion
 
 For full information on how to setup the material to perform as a Conveyor Item, please reference the
 xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] page.
@@ -97,13 +96,10 @@ UV channel 0 is used for all textures.
 === How to use
 Setup a PBR painting workflow like Substance or Quixel and then configure its outputs to match what is listed in the Inner workings. Once your output textures are made, import them into your mod.
 
-Next step is to create a material instance of `MM_Factory_Baked` and configure it according to your intended use. Given the complexity of its use there are some examples.
+Next step is to create a material instance of `MM_Factory_Baked` and configure it according to your intended use.
 Located in the `/Utils/Materials/` folder you will find several start materials you can copy into your mod and reconfigure at will:
 
 - `MI_BakedMachineStarter:` Common setup for factory machines like workbenches and power poles.
-- `MI_BeltItemStarter:` Root material as needed for xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
-- `MI_BeltItemStarter-LOD1:` Conveyor material for close inspection.
-- `MI_BeltItemStarter-LOD2:` Conveyor material for distant rendering.
 
 == Factory Glass (MM_FactoryGlass)
 Pair of glass materials to be swapped between at distance.
