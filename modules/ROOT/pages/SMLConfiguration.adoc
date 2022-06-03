@@ -26,7 +26,7 @@ SML itself also provides a couple of configuration settings, allowing you to con
 
 |enableCheatConsoleCommands
 |bool
-|true
+|false
 |Enables all available SML console cheat commands, a list of which can be found xref:SMLChatCommands.adoc#_console_cheat_commands[here].
 
 |developmentMode
@@ -42,7 +42,7 @@ It is necessary for part of SML development.
 
 |disabledChatCommands
 |string array
-|[]
+|[ ]
 |Allows you to disable certain chat commands by simply putting the command into the string array.
 In Multiplayer, if the host lists commands here, they will also be disabled for clients.
 

@@ -18,8 +18,8 @@ content:
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
-    - url: https://github.com/Feyko/Tweaker.git
-      branches: main
+    - url: https://github.com/Feyko/TweakIt.git
+      branches: docs
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 

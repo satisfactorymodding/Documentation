@@ -27,7 +27,7 @@ Launch the game at least once to ensure all files get set up correctly.
 == Visual Studio
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page] and download the version you want.
-We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the https://visualstudio.microsoft.com/vs/older-downloads/[2017 compilers]. 
+We suggest either Visual Studio 2019 or 2017 Community, because they're free of charge. It is important that if you use 2019 you still install the https://visualstudio.microsoft.com/vs/older-downloads/[2017 compilers]. It may force you to sign up to access the older versions, but they are free.
 
 Run the installer, and agree to prompts you receive along the way.  From the "Workloads" page select the "Desktop & Mobile > Desktop development with {cpp}" and "Gaming > Game development with {cpp}". You might have to scroll a bit to find them.
 
@@ -42,9 +42,9 @@ You will also need the .NET Framework SDK, version 4.6 or higher (but not Core/v
 
 [TIP]
 ====
-You will find the 2017 compilers under the Individual Components when modify the VS 2019 installation.
+You will find the 2017 compilers under the Individual Components when you modify the installation of later versions.
 Check out the "Compiler, Buildtools and Runtimes" section. There you will find the entry "MSVC v141 - VS 2017 C++ - x64/x86-Buildtools (v14.16)".
-Hovering the Mouse over it will confirm that his are the Compiler and libraries you are looking for.
+Hovering the Mouse over it will confirm that these are the Compiler and libraries you are looking for.
 ====
 
 [TIP]
