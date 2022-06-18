@@ -71,7 +71,7 @@ It is possible, and expected, to mirror flip and stretch the normal decals. Seve
 
 
 == Factory Baked (MM_FactoryBaked)
-This material handles several separate use cases; items in world, items on belts, small detailed machines, and more. Works with the painting and conveyor systems. Requires unique textures per mesh to take advantage of. Never used directly and always used via material instances. Common examples are pipe connectors, power poles, and any conveyor belt item.
+This material handles several separate use cases; player equipment, items in world, items on belts, small detailed machines, and more. Works with the painting and conveyor systems. Requires unique textures per mesh to take advantage of. Never used directly and always used via material instances. Common examples are xeno-basher, workbench, power poles, and any conveyor belt items.
 
 === Inner workings
 The full internal workings of this material for Update 4.2 & 5.0 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project. Importantly this material went under major changes, 'Legacy' behaviour is 4.2 and documented behaviour is 5.0. Pre 4.2 behaviour is not longer available.
