@@ -51,7 +51,7 @@ image:BeginnersGuide/simpleMod/machines/SimpleMachine_Variables.jpg[image]
 
 Now, in the grab logic, first we check if the machine has power. We do this by using the "HasPower"-node of the `FGPowerInfoComponent`. If it responds false, we return nothing and set the output to false. But if it's true, we use the grab function of the input connector to request a new item.
 
-If the input grab boolean is true, we increase the "itemAmount" integer by one and add the item unique to the "itemTypes". Now we simply log "itemAmount" and the size of the "itemTypes"-array. After that we return the item we got from the grab and set the output boolean to true.
+If the input grab boolean is true, we increase the "itemAmount" integer by one and add the item unique to the "itemTypes". After that we return the item we got from the grab and set the output boolean to true.
 
 If the input grab boolean is false, we just return nothing and the output boolean is set to false.
 
