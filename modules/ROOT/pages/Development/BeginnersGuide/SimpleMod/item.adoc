@@ -19,10 +19,6 @@ Open the class and you should see the default settings of the classes' attribute
 
 * {blank}
 +
-M Use Display Name and Description::
-  Because we have just a simple Item we need to check this (set the boolean to true) so that the item name and description are used directly.
-* {blank}
-+
 M Display Name::
   The item's name in game.
   We'll set this to "Doc Item".
@@ -31,6 +27,11 @@ M Display Name::
 M Description::
   Set this to a simple description of the item.
   In our case, we use the text "This is the starter Item of the Doc mod."
+* {blank}
++
+M Abbreviated Display Name::
+  Set this to a shorter display name if needed.
+  In our case, we use the same text as the Display Name, "Doc Item"
 * {blank}
 +
 M Stack Size::
@@ -43,6 +44,11 @@ M Can be Discarded::
   We'll uncheck it so that you can't throw the item into the trashcan. Ficsit does not waste.
 * {blank}
 +
+M Remember Pick Up::
+  Something having to do with dropped items.
+  Check this box to change the behavior of dropped items.
+* {blank}
++
 M Energy Value::
   This value describes how much energy this item should release if it gets burned in a generator. 
   Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
@@ -53,15 +59,28 @@ M Radioactive Decay::
   We'll leave this at 0 for ease of testing our mod.
 * {blank}
 +
+M Form::
+  This describes the type of this item: Invalid, Solid, Liquid, Gas, or Heat
+  The new item will be treated as a Solid.
+* {blank}
++
 M Conveyor Mesh::
   As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyor belt.
   Items use the mesh you specify here when you've dropped them on the ground and for display on conveyors.
   We'll cover this fully further down on the page, as setting it up to render correctly takes a couple of extra steps.
 * {blank}
 +
-M Item Category::
-  This groups the item into a category, this affects where it shows up in the recipe list.
-  We don't need this so we leave it on "None", resulting in the item being categorized under "Other" ingame.
+M Color 1::
+  As this item is not a Liquid or Gas, we don't need to change this property.
+* {blank}
++
+M Color 2::
+  As this item is not a Gas, we don't need to change this property.
+* {blank}
++
+M Compatible Item Descriptors::
+  For some types of items, this is used to group items into sets of compatible items.
+  Our Doc Item does not fall into any of these groups, so you don't need to add any descriptors to this list.
 * {blank}
 +
 M Small Icon::
@@ -74,6 +93,11 @@ M Big Icon::
   This is the same as the small icon but can be higher resolution.
   The recommend size is 256px for regular items, 512px for buildgun items.
   Let's just use the same icon file as before for simplicity.
+* {blank}
++
+M Category::
+  This set of properties groups the item into a category, this affects where it shows up in the recipe list.
+  We don't need this so we leave it on "None", resulting in the item being categorized under "Other" ingame.
 
 == Item Visuals In World
 
@@ -86,7 +110,7 @@ Importing a mesh and textures has a couple extra things we need to pay attention
 
 Import just the Mesh, and pay attention on the dialog that pops up.
 We should make sure that it does not create a material, because we want to use https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
-Uncheck the parameter pictured below and instead create a material instance of MM_Factory_Baked and set it on the mesh.
+Uncheck the parameter pictured below and instead create a material instance of MM_FactoryBaked and set it on the mesh.
 Keep it open once made because next we'll need to do the textures it needs.
 
 image:BeginnersGuide/simpleMod/NoMaterialImport.png[image]
