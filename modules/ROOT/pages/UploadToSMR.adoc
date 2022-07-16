@@ -300,7 +300,7 @@ In the meantime, we strongly suggest you take a look at your mod description and
 
 - Pictures! Take some screenshots of what your mod can do, and what its buildings or features look like in game. Again, the long description supports Markdown formatting, which you can get help with using on the https://ficsit.app/help[help page].
 
-- List where you can be reached for help, issue reporting, leaving suggestions, etc. Where do you want users to report issues to you with the mod? Via Discord, the forums, your mod's Github page, or somewhere else? Consider putting your Discord tag in your mod description so people can contact you on the community Discord, and consider changing your nickname on the server to include your mod name.
+- List where you can be reached for help, issue reporting, leaving suggestions, etc. Where do you want users to report issues to you with the mod? Via Discord, your mod's Github page, or somewhere else? Consider putting your Discord tag in your mod description so people can contact you on the community Discord, and consider changing your nickname on the server to include your mod name.
 
 - Explain concepts or features of your mod that may be unclear to the user. Unless you write documentation or a https://ficsit.app/guides[guide] for how to use your mod, players might have some trouble figuring out how to use all of the amazing new content in your mod.
 

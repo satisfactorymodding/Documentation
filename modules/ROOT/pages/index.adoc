@@ -11,8 +11,7 @@ In this page, we will provide some surface level information for both mod users 
 [TIP]
 ====
 If you want to take part in this great community, we recommend you
-join our https://discord.gg/xkVJ73E[Discord Server] or the
-https://forums.ficsit.app/[Ficsit.app Forums].
+join our https://discord.gg/xkVJ73E[Discord Server].
 ====
 
 == For Users
@@ -58,6 +57,12 @@ If you don't have a packaged mod already, create one with Alpakit.
 If you have a packaged mod (.zip archived mod),
 then you simply unpack the .zip into the `<SF install dir>/FactoryGame/Mods/<ModName>`.
 Make sure that the `.uplugin` file is contained _directly_ within the `<ModName>` folder.
+
+== Archived Forums
+
+The community used to have a Discourse-powered forms website for modding discussion,
+but it has since been archived due to low usage.
+You can find the archives https://forums.ficsit.app/[here].
 
 == Modding Technologies
 
