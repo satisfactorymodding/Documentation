@@ -5,42 +5,12 @@ but also everything else that is used by it.
 
 == Item Descriptor [.title-ref]#(`UFGItemDescriptor`)#
 
-The native `AFGItemDescriptor` class, who would have thought, describes
-an Item itself. It holds information like:
-
-* {blank}
-Name::
-  The actual displayed name to the user
-* {blank}
-+
-Description::
-  A description of the item itself. Most of the time it contains
-  information about its usage but also some useless information.
-* {blank}
-+
-Inventory Icon::
-  The icon you can see in your inventory is no live rendering of the
-  item, instead, it's just a simple image file.
-* {blank}
-+
-Conveyor Model::
-  This is a Static Mesh used to display the item in world and for use by the xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] system.
-* {blank}
-+
-Radioactive Decay::
-  Some items like Uranium Ore cause radiation damage to the player when nearby. This field stores information about the radiation emitted by the item.
-* {blank}
-+
-Energy value (for use as Fuel)::
-  Different items have different amounts of energy storage when used as
-  fuel. Coal, for example, has less energy than Packaged Fuel when used in a vehicle.
-
-[TIP]
-====
-Sometimes you don't need to define all of these fields. For example, when you want to
-create a building descriptor, you won't need a model for conveyors or an
-energy value cause you don't want to throw a building into a generator or move buildings around on belts.
-====
+The native `AFGItemDescriptor` class, who would have thought.
+Contains properties of Item-like game concepts.
+Notably, this is the base class for things like UFGBuildDescriptor (buildings)
+and UFGFactoryCustomizationDescriptor (Customizer patterns),
+which are not 'items' in the usual sense,
+and do not make use of all available UFGItemDescriptor properties.
 
 == Item [.title-ref]#(`FInventoryItem`)#
 
