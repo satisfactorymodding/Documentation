@@ -4,7 +4,7 @@
 
 Welcome to the Satisfactory Modding Documentation site! 
 
-Here you can find lots of information regarding modding https://www.satisfactorygame.com/[Satisfactory], the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios]. Modding for Satisfactory is more established than you might think given how long the game has been out. There are already https://ficsit.app/[numerous mods] released, and there are multiple methods by which you can develop new mods yourself. 
+Here you can find lots of information regarding modding https://www.satisfactorygame.com/[Satisfactory], the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios] (CSS). Modding for Satisfactory is more established than you might think given how long the game has been out. There are already https://ficsit.app/[numerous mods] released, and there are multiple methods by which you can develop new mods yourself. 
 
 In this page, we will provide some surface level information for both mod users and developers.
 
@@ -73,9 +73,13 @@ If you'd like to learn more about how modding works internally, this is the sect
 Satisfactory Mod Loader (SML) provides a framework that makes it easier for mods to be able 
 to load into systems provided by the game, and to interact with each other.
 It also provides many helper features to assist in mod development.
+Due to how CSS has configured Satisfactory,
+it is possible to make mods that do not require SML to function,
+however this is rarely done in practice.
 
 === Alpakit
 
-The Alpakit is an Unreal Engine Plugin allowing you to easily cook and package your
+Alpakit is an Unreal Engine Plugin allowing you to easily cook and package your
 mod for deployment and distribution.
 It is also able to directly install it into your game installation for you.
+Behind the scenes, it uses Unreal Pak and some custom code to accomplish this.
