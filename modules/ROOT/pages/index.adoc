@@ -79,7 +79,7 @@ however this is rarely done in practice.
 
 === Alpakit
 
-Alpakit is an Unreal Engine Plugin allowing you to easily cook and package your
-mod for deployment and distribution.
+Alpakit is an Unreal Engine Plugin created by Mircea and other contributors
+allowing you to easily cook and package your mod for deployment and distribution.
 It is also able to directly install it into your game installation for you.
 Behind the scenes, it uses Unreal Pak and some custom code to accomplish this.

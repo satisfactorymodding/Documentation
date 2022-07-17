@@ -136,6 +136,9 @@ Finally! What a class. Now we just need to register this schematic so it shows u
 == Register the Schematic
 
 To register the schematic we can use our recently created xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_the_class[InitGameWorld] and add the schematics to the `M Schematics` array of the InitGameWorld. Double click on InitGameWorld to edit it and add your schematic to the `M Schematics` array.
+To test it out, go ahead and run Alpakit and launch the game.
+You can find info on how to use it back on the
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
 And we're set! Our recipe and schematic are registered and should show up in the game now. To test it out, go ahead and run Alpakit and launch the game. The main menu should now show a higher loaded mods count, and you should be able to buy and test your schematic and recipes in game.
 

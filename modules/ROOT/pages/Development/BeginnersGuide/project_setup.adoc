@@ -214,6 +214,7 @@ Alpakit is a tool made by the modding community
 to make building and testing your mod more convenient.
 Click on the Alpakit button in the Tool-Bar of the Unreal viewport.
 It looks like an alpaca peeking out of a cardboard box.
+You can also bring it up via `File > Alpakit`.
 
 Click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
@@ -223,6 +224,12 @@ Choose an item from `Launch Game After Packing`
 if you'd like the game to be launched after you pack your mod files,
 or leave it on 'Do not launch' if desired.
 Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
+
+[TIP]
+====
+Find out more about how to launch the game quickly for testing on the
+xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
+====
 
 Right now you should see three items in a searchable list -
 `Example Mod (ExampleMod)`, `Satisfactory Mod Loader (SML)`,
@@ -234,12 +241,12 @@ in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
 
-Note that if you have not yet installed SML for your game files,
+Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
 in which case you should either update your Starter Project
-or use the Mod Manager's `development` profile to install it for you.
+or use the Mod Manager's `development` profile to install SML for you instead.
 
 == Ready to Rumble
 
