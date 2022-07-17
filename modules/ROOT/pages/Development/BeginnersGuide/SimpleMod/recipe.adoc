@@ -142,4 +142,8 @@ xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project S
 
 And we're set! Our recipe and schematic are registered and should show up in the game now. To test it out, go ahead and run Alpakit and launch the game. The main menu should now show a higher loaded mods count, and you should be able to buy and test your schematic and recipes in game.
 
+If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
 
+== Next Steps
+
+Next up, let's create our own custom item, and change our recipe to produce it instead of boring, old, generic Wood.

@@ -160,5 +160,9 @@ to get the relevant files set up.
 
 Alternatively, once your modding environment is set up,
 you can use Alpakit to automatically build and install SML.
+This is covered on the next page.
 
-Now that all the dependencies are installed, you can move onto xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].
+== Next Steps
+
+Now that all the dependencies are installed, you can move onto
+xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].

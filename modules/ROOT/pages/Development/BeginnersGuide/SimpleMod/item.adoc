@@ -299,3 +299,15 @@ You can find info on how to use Alpakit back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
 If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+
+== Next Steps
+
+Depending on the kind of mod you want to make,
+this might be all the info you need in order to start creating!
+Once you have a mod you're ready to upload, follow the
+xref:UploadToSMR.adoc[Uploading to SMR]
+directions to upload it for other people to use.
+
+If you'd like to try making a decorative building,
+or a very basic machine with a GUI,
+continue on in this tutorial series.

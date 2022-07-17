@@ -55,6 +55,8 @@ That's it! You don't need to register anything else. When the recipe gets loaded
 
 If you load up the game now, you should be able to build the Doc Build in game, but it is purely an object that sits there and exists. You should be able to paint it with the paint tool, and it should look roughly like it does in the icon image. If it just has a gray checkerboard on it, check in both the Buildable and the Mesh that the correct Factory Inst texture is selected. 
 
+If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+
+== Next Steps
+
 In the next section, we'll make another buildable that acts as a simple machine.
-
-

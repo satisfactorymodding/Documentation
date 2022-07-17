@@ -61,4 +61,6 @@ image:BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.jpg[image]
 
 That's should be it, try out your newly created machine!
 
+== Next Steps
 
+In the next section, we'll add a GUI to our counter that we can use to reset the internal tally.
