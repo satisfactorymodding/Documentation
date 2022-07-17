@@ -35,17 +35,19 @@ Double click to open your new descriptor to open it, and you should see the defa
 If not, click on the "Class Defaults" button in the toolbar and they should appear in the Details browser.
 
 Let's go through each attribute and set up our item's properties.
-You can hover over the left side of a field to get an tooltip describing its purpose (pulled from the game headers).
+You can hover over the left side of a field to get a tooltip describing its purpose (pulled from the game headers).
 
 * {blank}
 +
 M Display Name::
   The item's name in game, which appears in its tooltip and what it is called in the Codex.
+  {blank} +
   We'll set this to "Doc Item".
 * {blank}
 +
 M Description::
   A description of the item, which appears in its tooltip and the Codex.
+  {blank} +
   In our case, we can use the text "This is the starter item of the Doc mod."
 * {blank}
 +
@@ -55,18 +57,21 @@ M Abbreviated Display Name::
   this text will appear (white with black outlines) in the top left corner of the item icon.
   In the base game, this is usually only set for items that are difficult to distinguish,
   for example, raw ores and ingots.
+  {blank} +
   We can leave this blank, or use "DocI".
 * {blank}
 +
 M Stack Size::
   Satisfactory has hardcoded item stack sizes.
   Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 50,000 (Fluid, 50 Liters).
+  {blank} +
   Go ahead and pick one as you see fit.
 * {blank}
 +
 M Can be Discarded::
   Whether the item can be trashed using the trashcan slot of your inventory.
   AWESOME sink settings are handled though a different system.
+  {blank} +
   We'll uncheck it so that you can't throw the item into the trashcan - Ficsit does not waste!
 * {blank}
 +
@@ -74,6 +79,7 @@ M Remember Pick Up::
   Decides if the game should keep track of if any player has ever possessed this item.
   The base game uses this for items like Raw Quartz ore,
   which unlocks the Quartz MAM tree and triggers an ADA voiceline once collected.
+  {blank} +
   Let's leave this unchecked, since we won't cover that functionality in this tutorial.
 * {blank}
 +
@@ -81,6 +87,7 @@ M Energy Value::
   Describes how much energy in megawatt Seconds (MWs, aka MJ) this item should release when burned in a generator or vehicle.
   You can find the fuel values of vanilla items on the https://satisfactory.fandom.com/wiki/Category:Fuels[wiki].
   Note that if you want your item to qualify as a biofuel for the Biomass Burner, you should subclass `FGItemDescriptorBiomass` instead.
+  {blank} +
   Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
 * {blank}
 +
@@ -88,67 +95,91 @@ M Radioactive Decay::
   If set to a value greater than 0, the item will cause the player to take radiation damage.
   The editor tooltip for this field is incorrect - values can seemingly be any value greater than 0.
   For example, Plutonium Waste (most intense in Vanilla) uses a value of 200, and Encased Uranium Cell (least intense) uses 0.5.
+  {blank} +
   We'll leave this at 0 for safety while testing our mod.
 * {blank}
 +
 M Form::
   Defines the type of this item: Invalid, Solid, Liquid, Gas, or Heat
+  {blank} +
   Our new item should be a Solid for ease of testing.
-  If you decide to make a Liquid or Gas later on, make sure to also assign the stack size of Fluid.
+
+[WARNING]
+====
+If you decide to make a Liquid or Gas in the future,
+make sure to assign the Stack Size of Fluid,
+or it will not behave as expected.
+====
+
 * {blank}
 +
 M Conveyor Mesh::
   All items have 3-Dimensional representations for when they appear in the world.
   Items use the mesh you specify here when you've dropped them on the ground and for display on conveyors.
+  {blank} +
   We'll cover this in more detail further down on the page, as setting it up to render correctly takes a couple of extra steps.
 * {blank}
 +
 M Color 1::
   Controls the color of a fluid in pipes.
+  {blank} +
   As this item is not a Liquid or Gas, we don't need to change this property.
 * {blank}
 +
 M Color 2::
   Controls the second color that used by gasses in pipes.
+  {blank} +
   As this item is not a Gas, we don't need to change this property.
 * {blank}
 +
 M Compatible Item Descriptors::
   For some types of items, this is used to group items into sets of compatible items.
+  {blank} +
   Our Doc Item does not fall into any of these groups, so you don't need to add any descriptors to this list.
 * {blank}
 +
 M Small Icon::
   An image texture to be used in the inventory, machine slots, and more.
   The recommend size is 64px for regular items, and 256px for Build Gun items.
+  {blank} +
   We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
   You can import it in the Content Browser pane via `Add/Import > Import to...`.
-  When using your own models, you can follow the tutorial
-  xref:Development/BeginnersGuide/generating_icons.adoc[here]
-  to generate icons that look like the ones in game.
 * {blank}
 +
 M Big Icon::
   Same concept as the small icon, but can be higher resolution for display in places like signs.
   The recommend size is 256px for regular items, 512px for Build Gun items.
+  {blank} +
   Let's use the same image we used as before for simplicity.
+
+[TIP]
+====
+When using your own models, you can follow the
+xref:Development/BeginnersGuide/generating_icons.adoc[Icon Generation tutorial]
+to semi-automatically render icons that look like the ones in game.
+====
+
 * {blank}
 +
 M Category::
   Groups the item into a category, which affects where it shows up in the recipe list.
+  {blank} +
   Set this to the base-game-supplied category `Cat_Other`,
   because items without categories will not appear unless searched for by name in certain GUIs.
 +
 M Sub Categories::
   Further sorting categories used by the Build Gun.
+  {blank} +
   Leave this as the default empty array.
 +
 M Quick Switch Group::
   Optional reference to a quick-switch group, which controls what other buildings will appear when pressing the quick switch keybind.
+  {blank} +
   Leave this as None, since we're making an item, not a building.
 +
 M Menu Priority::
   Controls the order that items appear within their category.
+  {blank} +
   Stick with the default value of `0.0`.
 
 == Item Visuals In World
