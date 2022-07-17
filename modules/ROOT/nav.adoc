@@ -6,7 +6,7 @@
 
 * xref:Development/index.adoc[Development]
 
-** xref:Development/UpdatingFromOld.adoc[_Updating from SML 2.2.1_]
+** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
@@ -66,6 +66,8 @@
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
+
+** xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]

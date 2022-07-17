@@ -45,7 +45,7 @@ If you'd like to write a mod of your own, this section is for you.
 The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML. To enable it, change your selected profile to `development`.
 
 If you're looking to write your own mods, we suggest you start with
-making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
+making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Getting Started Guide].
 
 If you're looking to make models, it's best to learn how to put a mod together first.
 Once you've completed the `Buildable` step in `Beginners Guide`, then check out our xref:Development/Modeling/index.adoc[Modeling Guide].
