@@ -14,7 +14,10 @@ allow its content to be added
 A custom recipe to make 1 Wood from 42 Leaves
 * {blank}
 +
-A new item, an ingot called a 'Doc Ingot'
+A HUB Milestone to purchase in order to unlock our custom recipe
+* {blank}
++
+A new item to produce - a flatscreen TV called a 'Doc Item'
 * {blank}
 +
 A new buildable object that can be painted with the paint gun

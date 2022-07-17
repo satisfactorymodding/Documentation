@@ -1,10 +1,21 @@
 = Buildable
 
-Next up, we'll make a buildable. A buildable is simply anything you will be able to place with the buildgun. Even if it is just a simple foundation or fence, it is still a `FGBuildable`.
+Next up, we'll make a decorative buildable - the Plantpot of Knowledge,
+a monument to your progress in the tutorials thus far.
+A buildable is simply anything you will be able to place with the buildgun.
+Even if it is just a simple foundation or fence, it is still a `FGBuildable`.
 
-A buildable is fairly similar to an Item with a few more values to configure and a few to ignore. There's also a hologram which controls its placement.
-We don't need a conveyor mesh for our building, since our buildings probably shouldn't be moving around as items on conveyor belts.
-This time we'll create a separate folder for each of our buildable to have textures, meshes, and so on in one place. Create new folder called "Buildables" in your mod's root folder, then create another folder for our Buildable. Let's call it "DocBuild".
+A buildable is fairly similar to an Item with a few more values to configure and a few to ignore.
+There's also a hologram which controls its placement.
+We don't need a conveyor mesh for our building,
+since our buildings probably shouldn't be moving around as items on conveyor belts.
+However, we'll definitely still want a mesh for our building's appearance in-game.
+
+To stay organized, we'll create a separate folder for each of our buildables
+to hold their textures, meshes, and so on in one place.
+Create new folder called "Buildables" in your mod's root folder,
+then create another folder for our first Buildable.
+Let's call it "DocBuild".
 
 == Adding the Actor
 
@@ -17,7 +28,7 @@ Fill `M Display Name` with something like "Doc Buildable" and `M Description` wi
 As you can see in the `Components` pane in the top left, the actor already contains a few components. But not any visuals, so, now add a new static mesh component in the center of the viewport. The build gun uses the origin when targeting the mesh to be built or snapped.
 You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh], the Plantpot of Knowledge, for your buildable.
 
-This Actor is also where you can define the snapping area and the clearance area, but we won't do that for now. Look to other machines and examples for inspiration as there are several relevant settings to make those behaviours work correctly.
+This Actor is also where you can define the snapping area and the clearance area, but we won't do that for now. Look to other machines and examples for inspiration as there are several relevant settings to make those behaviors work correctly.
 
 == Make it paintable
 
