@@ -103,7 +103,7 @@ Storage space is cheap, your time is not.
 
 == Back Up Your Game
 
-As described in the 'Keep an Old Version On Hand' section,
+As described in the 'Keep an Old Version On Hand' bullet,
 by keeping an old install of the game on hand,
 you can check behaviors or retrieve assets that may have been deleted during an update.
 
@@ -121,7 +121,8 @@ After making a copy, you are safe to update your game install as you normally wo
 You can use the launch scripts in the
 xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 page to launch this separate copy of the game
-while 
+while still having the new copy set up (even running at the same time)
+on Steam/Epic.
 
 == Back Up Your Old Engine
 
@@ -139,11 +140,11 @@ you should do the following:
 
 1. Navigate to your editor install folder
 (probably `C:\Program Files\Unreal Engine - CSS`)
-2. Run `SetupScripts\Unregister.bat``
+2. Run `SetupScripts\Unregister.bat`
 (might need to do this as admin)
 3. Rename the install folder to
 `C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\` or similar.
-4. Run `SetupScripts\Register.bat`` from the new location
+4. Run `SetupScripts\Register.bat` from the new location
 (might need to do this as admin)
 5. Now, to launch the old editor, you can run
 `C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\Engine\Binaries\Win64\UE4Editor.exe`.
@@ -176,13 +177,13 @@ xref:Development/BeginnersGuide/dependencies.adoc#_unreal_engine_4_custom_engine
 
 == Preparing to Update your Starter Project
 
-Depending on how you obtained your modding files,
+Depending on how you downloaded your modding starter project,
 one of these approches will be easier than the rest,
 or you may _have_ to use one to get what you want.
 
 You should read both options in full to make an informed decision.
 
-=== Option One: Start Fresh
+=== Option 1: Start Fresh
 
 If you have a small, self contained mod,
 or the changes to SML or game systems are immense,
@@ -202,7 +203,7 @@ so you can simply transfer over that folder.
 
 ==== Bring Over Editor Configs
 
-Editor are stored at the project level, and if you have any special ones,
+Editor settings are stored at the project level, and if you have any special ones,
 you probably don't want to lose them when you update.
 They are stored in the `/Config/` folder.
 For example, Acton Mappings are stored in `DefaultInput.ini`.
@@ -210,9 +211,9 @@ You should git diff the files to make sure
 that you are adding any new fields that were introduced by the update,
 while still keeping the old values you want.
 
-=== Option Two: Replace Changed Files
+=== Option 2: Replace Changed Files
 
-If you have a lot of plugins set up in modding project,
+If you have a lot of plugins set up in one project,
 the changes to SML or game systems are small,
 or you want to preserve your git history,
 this may be the route to update your existing project.
@@ -229,7 +230,7 @@ you should absolutely *make a backup copy of the old project before trying to mo
 Even if you are a git wizard,
 it's a lot simpler to completely toss a broken copy instead of trying to patch it up again.
 
-==== 2A: You Cloned or Forked the Starter Project
+==== Option 2A: You Cloned or Forked the Starter Project
 
 You will have to pull (if you cloned) or merge (if you forked)
 the changes made in the main SML repository.
@@ -241,9 +242,11 @@ in order to merge in the changes without conflict.
 They include, but are not necessarily limited to:
 
 - FactoryGame.uproject
-- `/Configs/` folder contents (see the 'Bring Over Editor Configs' section)
-- `/Content/` folder contents (see the 'Dealing With the Content Folder'
-  and 'Watch Out: Complete Starter Projects and Version Control' sections)
+- `/Configs/` folder contents
+  (see the link:#_bring_over_editor_configs[Bring Over Editor Configs] section)
+- `/Content/` folder contents
+  (see the link:#_dealing_with_the_content_folder[Dealing With the Content Folder]
+  and link:#_watch_out_complete_starter_projects_and_version_control[Watch Out: Complete Starter Projects and Version Control] sections)
 
 Once you have stashed or discared your changes to these files,
 you should be able to pull/merge in the files.
@@ -262,7 +265,7 @@ you probably just want to throw out the old ones and bring in the new ones inste
 This will involve a lot of changed files,
 but since the starter project ships with only stubs, they are tiny in file size.
 
-==== 2B: You Downloaded a Zip of the Starter Project
+==== Option 2B: You Downloaded a Zip of the Starter Project
 
 Git is a powerful tool, and although it might take a bit to learn,
 it defintley pays off in the long run.
@@ -284,7 +287,7 @@ As a general overview, changes could include any or all of the following:
 - `/Plugins/SMLEditor/`
 - `/Source/FactoryGame/`
 
-==== 2C: You Have a Project Level Repo
+==== Option 2C: You Have a Project Level Repo
 
 Possible reasons to have a project-level repo include
 working with lots of copyrighted files,
@@ -304,7 +307,8 @@ If are using Git and you have generated a complete starter project using the
 xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit],
 updates present an additional risk.
 
-You'll probably want to throw out all the old asset files generate a fresh complete content folder.
+You'll probably want to throw out the entire base-game Content folder
+and generate it again to be sure you don't have any no-longer-existing assets in there.
 However, you must be careful with how you bring this updated dump into version control.
 GitHub (and most other VC platforms) has a size limit on how big they will alow an individual commit to be,
 and hitting this limit is quite feasible when bringing in updated assets.
@@ -366,7 +370,8 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 6. Run Alpakit on your mod
 7. Deal with errors that Alpakit finds. Possible problems include:
 
-- Blueprints that 'just' need to be opened and recompiled (see 'Beware of Changed Files' section)
+- Blueprints that 'just' need to be opened and recompiled
+  (see link:#_beware_of_changed_files[Beware of Changed Files] section)
 - Missing assets.
   Look back in your backups to find out what they were,
   try to find their new locations,
