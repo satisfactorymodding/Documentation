@@ -33,8 +33,11 @@ There are a few measures you can take in order to decrease the chances of your m
   Instead, use xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 - Use already-established systems to implement behavior.
   For example, use the SML Keybinds system instead of writing your own keybind handling logic.
-- Implement functionality in Blueprints,
+  Then, if it breaks, there are more people on board to fix it, rather than just you.
+- Consider implementing some functionality in Blueprints,
   since they are generally less likely to break when header updates occur.
+  This comes at a nonzero performance cost,
+  but that discussion is out of the scope of this docs page.
   Consider the case of https://ficsit.app/mod/UtilityMod[Pak Utility Mod],
   which has required extremely few updates in the scale of things,
   partly because it uses no {cpp} code.
