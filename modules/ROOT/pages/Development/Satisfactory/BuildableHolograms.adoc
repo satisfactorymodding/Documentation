@@ -1,0 +1,197 @@
+= What is a Buildable Hologram?
+
+Buildable Hologram are basically the logic of how we are allowed to build buildings and where we can place them.
+
+Each `FGBuildable` needs a hologram to build. Basically, CSS offers a lot of options for us to choose from. However, you can also write your own logic, such as when you want to upgrade a building, snap building to other or in the environment.
+
+== Build Modes
+
+```cpp
+/**
+* Get the build modes implemented for the hologram
+* @param out_buildmodes	 Array with all supported build modes
+*/
+UFUNCTION( BlueprintNativeEvent, Category = "Hologram" )
+void GetSupportedBuildModes( TArray< TSubclassOf<UFGHologramBuildModeDescriptor> >& out_buildmodes ) const;
+
+UFUNCTION( BlueprintPure, Category = "Hologram" )
+TSubclassOf<UFGHologramBuildModeDescriptor> GetCurrentBuildMode();
+
+UFUNCTION( BlueprintCallable, Category = "Hologram" )
+void SetBuildMode( TSubclassOf<UFGHologramBuildModeDescriptor> mode );
+
+UFUNCTION( BlueprintCallable, Category = "Hologram" )
+void CycleBuildMode( int32 deltaIndex );
+
+UFUNCTION( BlueprintPure, Category = "Hologram" )
+bool IsCurrentBuildMode( TSubclassOf<UFGHologramBuildModeDescriptor> buildMode ) const;
+
+virtual void OnBuildModeChanged();
+```
+
+To start new buildmodes do we first need to tell the hologram which buildmodes we support?
+we can easily do this with `GetSupportedBuildModes`. Here we have to give the TArray all buildmode classes that are currently supported.
+[WARNING]
+====
+don't add a BuildModes class twice and don't add invalid BuildModes!
+====
+```cpp
+void AMyModHologram::GetSupportedBuildModes_Implementation(TArray<TSubclassOf<UFGHologramBuildModeDescriptor>>& out_buildmodes) const
+{
+	Super::GetSupportedBuildModes_Implementation(out_buildmodes);
+
+	if(mNewBuildmode)
+		out_buildmodes.AddUnique(mNewBuildmode);
+}
+```
+
+BuildModes are usually changed with the keybinding `R`. but we can also do this manually. we also can use `SetBuildMode(MyBuildMode)` or `CycleBuildMode(1)` / `CycleBuildMode(-1)`.
+
+To use the BuildModes we can check if a buildmode is active. there are 2 ways again.
+
+The first to have the function `IsCurrentBuildMode(MyBuildMode)`. where we get a boolean if the BuildMode is active.
+
+But we can also get the active build mode and check it. this works with `GetCurrentBuildMode()`.
+
+In addition, we can also perform actions when the build mode has been changed. for example to change properties. use here `OnBuildModeChanged()`.
+
+```cpp
+void AMyModHologram::OnBuildModeChanged()
+{
+    Super::OnBuildModeChanged();
+
+    MyProperty = IsCurrentBuildMode(MyBuildMode);
+}
+```
+
+== Configure and Upgrading
+=== Configure building
+
+We are allowed to give buildings certain values as they are built. This allows, for example, to change a mesh depending on the location. or rotate a component a bit. or to set references to a snapped building.
+
+There are different phases that we can use. depending on what we want to do and also when.
+
+```cpp
+/**
+* Configure functions are called in the following order and can thus override each others steps. Be careful:
+  -   ConfigureActor( buildable );
+  -   ConfigureBuildEffect( buildable );
+  -   //Perform the actual spawning in the world
+  -   ConfigureComponents( buildable );
+  -   //Begin play called on the buildable
+*/
+```
+
+```cpp
+/**
+* Configure function: Configuring the actor created from the hologram when executed.
+* @param inBuildable - The resulting buildable placed in the world that we are to configure before it's finished.
+* @note DO NOT TOUCH COMPONENTS HERE as they'll be overwritten! Use ConfigureComponents for that
+*/
+virtual void ConfigureActor( class AFGBuildable* inBuildable ) const;
+```
+Configure Actor should only be used to set properties. Not to create components or anything like that. this is useful, for example, for moving properties from an upgraded actor to the new one.
+
+```cpp
+/**
+* Configure function: Configuring the actor component created from the hologram when executed.
+* @param inBuildable - The resulting buildable placed in the world that we are to configure before it's finished.
+* @note This is a good place to initialize snapped connections etc.
+*/
+virtual void ConfigureComponents( class AFGBuildable* inBuildable ) const;
+```
+Configure Components is a good place to change positions of components, for example. or to replace a pipe connection with an upgraded actor, for example.
+
+```cpp
+/**
+ * Function to allow any pre-initialization on the actor before the configuration occurs. This is to allow for
+ * final checks and to set properties as once were configuring its all const from there
+ */
+virtual void PreConfigureActor( class AFGBuildable* inBuildable );
+```
+In certain cases it may be necessary to check the properties again before the configuration of the actor starts. we can do that here.
+
+=== Upgrading building
+
+CSS also allows us to grade buildings. this is useful when you have multiple tiers of a building, and you want to upgrade them without having to dismantle the old one each time.
+
+basic you need different things for it. let's start with the headers.
+
+```cpp
+/** Get the target upgraded Actor */
+virtual AActor* GetUpgradedActor() const override;
+
+/** Do we allowed to Upgrade? */
+virtual bool TryUpgrade(const FHitResult& hitResult) override;
+
+private:
+/** target upgraded Actor */
+UPROPERTY(Transient)
+AActor* mUpgradedActor = nullptr;
+```
+
+```cpp
+UPROPERTY(Transient)
+AActor* mUpgradedActor = nullptr;
+```
+
+Is there to identify which actors exactly we want to upgrade. This is necessary so that the system hides the old actor during the time this is valid. The target here is the actor we are looking at.
+
+```cpp
+/** Get the target upgraded Actor */
+virtual AActor* GetUpgradedActor() const override;
+```
+
+Return the Target actor (here mUpgradedActor) to hide them.
+
+```cpp
+/** Do we allowed to Upgrade? */
+virtual bool TryUpgrade(const FHitResult& hitResult) override;
+```
+
+This function is used to check whether we are allowed to upgrade an actuator. Also, to put the location of our hologram there. to keep the same position.
+return true means we can. but note that you must set the mUpgradedActor. otherwise strange things can happen.
+
+
+an very basic example for the C++ part:
+
+[TIP]
+====
+The normal logic for Upgrading actors use also automatic snap belts and pipes. aslong the use the same location and the same names. also for PowerConnections etc.
+
+But Inventory must manuell transfered also something like recipes from manufactories.
+
+For inventorys can you use for example `NewBuildingInventory->CopyFromOtherComponent(OldBuildingInventory);` in the `ConfigureComponents()` step!
+====
+
+```cpp
+AActor* AMyModHologram::GetUpgradedActor() const
+{
+  // return the target actor to hide them ingame!
+  return mUpgradedActor;
+}
+
+bool AMyModHologram::TryUpgrade(const FHitResult& hitResult)
+{
+  if(hitResult.GetActor())
+  {
+    const TSubclassOf<AActor> ActorClass = GetActorClass();
+
+    // we check here that we dont try to upgrade the same Actor. the class should be different!
+    if(hitResult.GetActor()->GetClass() != ActorClass)
+    {
+      // IMPORTANT we need to set the location from our hologram to the target Actor
+      SetActorTransform(hitResult.GetActor()->GetActorTransform());
+
+      // set the UpgradedActor and return true if it is valid (should be only make sure)
+      mUpgradedActor = hitResult.GetActor();
+
+      return mUpgradedActor != nullptr;
+    }
+  }
+
+  // otherwise the UpgradedActor to nullptr
+  mUpgradedActor = nullptr;
+  return Super::TryUpgrade(hitResult);
+}
+```
