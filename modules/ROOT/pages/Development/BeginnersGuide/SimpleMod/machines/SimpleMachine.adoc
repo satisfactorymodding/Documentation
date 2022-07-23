@@ -1,6 +1,6 @@
 = First Simple Machine
 
-In this chapter we'll create a simple machine which simply counts the items and types of items that pass through it, outputting them again on the other side. 
+In this chapter we'll create a machine which simply counts the items and types of items that pass through it, outputting them again on the other side. 
 
 == Create the machine
 

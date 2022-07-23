@@ -23,7 +23,15 @@ Next, create a blueprint of type `FGBuildable` with f.e. the name "Build_DocBuil
 
 Now we need to populate the buildable description by simply filling the default values.
 Set `M Hologram Class` to `FGBuildableHologram`, which will cause the `FGBuildable` to automatically find the hologram by itself.
+
 Fill `M Display Name` with something like "Doc Buildable" and `M Description` with "An example building that showcases the MI_Factory_Base_01 material.".
+
+[TIP]
+====
+Holograms control how buildings get placed.
+Later on, you can write your own to allow upgrading buildings or to have snapping functionality.
+You can learn more about how holograms work on the xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms] page.
+====
 
 As you can see in the `Components` pane in the top left, the actor already contains a few components. But not any visuals, so, now add a new static mesh component in the center of the viewport. The build gun uses the origin when targeting the mesh to be built or snapped.
 You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh], the Plantpot of Knowledge, for your buildable.
@@ -70,4 +78,4 @@ If something went wrong, feel free to contact us on the https://discord.gg/xkVJ7
 
 == Next Steps
 
-In the next section, we'll make another buildable that acts as a simple machine.
+In the next section, we'll make another buildable that has some custom logic, allowing it to act as an item counter.
