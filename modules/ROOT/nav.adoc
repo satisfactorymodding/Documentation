@@ -6,7 +6,7 @@
 
 * xref:Development/index.adoc[Development]
 
-** xref:Development/UpdatingFromOld.adoc[_Updating from SML 2.2.1_]
+** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
@@ -17,7 +17,7 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
-*** xref:Development/BeginnersGuide/SimpleMod/splitter.adoc[Simple Custom Splitter]
+*** xref:Development/BeginnersGuide/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Content]
@@ -46,6 +46,7 @@
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
+*** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
 *** xref:Development/Satisfactory/Paintable.adoc[Paintable]
 *** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
@@ -66,6 +67,8 @@
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
+
+** xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]

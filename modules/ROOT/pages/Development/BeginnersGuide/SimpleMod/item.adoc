@@ -1,118 +1,344 @@
 = Create an Item
 
-Now that you've created a custom recipe and schematic, you'll want to create a custom Item. For this tutorial, we'll make an item named 'Doc Item'.
+Now that you've created a custom Recipe and Schematic, let's create a custom Item.
+For this tutorial, we'll make an item named 'Doc Item'.
+It will look like a flatscreen television.
 
-== Creating the BP-Class
+== Creating a Folder for our Item
 
-The item system is a bit complex, but to summarize it, we simply need to describe our item in a xref::/Development/Satisfactory/Inventory.adoc#_item_descriptor_afgitemdescriptor[FGItemDescriptor] class.
-To create it, go to the content browser in the Unreal editor. Go to the Mod-Root `+Content/DocMod/` and create a new folder and call it "Items" to keep with our organization pattern so far.
-Then create a new Blueprint of type `FGItemDescriptor` in the folder. We'll call it `+Desc_DocItem+` to follow Coffee Stain's naming convention ("Desc" stands for descriptor).
+Items (and fluids) in Satisfactory are described by
+xref:/Development/Satisfactory/Inventory.adoc#_item_descriptor_ufgitemdescriptor[FGItemDescriptor]s,
+which contain information on their appearance and properties.
+They often also come with textures (to define their icons), meshes, and materials (to define their in-world appearance).
+
+To stay organized, let's create some folders to keep our item-related files together.
+
+Go to the Content Browser in the Unreal editor.
+Navigate to the root folder of your mod (appears as `DocMod Content`), right click, and select 'New Folder'.
+Call the new folder "Items" to keep with our organization pattern so far.
+
+Repeat the process again to create a folder called `DocItem`.
+
+== Creating the Blueprint Class
+
+First, we'll create the FGItemDescriptor.
+
+Inside of your DocItem folder in the Content Browser, right click,
+select to create a Blueprint Class, and use FGItemDescriptor as the parent class.
+We'll call it `Desc_DocItem` to follow Coffee Stain's naming convention ("Desc" stands for descriptor).
 
 image:BeginnersGuide/simpleMod/CreateDocItem.gif[image]
 
-
-_Note: this gif is slightly out of date as of SML 3.0_
-
 == Describe the Item
 
-Open the class and you should see the default settings of the classes' attributes. If not, just click on "Default Settings" and they should appear in the settings browser of the class editor. In here you will find multiple attributes with the different properties such an Item can have.
+Double click to open your new descriptor to open it, and you should see the default settings of the classes' attributes.
+If not, click on the "Class Defaults" button in the toolbar and they should appear in the Details browser.
 
-* {blank}
-+
-M Use Display Name and Description::
-  Because we have just a simple Item we need to check this (set the boolean to true) so that the item name and description are used directly.
+Let's go through each attribute and set up our item's properties.
+You can hover over the left side of a field to get a tooltip describing its purpose (pulled from the game headers).
+
 * {blank}
 +
 M Display Name::
-  The item's name in game.
+  The item's name in game, which appears in its tooltip and what it is called in the Codex.
+  {blank} +
   We'll set this to "Doc Item".
 * {blank}
 +
 M Description::
-  Set this to a simple description of the item.
-  In our case, we use the text "This is the starter Item of the Doc mod."
+  A description of the item, which appears in its tooltip and the Codex.
+  {blank} +
+  In our case, we can use the text "This is the starter item of the Doc mod."
+* {blank}
++
+M Abbreviated Display Name::
+  A shortend form of the name, try to keep it below 5 characters.
+  If the user has enabled abbreviated names in their 'User Interface > Item Abbreviation' game settings,
+  this text will appear (white with black outlines) in the top left corner of the item icon.
+  In the base game, this is usually only set for items that are difficult to distinguish,
+  for example, raw ores and ingots.
+  {blank} +
+  We can leave this blank, or use "DocI".
 * {blank}
 +
 M Stack Size::
-  Satisfactory has hardcoded item stack sizes. Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 50,000 (Fluid).
+  Satisfactory has hardcoded item stack sizes.
+  Items can stack to either 1 (One), 50 (Small), 100 (Medium), 200 (Big), 500 (Huge), or 50,000 (Fluid, 50 Liters).
+  {blank} +
   Go ahead and pick one as you see fit.
 * {blank}
 +
 M Can be Discarded::
-  Whether it can be trashed using the trashcan icon on your inventory. AWESOME sink settings are handled elsewhere.
-  We'll uncheck it so that you can't throw the item into the trashcan. Ficsit does not waste.
+  Whether the item can be trashed using the trashcan slot of your inventory.
+  AWESOME sink settings are handled though a different system.
+  {blank} +
+  We'll uncheck it so that you can't throw the item into the trashcan - Ficsit does not waste!
+* {blank}
++
+M Remember Pick Up::
+  Decides if the game should keep track of if any player has ever possessed this item.
+  The base game uses this for items like Raw Quartz ore,
+  which unlocks the Quartz MAM tree and triggers an ADA voiceline once collected.
+  {blank} +
+  Let's leave this unchecked, since we won't cover that functionality in this tutorial.
 * {blank}
 +
 M Energy Value::
-  This value describes how much energy this item should release if it gets burned in a generator. 
+  Describes how much energy in megawatt Seconds (MWs, aka MJ) this item should release when burned in a generator or vehicle.
+  You can find the fuel values of vanilla items on the https://satisfactory.fandom.com/wiki/Category:Fuels[wiki].
+  Note that if you want your item to qualify as a biofuel for the Biomass Burner, you should subclass `FGItemDescriptorBiomass` instead.
+  {blank} +
   Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
 * {blank}
 +
 M Radioactive Decay::
-  If set to a value greater than 0, the item will cause the player to take radiation damage. Values should not be greater than 1.
-  We'll leave this at 0 for ease of testing our mod.
+  If set to a value greater than 0, the item will cause the player to take radiation damage.
+  The editor tooltip for this field is incorrect - values can seemingly be any value greater than 0.
+  For example, Plutonium Waste (most intense in Vanilla) uses a value of 200, and Encased Uranium Cell (least intense) uses 0.5.
+  {blank} +
+  We'll leave this at 0 for safety while testing our mod.
+* {blank}
++
+M Form::
+  Defines the type of this item: Invalid, Solid, Liquid, Gas, or Heat
+  {blank} +
+  Our new item should be a Solid for ease of testing.
+
+[WARNING]
+====
+If you decide to make a Liquid or Gas in the future,
+make sure to assign the Stack Size of Fluid,
+or it will not behave as expected.
+====
+
 * {blank}
 +
 M Conveyor Mesh::
-  As we know, all items have 3-Dimensional representations for when they're dropped on the ground or on a conveyer belt.
+  All items have 3-Dimensional representations for when they appear in the world.
   Items use the mesh you specify here when you've dropped them on the ground and for display on conveyors.
-  We'll cover this fully further down on the page, as setting it up to render correctly takes a couple of extra steps.
+  {blank} +
+  We'll cover this in more detail further down on the page, as setting it up to render correctly takes a couple of extra steps.
 * {blank}
 +
-M Item Category::
-  This groups the item into a category, this affects where it shows up in the recipe list.
-  We don't need this so we leave it on "None", resulting in the item being categorized under "Other" ingame.
+M Color 1::
+  Controls the color of a fluid in pipes.
+  {blank} +
+  As this item is not a Liquid or Gas, we don't need to change this property.
+* {blank}
++
+M Color 2::
+  Controls the second color that used by gasses in pipes.
+  {blank} +
+  As this item is not a Gas, we don't need to change this property.
+* {blank}
++
+M Compatible Item Descriptors::
+  For some types of items, this is used to group items into sets of compatible items.
+  {blank} +
+  Our Doc Item does not fall into any of these groups, so you don't need to add any descriptors to this list.
 * {blank}
 +
 M Small Icon::
-  This is a simple texture image of the object used in the inventory to visualize what the given stack is.
-  The recommend size is 64px for regular items, 256px for buildgun items.
-  We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here]. When using your own models, you can follow the tutorial xref:Development/BeginnersGuide/generating_icons.adoc[here] to generate icons that look like the ones in game.
+  An image texture to be used in the inventory, machine slots, and more.
+  The recommend size is 64px for regular items, and 256px for Build Gun items.
+  {blank} +
+  We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
+  You can import it in the Content Browser pane via `Add/Import > Import to...`.
 * {blank}
 +
 M Big Icon::
-  This is the same as the small icon but can be higher resolution.
-  The recommend size is 256px for regular items, 512px for buildgun items.
-  Let's just use the same icon file as before for simplicity.
-
-== Make the Item Work on Conveyors
-
-In order to avoid having your item display as the default flat white cube
-when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh. 
-We have an example model and textures you can use
-link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here].
-Import these the same way you imported the category image in the Recipe vs Schematic tutorial.
-Put them in a Folder together somewhere within your plugin folder.
-Open the MREO texture we'll use for the Reflection map and turn sRGB off.
-Next we'll need to make some materials to use these textures,
-we have to make them ourselves not import them otherwise they wont render properly on belts. 
-
-Like many of the more complex parts of the game, this process has its own article to help you:
-xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering].
-If you're unsure about how to create material instances or assign textures, check out this
-https://www.youtube.com/watch?v=qus9WjHX4_4[external video tutorial].
-Do not try to edit the Master Material as any changes will not show up in your mod
-and it is already accurate to game content.
+  Same concept as the small icon, but can be higher resolution for display in places like signs.
+  The recommend size is 256px for regular items, 512px for Build Gun items.
+  {blank} +
+  Let's use the same image we used as before for simplicity.
 
 [TIP]
 ====
-If you don't want to make a custom mesh for items you create in the future, consider
+When using your own models, you can follow the
+xref:Development/BeginnersGuide/generating_icons.adoc[Icon Generation tutorial]
+to semi-automatically render icons that look like the ones in game.
+====
+
+* {blank}
++
+M Category::
+  Groups the item into a category, which affects where it shows up in the recipe list.
+  {blank} +
+  Set this to the base-game-supplied category `Cat_Other`,
+  because items without categories will not appear unless searched for by name in certain GUIs.
++
+M Sub Categories::
+  Further sorting categories used by the Build Gun.
+  {blank} +
+  Leave this as the default empty array.
++
+M Quick Switch Group::
+  Optional reference to a quick-switch group, which controls what other buildings will appear when pressing the quick switch keybind.
+  {blank} +
+  Leave this as None, since we're making an item, not a building.
++
+M Menu Priority::
+  Controls the order that items appear within their category.
+  {blank} +
+  Stick with the default value of `0.0`.
+
+== Item Visuals In World
+
+In order to avoid having your item display as the default flat white cube
+when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh.
+
+You can re-use the meshes of existing items, or create your own.
+For the purposes of this tutorial, we will use a custom mesh to demonstrate the non-trivial setup process.
+
+We have an example model and textures that you can click
+link:{attachmentsdir}/BeginnersGuide/simpleMod/DocItem.zip[here] to download.
+The process of importing meshes and textures has a couple extra details that we need to pay attention to.
+
+=== Importing the Mesh
+
+First, import the mesh (.fbx file) to your DocItem folder via `Add/Import > Import to...`.
+Select just the Mesh, and pay attention on the dialog that pops up.
+Most of the default settings are fine, but scroll down to the Material section
+and ensure that:
+
+- 'Search Location' is set to `All Assets`
+- 'Material Import Method' is set to `Do Not Create Material`
+- 'Import Textures' is unchecked
+
+To finish this dialog, select the `Import` option in the prompt.
+
+You should rename the asset to `SM_DocItem` to follow Coffee Stain's naming scheme.
+SM stands for Static Mesh.
+
+image:BeginnersGuide/simpleMod/NoMaterialImport.png[image]
+
+=== Creating the Material Instance
+
+We chose to not import any textures with the model because we want to leverage the Unreal
+https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances]
+system to improve game performance.
+
+Right click in the Content Browser to create an advanced asset: `Materials and Textures > Material Instance`
+and name it `MI_DocItem` to follow Coffee Stain's naming scheme.
+MI stands for Material Instance, whereas MM stands for Master Material.
+
+Open up this new asset.
+In the Details panel, set its `Parent` field by searching for the asset `MM_FactoryBaked`.
+Afterwards, save the asset.
+
+This base-game-supplied master material contains a ton of optimization logic
+to make rendering conveyor items work at large scales without butchering game performance.
+We can plug in our own textures to the material parmeters to use something other than the default grid it comes with.
+
+=== Importing the Textures
+
+Now we'll import the 3 textures from the earlier download.
+We need to make sure Unreal handles our textures properly,
+or the item won't look right in-game.
+
+Go back to the Content Browser and import the 3 image files from the download.
+
+These images probably don't look like normal image files that you're used to.
+That's because they store special information in each of the 4 (Red, Green, Blue, Alpha) image color channels.
+How this works is outside of the scope of this tutorial, but you can find some more info in the
+xref:Development/Modeling/index.adoc[Modeling] section of the docs.
+
+Open the imported `Tex_Doc-Item_MREO` texture, and in the Textures category of the Details pane, uncheck `sRGB`.
+We have to do this because the of the special data in each color channel - we don't want Unreal to treat it like a normal image.
+The xref:Development/Modeling/MainMaterials.adoc#_factory_baked_mm_factorybaked[Main Materials]
+page has more details about what's going on.
+Afterwards, save the asset.
+
+image:BeginnersGuide/simpleMod/sRGB_Off.png[image]
+
+=== Assign the Textures to the Material Instance
+
+Next, we need to assign these textures to the parameters of the material instance.
+
+Open up our `MI_DocItem` asset again.
+In the Details pane, find the `Global Texture Parameter Values` section,
+and check all three of the checkboxes to allow us to override their values.
+
+- For the Normal field, select `Tex_Doc-Item_N`.
+- For the Albedo field, select `Tex_Doc-Item_AB`.
+- For the Reflection Map field, select `Tex_Doc-Item_MREO`.
+
+Next, find the Ambient Occlusion section, and check the `UseAO` box.
+
+In the Emissive section, check the `UseEmissive` box.
+
+In the Painting section, check the `bUseLegacyPaintTextures` box.
+
+In the bottom right corner of the preview viewport,
+click on the flat panel icon to preview the material on a plane instead of a sphere.
+If you've done everything correctly, it should look like the below image.
+Note that no warnings appear in the top left of the viewport.
+Afterwards, save the asset.
+
+image:BeginnersGuide/simpleMod/MaterialInstanceSettings.png[image]
+
+This process is pretty standard to the way Unreal does things, so if you're a little confused, standard Unreal tutorials will help.
+We have very specific settings on the material because of the way the asset was made.
+If you team up with a modeler later on to help make your assets,
+they should know what changes to make if you send them a link to the
+xref:Development/Modeling/MainMaterials.adoc#_factory_baked_mm_factorybaked[Main Materials] page,
+and you can ask questions on the Discord if needed.
+For now, just follow the settings on the above image.
+
+=== Assign the Material Instance to the Mesh
+
+Now that we've set up our material instance, it's time to tell the mesh to use it.
+
+Go back to the content browser and open up our `SM_DocItem` mesh again.
+In the details pane, find the Material Slots option.
+Our example mesh only has one slot, but other meshes you encounter may have more.
+Set the slot's value by searching for our `MI_DocItem` asset.
+Afterwards, save the asset.
+
+image:BeginnersGuide/simpleMod/FinalMeshAppearance.png[image]
+
+[TIP]
+====
+Making and setting up custom meshes can be a lot of work.
+If you don't want to use a custom mesh for items you create in the future, consider
 xref:Development/ReuseGameFiles.adoc[reusing the mesh]
 of a nondescript base game item, such as the
 https://satisfactory.fandom.com/wiki/HUB_Parts[HUB Parts],
 as opposed to leaving it as the default white cube.
 ====
 
+=== Assign the Mesh to the Item Descriptor
+
+We've set up the mesh, but we still need to tell our item descriptor to use that mesh for our item.
+
+Back in our `Desc_DocItem` descriptor, set the value of the M Conveyor Mesh field to our `SM_DocItem` asset.
+Afterwards, save the asset.
+
 == Make the Item Available
 
-The item is available to the user when it gets loaded at least once.
-Because Unreal loads assets with a just in time method,
-we somehow need to force the asset to be loaded.
+We've created our item, but there's one more step before we can obtain it in-game.
+
+As a performance measure, an item is generally not available in Satisfactory unless something else registers it.
 One way we can do that is by having our item used in a Recipe. 
-Conveniently, we're already planning to have the item be usable in a recipe so that the player can obtain it.
-Change the outcome of our already created recipe to this new item,
+Conveniently, we're usually already planning to have the item be usable in a recipe,
+so that the player can obtain it during normal play!
+Change the product of the recipe you made earlier to this new item,
 or create a new recipe for it if you'd like to practice that.
 
-And you're done! Go ahead and Alpakit and check out your fancy new item in game.
+And you're done! Go ahead and Alpakit your plugin, then check out your fancy new item in game.
+You can find info on how to use Alpakit back on the
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
+If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
 
+== Next Steps
+
+Depending on the kind of mod you want to make,
+this might be all the info you need in order to start creating!
+Once you have a mod you're ready to upload, follow the
+xref:UploadToSMR.adoc[Uploading to SMR]
+directions to upload it for other people to use.
+
+If you'd like to try making a decorative building,
+or a very basic machine with a GUI,
+continue on in this tutorial series.

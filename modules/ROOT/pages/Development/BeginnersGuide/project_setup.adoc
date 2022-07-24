@@ -17,36 +17,53 @@ Be sure to read over the steps here as well to be sure you're doing things corre
 
 == Starter Project
 
-You should have already downloaded the Starter Project in the previous steps of the tutorial. If you downloaded the Starter Project as a zip, unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files. If you're having issues extracting the zip, try using another zip extracting software such as 7zip or WinRAR.
+You should have already downloaded the Starter Project in the previous steps of the tutorial.
+
+If you cloned it, the directory should be good to go.
+
+If you downloaded the Starter Project as a zip,
+unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
+If you're having issues extracting the zip,
+try using another zip extracting software
+such as https://www.7-zip.org/[7zip]
+or https://www.win-rar.com/start.html[WinRAR].
 
 [WARNING]
 ====
-By default, Windows marked files downloaded from the internet as "blocked". You will run into problems later on because of this. To get around this issues, right-click the zip and "unblock" it before unzipping it.
+By default, Windows marked files downloaded from the internet as "blocked".
+You will run into problems later on because of this.
+To get around this issues, right-click the zip and "unblock" it before unzipping it.
 ====
 
-This will be the folder that all of your mod's files will be put into,
-so extract the folder somewhere convenient for you where you can find it later,
-such as your Documents folder.
-Of note - keep the file path as short as possible.
-When packing Unreal projects, some filenames can get long,
-so a very nested location may cause issues.
+The Starter Project folder will be your modding workspace,
+and could grow to a considerable file size depending on what kinds of mods you make.
+As such, you should extract the folder somewhere convenient that you can find it later,
+such as a folder on a secondary storage drive, or inside your Documents folder.
+It is unwise to keep it in your Downloads folder
+because Windows can automatically clean up that folder depending on your system settings.
 
-You should strongly consider using version control software
+Feel free to rename the Starter Project folder to whatever you like.
+
+Try to keep the file path to the folder as short as possible.
+When packing Unreal projects, some filenames can get long,
+so a deeply nested location may cause bizarre issues.
+
+You should strongly consider using version control software,
 such as Git, to manage your mod's files,
 but doing so is outside the scope of this tutorial.
-If you choose to do this, the plugin folder that you create later
-will serve as your repo folder.
-You may wish to clone the Starter Project repo as opposed to using the downloaded zip.
+As mentioned earlier, you probably want to clone the Starter Project repo
+instead of downloading a zip file of it.
 
 You can use this Starter Project for developing multiple mods at once,
-since each mod will be its own separate Plugin folder within the project.
-
-Feel free to rename the extracted `SML-Shipping-Dev-Win64` folder to whatever you like.
+since each mod will be its own separate plugin folder within the project.
 
 == Setting up Wwise
 
-Wwise is an audio and sound system used by Satisfactory, and setting it up is required to get your modding environment working. Setting up Wwise
-can be difficult, but we'll walk through the steps here. Be sure to follow only the steps listed here - Wwise will often present you with lots of additional messages 
+Wwise is an audio and sound system used by Satisfactory,
+and setting it up is required to get your modding environment working.
+Setting up Wwise can be difficult, but we'll walk through the steps here.
+Be sure to follow _only_ the steps listed here
+- Wwise will often present you with lots of additional messages
 that looks like errors or warnings but can be safely ignored.
 
 [WARNING]
@@ -71,15 +88,17 @@ Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
 Then select the same version you installed earlier `2021.1.0.7575`. 
-The version number may have additional numbers on the end of it e.g. `2021.1.0.7575.1234` but as long as it starts with `2021.1.0.7575` it should work.
+The version number may have additional numbers on the end of it e.g.
+`2021.1.0.7575.1234` but as long as it starts with `2021.1.0.7575` it should work.
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `4.26.1-CSS`.
+is set to `4.26.2-CSS`.
 
-If you missed a required component as part of the Wwise installation, it may show 
-a yellow warning box indicating what's missing as well as a button to "Modify" the
-installation.  Go ahead and follow what it says for this step.
+If you missed a required component as part of the Wwise installation,
+it may show  a yellow warning box indicating what's missing
+as well as a button to "Modify" the installation.
+Go ahead and follow what it says for this step.
 If Wwise warns you that it could not find an installation in a red warning box,
 be sure that you have selected the correct version as stated above.
 If you see a blue box offering both "Modify" and "Add Plug-in",
@@ -99,14 +118,20 @@ image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
 
 == Generate Visual Studio Files
 
-Next, you'll need to generate the remaining files for the project with Unreal Engine's "Generate Visual Studio Project Files" tool. 
+Next, you'll need to generate the remaining files for the project
+with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-To do this, you'll need to run a command, unless you already have another version of Unreal Engine installed. If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`.  Go ahead and skip down to the xref:#_project_compilation[next section] if this works for you.
+To do this, you'll need to run a command,
+unless you already have another version of Unreal Engine installed.
+If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`.
+Go ahead and skip down to the link:#_project_compilation[next section] if this works for you.
 
-Otherwise, you'll need to run a tool from the command line to generate the project files. The command will follow the form below:
+Otherwise, you'll need to run a tool from the command line to generate the project files.
+
+The command will follow the form below:
 
 ```
-"<path to your Unreal build tool here (it installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
+"<path to your Unreal build tool here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
 
 Here is an example of a complete command.
@@ -117,12 +142,14 @@ Here is an example of a complete command.
 
 [WARNING]
 ====
-The above command will not work if you copy paste it - you'll need to modify it yourself to point towards your project file and Unreal Engine install.
+The above command will not work if you copy paste it
+- you'll need to modify it yourself to point towards your project file and Unreal Engine install.
 ====
 
 [WARNING]
 ====
-Make sure you run the above command from Command Prompt and not Powershell. It is not correctly formatted for Powershell.
+Make sure you run the above command from Command Prompt and not Powershell.
+It is not correctly formatted for Powershell.
 ====
 
 == Project Compilation
@@ -162,8 +189,8 @@ When you want to test or release your mod, make sure to build the project for `S
 Without doing so, your mod will be missing important files.
 ====
 
-If you see errors related to `AkAudio` or similar, you need to go back
-and re-do the Wwise integration step.
+If you see errors related to `AkAudio` or similar,
+you need to go back and re-do the Wwise integration step.
 
 If you encounter issues during this step, consider asking for help on the Discord.
 
@@ -185,7 +212,7 @@ which is probably something similar to
 Once the Unreal Engine editor has launched,
 open your project by navigating to
 `Projects` -> `Browse` (bottom right corner)
-and selecting the file `FactoryGame.uproject` in your mod folder.
+and selecting the file `FactoryGame.uproject` in your starter project folder.
 Opening the project for the first time can take a considerable amount of time.
 
 You might be told that some modules were
@@ -194,7 +221,7 @@ This will take some time, and will drastically increase the size of your mod fol
 - go find some more lizard doggos to pet.
 
 If this step fails, you should go back to
-xref:#_project_compilation[compile the editor from Visual Studio]
+link:#_project_compilation[compile the editor from Visual Studio]
 to find out why it's erroring and return here when finished with that step.
 Consider seeking help on the Discord if you are stuck here.
 
@@ -212,17 +239,26 @@ if you haven't taken or dismissed it yet.
 
 Alpakit is a tool made by the modding community
 to make building and testing your mod more convenient.
-Click on the Alpakit button in the Tool-Bar of the Unreal viewport.
+It's one of the plugins that comes pre-installed with the starter project.
+
+Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
+You can also bring it up via `File > Alpakit`.
 
 Click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
 It will be something like
-`C:\Program Files\EpicGames\SatisfactoryEarlyAccess\` 
+`C:\Program Files\EpicGames\SatisfactoryEarlyAccess\`.
 Choose an item from `Launch Game After Packing`
 if you'd like the game to be launched after you pack your mod files,
 or leave it on 'Do not launch' if desired.
 Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
+
+[TIP]
+====
+Find out more about how to launch the game quickly for testing on the
+xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
+====
 
 Right now you should see three items in a searchable list -
 `Example Mod (ExampleMod)`, `Satisfactory Mod Loader (SML)`,
@@ -234,21 +270,22 @@ in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
 
-Note that if you have not yet installed SML for your game files,
+Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
 in which case you should either update your Starter Project
-or use the Mod Manager's `development` profile to install it for you.
+or use the Mod Manager's `development` profile to install SML for you instead.
 
 == Ready to Rumble
 
-That should be it. Your mod project should now be set up and ready to go!
-In the next sections, we'll run through a couple common modding examples
-to demonstrate how to get started making a mod.
+That should be it. Your starter project should now be set up and ready to go!
+In the next sections, we'll walk through creating the base Plugin for your mod,
+then run through a couple common modding examples
+to demonstrate how to get started making your own mods.
 
 The Starter Project also includes and ExampleMod that you can look at,
-which includes the examples described in this documentation,
-as well as a few things that don't have pages yet.
+which includes examples like those described in this documentation,
+as well as a few things that don't have docs pages yet.
 It also has some examples of {cpp} mod functionality.
 Consider looking around in there after completing some of these tutorials.
