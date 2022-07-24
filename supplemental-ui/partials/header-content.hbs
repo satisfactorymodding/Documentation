@@ -33,28 +33,47 @@
             </div>
         </div>
         <div id="old-version-warning" class="version-warning hidden" style="max-height:2.5rem">
-            You are currently viewing an <strong>outdated</strong> version of the docs!<br>
+            You are viewing an <strong>outdated</strong> version of the docs!<br>
             <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
-                Click here to view the latest.
+                Click here to view the latest,
             </a>
+            or
+            <a href="javascript:void(0);" onclick="hide_version_warning()">
+                here to hide the warning.
+            </a>
+            <br> <br> <br>
         </div>
         <div id="dev-version-warning" class="version-warning hidden" style="max-height:5.5rem">
-            You are currently viewing the <strong>in-development</strong> version of the docs!<br>
+            You are viewing the <strong>development</strong> version of the docs!<br>
             Information here could be inconsistent with other pages,
             or apply to features that have not been released yet.<br>
             <a href="https://docs.ficsit.app/satisfactory-modding/latest/index.html">
-                Click here to view the stable docs.
+                Click here to view stable,
             </a>
+            or
+            <a href="javascript:void(0);" onclick="hide_version_warning()">
+                here to hide the warning.
+            </a>
+            <br> <br> <br>
         </div>
     </nav>
     <script>
-        var pageLocation = window.location.href;
-        if (pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
-            document.querySelector("#old-version-warning").classList.remove("hidden");
-            document.querySelector("header.header").style['margin-bottom'] = '2.5rem';
-        } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")) {
-            document.querySelector("#dev-version-warning").classList.remove("hidden");
-            document.querySelector("header.header").style['margin-bottom'] = '5.5rem';
+        function hide_version_warning() {
+            document.querySelector('#old-version-warning').classList.add("hidden");
+            document.querySelector('#dev-version-warning').classList.add("hidden");
+            document.querySelector("header.header").style['margin-bottom'] = '0.0rem';
         }
+
+        /* In its own function to allow easier dev testing */
+        function display_warnings(pageLocation) {
+            if (pageLocation.includes("satisfactory-modding") && !pageLocation.includes("latest")) {
+                document.querySelector("#old-version-warning").classList.remove("hidden");
+                document.querySelector("header.header").style['margin-bottom'] = '2.5rem';
+            } else if (pageLocation.includes("satisfactory-modding") && pageLocation.includes("docs-dev")) {
+                document.querySelector("#dev-version-warning").classList.remove("hidden");
+                document.querySelector("header.header").style['margin-bottom'] = '5.5rem';
+            }
+        }
+        display_warnings(window.location.href);
     </script>
 </header>
