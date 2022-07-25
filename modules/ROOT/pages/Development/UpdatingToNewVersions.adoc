@@ -146,15 +146,15 @@ you should do the following:
 2. Run `SetupScripts\Unregister.bat`
 (might need to do this as admin)
 3. Rename the install folder to
-`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\` or similar.
+`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\` or similar
 4. Run `SetupScripts\Register.bat` from the new location
 (might need to do this as admin)
 5. Now, to launch the old editor, you can run
-`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\Engine\Binaries\Win64\UE4Editor.exe`.
+`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\Engine\Binaries\Win64\UE4Editor.exe`
 6. Install the new editor build from the directions in the next section
 7. Optionally, edit your Start Menu shortcuts
 (probably in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs`)
-so that you have one for the old editor and one for the new editor.
+so that you have one for the old editor and one for the new editor
 
 [NOTE]
 ====
@@ -201,15 +201,16 @@ xref:Development/BeginnersGuide/index.ado[Getting Started guide],
 which includes getting the new SML version and new Starter Project,
 as well as integrating a new Wwise version.
 
-Your mod files are probably all within the its plugin folder,
-so you can simply transfer over that folder.
+Your mod's files are probably all within its plugin folder,
+so you can simply transfer over that entire folder to the Plugins folder of the new project.
+Remember to regenerate visual studio project files and build after you do this.
 
 ==== Bring Over Editor Configs
 
 Editor settings are stored at the project level, and if you have any special ones,
 you probably don't want to lose them when you update.
 They are stored in the `/Config/` folder.
-For example, Acton Mappings are stored in `DefaultInput.ini`.
+For example, Action Mappings are stored in `DefaultInput.ini`.
 You should git diff the files to make sure
 that you are adding any new fields that were introduced by the update,
 while still keeping the old values you want.
@@ -240,7 +241,7 @@ the changes made in the main SML repository.
 
 There are a few files that will likely have been automatically modified,
 and you will have to discard or stash your own changes
-in order to merge in the changes without conflict.
+in order to merge in the upstream changes without conflict.
 
 They include, but are not necessarily limited to:
 
@@ -271,7 +272,7 @@ but since the starter project ships with only stubs, they are tiny in file size.
 ==== Option 2B: You Downloaded a Zip of the Starter Project
 
 Git is a powerful tool, and although it might take a bit to learn,
-it defintley pays off in the long run.
+it definitely pays off in the long run.
 Consider cloning the project instead to make future updates easier.
 
 You will have to manually swap out all of the files and folders that changed during the update.
@@ -304,26 +305,68 @@ so trying to merge in the changes is likely infeasible.
 
 You'll have to go through most of the same process as the zip project download.
 
-===== Watch Out: Complete Starter Projects and Version Control
+== Updating a Complete Starter Project
 
-If are using Git and you have generated a complete starter project using the
+If you have generated a complete starter project using the
 xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit],
+you will need to do so again to get the updated base-game files,
+since numerous assets will have changed,
+even if not mentioned in the patch notes.
+
+You should delete your entire previous base-game Content folder,
+as well as the stubs from the starter project you may have copied in
+during earlier update steps.
+It's important to fully replace the folder to be sure you don't have any no-longer-existing assets in there,
+which could lead to confusion or name conflicts when trying to use them in your mods.
+
+Remember to copy back in AngryBeaver's recreated assets.
+The process for doing this is covered on the Asset Toolkit page.
+
+Also, make sure to download an updated version of the Asset Toolkit plugins,
+because they may have been patched since you last generated your project.
+
+=== Watch Out: Complete Starter Projects and Version Control
+
+If you are using a project-level git repo and you have generated a complete starter project,
 updates present an additional risk.
 
-You'll probably want to throw out the entire base-game Content folder
-and generate it again to be sure you don't have any no-longer-existing assets in there.
-However, you must be careful with how you bring this updated dump into version control.
+You must be careful with how you bring the regenerated assets into version control.
 GitHub (and most other VC platforms) has a size limit on how big they will alow an individual commit to be,
-and hitting this limit is quite feasible when bringing in updated assets.
+and hitting this limit is quite feasible when bringing in this many assets.
 
 Before commiting the regenerated assets,
 consider running a TreeSize or WinDirStat analysis
 to find out which directories are the largest
-so that you can split up the changes into separately commit and pushed units.
+so that you can split up the changes into separately committed and pushed units.
 
 If you accidentally make a commit too large, you will have to use
 https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits[git rebase]
 to break it apart into multiple smaller commits and make it possible to push your repo again.
+
+== Making Sure the Starter Project Update Worked
+
+Now that you've brought in the updated files,
+you should try to build and open the editor to make sure it worked correctly.
+
+This step allows you to catch any problems that could have occurred now,
+as opposed to later when you're trying to fix your mods,
+and it's unclear what the cause is.
+
+Temporarily move out all items from your Plugins folder
+except those that came with the Starter Project
+(Alpakit, ExampleMod, SML, SMLEditor, Wwise),
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
+and rebuild the project.
+This ensures that any potential problems with your mods don't affect the build process.
+
+If it worked, you should be able to build and open the editor.
+
+If Unreal complains about your project being compiled for a different version of the editor,
+close down the Editor entirely - do not use any of Unreal's prompts to port the project.
+Instead, open your `FactoryGame.uproject` and modify the `EngineAssociation` field to match the updated version number.
+
+After you're sure the editor is working with just SML loaded,
+move on to the next sections.
 
 == Dealing with Multiple Mods in One Project
 
@@ -341,8 +384,8 @@ You will probably have to regenerate the visual stuido project files if you do t
 Directions for that can be found
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[here].
 
-Since the uplugin file is the only file you're changing, it lets you turn off mods without causing a torrent of Git file changes.
-TODO Might not work with cpp, maybe just mark assume unchanged and move to a gitignored folder?
+Since the uplugin file is the only file you're changing,
+this approach lets you turn off mods without causing a torrent of Git file changes.
 
 == Preparing to Update a Mod
 

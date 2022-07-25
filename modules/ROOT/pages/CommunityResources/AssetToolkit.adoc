@@ -48,19 +48,28 @@ or clone it if desired.
 Take the `AssetGenerator` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-After doing this,
-re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
-and build for Development Editor and Shipping.
+This plugin will stay in the editor only.
 
 === Installing the Asset Dumper
 
 Take the `AssetDumper` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-To install the Asset Dumper, build it with Alpakit like you would any other mod.
+This plugin will be built as a mod to install in the game.
+
+=== Compiling
+
+After installing the two plugins in the editor,
+re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
+and build for Development Editor and Shipping.
+
+=== Building the Asset Dumper
+
+To install the Asset Dumper in your copy of the game,
+build it with Alpakit like you would any other mod.
 Be sure you have "Copy Mods to Game" enabled and the "Game Path" set correctly.
 
-== Usage
+== Dumping and Importing Assets
 
 === Dumping Game Assets
 
@@ -82,24 +91,24 @@ Once it completes, you should now have an `AssetDump` folder inside the `Factory
 ====
 Asset dumping can also be performed automatically via the command line.
 Check out the
-https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/update.yml[CI scripts],
+https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
 or contact us on the discord for more info.
 ====
 
 === Importing Dumped Assets to the Editor
 
 You can expect a Content folder with all assets imported to take up about 2 GB.
-For comparison, a Content folder with placeholders takes up 321 MB.
+For comparison, a Content folder with placeholders takes up 366s MB.
 
 Both an in-editor UI and
 https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
 are available for the Asset Generator,
-but at the time of writing, the in-editor UI is slightly unstable
+but at the time of writing, the in-editor UI is unstable
 as it has various issues related to Materials.
 As such, the commandlet should be used instead.
 
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
-You will need to modify the first 3 lines of the script to point to your Unreal Engine install, project path, and chosen dump directory.
+You will need to modify the first few lines of the script to point to your Unreal Engine install, project path, and chosen dump directory.
 
 To use the script, create a new Powershell script file (ex. `generate_assets.ps1`) in a location of your choice,
 copy-paste the below script, right click on the file, and select "Run with Powershell" to begin the import.
@@ -138,6 +147,25 @@ This will take a considerable amount of time.
 Experts advise locating and petting a lizard doggo while you wait.
 
 After you're done, your project's content folder should be around 2 GB.
+
+== Bring in AngryBeaver's Recreated Assets
+
+Community member AngryBeaver has recreated a number of texturing assets
+that make working with models in the editor a lot more pleasant.
+They are not exactly like the 'real' ones used in game,
+but they are very close.
+
+Once the Asset Generator has completed,
+you can manually copy in the assets from AngryBeaver's repository,
+replacing the ones created by the Asset Generator.
+
+You can find the list of assets to copy in
+https://github.com/mircearoata/satisfactory-modding-actions/blob/master/BeaverAssets.txt[here],
+and the repository they are stored in
+https://github.com/DavidHGillen/SatisfactoryModLoader/tree/sml-dev/Content[here].
+
+You could either clone or download a zip of AngryBeaver's repo,
+but you won't need the downloaded repo any more once you have copied the files in.
 
 == Additional Documentation
 
