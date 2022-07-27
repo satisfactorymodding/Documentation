@@ -71,4 +71,5 @@ Friend=(Class="AFGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent
 Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
 Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
 Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
+BlueprintReadWrite=(Class="AFGSchematicManager", Property="mPurchasedSchematics")
 ----
