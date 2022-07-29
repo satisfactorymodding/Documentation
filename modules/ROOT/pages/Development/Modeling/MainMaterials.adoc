@@ -23,6 +23,12 @@ Several materials are based off the one master material, many exist for legacy p
 - `/FactoryGame/-Shared/Material/MI_Factory_Base_01` Instance of MM_Factory_Array
 - `/FactoryGame/-Shared/Material/MI_Factory_Base_01_Emsiv_AO` Instance of MI_Factory_Base_01
 
+The below image from the
+xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
+shows what purpose each region of the texture atlas serves:
+
+image:https://raw.githubusercontent.com/DavidHGillen/Satisfactory_ModelingTools/master/Factory_Base_UVSheet.png[AngryBeaver texture atlas image]
+
 === Inner workings
 At runtime the game creates a texture atlas which contains the base colours from several parameters, notably the primary and secondary colour. Several other textures are then overlaid and mixed to create proper PBR surfaces for use in the game. A full list of parameters and their expected uses can be found by looking in the material editor of the version in the sample project.
 
