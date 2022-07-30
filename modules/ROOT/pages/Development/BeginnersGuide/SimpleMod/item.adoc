@@ -133,9 +133,10 @@ M Color 2::
 * {blank}
 +
 M Compatible Item Descriptors::
-  For some types of items, this is used to group items into sets of compatible items.
+  Array of item descriptors associated with this one, for example, the ammo that a weapon can use.
+  It will show up in this item's tooltip.
   {blank} +
-  Our Doc Item does not fall into any of these groups, so you don't need to add any descriptors to this list.
+  Our Doc Item does not need this logic, so you don't need to add any descriptors to this list.
 * {blank}
 +
 M Small Icon::
@@ -166,16 +167,19 @@ M Category::
   {blank} +
   Set this to the base-game-supplied category `Cat_Other`,
   because items without categories will not appear unless searched for by name in certain GUIs.
+* {blank}
 +
 M Sub Categories::
   Further sorting categories used by the Build Gun.
   {blank} +
   Leave this as the default empty array.
+* {blank}
 +
 M Quick Switch Group::
   Optional reference to a quick-switch group, which controls what other buildings will appear when pressing the quick switch keybind.
   {blank} +
   Leave this as None, since we're making an item, not a building.
+* {blank}
 +
 M Menu Priority::
   Controls the order that items appear within their category.
