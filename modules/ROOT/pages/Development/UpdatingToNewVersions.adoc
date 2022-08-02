@@ -1,10 +1,5 @@
 = Updating your Starter Project and Mod
 
-[WARNING]
-====
-This page is a work in progess.
-====
-
 When Coffee Stain updates Satisfactory,
 changes can occur to game internals that require mod developers to update their mods.
 
