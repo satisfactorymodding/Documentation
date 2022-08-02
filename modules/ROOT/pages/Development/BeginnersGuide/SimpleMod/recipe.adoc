@@ -99,6 +99,8 @@ M Overridden Category::
 +
 M Manufacturing Menu Priority::
   Controls the order that recipes appear within their category.
+  Lower values means earlier in the menu.
+  Negatives and decimals allowed.
   {blank} +
   Stick with the default value of `0.0`.
 * {blank}
