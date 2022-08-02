@@ -61,7 +61,8 @@ Access Transformers can't modify engine classes, since the UHT will not generate
 
 == Examples
 
-Below is an example of the AccessTransformers.ini file from Area Actions 2.0
+Below is an example of the AccessTransformers.ini that uses each of accessor type.
+Some of the Friend classes are from the Area Actions mod.
 
 [source,ini]
 ----
