@@ -1,0 +1,7 @@
+= Create a Simple Splitter
+
+Community member Rusketh has made a series of video tutorials on creating a custom splitter. They can be found https://ficsit.app/guide/Cr7pMHaxtPWock[here].
+
+**As of SML 3.0.0, these video tutorials are partially out of date, but many of the concepts will still carry over.**
+
+This tutorial has not yet been transcribed to text. If this is something you'd to see, please voice your interest on the discord.

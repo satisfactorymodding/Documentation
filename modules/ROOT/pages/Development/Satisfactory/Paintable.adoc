@@ -23,7 +23,7 @@ When making new materials it's important to properly set the https://docs.unreal
 
 == Making Any Class Paintable
 
-You can implement the ability to paint in any object by implementing the `IFGColorInterface`. Simply override the given functions with the functionality you need and you're done. Consider asking about this on the Discord or forums if you need help.
+You can implement the ability to paint in any object by implementing the `IFGColorInterface`. Simply override the given functions with the functionality you need and you're done. Consider asking about this on the Discord if you need help.
 
 The customizer will now interact with your object, which is done via the reflection system.
 

@@ -119,3 +119,10 @@ image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 Otherwise, let's get on to creating our first modded content - a custom recipe!
+
+== Next Steps
+
+We could build and test our mod right now,
+but it wouldn't do very much, outside of increase the loaded mod count on the main menu.
+
+Next up, let's get started making our own content by creating a recipe and a schematic.

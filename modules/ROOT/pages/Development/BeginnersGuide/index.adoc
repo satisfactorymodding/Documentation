@@ -1,19 +1,82 @@
 = Getting Started
 
-In this section, we will guide you through the process making your first
-mod for Satisfactory and provide important information regarding modding.
+In this section, we will guide you through the process of
+setting up a development environment,
+making your first mod for Satisfactory,
+and provide important information regarding modding.
+
+The Getting Started Guide is written assuming that you follow each page in sequence,
+getting progressively less step-by-step as you get used to how things work.
+
+It is imperative that you follow the documentation closely,
+*skipping nothing*, while you are still learning.
+Every step in the docs is here for a good reason.
+
+== Navigating the Docs
+
+Before we get into the modding setup,
+here's a quick overview of how this documentation website works,
+so you can find the pages you're looking for.
+
+Every documentation page has a corresponding link in the sidebar.
+On desktop, this sidebar is on the left side of the screen.
+On mobile, you must press the 'table of contents' button in the top left to expand it.
+This sidebar can be thought of as a folder system.
+You can use the triangles to expand or collapse subsections of the sidebar.
+Some, but not all, of these subsections have 'title pages',
+which are the entries listed in-line with the triangle in the sidebar.
+For example, you are currently on the title page of the 'Getting Started' section.
+
+This site hosts the documentation for the Satisfactory modding community,
+as well as a few specific mods.
+You can navigate to other mods' documentation with the switcher at the bottom of the sidebar.
+
+This getting started section should be followed in top to bottom order.
+The next page you should read after this one is titled 'Dependencies.'
+
+The docs also have a search functionality accessible in the top right.
+However, it's important to note that this search covers every mod on the site,
+as well as archived older versions of the documentation.
+Watch out for the 'Outdated Version' banner at the top of the screen to tell when you're on an old page.
+
+[TIP]
+====
+As you read, keep your eyes out for boxes like these,
+which draw attention to particularly important things to watch out for,
+or helpful tips to help further your modding knowledge.
+====
+
+== Contributing to the Docs
+
+These documentation pages are all written by community members, and are publicly editable via GitHub's PR system.
+You can see the source code by clicking 'Edit this Page' in the top right corner of any page.
+
+Please do not hesitate to contact us with corrections, suggestions, or questions.
+The best way to reach the team is our https://discord.gg/xkVJ73E[Discord Server].
+
+You can find more info on contributing to the docs
+https://github.com/satisfactorymodding/Documentation#satisfactory-modding-documentation[here].
 
 == Mod Reference
 
-We need to talk about the concept of a `mod reference` before we continue because we will use it quite often.
+We need to talk about the concept of a `mod reference` before we continue,
+because it will be referenced quite often.
 
-Your mod reference is essentially your mod's unique name. This mod reference will then be used in class names, file names, folder names and other places.
-When you upload your mod to the Satisfactory Mod Repository for other people to use, you'll need to provide your mod reference there as well. More info on the upload process can be found xref:UploadToSMR.adoc[here], but we suggest you actually write a mod first before trying to upload one.
-Your Unreal plugin and content folder will need to use the mod reference as the name, and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
+A mod reference is essentially a mod's unique name.
+This mod reference will then be used in class names, file names, folder names, and many other places.
+When you upload your mod to the Satisfactory Mod Repository for other people to use,
+you'll need to provide your mod reference there as well.
+More info on the upload process can be found xref:UploadToSMR.adoc[here],
+but we suggest you actually write a mod first before trying to upload one.
+
+Your Unreal plugin (also known as your mod) will need to use the mod reference as its name,
+and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
 
 Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
+However, they can contain underscores (`_`).
 
-We strongly suggest that you follow Upper https://en.wikipedia.org/wiki/Camel_case[Camel Case] naming conventions, that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
+We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
+that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
 
 Here are a few possible examples of mod names and suggested mod references.
 
@@ -25,4 +88,11 @@ Here are a few possible examples of mod names and suggested mod references.
 
 *Mod Reference:* `RobsVeryCoolMod`
 
-Note the exclusion of the apostrophe.
+Note the exclusion of the apostrophe, because it's a special character.
+
+== Next Steps
+
+Next up is setting up your modding development environment.
+// Future editors - this spot is purposefully missing a link to the Dependencies so people get practice using the sidebar.
+Use the site's sidebar to navigate to the 'Dependencies' page.
+You can read more about the sidebar in the link:#_navigating_the_docs[Navigating the Docs] section.

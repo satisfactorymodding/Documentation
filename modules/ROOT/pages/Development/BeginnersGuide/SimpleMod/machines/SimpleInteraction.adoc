@@ -58,3 +58,20 @@ Most of the time you will add a Canvas Panel and in it other widgets, so you can
 ====
 
 If you want to add the functionality to close the whole interact widget by clicking the "X" Button, not just the the window, you need to bind the `OnEscapePressed` Event of the interact widget (or custom stuff) to the `OnClose` Event on the `WindowDark`.
+
+== Next Steps
+
+You've reached the end of the getting started guide - congratulations!
+
+If you're still looking to learn about a specific concept,
+check and see if we have a page on it in the other sections of the documentation.
+
+You can also ask questions on the https://discord.gg/xkVJ73E[Discord Server].
+
+You may also be interested in {cpp} modding,
+which allows modifying and creating much more advanced game behaviors.
+More info can be found on that xref:Development/Cpp/index.adoc[here].
+
+Once you have a mod you're ready to upload, follow the
+xref:UploadToSMR.adoc[Uploading to SMR]
+directions to upload it for other people to use.
