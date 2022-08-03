@@ -139,7 +139,7 @@ M Material Customization Recipe::
 +
 Variable Power::
   Controls the levels of power consumption that machines that support variable consumption will cycle between while producing this recipe.
-  As of Update 5, the Particle Accelerator is the only base-game building that supports this feature.
+  As of Update 6, the Particle Accelerator is the only base-game building that supports this feature.
   {blank} +
   Let's leave these at the default values.
 * {blank}
@@ -198,7 +198,7 @@ M Display Name::
 +
 M Description::
   A text description to display along with the schematic.
-  As of Update 5, only AWESOME Shop schematics actually display this field anywhere in-game.
+  As of Update 6, only AWESOME Shop schematics actually display this field anywhere in-game.
   {blank} +
   We'll leave it blank, since we're making a HUB schematic.
 * {blank}

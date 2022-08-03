@@ -5,12 +5,13 @@ Buildable Holograms control the logic of what happens when constructing building
 Each `FGBuildable` needs a hologram specified to be constructed.
 Most of the time, you can re-use an existing hologram class made by Coffee Stain,
 since they have a lot of the common use cases covered already.
-However, may want to write your own logic for additional functionality,
+However, you may want to write your own logic for additional functionality,
 such as when you want to upgrade a building,
 snap to other buildings,
 or to snap something in the environment.
 
-Writing your own Hologram logic requires writing some {cpp} code.
+Writing your own Hologram logic requires writing some {cpp} code. 
+This page assumes basic knowledge of C++.
 
 == Create your Own Hologram Class
 
@@ -246,7 +247,7 @@ A very basic example for the {cpp} part:
 The base game logic for Upgrading actors will automatically handle belt, pipe, and power connections
 as long as the connection points use the same location and the same names.
 
-However, inventories must manually transferred, as well as fields like the selected recipe in machines.
+However, inventories must be manually transferred, as well as fields like the selected recipe in machines.
 
 For inventories, you can use for example
 `NewBuildingInventory->CopyFromOtherComponent(OldBuildingInventory);`

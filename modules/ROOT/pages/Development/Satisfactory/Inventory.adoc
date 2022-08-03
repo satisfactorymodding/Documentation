@@ -5,8 +5,8 @@ but also everything else that is used by it.
 
 == Item Descriptor [.title-ref]#(`UFGItemDescriptor`)#
 
-The native `AFGItemDescriptor` class, who would have thought.
-Contains properties of Item-like game concepts.
+The native `AFGItemDescriptor` class, who would have thought, 
+contains properties of Item-like game concepts.
 Notably, this is the base class for things like UFGBuildDescriptor (buildings)
 and UFGFactoryCustomizationDescriptor (Customizer patterns),
 which are not 'items' in the usual sense,
