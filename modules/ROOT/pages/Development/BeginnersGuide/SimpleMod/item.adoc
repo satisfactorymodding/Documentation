@@ -21,7 +21,7 @@ Repeat the process again to create a folder called `DocItem`.
 
 == Creating the Blueprint Class
 
-First, we'll create the FGItemDescriptor.
+First, we'll create the xref:/Development/Satisfactory/Inventory.adoc#_item_descriptor_ufgitemdescriptor[FGItemDescriptor].
 
 Inside of your DocItem folder in the Content Browser, right click,
 select to create a Blueprint Class, and use FGItemDescriptor as the parent class.

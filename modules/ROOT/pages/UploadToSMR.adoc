@@ -1,6 +1,6 @@
 = Uploading your Mod to Satisfactory Mod Repository (ficsit.app)
 
-Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository]
+Once you've made your amazing mod, the https://ficsit.app/[Satisfactory Mod Repository]
 is the best place to upload it if you want others to find and use your mod.
 Mods uploaded to SMR will automatically work with the
 xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager].

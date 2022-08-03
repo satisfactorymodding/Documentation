@@ -60,7 +60,7 @@ Listen to Your Users::
   is an example Github issue template you may find useful.
 * {blank}
 +
-Keep an Old Version On Hand::
+Keep an Old Game Version On Hand::
   If your mod has complicated behaviors,
   it may be beneficial to make a local copy of the previous version of the game before updating.
   If you feel like something changed,

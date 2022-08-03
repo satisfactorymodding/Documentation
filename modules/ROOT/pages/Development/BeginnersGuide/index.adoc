@@ -75,7 +75,7 @@ and any {cpp} modules you write must be in a Source folder with the mod referenc
 Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
 However, they can contain underscores (`_`).
 
-We strongly suggest that you follow Upper https://en.wikipedia.org/wiki/Camel_case[Camel Case] naming conventions,
+We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
 that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
 
 Here are a few possible examples of mod names and suggested mod references.

@@ -12,7 +12,7 @@ For now, to make sure we're looking at the same thing during the tutorial, stick
 Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors] (conveyor input and outputs).
 For that, we'll be adding two components of type `FGFactoryConnectionComponent` to the actor and placing them where they looks appropriate.
 Use `+ Add Component` to add a component of type `FGFactory Connection` to the actor and name it "Input0".
-Duplicate it and rename the copy to "Output0". This naming pattern follows that of base-game machines.
+Duplicate it and rename the copy to "Output0". This naming pattern follows that of base-game machines and may be required by some game functions.
 In the Viewport, rotate and position them on opposite faces of our mesh so that their positive x (red arrow) faces out from the sides of the machine.
 
 Set the output component's Direction property to `Output` and the Connector to `Conveyor`. Do the same for the input component, but change its direction property to `Input`.
