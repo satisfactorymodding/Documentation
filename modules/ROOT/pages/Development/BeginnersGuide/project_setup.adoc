@@ -137,7 +137,7 @@ The command will follow the form below:
 Here is an example of a complete command.
 
 ```
-"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="C:\Users\Rob\Documents\SMLExampleMod\FactoryGame.uproject" -game -rocket -progress
+"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
 
 [WARNING]
