@@ -98,7 +98,7 @@ or contact us on the discord for more info.
 === Importing Dumped Assets to the Editor
 
 You can expect a Content folder with all assets imported to take up about 2 GB.
-For comparison, a Content folder with placeholders takes up 366s MB.
+For comparison, a Content folder with placeholders takes up 366 MB.
 
 Both an in-editor UI and
 https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
