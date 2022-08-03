@@ -42,9 +42,8 @@ Launch the game at least once to ensure all files get set up correctly.
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
 and download the version you want.
-We suggest either Visual Studio 2019 or 2017 Community,
-because they're free of charge.
-It is important that if you use 2019 you still install the https://visualstudio.microsoft.com/vs/older-downloads/[2017 compilers].
+We suggest either Visual Studio 2022 Community,
+because it is free of charge and modern.
 It may force you to sign up to access the older versions, but they are free.
 
 Run the installer, and agree to prompts you receive along the way.
@@ -219,6 +218,10 @@ although it's most likely `master`.
 
 If you're not familiar with version control,
 https://www.gitkraken.com/learn/git/tutorials[now is a great time to learn]!
+Using Version Control Software (VCS) is a great skill to have for developers
+and will greatly help with updating your project in the future,
+as well as protect you from losing your mod sources if you upload them to a hosting website like GitHub.
+
 However, if you'd just like to get started modding,
 you can download a zip of the Starter Project
 from the Satisfactory Modding GitHub,
