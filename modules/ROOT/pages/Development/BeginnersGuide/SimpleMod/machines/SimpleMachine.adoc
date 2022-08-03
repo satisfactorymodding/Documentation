@@ -11,11 +11,11 @@ For now, to make sure we're looking at the same thing during the tutorial, stick
 
 Now we simply want to add the xref:Development/Satisfactory/FactoryConnectors.adoc[factory-connectors] (conveyor input and outputs).
 For that, we'll be adding two components of type `FGFactoryConnectionComponent` to the actor and placing them where they looks appropriate.
-Use `+ Add Component` to add a component of type `FGFactory Connection` to the actor and name it "Connection Input".
-Duplicate it and rename the copy to "Connection Output".
-Rotate them so that their positive x faces the correct direction.
+Use `+ Add Component` to add a component of type `FGFactory Connection` to the actor and name it "Input0".
+Duplicate it and rename the copy to "Output0". This naming pattern follows that of base-game machines.
+In the Viewport, rotate and position them on opposite faces of our mesh so that their positive x (red arrow) faces out from the sides of the machine.
 
-Set the output component's `direction` property to output and the `type` to Item. Do the same for the input component, but change its direction property to input.
+Set the output component's Direction property to `Output` and the Connector to `Conveyor`. Do the same for the input component, but change its direction property to `Input`.
 Be sure that both components have `M Forward Peek and Grab to Buildable` checked.
 This step is essential for the item counting code to function correctly.
 
@@ -23,14 +23,15 @@ We also want to make our machine depend on electricity. For that we'll need to a
 First is a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerConnection]; place it at the position of the power connecter visual of the mesh.
 Set `M Max Num Connections` to 1 so it behaves like the machines in the base game. However, you could raise this if you so desire.
 Second, add a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerInfo] component.
-If we had used one of the other types of base class this will exist automatically, but since we chose FGBuildable, we need to add one ourselves.
-It does not have a physical position and doesn't need to be moved or have any settings changed.
+If we had used one of the other types of base machine classes, these may have existed automatically, but since we chose FGBuildable, we need to add them ourselves.
+
 
 == Init logic
 
-The init logic happens in the `BeginPlay` event and initializes the base state of the factory (also based on the save information).
+The init logic happens in the `BeginPlay` event and initializes the base state of the machine (also based on the save information).
 There is not that much we need to do here.
 The only thing we need to do is to set the PowerInfo on the PowerConnection and configure the target consumption of the `FGPowerInfo` to something like 1.0.
+This controls how much power in MW the building will use to operate.
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
@@ -57,7 +58,7 @@ If the input grab boolean is false, we just return nothing and the output boolea
 
 Overall the logic becomes: checks if we have power. If we do, try and get a item from the input. If there's no item, we do nothing. But if we get a item, we count it and then return it to the output.
 
-image:BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.jpg[image]
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.png[image]
 
 That's should be it, try out your newly created machine!
 
