@@ -59,7 +59,7 @@ This plugin will be built as a mod to install in the game.
 
 === Compiling
 
-After installing the two plugins in the editor,
+After putting both plugins in your project's Plugins folder,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
 and build for Development Editor and Shipping.
 
