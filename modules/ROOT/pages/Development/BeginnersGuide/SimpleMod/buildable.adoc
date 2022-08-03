@@ -3,9 +3,10 @@
 Next up, we'll make a decorative buildable - the Plantpot of Knowledge,
 a monument to your progress in the tutorials thus far.
 A buildable is simply anything you will be able to place with the buildgun.
-Even if it is just a simple foundation or fence, it is still a `FGBuildable`.
+Even if it is just a simple foundation or fence, it is still an `FGBuildable`.
 
-A buildable is fairly similar to an Item with a few more values to configure and a few to ignore.
+Like items, buildables have descriptors to define their names and descriptions,
+but they also have an actor representation to act as the structure in the game world.
 There's also a hologram which controls its placement.
 We don't need a conveyor mesh for our building,
 since our buildings probably shouldn't be moving around as items on conveyor belts.

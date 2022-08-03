@@ -101,7 +101,7 @@ Storage space is cheap, your time is not.
 
 == Back Up Your Game
 
-As described in the 'Keep an Old Version On Hand' bullet,
+As described in the 'Keep an Old Game Version On Hand' bullet,
 by keeping an old install of the game on hand,
 you can check behaviors or retrieve assets that may have been deleted during an update.
 
