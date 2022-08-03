@@ -48,7 +48,7 @@ or clone it if desired.
 Take the `AssetGenerator` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-This plugin will stay in the editor only.
+This plugin is only for use from the editor
 
 === Installing the Asset Dumper
 
