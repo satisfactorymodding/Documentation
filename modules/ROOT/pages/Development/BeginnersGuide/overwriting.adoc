@@ -10,17 +10,44 @@ It is possible to overwrite content from the base game or from other mods.
 This is not recommended as opposed to creating your own content that extends it,
 because mods that overwrite the same thing will likely be incompatible with each other.
 
-Consider using the TweakIt mod by Feyko (ask about it on the Discord),
-as it may be an easier way to modify content, depending on what you're trying to do.
+== Use a Library Mod
 
-If you still want to overwrite content without using TweakIt,
+Some other modders have already created mods that assist with the process of overwriting or modifying content.
+
+=== TweakIt
+
+TweakIt by Feyko allows you to write
+https://lua.org/[Lua] scripts to programatically modify game content.
+
+Documentation can be found via the 'docs switcher' on this site's sidebar,
+or https://docs.ficsit.app/tweakit/latest/roadmap.html[here]
+
+The mod has yet to be officially released,
+but you can download early builds from the https://discord.gg/2kV6AHbzZK[TweakIt discord],
+and find its source code https://github.com/Feyko/TweakIt[here].
+
+=== ContentLib
+
+https://ficsit.app/mod/ContentLib[ContentLib] by Nog and Robb allows creating and modifying content via writing JSON files.
+It also offers a Blueprint and {cpp} API to programatically generate, modify, or parse content at runtime.
+Additionally, it offers a limited form of CDO modification (described below) via JSON files.
+
+Documentation, including a step-by-step walkthrough of some common tasks, can be found https://docs.ficsit.app/contentlib/latest/index.html[here].
+
+The mod has been officially released, and its documentation describes how to configure your mod to depend on it.
+
+== Use a CDO Modification
+
+If you still want to overwrite content without using a library,
 the correct mechanism for doing so is a Class Default Override (CDO).
 
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
 
-This can be done via C++ or in Blueprint with some yet-to-be-written SML helper functions.
+This can be done via {cpp} or in Blueprint with some yet-to-be-written SML helper functions.
 
 Keep in mind that when performing a CDO,
 you're not actually 'overriding' anything,
 you're just overwriting property values on "archetype" objects.
+You may still need to get existing instances of the class
+and modify their values to ensure they match your new desired value.
