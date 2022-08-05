@@ -58,7 +58,7 @@ which has some extra steps if you have a C++ mod.
 ====
 If you have a C++ mod, be sure to specify your Modules correctly
 in the Modules section of the plugin manifest. See the
-xref:UploadToSMR.adoc#_important_c_fields[Uploading to SMR] page for examples
+xref:Development/BeginnersGuide/ReleaseMod.adoc#_important_c_fields[Releasing Your Mod] page for examples
 ====
 
 == New Editor Build

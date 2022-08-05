@@ -21,6 +21,7 @@
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Content]
+*** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]

@@ -73,5 +73,5 @@ which allows modifying and creating much more advanced game behaviors.
 More info can be found on that xref:Development/Cpp/index.adoc[here].
 
 Once you have a mod you're ready to upload, follow the
-xref:UploadToSMR.adoc[Uploading to SMR]
-directions to upload it for other people to use.
+xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
+directions to export and upload it for other people to use.
