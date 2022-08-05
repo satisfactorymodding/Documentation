@@ -19,8 +19,8 @@ Some other modders have already created mods that assist with the process of ove
 TweakIt by Feyko allows you to write
 https://lua.org/[Lua] scripts to programatically modify game content.
 
-Documentation can be found via the 'docs switcher' on this site's sidebar,
-or https://docs.ficsit.app/tweakit/latest/roadmap.html[here]
+Documentation can be found via the 'docs switcher' on this site's sidebar, or
+https://docs.ficsit.app/tweakit/latest/index.html[here]
 
 The mod has yet to be officially released,
 but you can download early builds from the https://discord.gg/2kV6AHbzZK[TweakIt discord],
