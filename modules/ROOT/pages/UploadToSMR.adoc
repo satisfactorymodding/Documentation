@@ -170,15 +170,22 @@ Below is a description of all extra fields SML and SMR require:
 
 |SemVersion
 | Version number for the mod. Should always increase with new releases,
-and should follow the https://semver.org/[semver] format, ex. `2.0.0`.
+and should follow the https://semver.org/[semver] format.
+To summarize, the format is `Major.Minor.Patch`
 {blank} +
 {blank} +
-As a rule of thumb, version `1.0.0` should be released when you feel your mod is in a 'complete' state.
-After your `1.0.0` release, higher major versions like `2.0.0` should only come after significant, possibly API-breaking changes are made to your mod.
+As a rule of thumb, version `1.0.0` should be used for the first public release of your mod.
+
+* When you release bugfixes, you should increment the Patch version, for example `1.0.1`.
+* When you release changes that don't break how other mods interact with your mod,
+  you should increment the Minor version, for example `1.1.0`.
+* When you release changes that are not backwards compatible,
+  or break how other mods interact with your mod,
+  you should increase the Major version, for example `2.0.0`.
+
 {blank} +
-{blank} +
-Note that `0.10.0` is a valid semver version,
-`1.0.0` does not necessarily have to come after `0.9.0`.
+Note that `1.10.0` is a valid semver version,
+`2.0.0` does not necessarily have to come after `1.9.0`.
 {blank} +
 {blank} +
 This field is required, and should exactly match the `VersionName` field.
@@ -210,10 +217,14 @@ This field is required.
 ! Version number for the mod dependency.
 Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
+You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
 {blank} +
 {blank} +
-The prefix `^` allows any number in the 'patch' field
-(aka third number in a semversion, the `3` in `1.2.3`.)
+We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),
+and any number in the minor version field (the `2` in `1.2.3`).
+However, it https://nodesource.com/blog/semver-tilde-and-caret/[functions differently]
+when the major version (the `1` in `1.2.3`) is `0`,
+so be sure that your major version is at least `1` to avoid this.
 {blank} +
 {blank} +
 The prefix `>=` will allow all semversions higher than (and including) the one listed.
