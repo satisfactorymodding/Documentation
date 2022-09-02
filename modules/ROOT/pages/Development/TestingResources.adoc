@@ -12,11 +12,15 @@ This page lists some helpful resources and information regarding testing your mo
 You can use 
 xref:Development/ModLoader/BlueprintInterface.adoc#_logging[the relevant blueprint or {cpp} libraries]
 to print log messages you can view from a terminal window while you have the game launched.
-This terminal reflects the contents of the the game's log file, which you can find at
+This terminal gives you a live view of the the game's log file, which you can find at
 `\AppData\Local\FactoryGame\Saved\Logs\FactoryGame.log`.
 
 To use it, check the xref:SMLConfiguration.adoc#_sml_configuration_options[SML Config page]
-and turn on `consoleWindow`, which will cause the window to open on game launch.
+and make `consoleWindow` = `true`, which will cause the window to open on game launch.
+You can also add `-log` to the launch arguments with 
+https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
+or 
+https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
 
 If you select text in the terminal window,
 it will freeze the game until you press 'enter' to deselect it.

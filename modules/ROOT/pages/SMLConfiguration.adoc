@@ -38,7 +38,7 @@ It is necessary for part of SML development.
 |consoleWindow
 |bool
 |false
-|Toggles whether or not the external SML console window is visible.
+|Toggles whether or not the external SML console window is visible. This is also known as SML Logging. More info can be found xref:Development/TestingResources.adoc#logging[here].
 
 |disabledChatCommands
 |string array
