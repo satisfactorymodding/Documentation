@@ -44,7 +44,11 @@ the correct mechanism for doing so is a Class Default Override (CDO).
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
 
-This can be done via {cpp} or in Blueprint.
+This can be done via {cpp} or in Blueprint with the node `Get Class Default Object`.
+
+Changes to CDO's on all objects of the selected class created after modification. Be mindful when using this function, 
+because you can break other mod and vanilla content without leaving a trace. The function will log a warning
+when you're attempting to modify a class not owned by your mod, for safety reasons.
 
 Keep in mind that when performing a CDO,
 you're not actually 'overriding' anything,
