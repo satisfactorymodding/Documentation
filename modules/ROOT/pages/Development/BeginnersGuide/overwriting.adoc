@@ -44,7 +44,7 @@ the correct mechanism for doing so is a Class Default Override (CDO).
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
 
-This can be done via {cpp} or in Blueprint with some yet-to-be-written SML helper functions.
+This can be done via {cpp} or in Blueprint.
 
 Keep in mind that when performing a CDO,
 you're not actually 'overriding' anything,
