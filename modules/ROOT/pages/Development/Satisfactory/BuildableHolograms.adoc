@@ -132,7 +132,7 @@ Suppose you created some specific pillars `MyModSpecificPillar` which can only b
 
 ```cpp
 bool MyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) const {
-	AActor* Actor = hitResult.GetActor();
+  AActor* Actor = hitResult.GetActor();
 
   // Try casting to our specific Buildable class. 
   const MyModSpecificPillarSupport* = Cast<MyModSpecificPillarSupport>(Actor);
@@ -144,7 +144,7 @@ bool MyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) 
     return true;
   }
 	
-	return false;
+  return false;
 }
 ```
 
@@ -188,15 +188,15 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
 ```
 
 [WARNING]
-===
+====
 If the method returns true, the hologram location and rotation will not be updated automatically. 
 You need to call by yourself the `SetHologramLocationAndRotation` method like in the example, before returning.
-===
+====
 
 [TIP]
-===
+====
 `TrySnapToActor` will **not be called** if `IsValidHitResult` returns `false`. Furthermore, consider that `IsValidHitResult` has a _default_ implementation, so if you have issues, try to override it with a `return true;` statement to let the code reach your `TrySnapToActor`.
-===
+====
 
 === Show disabled holograms with disqualifiers [[show_disabled_hologram]]
 
@@ -210,16 +210,19 @@ We can get the previous `MyModGlassWindow` example, and add a disqualifier if it
 
 ```cpp
 void AFINWirelessAccessPointHologram::CheckValidPlacement() {
-	if (!IsValid(Snapped) || !Snapped->IsA<AFGBuildableWall>()) {
-		AddConstructDisqualifier(UFGCDMustSnapWall::StaticClass());
-	}
+  if (!IsValid(Snapped) || !Snapped->IsA<AFGBuildableWall>()) {
+    AddConstructDisqualifier(UFGCDMustSnapWall::StaticClass());
+  }
 	
-	Super::CheckValidPlacement();
+  Super::CheckValidPlacement();
 }
 ```
 
-[NOTE]
+[IMPORTANT]
 ====
+It's **not** mandatory to call `AddConstructDisqualifier` from the `CheckValidPlacement` method, it works even from `TrySnapToActor` for example.
+====
+
 `UFGCDMustSnapWall` is one of the many preexisting disqualifiers you can use in your code; you can find the complete list in the header file `Source/FactoryGame/Public/FGConstructDisqualifier.h`.
 
 It's possible to define your custom disqualifiers too, like:
@@ -229,19 +232,13 @@ It's possible to define your custom disqualifiers too, like:
 
 UCLASS()
 class UFGCDMustSnapBeautifulWall : public UFGConstructDisqualifier {
-	GENERATED_BODY()
+  GENERATED_BODY()
 
-	UFGCDMustSnapBeautifulWall() {
-		mDisqfualifyingText = LOCTEXT( "UFGCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
-	}
+  UFGCDMustSnapBeautifulWall() {
+    mDisqfualifyingText = LOCTEXT( "UFGCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
+  }
 };
 ```
-====
-
-[IMPORTANT]
-====
-It's **not** mandatory to call `AddConstructDisqualifier` from the `CheckValidPlacement` method, it works even from `TrySnapToActor` for example.
-====
 
 == Configuring a Buildable
 
