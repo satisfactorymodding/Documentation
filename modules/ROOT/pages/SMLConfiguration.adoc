@@ -39,7 +39,7 @@ It is necessary for part of SML development.
 |bool
 |false
 |Toggles whether or not the external SML console window is visible.
-You can also cause this to appear by launching the game with the `/LOG` or `-log` launch argument.
+This is also known as SML Logging. More info can be found xref:Development/TestingResources.adoc#logging[here].
 
 |disabledChatCommands
 |string array
