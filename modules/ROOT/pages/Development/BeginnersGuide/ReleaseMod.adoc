@@ -38,6 +38,9 @@ and Satisfactory mods are no exception.
 This file is json formatted and holds information about the mod,
 such as its version number, dependencies, credits, links, and more.
 
+You can find it in your mod's plugin directory,
+which is your modding project directory's `/Plugins/<mod reference>` folder.
+
 Only one uplugin file should exist in a plugin's directory,
 else the editor will get very confused.
 
@@ -228,7 +231,7 @@ and mismatched braces and brackets.
 Consider asking on the Discord if you get stuck on this step.
 ====
 
-Some example `.uplugin`s are presented here:
+Some example `.uplugin` s are presented here:
 
 +++ <details><summary> +++
 Example Blueprint mod .uplugin:
