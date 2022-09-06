@@ -50,7 +50,9 @@ Done! Now you can interact with your machine by looking at it and hitting `E`.
 
 If you want you can make your widget look more like the other SF widgets by using the "WindowDark" Widget provided by the modding starter content.
 
-Use it like every other widget in your new widgets and add the content you want in the widget slot. Then you can set the title by defining the title variable's default value.
+Use it like every other widget in your new widgets and add the content you want in the widget slot "Window Body". Then you can set the title by defining the title variable's default value.
+
+image:BeginnersGuide/simpleMod/WindowDarkModeSlot.png[Window Dark Mode content slot,300]
 
 [TIP]
 ====
@@ -58,6 +60,35 @@ Most of the time you will add a Canvas Panel and in it other widgets, so you can
 ====
 
 If you want to add the functionality to close the whole interact widget by clicking the "X" Button, not just the the window, you need to bind the `OnEscapePressed` Event of the interact widget (or custom stuff) to the `OnClose` Event on the `WindowDark`.
+
+=== UI is hidden in the editor using the Window Dark widget
+
+If you start using the `Widget_Window_DarkMode` inside your custom Blueprint Widget,
+you could see everything covered by a gray overlay which effectively blocks you from previewing the UI.
+This is expected and doesn't change even with a full asset dump.
+
+To aid you in the development phase, you can create a new Widget and place this inside the Window Body slot:
+this way while working on your nested widget, you'll be able to see its content normally.
+
+In alternative, you can open the `Widget_Window_DarkMode` widget in Unreal Editor and hide the gray layer.
+This change will not affect the game, just your development environment, since the asset you're modifying will not be packed.
+After opening the widget:
+
+- Locate the `mLoadingBg` image widget in the _Hierarchy_ panel, then click on it.
+- In the right "Details" window scroll to "Behavior" -> "Render Opacity" property
+- Set it to 0.0
+- Click Save & Compile in the upper left editor window
+
+Now you should see the content inside your widget. See the following image as reference for the steps.
+
+[NOTE]
+====
+If the original uasset get updated in the SML repo, you'll have to replace it in your project.
+Same thing happens if you're using a clone/fork of the SML project.
+This will effectively revert your changes.
+====
+
+image:BeginnersGuide/simpleMod/WindowDarkModeFixOpacity.png[Fix Window Dark Mode opacity in development]
 
 == Next Steps
 
