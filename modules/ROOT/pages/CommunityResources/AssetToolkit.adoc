@@ -141,31 +141,54 @@ Alternatively, you can launch it from a running powershell window to read the ou
 
 [source,ps1]
 ----
+# Change the below path lines to match the actual locations of these files and folders for your system
 # Using apostrophes so \ doesn't need to be escaped here
 $UE4CmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor-Cmd.exe'
 $UProjectPath = 'D:\GitSecondary\SF_ModProject\FactoryGame.uproject'
 $AssetDumpDirectory = 'D:\Programs\EpicGamesGames\SatisfactoryExperimental\FactoryGame\AssetDump'
 
-# Clean up the temp files, useful if the script was exited or crashed earlier for some reason
-Remove-Item SkipSavePackages.txt
-Remove-Item ForceGeneratePackageNames.txt
+# The below should not need to be modified
+
+# Define temporary file names and a function to clean up temporary files from the process
+$ForceGenerateFile = 'ForceGeneratePackageNames.txt'
+$SkipSaveFile = 'SkipSavePackages.txt'
+$BlacklistFile = 'BlacklistPackageNames.txt'
+
+$TempFiles = $ForceGenerateFile, $SkipSaveFile, $BlacklistFile
+function CleanupTempFiles {
+	foreach ($FileName in $TempFiles) {
+		if (Test-Path $FileName) {
+			Remove-Item $FileName
+			Write-Output "Cleaned up $FileName"
+		}
+	}
+}
+
+
+# Clean up the temp files, in case the script was exited or crashed earlier for some reason
+CleanupTempFiles
 
 # Force generated package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/ForceGeneratePackages.txt
-Write-Output "/Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot" >> ForceGeneratePackageNames.txt
+Write-Output "/Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot" >> $ForceGenerateFile
 
 # Skip save package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Interface/UI/BPI_ShoppingList" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> SkipSavePackages.txt
+Write-Output "/Game/FactoryGame/Interface/UI/BPI_ShoppingList" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> $SkipSaveFile
+
+# Skip a few assets that cause annoying problems in the editor (ex. missing animation data spam errors)
+# TODO not certain this functionality is working?
+Write-Output "/Game/FactoryGame/Character/Player/Animation/FirstPerson/" >> $BlacklistFile
+Write-Output "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/" >> $BlacklistFile
 
 # Run the generator commandlet
-& $UE4CmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\ForceGeneratePackageNames.txt" -SkipSavePackages="$(Get-Location)\\SkipSavePackages.txt" -stdout -unattended -NoLogTimes
+& $UE4CmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\$ForceGenerateFile" -SkipSavePackages="$(Get-Location)\\$SkipSaveFile" -BlacklistPackageNames="$(Get-Location)\\$BlacklistFile" -stdout -unattended -NoLogTimes
 
 # Clean up the temp files on exit
-Remove-Item SkipSavePackages.txt
-Remove-Item ForceGeneratePackageNames.txt
+CleanupTempFiles
+
 ----
 
 This will take a considerable amount of time.
