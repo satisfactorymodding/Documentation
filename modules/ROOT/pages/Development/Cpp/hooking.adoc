@@ -40,21 +40,15 @@ void hook(CallScope<...>& Scope, class* exampleClass, int exampleArg)
 - Call the next hooks and the final function within your body.
 Calling the scope need to have all the same parameters as the func hook signature.
 +
-[WARNING]
-====
-This only works with a return type of void.
-====
-+
 [source,cpp]
 ----
-void hook(CallScope<void(int)>& Scope, class* exampleClass, int exampleArg)
+void hook(CallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 	// stuff before final function call
-	scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
+	int result = scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
 }
 ----
-You can also use after this type of call the call scopes `getResult` function to get the return value of the hooks/final function as long as the to hook functions signature does not return void.
-- Override the return value before the final call (causes the final call to not occur)
+- You can also override the return value before the final call (causes the final call to not occur)
 +
 [source,cpp]
 ----
