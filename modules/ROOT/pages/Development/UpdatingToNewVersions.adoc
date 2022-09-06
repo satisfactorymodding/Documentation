@@ -402,6 +402,7 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 2. Deal with Visual Studio build errors by:
 
 - Adding/removing xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
+  (note, also see link:#_seemingly_ignored_access_transformers[Seemingly Ignored Access Transformers] section)
 - Rewriting or To-Do commenting out broken functionality
 - Asking for help on the Discord
 
@@ -427,6 +428,21 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 11. Restore the functionality you had to comment out or unhook in steps 2 and 7
 12. Test functionality in your mod to ensure nothing has broken.
 13. Resolve any problems you find by testing your mod further
+
+Below are some notes on a few things to watch out for.
+
+=== Seemingly Ignored Access Transformers
+
+Sometimes, compilation in Visual Studio will fail due to your mod trying to access private fields of various classes,
+even though you have already have added said classes to your mod's
+xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
+
+A cached build file from a previous version is likely the cause of this.
+
+You can try to resolve this by adding a duplicate line to that mod's access transformers file.
+The line can be deleted again later, but it should trick Visual Studio into rebuilding the access transformers correctly.
+
+Alternatively, a full rebuild should also fix this.
 
 === Beware of Changed Files
 
