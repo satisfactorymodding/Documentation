@@ -157,11 +157,26 @@ Returning `false` from this method **hides the hologram**. In case you just want
 
 Sometimes you need your Buildable to snap to one Actor, _"locking"_ it into place. 
 An example of this behavior is the Power Cable, which "snaps" to existing Power Poles / Plugs.
-The peculiarity in this case is that hologram position _will not be updated_ while snapped.
+The peculiarity in this case is that hologram position _will not be updated_ while snapped, so
+the `SetHologramLocationAndRotation` method will not be called.
 In order to control the snapping, you should implement the `AFBuildableHologram::TrySnapToActor` method.
 
+As a reference, this behavior is implemented in the base game in the following situations:
+
+- Snapping to Factory connections like Inputs or Outputs (pipes, belts)
+- Snapping to snap points like Signs do
+
+[NOTE]
+====
+This behavior is not intended for things like aligning to a grid. In that case you should consider overriding
+the `SetHologramLocationAndRotation` method, adjusting the positioning logic there.
+
+The term "snap" should be intended as a "lock in place" where you don't want to allow moving the buildable, 
+showing a _link_ to the snapped Actor.
+====
+
 For the next example, suppose you want to snap your shiny new Glass Window buildable (`MyModGlassWindow`) to existing walls. 
-Whenever it snaps, the Glass Window should be centered on the wall without allowing further movement. So we could write:
+Whenever it snaps, the Glass Window should be locked to the wall without allowing further movement. So we could write:
 
 ```cpp
 // Define in the header file a Snapped property to memorize the
@@ -178,7 +193,8 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
 
   if (Actor->IsA<AFGBuildableWall>()) {
     Snapped = Cast<AFGBuildableWall>(Actor);
-    SetHologramLocationAndRotation(hitResult);
+    SetActorLocation(Actor->GetActorLocation()); // Here you can add your custom snapping logic
+    SetActorRotation(Actor->GetActorRotation());
     return true; // We snapped, return true to disable following updates
   }
 
@@ -190,7 +206,6 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
 [WARNING]
 ====
 If the method returns true, the hologram location and rotation will not be updated automatically. 
-You need to call by yourself the `SetHologramLocationAndRotation` method like in the example, before returning.
 ====
 
 [TIP]
@@ -238,6 +253,8 @@ class UFGCDMustSnapBeautifulWall : public UFGConstructDisqualifier {
     mDisqfualifyingText = LOCTEXT( "UFGCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
   }
 };
+
+#undef LOCTEXT_NAMESPACE
 ```
 
 == Configuring a Buildable
