@@ -193,9 +193,11 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
 
   if (Actor->IsA<AFGBuildableWall>()) {
     Snapped = Cast<AFGBuildableWall>(Actor);
-    SetActorLocation(Actor->GetActorLocation()); // Here you can add your custom snapping logic
-    SetActorRotation(Actor->GetActorRotation());
-    return true; // We snapped, return true to disable following updates
+    // Here you can add your custom snapping logic. 
+    // We are using `SetActorLocationAndRotation` which is better for performance than setting single properties.
+    SetActorLocationAndRotation(Actor->GetActorLocation(), Actor->GetActorRotation());
+    // We snapped, return true to disable following updates
+    return true;
   }
 
   Snapped = nullptr;
