@@ -9,20 +9,12 @@ This page lists some helpful resources and information regarding testing your mo
 
 == SML Logging
 
-You can use 
-xref:Development/ModLoader/BlueprintInterface.adoc#_logging[the relevant blueprint or {cpp} libraries]
-to print log messages you can view from a terminal window while you have the game launched.
-This terminal gives you a live view of the the game's log file, which you can find at
-`\AppData\Local\FactoryGame\Saved\Logs\FactoryGame.log`.
+SML Logging is a valuable troubleshooting and testing tool, especially for blueprint mods.
 
-To use it, check the xref:SMLConfiguration.adoc#_sml_configuration_options[SML Config page]
-and make `consoleWindow` = `true`, which will cause the window to open on game launch.
-You can also add `-log` to the launch arguments with 
-https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
-or 
-https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
+You can find more information on how to use and configure it on the
+xref:Development/ModLoader/Logging.adoc[Logging page].
 
-If you select text in the terminal window,
+If you select text in the log terminal window,
 it will freeze the game until you press 'enter' to deselect it.
 This can help with reading things before they would normally scroll by.
 
@@ -33,7 +25,8 @@ which will be applied every time the terminal opens.
 You can use this to have it always open on a second monitor, for example.
 Be aware that the values you set here
 will affect every instance of Command Prompt on your system. 
-See the section below for another method of controlling where the window will appear.
+See the link:#_launch_script_enhancements[Launch Script Enhancements] section below
+for another method of controlling where the window will appear.
 
 == Multiplayer Testing
 

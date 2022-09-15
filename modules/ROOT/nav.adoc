@@ -58,12 +58,13 @@
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
+*** xref:Development/ModLoader/Logging.adoc[Logging]
 *** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
-*** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
-*** xref:Development/ModLoader/Configuration.adoc[Configuration]
-*** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
-*** xref:Development/ModLoader/Registry.adoc[Registry]
 *** xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
+*** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
+*** xref:Development/ModLoader/Configuration.adoc[Configuration]
+*** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
+*** xref:Development/ModLoader/Registry.adoc[Registry]
 
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
