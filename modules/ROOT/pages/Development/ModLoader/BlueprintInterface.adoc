@@ -18,7 +18,7 @@ Unreal's default logging systems instead.
 It would be best to create your own log category for your mod.
 
 You can read more about logging on the Unreal Engine docs
-and the xref:ModLoader/Logging.adoc[Logging page].
+and the xref:Development/ModLoader/Logging.adoc[Logging page].
 
 === `LogVerbose(String str)`
 Logs the given string in the "verbose-level".
