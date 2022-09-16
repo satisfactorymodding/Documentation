@@ -112,23 +112,32 @@ Otherwise, you can read the reference from the class' CDO at hologram BeginPlay/
 
 == Limit Placement in the World
 
-Holograms may have different constraints, based on physical limits (e.g. "Floor is too step"), Building type (like power cables), or advanced logic (like FicsIt-Network Computer Components which can only be placed inside a Computer Case).
+Holograms may have different constraints,
+based on physical limits (e.g. "Floor is too step"),
+Building type (like power cables),
+or advanced logic (like FicsIt-Network Computer Components, which can only be placed inside a Computer Case).
 
 You may need to customize this logic too for your necessities and use cases, like:
 
 - Allow building only on Walls
+- Require placement on a resource node
 - Snapping to one or more existing Buildable classes
 - Whatever your creativity demands
  
-The `FGBuildableHologram` class exposes different methods which can be overridden in your Hologram to achieve that, based on your constraints complexity.
+The `FGBuildableHologram` class exposes different methods
+which can be overridden in your Hologram to achieve the desired constraints.
 
-=== Checking for a valid hit
+=== Checking for a Valid Hit
 
-Whenever the Build Gun points somewhere in the game world, the `IsValidHitResult` method defined in your Hologram class is invoked. 
-The `hitResult` argument will contain information about the location and the **`Actor`** which is currently aimed.
-Using this data, we can enable placement only when pointing specific objects. 
+Whenever the Build Gun points somewhere in the game world,
+the `IsValidHitResult` method defined in your Hologram class is invoked. 
+The `hitResult` argument will contain information about the location
+and the **`Actor`** which is currently being aimed at.
+Using this data, we can enable placement only when pointing at specific objects. 
 
-Suppose you created some specific pillars `MyModSpecificPillar` which can only be placed over your specific supports `MyModSpecificPillarSupport` for aesthetic reasons. To do so, you could override the method as following:
+Suppose you created some specific pillars `MyModSpecificPillar`
+which can only be placed over your specific supports `MyModSpecificPillarSupport` for aesthetic reasons.
+To do so, you could override the method as following:
 
 ```cpp
 bool MyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) const {
@@ -136,11 +145,11 @@ bool MyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) 
 
   // Try casting to our specific Buildable class. 
   const MyModSpecificPillarSupport* = Cast<MyModSpecificPillarSupport>(Actor);
-  // If it's valid, we're aiming a support correctly.
+  // If the cast result is valid, it means we're aiming a MyModSpecificPillarSupport.
   if (IsValid(MyModSpecificPillarSupport)) {
-    // This is the place where we could check if the support
-    // is already bound, etc.
-    // For the sake of simplicity, we simply allows the placement.
+    // This is the place where we could check more information,
+    // such as height, checking fields on the support to see if one was already bound, etc.
+    // For the sake of simplicity, we simply allow the placement.
     return true;
   }
 	
@@ -150,7 +159,10 @@ bool MyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) 
 
 [WARNING]
 ====
-Returning `false` from this method **hides the hologram**. In case you just want to display a _Red hologram_ with a message explaining why the buildable cannot be placed in the aimed location, see <<show_disabled_hologram>>.
+Returning `false` from this method **hides the hologram**.
+In case you just want to display a _red hologram_
+with a message explaining why the buildable cannot be placed in the aimed location,
+see <<show_disabled_hologram>>.
 ====
 
 === Snapping to other Buildables
@@ -179,15 +191,15 @@ For the next example, suppose you want to snap your shiny new Glass Window build
 Whenever it snaps, the Glass Window should be locked to the wall without allowing further movement. So we could write:
 
 ```cpp
-// Define in the header file a Snapped property to memorize the
-// currently snapped object.
+// In the header file, define a Snapped property to track the currently snapped object.
 AFGBuildableWall* Snapped = nullptr;
 
-// In the .cpp file instead, override the snapping method:
+// In the cpp file, override the snapping method:
 bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
   const auto Actor = hitResult.Actor.Get();
   if (!IsValid(Actor)) {
-    Snapped = nullptr; // We moved away from our previous snapping
+    // We moved away from our previous snapping, so clear our tracker
+    Snapped = nullptr;
     return false;
   }
 
@@ -196,7 +208,7 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
     // Here you can add your custom snapping logic. 
     // We are using `SetActorLocationAndRotation` which is better for performance than setting single properties.
     SetActorLocationAndRotation(Actor->GetActorLocation(), Actor->GetActorRotation());
-    // We snapped, return true to disable following updates
+    // We snapped, so return true to disable following updates
     return true;
   }
 
@@ -207,26 +219,35 @@ bool MyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
 
 [WARNING]
 ====
-If the method returns true, the hologram location and rotation will not be updated automatically. 
+If the method returns true, the hologram location and rotation will not be updated automatically.
+You have to write your own custom snapping logic to move the hologram.
 ====
 
 [TIP]
 ====
-`TrySnapToActor` will **not be called** if `IsValidHitResult` returns `false`. Furthermore, consider that `IsValidHitResult` has a _default_ implementation, so if you have issues, try to override it with a `return true;` statement to let the code reach your `TrySnapToActor`.
+`TrySnapToActor` will **not be called** if `IsValidHitResult` returns `false`.
+Furthermore, consider that `IsValidHitResult` has a _default_ implementation,
+so if you have issues, try to override it with a `return true;` statement to let the code reach your `TrySnapToActor`.
 ====
 
-=== Show disabled holograms with disqualifiers [[show_disabled_hologram]]
+=== Show Disabled Holograms with Disqualifiers [[show_disabled_hologram]]
 
-It is possible to show the red outline and the red hologram while placing the buildable, keeping it visible even if the Build Gun will not allow the placement.
-Common behavior in game is to see the red hologram with a message like "Floor too step" (damned rail tracks).
+It is possible to show the red outline and the red hologram while placing the buildable,
+keeping the hologram visible while still disallowing Build Gun placement.
+An example of this in the base game is seeing the red hologram with a message like "Floor too step" - damned rail tracks!
 
-To implement something similar for your buildables, you can simply return true from the `IsValidHitResult` method (allowing your successive methods like `TrySnapToActor` or `CheckValidPlacement` to be called). 
-Then, when an invalid placement is found, you can use `AddConstructDisqualifier()` to signal the player about the error.
+To implement something similar for your buildables,
+you can simply return true from the `IsValidHitResult` method
+(allowing your successive methods like `TrySnapToActor` or `CheckValidPlacement` to be called). 
+Then, when an invalid placement is found,
+you can use `AddConstructDisqualifier()` to signal the player about the error.
 
-We can get the previous `MyModGlassWindow` example, and add a disqualifier if it's not snapped. This time, you should still see the Glass Window hologram, highlighted in red.
+We can get the previous `MyModGlassWindow` example,
+and add a disqualifier if it's not snapped.
+This time, you should still see the Glass Window hologram, highlighted in red.
 
 ```cpp
-void AFINWirelessAccessPointHologram::CheckValidPlacement() {
+void MyModGlassWindowHologram::CheckValidPlacement() {
   if (!IsValid(Snapped) || !Snapped->IsA<AFGBuildableWall>()) {
     AddConstructDisqualifier(UFGCDMustSnapWall::StaticClass());
   }
@@ -237,10 +258,13 @@ void AFINWirelessAccessPointHologram::CheckValidPlacement() {
 
 [IMPORTANT]
 ====
-It's **not** mandatory to call `AddConstructDisqualifier` from the `CheckValidPlacement` method, it works even from `TrySnapToActor` for example.
+It's **not** mandatory to call `AddConstructDisqualifier` from the `CheckValidPlacement` method.
+It works even from `TrySnapToActor`, for example.
 ====
 
-`UFGCDMustSnapWall` is one of the many preexisting disqualifiers you can use in your code; you can find the complete list in the header file `Source/FactoryGame/Public/FGConstructDisqualifier.h`.
+You can usually re-use one of the many preexisting disqualifiers from the base game for your own buildables.
+For example, `UFGCDMustSnapWall` will require snapping to a wall.
+You can find the complete list in the header file `Source/FactoryGame/Public/FGConstructDisqualifier.h`.
 
 It's possible to define your custom disqualifiers too, like:
 
@@ -248,16 +272,22 @@ It's possible to define your custom disqualifiers too, like:
 #define LOCTEXT_NAMESPACE "MyModLocNamespace"
 
 UCLASS()
-class UFGCDMustSnapBeautifulWall : public UFGConstructDisqualifier {
+class MyModCDMustSnapBeautifulWall : public UFGConstructDisqualifier {
   GENERATED_BODY()
 
-  UFGCDMustSnapBeautifulWall() {
-    mDisqfualifyingText = LOCTEXT( "UFGCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
+  MyModCDMustSnapBeautifulWall() {
+    mDisqfualifyingText = LOCTEXT( "MyModCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
   }
 };
 
 #undef LOCTEXT_NAMESPACE
 ```
+
+[WARNING]
+====
+Note that the property is spelled mDis__qfual__ifyingText and not mDis__qual__ifyingText.
+This is a typo in the game headers that your file must be consistent with.
+====
 
 == Configuring a Buildable
 
@@ -267,8 +297,6 @@ rotating a component a bit, or setting references to a snapped building.
 
 There are different phases of the that we can use depending on what we want to do to the buildable,
 and when we want the changes to take place.
-
-
 
 Configure functions are called in the following order, and can thus override each others' steps.
 This list is adapted from comments in `FGBuildableHologram.h`
