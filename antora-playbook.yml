@@ -24,7 +24,7 @@ content:
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
 
-    - url: https://git.hostxtra.co.uk/publicrefinedrd/refinedrddocs.git
+    - url: https://github.com/Mrhid6Mods/RRD_Docs.git
       branches: master
       edit_url: '{web_url}/blob/{refname}/{path}'
       start_path: docs
