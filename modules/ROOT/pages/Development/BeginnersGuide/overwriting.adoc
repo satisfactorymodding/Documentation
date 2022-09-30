@@ -1,18 +1,14 @@
 = Overwriting Base Game and Other Mod Content
 
-[WARNING]
-====
-This page is a work in progess.
-Please ask on the Discord if you'd like to do this.
-====
-
-It is possible to overwrite content from the base game or from other mods.
+It is possible to overwrite or modify content from the base game or from other mods.
 This is not recommended as opposed to creating your own content that extends it,
 because mods that overwrite the same thing will likely be incompatible with each other.
+However, it is the most practical way to achieve certain functionality.
 
 == Use a Library Mod
 
 Some other modders have already created mods that assist with the process of overwriting or modifying content.
+They can save you a lot of time.
 
 === TweakIt
 
@@ -44,14 +40,48 @@ the correct mechanism for doing so is a Class Default Override (CDO).
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
 
-This can be done via {cpp} or in Blueprint with the node `Get Class Default Object`.
-
-Changes to CDO's are reflected on all objects of the selected class created after modification. 
-Be mindful when using this function, because you can break other mod and vanilla content without leaving a trace. 
-The function will log a warning when you're attempting to modify a class not owned by your mod, for safety reasons.
+Changes to CDO's are reflected on all of the objects of the selected class that are created after the modification.
+Be mindful when using this function, because you can break other mod and vanilla content without leaving a trace.
+For safety reasons, the function will log a warning when you're attempting to modify a class not owned by your mod.
 
 Keep in mind that when performing a CDO,
-you're not actually 'overriding' anything,
+you're not actually changing anything on existing objects,
 you're just overwriting property values on "archetype" objects.
-You may still need to get existing instances of the class
-and modify their values to ensure they match your new desired value.
+You may still need to get all existing instances of the class
+and modify their values too to ensure they match your new desired value.
+Performing your CDO modifications earlier in the mod loading process can sometimes remove the need for this extra step.
+
+=== Blueprint
+
+In Blueprint, you can use the `Get Class Default Object` node to get the class default object.
+Afterwards, you can use the class' existing setters to modify fields.
+You might need to use an xref:Development/ModLoader/AccessTransformers.adoc[Access Transformer]
+to make the field that you intend to change accessible from blueprints.
+
+=== {cpp} Example
+
+If performing a CDO from blueprints, you should call `TheClassDefaultObject->AddToRoot()`
+to ensure that Unreal does not garbage collect your patched object (and its descendents) and later load it unmodified from disk, undoing your change.
+If you don't want to call this, hold onto a reference to the object after patching somewhere instead.
+
+Here's an example from Kyrium's KBFL for adding additional allowed classes to the Pressurizer and its extractor nodes.
+
+```cpp
+void UKBFLResourceNodeDescriptor_ResourceWell::AfterSpawning()
+{
+	// Do CDO to Activator & Extractor for new resource classes to enable the placement
+	if(const TSubclassOf<AFGBuildableFrackingActivator> BPBuildableFrackingActivator = LoadClass<AFGBuildableFrackingActivator>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingSmasher/Build_FrackingSmasher.Build_FrackingSmasher_C")))
+	{
+		AFGBuildableFrackingActivator* FrackingActivatorDefault = BPBuildableFrackingActivator.GetDefaultObject();
+		FrackingActivatorDefault->AddToRoot();
+		FrackingActivatorDefault->mAllowedResources.AddUnique(mResourceClass);
+	}
+
+	if(const TSubclassOf<AFGBuildableFrackingExtractor> BPBuildableFrackingExtractor = LoadClass<AFGBuildableFrackingExtractor>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingExtractor/Build_FrackingExtractor.Build_FrackingExtractor_C")))
+	{
+		AFGBuildableFrackingExtractor* FrackingExtractorDefault = BPBuildableFrackingExtractor.GetDefaultObject();
+		FrackingExtractorDefault->AddToRoot();
+		FrackingExtractorDefault->mAllowedResources.AddUnique(mResourceClass);
+	}
+}
+```
