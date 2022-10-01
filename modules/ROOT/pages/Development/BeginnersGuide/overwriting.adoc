@@ -1,26 +1,91 @@
 = Overwriting Base Game and Other Mod Content
 
-[WARNING]
-====
-This page is a work in progess.
-Please ask on the Discord if you'd like to do this.
-====
-
-It is possible to overwrite content from the base game or from other mods.
+It is possible to overwrite or modify content from the base game or from other mods.
 This is not recommended as opposed to creating your own content that extends it,
 because mods that overwrite the same thing will likely be incompatible with each other.
+However, it is the most practical way to achieve certain functionality.
 
-Consider using the TweakIt mod by Feyko (ask about it on the Discord),
-as it may be an easier way to modify content, depending on what you're trying to do.
+== Use a Library Mod
 
-If you still want to overwrite content without using TweakIt,
-the correct mechanism for doing so is a Class Default Override (CDO).
+Some other modders have already created mods that assist with the process of overwriting or modifying content.
+They can save you a lot of time.
+
+=== TweakIt
+
+TweakIt by Feyko allows you to write
+https://lua.org/[Lua] scripts to programatically modify game content.
+
+Documentation can be found via the 'docs switcher' on this site's sidebar, or
+https://docs.ficsit.app/tweakit/latest/index.html[here]
+
+The mod has yet to be officially released,
+but you can download early builds from the https://discord.gg/2kV6AHbzZK[TweakIt discord],
+and find its source code https://github.com/Feyko/TweakIt[here].
+
+=== ContentLib
+
+https://ficsit.app/mod/ContentLib[ContentLib] by Nog and Robb allows creating and modifying content via writing JSON files.
+It also offers a Blueprint and {cpp} API to programatically generate, modify, or parse content at runtime.
+Additionally, it offers a limited form of CDO modification (described below) via JSON files.
+
+Documentation, including a step-by-step walkthrough of some common tasks, can be found https://docs.ficsit.app/contentlib/latest/index.html[here].
+
+The mod has been officially released, and its documentation describes how to configure your mod to depend on it.
+
+== Use CDO Manipulation
+
+If you still want to overwrite content without using a library,
+the correct mechanism for doing so is Class Default Object (CDO) manipulation.
 
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
 
-This can be done via C++ or in Blueprint with some yet-to-be-written SML helper functions.
+Changes to CDO's are reflected on all of the objects of the selected class that are created after the modification.
+Be mindful when using this, because you can break other mod and vanilla content without leaving a trace.
+For safety reasons, the function will log a warning when you're attempting to modify a class not owned by your mod.
 
 Keep in mind that when performing a CDO,
-you're not actually 'overriding' anything,
+you're not actually changing anything on existing objects,
 you're just overwriting property values on "archetype" objects.
+You may still need to get all existing instances of the class
+and modify their values too to ensure they match your new desired value.
+Performing your CDO modifications earlier in the mod loading process can sometimes remove the need for this extra step.
+
+When performing CDO manipulation, you need to keep the CDO in-memory to ensure that Unreal does not garbage collect your patched object (and its descendants) and later load it unmodified from disk, undoing your change. +
+To do this, you need to reference the CDO in a property. More on this in the language-specific sections below.
+
+=== Blueprint
+
+In Blueprint, you can use the `Get Class Default Object` node to get the class default object.
+Afterwards, you can use the class' existing setters to modify fields. +
+You might need to use an xref:Development/ModLoader/AccessTransformers.adoc[Access Transformer]
+to make the field that you intend to change accessible from blueprints.
+
+To keep a reference to the CDO, create a property of type Object in the blueprint where you also change the CDO. Set the property's value to be the CDO before manipulating the object. +
+If you are modifying multiple CDOs, you can make the property an array of objects instead, and add each CDO to the array.
+
+=== {cpp} Example
+
+Here's an example from Kyrium's KBFL for adding additional allowed classes to the Pressurizer and its extractor nodes.
+
+```cpp
+void UKBFLResourceNodeDescriptor_ResourceWell::AfterSpawning()
+{
+	if(const TSubclassOf<AFGBuildableFrackingActivator> BPBuildableFrackingActivator = LoadClass<AFGBuildableFrackingActivator>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingSmasher/Build_FrackingSmasher.Build_FrackingSmasher_C")))
+	{
+		AFGBuildableFrackingActivator* FrackingActivatorDefault = BPBuildableFrackingActivator.GetDefaultObject();
+		frackingActivatorCDO = FrackingActivatorDefault
+		FrackingActivatorDefault->mAllowedResources.AddUnique(mResourceClass);
+	}
+
+	if(const TSubclassOf<AFGBuildableFrackingExtractor> BPBuildableFrackingExtractor = LoadClass<AFGBuildableFrackingExtractor>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingExtractor/Build_FrackingExtractor.Build_FrackingExtractor_C")))
+	{
+		AFGBuildableFrackingExtractor* FrackingExtractorDefault = BPBuildableFrackingExtractor.GetDefaultObject();
+		frackingExtractorCDO = FrackingExtractorDefault
+		FrackingExtractorDefault->mAllowedResources.AddUnique(mResourceClass);
+	}
+}
+```
+In this example, the CDO-referencing properties are `frackingActivatorCDO` and `frackingExtractorCDO`.
+To properly reference CDOs, create a property of type `UObject*` in the class where you also change the CDO. Make sure to mark the property as `UPROPERTY` or UE will not know about the property. +
+If you are modifying multiple CDOs, you can make the property a `TArray<UObject*>` instead, and add each CDO to the array.

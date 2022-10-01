@@ -82,6 +82,18 @@ and each mod that you make will be a plugin in this project setup.
 The plugin's folder would be the version control repository for that mod.
 ====
 
+[TIP]
+====
+If, for some reason, you want the editor or game to not load your plugin,
+simply change the extension of your uplugin file to `.disabled`,
+meaning Unreal Engine will not be able to tell the directory represents a plugin.
+
+This is helpful when xref:Development/UpdatingToNewVersions.adoc[updating your mods] later.
+
+If your uplugin file was previously `ExampleMod.uplugin`,
+change it to `ExampleMod.uplugin.disabled`
+====
+
 == Create Game World Module
 
 Now that we've created our plugin,

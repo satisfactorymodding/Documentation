@@ -73,23 +73,46 @@ Be sure you have "Copy Mods to Game" enabled and the "Game Path" set correctly.
 
 === Dumping Game Assets
 
+[WARNING]
+====
+If you have already used the Asset Dumper and Generator in the past,
+you should probably download an updated version via the above directions.
+If you don't, you could get ambiguous errors while dumping and generating.
+====
+
 A user interface exists for using the dumper,
 but there are some crashing problems with it,
-so we suggest using the command line version instead.
+so these directions will cover using the command line version instead.
 
-Navigate to your game install directory, and then in Powershell, run 
-`Engine\Binaries\Win64\FactoryGame-Win64-Shipping.exe -EpicPortal -nullrhi -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish`
+To dump assets, navigate to your game install directory, and then in Powershell, run 
+`Engine\Binaries\Win64\FactoryGame-Win64-Shipping.exe -EpicPortal -nullrhi -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log`
+
+[NOTE]
+====
+Excluding the `-log` argument could result in a shorter runtime, but will make troubleshooting more difficult if something goes wrong.
+====
+
+The Powershell command should immediately complete,
+leaving you with the option to run another command.
+Shortly after, you should see the Satisfactory splash screen and a console log window 
+which will provide info regarding the dumping process (since `-log` was used).
+
+Once you see the console log window, you can safely close the Powershell window.
+
+The game window itself will never open since the `-nullrhi` argument was used.
+After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
+This will take a bit; go pet a lizard doggo to pass the time.
 
 You can expect a full dump to take up about 3 GB.
 You can delete it later after you have imported the assets.
 
-This will take a bit; go pet a lizard doggo to pass the time.
-
-Once it completes, you should now have an `AssetDump` folder inside the `FactoryGame` folder of your game install directory.
+Once it completes, the console window and game should close,
+and you should have an `AssetDump` folder
+inside the `FactoryGame` folder of your game install directory.
 
 [NOTE]
 ====
-Asset dumping can also be performed automatically via the command line.
+Asset dumping is also used to create the stater project stubs when the game updates.
 Check out the
 https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
 or contact us on the discord for more info.
@@ -110,37 +133,62 @@ As such, the commandlet should be used instead.
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
 You will need to modify the first few lines of the script to point to your Unreal Engine install, project path, and chosen dump directory.
 
-To use the script, create a new Powershell script file (ex. `generate_assets.ps1`) in a location of your choice,
-copy-paste the below script, right click on the file, and select "Run with Powershell" to begin the import.
-Alternatively, launch it from a running powershell window to read the output after it has finished or crashed.
+Create a new Powershell script file (ex. `generate_assets.ps1`) in a location of your choice,
+then copy-paste the below script and save after editing the path lines.
+
+To run the script, right click on the file and select "Run with Powershell" to begin the import.
+Alternatively, you can launch it from a running powershell window to read the output after it has finished (or crashed).
 
 [source,ps1]
 ----
+# Change the below path lines to match the actual locations of these files and folders for your system
 # Using apostrophes so \ doesn't need to be escaped here
 $UE4CmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor-Cmd.exe'
 $UProjectPath = 'D:\GitSecondary\SF_ModProject\FactoryGame.uproject'
 $AssetDumpDirectory = 'D:\Programs\EpicGamesGames\SatisfactoryExperimental\FactoryGame\AssetDump'
 
-# Clean up the temp files, useful if the script was exited or crashed earlier for some reason
-Remove-Item SkipSavePackages.txt
-Remove-Item ForceGeneratePackageNames.txt
+# The below should not need to be modified
+
+# Define temporary file names and a function to clean up temporary files from the process
+$ForceGenerateFile = 'ForceGeneratePackageNames.txt'
+$SkipSaveFile = 'SkipSavePackages.txt'
+$BlacklistFile = 'BlacklistPackageNames.txt'
+
+$TempFiles = $ForceGenerateFile, $SkipSaveFile, $BlacklistFile
+function CleanupTempFiles {
+	foreach ($FileName in $TempFiles) {
+		if (Test-Path $FileName) {
+			Remove-Item $FileName
+			Write-Output "Cleaned up $FileName"
+		}
+	}
+}
+
+
+# Clean up the temp files, in case the script was exited or crashed earlier for some reason
+CleanupTempFiles
 
 # Force generated package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/ForceGeneratePackages.txt
-Write-Output "/Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot" >> ForceGeneratePackageNames.txt
+Write-Output "/Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot" >> $ForceGenerateFile
 
 # Skip save package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Interface/UI/BPI_ShoppingList" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> SkipSavePackages.txt
-Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> SkipSavePackages.txt
+Write-Output "/Game/FactoryGame/Interface/UI/BPI_ShoppingList" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> $SkipSaveFile
+
+# Skip a few assets that cause annoying problems in the editor (ex. missing animation data spam errors)
+# TODO not certain this functionality is working?
+Write-Output "/Game/FactoryGame/Character/Player/Animation/FirstPerson/" >> $BlacklistFile
+Write-Output "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/" >> $BlacklistFile
 
 # Run the generator commandlet
-& $UE4CmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\ForceGeneratePackageNames.txt" -SkipSavePackages="$(Get-Location)\\SkipSavePackages.txt" -stdout -unattended -NoLogTimes
+& $UE4CmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\$ForceGenerateFile" -SkipSavePackages="$(Get-Location)\\$SkipSaveFile" -BlacklistPackageNames="$(Get-Location)\\$BlacklistFile" -stdout -unattended -NoLogTimes
 
 # Clean up the temp files on exit
-Remove-Item SkipSavePackages.txt
-Remove-Item ForceGeneratePackageNames.txt
+CleanupTempFiles
+
 ----
 
 This will take a considerable amount of time.

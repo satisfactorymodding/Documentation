@@ -42,7 +42,7 @@ Launch the game at least once to ensure all files get set up correctly.
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
 and download the version you want.
-We suggest either Visual Studio 2022 Community,
+We suggest Visual Studio 2022 Community,
 because it is free of charge and modern.
 It may force you to sign up to access the older versions, but they are free.
 
@@ -66,15 +66,6 @@ or working on some of the other install steps below.
 You will also need the .NET Framework SDK, version 4.6 or higher (but not Core/v5).
 If you do not know if you have the .NET Framework SDK,
 the VS installer should provide an option to install it. It is recommended to tick it.
-====
-
-[TIP]
-====
-You will find the 2017 compilers under the 'Individual Components' section
-when you modify the installation of later versions.
-Check out the "Compiler, Buildtools and Runtimes" section.
-There you will find the entry "MSVC v141 - VS 2017 C++ - x64/x86-Buildtools (v14.16)".
-Hovering the Mouse over it will confirm that these are the Compiler and libraries you are looking for.
 ====
 
 [TIP]
@@ -152,15 +143,8 @@ This install process, and opening Unreal for the first time afterwards, can take
 Don't worry about opening Unreal yet though.
 It will probably ask you to compile things you haven't properly set up yet.
 
-=== Install the Visual Studio Extension
-
-Once the installer is done, you'll also need to install a Visual Studio extension shipped with the Editor.
-Navigate to where you installed the Editor, probably something like
-`C:\Program Files\Unreal Engine - CSS\`,
-and then navigate to the folder `\Engine\Extras\UnrealVS\`.
-Open the sub folder for the version of Visual Studio you have installed (probably 2019)
-and run the .vsix installer to install the Unreal Visual Studio extension,
-which will help with debugging.
+// Visual Studio extension no longer needed, but may be needed when dedicated server support comes out for easily building multiple targets
+// === Install the Visual Studio Extension
 
 == Wwise
 

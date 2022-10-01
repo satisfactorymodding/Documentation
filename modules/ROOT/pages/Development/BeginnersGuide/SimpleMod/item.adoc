@@ -340,8 +340,8 @@ If something went wrong, feel free to contact us on the https://discord.gg/xkVJ7
 Depending on the kind of mod you want to make,
 this might be all the info you need in order to start creating!
 Once you have a mod you're ready to upload, follow the
-xref:UploadToSMR.adoc[Uploading to SMR]
-directions to upload it for other people to use.
+xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
+directions to export and upload it for other people to use.
 
 If you'd like to try making a decorative building,
 or a very basic machine with a GUI,
