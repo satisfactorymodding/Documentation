@@ -51,17 +51,17 @@ You may still need to get all existing instances of the class
 and modify their values too to ensure they match your new desired value.
 Performing your CDO modifications earlier in the mod loading process can sometimes remove the need for this extra step.
 
-When performing CDO manipulation, you need to keep the CDO in-memory to ensure that Unreal does not garbage collect your patched object (and its descendants) and later load it unmodified from disk, undoing your change.
+When performing CDO manipulation, you need to keep the CDO in-memory to ensure that Unreal does not garbage collect your patched object (and its descendants) and later load it unmodified from disk, undoing your change. +
 To do this, you need to reference the CDO in a property. More on this in the language-specific sections below.
 
 === Blueprint
 
 In Blueprint, you can use the `Get Class Default Object` node to get the class default object.
-Afterwards, you can use the class' existing setters to modify fields.
+Afterwards, you can use the class' existing setters to modify fields. +
 You might need to use an xref:Development/ModLoader/AccessTransformers.adoc[Access Transformer]
 to make the field that you intend to change accessible from blueprints.
 
-To keep a reference to the CDO, create a property of type Object in the blueprint where you also change the CDO. Set the property's value to be the CDO before manipulating the object.
+To keep a reference to the CDO, create a property of type Object in the blueprint where you also change the CDO. Set the property's value to be the CDO before manipulating the object. +
 If you are modifying multiple CDOs, you can make the property an array of objects instead, and add each CDO to the array.
 
 === {cpp} Example
@@ -83,8 +83,7 @@ void UKBFLResourceNodeDescriptor_ResourceWell::AfterSpawning()
 		FrackingExtractorDefault->mAllowedResources.AddUnique(mResourceClass);
 	}
 }
-
-This example doesn't include holding a reference to the changed CDO.
-To do this, create a property of type `UObject*` in the class where you also change the CDO. Make sure to mark the property as `UPROPERTY` or UE will not know about the property. Set the property's value to be the CDO before manipulating the object.
-If you are modifying multiple CDOs, you can make the property a `TArray<UObject*>` instead, and add each CDO to the array.
 ```
+This example doesn't include holding a reference to the changed CDO. +
+To do this, create a property of type `UObject*` in the class where you also change the CDO. Make sure to mark the property as `UPROPERTY` or UE will not know about the property. Set the property's value to be the CDO before manipulating the object. +
+If you are modifying multiple CDOs, you can make the property a `TArray<UObject*>` instead, and add each CDO to the array.
