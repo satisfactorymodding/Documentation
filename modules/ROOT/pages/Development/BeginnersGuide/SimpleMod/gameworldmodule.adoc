@@ -124,7 +124,7 @@ Make sure that you select `GameWorldModule` as the asset's parent class,
 and not the game world module of another mod (or SML's)!
 ====
 
-Name it `YourModReferenceHere_InitWorld`.
+Name it `InitWorld_YourModReferenceHere`.
 By giving it a name that includes the mod reference,
 it becomes easier to identify in crash logs
 and helps you tell the modules of different mods apart in the editor.
