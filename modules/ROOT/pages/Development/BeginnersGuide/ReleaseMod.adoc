@@ -81,6 +81,14 @@ For example, a mod with a SemVersion of `1.0.0` should have a Version of `1`
 |CreatedBy
 | This string will appear when someone looks at your mod in the in-game loaded mods list and configs screen.
 
+|DocsURL
+| If a link is provided here, a button will appear in the in-game loaded mods list that will open the URL when clicked.
+The `http://` / `https://` prefix is optional.
+
+|SupportURL
+| If a link is provided here, a button will appear in the in-game loaded mods list that will open the URL when clicked.
+The `http://` / `https://` prefix is optional.
+
 |===
 
 === Special Fields
