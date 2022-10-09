@@ -11,7 +11,7 @@
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
 *** xref:Development/BeginnersGuide/SimpleMod/index.adoc[Create a Simple Mod]
-**** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Init Game World]
+**** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module]
 **** xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe vs Schematic]
 **** xref:Development/BeginnersGuide/SimpleMod/item.adoc[Create an Item]
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]

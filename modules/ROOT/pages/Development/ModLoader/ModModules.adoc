@@ -79,7 +79,6 @@ which calls the second non-root Game Instance module.
 Modules can have submodules they can conditionally load,
 which can be used for implementing configuration-driven content registration for example,
 allowing modularity inside of a single mod.
-The example mod demonstrates this functionality in TODO.
 
 == Dispatch Lifecycle Event
 
@@ -99,8 +98,13 @@ and then do your custom initialization logic.
 
 == Types of Modules
 
+It's highly suggested that you give your mod modules names that include their owning mod's
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
+This helps with telling what module belongs to what mod when you have multiple mods loaded in the editor,
+and it makes them easier to identify in crash logs.
+
 === Game Instance-Bound Module (`UGameInstanceModule`)
-**Suggested Module Name: `InitGameInstance`**
+**Suggested Module Name: `InitInstance_YourModReferenceHere`**
 
 The Game Instance Module is bound to the Game Instance and lives until the game is exited.
 This ultimately means that it gets called once per game session.
@@ -122,7 +126,7 @@ which allows you to get the game instance triggering the module.
 You can use this capability for custom lifecycle event handling, for example.
 
 === Menu World Module (`UMenuWorldModule`)
-**Suggested Module Name: `InitMenuWorld`**
+**Suggested Module Name: `InitMenu_YourModReferenceHere`**
 
 The Menu World Module is attached to the main menu world and lives until it is exited.
 
@@ -134,7 +138,7 @@ If the user returns to the main menu, after exiting a save, for example,
 this Module will be called again.
 
 === Game World Module (`UGameWorldModule`)
-**Suggested Module Name: `InitGameWorld`**
+**Suggested Module Name: `InitGame_YourModReferenceHere`**
 
 The Game World Module is attached to the normal game world in which you play Satisfactory.
 It lives from when a save is loaded to when the save is exited (or another save is loaded).
@@ -162,4 +166,6 @@ and then load your submodule "CoolCounterModIntegration",
 which will in turn access CoolCounterMod directly
 (because if the mod is not present, the submodule simply won't be registered).
 
-This functionality is demonstrated in the example mod in TODO.
+In blueprints, you can retrieve the Mod Module of any mod given its Mod Reference via
+either `Get WorldModuleManager` or `Get GameInstanceModuleManager` (depending on the module type) and `Find Module` nodes,
+which you can then cast the output of to the specific module class.

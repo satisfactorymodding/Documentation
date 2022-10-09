@@ -1,4 +1,4 @@
-= Plugin Setup and Init Game World
+= Plugin Setup and Game World Module
 
 To get started with our mod, we'll need to make a new Unreal plugin.
 Every mod you make should be a separate Unreal plugin.
@@ -99,7 +99,7 @@ change it to `ExampleMod.uplugin.disabled`
 Now that we've created our plugin,
 we must create a starting point from which everything else gets invoked.
 If we don't have one, then our mod's content will never be added to the game during loading!
-In our case this is the `InitGameWorld` Blueprint, which is a Game World Module.
+In our case, the starting point will be a Game World Module.
 
 [NOTE]
 ====
@@ -115,15 +115,25 @@ Click the triangle to close the Common Classes section,
 and click the other triangle to expand the All Classes section.
 Start typing `GameWorldModule` into the search box.
 Once it comes up, select it and press the green Select button to create the blueprint.
-Name it `InitGameWorld`.
 
 image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
 
-You will be able to register recipes and other content from this module.
+[WARNING]
+====
+Make sure that you select `GameWorldModule` as the asset's parent class,
+and not the game world module of another mod (or SML's)!
+====
+
+Name it `YourModReferenceHere_InitWorld`.
+By giving it a name that includes the mod reference,
+it becomes easier to identify in crash logs
+and helps you tell the modules of different mods apart in the editor.
+
+You will be able to register recipes and other content using this module.
 
 Next, double click on the module to open up its blueprint settings.
 
-To make sure that SML automatically detects and loads our InitGameWorld,
+To make sure that SML automatically detects and loads our module,
 we must be sure to mark that it is the Root Module.
 
 image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
