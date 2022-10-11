@@ -124,7 +124,9 @@ Make sure that you select `GameWorldModule` as the asset's parent class,
 and not the game world module of another mod (or SML's)!
 ====
 
-Name it `InitWorld_YourModReferenceHere`.
+Name it `RootGameWorld_YourModReferenceHere`.
+The prefix `Root` doesn't do anything on its own,
+but helps to identify it if you decide to add more GameWorld modules later.
 By giving it a name that includes the mod reference,
 it becomes easier to identify in crash logs
 and helps you tell the modules of different mods apart in the editor.
@@ -134,9 +136,18 @@ You will be able to register recipes and other content using this module.
 Next, double click on the module to open up its blueprint settings.
 
 To make sure that SML automatically detects and loads our module,
-we must be sure to mark that it is the Root Module.
+we must be sure to mark that it is the Root Module via the `Root Module` details field.
 
 image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
+
+[WARNING]
+====
+Make sure that you mark your new Module as the Root via the blueprint details field!
+There can be one Root module per type (Instance, GameWorld, MenuWorld).
+If you don't do this, the module will be silently ignored,
+and the content you create later won't be loaded.
+This mistake won't be apparent until you have some content to test later.
+====
 
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.

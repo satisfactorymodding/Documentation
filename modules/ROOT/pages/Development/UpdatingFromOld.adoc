@@ -188,7 +188,7 @@ so that we can add them to this list, or add it yourself via 'Edit this Page.'
 Unreal Engine and SML now take care of what it used to do.
 * InitMod is no more, and has been supplanted by the Mod Modules system.
 Most things that involved InitMod now involve the
-xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[InitGameWorld Module].
+xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[RootGameWorld Module].
 * InitMenu has also been replaced by the Mod Modules system.
 Check out the xref:Development/ModLoader/ModModules.adoc#_menu_world_module_umenuworldmodule[InitMenuWorld Module] page.
 * The mod configuration system works slightly differently.
