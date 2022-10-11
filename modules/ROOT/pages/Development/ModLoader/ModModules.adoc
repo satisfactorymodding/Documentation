@@ -153,24 +153,24 @@ You can register them by simply adding your classes to the given variables in th
 
 == Submodules
 
-It is possible to create more than one module of each the 3 module types
+It is possible to create more than one module of each of the 3 module types
 (Game Instance, Menu World, Game World).
-For example, you could have 2 Game Instance modules,
-1 Game World module, and 1 Menu World module.
+For example, you could have 2 Game World modules,
+1 Game Instance module, and 1 Menu World module.
 
 In order to have multiple modules of a type,
 you should have the Root Module that calls the other ones.
 In this example, there would be
 1 Menu World module marked as root,
-1 Game World module marked as root,
-and 1 Game Instance module marked as root
-which calls the second (non-root) Game Instance module.
+1 Game Instance module marked as root,
+and 1 Game World module marked as root,
+which calls the second (non-root) Game World module.
 
-The ExampleMod demonstrates spawning of a submodule in its root Game World module.
+The ExampleMod demonstrates this example in its root Game World module.
 
 == Using Modules for Cross-Mod Interactions
 
-Modules can have submodules they can conditionally load,
+Modules can have submodules they conditionally load,
 which can be used for implementing configuration-driven content registration for example,
 allowing modularity inside of a single mod.
 
