@@ -1,4 +1,4 @@
-= Overwriting Base Game and Other Mod Content
+= Class Default Objects (CDOs) and Overwriting Content
 
 It is possible to overwrite or modify content from the base game or from other mods.
 This is not recommended as opposed to creating your own content that extends it,
