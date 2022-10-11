@@ -11,7 +11,7 @@
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
 *** xref:Development/BeginnersGuide/SimpleMod/index.adoc[Create a Simple Mod]
-**** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Init Game World]
+**** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module]
 **** xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe vs Schematic]
 **** xref:Development/BeginnersGuide/SimpleMod/item.adoc[Create an Item]
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
@@ -20,7 +20,7 @@
 *** xref:Development/BeginnersGuide/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
-*** xref:Development/BeginnersGuide/overwriting.adoc[Overwriting Content]
+*** xref:Development/BeginnersGuide/overwriting.adoc[Class Default Objects (CDOs) and Overwriting Content]
 *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]

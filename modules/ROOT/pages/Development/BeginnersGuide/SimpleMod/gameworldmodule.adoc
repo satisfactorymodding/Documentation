@@ -1,4 +1,4 @@
-= Plugin Setup and Init Game World
+= Plugin Setup and Game World Module
 
 To get started with our mod, we'll need to make a new Unreal plugin.
 Every mod you make should be a separate Unreal plugin.
@@ -99,7 +99,7 @@ change it to `ExampleMod.uplugin.disabled`
 Now that we've created our plugin,
 we must create a starting point from which everything else gets invoked.
 If we don't have one, then our mod's content will never be added to the game during loading!
-In our case this is the `InitGameWorld` Blueprint, which is a Game World Module.
+In our case, the starting point will be a Game World Module.
 
 [NOTE]
 ====
@@ -115,18 +115,39 @@ Click the triangle to close the Common Classes section,
 and click the other triangle to expand the All Classes section.
 Start typing `GameWorldModule` into the search box.
 Once it comes up, select it and press the green Select button to create the blueprint.
-Name it `InitGameWorld`.
 
 image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
 
-You will be able to register recipes and other content from this module.
+[WARNING]
+====
+Make sure that you select `GameWorldModule` as the asset's parent class,
+and not the game world module of another mod (or SML's)!
+====
+
+Name it `RootGameWorld_YourModReferenceHere`.
+The prefix `Root` doesn't do anything on its own,
+but helps to identify it if you decide to add more GameWorld modules later.
+By giving it a name that includes the mod reference,
+it becomes easier to identify in crash logs
+and helps you tell the modules of different mods apart in the editor.
+
+You will be able to register recipes and other content using this module.
 
 Next, double click on the module to open up its blueprint settings.
 
-To make sure that SML automatically detects and loads our InitGameWorld,
-we must be sure to mark that it is the Root Module.
+To make sure that SML automatically detects and loads our module,
+we must be sure to mark that it is the Root Module via the `Root Module` details field.
 
 image:BeginnersGuide/simpleMod/MakeRootModule.png[Make Root Module]
+
+[WARNING]
+====
+Make sure that you mark your new Module as the Root via the blueprint details field!
+There can be one Root module per type (Instance, GameWorld, MenuWorld).
+If you don't do this, the module will be silently ignored,
+and the content you create later won't be loaded.
+This mistake won't be apparent until you have some content to test later.
+====
 
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.

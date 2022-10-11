@@ -270,7 +270,9 @@ Git is a powerful tool, and although it might take a bit to learn,
 it definitely pays off in the long run.
 Consider cloning the project instead to make future updates easier.
 
-You will have to manually swap out all of the files and folders that changed during the update.
+You will have to delete all of the old files and folders and copy in the new ones.
+It's important to delete the entire directory of old files first
+to ensure that you don't accidentally leave something around that was deleted in the update.
 
 You can use https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/[GitHub's branch/tag compare functionality]
 to see what changed.
@@ -284,7 +286,7 @@ As a general overview, changes could include any or all of the following:
 - `/Plugins/ExampleMod/`
 - `/Plugins/SML/`
 - `/Plugins/SMLEditor/`
-- `/Source/FactoryGame/`
+- `/Source/`
 
 ==== Option 2C: You Have a Project Level Repo
 
