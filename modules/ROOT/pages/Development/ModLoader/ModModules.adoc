@@ -168,6 +168,11 @@ which calls the second (non-root) Game World module.
 
 The ExampleMod demonstrates this example in its root Game World module.
 
+When a module is spawned via SpawnChildModule
+it will receive all of the phases that were already received by the parent module that spawned it.
+In the ExampleMod example, the child module is spawned during the Initialization phase.
+The child module still has its Construction phase called, despite spawning later than the parent.
+
 == Using Modules for Cross-Mod Interactions
 
 Modules can have submodules they conditionally load,
