@@ -19,6 +19,15 @@ For example, the mod Light It Up uses subsystems to create a lamp group system.
 With this system, every lamp can get information about the current group settings
 without storing that data again in each lamp instance.
 
+Subsystems can exist on host, client, or both sides of a multiplayer game,
+possibly replicated, depending on their Replication Policy setting.
+
+[WARNING]
+====
+If you're implementing a subsystem in {cpp} and you override BeginPlay or EndPlay,
+be sure to call the super functions, or the subsystem will not be handled correctly.
+====
+
 == Registering a Subsystem
 
 If you want to have a subsystem you will need at least one class that inherits the `ModSubsystem` class. 
@@ -32,6 +41,14 @@ The subsystems are held by the `SubsystemActorManager`, that can be obtained usi
 
 image:Satisfactory/Subsystems/Subsystems_sam_node.PNG[GameWorldModule]
 
+== Spawning a Subsystem
+
+As long as you have correctly registered the subsystem,
+there is no need to for you to spawn its actor - SML will take care of spawning it for you.
+
+If the actor doesn't seem to be spawning for some reason,
+make sure that you have correctly configured its Replication Policy.
+
 == Referencing a Subsystem
 
 A subsystem itself is an actor inheriting from `ModSubsystem`.
@@ -44,3 +61,4 @@ image:Satisfactory/Subsystems/Subsystems_sam.PNG[GameWorldModule]
 * The first parameter of the function is a reference to your `SubsystemActorManager` acquired using the `GetSubsystemActorManager` function.
 * The second parameter is just a name for the actor in this example `ExampleSubsystem`.
 
+Consider checking if the retrieved subsystem is valid before trying to do anything with it.
