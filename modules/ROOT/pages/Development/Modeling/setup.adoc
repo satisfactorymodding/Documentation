@@ -22,6 +22,7 @@ if you're interested, but know that this section of the docs is not yet updated 
 .. Ensure the `Unit Scale` is set to `0.01` (1/100) so that animation data saves correctly.
 .. If you had to adjust these you will need to scale your mesh and apply it. Your animations will also have to be redone.
 .. You may also have issues viewing your model, press `n` in a 3D viewport and adjust your `View > View > Clip Start/End` values.
+. If you have vertex color data to export, be sure the attribute layer is "Face Corner > Byte Color"
 . Select the objects you wish to export
 . Open `File > Export > FBX`
 . On the export options on the right, set the following.
@@ -52,7 +53,6 @@ While you can probably import just fine without any changes there's several thin
 * Make sure the `Mesh` section has these settings beyond the obvious like LODs or vertex colours if you have them
 ** Only check `Skeletal Mesh` if you have animation data or need a skeleton
 ** `Remove Degenerates` is checked
-** Only check `Generate Lightmap UVs` if you haven't made a custom AO bake
 ** `Normal Import Method` is `Import Normals`
 * Ensure that `Miscellaneous > Convert Scene` is checked
 * Make sure `Material` section has these settings
@@ -68,8 +68,6 @@ Hopefully it will of found the correct materials, but if it hasn't those should 
 ====
 The import menu for a static mesh and a skeletal mesh are different menus with many similar options. E.G. Setting import normals for a static mesh will not be remembered for a skeletal mesh despite being remembered between different static meshes.
 ====
-
-Best final in-game quality results will be achieved with custom lightmap uvs and a AO bake onto that UV set. If you don't know how to do that there's many tutorials/tools for AO baking and lightmap UVs online.
 
 Once you have all your new materials made or existing materials assigned you're good to go. Remember the new meshes and materials have to be in your mod's folder, but the existing game materials should not be in your mod folder.
 
