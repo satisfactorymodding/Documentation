@@ -8,20 +8,17 @@ Satisfactory, or the mod loader itself from blueprints with relative ease.
 
 The mod loader provides a blueprint function library `Blueprint Logging Library`
 that exposes some logging features to blueprints.
-This allows you to log things in different verbosity states,
-which can be controlled from the SML config file.
+This allows you to log messages in different verbosity states.
 
 The output will be displayed in the SML console (if enabled in your config)
-and in FactoryGame.log in your game install folder.
+and in `FactoryGame.log` in your `%LOCALAPPDATA%\FactoryGame\Saved\Logs` folder.
 
 If you want to log something from C++, we suggest you use
 Unreal's default logging systems instead.
 It would be best to create your own log category for your mod.
-You can read more about that in Unreal's documentation.
 
-=== `LogInfo(String str, bool ignoreDebugMode)`
-Logs the given string with the "info-color," but only
-if debugMode of SML is enabled or ignoreDebugMode is set to true.
+You can read more about logging on the Unreal Engine docs
+and the xref:Development/ModLoader/Logging.adoc[Logging page].
 
 === `LogVerbose(String str)`
 Logs the given string in the "verbose-level".
@@ -45,8 +42,8 @@ Causes the game to crash.
 ====
 This section was written while the SML Configuration system was still being developed.
 As such, these partially out of date, and are still being worked on.
-If you would like to use this system, you should **read
-xref:Development/ModLoader/Configuration.adoc[this page] first,**
+If you would like to use this system, you should
+**read xref:Development/ModLoader/Configuration.adoc[this page] first,**
 and reach out on the Discord if you have questions.
 ====
 

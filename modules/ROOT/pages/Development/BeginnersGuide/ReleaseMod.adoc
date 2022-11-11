@@ -1,0 +1,375 @@
+= Releasing Your Mod
+
+Once you consider your mod ready to release,
+there's a few extra steps to follow to ensure that it's working correctly,
+and to set up the required information for the Mod Repository to work with the mod.
+
+== Local Testing
+
+Before you release your mod,
+you should make sure that the features you implemented are working as you expect.
+
+For example, if your mod adds new items, recipes, or milestones,
+try to unlock them the same way a normal player would to ensure they are accessible.
+
+For recipes, try setting up a building to craft the recipe and ensure it actually works.
+For example, if a recipe requires more of an item than its stack size,
+the machine can't operate even though the recipe appears otherwise valid.
+
+If your mod has configuration options,
+make sure that the default configuration options you specified are what you want,
+since all users who install your mod will have them,
+and might not even realize they can be changed.
+The default config settings should represent the intended user experience for your mod.
+
+Make sure that your mod works for both client and host players in multiplayer.
+For mods that add items, schematics, and recipes, this is not much of an issue,
+but if you have added additional buildings or other functionality, 
+
+You can find more info on how to test your mod,
+including directions for running two copies locally to test multiplayer,
+on the xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
+
+== Your Mod's UPlugin File
+
+Every Unreal Engine plugin is require to have a
+`<mod reference>.uplugin` file,
+and Satisfactory mods are no exception.
+This file is json formatted and holds information about the mod,
+such as its version number, dependencies, credits, links, and more.
+
+You can find it in your mod's plugin directory,
+which is your modding project directory's `/Plugins/<mod reference>` folder.
+
+Only one uplugin file should exist in a plugin's directory,
+else the editor will get very confused.
+
+The file should have been automatically generated for you by the editor,
+but you'll have to modify couple fields yourself before you can release your mod.
+
+If you'd like, you can read about all the different Unreal settings available at the Plugins documentation
+https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugindescriptorfiles[here]
+or at the {cpp} reference
+https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here],
+but this page will cover the ones most important to Satisfactory mods.
+
+After editing these fields,
+be sure to re-Alpak your mod so the files you upload will have your changes.
+
+=== Default Fields
+
+The following fields are part of Unreal's normal uplugin format,
+but are given additional functionality by the modding toolkit.
+
+[cols="3,8a"]
+|===
+|Parameter |Description of Function
+
+|Version
+| This integer should match the first digit of your `SemVersion` (described in the link:#_special_fields[Special Fields section]).
+For example, a mod with a SemVersion of `1.0.0` should have a Version of `1`
+
+|VersionName
+| This string should exactly match your `SemVersion` (described in the link:#_special_fields[Special Fields section]).
+
+|FriendlyName
+| This string is the name of your mod as it will appear in the in-game loaded mods list and configs screen.
+
+|Description
+| This string will appear when someone looks at your mod in the in-game loaded mods list and configs screen.
+
+|CreatedBy
+| This string will appear when someone looks at your mod in the in-game loaded mods list and configs screen.
+
+|DocsURL
+| If a link is provided here, a button will appear in the in-game loaded mods list that will open the URL when clicked.
+The `http://` / `https://` prefix is optional.
+
+|SupportURL
+| If a link is provided here, a button will appear in the in-game loaded mods list that will open the URL when clicked.
+The `http://` / `https://` prefix is optional.
+
+|===
+
+=== Special Fields
+
+Note that SML and SMR require you to include additional fields in your plugin descriptor file.
+
+The most important of these is a mod dependency list and a SemVersion for the mod.
+
+[WARNING]
+====
+Make sure that you have SML listed as an item in the Plugins field,
+as explained below.
+====
+
+Below is a description of all extra fields SML and SMR require:
+
+[cols="3,8a"]
+|===
+|Parameter |Description of Function
+
+|SemVersion
+| Version number for the mod. Should always increase with new releases,
+and should follow the https://semver.org/[semver] format.
+To summarize, the format is `Major.Minor.Patch`
+{blank} +
+{blank} +
+As a rule of thumb, version `1.0.0` should be used for the first public release of your mod.
+
+* When you release bugfixes, you should increment the Patch version, for example `1.0.1`.
+* When you release changes that don't break how other mods interact with your mod,
+  you should increment the Minor version, for example `1.1.0`.
+* When you release changes that are not backwards compatible,
+  or break how other mods interact with your mod,
+  you should increase the Major version, for example `2.0.0`.
+
+{blank} +
+Note that `1.10.0` is a valid semver version,
+`2.0.0` does not necessarily have to come after `1.9.0`.
+{blank} +
+{blank} +
+This field is required, and should exactly match the `VersionName` field.
+
+|Plugins
+| Additional functionality has been added to the regular uplugin Plugins array. 
+You can list other mod references (or Unreal Plugins) here,
+and SMM will know to download when installing your mod.
+If you add a plugin with a Mod Reference,
+this basically makes the listed mod a dependency for your mod.
+{blank} +
+{blank} +
+**The SML plugin should also always be listed here,**
+allowing you specify what SML versions your mod supports.
+Each plugin should be listed as an object with the following properties:
+
+[cols="1,4a"]
+!===
+!Parameter !Description of Function
+
+!Name
+! The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference of the plugin]
+you are listing as a dependency.
+{blank} +
+{blank} +
+This field is required.
+
+!SemVersion
+! Version number for the mod dependency.
+Should follow https://semver.org/[semver] format.
+You can prefix the version number with a comparison operator to allow a range of versions.
+You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
+{blank} +
+{blank} +
+We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),
+and any number in the minor version field (the `2` in `1.2.3`).
+However, it https://nodesource.com/blog/semver-tilde-and-caret/[functions differently]
+when the major version (the `1` in `1.2.3`) is `0`,
+so be sure that your major version is at least `1` to avoid this.
+{blank} +
+{blank} +
+The prefix `>=` will allow all semversions higher than (and including) the one listed.
+Unless you have a very specific reason for doing so,
+you should probably use the `^` prefix instead.
+{blank} +
+{blank} +
+This field is required.
+
+!bIsOptional
+! This boolean property can be set to `true` if the dependency is not required.
+But if it exists, our mod might be able to unlock more functionality that depends on it.
+{blank} +
+{blank} +
+This field is optional, and defaults to `false` if unspecified.
+
+!bIsBasePlugin
+! This boolean property should be set to `true` for all plugin dependencies that are not *mod* dependencies.
+For example, regular Unreal Engine plugins your mod requires.
+SMM will not attempt to download these because they aren't mods.
+{blank} +
+{blank} +
+This field is optional, and defaults to `false` if unspecified.
+
+!Enabled
+! This field is not given any extra functionality by SML,
+but we have listed it here as well in order to draw extra attention to it.
+This should be set to `true` in every plugin item.
+{blank} +
+{blank} +
+This field is required, and Satisfactory will fail to launch if it is omitted,
+citing the offending uplugin file in the error message.
+
+!===
+
+|RemoteVersionRange
+| A Semver range of versions accepted from the remote clients.
+This requires other players to have a certain version of the
+mod installed to be able to join hosts.
+See the Plugins SemVersion item above for the format for this field.
+{blank} +
+{blank} +
+This field is optional, and defaults to your SemVersion if unspecified.
+
+|AcceptsAnyRemoteVersion
+| When `true`, when a multiplayer client joins,
+the check for if both host and client have the mod is installed is skipped.
+You can use this to create client-side or server-side only mods.
+{blank} +
+{blank} +
+This field is optional, and defaults to `false` if unspecified.
+
+|===
+
+
+=== Important {cpp} Fields
+
+If your mod has {cpp} code, make sure that you list a
+UBT Module in the Modules plugin descriptor section.
+The examples below will demonstrate this.
+
+
+=== Examples
+
+[NOTE]
+====
+You can check if your mod's uplugin file is in the correct
+format with the https://ficsit.app/help[validator on the SMR help page]).
+If it fails validation, keep your eyes out for things like missing commas
+and mismatched braces and brackets.
+Consider asking on the Discord if you get stuck on this step.
+====
+
+Some example `.uplugin` s are presented here:
+
++++ <details><summary> +++
+Example Blueprint mod .uplugin:
++++ </summary><div> +++
+....
+{
+	"FileVersion": 3,
+	"Version": 6,
+	"VersionName": "6.2.1",
+	"SemVersion": "6.2.1",
+	"FriendlyName": "Example Mod",
+	"Description": "This is a random Blueprint mod.",
+	"Category": "Modding",
+	"CreatedBy": "Satisfactory Modding Team",
+	"CreatedByURL": "https://ficsit.app/",
+	"DocsURL": "https://docs.ficsit.app/",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"RemoteVersionRange": "^0.2.1",
+	"AcceptsAnyRemoteVersion": false,
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.3.0",
+			"bIsOptional": false,
+			"Enabled": true
+		},
+		{
+			"Name": "DependencyMod",
+			"SemVersion": "^1.3.0",
+			"bIsOptional": false,
+			"Enabled": true
+		}
+	]
+}
+....
++++ </div></details> +++
+
++++ <details><summary> +++
+Example {cpp}/Blueprint mod .uplugin:
++++ </summary><div> +++
+....
+{
+	"FileVersion": 3,
+	"Version": 6,
+	"VersionName": "6.2.1",
+	"SemVersion": "6.2.1",
+	"FriendlyName": "Example Mod",
+	"Description": "This is a random example C++ and Blueprint mod.",
+	"Category": "Modding",
+	"CreatedBy": "Satisfactory Modding Team",
+	"CreatedByURL": "https://ficsit.app/",
+	"DocsURL": "https://docs.ficsit.app/",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"RemoteVersionRange": "^0.2.1",
+	"AcceptsAnyRemoteVersion": false,
+	"Modules": [
+		{
+			"Name": "ExampleMod",
+			"Type": "Runtime",
+			"LoadingPhase": "PostDefault"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.3.0",
+			"bIsOptional": false,
+			"Enabled": true
+		},
+		{
+			"Name": "DependencyMod",
+			"SemVersion": "^1.3.0",
+			"bIsOptional": false,
+			"Enabled": true
+		}
+	]
+}
+....
++++ </div></details> +++
+
+=== SMR UPlugin Validator
+
+If you'd like to check the format for your uplugin file,
+SMR offers a validator on its https://ficsit.app/help[help page].
+You can paste in your uplugin file into the box on the right
+and it will display any error messages below the box.
+
+The validator isn't perfect, but it can help troubleshoot many errors that could occur during upload.
+
+== Exporting
+
+Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature to move files to the game's folders for testing.
+
+Alpakit will generate a ready to distribute zip-archive for you, located at
+`<project folder>/Saved/ArchivedPlugins/WindowsNoEditor/<mod reference>.zip`.
+
+This zip contains all of your mod's files, although it does not contain any dependency mods -
+you must specify those via the system described in the link:#_your_mods_uplugin_file[uplugin section].
+
+Consider checking the zip's contents to see if they're what you expected.
+If for some reason you need extra files to be packaged into the mod, follow the directions
+xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_setup[here]
+to tell Alpakit to include them when building.
+
+== Sending Your Mod to Testers
+
+You may want to send out an early release of your mod to a few users to test it.
+
+They will have to follow the xref:ManualInstallDirections.adoc[Manual Installation] directions to install it from the zip file.
+
+== Last Chance to Change Your Mod Reference
+
+As mentioned on the
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+once you release your mod, you can no longer change its Mod Reference.
+
+If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
+
+== Upload to Satisfactory Mod Repository
+
+Once you're ready to release your mod,
+follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
+page to create a modpage and a release.

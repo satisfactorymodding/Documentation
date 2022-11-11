@@ -1,0 +1,115 @@
+= SML Logging
+
+The SML Logging system is an essential resource when developing your mod,
+especially for Blueprint mods, which can't be debugged with a debugger like {cpp} mods.
+
+The messages you log will be recorded to a text file
+that is automatically submitted when users use
+xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager] to generate a debug log.
+
+The log file will be replaced at every game launch,
+and if you xref:Development/TestingResources.adoc#_multiplayer_testing[have multiple copies of the game open],
+a suffix will be appended to the file name to differentiate them (ex. `FactoryGame_2.log`)
+
+== Viewing Logs
+
+By default, the game's logs will be stored in
+`\AppData\Local\FactoryGame\Saved\Logs\FactoryGame.log`.
+
+You can also view the logs live in a terminal as the game is running.
+To view the terminal, check the xref:SMLConfiguration.adoc#_sml_configuration_options[SML Config page]
+and make `consoleWindow` = `true`, which will cause the window to open on game launch.
+
+You can also open the terminal by adding `-log` to the game's launch arguments.
+https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
+and 
+https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
+have different approaches for configuring games' launch arguments.
+
+== Logging from Blueprints
+
+The Log functions provided by
+xref:Development/ModLoader/BlueprintInterface.adoc#_logging[the SML blueprint libraries]
+allow for logging strings, which most types can be converted to.
+
+Strings logged with this function will appear under the `LogYourModReference` log category,
+which will be automatically created if it doesn't exist yet.
+
+== Logging from {cpp}
+
+Logging from {cpp} is usually accomplished via the `UE_LOG` macro.
+
+https://unrealcommunity.wiki/logging-lgpidy6i[This Unreal Engine community wiki page]
+does a good job of explaining how to use the macro,
+set up your own custom logging categories,
+and the macro's formatting capabilities.
+
+As with most {cpp} macros,
+making a mistake with the syntax can lead to some messy compile time errors,
+so compile often when first trying this out to try and catch the mistakes early.
+
+Consider looking at some open source {cpp} mods for more examples of UE_LOG in practice.
+
+Examples:
+
+- https://github.com/Nogg-aholic/ContentLib/tree/master/Source/ContentLib/Private[ContentLib]
+- https://github.com/mklierman/SatisfactoryMods[SirDigby's mods]
+- https://github.com/Nogg-aholic/NogsResearch/tree/main/Source/NogsResearch/Private[NogsResearch]
+
+== Default Behavior
+
+By default, the game will obey the logging verbosity settings configured by CSS,
+followed by the settings you set in
+`%LOCALAPPDATA%\FactoryGame\Saved\Config\WindowsNoEditor\Engine.ini`
+
+With these settings, all mod logging calls will be displayed in the terminal and `FactoryGame.log`.
+
+== Redirect Logs for a Specific Mod
+
+You can use the Unreal Engine LogCategoryFiles launch argument to redirect a specific log category into a separate file.
+This means that, in addition to appearing in `FactoryGame.log`,
+they will appear in a file of your choice.
+
+The path specified in the launch argument is relative to your **game install directory**,
+not the Local AppData folder like the default log.
+
+For example, using the argument
+`-LogCategoryFiles="FilteredLogs\LogExampleMod.log=LogExampleMod"`
+will put a LogExampleMod.log file at
+`<your game install path>\SatisfactoryExperimental\Engine\Binaries\Win64\FilteredLogs\LogExampleMod.log`
+
+If you want the log file to appear in the same folders as the default FactoryGame.log,
+you will have to use a full path, for example:
+
+`-LogCategoryFiles="C:\Users\YourUsernameHere\AppData\Local\FactoryGame\Saved\Logs\LogSlate.log=LogSlate"`
+
+You can group multiple mods into one file with a plus,
+for example, TODO Arch Example
+
+== Change Verbosity for a Specific Mod
+
+You can filter which log messages are output via editing your Engine config file.
+
+From: `%LocalAppData%/FactoryGame/Saved/WindowsNoEditor/Configs/Engine.ini`
+
+```ini
+[Core.Log]
+Global=Warning
+LogSML=All
+LogGame=Verbose
+LogExampleMod=BreakOnLog
+```
+
+You should also be able to use the `-LogCmds` launch argument,
+but this has not been tested.
+
+Example:
+`-LogCmds="global warning, SML all"`
+
+== Redirect your Log File to Another Location
+
+You may wish for your default log file to be stored in a different location
+or under a different name than the default.
+
+For example, `-LOG="GameLogFileLocationOverride.log"` will rename your log file,
+but it will still be located in the default folder location.

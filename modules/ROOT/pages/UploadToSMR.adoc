@@ -1,309 +1,189 @@
-= Uploading your mod to Satisfactory Mod Repository (ficsit.app)
+= Uploading your Mod to Satisfactory Mod Repository (ficsit.app)
 
-Once you've made your amazing mod, https://ficsit.app/[Satisfactory Mod Repository] is the best place to upload it if you want others to find and use your mod.
-Mods uploaded to SMR will automatically work with the xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager]. All mods available to SMR are checked
-for potential security concerns, so having your mod on SMR means users can trust that it is safe and secure.
+Once you've made your amazing mod, the https://ficsit.app/[Satisfactory Mod Repository]
+is the best place to upload it if you want others to find and use your mod.
+Mods uploaded to SMR will automatically work with the
+xref:index.adoc#_satisfactory_mod_manager_aka_smm[Mod Manager].
+All mods available to SMR are checked for potential security concerns,
+so having your mod on SMR means users can trust that it is safe and secure.
 
-The process of uploading your mod is fairly straightforward. First, sign into SMR with an existing Github, Google, or Facebook account. 
+The process of uploading your mod is fairly straightforward.
 
-== Creating Your Mod Page
+== Create an Account on SMR
 
-Before you can upload a version of your mod for users to download, you'll have to create the mod page and get it approved first. 
+If you haven't already created an account,
+you can do so by clicking 'Sign In' in the top right corner of the https://ficsit.app/[SMR homepage],
+then selecting to sign in with an existing GitHub, Google, or Facebook account.
 
-On the front page of SMR, click `New Mod` in the top right corner to get started. 
-Next, provide a name, short description, and long description for your mod.
+You can change your profile photo and display name on your Settings screen,
+which can be accessed from your user icon in the top right corner.
+
+== Creating your Mod Page
+
+Before you can upload a version of your mod for users to download,
+you'll first have to create a mod page.
+
+On the 'Mods' sidebar tab of SMR, click `New Mod` in the top left corner to get started.
+
+=== Information About your Mod
+
+Next, add some information about your mod.
 
 * The 'name' is the title that will appear in the mod list and browser.
 * The 'short description' is the summary text that will show up below the mod icon.
-* The 'long description' supports Markdown formatting (help on the https://ficsit.app/help[help page])
-and is shown when the user clicks to 'View' your mod.
-You should provide a means of contacting you
-(preferably your Discord user tag, so staff and users can identify you on the modding discord)
-and a means of reporting bugs, such as a GitHub issues page or contact info.
+* The 'full description' supports Markdown formatting (help on the https://ficsit.app/help[SMR help page])
+	and is shown when the user clicks to view your mod from the all mods list.
+	Consider including the following information in here:
+	** A summary of what your mod adds to the game
+	** Screenshots or videos of your mod in action
+	** How to get started with your mod (unlock via hub milestone? features turned on by default?)
+	** A means of contacting you (preferably your Discord user tag, so staff and users can identify you on the modding Discord)
+	** A means of reporting bugs, such as a GitHub issues page or contact info
+	** Crediting people who helped you along the way (ex. icon attribution, coding help)
 
-You can edit all of these fields later.
+If you're not sure what to write yet,
+don't worry, you can come back and edit these fields later.
 
-One of the most important fields on this screen is the `mod_reference` field.
-Explained in more detail in the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide], your mod reference is your mod's unique name.
-As a reminder, your mod's Content folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
+=== Your Mod Reference
+
+One of the most important fields on this screen is the 'Mod Reference' field.
+Explained in more detail on the
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+your mod reference is your mod's unique name.
+As a reminder, your mod's plugin folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
 Your mod reference cannot contain special characters or spaces.
 
 [WARNING]
 ====
-**You can't change the mod reference after you have added your mod to SMR!**
+**You can't change your mod reference after you have added your mod to SMR!**
 
-So make sure it is correct! At least five times! And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section] again to make sure you understand what other parts of your mod need to use this same value.
+So make sure it is correct! At least five times!
+And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section]
+again to make sure you understand what other parts of your mod need to use this same value.
 ====
 
-Next, you can upload an image to use as the display image for your mod,
-and a link to your source code if it is hosted on a site like GitHub or similar.
-We strongly encourage you to release your source code, as it allows others
-to learn from your work and helps other developers debug mod compatibility.
+=== Icon and Source Link
 
-Once you click Submit, your mod page will be created.
+Next, you can upload an image to use as the display image for your mod.
+Alternatively, you can leave this blank, and it will default to the Satisfactory Modding gear logo.
+
+You can also provide a link to your source code, if it is hosted on a site like GitHub or similar.
+We strongly encourage you to release your source code,
+as it allows others to learn from your work
+and helps other developers debug mod compatibility.
+
+You can edit both of these fields later.
+
+=== Hidden Mods
+
+You also have the option to mark your mod as Hidden upon creation.
+You can go back and edit this later.
+
+If your mod is Hidden, it will not appear in the main mods list,
+nor when browsing in SMM,
+nor when searching the site.
+However, other users can still find it by looking at your profile page,
+and you can send people the link directly.
+
+In addition, updates to Hidden mods will not cause messages to be sent in the `#mod-updates` channel of the modding Discord.
+
+=== Submit your Mod Page
+
+Once you click Submit, a page for your mod will be created.
+
+Note that the page for your mod contains your mod's mod reference as part of the URL.
+For example, the page for a mod with reference `AreaActions` would be `https://ficsit.app/mod/AreaActions`.
+
 You still need to upload a version for your mod to be usable by players.
-Until then, your mod will be marked as Outdated since there are no compatible versions.
+Until then, your mod will be marked as 'Outdated' since there are no compatible versions.
 This version submission process will be covered in the following sections.
 
-If you'd like, you can click 'Edit Mod' and hide your mod from discovery.
-This is helpful for making a library mod, for example,
-or if you need to split your mod into multiple sub-mods.
+== Export your Plugin
 
-== UPlugin File
+Before you can upload a version,
+there are a few fields you need to edit in your mod's uplugin file,
+after which Alpakit will bundle your mod for you.
 
-Every Unreal Engine plugin is require to have a
-`<mod reference>.uplugin` file,
-and Satisfactory mods are no exception.
-This file is json formatted and holds information about the mod,
-such as its version number, dependencies, credits, links, and more.
-
-The file will be automatically generated for you by the editor,
-but you'll have to modify couple fields yourself.
-
-You can read about all the different Unreal settings available at the Plugins documentation
-https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugindescriptorfiles[here]
-or at the {cpp} reference
-https://docs.unrealengine.com/en-US/API/Runtime/Projects/FPluginDescriptor/index.html[here].
-
-=== Special Fields
-
-Note that SML and SMR require you to include additional fields in your plugin descriptor file.
-
-The most important of these is a mod dependency list and a SemVersion for the mod.
-
-[WARNING]
-====
-Make sure that you have SML listed as an item in the Plugins field,
-as explained below.
-====
-
-Below is a description of all extra fields SML and SMR require:
-
-[cols="3,8a"]
-|===
-|Parameter |Description of Function
-
-|SemVersion
-| Version number for the mod. Should always increase with new releases,
-and should follow the https://semver.org/[semver] format, ex. `2.0.0`.
-As a rule of thumb, version `1.0.0` should be released when you are confident
-you won't have many updates in the future.
-Note that `0.10.0` is a valid semver version,
-`1.0.0` does not necessarily have to come after `0.9.0`.
-
-|Plugins
-| Additional functionality has been added to the regular uplugin Plugins array. 
-You can list other mod references (or Unreal Plugins) here,
-and SMM will know to download when installing your mod.
-If you add a plugin with a Mod Reference,
-this basically makes the listed mod a dependency for your mod.
-
-**The SML plugin should also always be listed here,**
-allowing you specify what SML versions your mod supports.
-Each plugin should be listed as an object with the following properties:
-[cols="1,4a"]
-!===
-!Parameter !Description of Function
-
-!Name
-! The
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference of the plugin]
-you are listing as a dependency.
-
-This field is required.
-
-!SemVersion
-! Version number for the mod dependency. Should follow https://semver.org/[semver] format.
-You can prefix the version number with a comparison operator to allow a range of versions.
-
-The prefix `^` allows any number in the 'patch' field
-(aka third number in a semversion, the `3` in `1.2.3`.)
-
-The prefix `>=` will allow all semversions higher than (and including) the one listed.
-Unless you have a very specific reason for doing so,
-you should probably use the `^` prefix instead.
-
-This field is required.
-
-!bIsOptional
-! This boolean property can be set to `true` if the dependency is not required.
-But if it exists, our mod might be able to unlock more functionality that depends on it.
-
-This field is optional, and defaults to `false` if unspecified.
-
-!bIsBasePlugin
-! This boolean property should be set to `true` for all plugin dependencies that are not *mod* dependencies.
-For example, regular Unreal Engine plugins your mod requires.
-SMM will not attempt to download these because they aren't mods.
-
-This field is optional, and defaults to `false` if unspecified.
-
-!Enabled
-! This field is not given any extra functionality by SML,
-but we have listed it here as well in order to draw extra attention to it.
-This should be set to `true` in every plugin item.
-
-This field is required, and Satisfactory will fail to launch if it is omitted,
-citing the offending uplugin file in the error message.
-
-!===
-
-|RemoteVersionRange
-| A Semver range of versions accepted from the remote clients.
-This requires other players to have a certain version of the
-mod installed to be able to join hosts.
-See the Plugins SemVersion item above for the format for this field.
-
-This field is optional, and defaults to your SemVersion if unspecified.
-
-|AcceptsAnyRemoteVersion
-| When `true`, when a multiplayer client joins,
-the check for if both host and client have the mod is installed is skipped.
-You can use this to create client-side or server-side only mods.
-
-This field is optional, and defaults to `false` if unspecified.
-
-|===
-
-
-=== Important {cpp} Fields
-
-If your mod has {cpp} code, make sure that you list a
-UBT Module in the Modules plugin descriptor section.
-The examples below will demonstrate this.
-
-
-=== Examples
-
-[NOTE]
-====
-You can check if your mod's uplugin file is in the correct
-format with the https://ficsit.app/help[validator on the SMR help page]).
-If it fails validation, keep your eyes out for things like missing commas
-and mismatched braces and brackets.
-Consider asking on the Discord if you get stuck on this step.
-====
-
-Some example `.uplugin`s are presented here:
-
-+++ <details><summary> +++
-Example Blueprint mod .uplugin:
-+++ </summary><div> +++
-....
-{
-	"FileVersion": 3,
-	"Version": 6,
-	"VersionName": "6.2.1",
-	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random Blueprint mod.",
-	"Category": "Modding",
-	"CreatedBy": "Satisfactory Modding Team",
-	"CreatedByURL": "https://ficsit.app/",
-	"DocsURL": "https://docs.ficsit.app/",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
-	"Installed": false,
-	"RemoteVersionRange": "^0.2.1",
-	"AcceptsAnyRemoteVersion": false,
-	"Plugins": [
-		{
-			"Name": "SML",
-			"SemVersion": "^3.3.0",
-			"bIsOptional": false,
-			"Enabled": true
-		},
-		{
-			"Name": "DependingMod",
-			"SemVersion": "^1.3.0",
-			"bIsOptional": false,
-			"Enabled": true
-		}
-	]
-}
-....
-+++ </div></details> +++
-
-+++ <details><summary> +++
-Example {cpp}/Blueprint mod .uplugin:
-+++ </summary><div> +++
-....
-{
-	"FileVersion": 3,
-	"Version": 6,
-	"VersionName": "6.2.1",
-	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random example C++ and Blueprint mod.",
-	"Category": "Modding",
-	"CreatedBy": "Satisfactory Modding Team",
-	"CreatedByURL": "https://ficsit.app/",
-	"DocsURL": "https://docs.ficsit.app/",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"CanContainContent": true,
-	"IsBetaVersion": false,
-	"IsExperimentalVersion": false,
-	"Installed": false,
-	"RemoteVersionRange": "^0.2.1",
-	"AcceptsAnyRemoteVersion": false,
-	"Modules": [
-		{
-			"Name": "ExampleMod",
-			"Type": "Runtime",
-			"LoadingPhase": "PostDefault"
-		}
-	],
-	"Plugins": [
-		{
-			"Name": "SML",
-			"SemVersion": "^3.3.0",
-			"bIsOptional": false,
-			"Enabled": true
-		},
-		{
-			"Name": "DependingMod",
-			"SemVersion": "^1.3.0",
-			"bIsOptional": false,
-			"Enabled": true
-		}
-	]
-}
-....
-+++ </div></details> +++
-
-When you update a new version of your mod in the future,
-the only thing in `<mod reference>.uplugin` that you'll need to change is likely the `Version` and `SemVersion` fields.
+These are covered in detail on the
+xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod page].
 
 == Uploading a Version
 
 Once you have finished formatting your `.uplugin`,
-you need to make sure you packaged your mod with Alpakit,
-then you can upload the generated Zip-Archive located at `<project folder>/Saved/ArchivedPlugins/WindowsNoEditor/<mod reference>.zip` in the `Version File` field.
+make sure you have re-packaged your mod to include the changes with Alpakit.
 
-Put "Alpha", "Beta", "Release", etc. in the stability field so that users know how far along in development you consider this version of your mod to be.
+Navigate to the mod page for your mod,
+then select 'New Version' in the top right corner.
+This will take you to a page where you can upload a version file,
+as well as provide some additional info about the version.
 
-Finally, write up a list of all of the things you changed or added in this version for the `Changelog` field. We also strongly suggest you copy this information into an 'update history' section of your mod's description on the main mod page.
+Put "Alpha", "Beta", "Release", etc. in the stability field
+so that users know how far along in development you consider this version of your mod to be.
 
-You should be all set now - press Submit!
+Select the output zip from the link:#_export_your_plugin[Export your Plugin section]
+with the picker the `File` field.
+
+Finally, write up a list of all of the things you changed or added in this version for the `Changelog` field.
+We also strongly suggest you copy this information into an 'update history' section of your mod's description on the main mod page.
+
+[TIP]
+====
+If you decided to mark your mod as Hidden earlier,
+remember to make it visible again before uploading your first version!
+
+Otherwise, no notification will be sent on the Discord about your mod's release,
+and nobody will be able (easily) to find your mod on the site.
+====
+
+You should be all set now - once you press `Create`, the upload process will begin,
+and your mod will be ready for use once it completes.
+
+If any errors occur during the upload, they will be displayed on this screen.
+The link:#_smr_uplugin_validator[uplugin validator] may be of use.
+Consider asking for help on the Discord if you're not sure how to resolve them.
 
 == Awaiting Approval
 
-If you've uploaded a pak only mod, you're all set, and your mod is ready for download and use! Regardless, we still suggest you read the below. If you've uploaded a C++ mod, however, you'll have to wait for it to be approved by the automated approval process before users can download it. The approval process is generally quite quick, about 1 to 3 minutes, and exists to make sure that users aren't uploading content that violates SMR's terms and conditions or harms players' computers.
+If you've uploaded a blueprint only mod, you're all set, and your mod is ready for download and use!
+Regardless, we still suggest you read the below.
 
-In the meantime, we strongly suggest you take a look at your mod description and consider adding additional information to it. The mod description is what most players will see when deciding whether or not they want to use your mod, so keep it organized, and try to leave a good first impression! We suggest taking the following steps to encourage users to try out your mod:
+If you've uploaded a C++ mod, you'll have to wait for it to be approved by the automated approval process before users can download it.
+The approval process is generally quite quick, about 1 to 3 minutes,
+and exists to make sure that users aren't uploading content that violates SMR's terms and conditions or harms players' computers.
 
-- Check your grammar and spelling! Consider asking someone else to proofread your description. It's an easy thing to do, and having correct grammar makes you appear more professional.
+In the meantime, we strongly suggest you take a look at your mod description and consider adding additional information to it.
+More on that below.
 
-- Pictures! Take some screenshots of what your mod can do, and what its buildings or features look like in game. Again, the long description supports Markdown formatting, which you can get help with using on the https://ficsit.app/help[help page].
+== Refine your Mod Page
 
-- List where you can be reached for help, issue reporting, leaving suggestions, etc. Where do you want users to report issues to you with the mod? Via Discord, the forums, your mod's Github page, or somewhere else? Consider putting your Discord tag in your mod description so people can contact you on the community Discord, and consider changing your nickname on the server to include your mod name.
+The mod description is what most players will see when deciding whether or not they want to use your mod,
+so keep it organized, and try to leave a good first impression!
+One could say that you should try to make viewing your mod page a 'Satisfactory' experience, so to speak.
 
-- Explain concepts or features of your mod that may be unclear to the user. Unless you write documentation or a https://ficsit.app/guides[guide] for how to use your mod, players might have some trouble figuring out how to use all of the amazing new content in your mod.
+We suggest taking the following steps to encourage users to try out your mod:
 
-- List the features of your mod, and how to unlock them for use in-game. Consider listing what tiers the content is unlocked at.
+- Check your grammar and spelling! Consider asking someone else to proofread your description.
+	It's an easy thing to do, and having correct grammar makes you appear more professional.
+
+- Pictures! Take some screenshots of what your mod can do, and what its buildings or features look like in game.
+	Again, the long description supports Markdown formatting, which you can get help with using on the https://ficsit.app/help[help page].
+
+- List where you can be reached for help, issue reporting, leaving suggestions, etc.
+	Where do you want users to report issues to you with the mod?
+	Via Discord, your mod's Github page, or somewhere else?
+	Consider putting your Discord tag in your mod description so people can contact you on the community Discord,
+	and consider changing your nickname on the server to include your mod name.
+
+- Explain concepts or features of your mod that may be unclear to the user.
+	Unless you write documentation or a https://ficsit.app/guides[guide] for how to use your mod,
+	players might have some trouble figuring out how to use all of the amazing new content in your mod.
+
+- List the features of your mod, and how to unlock them for use in-game.
+	Consider listing what tiers the content is unlocked at.
 
 - Credit other users that contributed ideas, models, etc. by name and/or by link.
+
+== Future Updates to your Mod
+
+When you update a new version of your mod in the future,
+the only thing in `<mod reference>.uplugin` that you'll need to change is likely the `Version`, `VersionName`, and `SemVersion` fields.

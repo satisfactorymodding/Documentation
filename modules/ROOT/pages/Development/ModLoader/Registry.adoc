@@ -73,7 +73,7 @@ This essential in ensuring that it is correctly saved, loaded, and identified by
 
 If you don't need any dynamic behaviors the Mod Content Registry provides,
 you should use properties in your
-xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[InitGameWorld]
+xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[RootGameWorld_YourModReferenceHere]
 module instance instead of calling methods on this object directly.
 
 [WARNING]

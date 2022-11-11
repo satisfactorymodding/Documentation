@@ -1,11 +1,15 @@
 = Recipe vs Schematic
 
-Before we create our first recipe,
-it's important to note the difference between
+Now that we've got the basic structure of our mod set up,
+let's create a custom recipe that we can use to craft an existing in-game item.
+
+Before we create our first recipe, however,
+it's important to understand the difference between
 a 'recipe' and a 'schematic.'
 
 In Satisfactory, 'Recipes' are used to define the item input/cost
 and output of crafting items, buildables, etc.
+They are backed by the FGRecipe class.
 Recipes are not only used for the craft bench or the workshop,
 but also for the build gun, smelters, manufacturers and more.
 You can read more about recipes on the xref:Development/Satisfactory/Crafting.adoc[Crafting page].
@@ -16,127 +20,288 @@ Note that recipes are used to define both crafting recipes in the craft bench an
 All buildables actually have an item equivalent in game as well.
 ====
 
-'Schematics', on the other hand, define things like  https://satisfactory.gamepedia.com/Milestones[Milestones], the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features. This is far from their only feature.
-You can read more about schematics on the xref:Development/Satisfactory/Schematic.adoc[Schematic page].
+'Schematics', on the other hand, define things like  https://satisfactory.gamepedia.com/Milestones[Milestones],
+the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features.
+This is far from their only purpose.
+They are backed by the FGSchematic class.
+You can read more about schematics on the xref:Development/Satisfactory/Schematic.adoc[FGSchematic page].
+
+In this segment of the tutorial, we will create both a recipe and a schematic.
+Our schematic will be used to give the player access to our recipe.
 
 == Create a Recipe
 
-First of all, we want to add a recipe to the game which will get unlocked with the schematic we will create afterwards. We're going to make some new leaf based recipes to start.
-Create a folder, `+DocMod Content/Recipes+` which will contain all our recipes.
+Let's make some new leaf-based recipes to start.
 
-Now in Unreal, we need to create a new Blueprint Class in this folder which extends xref::/Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[FGRecipe] to serve as our recipe. Call it something like Recipe_Doc to follow Coffee Stain's naming pattern.
+Go to the Content Browser in the Unreal editor.
+Navigate to the root folder of your mod (appears as `DocMod Content`), right click, and select 'New Folder'.
+Call the new folder "Recipes".
 
-Finally, we can define the recipe description itself. Open up the class and go to the class defaults and set the properties to the values you want.
+Inside of your Recipes folder in the Content Browser, right click,
+select to create a Blueprint Class, and use FGRecipe as the parent class.
+We'll call it `Recipe_DocRecipe` to follow Coffee Stain's naming convention for prefixing recipe files.
+
+image:BeginnersGuide/simpleMod/CreateDocRecipeDescriptor.gif[image]
+
+== Assign Recipe Properties
+
+Next, we'll configure our new recipe to control what it requires, what it produces, and what machines can use it.
+
+Double click to open your new recipe to open it, and you should see the default settings of the classes' attributes.
+If not, click on the "Class Defaults" button in the toolbar and they should appear in the Details browser.
+
+Let's go through each attribute and set up our recipe's properties.
+You can hover over the left side of a field to get a tooltip describing its purpose (pulled from the game headers).
 
 * {blank}
 +
 M Display Name::
-  If you want to define a name for your recipe, check this and type the name in.
-  For our tutorial recipe, we'll check it and call it "Doc Recipe".
-  This name will show up inside the manual crafting bench or any machines you set this recipe to be used in.
+  The name of a recipe will show up inside the manual crafting bench, or any machines you set it to be used in.
+  By default, recipes take the name of their product item.
+  If you want to define a custom override name for your recipe, you can specify it here.
+  The base game uses this to give special names to alternate recipes.
+  {blank} +
+  For our tutorial recipe, we'll check the field and call it "Doc Recipe".
 * {blank}
 +
 M Ingredients::
-  This is an array of structs, each of which contains the information of one crafting component. Together, the array forms the input items for the recipe.
-  For this example, we'll add one entry and set `Desc_Leaves` as the `Item Class` and 42 as the `Amount`.
+  An array of structs, each of which contains the information for one crafting ingredient.
+  Together, the array forms the input items for the recipe.
+  {blank} +
+  We'll add one entry and set the Item Class to `Desc_Leaves` and the Amount to `42`.
+* {blank}
++
+M Product::
+  Another an array of structs that defines output of the recipe.
+  {blank} +
+  Add a one entry and set the Item Class to `Desc_Wood` and the Amount to `1`.
+
+[WARNING]
+====
+When making a recipe, be sure avoid the following common pitfalls:
+
+- Specifying more input/output types than the machine has ports
+- Requiring a fluid in a machine that doesn't have (enough) pipe ports.
+- Ingredient or product quantity that exceeds the item's its stack size.
+If you do this, the machine will never run, because it can't hold all of the required items.
+
+If you use a fluid, multiply the quantity by 1000, since they are treated as milliliters internally, but displayed as liters.
+====
+
+* {blank}
++
+M Overridden Category::
+  Categories control what subsection a recipe appears under in the recipe list.
+  By default, recipes take on the category of their first product item.
+  {blank} +
+  We'll leave this at `None` so that it sticks with the default category of the Leaves item.
+* {blank}
++
+M Manufacturing Menu Priority::
+  Controls the order that recipes appear within their category.
+  Lower values means earlier in the menu.
+  Negatives and decimals allowed.
+  {blank} +
+  Stick with the default value of `0.0`.
 * {blank}
 +
 M Manufacturing Duration::
   This determines the time it takes for a machine to process this recipe in seconds.
-  We'll set it to 1 for now, because we are super speedy pioneers. 
+  {blank} +
+  Let's set this to `4.0` for reasons that will be explained below.
 * {blank}
 +
 M Manual Manufacturing Multiplier::
-  If you want to use the same recipe for machines and the craft bench, with this value you can define how much longer the crafting of this recipe should take in the craft bench. 
-  Because we don't have time, we set this to 0.
-  With the multiplier set to the default of 0, the number of clicks to craft is the number of seconds it takes to craft divided by two.
+  If you want the same recipe to be usable in both machines and the craft bench,
+  this value allows you to define how much longer the crafting of this recipe should take in the craft bench.
+  By default, this value is `1.0`.
+  This means that number of clicks to craft the product will be the number of seconds it takes to craft divided by two.
+  For example, Iron Rods have a Manufacturing Duration of `4.0` and a Multiplier of `0.5`.
+  This means that each batch takes 4 seconds in a machine, but only one click to craft (4 / 2 * 0.5 = 1)
+  This is capped at a minimum of one click - if it goes to 0, it still takes 1 click to process.
+  {blank} +
+  Let's leave this at the default value of `1.0`.
+  Our recipe should now take 4 seconds to process in a machine, but only 2 clicks to craft.
 * {blank}
 +
 M Produced In::
-  Here we need to select the machine that can use the recipe, for example, `+FGWorkBench+`.
+  An array of IFGRecipeProducerInterface implementers (machines) that are allowed to use the recipe.
+  {blank} +
+  Let's add both `FGWorkBench` and `Build_ConstructorMk1`
+  to verify the behavior we discussed about the manufacturing times.
 * {blank}
 +
-M Product::
-  This is another an array of structs that defines the item types and amounts that form the output of the recipe.
-  In our case we'll add an entry with `Desc_Wood` as the `+Item Class+` and 1 as the `Amount`.
-  While you can create recipes with multiple outputs, the machine needs to have the correct number and type of output ports for this to work.
+M Material Customization Recipe::
+  Used with the Customizer for switching between building materials.
+  {blank} +
+  Leave this at the default of `None` since we're not working with building recipes here.
+* {blank}
++
+Variable Power::
+  Controls the levels of power consumption that machines that support variable consumption will cycle between while producing this recipe.
+  As of Update 6, the Particle Accelerator is the only base-game building that supports this feature.
+  {blank} +
+  Let's leave these at the default values.
+* {blank}
++
+M Relevant Events::
+  Restricts the recipe to only be valid during certain events, ex. FICSMAS or April First.
+  {blank} +
+  Leave this empty.
 
-image:BeginnersGuide/simpleMod/CreateDocRecipe.gif[image]
+image:BeginnersGuide/simpleMod/SetDocRecipeProperties.gif[image]
 
-
-_Note: this gif is slightly out of date as of SML 3.0_
-
-Ok, now you've created your first recipe! Next, let's add it to a schematic to make it available in game.
+Ok, now you've created your first recipe!
 
 == Create a Schematic
 
-Schematics are what Satisfactory uses to grant recipes and capabilities to the player. Schematics are the milestones you'll see in the HUB, the Tier 0 tutorial phases, M.A.M researches, alternate recipe researches, and more. If the player is unlocking an item, building, or any recipe it's probably be granted by a schematic.
+Next, let's add our recipe to a schematic to make it available in game.
 
-To get started, create a folder in your main mod folder for your schematics, for example, `+DocMod Content/Schematics+`. Inside this folder create again a new BP Class but this time of type xref::/Development/Satisfactory/Schematic.adoc[FGSchematic] and f.e. with the name "Schem_Doc". Open it and go again to its defaults.
+Schematics are what Satisfactory uses to grant recipes and capabilities to the player.
+Schematics are the milestones you'll see in the HUB,
+the Tier 0 tutorial phases, M.A.M researches, alternate recipe researches, and more.
+If the player is unlocking an item, building, or any recipe, it's probably be granted by a schematic.
+
+Go to the Content Browser in the Unreal editor.
+Navigate to the root folder of your mod (appears as `DocMod Content`), right click, and select 'New Folder'.
+Call the new folder "Schematics" to keep with our organization pattern so far.
+
+Inside of your Schematics folder in the Content Browser, right click,
+select to create a Blueprint Class, and use
+xref:/Development/Satisfactory/Schematic.adoc[FGSchematic]
+as the parent class.
+We'll call it `Schematic_DocSchem` to follow Coffee Stain's naming convention for prefixing schematic files.
+
+== Assign Schematic Properties
+
+Next, we'll configure our new schematic to control what tier it's in and what it costs to unlock.
+
+Double click to open your new schematic to open it, and you should see the default settings of the classes' attributes.
+If not, click on the "Class Defaults" button in the toolbar and they should appear in the Details browser.
+
+Let's go through each attribute and set up our schematic's properties.
+You can hover over the left side of a field to get a tooltip describing its purpose (pulled from the game headers).
 
 * {blank}
 +
 M Type::
-  The type of the schematic, which determines if it's part of the tutorial system or if it's a Milestone/etc.
-  We'll use `Milestone`.
+  Determines if the schematic is part of the tutorial system or if it's a Milestone/etc.
+  {blank} +
+  We'll use `Milestone` so it can be unlocked in the HUB.
 * {blank}
 +
 M Display Name::
-  The in-game name of our schematic exactly as it is displayed to the user.
+  The in-game name of our schematic, exactly as it is displayed to the user.
+  {blank} +
   We'll use "Doc Plants Upgrade".
+* {blank}
++
+M Description::
+  A text description to display along with the schematic.
+  As of Update 6, only AWESOME Shop schematics actually display this field anywhere in-game.
+  {blank} +
+  We'll leave it blank, since we're making a HUB schematic.
 * {blank}
 +
 M Schematic Category::
   Defines the category in which this schematic gets grouped into.
+  Only AWESOME Shop schematics actually use this field.
+  {blank} +
   Go ahead and pick one, it doesn't matter for our example.
 * {blank}
 +
 M Sub Category::
-  Defines in which sub group the schematic should get categorized.
+  Defines in which sub groups the schematic should get categorized.
+  {blank} +
   We leave this array empty.
+* {blank}
++
+M Menu Priority::
+  Controls the order that schematics appear within their category.
+  This has not been tested with the HUB, but is used in AWESOME Shop schematics.
+  {blank} +
+  Stick with the default value of `0.0`.
 * {blank}
 +
 M Tech Tier::
   Determines which Tier the schematic will appear under in the HUB.
-  We'll set it to 1 so that our content is available as soon as you finish the tutorial.
+  {blank} +
+  We'll set it to `1` so that our content is available as soon as you finish the tutorial.
 * {blank}
 +
 M Time to Complete::
-  Remember that annoying time when you purchased a milestone and the space ship leaves, blocking you from buying other milestones, or waiting for research to complete?
-  We will set it to 60 seconds. For milestones, if this value is shorter than the time it takes for the pod animation to launch, it will visually bug out, but you will still be able to submit milestones without issue.
+  Remember that annoying time when you purchased a milestone and the space ship leaves,
+  blocking you from buying other milestones, or waiting for research to complete?
+  This controls that timer.
+  For milestones, if this value is shorter than the time it takes for the pod animation to launch, it will visually bug out, but you will still be able to submit milestones without issue.
+  For HUB schematics, it will supposedly cause problems if less than 3 seconds, but this has not been tested.
+  {blank} +
+  We will set it to 60 seconds. 
 * {blank}
 +
 M Schematic Icon::
-  The icon displayed on a HUB milestone or M.A.M. Research.
-  We can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
-  You should make another folder (say `Content/DocMod/Icons`) to hold your mod's icon files and import there.
+  The icon displayed on a HUB milestone, MAM Research, or AWESOME Shop page and preview.
+  {blank} +
+  Go ahead and use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
+  Consider making another folder to hold your schematic icons.
 * {blank}
 +
 M Cost::
-  A list of items and the amounts needed to purchase the schematic in the HUB.
-  We'll add two entries, one with 100 `+Desc_Leaves+` and another one with 50 `+Desc_Wood+`
+  An array of structs, each of which contains the information for one required item to submit.
+  {blank} +
+  We'll add two entries, one with 100 `Desc_Leaves` and another one with 50 `Desc_Wood`.
 * {blank}
 +
 M Unlocks::
-  This array contains the rewards the player will get when purchasing this schematic. It's an array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s. The different kinds of unlocks are discussed in the schematics page.
-  What we'll add to this array is a `BP Unlock Recipe`. In its properties we can then add recipes, such as the one we made earlier.
+  This array contains the rewards the player will get when purchasing this schematic.
+  It's an array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock] inner class instances.
+  The different kinds of unlocks are discussed in the schematics page.
+  {blank} +
+  We'll add one `BP Unlock Recipe`. Add the recipe we created earlier (`Recipe_DocRecipe`) to its list.
 * {blank}
 +
 M Schematic Dependencies::
   This array allows for a schematic's purchase to be locked depending upon other schematics or items in the world.
+  This is completley ignored by the MAM in favor of node data, which is outside the scope of this tutorial.
+  {blank} +
   We'll leave this empty because we don't want our content to require any other particular schematic to be unlocked first.
 * {blank}
 +
+M Dependencies Block Schematic Access::
+  Controls if the dependencies should block access to the schematic, requiring custom code to unblock it later.
+  {blank} +
+  Leave this unchecked since we don't have any dependencies.
+* {blank}
++
+M Relevant Events::
+  Restricts the schematic to only be valid during certain events, ex. FICSMAS or April First.
+  {blank} +
+  Leave this empty.
+* {blank}
++
 M Include In Builds::
-  Set this to 'PublicBuilds' so that your content is included in the build.
-  Presumably, this is what Coffee Stain uses to keep their developer milestones made for testing from being shipped with the main game.
+  Set this to `PublicBuilds`` so that your content is included in the build.
+  Presumably, this is what Coffee Stain uses to keep their developer testing milestones from being shipped with the main game.
 
 Finally! What a class. Now we just need to register this schematic so it shows up at runtime.
 
 == Register the Schematic
 
-To register the schematic we can use our recently created xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_the_class[InitGameWorld] and add the schematics to the `M Schematics` array of the InitGameWorld. Double click on InitGameWorld to edit it and add your schematic to the `M Schematics` array.
+To register the schematic, open up the
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_the_class[RootGameWorld_YourModReferenceHere]
+asset we created earlier and add the schematics to the `M Schematics` array.
 
-And we're set! Our recipe and schematic are registered and should show up in the game now. To test it out, go ahead and run Alpakit and launch the game. The main menu should now show a higher loaded mods count, and you should be able to buy and test your schematic and recipes in game.
+And we're set! Our recipe and schematic are registered and should show up in the game now.
 
+To test it out, go ahead and run Alpakit and launch the game.
+You can find info on how to use it back on the
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
+The main menu should now show a higher loaded mods count,
+and you should be able to buy and test your schematic and recipes in game.
+
+If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+
+== Next Steps
+
+Next up, let's create our own custom item, and change our recipe to produce it instead of boring, old, generic Wood.

@@ -29,6 +29,7 @@ Execution order demonstration:
 +++ </summary><div> +++
 ....
 
+(Opening the application)
 1. Game Instance-Bound Module created
 2. Menu World Module created
 (Loading a save file from the main menu)
@@ -37,7 +38,7 @@ Execution order demonstration:
 (Returning to the main menu from the game)
 5. Game World Module destroyed
 6. Menu World Module created
-(Exiting the game from the main menu)
+(Exiting the application from the main menu)
 7. Menu World Module destroyed
 8. Game Instance-Bound Module destroyed
 
@@ -53,33 +54,16 @@ just create an actor or C++ class that extends the respective module class
 and set the value of its "root module" boolean to true.
 
 The actual class names you give your modules does not matter,
-but it is advised that your root modules use our suggested names for consistency.
-Every mod can have exactly one root module of each type (game instance, menu world, game world)
+but it is advised that your modules use our suggested names for consistency,
+and identification in crash reports.
+Every mod can have exactly one _root_ module of each type (game instance, menu world, game world)
 which will be automatically registered and bootstrapped regardless of it's name.
 
 [WARNING]
 ====
-It is possible to create more than one module of each the 3 module types
-(Game Instance, Menu World, Game World).
-For example, you could have 2 Game Instance modules,
-1 Game World module, and 1 Menu World module.
-
-However, if you do so, you should only have _one of each type_ marked as the Root Module.
+You should only have _one of each type_ marked as the root module.
 Otherwise, SML will purposely crash the game to warn of this mistake.
-
-In order to have multiple modules of a type,
-you should have the Root Module that calls the other ones.
-In the earlier example, there would be
-1 Menu World module marked as root,
-1 Game World module marked as root,
-and 1 Game Instance module marked as root
-which calls the second non-root Game Instance module.
 ====
-
-Modules can have submodules they can conditionally load,
-which can be used for implementing configuration-driven content registration for example,
-allowing modularity inside of a single mod.
-The example mod demonstrates this functionality in TODO.
 
 == Dispatch Lifecycle Event
 
@@ -99,8 +83,16 @@ and then do your custom initialization logic.
 
 == Types of Modules
 
+It's highly suggested that you give your mod modules names that include their owning mod's
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
+This helps with telling what module belongs to what mod when you have multiple mods loaded in the editor,
+and it makes them easier to identify in crash logs.
+
 === Game Instance-Bound Module (`UGameInstanceModule`)
-**Suggested Module Name: `InitGameInstance`**
+
+**Suggested Root Module Name: `RootInstance_YourModReferenceHere`**
+
+**Suggested Submodule Name: `SubInstance_MoreDetails_YourModReferenceHere`**
 
 The Game Instance Module is bound to the Game Instance and lives until the game is exited.
 This ultimately means that it gets called once per game session.
@@ -122,7 +114,10 @@ which allows you to get the game instance triggering the module.
 You can use this capability for custom lifecycle event handling, for example.
 
 === Menu World Module (`UMenuWorldModule`)
-**Suggested Module Name: `InitMenuWorld`**
+
+**Suggested Root Module Name: `RootMenuWorld_YourModReferenceHere`**
+
+**Suggested Submodule Name: `SubMenuWorld_MoreDetails_YourModReferenceHere`**
 
 The Menu World Module is attached to the main menu world and lives until it is exited.
 
@@ -134,7 +129,10 @@ If the user returns to the main menu, after exiting a save, for example,
 this Module will be called again.
 
 === Game World Module (`UGameWorldModule`)
-**Suggested Module Name: `InitGameWorld`**
+
+**Suggested Root Module Name: `RootGameWorld_YourModReferenceHere`**
+
+**Suggested Submodule Name: `SubGameWorld_MoreDetails_YourModReferenceHere`**
 
 The Game World Module is attached to the normal game world in which you play Satisfactory.
 It lives from when a save is loaded to when the save is exited (or another save is loaded).
@@ -153,13 +151,36 @@ It also provides some standard handling of things you might need to register at 
 
 You can register them by simply adding your classes to the given variables in the constructor of your class.
 
+== Submodules
+
+It is possible to create more than one module of each of the 3 module types
+(Game Instance, Menu World, Game World).
+For example, you could have 2 Game World modules,
+1 Game Instance module, and 1 Menu World module.
+
+In order to have multiple modules of a type,
+you should have the Root Module that calls the other ones.
+In this example, there would be
+1 Menu World module marked as root,
+1 Game Instance module marked as root,
+and 1 Game World module marked as root,
+which calls the second (non-root) Game World module.
+
+The ExampleMod demonstrates this example in its root Game World module.
+
 == Using Modules for Cross-Mod Interactions
 
-The root Mod Modules of each mod are accessible from other mods their mod reference.
+Modules can have submodules they conditionally load,
+which can be used for implementing configuration-driven content registration for example,
+allowing modularity inside of a single mod.
+
+The root Mod Modules of each mod are accessible from other mods via their mod reference.
 This can be used for efficiently performing cross-mod integrations.
 For example, you could check inside of your root module whenever mod CoolCounterMod is loaded,
 and then load your submodule "CoolCounterModIntegration",
 which will in turn access CoolCounterMod directly
 (because if the mod is not present, the submodule simply won't be registered).
 
-This functionality is demonstrated in the example mod in TODO.
+In blueprints, you can retrieve the Mod Module of any mod given its Mod Reference via
+either `Get WorldModuleManager` or `Get GameInstanceModuleManager` (depending on the module type) and `Find Module` nodes,
+which you can then cast the output of to the specific module class.

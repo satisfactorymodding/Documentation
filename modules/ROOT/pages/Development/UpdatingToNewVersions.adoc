@@ -1,0 +1,486 @@
+= Updating your Starter Project and Mod
+
+When Coffee Stain updates Satisfactory,
+changes can occur to game internals that require mod developers to update their mods.
+
+This page will cover the general process of updating a mod development environment from one version to another,
+and things to look out for when seeing if your mod still works after transitioning.
+
+== Why Mods Need to Update
+
+Whether or not a game update or SML update requires a mod update depends on a number of factors:
+
+- What game systems the mod interacts with
+- What game systems the game update modified
+- What files Coffee Stain changed in the background,
+  even if they weren't mentioned in the patch notes
+- Unreal Engine version transitions
+- Significant changes to SML APIs, usually denoted with a major version number bump
+
+If the systems a mod is working with wasn't touched by an update,
+it could end up working without any changes.
+
+== Avoid Breaking in the First Place
+
+There are a few measures you can take in order to decrease the chances of your mod breaking on an update.
+
+- Avoid header edits if at all possible.
+  Instead, use xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
+- Use already-established systems to implement behavior.
+  For example, use the SML Keybinds system instead of writing your own keybind handling logic.
+  Then, if it breaks, there are more people on board to fix it, rather than just you.
+- Consider implementing some functionality in Blueprints,
+  since they are generally less likely to break when header updates occur.
+  This comes at a nonzero performance cost,
+  but that discussion is out of the scope of this docs page.
+  Consider the case of https://ficsit.app/mod/UtilityMod[Pak Utility Mod],
+  which has required extremely few updates in the scale of things,
+  partly because it uses no {cpp} code.
+
+== How to Tell Something Broke
+
+Sometimes, game systems will change in a way that breaks your mod,
+but not enough to cause it to crash on startup,
+or crash at all during normal gameplay.
+For example, if a base-game material or texture file you were depending on is moved or removed,
+it will silently be replaced with a default or None value!
+
+In cases like this, it can be hard to track down these failures,
+especially as the scope of a mod grows to have more content and work with more game systems.
+
+Here are some approaches you can follow to detect problems caused by updates.
+
+* {blank}
++
+Listen to Your Users::
+  Make sure that there's an easy way for users to contact you with problems if/when they find them.
+  This could involve listing your Discord tag on the mod page,
+  setting up and linking your Github issues page, etc.
+  https://github.com/budak7273/ArmorModules/blob/master/.github/ISSUE_TEMPLATE/bug_report.md[Here]
+  is an example Github issue template you may find useful.
+* {blank}
++
+Keep an Old Game Version On Hand::
+  If your mod has complicated behaviors,
+  it may be beneficial to make a local copy of the previous version of the game before updating.
+  If you feel like something changed,
+  you can follow the same procedures in each version side-by-side to find discrepancies.
+  Also, if an asset you need was removed during the update,
+  you may be able to go back and extract it from the old copy of the game.
+  {blank} +
+  The process for doing this will be described in more detail in another section.
+* {blank}
++
+Run Standard-ish Tests::
+  Consider writing
+  https://en.wikipedia.org/wiki/Behavior-driven_development[behavior-driven development]
+  inspired tests for yourself (or generous users) to manually perform after an update.
+  By walking through the procedures that a new user would follow to start working with your mod,
+  or through common interactions a user would have,
+  you can find issues before your users report them to you.
+  {blank} +
+  {blank} +
+  For example, with the PowerSuit Modules mod,
+  a good test would be to craft a new suit,
+  install the Jetpack Module,
+  spawn in a specific amount of fuel items,
+  and fly to the top of a fixed height structure,
+  recording fuel levels before and after flight.
+  This imitates a common user activity,
+  and performing it would help detect any differences in the various mod systems between updates.
+
+== Before you Proceed
+
+Below is a sequence of steps to follow while updating if you want to be as careful as possible.
+
+Depending on the size of the update,
+you may be able to skip some of the steps,
+but it's better to play it safe than regret not making a useful, time-saving backup!
+
+Storage space is cheap, your time is not.
+
+== Back Up Your Game
+
+As described in the 'Keep an Old Game Version On Hand' bullet,
+by keeping an old install of the game on hand,
+you can check behaviors or retrieve assets that may have been deleted during an update.
+
+In order to do this, simply make a copy of your entire game install directory,
+and put it somewhere that Steam/Epic won't try to meddle with it.
+
+Note that you can only do this _before_ updating your copy of the game -
+there is no way to obtain older versions of the game from Steam or Epic,
+outside of switching between the two branches - Early Access and Experimental.
+This is a great reason to *turn off auto-update*,
+so that you can make a copy before Steam/Epic pulls out the rug under you.
+
+After making a copy, you are safe to update your game install as you normally would.
+
+You can use the launch scripts in the
+xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
+page to launch this separate copy of the game
+while still having the new copy set up (even running at the same time)
+on Steam/Epic.
+
+== Back Up Your Old Engine
+
+When Coffee Stain updates to a newer version of Unreal Engine,
+or in the occasion that the SML team patches the engine for various reasons,
+you will have to update your locally installed Editor to build mods for the new version.
+
+We *strongly* suggest that you keep the old editor installed
+until you are done porting your mods so that you can reference settings,
+blueprint fields, and code you have written that may have been removed
+or made impossible to open due to the update.
+
+In order to have both the old and new version of the editor installed on your computer,
+you should do the following:
+
+1. Navigate to your editor install folder
+(probably `C:\Program Files\Unreal Engine - CSS`)
+2. Run `SetupScripts\Unregister.bat`
+(might need to do this as admin)
+3. Rename the install folder to
+`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\` or similar
+4. Run `SetupScripts\Register.bat` from the new location
+(might need to do this as admin)
+5. Now, to launch the old editor, you can run
+`C:\Program Files\Unreal Engine - CSS_Previous-SML-Version-Here\Engine\Binaries\Win64\UE4Editor.exe`
+6. Install the new editor build from the directions in the next section
+7. Optionally, edit your Start Menu shortcuts
+(probably in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs`)
+so that you have one for the old editor and one for the new editor
+
+[NOTE]
+====
+If you have previously moved the editor folder without doing the `Unregister.bat` step,
+you may experience issues with the editor thinking Unreal projects are an incorrect version.
+To resolve this, perform the Unregister step for the old editor version.
+This should not be required for the new editor version.
+
+You may have to edit a registry key entry to fix this - ask on the Discord for help with this.
+====
+
+== Install the New Engine
+
+The new editor version can probably be downloaded from
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[the GitHub releases page],
+but you should keep your eyes on the Discord
+to see if a specific branch or download link is mentioned instead.
+
+Remember, if you see a 404 page following that link,
+the page is not dead, you need to log into the right GitHub account.
+More info on this can be found
+xref:Development/BeginnersGuide/dependencies.adoc#_unreal_engine_4_custom_engine[here].
+
+== Preparing to Update your Starter Project
+
+Depending on how you downloaded your modding starter project,
+one of these approches will be easier than the rest,
+or you may _have_ to use one to get what you want.
+
+You should read both options in full to make an informed decision.
+
+=== Option 1: Start Fresh
+
+If you have a small, self contained mod,
+or the changes to SML or game systems are immense,
+it may be easier to simply set up a new starter project
+than bother trying to update your existing one.
+
+If you have lots of project-level specific settings,
+such as special packaging rules or editor configurations, this may not be ideal.
+
+Perform the project setup steps described in the
+xref:Development/BeginnersGuide/index.ado[Getting Started guide],
+which includes getting the new SML version and new Starter Project,
+as well as integrating a new Wwise version.
+
+Your mod's files are probably all within its plugin folder,
+so you can simply transfer over that entire folder to the Plugins folder of the new project.
+Remember to regenerate visual studio project files and build after you do this.
+
+==== Bring Over Editor Configs
+
+Editor settings are stored at the project level, and if you have any special ones,
+you probably don't want to lose them when you update.
+They are stored in the `/Config/` folder.
+For example, Action Mappings are stored in `DefaultInput.ini`.
+You should git diff the files to make sure
+that you are adding any new fields that were introduced by the update,
+while still keeping the old values you want.
+
+=== Option 2: Replace Changed Files
+
+If you have a lot of plugins set up in one project,
+the changes to SML or game systems are small,
+or you want to preserve your git history,
+this may be the route to update your existing project.
+
+After performing any of these approaches,
+you may or may not have to integrate Wwise again.
+You can find directions for that
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_wwise[here].
+
+How to proceed from here depends on how you originally downloaded the starter project.
+
+No matter which of the below situations applies to you,
+you should absolutely *make a backup copy of the old project before trying to move anything*.
+Even if you are a git wizard,
+it's a lot simpler to completely toss a broken copy instead of trying to patch it up again.
+
+==== Option 2A: You Cloned or Forked the Starter Project
+
+You will have to pull (if you cloned) or merge (if you forked)
+the changes made in the main SML repository.
+
+There are a few files that will likely have been automatically modified,
+and you will have to discard or stash your own changes
+in order to merge in the upstream changes without conflict.
+
+They include, but are not necessarily limited to:
+
+- FactoryGame.uproject
+- `/Configs/` folder contents
+  (see the link:#_bring_over_editor_configs[Bring Over Editor Configs] section)
+- `/Content/` folder contents
+  (see the link:#_dealing_with_the_content_folder[Dealing With the Content Folder]
+  and link:#_watch_out_complete_starter_projects_and_version_control[Watch Out: Complete Starter Projects and Version Control] sections)
+
+Once you have stashed or discared your changes to these files,
+you should be able to pull/merge in the files.
+
+===== Dealing With the Content Folder
+
+The content folder will be regenerated with most game updates
+so that stubs are in the correct places.
+
+Most Unreal Engine asset files are raw binary files, which means git diffing them is difficult.
+Panakotta has directions on using UE as diff tool
+https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
+but in the case of almost all base game assets,
+you probably just want to throw out the old ones and bring in the new ones instead.
+
+This will involve a lot of changed files,
+but since the starter project ships with only stubs, they are tiny in file size.
+
+==== Option 2B: You Downloaded a Zip of the Starter Project
+
+Git is a powerful tool, and although it might take a bit to learn,
+it definitely pays off in the long run.
+Consider cloning the project instead to make future updates easier.
+
+You will have to delete all of the old files and folders and copy in the new ones.
+It's important to delete the entire directory of old files first
+to ensure that you don't accidentally leave something around that was deleted in the update.
+
+You can use https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/[GitHub's branch/tag compare functionality]
+to see what changed.
+Just keep in mind that it can't preview uasset files for you.
+
+As a general overview, changes could include any or all of the following:
+
+- `/Build/Alpakit.Automation/`
+- `/Content/` stub files
+- `/Plugins/Alpakit/`
+- `/Plugins/ExampleMod/`
+- `/Plugins/SML/`
+- `/Plugins/SMLEditor/`
+- `/Source/`
+
+==== Option 2C: You Have a Project Level Repo
+
+Possible reasons to have a project-level repo include
+working with lots of copyrighted files,
+having a complete starter project,
+working with a team of people on multiple interdependent mods at once,
+or having custom project settings you want to preserve.
+
+If you have a project level git repo,
+your git history is probably vastly different from the base SML repo,
+so trying to merge in the changes is likely infeasible.
+
+You'll have to go through most of the same process as the zip project download.
+
+== Updating a Complete Starter Project
+
+If you have generated a complete starter project using the
+xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit],
+you will need to do so again to get the updated base-game files,
+since numerous assets will have changed,
+even if not mentioned in the patch notes.
+
+You should delete your entire previous base-game Content folder,
+as well as the stubs from the starter project you may have copied in
+during earlier update steps.
+It's important to fully replace the folder to be sure you don't have any no-longer-existing assets in there,
+which could lead to confusion or name conflicts when trying to use them in your mods.
+
+Remember to copy back in AngryBeaver's recreated assets.
+The process for doing this is covered on the Asset Toolkit page.
+
+Also, make sure to download an updated version of the Asset Toolkit plugins,
+because they may have been patched since you last generated your project.
+
+=== Watch Out: Complete Starter Projects and Version Control
+
+If you are using a project-level git repo and you have generated a complete starter project,
+updates present an additional risk.
+
+You must be careful with how you bring the regenerated assets into version control.
+GitHub (and most other VC platforms) has a size limit on how big they will alow an individual commit to be,
+and hitting this limit is quite feasible when bringing in this many assets.
+
+Before commiting the regenerated assets,
+consider running a TreeSize or WinDirStat analysis
+to find out which directories are the largest
+so that you can split up the changes into separately committed and pushed units.
+
+If you accidentally make a commit too large, you will have to use
+https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits[git rebase]
+to break it apart into multiple smaller commits and make it possible to push your repo again.
+
+== Making Sure the Starter Project Update Worked
+
+Now that you've brought in the updated files,
+you should try to build and open the editor to make sure it worked correctly.
+
+This step allows you to catch any problems that could have occurred now,
+as opposed to later when you're trying to fix your mods,
+and it's unclear what the cause is.
+
+Temporarily move out all items from your Plugins folder
+except those that came with the Starter Project
+(Alpakit, ExampleMod, SML, SMLEditor, Wwise),
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
+and rebuild the project.
+This ensures that any potential problems with your mods don't affect the build process.
+
+If it worked, you should be able to build and open the editor.
+
+If Unreal complains about your project being compiled for a different version of the editor,
+close down the Editor entirely - do not use any of Unreal's prompts to port the project.
+Instead, open your `FactoryGame.uproject` and modify the `EngineAssociation` field to match the updated version number.
+
+After you're sure the editor is working with just SML loaded,
+move on to the next sections.
+
+== Dealing with Multiple Mods in One Project
+
+If you develop multiple mods in the same project,
+odds are that one of them will not work after an update.
+
+Even if the mods are totally separate from each other,
+Unreal could prevent you from packaging any mods at all while a non-working mod is also present.
+
+You may need to temporarily move out some of the troublesome mods to allow building others.
+
+One way to do this is to rename the uplugin file to `<ModReference>.uplugin.disabled`
+to stop Unreal from loading it.
+You will probably have to regenerate the visual stuido project files if you do this.
+Directions for that can be found
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[here].
+
+Since the uplugin file is the only file you're changing,
+this approach lets you turn off mods without causing a torrent of Git file changes.
+
+== Preparing to Update a Mod
+
+If your mod has dependencies, you should update them first,
+ideally without your the dependent mod present in the project.
+Consider disabling the dependent mod via the approach described above
+until the dependency is ready.
+
+If you keep your mods in separate plugin repos,
+consider creating a branch or tag on each named after the version the code supported
+(ex. Update5) so that you and others can refer back to it later if needed.
+
+== The Cycle of Updating
+
+Your updating process will cycle through the following steps:
+
+1. Attempt to 
+xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile the Visual Studio project]
+2. Deal with Visual Studio build errors by:
+
+- Adding/removing xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
+  (note, also see link:#_seemingly_ignored_access_transformers[Seemingly Ignored Access Transformers] section)
+- Rewriting or To-Do commenting out broken functionality
+- Asking for help on the Discord
+
+3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping.
+4. Install the updated version of SML in your copy of the game.
+5. Open the Unreal Engine Editor for your project
+6. Run Alpakit on your mod
+7. Deal with errors that Alpakit finds. Possible problems include:
+
+- Blueprints that 'just' need to be opened and recompiled
+  (see link:#_beware_of_changed_files[Beware of Changed Files] section)
+- Missing assets.
+  Look back in your backups to find out what they were,
+  try to find their new locations,
+  and replace them or extract the files from your old game copy if needed.
+- No-longer-available function calls.
+  To-Do comment them out or try to replace them.
+- Something else entirely. Consider asking for help on the Discord.
+
+8. Repeat steps 6-7 until Alpakit builds your mod successfully.
+9. Launch the game with your mod installed
+10. Resolve crashes that occur when you try to launch the game
+11. Restore the functionality you had to comment out or unhook in steps 2 and 7
+12. Test functionality in your mod to ensure nothing has broken.
+13. Resolve any problems you find by testing your mod further
+
+Below are some notes on a few things to watch out for.
+
+=== Seemingly Ignored Access Transformers
+
+Sometimes, compilation in Visual Studio will fail due to your mod trying to access private fields of various classes,
+even though you have already have added said classes to your mod's
+xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
+
+A cached build file from a previous version is likely the cause of this.
+
+You can try to resolve this by adding a duplicate line to that mod's access transformers file.
+The line can be deleted again later, but it should trick Visual Studio into rebuilding the access transformers correctly.
+
+Alternatively, a full rebuild should also fix this.
+
+=== Beware of Changed Files
+
+If you open a file and see that Unreal wants to save it after you haven't changed anything,
+you should be cautious and try to find out what field may have changed on you.
+Sometimes Unreal will complain nosily about problems like this
+(ex. missing blueprint library, parent class not found),
+but sometimes it will silently replace it with a None reference (ex. textures or materials)!
+
+If you open one of your mod assets,
+and it's broken for some reason (or has a missing reference), *DO NOT SAVE IT!*
+You will be saving the broken reference over the correct value.
+
+If you do save the file, or Unreal saves it on you,
+go into version control and discard the changes.
+As long as you can avoid keeping the saved copy,
+if you restore the missing referenced asset,
+it will be back without data loss next time you open the editor and/or file.
+
+This is one of the many reasons to keep a copy of your old project.
+You can find out what _used_ to be in that field,
+then go fix it on all of your assets in one fell swoop without having to hunt down each usage.
+
+In the case of a missing or damaged parent class,
+looking at backup is one of the only ways to get info out of the inoperable asset.
+
+== You're (Hopefully) Done
+
+If you've gotten this far,
+you should have completed the process of updating your mod and starter project.
+
+Or, if you were reading through, you're better prepared to update in the future.
+
+If you think this guide skipped over something,
+you found a mistake,
+or you'd like to contribute more to this guide,
+please speak up on the Discord or open a PR.
+
+Thanks for reading!

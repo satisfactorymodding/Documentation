@@ -4,15 +4,14 @@
 
 Welcome to the Satisfactory Modding Documentation site! 
 
-Here you can find lots of information regarding modding https://www.satisfactorygame.com/[Satisfactory], the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios]. Modding for Satisfactory is more established than you might think given how long the game has been out. There are already https://ficsit.app/[numerous mods] released, and there are multiple methods by which you can develop new mods yourself. 
+Here you can find lots of information regarding modding https://www.satisfactorygame.com/[Satisfactory], the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios] (CSS). Modding for Satisfactory is more established than you might think given how long the game has been out. There are already https://ficsit.app/[numerous mods] released, and there are multiple methods by which you can develop new mods yourself. 
 
 In this page, we will provide some surface level information for both mod users and developers.
 
 [TIP]
 ====
 If you want to take part in this great community, we recommend you
-join our https://discord.gg/xkVJ73E[Discord Server] or the
-https://forums.ficsit.app/[Ficsit.app Forums].
+join our https://discord.gg/xkVJ73E[Discord Server].
 ====
 
 == For Users
@@ -25,14 +24,17 @@ The Satisfactory Mod Repository (SMR) is the most extensive collection of mods m
 
 === Satisfactory Mod Manager [.title-ref]#(aka. SMM)#
 
-The Satisfactory Mod Manager allows the end user to easily install mods, their dependencies and the mod loader.
+The Satisfactory Mod Manager allows the end user to easily install mods, their dependencies, and the mod loader.
 It connects to https://ficsit.app/[SMR], allowing for quick and easy installation of all mods.
 
 Check it out on https://github.com/satisfactorymodding/SatisfactoryModLauncher/releases[GitHub]!
 
 You can also install it with winget via `winget install SatisfactoryModding.SatisfactoryModManager`.
 
-For installing mods as end user we highly recommend using Satisfactory Mod Manager, as it makes using mods that much easier. However, if you _really_ don't want to use the launcher, directions for manual installation can be found xref:ManualInstallDirections.adoc[here].
+For installing mods as end user we highly recommend using Satisfactory Mod Manager,
+as it makes using mods that much easier.
+However, if you _really_ don't want to use the launcher,
+directions for manual installation can be found xref:ManualInstallDirections.adoc[here].
 
 [TIP]
 ====
@@ -46,7 +48,7 @@ If you'd like to write a mod of your own, this section is for you.
 The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML. To enable it, change your selected profile to `development`.
 
 If you're looking to write your own mods, we suggest you start with
-making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Beginners Guide].
+making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Getting Started Guide].
 
 If you're looking to make models, it's best to learn how to put a mod together first.
 Once you've completed the `Buildable` step in `Beginners Guide`, then check out our xref:Development/Modeling/index.adoc[Modeling Guide].
@@ -59,6 +61,12 @@ If you have a packaged mod (.zip archived mod),
 then you simply unpack the .zip into the `<SF install dir>/FactoryGame/Mods/<ModName>`.
 Make sure that the `.uplugin` file is contained _directly_ within the `<ModName>` folder.
 
+== Archived Forums
+
+The community used to have a Discourse-powered forms website for modding discussion,
+but it has since been archived due to low usage.
+You can find the archives https://forums.ficsit.app/[here].
+
 == Modding Technologies
 
 If you'd like to learn more about how modding works internally, this is the section for you.
@@ -68,9 +76,13 @@ If you'd like to learn more about how modding works internally, this is the sect
 Satisfactory Mod Loader (SML) provides a framework that makes it easier for mods to be able 
 to load into systems provided by the game, and to interact with each other.
 It also provides many helper features to assist in mod development.
+Due to how CSS has configured Satisfactory,
+it is possible to make mods that do not require SML to function,
+however this is rarely done in practice.
 
 === Alpakit
 
-The Alpakit is an Unreal Engine Plugin allowing you to easily cook and package your
-mod for deployment and distribution.
+Alpakit is an Unreal Engine Plugin created by Mircea and other contributors
+allowing you to easily cook and package your mod for deployment and distribution.
 It is also able to directly install it into your game installation for you.
+Behind the scenes, it uses Unreal Pak and some custom code to accomplish this.
