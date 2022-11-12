@@ -37,3 +37,21 @@ In Blueprints, you might not know what is exactly safe to do and what not, and i
 
 In C++ you can implement multithreading solutions such as mutexes to still write to memory other threads might want to read from/write to at the same time, which is why it is suggested you write Factory Tick related code there.
 ====
+
+== Factory Simulation Time versus Game Time
+
+Factory Tick is designed to operate at a consistent rate,
+unlike the game's framerate, which can fluctuate in response to lag spikes.
+A consequence of this is that the "factory time" can end up behind Unreal's "game time" measurement,
+as some factory ticks could be skipped in situations with high delta time.
+
+According to Ben on the https://discord.com/channels/555424930502541343/555782140533407764/1040270425076285510[Discord]:
+
+> if the mod assumes `gametime` == `factory simulation time` it will always be a bit off.
+game time is equal to the time it takes to compute what happens per frame.
+factory time is clamped, which means we don't get extreme values.
+so if your FPS drops for a few frames there wont be weird behavior.
+this also means that your factory simulation "lost" that time.
+let's say your game is running for 81 seconds, game time will total as 81 seconds.
+but depending on frame drop / hitches etc factory simulation could be at 79.x seconds.
+so if that mod would assume *game time* to be the same as the *factory simulation time*, the information it grants will always be faulty.
