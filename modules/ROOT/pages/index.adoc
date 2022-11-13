@@ -61,6 +61,10 @@ If you have a packaged mod (.zip archived mod),
 then you simply unpack the .zip into the `<SF install dir>/FactoryGame/Mods/<ModName>`.
 Make sure that the `.uplugin` file is contained _directly_ within the `<ModName>` folder.
 
+=== Uploading Your Mod to SMR
+
+After you've finished your mod (or at least its first version), you might want to upload it to https://ficsit.app/[SMR]. Read the dedicated docs page to know more on how to do that xref:UploadToSMR.adoc[here]!
+
 == Archived Forums
 
 The community used to have a Discourse-powered forms website for modding discussion,
