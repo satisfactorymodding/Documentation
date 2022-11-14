@@ -42,6 +42,8 @@ In our "Resources" folder we will put our Icon and rename it to `Icon128.png`.
 If the icon is given any other file name, the Unreal editor and game will not recognize it
 and will fall back to default icon instead.
 
+== Modify Packaging Settings
+
 Now we need to tell Alpakit to include our "Resources" folder in the mod when paking it.
 To do this, inside the "Config" folder, we need to create the file `PluginSettings.ini`.
 

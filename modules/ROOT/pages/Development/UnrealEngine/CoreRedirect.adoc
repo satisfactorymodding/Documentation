@@ -1,0 +1,80 @@
+= Core Redirect
+
+A Core Redirect is an Unreal Engine system that allows you you to tell the game and editor to expect to find an asset path in a different location than usual.
+
+You can learn more about them
+https://www.unrealdirective.com/articles/core-redirectors-what-you-need-to-know[here]
+or
+https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assets/CoreRedirects/[on the Unreal docs].
+Note that the Unreal docs are partly incorrect
+and claim that the OldName of PackageRedirects will work without the slashes present.
+You should follow the example here or on the UnrealDirective docs page instead.
+
+== Setting up a Core Redirect
+
+Because we're creating Unreal Plugins and not a full game, modders have to go through a few extra steps to set these up.
+
+=== Write the Redirect
+
+First identify the package, or assets, that needs to be moved via the redirect.
+
+You will need to create a new file, `YourModReference/Config/Engine.ini`, to hold the core redirects.
+
+==== Example: Changed Mod Reference
+
+An example use case for core redirects is if a mod has changed mod reference,
+but you want users' buildings or other content from the past mod reference to persist.
+
+This was used to seamlessly port old buildings in the
+https://ficsit.app/mod/BuildableResourceNodesRedux[Buildable Resource Nodes Redux] mod.
+
+This core redirect will redirect every asset stored in player's save files
+from the old `BuildableResourceNodes` plugin to the new `BuildableResourceNodesRedux` plugin.
+In this specific example, this means that all of the FGBuildables from the old mod
+will not vanish when players update to the one with the new mod reference.
+
+[source,text]
+----
+[CoreRedirects]
++PackageRedirects=(OldName="/BuildableResourceNodes/",NewName="/BuildableResourceNodesRedux/",MatchSubstring=true)
+----
+
+=== Modify Packaging Settings
+
+In order to tell Unreal to package your core redirect with your plugin,
+you will need to add a line to your plugin's `YourModReference/Config/PluginSettings.ini`
+to tell it to include your `Engine.ini` with the mod's files.
+
+The process for creating this file can be found
+xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_modify_packaging_settings[here].
+
+[source,text]
+----
+[StageSettings]
++AdditionalNonUSFDirectories=Config
+----
+
+The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+
+=== Package Your Mod and Test
+
+It's very easy to mess up the syntax on core redirects,
+so you should be sure to launch the game and test to make sure it actually worked.
+
+If you're testing out core redirects, you don't need to repackage the mod every time.
+You can simply edit the `Engine.ini` in the plugin folder for the mod in the game install directory and relaunch the game.
+Remember that packaging the mod again will overwrite any changes you made to this file!
+
+== Using Core Redirects in the Editor
+
+It's possible that, after an update, the parent class of one of your assets has changed due to Coffee Stain or another mod developer moving the location of the class on their end.
+
+You can set up a Core Redirect in order to tell Unreal about the location of the new parent class,
+which may make make it possible to open the asset in the editor again.
+
+In this case, you probably want to use a Class Redirect instead.
+See the docs page linked link:#_core_redirect[above] for more info.
+
+Since this time the redirect does not need to be present for end users,
+you need to add the redirect in the `ProjectFolder/Config/DefaultEngine.ini` file instead.
+Outside of this, the syntax for the actual redirect is the same as if it was in the plugin `Engine.ini` file.

@@ -471,6 +471,21 @@ then go fix it on all of your assets in one fell swoop without having to hunt do
 In the case of a missing or damaged parent class,
 looking at backup is one of the only ways to get info out of the inoperable asset.
 
+=== Missing Parent Class
+
+It's possible that, after an update, the parent class of one of your assets has changed due to Coffee Stain or another mod developer moving the location of the class on their end.
+
+A broken parent class almost always makes an asset unable to be opened in the Unreal Engine Editor.
+Hopefully you followed the directions in the link:#_back_up_your_old_engine[Back Up Your Old Engine] 
+section, because if you did, you can open up the working version of the asset in the old editor
+and find out field values and other settings you configured.
+
+You can also try to set up a
+xref:Development/UnrealEngine/CoreRedirect.adoc#_using_core_redirects_in_the_editor[Core Redirect]
+in order to tell Unreal about the location of the new parent class,
+which may make make it possible to open the asset in the editor again.
+See the linked page for more details.
+
 == You're (Hopefully) Done
 
 If you've gotten this far,
