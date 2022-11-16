@@ -439,10 +439,10 @@ Sometimes, compilation in Visual Studio will fail due to your mod trying to acce
 even though you have already have added said classes to your mod's
 xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 
-A cached build file from a previous version is likely the cause of this.
-
-You can try to resolve this by adding a duplicate line to that mod's access transformers file.
-The line can be deleted again later, but it should trick Visual Studio into rebuilding the access transformers correctly.
+You can resolve this by changing any line in that mod's access transformers file,
+for example, a comment (which are denoted with `;` semicolons.)
+The line can be changed back later; modifying the file will make the compiler rebuild the access transformers correctly.
+More info on why this works can be found on the Access Transformers page.
 
 Alternatively, a full rebuild should also fix this.
 
