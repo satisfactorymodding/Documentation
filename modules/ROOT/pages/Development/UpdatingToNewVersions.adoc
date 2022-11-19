@@ -1,4 +1,4 @@
-= Updating your Starter Project and Mod
+= Updating your Mod and Starter Project
 
 When Coffee Stain updates Satisfactory,
 changes can occur to game internals that require mod developers to update their mods.
@@ -167,6 +167,8 @@ The new editor version can probably be downloaded from
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[the GitHub releases page],
 but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
+The specific files to download are described in the
+xref:Development/BeginnersGuide/dependencies.adoc#_download_the_custom_engine[Dependencies guide].
 
 Remember, if you see a 404 page following that link,
 the page is not dead, you need to log into the right GitHub account.
@@ -192,7 +194,7 @@ If you have lots of project-level specific settings,
 such as special packaging rules or editor configurations, this may not be ideal.
 
 Perform the project setup steps described in the
-xref:Development/BeginnersGuide/index.ado[Getting Started guide],
+xref:Development/BeginnersGuide/index.adoc[Getting Started guide],
 which includes getting the new SML version and new Starter Project,
 as well as integrating a new Wwise version.
 

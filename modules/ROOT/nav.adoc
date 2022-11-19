@@ -71,7 +71,7 @@
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
-** xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
+** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]
