@@ -175,7 +175,7 @@ you should probably use the `^` prefix instead.
 {blank} +
 This field is required.
 
-!bIsOptional
+!Optional
 ! This boolean property can be set to `true` if the dependency is not required.
 But if it exists, our mod might be able to unlock more functionality that depends on it.
 {blank} +
@@ -268,13 +268,13 @@ Example Blueprint mod .uplugin:
 		{
 			"Name": "SML",
 			"SemVersion": "^3.3.0",
-			"bIsOptional": false,
+			"Optional": false,
 			"Enabled": true
 		},
 		{
 			"Name": "DependencyMod",
 			"SemVersion": "^1.3.0",
-			"bIsOptional": false,
+			"Optional": false,
 			"Enabled": true
 		}
 	]
@@ -316,13 +316,13 @@ Example {cpp}/Blueprint mod .uplugin:
 		{
 			"Name": "SML",
 			"SemVersion": "^3.3.0",
-			"bIsOptional": false,
+			"Optional": false,
 			"Enabled": true
 		},
 		{
 			"Name": "DependencyMod",
 			"SemVersion": "^1.3.0",
-			"bIsOptional": false,
+			"Optional": false,
 			"Enabled": true
 		}
 	]
