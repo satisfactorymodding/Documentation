@@ -4,23 +4,32 @@ UE-CSS 4.25.3 build 42 adds a new feature: the ability to make accessors for fie
 
 This ability, called the **Access Transformer** system, is beneficial because it allows you to essentially make header accessor edits without the cost of having to deal with merge conflicts when bringing in updated SML and game headers later down the line. It also makes it easier to collaborate with other developers, because normal header edits are made in files outside of the plugin directory, meaning they would not be included in plugin (mod) source code repositories. Access transformers are defined in a file within the plugin directory, so they can easily be included in repositories.
 
+As of UE-CSS 4.26.2 build 30, BlueprintCallable is also supported.
+Additionally, access transformers that are not written correctly,
+or refer to fields that are no longer present,
+will result in an error message at compile time:
+`Unused <transfromer type> for class <ClassName>, <extra details>. Requested by <ModReference>`
+
 == Config File
 
-In order to use Access Transformers, create a file in `YourPluginModReference\Config`, named `AccessTransformers.ini` with the following format:
+In order to use Access Transformers, create a file in `YourPluginModReference\Config` named `AccessTransformers.ini` with the following format:
 
 [source,ini]
 ----
 [AccessTransformers]
+; You can use semicolons for comments if you want to leave notes about the purpose of an access transformer
 Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
 Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
 BlueprintReadWrite=(Class="AFGSomeClass", Property="mSomeProperty")
+BlueprintCallable=(Class="AFGSomeClass", Function="SomeFunction")
 ----
 
-You can have multiple (or none) of each of the access transformer types (friend, accessor, and BlueprintReadWrite), but they should all be under the same [AccessTransformers] section header.
+You can have multiple (or none) of each of the access transformer types in one file,
+but they should all be under the same `[AccessTransformers]` section header.
 
 [NOTE]
 ====
-After making changes in this file, you still have to build for Development for the properties you made BlueprintReadWrite to show up in the editor.
+After making changes in this file, you still have to build for Development Editor for the properties you made BlueprintReadWrite and BlueprintCallable to show up in the editor.
 ====
 
 == Definitions
@@ -49,14 +58,33 @@ Note that the generated methods lack the `m` from the original property name.
 
 Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints (it cannot be added to a non-UPROPERTY field). It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game), so that no changes to the game headers are required.
 
-[WARNING]
-====
-Rider will not find the generated getters and setters, and will still show private fields as private for friended classes, because it completely ignores the `.generated.h` file in which the modified UHT generates them. Visual Studio does not have this problem. The code will still compile, but Rider will still show the accessed fields as errors.
-====
+=== BlueprintCallable
+
+Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints (it cannot be added to a non-UFUNCTION function).
+
+== Disclaimers
+
+The header generator decides to rebuild access transformers
+based on the last changed date of the AccessTransformers.ini file.
+As such, you may need to modify the file (ex. by adding or removing lines, such as semicolon comments)
+to cause it to realize that a rebuild is needed.
+An example of a situation in which this would happen is
+bringing the code for another mod into your copy of the project -
+its files' change date could be far in the past from the last time you built,
+so the generator will mistakenly decide not to build the transformers in that file.
 
 [WARNING]
 ====
 Access Transformers can't modify engine classes, since the UHT will not generate `.generated.h` files for the engine classes when using a prebuilt engine. It has not been tested if they would work on a source built engine.
+====
+
+[WARNING]
+====
+Rider will not find the generated getters and setters,
+and will still show private fields as private for friended classes,
+because it completely ignores the `.generated.h` file in which the modified UHT generates them.
+Visual Studio does not have this problem.
+The code will still compile, but Rider will still show the accessed fields as errors.
 ====
 
 == Examples
@@ -73,4 +101,5 @@ Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
 Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
 Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
 BlueprintReadWrite=(Class="AFGSchematicManager", Property="mPurchasedSchematics")
+BlueprintCallable=(Class="IFGDismantleInterface", Function="Dismantle")
 ----

@@ -265,7 +265,7 @@ We are already in contact with CSS about this, and they will be pushing an updat
 Keep this in mind while updating your mods to SML3. Issues with saves are likely not your fault.
 ======================================================
 
-The rough process of updating your mod to SML3.0 is described in the docs here: https://docs.ficsit.app/satisfactory-modding/latest/Development/UpdatingFromOld.html
+The rough process of updating your mod to SML3.0 is described in the docs here: https://docs.ficsit.app/satisfactory-modding/latest/Development/UpdatingFromSml2.html
 
 Below, you can find the major changes in SML v3.0.0 as described by Archengius:
 

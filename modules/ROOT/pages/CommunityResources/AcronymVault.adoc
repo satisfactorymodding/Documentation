@@ -77,6 +77,10 @@ designed to manage and control multiple satisfactory dedicated server instances.
 Its public source code can be found on
 https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
+=== Too Many Acronyms (TMA)
+
+Used to summarize the https://discord.com/channels/555424930502541343/555516979260293132/1034938314018525275[abundance] of Satisfactory Modding acronyms.
+
 == Outdated Acronyms
 
 These acronyms, for one reason or another, are no longer in use.

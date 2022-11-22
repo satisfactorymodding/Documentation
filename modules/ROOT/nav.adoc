@@ -39,6 +39,7 @@
 *** xref:Development/UnrealEngine/UObject.adoc[UObject]
 *** xref:Development/UnrealEngine/Editor/index.adoc[Unreal Editor]
 **** xref:Development/UnrealEngine/Editor/MainWindow.adoc[Main Window]
+*** xref:Development/UnrealEngine/CoreRedirect.adoc[Core Redirects]
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
@@ -70,7 +71,7 @@
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
-** xref:Development/UpdatingFromOld.adoc[Updating from SML 2.2.1]
+** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]

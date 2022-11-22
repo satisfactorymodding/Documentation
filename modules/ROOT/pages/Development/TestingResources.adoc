@@ -55,6 +55,7 @@ not a physical one, but in Windows set it to UK keyboard layout.
 On some other keyboard layouts, F2 works instead.
 If you are having trouble opening the console,
 you can edit the settings in Satisfactory's `Input.ini` file
+(found at `%appdata%\Local\FactoryGame\Saved\Config\WindowsNoEditor\Input.ini`)
 to change the console key to another key of your choice.
 ====
 

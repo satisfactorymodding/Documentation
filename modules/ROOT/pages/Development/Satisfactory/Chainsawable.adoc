@@ -21,9 +21,15 @@ to remove all of these markers, restoring foliage to its original state.
 
 == Make Things Chainsawable
 
-See
-https://discord.com/channels/555424930502541343/555515791592652823/779248979816218635[this message chain on the Discord]
-for how to make custom foliage interact with the chainsaw.
+To make custom foliage interact with the chainsaw,
+you need to the `FGFoliageIdentifier_Chainsawable` identifier to an `FGFoliage Resource User Data`
+entry in the Asset User Data of the foliage's static mesh.
+
+image:Satisfactory/Chainsawable/StaticMesh_AssetUserData_1.png[Static Mesh Asset User Data Field]
+
+image:Satisfactory/Chainsawable/StaticMesh_AssetUserData_2.png[Add Chainsawable Identifier]
+
+This process was explained by Ben in https://discord.com/channels/555424930502541343/555515791592652823/779248979816218635[this message chain on the Discord].
 
 == Make a Chainsaw
 
