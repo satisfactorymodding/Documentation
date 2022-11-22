@@ -67,6 +67,7 @@
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 
+** xref:Development/Localization.adoc[Localizing Mods]
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
