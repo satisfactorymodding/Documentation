@@ -20,6 +20,9 @@ First identify the package, or assets, that needs to be moved via the redirect.
 
 You will need to create a new file, `YourModReference/Config/Engine.ini`, to hold the core redirects.
 
+The process for creating this file can be found
+xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_modify_packaging_settings[here].
+
 ==== Example: Changed Mod Reference
 
 An example use case for core redirects is if a mod has changed mod reference,
