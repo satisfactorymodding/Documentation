@@ -52,6 +52,10 @@ SMM is only responsible for downloading the mods - it has no presence in a runni
 Its public source code can be found on
 https://github.com/satisfactorymodding/SatisfactoryModManager[GitHub].
 
+=== Satisfactory Modding Documentation (SMD)
+
+The documentation you're currently looking at!
+
 === Satisfactory Save Editor (SSE)
 
 This name, and acronym, has been claimed by a number of save editor tools. It is most often used when referring to Goz3rr's editor
