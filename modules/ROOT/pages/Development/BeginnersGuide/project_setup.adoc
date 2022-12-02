@@ -260,10 +260,9 @@ Find out more about how to launch the game quickly for testing on the
 xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
 ====
 
-Right now you should see three items in a searchable list -
-`Example Mod (ExampleMod)`, `Satisfactory Mod Loader (SML)`,
-and `SML Editor (SMLEditor)`.
-This is the list of all mods (and modding editor plugins) present in your project.
+Right now you should see two items in a searchable list -
+`Example Mod (ExampleMod)` and `Satisfactory Mod Loader (SML)`.
+This is the list of all mods present in your project.
 They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
