@@ -116,6 +116,10 @@ To summarize, the format is `Major.Minor.Patch`
 {blank} +
 {blank} +
 As a rule of thumb, version `1.0.0` should be used for the first public release of your mod.
+If you were to use a version number with a major version of 0, such as `0.1.0`,
+then then the typical `^` range specifier explained below in the Plugins section would
+https://nodesource.com/blog/semver-tilde-and-caret/#caretmajorzero[behave counter-intuitively],
+so you should try to avoid this.
 
 * When you release bugfixes, you should increment the Patch version, for example `1.0.1`.
 * When you release changes that don't break how other mods interact with your mod,
@@ -163,7 +167,7 @@ You can use https://jubianchi.github.io/semver-check/[this site] to test if a ve
 {blank} +
 We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),
 and any number in the minor version field (the `2` in `1.2.3`).
-However, it https://nodesource.com/blog/semver-tilde-and-caret/[functions differently]
+However, it https://nodesource.com/blog/semver-tilde-and-caret/#caretmajorzero[functions differently]
 when the major version (the `1` in `1.2.3`) is `0`,
 so be sure that your major version is at least `1` to avoid this.
 {blank} +
