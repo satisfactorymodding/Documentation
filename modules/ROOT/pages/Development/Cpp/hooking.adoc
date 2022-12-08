@@ -87,12 +87,6 @@ Note that the Hook function is a std::function, which means that it can be any t
 If your mod is not {cpp} only, meaning it is Blueprint **and** {cpp}, you should surround your hook functions with `#if !WITH_EDITOR`, remembering to place `#endif` after the end of your hook function. Failure to do so may prevent the Unreal Editor from opening.
 ====
 
-[NOTE]
-====
-For "after" hooks, add the `_AFTER` postfix to the macro names.
-But also be aware that the hook function signature changes accordingly!
-====
-
 === Type: SUBSCRIBE_METHOD
 
 The `SUBSCRIBE_METHOD`-Macro attaches a hook to the given function passed by pointer.
@@ -167,6 +161,35 @@ void registerHooks() {
 	c->MemberFunction(1); // hook does not get called
 }
 ----
+
+
+=== Special Cases
+
+Depending on the type of function you are attempting to hook and what you want to do with it, you may need to make some adjustments.
+
+==== Const Functions
+
+When hooking a `const` function you will need to prefix the "self" pointer with `const`. 
+[horizontal]
+*Non-Const Function*:: `(auto& scope, SomeClass* self)`
+*Const Function*:: 	`(auto& scope, *const* SomeClass* self)`
+
+==== Hooking AFTER
+
+For "after" hooks, add the `_AFTER` postfix to the macro names.
+
+Be aware that the hook function signature changes accordingly and will no longer need the "scope":
+[horizontal]
+*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self)`
+*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, [](SomeClass* self)`
+
+==== FORCEINLINE Functions
+
+Functions that are `FORCEINLINE` cannot be hooked.
+
+==== UFUNCTIONs
+
+A function being a `UFUNCTION` or not makes no difference on whether it can be hooked.
 
 == Blueprint-Hooking
 
