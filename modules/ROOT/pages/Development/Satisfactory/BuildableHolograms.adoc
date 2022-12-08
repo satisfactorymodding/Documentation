@@ -25,6 +25,38 @@ Most base-game hologram headers can be found in `Source/FactoryGame/Public/Holog
 
 This docs page assumes your hologram class is called `AMyModHologram`.
 
+== Hologram Steps
+
+Hologram code becomes active the moment the buildable is picked from the build menu.
+It will start by checking for valid hits, snaps, and any other conditions or tests it's configured for.
+This is running constantly but can be configured as discussed below.
+
+Each time the user "executes" aka clicks with an active hologram a function is called to step the hologram forward.
+The base function is `bool FGHologram::DoMultiStepPlacement(bool isInputFromARelease)`.
+
+As the inline documentation states when this function returns `true`, the build is complete.
+To create a multi-step hologram like belts, beams, wires, etc you need to internally track a state.
+It may be wise to create an enum to track your state and make your code readable, like in FGBeamHologram.
+When each click occurs, store the important information, advance your internal state, and return false.
+Once you have all the information needed, with that last execution of the function return true.
+If you have all the information with the first click simply return true, in fact, depending on your base class you may not need to overwrite this function.
+
+Provide all the information needed to the buildable through the appropriate functions for the creation and you're good to go.
+Below is pseudocode of what a 5-step hologram might look like.
+
+```cpp
+AMyModHologram::iMaxStepCount = 5;
+
+void AMyModHologram::DoMultiStepPlacement(bool isInputFromARelease)
+{
+	myPointArray[iCurrentStep] = HitResult.GetLocation();
+	
+	iCurrentStep++;
+	
+	return iCurrentStep == iMaxStepCount;
+}
+```
+
 == Build Modes
 
 Build Modes are the different options users can select from while constructing a building.
@@ -61,6 +93,7 @@ virtual void OnBuildModeChanged();
 
 In the below example, we have our custom hologram add an additional build mode `mNewBuildmode`
 to the supported build modes it inherited from its superclass.
+The buildmode is a data object that contains a string and localizaiton reference, not any actual logic.
 
 ```cpp
 void AMyModHologram::GetSupportedBuildModes_Implementation(TArray<TSubclassOf<UFGHologramBuildModeDescriptor>>& out_buildmodes) const
@@ -68,7 +101,9 @@ void AMyModHologram::GetSupportedBuildModes_Implementation(TArray<TSubclassOf<UF
 	Super::GetSupportedBuildModes_Implementation(out_buildmodes);
 
 	if(mNewBuildmode)
+	{
 		out_buildmodes.AddUnique(mNewBuildmode);
+	}
 }
 ```
 
@@ -81,32 +116,28 @@ and why AddUnique is used.
 ====
 
 BuildModes are usually changed by the user pressing the keybinding when the buildgun is out (default `R`).
-However, we can also do this programmatically
-via `SetBuildMode(MyBuildMode)`
-or `CycleBuildMode(1)` (next) / `CycleBuildMode(-1)` (previous). 
+However, we can also do this programmatically via `SetBuildMode(mNewBuildmode)` or `CycleBuildMode(1)` (next) / `CycleBuildMode(-1)` (previous). 
 
-We may want to change our hologram's behavior depending on which build mode is active.
-There are a few ways to handle this.
+We may want to change our hologram's behavior depending on which build mode is active. There are a few ways to detect this.
+The first is to use the function `IsCurrentBuildMode(mNewBuildmode)`, to test if the current build mode is mNewBuildmode.
+We can also get the active build mode via `GetCurrentBuildMode()` and compare it to mNewBuildmode.
 
-The first is to have the function `IsCurrentBuildMode(MyBuildMode)`,
-which returns `true` if the current build mode is MyBuildMode.
-We can also get the active build mode via `GetCurrentBuildMode()`
-and compare it using equality checks or some other logic.
 In addition, we can also perform actions when the build mode has been changed.
-
-For example, the below snippet uses `OnBuildModeChanged()` to set MyProperty in response to a changed build mode.
+For example, the below snippet uses `OnBuildModeChanged()` to set MyFloat in response to a changed build mode.
 
 ```cpp
 void AMyModHologram::OnBuildModeChanged()
 {
     Super::OnBuildModeChanged();
 
-    MyProperty = IsCurrentBuildMode(MyBuildMode);
+	if(IsCurrentBuildMode(MyBuildMode))
+	{
+        MyFloat = 0.0f;
+	}
 }
 ```
 
-If you want to re-use the build mode of an existing base-game buildable,
-it's usually found as a field in that buildable's hologram.
+If you want to re-use the build mode reference, it's usually found as a field on the buildable's hologram.
 In this case, your hologram should probably inherit from the class that owns that build mode.
 Otherwise, you can read the reference from the class' CDO at hologram BeginPlay/Construction.
 
@@ -140,13 +171,16 @@ which can only be placed over your specific supports `UMyModSpecificPillarSuppor
 To do so, you could override the method as following:
 
 ```cpp
-bool UMyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) const {
+bool UMyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) const
+{
   AActor* Actor = hitResult.GetActor();
 
   // Try casting to our specific Buildable class. 
   const UMyModSpecificPillarSupport* = Cast<UMyModSpecificPillarSupport>(Actor);
+  
   // If the cast result is valid, it means we're aiming a UMyModSpecificPillarSupport.
-  if (IsValid(UMyModSpecificPillarSupport)) {
+  if (IsValid(UMyModSpecificPillarSupport))
+  {
     // This is the place where we could check more information,
     // such as height, checking fields on the support to see if one was already bound, etc.
     // For the sake of simplicity, we simply allow the placement.
@@ -195,8 +229,10 @@ Whenever it snaps, the Glass Window should be locked to the wall without allowin
 AFGBuildableWall* Snapped = nullptr;
 
 // In the cpp file, override the snapping method:
-bool UMyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult) {
+bool UMyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult)
+{
   const auto Actor = hitResult.Actor.Get();
+  
   if (!IsValid(Actor)) {
     // We moved away from our previous snapping, so clear our tracker
     Snapped = nullptr;
