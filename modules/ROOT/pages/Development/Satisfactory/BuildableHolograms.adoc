@@ -29,12 +29,12 @@ This docs page assumes your hologram class is called `AMyModHologram`.
 
 Hologram code becomes active the moment the buildable is picked from the build menu.
 It will start by checking for valid hits, snaps, and any other conditions or tests it's configured for.
-This is running constantly but can be configured as discussed below.
+These checks will run constantly, but can be configured, as discussed below.
 
-Each time the user "executes" aka clicks with an active hologram a function is called to step the hologram forward.
+Each time the user "executes" (aka. clicks) with an active hologram a function is called to step the hologram forward.
 The base function is `bool FGHologram::DoMultiStepPlacement(bool isInputFromARelease)`.
 
-As the inline documentation states when this function returns `true`, the build is complete.
+As the inline documentation states the build is complete when this function returns `true`.
 To create a multi-step hologram like belts, beams, wires, etc you need to internally track a state.
 It may be wise to create an enum to track your state and make your code readable, like in FGBeamHologram.
 When each click occurs, store the important information, advance your internal state, and return false.
@@ -42,7 +42,8 @@ Once you have all the information needed, with that last execution of the functi
 If you have all the information with the first click simply return true, in fact, depending on your base class you may not need to overwrite this function.
 
 Provide all the information needed to the buildable through the appropriate functions for the creation and you're good to go.
-Below is pseudocode of what a 5-step hologram might look like.
+Below is pseudocode of what a 5-step hologram might look like,
+using an integer instead of an enum for brevity's sake.
 
 ```cpp
 AMyModHologram::iMaxStepCount = 5;
@@ -93,7 +94,7 @@ virtual void OnBuildModeChanged();
 
 In the below example, we have our custom hologram add an additional build mode `mNewBuildmode`
 to the supported build modes it inherited from its superclass.
-The buildmode is a data object that contains a string and localizaiton reference, not any actual logic.
+The buildmode is a data object that contains a string and localization reference, not any actual logic.
 
 ```cpp
 void AMyModHologram::GetSupportedBuildModes_Implementation(TArray<TSubclassOf<UFGHologramBuildModeDescriptor>>& out_buildmodes) const
