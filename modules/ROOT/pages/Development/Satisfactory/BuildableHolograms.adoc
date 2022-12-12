@@ -129,11 +129,11 @@ For example, the below snippet uses `OnBuildModeChanged()` to set MyFloat in res
 ```cpp
 void AMyModHologram::OnBuildModeChanged()
 {
-    Super::OnBuildModeChanged();
+	Super::OnBuildModeChanged();
 
 	if(IsCurrentBuildMode(MyBuildMode))
 	{
-        MyFloat = 0.0f;
+		MyFloat = 0.0f;
 	}
 }
 ```
@@ -174,21 +174,21 @@ To do so, you could override the method as following:
 ```cpp
 bool UMyModSpecificPillarHologram::IsValidHitResult(const FHitResult& hitResult) const
 {
-  AActor* Actor = hitResult.GetActor();
+	AActor* Actor = hitResult.GetActor();
 
-  // Try casting to our specific Buildable class. 
-  const UMyModSpecificPillarSupport* = Cast<UMyModSpecificPillarSupport>(Actor);
-  
-  // If the cast result is valid, it means we're aiming a UMyModSpecificPillarSupport.
-  if (IsValid(UMyModSpecificPillarSupport))
-  {
-    // This is the place where we could check more information,
-    // such as height, checking fields on the support to see if one was already bound, etc.
-    // For the sake of simplicity, we simply allow the placement.
-    return true;
-  }
+	// Try casting to our specific Buildable class. 
+	const UMyModSpecificPillarSupport* = Cast<UMyModSpecificPillarSupport>(Actor);
 	
-  return false;
+	// If the cast result is valid, it means we're aiming a UMyModSpecificPillarSupport.
+	if (IsValid(UMyModSpecificPillarSupport))
+	{
+		// This is the place where we could check more information,
+		// such as height, checking fields on the support to see if one was already bound, etc.
+		// For the sake of simplicity, we simply allow the placement.
+		return true;
+	}
+
+	return false;
 }
 ```
 
@@ -232,25 +232,27 @@ AFGBuildableWall* Snapped = nullptr;
 // In the cpp file, override the snapping method:
 bool UMyModGlassWindowHologram::TrySnapToActor(const FHitResult& hitResult)
 {
-  const auto Actor = hitResult.Actor.Get();
-  
-  if (!IsValid(Actor)) {
-    // We moved away from our previous snapping, so clear our tracker
-    Snapped = nullptr;
-    return false;
-  }
+	const auto Actor = hitResult.Actor.Get();
+	
+	if (!IsValid(Actor))
+	{
+		// We moved away from our previous snapping, so clear our tracker
+		Snapped = nullptr;
+		return false;
+	}
 
-  if (Actor->IsA<AFGBuildableWall>()) {
-    Snapped = Cast<AFGBuildableWall>(Actor);
-    // Here you can add your custom snapping logic. 
-    // We are using `SetActorLocationAndRotation` which is better for performance than setting single properties.
-    SetActorLocationAndRotation(Actor->GetActorLocation(), Actor->GetActorRotation());
-    // We snapped, so return true to disable following updates
-    return true;
-  }
+	if (Actor->IsA<AFGBuildableWall>())
+	{
+		Snapped = Cast<AFGBuildableWall>(Actor);
+		// Here you can add your custom snapping logic. 
+		// We are using `SetActorLocationAndRotation` which is better for performance than setting single properties.
+		SetActorLocationAndRotation(Actor->GetActorLocation(), Actor->GetActorRotation());
+		// We snapped, so return true to disable following updates
+		return true;
+	}
 
-  Snapped = nullptr;
-  return false;
+	Snapped = nullptr;
+	return false;
 }
 ```
 
@@ -285,11 +287,11 @@ This time, you should still see the Glass Window hologram, highlighted in red.
 
 ```cpp
 void UMyModGlassWindowHologram::CheckValidPlacement() {
-  if (!IsValid(Snapped) || !Snapped->IsA<AFGBuildableWall>()) {
-    AddConstructDisqualifier(UFGCDMustSnapWall::StaticClass());
-  }
+	if (!IsValid(Snapped) || !Snapped->IsA<AFGBuildableWall>()) {
+		AddConstructDisqualifier(UFGCDMustSnapWall::StaticClass());
+	}
 	
-  Super::CheckValidPlacement();
+	Super::CheckValidPlacement();
 }
 ```
 
@@ -310,11 +312,11 @@ It's possible to define your custom disqualifiers too, like:
 
 UCLASS()
 class UMyModCDMustSnapBeautifulWall : public UFGConstructDisqualifier {
-  GENERATED_BODY()
+	GENERATED_BODY()
 
-  UMyModCDMustSnapBeautifulWall() {
-    mDisqfualifyingText = LOCTEXT( "UMyModCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
-  }
+	UMyModCDMustSnapBeautifulWall() {
+		mDisqfualifyingText = LOCTEXT( "UMyModCDMustSnapBeautifulWall", "Must snap to a beautiful wall!" );
+	}
 };
 
 #undef LOCTEXT_NAMESPACE
@@ -471,31 +473,31 @@ in the `ConfigureComponents` step.
 ```cpp
 AActor* AMyModHologram::GetUpgradedActor() const
 {
-  // return the target actor to hide them ingame!
-  return mUpgradedActor;
+	// return the target actor to hide them ingame!
+	return mUpgradedActor;
 }
 
 bool AMyModHologram::TryUpgrade(const FHitResult& hitResult)
 {
-  if(hitResult.GetActor())
-  {
-    const TSubclassOf<AActor> ActorClass = GetActorClass();
+	if(hitResult.GetActor())
+	{
+		const TSubclassOf<AActor> ActorClass = GetActorClass();
 
-    // we check here that we don't try to upgrade the same Actor. the class should be different!
-    if(hitResult.GetActor()->GetClass() != ActorClass)
-    {
-      // IMPORTANT we need to set the location from our hologram to the target Actor
-      SetActorTransform(hitResult.GetActor()->GetActorTransform());
+		// we check here that we don't try to upgrade the same Actor. the class should be different!
+		if(hitResult.GetActor()->GetClass() != ActorClass)
+		{
+			// IMPORTANT we need to set the location from our hologram to the target Actor
+			SetActorTransform(hitResult.GetActor()->GetActorTransform());
 
-      // set the UpgradedActor and return true if it is valid (should be only make sure)
-      mUpgradedActor = hitResult.GetActor();
+			// set the UpgradedActor and return true if it is valid (should be only make sure)
+			mUpgradedActor = hitResult.GetActor();
 
-      return mUpgradedActor != nullptr;
-    }
-  }
+			return mUpgradedActor != nullptr;
+		}
+	}
 
-  // otherwise the UpgradedActor to nullptr
-  mUpgradedActor = nullptr;
-  return Super::TryUpgrade(hitResult);
+	// otherwise the UpgradedActor to nullptr
+	mUpgradedActor = nullptr;
+	return Super::TryUpgrade(hitResult);
 }
 ```
