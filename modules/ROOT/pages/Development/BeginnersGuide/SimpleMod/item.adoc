@@ -31,7 +31,7 @@ image:BeginnersGuide/simpleMod/CreateDocItem.gif[image]
 
 == Describe the Item
 
-Double click to open your new descriptor to open it, and you should see the default settings of the classes' attributes.
+Double click your new descriptor to open it, and you should see the default settings of the classes' attributes.
 If not, click on the "Class Defaults" button in the toolbar and they should appear in the Details browser.
 
 Let's go through each attribute and set up our item's properties.
