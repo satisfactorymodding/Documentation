@@ -116,6 +116,10 @@ To summarize, the format is `Major.Minor.Patch`
 {blank} +
 {blank} +
 As a rule of thumb, version `1.0.0` should be used for the first public release of your mod.
+If you were to use a version number with a major version of 0, such as `0.1.0`,
+then then the typical `^` range specifier explained below in the Plugins section would
+https://nodesource.com/blog/semver-tilde-and-caret/#caretmajorzero[behave counter-intuitively],
+so you should try to avoid this.
 
 * When you release bugfixes, you should increment the Patch version, for example `1.0.1`.
 * When you release changes that don't break how other mods interact with your mod,
@@ -129,7 +133,7 @@ Note that `1.10.0` is a valid semver version,
 `2.0.0` does not necessarily have to come after `1.9.0`.
 {blank} +
 {blank} +
-This field is required, and should exactly match the `VersionName` field.
+This field is required, and should exactly match the `VersionName` field. The editor will prevent you from packaging your mod if an invalid value is specified.
 
 |Plugins
 | Additional functionality has been added to the regular uplugin Plugins array. 
@@ -163,7 +167,7 @@ You can use https://jubianchi.github.io/semver-check/[this site] to test if a ve
 {blank} +
 We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),
 and any number in the minor version field (the `2` in `1.2.3`).
-However, it https://nodesource.com/blog/semver-tilde-and-caret/[functions differently]
+However, it https://nodesource.com/blog/semver-tilde-and-caret/#caretmajorzero[functions differently]
 when the major version (the `1` in `1.2.3`) is `0`,
 so be sure that your major version is at least `1` to avoid this.
 {blank} +
@@ -208,7 +212,7 @@ mod installed to be able to join hosts.
 See the Plugins SemVersion item above for the format for this field.
 {blank} +
 {blank} +
-This field is optional, and defaults to your SemVersion if unspecified.
+This field is optional, and defaults to your SemVersion if unspecified. If you aren't using this behavior, you should exclude the field.
 
 |AcceptsAnyRemoteVersion
 | When `true`, when a multiplayer client joins,
@@ -216,7 +220,7 @@ the check for if both host and client have the mod is installed is skipped.
 You can use this to create client-side or server-side only mods.
 {blank} +
 {blank} +
-This field is optional, and defaults to `false` if unspecified.
+This field is optional, and defaults to `false` if unspecified. If you aren't using this behavior, you should exclude the field.
 
 |===
 
@@ -262,19 +266,15 @@ Example Blueprint mod .uplugin:
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
-	"RemoteVersionRange": "^0.2.1",
-	"AcceptsAnyRemoteVersion": false,
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.3.0",
-			"Optional": false,
+			"SemVersion": "^3.4.1",
 			"Enabled": true
 		},
 		{
 			"Name": "DependencyMod",
 			"SemVersion": "^1.3.0",
-			"Optional": false,
 			"Enabled": true
 		}
 	]
@@ -283,7 +283,7 @@ Example Blueprint mod .uplugin:
 +++ </div></details> +++
 
 +++ <details><summary> +++
-Example {cpp}/Blueprint mod .uplugin:
+Example {cpp} and Blueprint mod .uplugin:
 +++ </summary><div> +++
 ....
 {
@@ -303,8 +303,6 @@ Example {cpp}/Blueprint mod .uplugin:
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
-	"RemoteVersionRange": "^0.2.1",
-	"AcceptsAnyRemoteVersion": false,
 	"Modules": [
 		{
 			"Name": "ExampleMod",
@@ -315,14 +313,12 @@ Example {cpp}/Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.3.0",
-			"Optional": false,
+			"SemVersion": "^3.4.1",
 			"Enabled": true
 		},
 		{
 			"Name": "DependencyMod",
 			"SemVersion": "^1.3.0",
-			"Optional": false,
 			"Enabled": true
 		}
 	]

@@ -29,9 +29,14 @@ The customizer will now interact with your object, which is done via the reflect
 
 == Behind The Scenes
 
-The Update 5 Customizer changes provided a new and unified way of setting properties for customization. Every standard material is monitoring what's know as "Per Instance Custom Data", this is data that's provided to the instancing system to allow each and every object to receive unique parameters but still render in a fast instanced manner. This means the system is two disconnected parts working in sync. Code will set the parameters, materials and other objects will read them.
+The Update 5 Customizer changes provided a new and unified way of setting properties for customization.
+Every standard material is monitoring what's know as "Per Instance Custom Data", this is data that's provided to the instancing system to allow each and every object to receive unique parameters but still render in a fast instanced manner.
+This means the system is two disconnected parts working in sync. Code will set the parameters, materials and other objects will read them.
 
-Coffee Stain Studios has an intended layout for the parameters found on objects, this is what the customizer is setting on objects and the materials are responding to. Below is the currently known mapping of these parameters:
+Coffee Stain Studios has an intended layout for the parameters found on objects, this is what the customizer is setting on objects and the materials are responding to.
+Anything marked with a * is not currently set by the customizer, but is guaranteed to exist. Higher indices may simply not be available.
+Lighting Colour for example is not set by a customizer but is used by some materials.
+Below is the currently known mapping of these parameters:
 
 - `0` PrimaryPaint ( R )
 - `1` PrimaryPaint ( G )
@@ -42,9 +47,14 @@ Coffee Stain Studios has an intended layout for the parameters found on objects,
 - `6` HasPower
 - `7` Pattern ID ( Floor Markings )
 - `8` Material ID ( Floor Markings )
-- `9` ???
-- `10` ???
-- `11` Light Colour ( R )
-- `12` Light Colour ( G )
-- `13` Light Colour ( B )
+- `9` Metallic ( No usages known )
+- `10` Roughness ( No usages known )
+- `11` *Light Colour ( R )
+- `12` *Light Colour ( G )
+- `13` *Light Colour ( B )
+- `14` *Available
+- `15` *Available
+- `16` *Available
+- `17` *Available
+- `18` *Available
 

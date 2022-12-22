@@ -73,6 +73,16 @@ The https://github.com/AnthorNet/SC-ProductionPlanner[Production Planner]
 and https://github.com/AnthorNet/SC-InteractiveMap[Interactive Map]
 portions each have their own GitHub repositories.
 
+=== Satisfactory Calculator BluePrints (SCBP)
+
+link:#_satisfactory_calculator_and_interactive_map_scim[SCIM]
+also features a https://satisfactory-calculator.com/en/blueprints[Blueprint Repository]
+which allows sharing Blueprints created by the Blueprint Designer introduced in Update 7. These blueprints can be downloaded and placed in the
+https://satisfactory.fandom.com/wiki/Blueprint_Designer#Blueprint_Files[respective folder]
+to be used in-game.
+
+A separate https://satisfactory-calculator.com/en/megaprints[Megaprints Repository] is also available which contains larger blueprints that can only be created and used within SCIM.
+
 === Satisfactory Server Manager (SSM)
 
 Satisfactory Server Manager is a webpage
