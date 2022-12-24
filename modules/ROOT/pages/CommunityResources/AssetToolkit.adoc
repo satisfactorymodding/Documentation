@@ -39,16 +39,23 @@ for more info.
 The Asset Toolkit consists of two plugins,
 a dumper, to be installed in the game,
 and an asset generator, to be installed in the editor.
-Both are contained in the https://github.com/Archengius/UEAssetToolkit[Asset Toolkit repository].
+Both are contained in the https://github.com/mircearoata/UEAssetToolkit/tree/dev[Asset Toolkit repository].
 Download a zip of the repository and extract somewhere,
 or clone it if desired.
+
+[NOTE]
+====
+Note that the link above points to the *dev branch of Mircea's fork* of the https://github.com/Archengius/UEAssetToolkit[original project].
+Said fork is the one that the https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L178[CI scripts]
+use to semi-automatically generate the starter project, and as such is usually kept more up to date.
+====
 
 === Installing the Asset Generator
 
 Take the `AssetGenerator` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-This plugin is only for use from the editor
+This plugin is only for use from the editor side.
 
 === Installing the Asset Dumper
 
@@ -62,6 +69,20 @@ This plugin will be built as a mod to install in the game.
 After putting both plugins in your project's Plugins folder,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
 and build for Development Editor and Shipping.
+
+==== Troubleshooting Compile Errors
+
+- Make sure you xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerated Visual Studio project files before building].
+- Make sure that you have updated to the latest version of the plugins from repository linked link:#_installation[above].
+- If you encounter errors in `MaterialGenerator.h` about the Material Graph being undefined,
+  try adding the following imports to the top of the file:
+[source,cpp]
+----
+#include "MaterialGraph/MaterialGraph.h"
+#include "MaterialEditingLibrary.h"
+----
+- If you get errors about unresolved external modules, try deleting the project's `Intermediates` folder, regenerating project files, and building again.
+- Ask for help on the discord.
 
 === Building the Asset Dumper
 
@@ -103,7 +124,9 @@ The game window itself will never open since the `-nullrhi` argument was used.
 After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
 This will take a bit; go pet a lizard doggo to pass the time.
 
-You can expect a full dump to take up about 3 GB.
+You'll know it's finished when the command prompt window that was spawned closes.
+
+You can expect a full dump to take up about 8.5 GB.
 You can delete it later after you have imported the assets.
 
 Once it completes, the console window and game should close,
@@ -118,14 +141,24 @@ https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/
 or contact us on the discord for more info.
 ====
 
+=== Troubleshooting Asset Dumping Crashes
+
+Make sure that you have updated to the latest version of the Asset Dumper built from the repository linked link:#_installation[above].
+
+If you're still encountering issues, ask for help on the discord.
+
 === Importing Dumped Assets to the Editor
 
-You can expect a Content folder with all assets imported to take up about 2 GB.
+Before using the Asset Generator, you should move your existing project Content folder to another location.
+This serves two purposes - one, giving you a copy of the files to return to in case the asset generation does not succeed.
+Two, moving the folder means that the asset generator is sure to re-generate every asset,
+which ensures any possible asset generator crashes aren't caused by it trying to update the existing files.
+
+You can expect a Content folder with all assets imported to take up about 7 GB.
 For comparison, a Content folder with placeholders takes up 366 MB.
 
-Both an in-editor UI and
-https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
-are available for the Asset Generator,
+Both a https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
+and and an in-editor UI are available for the Asset Generator,
 but at the time of writing, the in-editor UI is unstable
 as it has various issues related to Materials.
 As such, the commandlet should be used instead.
@@ -194,7 +227,36 @@ CleanupTempFiles
 This will take a considerable amount of time.
 Experts advise locating and petting a lizard doggo while you wait.
 
+You'll know it's finished when your powershell window closes or you are prompted to enter another command.
+
 After you're done, your project's content folder should be around 2 GB.
+
+=== Troubleshooting Assets Generation Crashes
+
+If the commandlet crashes, there are a few approaches you can take to troubleshoot it.
+
+Make sure that you have updated to the latest version of the Asset Generator built from the repository linked link:#_installation[above].
+
+The first step in troubleshooting is to see what asset the generator was processing before it crashed.
+For this to be tracked, you must change the LogAssetGenerator logging category detail level to `VeryVerbose`.
+To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
+and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
+Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
+as the asset generator is running - the process is called `UE4Editor-Cmd.exe` in the list.
+Now the package being processed will be visible as a log message inside the visual studio output section.
+After running the asset generator again, next time it crashes, the debugger will catch it as a breakpoint,
+and you can look at the log messages to locate the troublesome asset in your dumped files, delete it, then re-run the asset generator.
+Note that the debugger can sometimes stop for breakpoints on non-crash errors - after reviewing the log, try pressing Continue to see if it recovers cleanly and continues.
+
+If you're still encountering issues, ask for help on the discord.
+
+[NOTE]
+====
+It is quite possible for asset generation to crash due to your computer running out of memory, especially if you have the debugger attached.
+You should restart your computer to ensure that as much memory is available to the asset generator as possible.
+After restarting, run the generator again. It will keep most of the files generated from the previous run,
+making slightly more progress until the next out-of-memory crash.
+====
 
 == Bring in AngryBeaver's Recreated Assets
 
@@ -242,8 +304,12 @@ Commandlet name is AssetGenerator
 
 === Using the UI to Dump/Generate
 
-[WARNING]
+[IMPORTANT]
 ====
+If you are having issues using the command line versions of the Asset Toolkit,
+trying to use the UI usually won't fix them!
+Ask for help on the discord.
+
 There are currently numerous crashing issues when using the UI of the Asset Toolkit plugins as opposed to the command line interface.
 Unless you have a specific reason for using the UI,
 you should probably use the command line directions above to dump and generate assets instead.
