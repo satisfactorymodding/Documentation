@@ -86,7 +86,8 @@ public class <mod_reference> : ModuleRules
             "GameplayTasks",
             "AnimGraphRuntime",
             "Slate", "SlateCore",
-            "Json"
+            "Json",
+	    "AbstractInstance"
             });
 
 
