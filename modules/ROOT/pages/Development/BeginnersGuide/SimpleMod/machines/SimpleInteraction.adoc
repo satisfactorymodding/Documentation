@@ -7,7 +7,7 @@ We'll use it to read the current data and to reset the counters.
 
 The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
 This works like every other regular UMG widget, so be sure you're familiar with how they work.
-In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Rest".
+In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
 
 The FGInteractWidget has the `M Interact Object` variable which represents the object that the player interacted with (aka. our simple machine).
 You can cast it to the simple machine so we can access the counters.
