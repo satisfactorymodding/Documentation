@@ -5,9 +5,9 @@ We'll use it to read the current data and to reset the counters.
 
 == The Widget
 
-The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `FGInteractWidget`.
+The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
 This works like every other regular UMG widget, so be sure you're familiar with how they work.
-In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Rest".
+In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
 
 The FGInteractWidget has the `M Interact Object` variable which represents the object that the player interacted with (aka. our simple machine).
 You can cast it to the simple machine so we can access the counters.
@@ -28,16 +28,12 @@ To fix that you'll need to change some of the class default values on the widget
 
 * {blank}
 +
-M Use Keyboard::
-  Activate this so keystrokes get used to trigger events in our widget. (`Esc` to exit the widget)
+Block Movement::
+  Activate this so the widget consumes keystrokes, meaning it can use them to trigger events. An example keystroke would be pressing `Esc` to exit the widget.
 * {blank}
 +
-M Use Mouse::
-  Activate this so the mouse movements get used to actually make the mouse visible and allow click events to happen.
-* {blank}
-+
-M Capture Input::
-  Activate this so the input events don't get further used in the game. (like walking around)
+Block Mouse Look::
+  Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like On Click.
 
 == Make machine interactable
 
