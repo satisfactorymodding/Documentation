@@ -29,7 +29,7 @@ To fix that you'll need to change some of the class default values on the widget
 * {blank}
 +
 Block Movement::
-  Activate this so keystrokes get used to trigger events in our widget. (`Esc` to exit the widget)
+  Activate this so the widget consumes keystrokes, meaning it can use them to trigger events. An example keystroke would be pressing `Esc` to exit the widget.
 * {blank}
 +
 Block Mouse Look::
