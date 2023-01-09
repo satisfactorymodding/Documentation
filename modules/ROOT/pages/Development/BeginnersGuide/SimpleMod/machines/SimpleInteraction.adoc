@@ -33,7 +33,7 @@ Block Movement::
 * {blank}
 +
 Block Mouse Look::
-  Activate this so the mouse movements get used to actually make the mouse visible and allow click events to happen.
+  Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like On Click.
 
 == Make machine interactable
 
