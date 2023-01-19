@@ -77,7 +77,7 @@ If you consider using it, make sure you still have the necessary VS-{cpp} packag
 
 == Linux Dedicated Server Support (Optional)
 
-Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain installed prior to building for Linux_Shipping_Server. This can be found here: https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain installed prior to building for Linux_Shipping_Server. This can be found here: https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/[Cross-Compiling for Linux]
 
 Currently, we are on UE 4.26.2 with custom changes provided by Coffee Stain Studios. Therefore, the toolchain version required is -v17 or clang-10.0.1-based.
 
