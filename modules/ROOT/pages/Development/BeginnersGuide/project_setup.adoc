@@ -196,6 +196,14 @@ If you encounter issues during this step, consider asking for help on the Discor
 
 Now that you've built the binaries, your Editor should open without any issues.
 
+== Project Compilation - Dedicated Server Support (Optional)
+
+If desired, it is possible to build for dedicated server support. However, this is optional and not required to create a mod.
+
+For Windows Dedicated Servers, select `Shipping_Server` and `Win64` in the top toolbar, then hit `Build`.
+
+For Linux Dedicated Servers, select `Linux_Shipping_Server` and `Win32` in the top toolbar, then hit `Build`.
+
 == Open Unreal Editor
 
 The Unreal Editor allows you to create new content for the game and helps build your mod.
