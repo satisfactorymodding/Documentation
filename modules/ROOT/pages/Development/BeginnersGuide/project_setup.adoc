@@ -202,7 +202,7 @@ If desired, it is possible to build for dedicated server support. However, this 
 
 For Windows Dedicated Servers, select `Shipping_Server` and `Win64` in the top toolbar, then hit `Build`.
 
-For Linux Dedicated Servers, select `Linux_Shipping_Server` and `Win32` in the top toolbar, then hit `Build`.
+For Linux Dedicated Servers, select `Shipping_Server` and `Linux` in the top toolbar, then hit `Build`.
 
 == Open Unreal Editor
 
