@@ -174,6 +174,7 @@ Once presented with options on what to install, select:
 * Deployment Platforms
 ** Apple
 *** macOS
+** Linux (Optional, but required for Linux Dedicated Server Support)
 ** Microsoft 
 *** Windows
 **** Visual Studio 2017
