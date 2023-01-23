@@ -49,7 +49,7 @@ Make sure you use `FGBuildingDescriptor` and _not_ `FGBuildDescriptor`.
 
 == Define the Recipe
 
-In order to define the recipe, simply create an item using `FGRecipe`. Set the Ingrediants to define the build cost, and set ProducedIn to `FGBuildGun`. Set the Product to match the Desc class you just created for your buildable.
+In order to define the recipe, simply create an item using `FGRecipe`. Set the Ingrediants to define the build cost, and set ProducedIn to `FGBuildGun`. Set the Product to match the Desc class you just created for your buildable. (Reference xref:Development/BeginnersGuide/recipe.html#_create_a_recipe[Create a Recipe] for more details)
 
 That's it! You don't need to register anything else. When the recipe gets loaded, everything else also gets loaded and the buildable in the save file has soft references to the classes, and if they get loaded also the classes like our newly created buildable get loaded.
 
