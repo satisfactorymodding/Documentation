@@ -218,7 +218,7 @@ Optional: +
 Shipping_Server - x64 / Shipping_Server|Win64 - Windows Dedicated Server Support +
 Linux_Shipping_Server - Win32 / Shipping_Server|Linux - Linux Dedicated Server Support
 
-image::../../../images/BeginnersGuide/BatchBuildingSettings.png[Batch Building, align="center"]
+image:BeginnersGuide/BatchBuildingSettings.png[Batch Building, align="center"]
 
 == Open Unreal Editor
 
