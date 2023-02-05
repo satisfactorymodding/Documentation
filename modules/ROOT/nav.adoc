@@ -79,3 +79,4 @@
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
+** xref:CommunityResources/QOLMods.md[Quality of life Mods]
