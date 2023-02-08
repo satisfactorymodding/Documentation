@@ -1,0 +1,36 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Node.js",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [8000],
+
+	// Consistently name the folder so that it can be added as a git safe directory inside the container
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/SML_Documentation,type=bind",
+	"workspaceFolder": "/workspaces/SML_Documentation",
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; yarn install",
+	"postAttachCommand": "yarn serve",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	"extensions": [
+		"streetsidesoftware.code-spell-checker",
+		"asciidoctor.asciidoctor-vscode",
+		"eamodio.gitlens",
+		"DavidAnson.vscode-markdownlint",
+		"medo64.render-crlf",
+		"andrejunges.Handlebars"
+	]
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
