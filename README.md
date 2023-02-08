@@ -1,7 +1,7 @@
 # Satisfactory Modding Documentation
 
 Documentation for Satisfactory Mod Loader (SML) and Satisfactory modding.
-Master branch is live on https://docs.ficsit.app/.
+Master branch is live on <https://docs.ficsit.app/>.
 Please contact us on the
 [Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E)
 with questions and suggestions, or contribute via PRs (see below).
