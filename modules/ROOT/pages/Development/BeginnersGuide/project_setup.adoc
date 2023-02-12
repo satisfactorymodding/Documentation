@@ -211,7 +211,7 @@ It is required to compile the Development_Editor and at least one Shipping build
 Required: +
 Development_Editor - x64 / Development_Editor|Win64 - This is for using the Unreal Engine Editor for developing mods. +
 
-Optional: However, at least one of these is required to test your mod as well as release to (link:https://ficsit.app)[Satisfactory Modding Repository]. +
+Optional: However, at least one of these is required to test your mod as well as release to link:https://ficsit.app[Satisfactory Modding Repository]. +
 Shipping - x64 / Shipping|Win64 - Client Support.
 Shipping_Server - x64 / Shipping_Server|Win64 - Windows Dedicated Server Support +
 Linux_Shipping_Server - Win32 / Shipping_Server|Linux - Linux Dedicated Server Support
