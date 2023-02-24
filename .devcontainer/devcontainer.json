@@ -28,7 +28,8 @@
 				"eamodio.gitlens",
 				"DavidAnson.vscode-markdownlint",
 				"medo64.render-crlf",
-				"andrejunges.Handlebars"
+				"andrejunges.Handlebars",
+				"bierner.markdown-preview-github-styles"
 			],
 			"settings": {
 				"npm.packageManager": "yarn"
