@@ -1,7 +1,7 @@
 # Satisfactory Modding Documentation
 
 Documentation for Satisfactory Mod Loader (SML) and Satisfactory modding.
-Master branch is live on https://docs.ficsit.app/.
+Master branch is live on <https://docs.ficsit.app/>.
 Please contact us on the
 [Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E)
 with questions and suggestions, or contribute via PRs (see below).
@@ -9,7 +9,7 @@ with questions and suggestions, or contribute via PRs (see below).
 We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,
 but this is only loosely followed.
 
-Pull requests should target the `dev` branch.
+Pull requests should target the `Dev` branch.
 
 Before you submit changes,
 you should probably follow the Development Setup directions below
@@ -31,6 +31,20 @@ Send us a message on the Discord if we don't review it within a day or two.
 
 ## Development Setup
 
+### Devcontainer
+
+If you already have Visual Studio Code and Docker installed,
+we offer a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers)
+for the repository that will be auto-detected when you open the folder in VSCode.
+
+This should™ also be supported by Github Codespaces, but we haven't tested it.
+
+The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
+
+### Manual
+
+If you don't want to use the preconfigured devcontainer, or Codespaces, follow the directions below.
+
 Although you can edit the `.adoc` files with just about any editor out there,
 we suggest either Visual Studio Code (with the
 [Asciidoc](https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode)
@@ -40,7 +54,7 @@ or IntelliJ.
 In order to see what the pages will look like on the live site before being deployed,
 follow the below directions.
 
-### Installing
+#### Installing
 
 1. Install [Node.js](https://nodejs.org/en/download/) and [Yarn Package Manager](https://classic.yarnpkg.com/en/docs/install) through your preferred method
 
@@ -50,7 +64,7 @@ follow the below directions.
 yarn install
 ```
 
-### Building
+#### Building
 
 To build the docs for SML and all other hosted mods (slow):
 
@@ -69,6 +83,12 @@ yarn run build:dev
 ```
 
 The output HTML files for both commands can be found in `\build\site`.
+
+#### Previewing
+
+To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
+
+You can also run `yarn serve` which will start a local webserver.
 
 ## Adding Docs for Another Mod
 

@@ -17,7 +17,6 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
-*** xref:Development/BeginnersGuide/splitter.adoc[Simple Custom Splitter]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Class Default Objects (CDOs) and Overwriting Content]
@@ -79,3 +78,6 @@
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
+
+* Community Mod Lists
+** xref:CommunityModLists/QOL.adoc[Quality of Life Mods]

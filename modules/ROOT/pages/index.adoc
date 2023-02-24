@@ -71,6 +71,10 @@ The community used to have a Discourse-powered forms website for modding discuss
 but it has since been archived due to low usage.
 You can find the archives https://forums.ficsit.app/[here].
 
+== Contributing
+
+You can find information on how to contribute to the docs https://github.com/satisfactorymodding/Documentation#contributing[in the github repo's readme].
+
 == Modding Technologies
 
 If you'd like to learn more about how modding works internally, this is the section for you.
