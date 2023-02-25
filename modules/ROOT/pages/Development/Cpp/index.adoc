@@ -14,6 +14,20 @@ nearly every aspect of the game, whereas there are still many features not expos
 
 That being said, Blueprint scripting is still very useful for quick stuff, or for things that don't need to be high performance (like UI).
 
+== Understanding Blueprint vs C++
+
+Alex Forsythe has an excellent writeup (and corresponding video) that explains the different roles of {cpp} and blueprint in an Unreal project.
+
+Alex's summary of the article:
+
+====
+It's not an either/or decision.
+Learn what makes C++ and Blueprints different, what they have in common, and how to use them together effectively.
+We'll also learn a thing or two about performance optimization and some basic software design concepts.
+====
+
+You can find the article (and a link to the video) http://awforsythe.com/unreal/blueprints_vs_cpp/[here].
+
 == Requirements
 
 Well, since this is a very advanced topic, we recommend you to learn {cpp}
