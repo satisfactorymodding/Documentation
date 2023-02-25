@@ -31,7 +31,7 @@ Our schematic will be used to give the player access to our recipe.
 
 == Create a Recipe
 
-Let's make some new leaf-based recipes to start.
+Let's make some new leaf-based recipes to start, since leaves are pretty common, so it will be easy to test our recipes out in-game.
 
 Go to the Content Browser in the Unreal editor.
 Navigate to the root folder of your mod (appears as `DocMod Content`), right click, and select 'New Folder'.
