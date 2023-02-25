@@ -9,60 +9,68 @@ Since SML3.0, mods are now Unreal plugins,
 and their loading is handled by Unreal itself.
 
 First off, we'll need to create the Unreal Plugin for our mod.
-You can do this by clicking
-`Edit` -> `Plugins` -> `New Plugin` -> `Content Only Plugin` in the Unreal Editor.
 
+Alpakit contains a wizard that helps with creating a mod.
+If you haven't already opened the Alpakit panel, you can follow the directions
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[here] to do so.
+
+To open the wizard, click the `Create Mod` button in the Alpakit panel.
+
+Mod templates that the community has created will appear here.
+Select the `Blueprint Only` template for now.
+
+The wizard will also prompt you for a Plugin Name.
 The name of your plugin _must_ be your mod's
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
 For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
 
+You can fill out the "Descriptor Data", or leave it blank, as we can edit that later.
+
 [WARNING]
 ====
 Be sure to read the notes on
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
 if you have not yet done so.
-It is critical that your mod reference follows these format rules.
+It is critical that your mod reference follows these formatting rules.
 ====
-
-You can fill out the Descriptor Data, or leave it blank, as we can edit that later.
 
 Leave "Show Content Directory" checked and press `Create Plugin`.
 
-Your new plugin should now appear at the bottom of the plugins list
-in the Project > Other category. Hooray!
-You might have to scroll a bit to find it.
+Your new plugin should now appear in Alpakit's list of mods.
 
-Next, click `Edit...` to edit more of your mod's plugin settings.
+Next, click the `Edit` button next to the listing to modify some more of your mod's settings.
 
 Here, you can fill out some additional details for your mod.
+Hover over the labels on the left to get a tooltip that explains their purpose.
 Since we're working on an example mod right now,
-most of these fields are not relevant to us.
-You should be sure to set `Category` to `Modding`
-and `Version` to `1.0.0`,
-which sorts your mod to appear with other mods
-in the Modding section of the Plugins list.
+most of these fields are not relevant to us,
+but we'll be back later before publicly releasing a mod.
 
+Add your name in the `Created By` field.
+Otherwise, the default values will be fine for now.
+
+// TODO mod icon handling moves where?
+// might not need the extra handling if the config comes with the template
 Note that if you give your mod an icon image here, you'll have to follow
 xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[a few extra steps]
 for it to show up in game.
 
-These fields will be explained further when you prepare to upload your mod for others to use.
-
+// TODO retake this screenshot once mod icon is in. make sure the Dependencies field is collapsed in the screenshot so people don't change the SML dep version on accident.
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
 
-Creating your plugin will create a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
+Creating your plugin will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+
+This folder is where you will be putting most of the assets
+(models, blueprints, textures, etc.) that your mod uses.
+
+Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
+subfolder of the Content Browser root folder.
 
 You might need to click on `View Options` -> `Show Plugins Content`
 in a Content Browser to view the contents of your mod in the Unreal Editor.
 image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
-
-You can find your mod in the `<Your Mod Reference> Content`
-subfolder of the Content Browser root folder.
-
-This folder is where you will be putting most of the assets
-(models, blueprints, textures, etc.) that your mod uses.
 
 [TIP]
 ====
@@ -76,7 +84,7 @@ it helps write patch notes when you release an update,
 and you can use it to go back to previous versions of your files if something breaks.
 
 If you work on multiple mods,
-you only need one full project setup
+you only need one modding project set up
 (which can be the cloned SatisfactoryModLoader repository)
 and each mod that you make will be a plugin in this project setup.
 The plugin's folder would be the version control repository for that mod.

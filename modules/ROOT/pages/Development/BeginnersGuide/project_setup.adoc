@@ -204,7 +204,7 @@ so make sure you don't change stuff in there unless you know what you're doing.
 
 In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
 You can find it by searching for it in the Windows search bar
-(it should appear as Unreal Engine - CSS)
+(it should appear as "Unreal Engine - CSS")
 or by navigating to where you installed it,
 which is probably something similar to
 `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
@@ -217,7 +217,7 @@ Opening the project for the first time can take a considerable amount of time.
 
 You might be told that some modules were
 "missing or built with a missing engine version"; press `Yes` and allow it to build.
-This will take some time, and will drastically increase the size of your mod folder
+This will take some time, and will drastically increase the size of your project folder
 - go find some more lizard doggos to pet.
 
 If this step fails, you should go back to
@@ -273,13 +273,15 @@ Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
-in which case you should either update your Starter Project
+in which case you should either
+xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
 
 == Ready to Rumble
 
 That should be it. Your starter project should now be set up and ready to go!
-In the next sections, we'll walk through creating the base Plugin for your mod,
+In the xref:Development/BeginnersGuide/SimpleMod/index.adoc[next section],
+we'll walk through creating the base Plugin for your mod,
 then run through a couple common modding examples
 to demonstrate how to get started making your own mods.
 
