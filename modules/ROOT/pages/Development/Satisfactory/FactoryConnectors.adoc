@@ -42,12 +42,12 @@ The `FGBuildable` adds two functions.
 === `FactoryGrabOutput`
 
 This function gets called by `FGFactoryConnector`s which have the `mForwardPeekAndGrabToBuildable` option enabled.
-Information about what connector wants to grab is passed and the function returns what actually gets grabed.
+Information about what connector wants to grab is passed and the function returns what actually gets grabbed.
 
 [WARNING]
 ====
 If you interact with a inventory or what ever, you need to make sure that you have removed the item from it,
-else the component could grab indefinetly, and that's not what we want.
+else the component could grab indefinitely, and that's not what we want.
 ====
 
 ===  `FactoryPeekOutput`

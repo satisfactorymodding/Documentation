@@ -16,6 +16,7 @@ That being said, Blueprint scripting is still very useful for quick stuff, or fo
 
 == Understanding Blueprint vs C++
 
+// cSpell:ignore Forsythe
 Alex Forsythe has an excellent writeup (and corresponding video) that explains the different roles of {cpp} and blueprint in an Unreal project.
 
 Alex's summary of the article:
@@ -105,7 +106,7 @@ you should read the javadoc comment that has been added to the function. Sometim
 and suggest you use the workaround written in the comment.
 
 If it still doesn't work, and you are **absolutely sure** that you are using it correctly,
-contact the SML devs on the Discord for further advice.
+contact the SML developers on the Discord for further advice.
 
 If your mod requires calling a Satisfactory function that is not compiled into their binaries,
 f.e. when the function is marked as `inline`, then it will create a log entry starting with

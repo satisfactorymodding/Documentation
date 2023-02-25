@@ -57,7 +57,7 @@ xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_modify_packaging_se
 +AdditionalNonUSFDirectories=Config
 ----
 
-The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the packaging of our mod.
 
 === Package Your Mod and Test
 

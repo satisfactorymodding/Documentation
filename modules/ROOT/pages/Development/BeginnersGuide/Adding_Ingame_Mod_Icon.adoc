@@ -44,7 +44,7 @@ and will fall back to default icon instead.
 
 == Modify Packaging Settings
 
-Now we need to tell Alpakit to include our "Resources" folder in the mod when paking it.
+Now we need to tell Alpakit to include our "Resources" folder in the mod when packaging it.
 To do this, inside the "Config" folder, we need to create the file `PluginSettings.ini`.
 
 You can do this by creating a new text file and then changing the extension to a `.ini` file, for example.
@@ -60,7 +60,7 @@ Inside the file, insert the following lines:
 +AdditionalNonUSFDirectories=Resources
 ----
 
-The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the packaging of our mod.
 
 We pass it the "Resources" value which is the folder we wish to include (the one containing our Mod Icon).
 

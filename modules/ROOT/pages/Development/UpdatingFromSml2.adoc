@@ -235,6 +235,7 @@ This section is a copy of the announcement recently posted on the Discord.
 It contains some information that has not yet been incorporated into the docs.
 It has been posted again here for your convenience.
 
+// cSpell:ignore moddevs configurability
 ```
 
 Hey @\moddevs! We're happy to announce that SML and toolkit transition to Update 4 and the new 4.25 engine has finished!

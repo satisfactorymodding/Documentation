@@ -22,6 +22,7 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
+			// cSpell:disable
 			"extensions": [
 				"streetsidesoftware.code-spell-checker",
 				"asciidoctor.asciidoctor-vscode",
@@ -31,6 +32,7 @@
 				"andrejunges.Handlebars",
 				"bierner.markdown-preview-github-styles"
 			],
+			// cSpell:enable
 			"settings": {
 				"npm.packageManager": "yarn"
 			}

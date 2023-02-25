@@ -262,7 +262,7 @@ M Unlocks::
 +
 M Schematic Dependencies::
   This array allows for a schematic's purchase to be locked depending upon other schematics or items in the world.
-  This is completley ignored by the MAM in favor of node data, which is outside the scope of this tutorial.
+  This is completely ignored by the MAM in favor of node data, which is outside the scope of this tutorial.
   {blank} +
   We'll leave this empty because we don't want our content to require any other particular schematic to be unlocked first.
 * {blank}

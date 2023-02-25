@@ -111,6 +111,7 @@ LogGame=Verbose
 LogExampleMod=BreakOnLog
 ```
 
+// cSpell:ignore Cmds
 You should also be able to use the `-LogCmds` launch argument,
 but this has not been tested.
 
