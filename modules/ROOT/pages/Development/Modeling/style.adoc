@@ -32,7 +32,6 @@ Without the authors original notes its often helpful to work backwards from thei
 The train system's visual design in Satisfactory clearly demonstrates the aesthetic choices being made and how to mix in Sci-Fi into 90s industrial.
 When choosing a design for trains there are a lot of types to choose from, diesel trains are synonymous with heavy industry and the inspiration is clear. So rather than anything like a Maglev, or Electric train design the final design is heavily reminiscent of diesel locomotives, despite being electric in game.
 
-// cSpell:ignore undetailed
 Further, it's more similar to the 90's and 00 era of design than even other angular designs. More modern and older designs both feature more gradual curves, and/or more plain undetailed space. While better for efficiency or implying futuristic shapes, the angular 90's design was prioritized.
 Of note though, an entirely normal diesel locomotive would look out of place and imply it needed packaged fuel.
 
