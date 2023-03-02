@@ -96,7 +96,7 @@ Directions on how to link so can be found
 https://www.unrealengine.com/en-US/ue4-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
-try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
+try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
 
 You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.

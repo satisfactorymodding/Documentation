@@ -1,4 +1,4 @@
-= SFUKIT
+= SFUIKIT
 
 Community members Deantendo and Treelo maintain a "build your own" UI kit
 that can be used to help integrate your mod's UI with Satisfactory's.
