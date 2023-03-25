@@ -54,7 +54,7 @@ Add your name in the `Created By` field.
 Otherwise, the default values will be fine for now.
 
 If you'd like to give your mod an icon, you can do so here via the three-dots file picker.
-Make sure the image you select is exactly 128 by 128 pixels.
+Make sure the image you select is a square and at least 128 by 128 pixels.
 You should probably hold onto a higher resolution version of this image for later use on your mod's
 xref:Development/BeginnersGuide/ReleaseMod.adoc[ficsit.app page].
 

@@ -17,7 +17,7 @@ and package it with your mod.
 First, we need a png file to use as the Icon for our mod.
 You can re-use the same one you plan to use when
 xref:UploadToSMR.adoc[uploading your mod to SMR],
-but you might need to resize it for use here - this icon should be a maximum of 128x128 pixels. 
+but you might need to resize it for use here - this icon should be a square and at least 128x128 pixels. 
 
 == Alpakit Helper Utility
 
