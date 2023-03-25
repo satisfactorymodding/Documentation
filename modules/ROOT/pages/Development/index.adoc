@@ -14,6 +14,9 @@ Below is a list of some good resources about making mods for SF, UE4, C++ and 3D
 - https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
 +
 A good YouTube Channel showing a more in-depth look at features of UE4 (BP only).
+- https://www.youtube.com/c/AlexForsythe[Alex Forsythe]
++
+A YouTube Channel that covers Unreal concepts (both BP and C++) in detail, including replication.
 - https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g[Virtus Learning Hub]
 +
 A "general" tutorial series channel for UE game development (also covers some C++)

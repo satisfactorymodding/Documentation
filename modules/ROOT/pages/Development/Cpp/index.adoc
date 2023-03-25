@@ -16,7 +16,6 @@ That being said, Blueprint scripting is still very useful for quick stuff, or fo
 
 == Understanding Blueprint vs C++
 
-// cSpell:ignore Forsythe
 Alex Forsythe has an excellent writeup (and corresponding video) that explains the different roles of {cpp} and blueprint in an Unreal project.
 
 Alex's summary of the article:
