@@ -17,11 +17,6 @@ A good YouTube Channel showing a more in-depth look at features of UE4 (BP only)
 - https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g[Virtus Learning Hub]
 +
 A "general" tutorial series channel for UE game development (also covers some C++)
-- https://www.youtube.com/channel/UCYoV5-xnSC2BGseQ_nHWufw[MilesNocte's Channel]
-+
-A series of SF modding tutorials made by MilesNocte, a member of our community.
-**As of SML 3.0.0, these video tutorials are partially out of date, but many of the concepts will still carry over.**
-If you get stuck in the video tutorials, return here and follow these guides instead.
 - http://academy.unrealengine.com/[Unreal Engine Academy]
 +
 A neat learning platform made by Epic Games for learning Unreal Engine.
