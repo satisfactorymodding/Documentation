@@ -1,4 +1,5 @@
 * xref:index.adoc[Introduction]
+* xref:faq.adoc[FAQ - Frequently Asked Questions]
 * xref:SMLConfiguration.adoc[SML Configuration]
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
