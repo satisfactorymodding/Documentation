@@ -25,9 +25,9 @@ If you created your mod using the
 xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Alpakit Create Mod Utility],
 the relevant configuration files mentioned below have already been created for you.
 
-Simply replace the existing `Icon128.png` file located at `/Plugins/<mod_reference>/Resources`
-with your own icon image and proceed to 
-xref:#_making_sure_it_worked[make sure it worked].
+To change the icon, click the `Edit` button next to your mod's Alpakit listing
+and select your file via the three-dots file picker.
+Be sure to check and xref:#_making_sure_it_worked[make sure it worked].
 
 == Setup
 
