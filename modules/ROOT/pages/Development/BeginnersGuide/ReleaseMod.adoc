@@ -54,7 +54,11 @@ and help to prevent mistakes that would create an invalid uplugin file and be an
 Open the Alpakit editor by clicking the `Edit` button next to your mod in the Alpakit mods list.
 
 You can hover over the labels on the left to get a tooltip that explains their purpose.
+
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
+
 Below we will go into more detail about their purpose.
+It is suggested that you read all of the field definitions below to make well-informed decisions about the values you specify.
 
 If you'd like, you can read about all the different Unreal settings available at the Plugins documentation
 https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugindescriptorfiles[here]

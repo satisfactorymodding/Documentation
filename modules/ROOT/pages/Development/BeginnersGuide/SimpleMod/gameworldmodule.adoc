@@ -10,7 +10,7 @@ and their loading is handled by Unreal itself.
 
 First off, we'll need to create the Unreal Plugin for our mod.
 
-Alpakit contains a wizard that helps with creating a mod.
+Alpakit contains a wizard that helps with creating the plugin files for Satisfactory mods.
 If you haven't already opened the Alpakit panel, you can follow the directions
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[here] to do so.
 
@@ -38,6 +38,8 @@ It is critical that your mod reference follows these formatting rules.
 
 Leave "Show Content Directory" checked and press `Create Plugin`.
 
+image:BeginnersGuide/simpleMod/AlpakitCreateMod.png[Create Mod screenshot]
+
 Your new plugin should now appear in Alpakit's list of mods.
 
 Next, click the `Edit` button next to the listing to modify some more of your mod's settings.
@@ -51,16 +53,20 @@ but we'll be back later before publicly releasing a mod.
 Add your name in the `Created By` field.
 Otherwise, the default values will be fine for now.
 
-// TODO mod icon handling moves where?
-// might not need the extra handling if the config comes with the template
-Note that if you give your mod an icon image here, you'll have to follow
-xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[a few extra steps]
-for it to show up in game.
+If you'd like to give your mod an icon, you can do so here via the three-dots file picker.
+Make sure the image you select is exactly 128 by 128 pixels.
+You should probably hold onto a higher resolution version of this image for later use on your mod's
+xref:Development/BeginnersGuide/ReleaseMod.adoc[ficsit.app page].
 
-// TODO retake this screenshot once mod icon is in. make sure the Dependencies field is collapsed in the screenshot so people don't change the SML dep version on accident.
-image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
+The Dependencies list should already be pre-populated with a dependency on the current SML version for you.
 
-Creating your plugin will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
+
+Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+
+All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
+which you can optionally read more about 
+xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[here].
 
 This folder is where you will be putting most of the assets
 (models, blueprints, textures, etc.) that your mod uses.
@@ -105,9 +111,12 @@ change it to `ExampleMod.uplugin.disabled`
 == Create Game World Module
 
 Now that we've created our plugin,
-we must create a starting point from which everything else gets invoked.
-If we don't have one, then our mod's content will never be added to the game during loading!
-In our case, the starting point will be a Game World Module.
+we must create a starting point from which everything else gets invoked and registered.
+Without some point of reference, the game will never know to load our mod's content!
+
+In our case, the starting point will be a Game World Module, but this is not always required.
+Game World Modules are helpers defined by Satisfactory Mod Loader that allow us to define new
+Schematics, and through those schematics, items, recipes, and more.
 
 [NOTE]
 ====

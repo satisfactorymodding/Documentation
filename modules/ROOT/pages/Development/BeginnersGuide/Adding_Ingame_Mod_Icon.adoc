@@ -12,12 +12,26 @@ there's still a couple steps needed for Alpakit to recognize it
 and package it with your mod.
 
 
-== Setup
+== Select an Image
 
 First, we need a png file to use as the Icon for our mod.
 You can re-use the same one you plan to use when
 xref:UploadToSMR.adoc[uploading your mod to SMR],
 but you might need to resize it for use here - this icon should be a maximum of 128x128 pixels. 
+
+== Alpakit Helper Utility
+
+If you created your mod using the
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Alpakit Create Mod Utility],
+the relevant configuration files mentioned below have already been created for you.
+
+Simply replace the `Icon128.png` file located at `/Plugins/<mod_reference>/Resources` and proceed to 
+xref:#_making_sure_it_worked[make sure it worked].
+
+== Setup
+
+If you didn't create your mod using the Alpakit Create Mod Utility,
+or if you want to add another custom directory to be included, see the steps below.
 
 Let's navigate to our SML project (where the FactoryGame.uproject file is located)
 and from there go to `/Plugins/<mod_reference>`
