@@ -204,7 +204,7 @@ so make sure you don't change stuff in there unless you know what you're doing.
 
 In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
 You can find it by searching for it in the Windows search bar
-(it should appear as "Unreal Engine - CSS")
+(it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
 `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
