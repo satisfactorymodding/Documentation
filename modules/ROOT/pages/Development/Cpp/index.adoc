@@ -23,7 +23,6 @@ Alex's summary of the article:
 ====
 It's not an either/or decision.
 Learn what makes C++ and Blueprints different, what they have in common, and how to use them together effectively.
-We'll also learn a thing or two about performance optimization and some basic software design concepts.
 ====
 
 You can find the article (and a link to the video) http://awforsythe.com/unreal/blueprints_vs_cpp/[here].
