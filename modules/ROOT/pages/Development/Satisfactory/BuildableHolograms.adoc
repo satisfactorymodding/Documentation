@@ -307,6 +307,7 @@ You can find the complete list in the header file `Source/FactoryGame/Public/FGC
 
 It's possible to define your custom disqualifiers too, like:
 
+// cSpell:ignore Disqfualifying qfual ifying
 ```cpp
 #define LOCTEXT_NAMESPACE "MyModLocNamespace"
 

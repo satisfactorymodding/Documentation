@@ -7,6 +7,7 @@ While it shares the glib attitude about corporate overlords, there is one partic
 
 Like many retro-future aesthetics it extrapolates how more modern ideas may be implemented with older designs. Everything is quite bright, clean, and well maintained. A stark contrast to the general dirt and oppression of cyberpunk. Hard edges and thin bevels, 45 degree turns. No smooth eggshell clearcoat finishes or organic forms in sight.
 
+// cSpell:ignore lumifibre
 Many parts of Cyberpunk designs are the complete immersion in cybernetic and digital life, robots and neon signs in the sky. Satisfactory explicitly shuns many of these Sci-Fi tropes and styles in gameplay and visuals. Note the general absence of lasers, holograms, plasma, lumifibre, and digital/robotic things.
 Sure vehicle paths and the build gun use holograms, the xeno-basher and foundries glow, and ADA is a digital assistant, etc. But look closer. Vehicles use wheels, the xeno-basher is only a big taser, we have a Windows XP desktop background, ADA is using Google Text to Speech (literally). This is not a future we'll reach, we have to rewind technology 30 years to even get on the right path to this point.
 
@@ -17,7 +18,7 @@ At every opportunity Satisfactory focuses on industrial designs, machines, and m
 
 == Technical implementation
 Due to the sheer number of elements the game intends to display, the eventual technical implementation feeds back into visuals.
-The strong corporate presences of Ficsit excuses modular, repetitive, and colourful designs.
+The strong corporate presences of Ficsit excuses modular, repetitive, and colorful designs.
 
 The Brand Identity allows the underlying rendering to use modular visuals and shared materials extensively.
 Instanced rendering systems (how to display a lot of something) prefer medium polygon objects and limited texture sources. Satisfactory's medium poly modeling (with texture atlas based decals) ends up playing into this setup perfectly. Further this modeling approach excels at large complex areas with physical details or spots of interest.

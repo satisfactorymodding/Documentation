@@ -55,7 +55,7 @@ Please do not hesitate to contact us with corrections, suggestions, or questions
 The best way to reach the team is our https://discord.gg/xkVJ73E[Discord Server].
 
 You can find more info on contributing to the docs
-https://github.com/satisfactorymodding/Documentation#satisfactory-modding-documentation[here].
+https://github.com/satisfactorymodding/Documentation#readme[here].
 
 == Mod Reference
 

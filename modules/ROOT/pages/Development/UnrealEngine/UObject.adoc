@@ -1,3 +1,5 @@
 = UObject
 
-This page is a work in progress. Please view Unreal's documentation on UObjects for the time being.
+This page is a work in progress.
+Please view https://docs.unrealengine.com/4.26/en-US/API/Runtime/CoreUObject/UObject/UObject/[Unreal's documentation on UObjects]
+for the time being.

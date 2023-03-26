@@ -5,7 +5,7 @@ A Core Redirect is an Unreal Engine system that allows you you to tell the game 
 You can learn more about them
 https://www.unrealdirective.com/articles/core-redirectors-what-you-need-to-know[here]
 or
-https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assets/CoreRedirects/[on the Unreal docs].
+https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assets/CoreRedirects/[on the Unreal docs].
 Note that the Unreal docs are partly incorrect
 and claim that the OldName of PackageRedirects will work without the slashes present.
 You should follow the example here or on the UnrealDirective docs page instead.
@@ -57,7 +57,7 @@ xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_modify_packaging_se
 +AdditionalNonUSFDirectories=Config
 ----
 
-The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the paking our mod.
+The attribute "+AdditionalNonUSFDirectories" tells Alpakit that we wish to include a directory during the packaging of our mod.
 
 === Package Your Mod and Test
 

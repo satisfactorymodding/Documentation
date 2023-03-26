@@ -41,7 +41,7 @@ This Actor is also where you can define the snapping area and the clearance area
 
 == Make it paintable
 
-We want to make our buildable xref:Development/Satisfactory/Paintable.adoc[paintable], meaning, able to be painted it with the paint gun. Because the `FGBuidable`-class already provides a basic implementation for that, we just need our buildable's mesh to use the `MI_Factory_Base_01` material. The provided example mesh already provides a proper UV map for said material, so you will not need to edit the UVs of the provided mesh. You will need to do so for your own models. More info on the materials already in the game can be found at xref:Development/Modeling/MainMaterials.adoc[Main Materials] documentation page. 
+We want to make our buildable xref:Development/Satisfactory/Paintable.adoc[paintable], meaning, able to be painted it with the paint gun. Because the `FGBuildable`-class already provides a basic implementation for that, we just need our buildable's mesh to use the `MI_Factory_Base_01` material. The provided example mesh already provides a proper UV map for said material, so you will not need to edit the UVs of the provided mesh. You will need to do so for your own models. More info on the materials already in the game can be found at xref:Development/Modeling/MainMaterials.adoc[Main Materials] documentation page. 
 
 You must ensure that the materials of the Mesh and Buildable are set to point to a material called `MI_Factory_Base_01` within `+Content/FactoryGame/-Shared/Material+`. If this does not exist, create a placeholder material in its place, and it will point to the correct texture within the game.
 
@@ -69,7 +69,12 @@ Make sure you use `FGBuildingDescriptor` and _not_ `FGBuildDescriptor`.
 
 == Define the Recipe
 
-To define how our building is constructed we will use an `FGRecipe`, just like we did for our xref:Development/BeginnersGuide/recipe.html#_create_a_recipe[custom item]. Create a new FGRecipe asset and set ProducedIn to `FGBuildGun`, then add Ingredients entries to define the cost of constructing the building. The Product field should contain exactly one entry - the FGBuildingDescriptor asset you just created for your buildable.
+To define how our building is constructed we will use an `FGRecipe`,
+just like we did for our xref:Development/BeginnersGuide/SimpleMod/recipe.adoc#_create_a_recipe[custom item].
+Create a new FGRecipe asset and set ProducedIn to `FGBuildGun`,
+then add Ingredients entries to define the cost of constructing the building.
+The Product field should contain exactly one entry -
+the FGBuildingDescriptor asset you just created for your buildable.
 
 That's it! You don't need to register anything else. When the recipe gets loaded, everything else also gets loaded and the buildable in the save file has soft references to the classes, and if they get loaded also the classes like our newly created buildable get loaded.
 

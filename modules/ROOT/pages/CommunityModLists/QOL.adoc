@@ -38,11 +38,11 @@ Note that the short descriptions here do not explain the whole mod - read the li
 * https://ficsit.app/mod/LinearMotion[Linear Motion]: Build elevators and vehicle lifts that bring you up into the sky.
 * https://ficsit.app/mod/Dispenser[Item Dispenser]: Gives stacks of items it gets from the connected conveyor.
 * https://ficsit.app/mod/Hopper[Item Hopper]: You put stuff in it and it puts it on the conveyor coming out of it.
-* https://ficsit.app/mod/AreaActions[AreaActions]: Another building mod, but with finer control (be sure to enable build cost, or it is very cheaty.
+* https://ficsit.app/mod/AreaActions[AreaActions]: Another building mod, but with finer control (be sure to enable build cost, or it will place buildings for free).
 * https://ficsit.app/mod/LoadBalancers[Modular Load Balancers]: Adds a modular way to balance multiple conveyors, make any sized or shape load balancer you want! **buildable will not persist to vanilla**
 * https://ficsit.app/mod/CounterLimiter[Throughput Counter and Limiter]: Belt attachment that displays the actual item throughput per minute. Can optionally limit the IPM. **buildable will not persist to vanilla**
 * https://ficsit.app/mod/DaisyChainEverything[Daisy Chain Everything]: Increases the number of power connections on all buildings, both vanilla and modded.
-* https://ficsit.app/mod/SkyUI[Sky UI]: Sky perception configurator. Control day/night/weather aka "the sky".
+* https://ficsit.app/mod/SkyUI[Sky UI]: Sky perception configuration. Control day/night/weather aka "the sky".
 * https://ficsit.app/mods?p=1&q=slots[More Inventory Slots]: There are many mods that add more inventory slots. Pick your favorite from this list.
 * https://ficsit.app/mod/HyperBoosters[Hyper Boosters]: Enter hyper tubes with a boost.
 * https://ficsit.app/mod/PowerChecker[Power Checker]: Check if fuses will blow.

@@ -44,6 +44,17 @@ does a good job of explaining how to use the macro,
 set up your own custom logging categories,
 and the macro's formatting capabilities.
 
+[WARNING]
+====
+When creating a log category with the `DECLARE_LOG_CATEGORY_EXTERN` macro in your headers,
+make sure that the compile-time verbosity (the third argument) is set to `All`.
+
+If the category is named `LogYourModReference` and has a compile-time verbosity other than `All`,
+whenever a blueprint logging call is fired, the engine will attempt to re-create the logging category with the All category,
+leading to two different verbosity levels being specified for the same logging category,
+causing the game to hard crash.
+====
+
 As with most {cpp} macros,
 making a mistake with the syntax can lead to some messy compile time errors,
 so compile often when first trying this out to try and catch the mistakes early.
@@ -100,6 +111,7 @@ LogGame=Verbose
 LogExampleMod=BreakOnLog
 ```
 
+// cSpell:ignore Cmds
 You should also be able to use the `-LogCmds` launch argument,
 but this has not been tested.
 
