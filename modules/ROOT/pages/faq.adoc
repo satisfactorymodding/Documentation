@@ -69,7 +69,37 @@ or from in-game via the 'Mod Configs' tab on the pause menu.
 == Do mods work with Experimental?
 
 It is up to the mod developer to support Satisfactory's experimental branch.
-Check the mod's page on ficsit.app for support.
+Check the mod's page on ficsit.app, or the mod manager extended details, for support.
+
+Once you're on the page, check mods' Compatibility via two stickers found in the description.
+The rocket icon indicates Early Access and the flask icon is for Experimental.
+
+In the Mod Manager:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089302323966246973/unknown_1.png[SMM Compatibility Info screenshot]
+
+On ficsit.app:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089325949755084971/image.png[ficsit.app Compatibility Info screenshot]
+
+You can hover over the sticker for any notes that may have been left by the author.
+They may indicate a version to use, which you can change to in the Mod Manager with the dropdown right above the stickers.
+
+- *Green - Working*:
+  The mod should be functioning as intended.
+- *Yellow - Damaged*:
+  Something is wrong with the mod that is causing it to work improperly,
+  but it is partially working.
+  Be sure to click the icon to see an explanation of what is going wrong!
+- *Red - Broken*:
+  This mod is suffering from a critical problem,
+  and could do things like crash your game at launch if you were to install it.
+  Be sure to click the icon to see an explanation of what is going wrong!
+
+Please note, these are updated manually, and may be slightly out of date.
+If you find a mod that is missing its stickers or ones that seem to be incorrect,
+please let us know in the Discord (including a debug if it does not work is useful as well!)
+and we will investigate and update the info if necessary.
 
 == Satisfactory Mod Manager is open, but I can't see it's window!
 
@@ -84,8 +114,8 @@ Restart SMM after you do that.
 
 We try to keep everything we work on organized through the ficsit.app mod portal.
 If you need help with something that isn't there,
-ask nicely in the `#help-using-mods` discord channel,
-or message the developer directly.
+check the mod's information page for a mod-specific discord to join,
+or ask nicely in the `#help-using-mods` discord channel.
 
 == What happens if I open up a save without mods installed?
 
