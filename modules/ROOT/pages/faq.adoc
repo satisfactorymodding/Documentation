@@ -164,9 +164,10 @@ On Epic:
 
 image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838751/unknown.png[Epic screenshot]
 
-== Why is the mod manager downloading slowly?
+== Why is the mod manager downloading slowly, or failing to download?
 
 You might see error messages like:
+
 - `Unexpected error while downloading file: getaddrinfo ENOENT github.com`
 - `Unexpected error while downloading file: read ECONNRESET`
 - `Unexpected error while downloading file: unable to verify the first certificate`
@@ -177,9 +178,12 @@ If they are named [modname].zip rename them to [modname].smod, then place the fi
 `%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version you need]` for SML and
 `%localappdata%\SatisfactoryModManager\downloadCache\mods` for everything else.
 
+You can also try using a proxy or VPN.
+
 == The mod manager can't download any mods
 
 You might see messages like:
+
 - `error while downloading file [...] Premature close`
 - `Error 3 attempts to download <ModName> failed`
 - `Error: Unexpected error while downloading file connect ETIMEDOUT`
@@ -202,6 +206,6 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089043908174037
 
 == How can I tell what mod added an item/milestone/recipe/thing?
 
-Consider using https://ficsit.app/mod/TFIT[The Ficsit Information Tool]
+Consider using https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
 and https://ficsit.app/mod/MAMTips[MAM Enhancer]
 mods which add tools to help you identify content.
