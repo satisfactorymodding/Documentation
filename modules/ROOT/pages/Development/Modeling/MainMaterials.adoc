@@ -11,7 +11,9 @@ It's important to understand the UE4 concept of https://docs.unrealengine.com/en
 
 [WARNING]
 ====
-Normal maps, AO Masks, and Surface Maps should have sRGB disabled. Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked. Albedo however should still be sRGB.
+**Normal maps, AO Masks, and Surface Maps should have sRGB disabled.** Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked.
+
+**Albedo textures should still have sRGB enabled.**
 ====
 
 == Factory Machine/Array (MM_Factory_Array)
