@@ -87,7 +87,7 @@ They may indicate a version to use, which you can change to in the Mod Manager w
 
 - *Green - Working*:
   The mod should be functioning as intended.
-- *Yellow - Damaged*:
+- *Yellow/Orange - Damaged*:
   Something is wrong with the mod that is causing it to work improperly,
   but it is partially working.
   Be sure to click the icon to see an explanation of what is going wrong!
@@ -98,7 +98,7 @@ They may indicate a version to use, which you can change to in the Mod Manager w
 
 Please note, these are updated manually, and may be slightly out of date.
 If you find a mod that is missing its stickers or ones that seem to be incorrect,
-please let us know in the Discord (including a debug if it does not work is useful as well!)
+please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
 == Satisfactory Mod Manager is open, but I can't see it's window!
