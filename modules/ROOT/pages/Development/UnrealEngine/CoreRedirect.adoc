@@ -28,7 +28,7 @@ xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_modify_packaging_se
 An example use case for core redirects is if a mod has changed mod reference,
 but you want users' buildings or other content from the past mod reference to persist.
 
-This was used to seamlessly port old buildings in the
+This was used to seamlessly port old all buildings in the
 https://ficsit.app/mod/BuildableResourceNodesRedux[Buildable Resource Nodes Redux] mod.
 
 This core redirect will redirect every asset stored in player's save files
@@ -40,6 +40,29 @@ will not vanish when players update to the one with the new mod reference.
 ----
 [CoreRedirects]
 +PackageRedirects=(OldName="/BuildableResourceNodes/",NewName="/BuildableResourceNodesRedux/",MatchSubstring=true)
+----
+
+==== Example: Ensure Buildings and Unlocks Remain when their Assets are Moved
+
+This was used in the
+https://ficsit.app/mod/AB_FluidExtras[Fluid Extras] mod
+to ensure that a specific type of buildable (90 degree Pipe Bends) already present in users' save files
+would persist after the developer moved the building's assets from one location to another.
+
+It relocates 3 different assets for this purpose:
+
+- The Buildable, which is actually stored in the save file
+- The Recipe, which is stored in a list of unlocked recipes, and could be referenced by another mod
+- The Descriptor, which could be referenced by another mod
+- (Redirecting the Schematic was not necessary because it was not moved in this specific case)
+
+// cSpell:ignore Junc
+[source,text]
+----
+[CoreRedirects]
++ClassRedirects=(OldName="/AB_FluidExtras/PipeJunc_Bend/Recipe_PipeJunc_Bend.Recipe_PipeJunc_Bend_C",NewName="/AB_FluidExtras/Junctions/PipeBend-90/Recipe_PipeBend-90.Recipe_PipeBend-90_C")
++ClassRedirects=(OldName="/AB_FluidExtras/PipeJunc_Bend/Build_PipeJunc_Bend.Build_PipeJunc_Bend_C",NewName="/AB_FluidExtras/Junctions/PipeBend-90/Build_PipeBend-90.Build_PipeBend-90_C")
++ClassRedirects=(OldName="/AB_FluidExtras/PipeJunc_Bend/Desc_PipeJunc_Bend.Desc_PipeJunc_Bend_C",NewName="/AB_FluidExtras/Junctions/PipeBend-90/Desc_PipeBend-90.Desc_PipeBend-90_C")
 ----
 
 === Modify Packaging Settings
