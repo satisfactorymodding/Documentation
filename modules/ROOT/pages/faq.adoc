@@ -11,9 +11,22 @@ or add them yourself via the 'Edit this Page' button in the top right.
 
 == How do I install mods?
 
-Please follow the instructions here:
+=== For Windows 10:
 
-image:https://cdn.discordapp.com/attachments/599990474668769290/721691062359425054/smminstall_03.png[SMM tutorial screenshot]
+image:FAQ/win10_install_smm_guide.png[Steps to install SMM on Windows 10]
+
+=== For Windows 11:
+
+The installation process should be similar to that of Windows 10, but if you encounter a popup like this:
+
+image:FAQ/win11_subtle_block.png[Windows 11 "Search for app in store?" popup for untrusted installers]
+
+Ignore it because it is not correct. Instead, right-click on the installer in your file manager and go to the properties tab.
+
+image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM installer]
+
+Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
+for the rest of the steps.
 
 == The mod manager can't find my game!
 
