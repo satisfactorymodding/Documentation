@@ -87,13 +87,15 @@ Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
-Then select the same version you installed earlier `2021.1.0.7575`. 
+Then select the same version you installed earlier (likely `2021.1.0.7575`). 
 The version number may have additional numbers on the end of it e.g.
 `2021.1.0.7575.1234` but as long as it starts with `2021.1.0.7575` it should work.
 
 If version `2021.1.0.7575` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
 is set to `4.26.2-CSS`.
+
+If this version still doesn't show up, try any other version starting with `2021.1`.
 
 If you missed a required component as part of the Wwise installation,
 it may show  a yellow warning box indicating what's missing
