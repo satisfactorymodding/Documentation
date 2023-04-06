@@ -14,7 +14,7 @@ Even if you do know how to model there may be some concepts/processes the game i
 Weighted Vertex Normals::
   Save triangles and make you mesh look good. Very important for mechanical or hard surface models.
   Used extensively on all buildable objects.
-  https://www.youtube.com/watch?v=G-K7WT9IIok[Youtube explanation]
+  https://www.youtube.com/watch?v=sqGFhiP-2mc[Youtube explanation]
 * {blank}
 +
 PBR Materials::

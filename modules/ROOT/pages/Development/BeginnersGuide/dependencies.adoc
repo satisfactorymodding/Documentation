@@ -159,7 +159,18 @@ Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
 After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar.  Click the `Latest` drop-down and change it to `All`.  Select `2021.1` from the next dropdown.  Select version `2021.1.0.7575` from the final dropdown.  Click `Install`.
+Select `WWISE` from the top bar.
+Click the `Latest` drop-down and change it to `All`.
+Select `2021.1` from the next dropdown.
+Select version `2021.1.0.7575` from the final dropdown.
+Click `Install`.
+
+[TIP]
+====
+If you don't see this exact Wwise version,
+try any other version starting with `2021.1`, preferring newer versions.
+====
+
 Once presented with options on what to install, select:
 
 * Packages
