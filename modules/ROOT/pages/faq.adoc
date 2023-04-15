@@ -181,6 +181,7 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838
 
 You might see error messages like:
 
+// cspell:words getaddrinfo ENOENT ECONNRESET
 - `Unexpected error while downloading file: getaddrinfo ENOENT github.com`
 - `Unexpected error while downloading file: read ECONNRESET`
 - `Unexpected error while downloading file: unable to verify the first certificate`
@@ -197,6 +198,7 @@ You can also try using a proxy or VPN.
 
 You might see messages like:
 
+// cspell:words ETIMEDOUT
 - `error while downloading file [...] Premature close`
 - `Error 3 attempts to download <ModName> failed`
 - `Error: Unexpected error while downloading file connect ETIMEDOUT`
