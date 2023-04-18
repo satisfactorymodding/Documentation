@@ -220,6 +220,24 @@ Once you find the error message(s),
 proceed to fix the problems they describe,
 or ask for help on the DIscord
 
+=== UATHelper: Package Mod Task Parsing command line ERROR: Failed to load script DLL Operation is not supported
+
+This error could appear when packing a mod.
+
+This has happened because your computer is treating one of the files you downloaded as unsafe and is refusing to run it. 
+
+An example case of the full error message:
+
+```
+UATHelper: Package Mod Task (Windows): Parsing command line: -ScriptsForProject=E:/SatisfactoryModLoader-master/FactoryGame.uproject PackagePlugin -Project=E:/SatisfactoryModLoader-master/FactoryGame.uproject -PluginName=DocMod -GameDir=E:/SatisfactoryEarlyAccess -CopyToGameDir
+UATHelper: Package Mod Task (Windows): ERROR: Failed to load script DLL: E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll: Could not load file or assembly 'Alpakit.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x8013151
+5)
+```
+
+To fix this, go to the file mentioned in the error message (in this specific example, `E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll`), right click on it, hit Properties, and tick the box at the bottom to unblock the file.
+
+You can avoid this issue in the future by using Git to clone the starter project instead of downloading a zip.
+
 === Plugin failed to load because module could not be found
 
 This error could appear when launching the game.
