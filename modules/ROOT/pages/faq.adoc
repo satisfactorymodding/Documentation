@@ -249,3 +249,12 @@ Even at minimum there are extensive options Unreal provides for you to tune it e
 These may cause unforeseen glitches and issues so be careful with them.
 
 https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-commands/308720
+
+== Can I put the Mod Manager on a drive other than my C drive?
+
+In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
+
+1. Close SMM
+2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
+3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
+4. Open SMM and download a mod to test and make sure the change has taken effect.
