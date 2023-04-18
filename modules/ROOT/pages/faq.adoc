@@ -181,6 +181,7 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838
 
 You might see error messages like:
 
+// cspell:words getaddrinfo ENOENT ECONNRESET
 - `Unexpected error while downloading file: getaddrinfo ENOENT github.com`
 - `Unexpected error while downloading file: read ECONNRESET`
 - `Unexpected error while downloading file: unable to verify the first certificate`
@@ -197,6 +198,7 @@ You can also try using a proxy or VPN.
 
 You might see messages like:
 
+// cspell:words ETIMEDOUT
 - `error while downloading file [...] Premature close`
 - `Error 3 attempts to download <ModName> failed`
 - `Error: Unexpected error while downloading file connect ETIMEDOUT`
@@ -222,3 +224,37 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089043908174037
 Consider using https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
 and https://ficsit.app/mod/MAMTips[MAM Enhancer]
 mods which add tools to help you identify content.
+
+== I'm having VRAM issues, how do I fix them?
+
+If you're having trouble with VRAM usage
+it's important to understand the two things that are the biggest contributions:
+graphics settings and texture content.
+Other things contribute, but there are a smaller fraction than these. 
+Additionally, with multiple monitors and/or other programs running,
+they will also eat up available VRAM,
+so consider closing extraneous programs
+especially things that are highly dynamic like streaming apps.
+
+The more mods you use that add more texture content,
+the more they will eat up your VRAM.
+This is a direct relationship that can't be change by any settings or details from the user's end.
+It is unlikely to be a single mod causing the problem.
+It is a death by a thousand small cuts
+and every mod author has to do their best,
+but more content means more space is used.
+
+If removing mod content is not desirable the other option is to adjust your graphics settings.
+Even at minimum there are extensive options Unreal provides for you to tune it even lower.
+These may cause unforeseen glitches and issues so be careful with them.
+
+https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-commands/308720
+
+== Can I put the Mod Manager on a drive other than my C drive?
+
+In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
+
+1. Close SMM
+2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
+3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
+4. Open SMM and download a mod to test and make sure the change has taken effect.

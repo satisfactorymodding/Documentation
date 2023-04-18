@@ -168,11 +168,108 @@ This mistake won't be apparent until you have some content to test later.
 
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
-Otherwise, let's get on to creating our first modded content - a custom recipe!
+
+== Testing Our Mod
+
+To make sure everything is working as expected, let's package our mod for use in the game.
+
+We haven't actually added any content yet, so it won't really do anything.
+However, it will appear on the loaded mods list on the main menu.
+This is a good opportunity to catch issues that could have happened earlier in the setup process.
+We would still run into them later, but it would be less clear what the cause was.
+By catching them now, we know the issue must be caused by something we have done leading up to this point.
+Test early and test often to catch bugs sooner!
+
+To package the mod, run Alpakit.
+You can find info on how to use it back on the
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
+
+Once Alpakit has completed, you can launch the game to try it out.
+Your mod should appear in the main menu mods list shown in the screenshot below.
+
+Even if this worked correctly,
+you should still read the Troubleshotting section below
+to see how to deal with errors you may encounter later.
+
+image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
+
+== Troubleshooting
+
+Below you can find some information about errors you may encounter at this point,
+or later in mod development.
+
+=== Package mod task failed!
+
+Alpakit will display this message in the editor when something has prevented the mod from packaging.
+
+This message alone tells you nothing about the error - you'll have to look at the Output Log.
+
+The Output Log is a tab in the editor that should already be open,
+but in case it isn't, you can bring it up via `Window > Developer Tools > Output Log`.
+
+Once in the output log, look for red-colored Error messages, as it will likely contain the reason the task failed.
+If you'd like, you can use the Filters dropdown to show only errors.
+
+Note that there will be probably be tens or hundreds of Warning messages - this is to be expected, and is usually not a problem.
+We don't have complete versions of the files Coffee Stain Studios uses to build the game,
+so various Unreal Engine and game systems will complain about pieces being missing or incomplete. 
+Consider reading these warning messages from time to time to see if they pertain to your mod,
+but warning messages alone are very unlikely to be the cause of your mod failing to package.
+
+Once you find the error message(s),
+proceed to fix the problems they describe,
+or ask for help on the DIscord
+
+=== UATHelper: Package Mod Task Parsing command line ERROR: Failed to load script DLL Operation is not supported
+
+This error could appear when packing a mod.
+
+This has happened because your computer is treating one of the files you downloaded as unsafe and is refusing to run it. 
+
+An example case of the full error message:
+
+```
+UATHelper: Package Mod Task (Windows): Parsing command line: -ScriptsForProject=E:/SatisfactoryModLoader-master/FactoryGame.uproject PackagePlugin -Project=E:/SatisfactoryModLoader-master/FactoryGame.uproject -PluginName=DocMod -GameDir=E:/SatisfactoryEarlyAccess -CopyToGameDir
+UATHelper: Package Mod Task (Windows): ERROR: Failed to load script DLL: E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll: Could not load file or assembly 'Alpakit.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x8013151
+5)
+```
+
+To fix this, go to the file mentioned in the error message (in this specific example, `E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll`), right click on it, hit Properties, and tick the box at the bottom to unblock the file.
+
+You can avoid this issue in the future by using Git to clone the starter project instead of downloading a zip.
+
+=== Plugin failed to load because module could not be found
+
+This error could appear when launching the game.
+
+This issue appears when a mod's {cpp} module could not be loaded correctly at runtime.
+
+You should not normally encounter this issue at this stage in the tutorial
+because we created a plugin from the `Blueprint Only` template, not the `Blueprint and C++` template.
+However, if you used the other template, that is not a problem.
+
+You need to build the Shipping profile whenever {cpp} code changes and you want to test in-game.
+
+Similarly, you need to build for Development Editor
+when {cpp} code changes and you want it to update in the editor.
+You should have the editor closed when doing that though,
+because although Unreal Engine tries to implement hot reloading,
+it tends to break and just crashes the editor instead.
+
+This issue can usually be resolved by building the Shipping profile from Visual Studio.
+You may also need to
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files] first.
+
+=== Something else
+
+If you run into a problem that isn't described above,
+please ask for help on the Discord, even if you fix it yourself.
+We can update the docs with your findings to help other people that might have a similar issue!
 
 == Next Steps
 
-We could build and test our mod right now,
-but it wouldn't do very much, outside of increase the loaded mod count on the main menu.
+Next up, let's get started making our own content by creating a recipe and a schematic,
+which will allow us to unlock and utilize a new crafting recipe in-game.
 
-Next up, let's get started making our own content by creating a recipe and a schematic.
+If you need a refresher on how to find the docs page for this step,
+check out the xref:Development/BeginnersGuide/index.adoc[Getting Started] section header.

@@ -86,3 +86,5 @@ If everything worked, your mod icon should now show on the in-game menu. Hooray!
 
 If the icon still doesn't show, go back and ensure that you have the correct file and folder names,
 and that the image is of the correct size and format.
+
+image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
