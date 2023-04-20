@@ -185,10 +185,11 @@ You might see error messages like:
 - `Unexpected error while downloading file: getaddrinfo ENOENT github.com`
 - `Unexpected error while downloading file: read ECONNRESET`
 - `Unexpected error while downloading file: unable to verify the first certificate`
+- `Unexpected error while downloading file: self signed certificate in certificate chain`
 
-Internet restrictions mess with our services.
+Internet restrictions, and sometimes VPNs and proxies, mess with our services.
 To work around this, download the mod files mentioned in the error message from SMR manually.
-If they are named [modname].zip rename them to [modname].smod, then place the file into 
+If they are named `[modname].zip` rename them to `[modname].smod`, then place the file into 
 `%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version you need]` for SML and
 `%localappdata%\SatisfactoryModManager\downloadCache\mods` for everything else.
 
