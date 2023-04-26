@@ -183,12 +183,15 @@ or you may _have_ to use one to get what you want.
 
 You should read both options in full to make an informed decision.
 
-=== Option 1: Start Fresh
+=== Option 1: Fresh Starter Project
 
 If you have a small, self contained mod,
 or the changes to SML or game systems are immense,
 it may be easier to simply set up a new starter project
 than bother trying to update your existing one.
+
+Note that getting a new starter project doesn't mean starting over on your mod -
+you still keep all of your mod-specific files.
 
 If you have lots of project-level specific settings,
 such as special packaging rules or editor configurations, this may not be ideal.

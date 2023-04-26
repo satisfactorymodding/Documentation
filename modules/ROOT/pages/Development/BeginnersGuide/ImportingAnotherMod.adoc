@@ -1,0 +1,18 @@
+# Importing Another Mod
+
+TODO
+
+Looking at other mods' source code is a good way to learn
+
+If a mod developer is sharing the mod's source code, it is probably listed on the modpage on ficsit.app, but if you don't see it there, consider asking them on the Discord anyway. Many are happy to share it.
+
+If your own mod isn't stored in a git repo yet, you can learn how to do that
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
+
+Remember to regenerate visual studio files and build dev editor and shipping
+
+You might need to deal with ignored access transformers TODO Link
+
+It's easy for a dev to accidentally reference files in their own mod without realizing, so if you see any errors about missing files, you should contact them and let them know
+
+Keep in mind that most devs will not have their art assets available in the repos for copyright reasons so those may be missing.

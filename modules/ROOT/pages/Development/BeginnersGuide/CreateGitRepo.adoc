@@ -1,0 +1,145 @@
+# Creating a Git Repo for your Mod
+
+TODO
+
+If you're already experienced with Git, you can skip to the TODO section.
+
+## Why Use a Git Repo
+
+Advantages:
+
+- Easily return to a past version of the code to test functionality
+- Keep track of changes to write patch notes for a release
+- Easily share your source code with others
+- Backs up your files in case they get corrupted or you lose access to your computer
+- Makes it harder to misplace your files if return to modding after an extended break
+- Version control usage is an important skill that can benefit any coder.
+
+Disadvantages:
+
+- One more tool to learn
+
+## Understanding Git
+
+It is important to understand the distinction between "Git" and platforms like "GitHub" and "GitLab".
+
+**Git** is open-source software created to manage files, usually text-based,
+by keeping track of what changes between distinct 'revisions' of the files.
+You can learn more about it https://git-scm.com/about[here].
+
+Git is traditionally accessed via the command line, but there are many different tools that offer a more approachable and convenient interface to the same functionality.
+
+**GitHub** are **GitLab** are web platforms that allow you to store a git "repository" online, called a "remote",
+making it easy to collaborate with others, and providing a backup.
+
+You should have already created an account on GitHub in order to obtain a copy of the custom engine version.
+
+Git tools are used on your local computer to manage files.
+The files are then "pushed" (uploaded) to a git remote hosted by a platform like GitHub.
+
+## Git Tutorial on Gitkraken
+
+Check out the first 4 tutorials at
+https://www.gitkraken.com/learn/git/tutorials[this link], namely:
+
+- https://www.gitkraken.com/learn/git/tutorials/what-is-a-git-repository[What is a Git repository?]
+- https://www.gitkraken.com/learn/git/tutorials/what-is-git-commit[What is a Git commit?]
+- https://www.gitkraken.com/learn/git/tutorials/how-to-git-commit[How to Git Commit]
+- https://www.gitkraken.com/learn/git/tutorials/what-is-git-remote[What is a Git remote?]
+
+You are, of course, free to check out the other tutorials, but they cover topics less relevant to Satisfactory modding.
+
+## Beginner Git Users
+
+You are free to use git from the command line, but it is recommended to use a GUI tool to make things easier to learn.
+
+Consider the following software:
+
+- https://desktop.github.com/[Github Desktop], free and great for beginners
+- https://www.sourcetreeapp.com/[Sourcetree], free but a bit more complicated than GitHub Desktop
+- https://www.gitkraken.com/[GitKraken], free for non-commercial use as long as your code is public to the internet
+
+This tutorial will use GitHub Desktop, but all are valid choices.
+
+## Experienced Git Users
+
+TODO relocate this section
+
+Be extra careful with merge conflicts and branches in the context of Unreal Engine.
+
+Most Unreal Engine asset files are raw binary files, which means git diffing them is difficult.
+Panakotta has directions on using UE as diff tool
+https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here].
+
+## Creating a Repository and Adding your Files
+
+### Create the Remote Repository on GitHub
+
+Read the information in this section, then follow the directions
+https://docs.github.com/en/get-started/quickstart/create-a-repo[here].
+You can stop once you get to the "Commit your first change" section.
+
+You don't want to create your repository from a template.
+
+Your repository name can be anything you want,
+but it is highly recommended to use your xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
+
+We suggest you leave your repository as 'Public' so others can learn from your mod, help you if you get stuck, and write extensions to your mod.
+
+### Creating the Local Repository
+
+In order to get started using Git, we need to create a local repository on our computer
+to start tracking our existing plugin files.
+There are a couple ways to do this.
+
+### Option A: Clone the Remote Repository and Copy Your Files In
+
+This approach skips the process of configuring the git remote settings,
+but requires you to shuffle some files around.
+
+Make sure you have the Unreal editor closed before proceeding.
+
+Locate the folder for your mod in your Starter Project's plugins folder.
+Temporarily rename it to something else, for example `YourModReference_Temp`.
+
+Now, use your git client of choice to clone the remote repository you created on GitHub inside your plugins folder.
+
+Directions for doing this in GitHub Desktop can be found
+https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop[here].
+
+Assuming your GitHub repository is named `YourModReference`,
+you should now have a folder called `YourModReference` inside your plugins folder,
+in addition to the `YourModReference_Temp` folder.
+
+If your GitHub repository is named something other than your mod reference,
+you should rename the folder to exactly match your mod reference.
+This new folder will be your plugin's folder from now on, so it must obey the usual Mod Reference naming rules.
+
+The `YourModReference` folder should be empty,
+or, if you happen to have showing hidden files enabled on your system, you should see a `.git` folder.
+If the folder contains has a readme or license file, delete them before proceeding unless you already know you want to keep them.
+
+Now, move the contents of your plugin from the `YourModReference_Temp` folder into the `YourModReference` folder.
+
+You have now successfully moved your plugin files into a git repository,
+but they are not yet tracked. It's safe to delete the now-empty `YourModReference_Temp` folder.
+
+Launch the editor and package your mod to make sure everything is still working.
+If your plugin isn't appearing, make sure you got the folder names correct, and that there are no extra "layers" folder, the mod's folder (with the git repo)
+
+### Option B: Create the Repository Locally and Push it to GitHub
+
+This option will not be explained here, but exists as a heading since it is a valid approach.
+
+If you chose this approach, look for other resources online to help you.
+It will involve configuring your local repository to point to the remote on GitHub.
+
+## Gitignore File
+
+In order to keep temporary or user-specific files out of the repository,
+git uses a file called `.gitignore` to keep track of what files to exclude.
+
+If you created your mod with the Alpakit wizards, it will have already created this file for you.
+If not, you can pick one up
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Plugins/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
+
