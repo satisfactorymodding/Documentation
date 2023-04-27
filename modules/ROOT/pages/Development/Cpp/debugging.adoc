@@ -1,0 +1,26 @@
+= Debugging
+
+You can debug your own {cpp} code using a debugger.
+
+== Configuration
+In order for things to work without all the source code available you'll need to configure your debugger. 
+
+The setting that must be disabled is "Require source files to exactly match the original version". 
+
+== Attach Debugger
+Now you need to attach your debugger of choice to the running Satisfactory process, {FactoryGame-Win64-Shipping.exe}. 
+
+== Debug
+With the debugger attached you can add breakpoints to your {cpp} code or any other code you have the source to. When your breakpoint is hit you can view local variables, view the Call Stack, and step through the code.
+
+== Function Breakpoints
+By setting a Function Breakpoint, you can try to break when one of the vanilla functions are called - even though you don't have the source code.
+
+To do this in Visual Studio click on 'Debug' in the Toolbar, hover over 'New Breakpoint' and click on 'Function Breakpoint'. When that window pops open you can paste in the function you want to break on using the {ClassName::FunctionName} scheme. 
+
+[NOTE]
+====
+While Function Breakpoints seem to work most of the time, there may be cases where it doesn't break where you expect it. In this case you're just out of luck
+====
+
+Once a function breakpoint has been hit you can view the local variables, view the Call Stack, and step through the code. When stepping through code you obviously won't be able to see the actual code, but you can get an idea of what happens in what order by watching the Call Stack and local variables as different functions are called.
