@@ -217,7 +217,7 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852
 
 You can also follow this process to track down which mod(s) you have installed are leading to a crash (or other undesired behavior):
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089043908174037023/Satisfactory_Troubleshooting_v2.png[Troubleshooting flowchart]
+image:https://cdn.discordapp.com/attachments/834348739539238922/1102661505255751801/debugmods.png[Troubleshooting flowchart]
 
 == How can I tell what mod added an item/milestone/recipe/thing?
 
