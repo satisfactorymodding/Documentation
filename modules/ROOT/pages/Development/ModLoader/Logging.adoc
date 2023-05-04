@@ -44,6 +44,26 @@ does a good job of explaining how to use the macro,
 set up your own custom logging categories,
 and the macro's formatting capabilities.
 
+An example definition for a log category that matches the name and behavior of SML's auto-created blueprint logging categories:
+
+In `YourModReference.h`:
+```cpp
+DECLARE_LOG_CATEGORY_EXTERN(LogYourModReference, Verbose, All);
+```
+
+In `YourModReference.cpp`:
+```cpp
+DEFINE_LOG_CATEGORY(LogYourModReference);
+```
+
+In a cpp file where you want to log something:
+```cpp
+#include "LogYourModReference.h"
+// [...]
+UE_LOG(LogYourModReference, Verbose, TEXT("Hello World!"));
+
+```
+
 [WARNING]
 ====
 When creating a log category with the `DECLARE_LOG_CATEGORY_EXTERN` macro in your headers,
@@ -53,6 +73,10 @@ If the category is named `LogYourModReference` and has a compile-time verbosity 
 whenever a blueprint logging call is fired, the engine will attempt to re-create the logging category with the All category,
 leading to two different verbosity levels being specified for the same logging category,
 causing the game to hard crash.
+
+The second argument is the default verbosity, whose value does not need to match with SML's.
+
+Note that if you redefine the blueprint log category (`LogYourModReference`) with a Default Verbosity other than SML's value of `Verbose`, your blueprint logging calls will also be affected be filtered.
 ====
 
 As with most {cpp} macros,
