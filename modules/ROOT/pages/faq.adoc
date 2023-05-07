@@ -11,6 +11,11 @@ or add them yourself via the 'Edit this Page' button in the top right.
 
 == How do I install mods?
 
+The first step is to download the Satisfactory Mod Manager.
+You can get it from ficsit.app, or by clicking https://smm.ficsit.app/[here].
+
+Next, follow the steps below:
+
 === For Windows 10:
 
 image:FAQ/win10_install_smm_guide.png[Steps to install SMM on Windows 10]
