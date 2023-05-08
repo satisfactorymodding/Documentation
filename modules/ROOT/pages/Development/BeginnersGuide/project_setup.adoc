@@ -183,7 +183,7 @@ or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
-When you want to test or release your mod, make sure to build the project for `Shipping`, `Shipping Server`, and/or `Linux_Shipping_Server`.
+When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
 Without doing so, your mod will be missing important files.
 ====
 
