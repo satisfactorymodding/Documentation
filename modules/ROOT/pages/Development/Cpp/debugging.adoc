@@ -1,0 +1,41 @@
+= Debugging
+
+You can debug your own {cpp} code using the Visual Studio debugger and use Function Breakpoints to "track" execution vanilla code even without the source code.
+
+== Configuration
+
+You can learn more about the Visual Studio debugger
+https://learn.microsoft.com/en-us/visualstudio/debugger/debugger-feature-tour?view=vs-2022[here].
+
+You can learn more about the Rider for Unreal Engine debugger
+https://www.jetbrains.com/help/rider/Unreal_Engine__Debugger.html#symbol_server_debugging[here].
+
+In order for things to work without all the source code available you'll need to configure your debugger to be okay with mismatched source code.
+
+In Visual Studio, this can be handled in 
+`Debug > Options...` then under `Debugging > General` find the entry for "Require source files to exactly match the original version" and uncheck it. It's roughly halfway down the scrollable area.
+
+== Attach Debugger
+
+Now you need to attach your debugger of choice to the running Satisfactory process, `FactoryGame-Win64-Shipping.exe`.
+
+After you've already attached once during your editing session, you can use "Reattach to Process" to quickly reattach the debugger again.
+
+== Breakpoints
+
+With the debugger attached you can add breakpoints to your {cpp} code or any other code you have the source to. When your breakpoint is hit you can view local variables, view the Call Stack, and step through the code.
+
+== Function Breakpoints
+
+By setting a Function Breakpoint, you can try to break when one of the vanilla functions are called - even though you don't have the source code.
+
+To do this in Visual Studio click on 'Debug' in the Toolbar, hover over 'New Breakpoint' and click on 'Function Breakpoint'. When that window pops open you can paste in the function you want to break on using the `ClassName::FunctionName` scheme.
+
+[NOTE]
+====
+While Function Breakpoints seem to work most of the time, there may be cases where it doesn't break where you expect it.
+In this case, you're just out of luck.
+You'll have to try breaking on a different function.
+====
+
+Once a function breakpoint has been hit you can view the local variables, view the Call Stack, and step through the code. When stepping through code you obviously won't be able to see the actual code, but you can get an idea of what happens in what order by setting multiple breakpoints and watching the Call Stack and local variables as different functions are called.
