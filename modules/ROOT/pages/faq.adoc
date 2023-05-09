@@ -264,3 +264,15 @@ In order to change the location where SMM caches the downloaded mod files you ne
 2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
 3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
 4. Open SMM and download a mod to test and make sure the change has taken effect.
+
+== Why are my game's textures blurry or low resolution?
+
+No particular mod causes your textures to be low resolution -
+it's a base/engine game bug that can be exacerbated by mods.
+Unreal engine "streams" in low resolution textures at first and then gradually loads better versions.
+This process is getting stuck and thus some textures stay low resolution.
+In terms of fixing it there's three different things you can try.
+
+1. Try swapping your graphics mode between DX12/Vulkan/etc. Different people have different levels of success with each.
+2. Randomly pick mods that add a lot of new textures you aren't that into and uninstall them. It's never a specific mod.
+3. Try turning down some graphics settings or upgrading your graphics card. The issue has been reported on 30XX series though.
