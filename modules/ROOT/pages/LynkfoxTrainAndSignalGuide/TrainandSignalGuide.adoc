@@ -37,7 +37,9 @@ about to leave the station, and that path cannot change.
 • You can get away with just using Block signals everywhere. Path signals can be completely
 ignored until your train network has a LOT of trains on it.
 
+
 === Effectively, they’re big belts.
+
 
 Trains are, in effect, very high throughput belts. The difference from a belt is that the max throughput of
 a single car is not a set number but affected by the time it takes a train to make a round trip and the
@@ -51,7 +53,6 @@ part in question, and the round trip time from start back to start.)
 == The Parts
 
 ===Engines
-
 • Engines can only pull, not push, so if you want a train to run forward and backward on the same
 rail you need an engine on each side of the cars.
 
@@ -76,6 +77,7 @@ hold one fluid. Still, it is often easiest to keep each freight car toi single p
 
 image:modules/ROOT/images/LynkfoxTrainSignalGuide/FreightCar_Empty.png[]
 An empty freight car
+
 • Freight cars must be loaded/unloaded by Freight Platforms; Fluid by Fluid Platforms.
 
 
@@ -232,9 +234,10 @@ The Best Practice is to run two lines in parallel with each other and designate 
 the opposite direction. This is often quickly referred to as Right Hand or Left-Hand drive trains (the train
 is driving on the right side of two parallel tracks when moving forward). You can consider each track a
 lane in a divided highway.
+
 Rails will only connect to each other at the end of a previous rail segment; if you want to make a split in
 the track, it will start at the point where the last rail piece ends, by connecting two pieces to that end.
- Rails can cross over each other and “clip” together, without any adverse effect to trains running
+Rails can cross over each other and “clip” together, without any adverse effect to trains running
 (assuming signals are employed when there are multiple trains).
 
 
@@ -255,7 +258,7 @@ connecting to them for new rails or when making a full loop.
 Because it is recommended to build in parallel one-way tracks, this is how you would do a 90 degree
 turn on foundations and keep it clean. The signals have been added to help differentiate the different
 built rail pieces
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote11.png[]
+image:LynkfoxTrainSignalGuide/TrainNote11.png
 An alternative to parallel rails is Stacked Rails. Rails should be at least Three (3) 4-meter foundations part
 from the base of the lower rail to bottom of whatever the upper rail is resting on to prevent clipping, but
 otherwise the trains will not be affected if the rail is far enough above the other the train does not clip
@@ -280,7 +283,7 @@ It is also important that you do not snap the rail segments to the very edge of 
 Instead, you want to go about a quarter of a foundation beyond on the top, and about half of a
 foundation below on the bottom. The look is improved if you stop at least halfway up the incline and
 form a new segment as well.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote13.png[]
+image:LynkfoxTrainSignalGuide/TrainNote13.png
 It is possible to do a corkscrew for a small footprint ascension. It is a bit of work to achieve a very
 smooth transition between curves but it is entirely possible to do:
 image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote14.png[]
@@ -289,18 +292,14 @@ image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote14.png[]
 Step 1: Build a center tower and spokes that are 3 foundations out on every side, and with a gap of
 two 4m foundations between them. On the first spoke extend at a 90-degree angle away from the
 next highest spoke for the track to enter on. On every other spoke, add a 2m incline to the end:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote15.png[]
-
+image:LynkfoxTrainSignalGuide/TrainNote15.png
 Step 2: Add 2 more foundations to the first spoke above the ground level, and a rail starting from
 3/4ths of the incline:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote16.png[]
-
+image:LynkfoxTrainSignalGuide/TrainNote16.png
 Step 3: Bring the initial entry point of the Rail to just about halfway before the first spoke:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote17.png[]
-
+image:LynkfoxTrainSignalGuide/TrainNote17.png
 Step 4: Connect the two rails with a curve.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote18.png[]
-
+image:LynkfoxTrainSignalGuide/TrainNote18.png
 Step 5: Remove the excess rail and foundations on the upper spoke. Repeat every spoke until desired
 height has been reached.
 image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote19.png[]
@@ -325,6 +324,7 @@ segments to help you see where they are.
 In general, a given segment can have one train in it. This is how signals prevent collisions – Trains will
 respect the status of a segment when they reach the signal that begins it and will not enter if it will
 cause a collision of Trains.
+
 A Segment is defined by the signal that begins it. Trains only look for signals on the right-hand side of
 the track.
 
@@ -371,15 +371,12 @@ trains may have to do.
 
 image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote25.png[]
 A Block Segment between two Block Signals. The Segment is currently clear
-
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote26.png[]
+image:LynkfoxTrainSignalGuide/TrainNote26.png
 A Block Segment that is currently occupied. The Red Signal will prevent another train from entering.
-
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote27.png[]
+image:LynkfoxTrainSignalGuide/TrainNote27.png
 The Signals are on the left side of the track from this direction, and since there are no signals on the right side
 it shows the Do Not Enter symbol, meaning trains will not path this direction.
-
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote28.png[]
+image:LynkfoxTrainSignalGuide/TrainNote28.png
 Adding another signal removes the Do Not Enter, but this block is still occupied preventing another train
 from entering; Hence the Best Practice of one-way train tracks.
 
