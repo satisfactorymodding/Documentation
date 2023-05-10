@@ -1,8 +1,8 @@
 
-=== V0.1: Last Updated 2023-04-21
-=== Satisfactory Train / Train Signal Manual
+==== V0.1: Last Updated 2023-04-21
+==== Satisfactory Train / Train Signal Manual
 
-== Introduction
+= Introduction
 
 Train signals in Satisfactory are extremely simple in comparison to other games. Even so, they can often
 be confusing to new players or players who are not already familiar with the language of train signals.
@@ -52,7 +52,8 @@ part in question, and the round trip time from start back to start.)
 
 == The Parts
 
-===Engines
+=== Engines
+
 • Engines can only pull, not push, so if you want a train to run forward and backward on the same
 rail you need an engine on each side of the cars.
 
