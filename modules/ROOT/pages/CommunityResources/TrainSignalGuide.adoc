@@ -56,9 +56,7 @@ part in question, and the round trip time from start back to start.)
 * Engines can only pull, not push, so if you want a train to run forward and backward on the same
 rail you need an engine on each side of the cars.
 
-image:CommunityResources/TrainSignalGuide/Engine_Left.png[]
-
-An Engine, facing left.
+image:CommunityResources/TrainSignalGuide/Engine_Left.png[An Engine facing left.]
 
 * Engines can pull a number of cars determined by their weight, which is determined by how full
 they are (the type of part of fluid in the car does not affect the weight). In general, aim to keep
@@ -75,8 +73,7 @@ they are pulling.
 it loads from.. You can mix parts in a Freight car, but like all fluid systems, each fluid car can only
 hold one fluid. Still, it is often easiest to keep each freight car toi single part.
 
-image:CommunityResources/TrainSignalGuide/FreightCar_Empty.png[]
-An empty freight car
+image:CommunityResources/TrainSignalGuide/FreightCar_Empty.png[An empty Freight Car.]
 
 * Freight cars must be loaded/unloaded by Freight Platforms; Fluid by Fluid Platforms.
 
@@ -89,14 +86,18 @@ unload trains at needs a station as the first piece, attaching various platforms
 always path to arrive at a station coming in from the back and parking the Engine at the station
 facing the same direction as the curved side.
 
-image:CommunityResources/TrainSignalGuide/TrainStation.png[]
+image:CommunityResources/TrainSignalGuide/TrainStation.png[A Train Station showing orientation.]
 When placing a Station, the curved side is the front. There is also an arrow pointing in the right direction,
 but it can be hard to see.
 
 * Trains generate a path based on the shortest path possible between their origin and
 destinations. These paths will not change after the train starts its auto pilot.
 
-image:CommunityResources/TrainSignalGuide/TrainNote1.png[]
+[NOTE]
+====
+Trains will not change their path after they have started moving. You cannot
+dynamically have trains pick a path while it is already traveling.
+====
 
 * Stations incur a 'distance penalty' on route planning: If a train could pick one of two equal
 length routes to get to its destination, but one has a Station it would pass through that it is not
@@ -123,7 +124,12 @@ unloaded at a given platform, they still need to line up with the right car to t
 avoid the need for sorters or one part clogging up a station inventory and preventing the other
 part from being loaded at all.
 
-image:CommunityResources/TrainSignalGuide/TrainNote2.png[]
+[NOTE]
+====
+Stations Lock when Loading or Unloading cargo from a train. This means they DO NOT
+accept anything from a belt or output anything to a belt for this duration, which is
+about 27 seconds.
+====
 
 * Due to the lock effect when a station is being loaded or unloaded, trains can never achieve the
 maximum of two Mk5 belts attached (1560) throughput through a single station.
@@ -157,9 +163,8 @@ Stations Lock when Loading or Unloading cargo from a train. This means they DO N
 accept anything from a belt or output anything to a belt for this duration, which is
 about 27 seconds.
 
-image:CommunityResources/TrainSignalGuide/TrainNote3.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote3.png[Starting Station and Station A and B respectively from the above example]
 
-Starting Station and Station A and B respectively from the above example
 
 === Station Buffers
 
@@ -198,17 +203,14 @@ more prone to issues if you cannot maintain a constant flow rate.
 Buffering DOES NOT work for Gasses (i.e, Nitrogen Gas) because the Buffer Building
 does not work properly for Gasses as they ignore Headlift.
 
-image:CommunityResources/TrainSignalGuide/TrainNote4.png[]
+[NOTE]
+====Buffering DOES NOT work for Gasses (i.e, Nitrogen Gas) because the Buffer Building
+does not work properly for Gasses as they ignore Headlift.
+====
 
-image:CommunityResources/TrainSignalGuide/TrainNote5.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote5.png[A Solid Freight buffer. It is the same for load or unload, just reverse the direction of the belts.]
 
-A Solid Freight buffer. It is the same for load or unload, just reverse the direction of the belts.
-
-image:CommunityResources/TrainSignalGuide/TrainNote6.png[]
-
-A Fluid buffer for Fluid stations Two pipes coming out of the Station, with a buffer slightly above the
-main pipeline. This is the same setup for loading or unloading, simply connect to the opposite connection
-points.
+image:CommunityResources/TrainSignalGuide/TrainNote6.png[A Fluid buffer for Fluid stations Two pipes coming out of the Station, with a buffer slightly above the pipeline. Reverse the direction for unloading and loading.]
 
 * For most Fluids, a higher throughput can be achieved by packaging the fluids before travel. This
 does add the additional complexity of either returning the empty containers afterward or
@@ -221,7 +223,7 @@ first.
 generally recommended to use the fluids to produce items near where they are extracted, and
 ship the final product.
 
-image:CommunityResources/TrainSignalGuide/TrainNote7.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote7.png[Throughtput Chart]
 
 == Rails
 
@@ -240,16 +242,16 @@ Rails can cross over each other and “clip” together, without any adverse eff
 
 === Curves
 
-image:CommunityResources/TrainSignalGuide/TrainNote8.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote8.png[3x3 Curve]
 
 The smallest curve that can be done with rails is a 3x3 curve: However, this is not a feasible way to build
 a lot of curves you will have to use - instead it is recommended to be at least 4x4:
 If you want to achieve good clean curves, then it is advised to create the segments on both ends of the
 curve first, and then create the curve itself:
 
-image:CommunityResources/TrainSignalGuide/TrainNote9.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote9.png[Placement]
 
-image:CommunityResources/TrainSignalGuide/TrainNote10.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote10.png[Placement Cont'd]
 
 It is usually advised to put some straight rail pieces between each curve, to prevent issues with
 connecting to them for new rails or when making a full loop.
@@ -257,14 +259,14 @@ Because it is recommended to build in parallel one-way tracks, this is how you w
 turn on foundations and keep it clean. The signals have been added to help differentiate the different
 built rail pieces
 
-image:CommunityResources/TrainSignalGuide/TrainNote11.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote11.png[Signals]
 
 An alternative to parallel rails is Stacked Rails. Rails should be at least Three (3) 4-meter foundations part
 from the base of the lower rail to bottom of whatever the upper rail is resting on to prevent clipping, but
 otherwise the trains will not be affected if the rail is far enough above the other the train does not clip
 with the rail itself.
 
-image:CommunityResources/TrainSignalGuide/TrainNote12.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote12.png[Stacked Rail]
 
 Stacked rails can save space but add additional complexity when building intersections and stations.
 However, they also open the possibility of intersections where the various connecting rails do not cross,
@@ -284,36 +286,36 @@ Instead, you want to go about a quarter of a foundation beyond on the top, and a
 foundation below on the bottom. The look is improved if you stop at least halfway up the incline and
 form a new segment as well.
 
-image:CommunityResources/TrainSignalGuide/TrainNote13.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote13.png[Rail ramp]
 
 It is possible to do a corkscrew for a small footprint ascension. It is a bit of work to achieve a very
 smooth transition between curves but it is entirely possible to do:
 
-image:CommunityResources/TrainSignalGuide/TrainNote14.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote14.png[Curves]
 
 Step 1: Build a center tower and spokes that are 3 foundations out on every side, and with a gap of
 two 4m foundations between them. On the first spoke extend at a 90-degree angle away from the
 next highest spoke for the track to enter on. On every other spoke, add a 2m incline to the end:
 
-image:CommunityResources/TrainSignalGuide/TrainNote15.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote15.png[Curves Cont'd]
 
 Step 2: Add 2 more foundations to the first spoke above the ground level, and a rail starting from
 3/4ths of the incline:
 
-image:CommunityResources/TrainSignalGuide/TrainNote16.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote16.png[Curves Cont'd]
 
 Step 3: Bring the initial entry point of the Rail to just about halfway before the first spoke:
 
-image:CommunityResources/TrainSignalGuide/TrainNote17.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote17.png[Curves Cont'd]
 
 Step 4: Connect the two rails with a curve.
 
-image:CommunityResources/TrainSignalGuide/TrainNote18.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote18.png[Curves Cont'd]
 
 Step 5: Remove the excess rail and foundations on the upper spoke. Repeat every spoke until desired
 height has been reached.
 
-image:CommunityResources/TrainSignalGuide/TrainNote19.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote19.png[Curves Cont'd]
 
 == Signals
 
@@ -321,9 +323,14 @@ There are two types of signals in Satisfactory, Block and Path. Between the two 
 engineer an efficient and high throughput train network to make sure your trains continue to move
 products efficiently.
 
-image:CommunityResources/TrainSignalGuide/TrainNote20.png[]
+[NOTE]
+====
+Signals are an All or Nothing affair. Either your entire network has signals or none of it
+does. If you try to do it in partial setups, you will find that it does not behave like you
+wnat it to.
+====
 
-image:CommunityResources/TrainSignalGuide/TrainNote21.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote21.png[Signal Switch]
 
 === Segments
 
@@ -339,11 +346,16 @@ cause a collision of Trains.
 A Segment is defined by the signal that begins it. Trains only look for signals on the right-hand side of
 the track.
 
-image:CommunityResources/TrainSignalGuide/TrainNote22.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote22.png[Rail Segments]
 
 Segments - Each color is a segment. The color means nothing, it is just a way of differentiation
 
-image:CommunityResources/TrainSignalGuide/TrainNote23.png[]
+[NOTE]
+====Tracks placed too close to each other can cause overlap, causing the system to treat
+both tracks as the same segment. It is advised to keep your tracks about 1.5
+foundations apart when running parallel or close to parallel.
+====
+
 
 === Block Segments
 
@@ -375,26 +387,31 @@ This in turn slows down your trains overall, increasing the Round Trip Duration 
 lowering your throughput. For small networks of only a few trains this is not an issue usually, but it is
 generally good to plan ahead.
 
-image:CommunityResources/TrainSignalGuide/TrainNote24.png[]
+
+[NOTE]
+====
+In general, it is seen as good practice to place your Block Signals on long straight aways
+about 1.5 to train lengths apart from each other.
+====
 
 Placing your Block signals this far apart on long straightaways means that at most any given train will be
 inside two Block Segments at any given point, reducing the amount of start and stops any following
 trains may have to do.
 
-image:CommunityResources/TrainSignalGuide/TrainNote25.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote25.png[Block Signals]
 
 A Block Segment between two Block Signals. The Segment is currently clear
 
-image:CommunityResources/TrainSignalGuide/TrainNote26.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote26.png[Block Segment]
 
 A Block Segment that is currently occupied. The Red Signal will prevent another train from entering.
 
-image:CommunityResources/TrainSignalGuide/TrainNote27.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote27.png[Red Signal]
 
 The Signals are on the left side of the track from this direction, and since there are no signals on the right side
 it shows the Do Not Enter symbol, meaning trains will not path this direction.
 
-image:CommunityResources/TrainSignalGuide/TrainNote28.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote28.png[Do Not Enter Signal]
 
 Adding another signal removes the Do Not Enter, but this block is still occupied preventing another train
 from entering; Hence the Best Practice of one-way train tracks.
@@ -402,7 +419,7 @@ from entering; Hence the Best Practice of one-way train tracks.
 
 === Path Segments
 
-image:CommunityResources/TrainSignalGuide/TrainNote29.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote29.png[Path Segment]
 
 A Block signal and a Path Signal, the Path signal is the further down the line signal showing red. It has a
 different top and is squarer.
@@ -416,8 +433,11 @@ you put multiple Path signals in a row, a train will continue to look until it r
 This is because Path Segments do not allow trains to stop inside them. Doing such a thing is known as
 Chaining and is usually used for situations where there are multiple entrances to a single line.
 
-image:CommunityResources/TrainSignalGuide/TrainNote30.png[]
-
+[NOTE]
+====
+Path Signals DO NOT allow a train to change its set path on the on the fly. The path is
+set when the train is about to leave the station and will not be updated.
+====
 
 === Intersections
 
@@ -429,13 +449,13 @@ Segment does not interact with another trains path at the same time.
 This Intersection is pointless for a path signal. There is never a time where two trains could be in this red
 segment without their paths crossing.
 
-image:CommunityResources/TrainSignalGuide/TrainNote31.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote31.png[Intersection]
 
 This intersection, meanwhile, Path Signals would allow both North/South (up/down) lines to have a train
 on them simultaneously or both East/West (left/right) lines. However, it would not allow both a North
 and an East bound train (or any other combination of 90-degree lines)
 
-image:CommunityResources/TrainSignalGuide/TrainNote32.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote32.png[Intersection2]
 
 === Common Intersection Patterns
 
@@ -450,19 +470,19 @@ Drive by moving the signals to the other side of the track.
 
 This 4 Way Cross intersection is the tightest compact method:
 
-image:CommunityResources/TrainSignalGuide/TrainNote33.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote33.png[Compact 4 Way Intersection]
 
 ==== Expanded 4-way intersection:
 
 This one takes up a bit more room but is easier to build in some ways. The signally however is the same.
 
-image:CommunityResources/TrainSignalGuide/TrainNote34.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote34.png[Expanded 4 Way Intersection]
 
 ==== 3-way T Intersection:
 
 A classic 3-way intersection. This can easily become a Y shape, but is easier to show as a T.
 
-image:CommunityResources/TrainSignalGuide/TrainNote35.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote35.png[3 Way T Intersection]
 
 ==== A Roundabout:
 
@@ -473,7 +493,7 @@ its best to ignore Path signals and just let only one train use it at a time. If
 like a true round about, you need to expand the portions between the Entry/Exit sections so they are a
 few foundations longer than your longest train, then make them their own segments, like so:
 
-image:CommunityResources/TrainSignalGuide/TrainNote36.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote36.png[Roundabout]
 
 ==== In-Line Station:
 
@@ -482,7 +502,7 @@ its best to take them off the main track. A design like this allows you to have 
 station from any direction. You can extend this with multiple stations, and each one on its own segment.
 Remember: Path Signals cannot be directly before a Station, but they can be after it.
 
-image:CommunityResources/TrainSignalGuide/TrainNote37.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote37.png[In-Line Station]
 
 ==== An End-Point Station with Turn Around:
 
@@ -491,7 +511,7 @@ stations close by this can help make sure trains do not get blocked and waiting 
 so they can pass through it, or worse pathing a completely different direction because of the station
 path tax.
 
-image:CommunityResources/TrainSignalGuide/TrainNote38.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote38.png[Endpoint Station with Turn Around]
 
 ==== A Pass Around
 
@@ -499,4 +519,4 @@ It is possible to use a structure like this with a single line of track to have 
 need to be built - compared to one-way tracks in parallel, which will automatically balance the trains
 out and space them according to the signals. None the less, this is here for consumption.
 
-image:CommunityResources/TrainSignalGuide/TrainNote39.png[]
+image:CommunityResources/TrainSignalGuide/TrainNote39.png[Pass Around]
