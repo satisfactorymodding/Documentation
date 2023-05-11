@@ -1,8 +1,11 @@
+= Satisfactory Train / Train Signal Manual
 
-==== V0.1: Last Updated 2023-04-21
-==== Satisfactory Train / Train Signal Manual
+====
+V0.1: Last Updated 2023-04-21
+Original author: Lynkfox
+====
 
-= Introduction
+== Introduction
 
 Train signals in Satisfactory are extremely simple in comparison to other games. Even so, they can often
 be confusing to new players or players who are not already familiar with the language of train signals.
@@ -57,7 +60,7 @@ part in question, and the round trip time from start back to start.)
 • Engines can only pull, not push, so if you want a train to run forward and backward on the same
 rail you need an engine on each side of the cars.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/Engine_Left.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/Engine_Left.png[]
 An Engine, facing left.
 
 • Engines can pull a number of cars determined by their weight, which is determined by how full
@@ -76,7 +79,7 @@ they are pulling.
 it loads from.. You can mix parts in a Freight car, but like all fluid systems, each fluid car can only
 hold one fluid. Still, it is often easiest to keep each freight car toi single part.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/FreightCar_Empty.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/FreightCar_Empty.png[]
 An empty freight car
 
 • Freight cars must be loaded/unloaded by Freight Platforms; Fluid by Fluid Platforms.
@@ -91,14 +94,14 @@ unload trains at needs a station as the first piece, attaching various platforms
 always path to arrive at a station coming in from the back and parking the Engine at the station
 facing the same direction as the curved side.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainStation.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainStation.png[]
 When placing a Station, the curved side is the front. There is also an arrow pointing in the right direction,
 but it can be hard to see.
 
 • Trains generate a path based on the shortest path possible between their origin and
 destinations. These paths will not change after the train starts its auto pilot.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote1.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote1.png[]
 
 • Stations incur a ‘distance penalty’ on route planning: If a train could pick one of two equal
 length routes to get to its destination, but one has a Station it would pass through that it is not
@@ -126,7 +129,7 @@ unloaded at a given platform, they still need to line up with the right car to t
 avoid the need for sorters or one part clogging up a station inventory and preventing the other
 part from being loaded at all.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote2.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote2.png[]
 
 • Due to the lock effect when a station is being loaded or unloaded, trains can never achieve the
 maximum of two Mk5 belts attached (1560) throughput through a single station.
@@ -160,7 +163,7 @@ Stations Lock when Loading or Unloading cargo from a train. This means they DO N
 accept anything from a belt or output anything to a belt for this duration, which is
 about 27 seconds.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote3.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote3.png[]
 Starting Station and Station A and B respectively from the above example
 
 
@@ -201,13 +204,13 @@ more prone to issues if you cannot maintain a constant flow rate.
 Buffering DOES NOT work for Gasses (i.e, Nitrogen Gas) because the Buffer Building
 does not work properly for Gasses as they ignore Headlift.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote4.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote4.png[]
 
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote5.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote5.png[]
 A Solid Freight buffer. It is the same for load or unload, just reverse the direction of the belts.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote6.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote6.png[]
 A Fluid buffer for Fluid stations Two pipes coming out of the Station, with a buffer slightly above the
 main pipeline. This is the same setup for loading or unloading, simply connect to the opposite connection
 points.
@@ -223,7 +226,7 @@ first.
 generally recommended to use the fluids to produce items near where they are extracted, and
 ship the final product.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote7.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote7.png[]
 
 
 == Rails
@@ -244,14 +247,14 @@ Rails can cross over each other and “clip” together, without any adverse eff
 
 === Curves
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote8.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote8.png[]
 The smallest curve that can be done with rails is a 3x3 curve: However, this is not a feasible way to build
 a lot of curves you will have to use – instead it is recommended to be at least 4x4:
 If you want to achieve good clean curves, then it is advised to create the segments on both ends of the
 curve first, and then create the curve itself:
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote9.png[]
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote10.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote9.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote10.png[]
 
 
 It is usually advised to put some straight rail pieces between each curve, to prevent issues with
@@ -265,7 +268,7 @@ from the base of the lower rail to bottom of whatever the upper rail is resting 
 otherwise the trains will not be affected if the rail is far enough above the other the train does not clip
 with the rail itself.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote12.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote12.png[]
 Stacked rails can save space but add additional complexity when building intersections and stations.
 However, they also open the possibility of intersections where the various connecting rails do not cross,
 instead going above or below where they would cross in a completely flat intersection, which removes
@@ -287,7 +290,7 @@ form a new segment as well.
 image:LynkfoxTrainSignalGuide/TrainNote13.png
 It is possible to do a corkscrew for a small footprint ascension. It is a bit of work to achieve a very
 smooth transition between curves but it is entirely possible to do:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote14.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote14.png[]
 
 
 Step 1: Build a center tower and spokes that are 3 foundations out on every side, and with a gap of
@@ -303,7 +306,7 @@ Step 4: Connect the two rails with a curve.
 image:LynkfoxTrainSignalGuide/TrainNote18.png
 Step 5: Remove the excess rail and foundations on the upper spoke. Repeat every spoke until desired
 height has been reached.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote19.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote19.png[]
 
 
 == Signals
@@ -311,9 +314,9 @@ image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote19.png[]
 There are two types of signals in Satisfactory, Block and Path. Between the two of these you can
 engineer an efficient and high throughput train network to make sure your trains continue to move
 products efficiently.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote20.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote20.png[]
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote21.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote21.png[]
 
 === Segments
 
@@ -329,10 +332,10 @@ cause a collision of Trains.
 A Segment is defined by the signal that begins it. Trains only look for signals on the right-hand side of
 the track.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote22.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote22.png[]
 Segments – Each color is a segment. The color means nothing, it is just a way of differentiation
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote23.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote23.png[]
 
 === Block Segments
 
@@ -364,13 +367,13 @@ This in turn slows down your trains overall, increasing the Rount Trip Duration 
 lowering your throughput. For small networks of only a few trains this is not an issue usually, but it is
 generally good to plan ahead.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote24.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote24.png[]
 
 Placing your Block signals this far apart on long straight aways means that at most any given train will be
 inside two Block Segments at any given point, reducing the amount of start and stops any following
 trains may have to do.
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote25.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote25.png[]
 A Block Segment between two Block Signals. The Segment is currently clear
 image:LynkfoxTrainSignalGuide/TrainNote26.png
 A Block Segment that is currently occupied. The Red Signal will prevent another train from entering.
@@ -384,7 +387,7 @@ from entering; Hence the Best Practice of one-way train tracks.
 
 === Path Segments
 
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote29.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote29.png[]
 A Block signal and a Path Signal, the Path signal is the further down the line signal showing red. It has a
 different top and is squarer.
 
@@ -396,7 +399,7 @@ In addition, trains will only enter a Path Segment if the following Block Segmen
 you put multiple Path signals in a row, a train will continue to look until it reaches the next block signals.
 This is because Path Segments do not allow trains to stop inside them. Doing such a thing is known as
 Chaining and is usually used for situations where there are multiple entrances to a single line.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote30.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote30.png[]
 
 
 === Intersections
@@ -408,12 +411,12 @@ Segment does not interact with another trains path at the same time.
 
 This Intersection is pointless for a path signal. There is never a time where two trains could be in this red
 segment without their paths crossing.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote31.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote31.png[]
 
 This intersection, meanwhile, Path Signals would allow both North/South (up/down) lines to have a train
 on them simultaneously or both East/West (left/right) lines. However, it would not allow both a North
 and an East bound train (or any other combination of 90-degree lines)
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote32.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote32.png[]
 
 === Common Intersection Patterns
 
@@ -427,17 +430,17 @@ Drive by moving the signals to the other side of the track.
 ==== Compact 4 Way Intersection
 
 This 4 Way Cross intersection is the tightest compact method:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote33.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote33.png[]
 
 ==== Expanded 4-way intersection:
 
 This one takes up a bit more room but is easier to build in some ways. The signally however is the same.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote34.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote34.png[]
 
 ==== 3-way T Intersection:
 
 A classic 3-way intersection. This can easily become a Y shape, but is easier to show as a T.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote35.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote35.png[]
 
 ==== A Roundabout:
 
@@ -447,7 +450,7 @@ Note: Roundabouts are not very Path friendly. If you try to make a very compact 
 its best to ignore Path signals and just let only one train use it at a time. If you really want it to function
 like a true round about, you need to expand the portions between the Entry/Exit sections so they are a
 few foundations longer than your longest train, then make them their own segments, like so:
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote36.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote36.png[]
 
 ==== In-Line Station:
 
@@ -455,7 +458,7 @@ In order to prevent trains stopped at a station from stopping trains that have n
 its best to take them off the main track. A design like this allows you to have the trains arrive at this
 station from any direction. You can extend this with multiple stations, and each one on its own segment.
 Remember: Path Signals cannot be directly before a Station, but they can be after it.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote37.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote37.png[]
 
 ==== An End-Point Station with Turn Around:
 
@@ -463,14 +466,14 @@ Like the above diagram, this one is useful for a station at the end of a line. E
 stations close by this can help make sure trains do not get blocked and waiting for the station to be free
 so they can pass through it, or worse pathing a completely different direction because of the station
 path tax.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote38.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote38.png[]
 
 ==== A Pass Around
 
 It is possible to use a structure like this with a single line of track to have more than one train on a twoway rail. However, it is not perfect – the train going in the return direction will always take the passaround, no matter what because it is a one-way track. The more trains added, the more of these will
 need to be built – compared to one-way tracks in parallel, which will automatically balance the trains
 out and space them according to the signals. None the less, this is here for consumption.
-image:modules/ROOT/images/LynkfoxTrainSignalGuide/TrainNote39.png[]
+image:modules/ROOT/images/CommunityResources/TrainSignalGuide/TrainNote39.png[]
 
 
 
