@@ -39,6 +39,12 @@ for the repository that will be auto-detected when you open the folder in VSCode
 
 This should™ also be supported by Github Codespaces, but we haven't tested it.
 
+Make sure you have [the Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+and [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
+
+If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
+then type "Reopen in Container" and select the option that appears.
+
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
 
 ### Manual
