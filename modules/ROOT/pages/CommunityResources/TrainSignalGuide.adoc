@@ -1,24 +1,21 @@
 = Satisfactory Train / Train Signal Manual
 
-====
-V0.1: Last Updated 2023-04-21
-
-Original author: Lynkfox
-====
-
 == Introduction
 
 Train signals in Satisfactory are extremely simple in comparison to other games. Even so, they can often
 be confusing to new players or players who are not already familiar with the language of train signals.
-With hope this manual will help to give a basis of information for players to design their own train
-systems.
+With hope this manual will help to give a basis of information for players to design their own train systems.
 
 Trains and all their various associated pieces are unlocked in Tier 6, Monorail Technologies. You unlock
 Rails, Engines, Freight Cars, Stations, Freight Platforms, Fluid Freight Platforms, Block and Path signals.
 
+This guide was originally written by Lynkfox and is being maintained by the Satisfactory Modding community.
+To view contribution and edit history, click "Edit this Page" in the top right corner of the page.
+
 == Too Long, Didn't Read:
 
 Here are some quick best practices. Details are explained further within:
+
 
 • Don't mix parts in a Freight Car. 1 Car/Station per part
 
@@ -72,7 +69,7 @@ See the https://satisfactory.fandom.com/wiki/Freight_Car#Weight[Satisfactory Wik
 stations. They use between 25mw and 110mw depending on the incline, speed, and how much
 they are pulling.
 
-=== Frieght Cars
+=== Freight Cars
 
 • Freight Cars carry parts and fluids. If it is Freight or Fluid is determined by what type of platform
 it loads from.. You can mix parts in a Freight car, but like all fluid systems, each fluid car can only
@@ -276,11 +273,11 @@ the need for many, if not all, of the path signals, and speeds up trains when pa
 
 === Ramps
 
-Ramps can be achieved cleanly up to a 2m ramp foundation in gradiant. Anything higher than that, an
-Engine will be unable to ascend the incline.
-To build a smooth foundation under a rail incline, use a combination of 1m and 2m inclines. Place a 1m
-incline, then 2m incline until almost to your desired height, then once again a 1m incline at the top to
-level off.
+Ramps can be achieved cleanly up to a 2m ramp foundation in gradient.
+Anything higher than that, an Engine will be unable to ascend the incline.
+To build a smooth foundation under a rail incline, use a combination of 1m and 2m inclines.
+Place a 1m incline, then 2m incline until almost to your desired height,
+then once again a 1m incline at the top to level off.
 
 It is also important that you do not snap the rail segments to the very edge of the initial and final incline.
 Instead, you want to go about a quarter of a foundation beyond on the top, and about half of a
@@ -374,13 +371,13 @@ Tracks placed too close to each other can cause overlap, causing the system to t
 both tracks as the same segment. It is advised to keep your tracks about 1.5
 foundations apart when running parallel or close to parallel.
 
-This in turn slows down your trains overall, increasing the Rount Trip Duration of a given train, and
+This in turn slows down your trains overall, increasing the Round Trip Duration of a given train, and
 lowering your throughput. For small networks of only a few trains this is not an issue usually, but it is
 generally good to plan ahead.
 
 image:CommunityResources/TrainSignalGuide/TrainNote24.png[]
 
-Placing your Block signals this far apart on long straight aways means that at most any given train will be
+Placing your Block signals this far apart on long straightaways means that at most any given train will be
 inside two Block Segments at any given point, reducing the amount of start and stops any following
 trains may have to do.
 
