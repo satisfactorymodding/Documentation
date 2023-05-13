@@ -153,6 +153,9 @@ image:BeginnersGuide/simpleMod/SetDocRecipeProperties.gif[image]
 
 Ok, now you've created your first recipe!
 
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
 == Create a Schematic
 
 Next, let's add our recipe to a schematic to make it available in game.
@@ -280,10 +283,13 @@ M Relevant Events::
 * {blank}
 +
 M Include In Builds::
-  Set this to `PublicBuilds`` so that your content is included in the build.
+  Set this to `PublicBuilds` so that your content is included in the build.
   Presumably, this is what Coffee Stain uses to keep their developer testing milestones from being shipped with the main game.
 
 Finally! What a class. Now we just need to register this schematic so it shows up at runtime.
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
 
 == Register the Schematic
 
@@ -292,6 +298,11 @@ xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_the_class
 asset we created earlier and add the schematics to the `M Schematics` array.
 
 And we're set! Our recipe and schematic are registered and should show up in the game now.
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
+== Testing Our Mod
 
 To test it out, go ahead and run Alpakit and launch the game.
 You can find info on how to use it back on the

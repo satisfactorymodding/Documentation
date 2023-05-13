@@ -192,6 +192,9 @@ M Menu Priority::
 
 == Item Visuals In World
 
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
 In order to avoid having your item display as the default flat white cube
 when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh.
 
@@ -323,6 +326,11 @@ Back in our `Desc_DocItem` descriptor, set the value of the M Conveyor Mesh fiel
 Afterwards, save the asset.
 
 == Make the Item Available
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
+From here on out, we'll stop reminding you to compile and save, but it isn't any less important - remember to do it often!
 
 We've created our item, but there's one more step before we can obtain it in-game.
 
