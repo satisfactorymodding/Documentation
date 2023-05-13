@@ -220,6 +220,12 @@ Once you find the error message(s),
 proceed to fix the problems they describe,
 or ask for help on the DIscord
 
+=== Failed to delete directory / Failed to delete file
+
+The editor can't copy your mod files to your game files if the game is already running,
+since the game has locked those files, as it is actively using them.
+Shut down the game and try again.
+
 === UATHelper: Package Mod Task Parsing command line ERROR: Failed to load script DLL Operation is not supported
 
 This error could appear when packing a mod.
