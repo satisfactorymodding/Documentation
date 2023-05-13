@@ -85,7 +85,7 @@ When making a recipe, be sure avoid the following common pitfalls:
 - Ingredient or product quantity that exceeds the item's its stack size.
 If you do this, the machine will never run, because it can't hold all of the required items.
 
-If you use a fluid, multiply the quantity by 1000, since they are treated as milliliters internally, but displayed as liters.
+If you use a fluid, multiply the quantity by 1000, since they are treated as liters internally, but displayed as cubic meters (1 cubic meter per 1000 liters).
 ====
 
 * {blank}

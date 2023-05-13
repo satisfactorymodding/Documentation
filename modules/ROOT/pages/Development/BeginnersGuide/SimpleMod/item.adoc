@@ -109,10 +109,10 @@ M Form::
 Keep in mind that liquid and gas type descriptors have some special behavior.
 
 When an item is defined as having a form factor of Liquid or Gas,
-it will switch to being displayed in a format where 1000 units of the item represents 1 Liter of the fluid.
+it will switch to being displayed in a format where 1000 units (liters) of the item represents 1 cubic meter of the fluid.
 As such, it's important to make sure that fluids are also assigned the Stack Size of `Fluid`,
-allowing it to stack to 50 Liters.
-All other stack sizes options result in a decimal quantity less than a 1 liter that is likely to confuse users.
+allowing it to stack to 50 cubic meters.
+All other stack sizes options result in a decimal quantity less than 1 cubic meter that is likely to confuse users.
 ====
 
 * {blank}
