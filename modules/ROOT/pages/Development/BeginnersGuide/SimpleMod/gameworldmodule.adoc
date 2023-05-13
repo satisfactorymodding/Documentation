@@ -127,11 +127,13 @@ xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 ====
 
 Within your mod's content folder,
-right click and select `Blueprint Class` under `Create Basic Asset`.
+right click in empty space and select `Blueprint Class` under `Create Basic Asset`.
 Click the triangle to close the Common Classes section,
 and click the other triangle to expand the All Classes section.
 Start typing `GameWorldModule` into the search box.
 Once it comes up, select it and press the green Select button to create the blueprint.
+
+image:BeginnersGuide/simpleMod/RightClickEmptySpace.png[Open the Blueprint Class]
 
 image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
 
