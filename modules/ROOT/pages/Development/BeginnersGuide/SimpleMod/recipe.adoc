@@ -308,10 +308,34 @@ To test it out, go ahead and run Alpakit and launch the game.
 You can find info on how to use it back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
-The main menu should now show a higher loaded mods count,
-and you should be able to buy and test your schematic and recipes in game.
+Load up any save file you'd like,
+preferably an existing one so you don't have to go through the tutorial again,
+and check out the HUB.
+You should be able to purchase your schematic and go to a workbench or constructor to use your recipe.
+
+== Troubleshooting
+
+=== My schematic doesn't show up in the HUB
+
+- Did you xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[save and compile] all relevant files before Alpaking? Check for any unsaved files via `File > Choose Files to Save...`
+- Is the Game World Module you created on the last step of the docs marked as the Root Module?
+- Did you select a tier for the schematic that you can't access yet in the save file?
+- Is the schematic type set to something other than `Milestone`?
+
+=== My recipe doesn't show up 
+
+- Did you xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[save and compile] all relevant files before Alpaking? Check for any unsaved files via `File > Choose Files to Save...`
+- Make sure that the product items you selected are exactly the ones we suggested here. As described in the upcoming xref:Development/BeginnersGuide/SimpleMod/item.adoc[Create an Item] page, items without assigned categories are hidden in crafters unless you search for them directly.
+
+=== My recipe doesn't work as expected
+
+Go back and check the recipe's properties to see if they match what was described above.
+
+=== Something Else
 
 If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+Even if you fix it yourself, please bring it up on the Discord
+so we can update the docs with your findings to help other people that might have a similar issue!
 
 == Next Steps
 
