@@ -190,6 +190,7 @@ image:BeginnersGuide/simpleMod/UnsavedAssetTab.png[Asset Tab]
 image:BeginnersGuide/simpleMod/DirtyBlueprint.png[Dirty Blueprint - click this to compile it!]
 
 A common way to compile and Save is by clicking the 'compile' button in the top left of the asset editor panel.
+Another approach is to press the `F7` key, which is the keybind for that same button.
 
 [TIP]
 ====
