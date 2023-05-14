@@ -42,6 +42,10 @@ This should™ also be supported by Github Codespaces, but we haven't tested it.
 Make sure you have [the Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 and [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
 
+Remember to [turn off Docker starting with system startup](https://superuser.com/a/1386584)
+and to [close Docker after you're done using it](https://www.reddit.com/r/docker/comments/ol11ve/how_to_completely_stop_docker_desktop/).
+It reserves a lot of system memory even when not actively in use.
+
 If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
 then type "Reopen in Container" and select the option that appears.
 
