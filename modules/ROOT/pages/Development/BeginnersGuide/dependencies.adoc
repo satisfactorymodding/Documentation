@@ -75,11 +75,18 @@ https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
 If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
 ====
 
-== Linux Dedicated Server Support (Optional)
+== Clang Toolchain for Linux Dedicated Server Support (Optional)
 
-Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers. This can be found here: https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/[Cross-Compiling for Linux]
+Satisfactory's dedicated servers typically run on Linux.
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+The download link for these files can be found on the Unreal documentation page for 
+https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/[Cross-Compiling for Linux].
 
-Currently, we are on UE 4.26.2 with custom changes provided by Coffee Stain Studios. Therefore, the toolchain version required is -v17 or clang-10.0.1-based.
+Currently, Satisfactory uses Unreal Engine 4.26.2 with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v17` or `clang-10.0.1-based`.
+
+Download the toolchain from the link above and run it to install the relevant files.
+The default options that the installer offers are fine.
 
 == Unreal Engine 4 (Custom Engine)
 

@@ -181,7 +181,9 @@ You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the blue bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
-After it completes, you should select `Shipping` in the toolbar and start another build. If you are building for dedicated servers, see link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
+After it completes, you should select `Shipping` in the toolbar and start another build.
+If you are building for dedicated servers, see
+link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
 
 [WARNING]
 ====
@@ -205,7 +207,8 @@ Now that you've built the binaries, your Editor should open without any issues.
 
 == Project Compilation - Dedicated Server Support (Optional)
 
-If desired, it is possible to build for dedicated server support. However, this is optional and not required to create a mod.
+If desired, it is possible to build for dedicated server support.
+However, this is optional and not required to create a mod.
 
 For Windows Dedicated Servers, select `Shipping_Server` and `Win64` in the top toolbar, then hit `Build`.
 
@@ -213,17 +216,30 @@ For Linux Dedicated Servers, select `Shipping_Server` and `Linux` in the top too
 
 == Batch Building (Optional)
 
-It is possible to select targets to build as a group. The advantage is that Visual Studio will perform all the builds requested without requiring user input to select and start each build separately. This is not required, but offered as a means to ease the project build requirements.
+It is possible to select multiple targets to be built as a group.
+The advantage is that Visual Studio will perform all the builds requested
+without requiring user input to select and start each build separately.
+This is not required, but should be considered as a means to simplify the project build process.
 
-It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top toolbar method, but they will still work the same. (see image below)
+An example of when you may *not* want batch build enabled
+is when you are testing changes to your mod in singleplayer.
+In the interest of iterating quickly,
+it is waste of time to also build the dedicated server targets every time you make a code change,
+since you won't be using them yet in your testing.
 
-Required: +
-Development_Editor - x64 / Development_Editor|Win64 - This is for using the Unreal Engine Editor for developing mods. +
+To configure batch building options in Visual Studio, navigate to `Build > Batch Build...`
 
-Optional: However, at least one of these is required to test your mod as well as release to link:https://ficsit.app[Satisfactory Modding Repository]. +
-Shipping - x64 / Shipping|Win64 - Client Support +
-Shipping_Server - x64 / Shipping_Server|Win64 - Windows Dedicated Server Support +
-Linux_Shipping_Server - Win32 / Shipping_Server|Linux - Linux Dedicated Server Support
+It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top-toolbar-of-visual-studio method, but they will still work the same. (see image below)
+
+Required:
+
+- `Development_Editor - x64 / Development_Editor|Win64`: This is for using the Unreal Engine Editor for developing mods. Without this target built, your editor won't open.
+- `Shipping - x64 / Shipping|Win64`: The game client uses this target. Without it, you can't open the game as a player. If you're developing a server-side-only mod, it technically isn't required.
+
+Optional:
+
+- `Shipping_Server - x64 / Shipping_Server|Win64`: Windows Dedicated Server Support
+- `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`: Linux Dedicated Server Support
 
 image:BeginnersGuide/BatchBuildingSettings.png[Batch Building, align="center"]
 
