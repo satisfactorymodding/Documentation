@@ -127,11 +127,13 @@ xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 ====
 
 Within your mod's content folder,
-right click and select `Blueprint Class` under `Create Basic Asset`.
+right click in empty space and select `Blueprint Class` under `Create Basic Asset`.
 Click the triangle to close the Common Classes section,
 and click the other triangle to expand the All Classes section.
 Start typing `GameWorldModule` into the search box.
 Once it comes up, select it and press the green Select button to create the blueprint.
+
+image:BeginnersGuide/simpleMod/RightClickEmptySpace.png[Open the Blueprint Class]
 
 image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
 
@@ -169,11 +171,64 @@ This mistake won't be apparent until you have some content to test later.
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 
+== Compile and Save
+
+Now that we've created our first mod asset, we need to 'compile' and save it.
+
+The editor lets you know that your assets are unsaved through a variety of indicators:
+
+- In the Content Browser, an asterisk (*) will appear in the bottom-left corner of the asset's icon.
+
+image:BeginnersGuide/simpleMod/UnsavedAssetContentBrowser.png[Content Browser]
+
+- If you have the asset open, an asterisk will appear at the end of the asset's name in the tab in the top bar.
+
+image:BeginnersGuide/simpleMod/UnsavedAssetTab.png[Asset Tab]
+
+- If you have the asset editor panel open, the Compile button's icon will be differnet.
+
+image:BeginnersGuide/simpleMod/DirtyBlueprint.png[Dirty Blueprint - click this to compile it!]
+
+A common way to compile and Save is by clicking the 'compile' button in the top left of the asset editor panel.
+Another approach is to press the `F7` key, which is the keybind for that same button.
+
+[TIP]
+====
+We suggest that you enable "Save on Compile: On Success Only" to skip having to also press the save button.
+
+image:BeginnersGuide/simpleMod/SaveOnCompileSuccess.gif[Enabling Save on Compile Success]
+====
+
+In Unreal Engine, compiling does not mean to package your mod for trying out in the game.
+Compiling is a data validation step that will check for errors before preparing the files to be packaged later.
+
+====
+Whenever you create any asset for your mod, or change existing ones, _*remember to compile and save it*_!
+====
+
+If you don't compile and save the file, next time you package and try out the mod, _*the changes you made will not be included with your mod*_ - this can be very confusing to troubleshoot!
+
+Additionally, if the editor happens to crash before you save, you will lose all of your changes.
+A phrase you will hear often when working with computers is: "Save early, save often".
+
+There is one exception to this rule -
+if you are inspecting some of the base game's asset placeholders in the editor,
+opening the assets may cause them to be marked as unsaved due to other placeholders being detected missing.
+As an example, opening `BP_Explorer` from the FactoryGame assets will cause it to be marked as unsaved even if you don't change anything.
+There is no point in saving changes to those placeholder files because your mod doesn't make use of them.
+If you mistakenly save after tweaking one of the values on the file, you could confuse yourself in the future by saving an inaccurate value.
+
 == Testing Our Mod
 
 To make sure everything is working as expected, let's package our mod for use in the game.
 
-We haven't actually added any content yet, so it won't really do anything.
+Before packaging, we can quickly check if we have any unsaved files via `File > Choose Files to Save...`.
+It will bring up a dialog like the one shown below.
+Click 'Save Selected' to save any files you missed earlier.
+
+image:BeginnersGuide/simpleMod/PickFilesToSave.png[Pick files to save]
+
+We haven't actually added any content yet, so our mod won't really do anything.
 However, it will appear on the loaded mods list on the main menu.
 This is a good opportunity to catch issues that could have happened earlier in the setup process.
 We would still run into them later, but it would be less clear what the cause was.
@@ -220,6 +275,12 @@ Once you find the error message(s),
 proceed to fix the problems they describe,
 or ask for help on the DIscord
 
+=== Failed to delete directory / Failed to delete file
+
+The editor can't copy your mod files to your game files if the game is already running,
+since the game has locked those files, as it is actively using them.
+Shut down the game and try again.
+
 === UATHelper: Package Mod Task Parsing command line ERROR: Failed to load script DLL Operation is not supported
 
 This error could appear when packing a mod.
@@ -262,7 +323,7 @@ This issue can usually be resolved by building the Shipping profile from Visual 
 You may also need to
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files] first.
 
-=== Something else
+=== Something Else
 
 If you run into a problem that isn't described above,
 please ask for help on the Discord, even if you fix it yourself.
