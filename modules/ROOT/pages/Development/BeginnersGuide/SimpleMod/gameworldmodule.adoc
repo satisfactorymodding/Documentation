@@ -228,11 +228,13 @@ This has happened because your computer is treating one of the files you downloa
 
 An example case of the full error message:
 
+// cspell:disable
 ```
 UATHelper: Package Mod Task (Windows): Parsing command line: -ScriptsForProject=E:/SatisfactoryModLoader-master/FactoryGame.uproject PackagePlugin -Project=E:/SatisfactoryModLoader-master/FactoryGame.uproject -PluginName=DocMod -GameDir=E:/SatisfactoryEarlyAccess -CopyToGameDir
 UATHelper: Package Mod Task (Windows): ERROR: Failed to load script DLL: E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll: Could not load file or assembly 'Alpakit.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x8013151
 5)
 ```
+// cspell:enable
 
 To fix this, go to the file mentioned in the error message (in this specific example, `E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll`), right click on it, hit Properties, and tick the box at the bottom to unblock the file.
 

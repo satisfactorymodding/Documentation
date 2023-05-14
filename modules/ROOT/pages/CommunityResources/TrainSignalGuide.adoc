@@ -283,7 +283,7 @@ This means that if your blocks are too close together it can cause trains to sta
 
 [TIP]
 ====
-In general, it is seen as good practice to place your Block Signals on long straight aways about 1.5 to train lengths apart from each other.
+In general, it is seen as good practice to place your Block Signals on long straightaways about 1.5 to train lengths apart from each other.
 ====
 
 Tracks placed too close to each other can cause overlap, causing the system to treat
