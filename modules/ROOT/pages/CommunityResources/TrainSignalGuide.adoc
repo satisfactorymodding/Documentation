@@ -14,9 +14,8 @@ To view contribution and edit history, click "Edit this Page" in the top right c
 
 == Too Long, Didn't Read:
 
-====
-Here are some quick best practices.
-====
+==== Here are some quick best practices.
+
 
 * Don't mix parts in a Freight Car. 1 Car/Station per part
 
@@ -32,7 +31,7 @@ Here are some quick best practices.
 
 * You can get away with just using Block signals everywhere. Path signals can be completely ignored until your train network has a LOT of trains on it.
 
-=== Effectively, they're big belts.
+==== Effectively, they're big belts.
 
 Trains are, in effect, very high throughput belts. The difference from a belt is that the max throughput of a single car is not a set number but affected by the time it takes a train to make a round trip and the stack size of a given part being transported. With certain constraints explained further into this document in mind, you can generally consider that if you put X parts per minute into a station, you will over time be receiving X parts per minute at the output station (Factors include the Lock Out Timer on stations loading and loading, the stack size of the part in question, and the round trip time from start back to start.)
 
@@ -65,7 +64,7 @@ image:CommunityResources/TrainSignalGuide/FreightCar_Empty.png[An empty Freight 
 
 image:CommunityResources/TrainSignalGuide/TrainStation.png[A Train Station showing orientation.]
 
-When placing a Station, the curved side is the front. There is also an arrow pointing in the right direction, but it can be hard to see.
+* When placing a Station, the curved side is the front. There is also an arrow pointing in the right direction, but it can be hard to see.
 
 * Trains generate a path based on the shortest path possible between their origin and
 destinations. These paths will not change after the train starts its auto pilot.
@@ -120,9 +119,6 @@ you intend to happen to that car and have no belts attached (so an unload statio
 the pseudo empty set to Load and has no belts attached) but it is cleaner and easier to
 review in the future if you use Empty Platforms.
 
-Stations Lock when Loading or Unloading cargo from a train. This means they DO NOT
-accept anything from a belt or output anything to a belt for this duration, which is
-about 27 seconds.
 
 image:CommunityResources/TrainSignalGuide/TrainNote3.png[Starting Station and Station A and B respectively from the above example]
 
@@ -257,7 +253,7 @@ the track.
 
 image:CommunityResources/TrainSignalGuide/TrainNote22.png[Rail Segments]
 
-Segments - Each color is a segment. The color means nothing, it is just a way of differentiation
+Each color is a segment. The color means nothing, it is just a way of differentiation
 
 [TIP]
 ====
