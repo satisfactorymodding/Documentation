@@ -379,7 +379,7 @@ stations close by this can help make sure trains do not get blocked and waiting 
 so they can pass through it, or worse pathing a completely different direction because of the station
 path tax.
 
-image:CommunityResources/TrainSignalGuide/TrainNote38.png[Endpoint Station with Turn Around]title="Endpoint Station"
+image:CommunityResources/TrainSignalGuide/TrainNote38.png[Endpoint Station with Turn Around]
 
 ==== A Pass Around
 
