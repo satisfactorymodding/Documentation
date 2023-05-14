@@ -85,7 +85,7 @@ When making a recipe, be sure avoid the following common pitfalls:
 - Ingredient or product quantity that exceeds the item's its stack size.
 If you do this, the machine will never run, because it can't hold all of the required items.
 
-If you use a fluid, multiply the quantity by 1000, since they are treated as milliliters internally, but displayed as liters.
+If you use a fluid, multiply the quantity by 1000, since they are treated as liters internally, but displayed as cubic meters (1 cubic meter per 1000 liters).
 ====
 
 * {blank}
@@ -152,6 +152,9 @@ M Relevant Events::
 image:BeginnersGuide/simpleMod/SetDocRecipeProperties.gif[image]
 
 Ok, now you've created your first recipe!
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
 
 == Create a Schematic
 
@@ -280,10 +283,13 @@ M Relevant Events::
 * {blank}
 +
 M Include In Builds::
-  Set this to `PublicBuilds`` so that your content is included in the build.
+  Set this to `PublicBuilds` so that your content is included in the build.
   Presumably, this is what Coffee Stain uses to keep their developer testing milestones from being shipped with the main game.
 
 Finally! What a class. Now we just need to register this schematic so it shows up at runtime.
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
 
 == Register the Schematic
 
@@ -293,14 +299,43 @@ asset we created earlier and add the schematics to the `M Schematics` array.
 
 And we're set! Our recipe and schematic are registered and should show up in the game now.
 
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
+== Testing Our Mod
+
 To test it out, go ahead and run Alpakit and launch the game.
 You can find info on how to use it back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
-The main menu should now show a higher loaded mods count,
-and you should be able to buy and test your schematic and recipes in game.
+Load up any save file you'd like,
+preferably an existing one so you don't have to go through the tutorial again,
+and check out the HUB.
+You should be able to purchase your schematic and go to a workbench or constructor to use your recipe.
+
+== Troubleshooting
+
+=== My schematic doesn't show up in the HUB
+
+- Did you xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[save and compile] all relevant files before Alpaking? Check for any unsaved files via `File > Choose Files to Save...`
+- Is the Game World Module you created on the last step of the docs marked as the Root Module?
+- Did you select a tier for the schematic that you can't access yet in the save file?
+- Is the schematic type set to something other than `Milestone`?
+
+=== My recipe doesn't show up 
+
+- Did you xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[save and compile] all relevant files before Alpaking? Check for any unsaved files via `File > Choose Files to Save...`
+- Make sure that the product items you selected are exactly the ones we suggested here. As described in the upcoming xref:Development/BeginnersGuide/SimpleMod/item.adoc[Create an Item] page, items without assigned categories are hidden in crafters unless you search for them directly.
+
+=== My recipe doesn't work as expected
+
+Go back and check the recipe's properties to see if they match what was described above.
+
+=== Something Else
 
 If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+Even if you fix it yourself, please bring it up on the Discord
+so we can update the docs with your findings to help other people that might have a similar issue!
 
 == Next Steps
 

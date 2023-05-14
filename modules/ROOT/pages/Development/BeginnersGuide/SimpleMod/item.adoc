@@ -109,10 +109,10 @@ M Form::
 Keep in mind that liquid and gas type descriptors have some special behavior.
 
 When an item is defined as having a form factor of Liquid or Gas,
-it will switch to being displayed in a format where 1000 units of the item represents 1 Liter of the fluid.
+it will switch to being displayed in a format where 1000 units (liters) of the item represents 1 cubic meter of the fluid.
 As such, it's important to make sure that fluids are also assigned the Stack Size of `Fluid`,
-allowing it to stack to 50 Liters.
-All other stack sizes options result in a decimal quantity less than a 1 liter that is likely to confuse users.
+allowing it to stack to 50 cubic meters.
+All other stack sizes options result in a decimal quantity less than 1 cubic meter that is likely to confuse users.
 ====
 
 * {blank}
@@ -191,6 +191,9 @@ M Menu Priority::
   Stick with the default value of `0.0`.
 
 == Item Visuals In World
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
 
 In order to avoid having your item display as the default flat white cube
 when on a conveyor or when dropped in the world, you must specify a Conveyor Mesh.
@@ -323,6 +326,11 @@ Back in our `Desc_DocItem` descriptor, set the value of the M Conveyor Mesh fiel
 Afterwards, save the asset.
 
 == Make the Item Available
+
+Before continuing, remember to
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
+
+From here on out, we'll stop reminding you to compile and save, but it isn't any less important - remember to do it often!
 
 We've created our item, but there's one more step before we can obtain it in-game.
 
