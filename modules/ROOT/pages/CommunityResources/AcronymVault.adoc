@@ -91,6 +91,14 @@ designed to manage and control multiple satisfactory dedicated server instances.
 Its public source code can be found on
 https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
+=== Frequently Asked Questions (FAQ)
+
+A list of questions that are frequently asked,
+and common answers to them.
+
+You can find the Satisfactory Modding Community's FAQ
+xref:faq.adoc[on its respective docs page].
+
 === Too Many Acronyms (TMA)
 
 Used to summarize the https://discord.com/channels/555424930502541343/555516979260293132/1034938314018525275[abundance] of Satisfactory Modding acronyms.

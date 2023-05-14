@@ -164,6 +164,7 @@ If the object was overwritten, this holds the reference to the mod owning the ov
 ==== `UClass* RegisteredObject`
 The object/content this registration info holds registry information about.
 
+// cSpell:ignore fbasicregistrationinfo
 === `FItemRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
 This struct holds registry information for `UFGItemDescriptors`.
 

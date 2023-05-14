@@ -1,0 +1,62 @@
+= Quality of Life Mods
+
+[NOTE]
+====
+This page serves as a temporary solution until the Mog Tags system is implemented on the Mod Repository.
+====
+
+Mods in this list are generally considered by the community to add convenient, quality-of-life-improving features to Satisfactory without significantly affecting the game's balance or progression.
+
+If you have any suggestions for this list, feel free to discuss them on the https://discord.gg/xkVJ73E[Discord Server], or add them yourself via the 'Edit this Page' button in the top right.
+
+== Mod List
+
+Last Revised February 2nd, 2023
+
+Note that the short descriptions here do not explain the whole mod - read the linked mod page for more details.
+
+* https://ficsit.app/mod/CrashSiteBeacons[Crash Site Beacons]: marks every unopened crash site with a special map marker.
+* https://ficsit.app/mod/InfiniteZoop[Infinite Zoop]: Allows for further zooping with unlocks from the HUB.
+* https://ficsit.app/mod/ConstructionPreferences[Construction Preferences]: Adds configurations for what pole tiers you want to use by default
+* https://ficsit.app/mod/HoverPackPoleRange[Expanded Hover Range]: expands the hoverpack's range depending on the Power Pole Tier.
+* https://ficsit.app/mod/ShowSplinePath[Vehicle Path Viewer]: Adds more markers to defined vehicle paths to make them easier to see.
+* https://ficsit.app/mod/MicroManage[Micro Manage]: Copy/delete/move/rotate/resize buildable objects in your factory. Helps with *pretty* builds.
+* https://ficsit.app/mod/MantaRaise[Manta Raise]: adjusts the flight altitude of the large sky flap-flap to fit your buildings.
+* https://ficsit.app/mod/LongerBeams[Longer Beams]: Build longer beams.
+* https://ficsit.app/mod/PerfectCircles[Perfect Circles]: Allows easy creation of circular foundation arrangements and sweeping curves for easier highway creation.
+* https://ficsit.app/mod/HologramLocation[Location and Rotation]: Adds a small hud in Build mode indicating the position and rotation the currently selected buildable has.
+* https://ficsit.app/mod/UniversalVehiclePaths[Any route for any vehicle]: Enables the ability to copy routes from any vehicle type for use with any other vehicle type.
+* https://ficsit.app/mod/FlashlightSettings[Flashlight Settings]: Allows you to customize the brightness range and various other things of your flashlight.
+* https://ficsit.app/mod/HubTerminals[Hub Terminals]: Adds a Hub terminal buildable to prevent running back and forth. **buildable will not persist to vanilla**
+* https://ficsit.app/mod/EfficiencyCheckerMod[Efficiency checker]: Helps you optimize your factory with live displays.
+* https://ficsit.app/mod/NoHoverPackDrift[Hover Pack Stabilizer]: Prevents hover pack from drifting.
+* https://ficsit.app/mod/PersistentPaintables[Persistent Paintables]: New buildings will automatically be colored according to your equipped Color Gun's color slot.
+* https://ficsit.app/mod/SilentArtifacts[Silent Artifacts]: Stops Alien Artifacts from making any sound or triggering ADA.
+* https://ficsit.app/mod/DestructibleGasPillars[Destructible Gas Pillars]: Be gone pesky Gas Pillars.
+* https://ficsit.app/mod/DoubleJump[Double Jump]: Jump and then jump again.
+* https://ficsit.app/mod/JustPause[Just Pause]: Allows you to pause the game
+* https://ficsit.app/mod/LinearMotion[Linear Motion]: Build elevators and vehicle lifts that bring you up into the sky.
+* https://ficsit.app/mod/Dispenser[Item Dispenser]: Gives stacks of items it gets from the connected conveyor.
+* https://ficsit.app/mod/Hopper[Item Hopper]: You put stuff in it and it puts it on the conveyor coming out of it.
+* https://ficsit.app/mod/AreaActions[AreaActions]: Another building mod, but with finer control (be sure to enable build cost, or it will place buildings for free).
+* https://ficsit.app/mod/LoadBalancers[Modular Load Balancers]: Adds a modular way to balance multiple conveyors, make any sized or shape load balancer you want! **buildable will not persist to vanilla**
+* https://ficsit.app/mod/CounterLimiter[Throughput Counter and Limiter]: Belt attachment that displays the actual item throughput per minute. Can optionally limit the IPM. **buildable will not persist to vanilla**
+* https://ficsit.app/mod/DaisyChainEverything[Daisy Chain Everything]: Increases the number of power connections on all buildings, both vanilla and modded.
+* https://ficsit.app/mod/SkyUI[Sky UI]: Sky perception configuration. Control day/night/weather aka "the sky".
+* https://ficsit.app/mods?p=1&q=slots[More Inventory Slots]: There are many mods that add more inventory slots. Pick your favorite from this list.
+* https://ficsit.app/mod/HyperBoosters[Hyper Boosters]: Enter hyper tubes with a boost.
+* https://ficsit.app/mod/PowerChecker[Power Checker]: Check if fuses will blow.
+* https://ficsit.app/mod/PaintGunMK2[Start With Customizer]: Start the game with all patterns and materials from customizer.
+* https://ficsit.app/mod/AltRecipeResearch[Alternate Recipe Research]: Choose which alternate recipe to unlock with your hard-earned hard drive.
+* https://ficsit.app/mod/GardenerTools[Gardener Toolkit]: Tools for preserving the flora of the planet intact.
+
+
+== Background Info
+
+This list was initially written by https://ficsit.app/user/6dvhEL4fWEqwcg[Deantendo]
+as a SMR Guide, then later updated by https://ficsit.app/user/5gaZx7HvvPEE2[DaLumma]
+and https://ficsit.app/user/CmPjgRZdvqMk96[Savage].
+
+The SMR Guide format was difficult for the community to revise,
+so it was moved here to the docs instead.
+Contribution history is now tracked by the git commit history.

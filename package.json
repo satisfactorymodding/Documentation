@@ -6,7 +6,7 @@
   "scripts": {
     "build": "antora antora-playbook.yml --clean --fetch",
     "build:ci": "antora antora-playbook-ci.yml --clean --fetch",
-    "build:dev": "antora antora-playbook-dev.yml --clean --fetch",
+    "build:dev": "antora antora-playbook-dev.yml",
     "serve": "ws -d build/site"
   },
   "devDependencies": {

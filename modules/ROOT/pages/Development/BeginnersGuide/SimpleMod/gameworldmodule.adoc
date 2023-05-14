@@ -9,60 +9,74 @@ Since SML3.0, mods are now Unreal plugins,
 and their loading is handled by Unreal itself.
 
 First off, we'll need to create the Unreal Plugin for our mod.
-You can do this by clicking
-`Edit` -> `Plugins` -> `New Plugin` -> `Content Only Plugin` in the Unreal Editor.
 
+Alpakit contains a wizard that helps with creating the plugin files for Satisfactory mods.
+If you haven't already opened the Alpakit panel, you can follow the directions
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[here] to do so.
+
+To open the wizard, click the `Create Mod` button in the Alpakit panel.
+
+Mod templates that the community has created will appear here.
+Select the `Blueprint Only` template for now.
+
+The wizard will also prompt you for a Plugin Name.
 The name of your plugin _must_ be your mod's
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
 For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
 
+You can fill out the "Descriptor Data", or leave it blank, as we can edit that later.
+
 [WARNING]
 ====
 Be sure to read the notes on
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
 if you have not yet done so.
-It is critical that your mod reference follows these format rules.
+It is critical that your mod reference follows these formatting rules.
 ====
-
-You can fill out the Descriptor Data, or leave it blank, as we can edit that later.
 
 Leave "Show Content Directory" checked and press `Create Plugin`.
 
-Your new plugin should now appear at the bottom of the plugins list
-in the Project > Other category. Hooray!
-You might have to scroll a bit to find it.
+image:BeginnersGuide/simpleMod/AlpakitCreateMod.png[Create Mod screenshot]
 
-Next, click `Edit...` to edit more of your mod's plugin settings.
+Your new plugin should now appear in Alpakit's list of mods.
+
+Next, click the `Edit` button next to the listing to modify some more of your mod's settings.
 
 Here, you can fill out some additional details for your mod.
+Hover over the labels on the left to get a tooltip that explains their purpose.
 Since we're working on an example mod right now,
-most of these fields are not relevant to us.
-You should be sure to set `Category` to `Modding`
-and `Version` to `1.0.0`,
-which sorts your mod to appear with other mods
-in the Modding section of the Plugins list.
+most of these fields are not relevant to us,
+but we'll be back later before publicly releasing a mod.
 
-Note that if you give your mod an icon image here, you'll have to follow
-xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[a few extra steps]
-for it to show up in game.
+Add your name in the `Created By` field.
+Otherwise, the default values will be fine for now.
 
-These fields will be explained further when you prepare to upload your mod for others to use.
+If you'd like to give your mod an icon, you can do so here via the three-dots file picker.
+Make sure the image you select is a square and at least 128 by 128 pixels.
+You should probably hold onto a higher resolution version of this image for later use on your mod's
+xref:Development/BeginnersGuide/ReleaseMod.adoc[ficsit.app page].
 
-image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin]
+The Dependencies list should already be pre-populated with a dependency on the current SML version for you.
 
-Creating your plugin will create a plugin workspace folder under `<project>/Plugins/<Mod Reference>`.
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
+
+Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+
+All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
+which you can optionally read more about 
+xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[here].
+
+This folder is where you will be putting most of the assets
+(models, blueprints, textures, etc.) that your mod uses.
+
+Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
+subfolder of the Content Browser root folder.
 
 You might need to click on `View Options` -> `Show Plugins Content`
 in a Content Browser to view the contents of your mod in the Unreal Editor.
 image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
-
-You can find your mod in the `<Your Mod Reference> Content`
-subfolder of the Content Browser root folder.
-
-This folder is where you will be putting most of the assets
-(models, blueprints, textures, etc.) that your mod uses.
 
 [TIP]
 ====
@@ -76,7 +90,7 @@ it helps write patch notes when you release an update,
 and you can use it to go back to previous versions of your files if something breaks.
 
 If you work on multiple mods,
-you only need one full project setup
+you only need one modding project set up
 (which can be the cloned SatisfactoryModLoader repository)
 and each mod that you make will be a plugin in this project setup.
 The plugin's folder would be the version control repository for that mod.
@@ -97,9 +111,12 @@ change it to `ExampleMod.uplugin.disabled`
 == Create Game World Module
 
 Now that we've created our plugin,
-we must create a starting point from which everything else gets invoked.
-If we don't have one, then our mod's content will never be added to the game during loading!
-In our case, the starting point will be a Game World Module.
+we must create a starting point from which everything else gets invoked and registered.
+Without some point of reference, the game will never know to load our mod's content!
+
+In our case, the starting point will be a Game World Module, but this is not always required.
+Game World Modules are helpers defined by Satisfactory Mod Loader that allow us to define new
+Schematics, and through those schematics, items, recipes, and more.
 
 [NOTE]
 ====
@@ -110,11 +127,13 @@ xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 ====
 
 Within your mod's content folder,
-right click and select `Blueprint Class` under `Create Basic Asset`.
+right click in empty space and select `Blueprint Class` under `Create Basic Asset`.
 Click the triangle to close the Common Classes section,
 and click the other triangle to expand the All Classes section.
 Start typing `GameWorldModule` into the search box.
 Once it comes up, select it and press the green Select button to create the blueprint.
+
+image:BeginnersGuide/simpleMod/RightClickEmptySpace.png[Open the Blueprint Class]
 
 image:BeginnersGuide/simpleMod/CreateGameWorldModule.png[Create Game World Module]
 
@@ -151,11 +170,169 @@ This mistake won't be apparent until you have some content to test later.
 
 If you'd like to learn more about root modules, you can read about it on the
 xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
-Otherwise, let's get on to creating our first modded content - a custom recipe!
+
+== Compile and Save
+
+Now that we've created our first mod asset, we need to 'compile' and save it.
+
+The editor lets you know that your assets are unsaved through a variety of indicators:
+
+- In the Content Browser, an asterisk (*) will appear in the bottom-left corner of the asset's icon.
+
+image:BeginnersGuide/simpleMod/UnsavedAssetContentBrowser.png[Content Browser]
+
+- If you have the asset open, an asterisk will appear at the end of the asset's name in the tab in the top bar.
+
+image:BeginnersGuide/simpleMod/UnsavedAssetTab.png[Asset Tab]
+
+- If you have the asset editor panel open, the Compile button's icon will be differnet.
+
+image:BeginnersGuide/simpleMod/DirtyBlueprint.png[Dirty Blueprint - click this to compile it!]
+
+A common way to compile and Save is by clicking the 'compile' button in the top left of the asset editor panel.
+Another approach is to press the `F7` key, which is the keybind for that same button.
+
+[TIP]
+====
+We suggest that you enable "Save on Compile: On Success Only" to skip having to also press the save button.
+
+image:BeginnersGuide/simpleMod/SaveOnCompileSuccess.gif[Enabling Save on Compile Success]
+====
+
+In Unreal Engine, compiling does not mean to package your mod for trying out in the game.
+Compiling is a data validation step that will check for errors before preparing the files to be packaged later.
+
+====
+Whenever you create any asset for your mod, or change existing ones, _*remember to compile and save it*_!
+====
+
+If you don't compile and save the file, next time you package and try out the mod, _*the changes you made will not be included with your mod*_ - this can be very confusing to troubleshoot!
+
+Additionally, if the editor happens to crash before you save, you will lose all of your changes.
+A phrase you will hear often when working with computers is: "Save early, save often".
+
+There is one exception to this rule -
+if you are inspecting some of the base game's asset placeholders in the editor,
+opening the assets may cause them to be marked as unsaved due to other placeholders being detected missing.
+As an example, opening `BP_Explorer` from the FactoryGame assets will cause it to be marked as unsaved even if you don't change anything.
+There is no point in saving changes to those placeholder files because your mod doesn't make use of them.
+If you mistakenly save after tweaking one of the values on the file, you could confuse yourself in the future by saving an inaccurate value.
+
+== Testing Our Mod
+
+To make sure everything is working as expected, let's package our mod for use in the game.
+
+Before packaging, we can quickly check if we have any unsaved files via `File > Choose Files to Save...`.
+It will bring up a dialog like the one shown below.
+Click 'Save Selected' to save any files you missed earlier.
+
+image:BeginnersGuide/simpleMod/PickFilesToSave.png[Pick files to save]
+
+We haven't actually added any content yet, so our mod won't really do anything.
+However, it will appear on the loaded mods list on the main menu.
+This is a good opportunity to catch issues that could have happened earlier in the setup process.
+We would still run into them later, but it would be less clear what the cause was.
+By catching them now, we know the issue must be caused by something we have done leading up to this point.
+Test early and test often to catch bugs sooner!
+
+To package the mod, run Alpakit.
+You can find info on how to use it back on the
+xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
+
+Once Alpakit has completed, you can launch the game to try it out.
+Your mod should appear in the main menu mods list shown in the screenshot below.
+
+Even if this worked correctly,
+you should still read the Troubleshotting section below
+to see how to deal with errors you may encounter later.
+
+image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
+
+== Troubleshooting
+
+Below you can find some information about errors you may encounter at this point,
+or later in mod development.
+
+=== Package mod task failed!
+
+Alpakit will display this message in the editor when something has prevented the mod from packaging.
+
+This message alone tells you nothing about the error - you'll have to look at the Output Log.
+
+The Output Log is a tab in the editor that should already be open,
+but in case it isn't, you can bring it up via `Window > Developer Tools > Output Log`.
+
+Once in the output log, look for red-colored Error messages, as it will likely contain the reason the task failed.
+If you'd like, you can use the Filters dropdown to show only errors.
+
+Note that there will be probably be tens or hundreds of Warning messages - this is to be expected, and is usually not a problem.
+We don't have complete versions of the files Coffee Stain Studios uses to build the game,
+so various Unreal Engine and game systems will complain about pieces being missing or incomplete. 
+Consider reading these warning messages from time to time to see if they pertain to your mod,
+but warning messages alone are very unlikely to be the cause of your mod failing to package.
+
+Once you find the error message(s),
+proceed to fix the problems they describe,
+or ask for help on the DIscord
+
+=== Failed to delete directory / Failed to delete file
+
+The editor can't copy your mod files to your game files if the game is already running,
+since the game has locked those files, as it is actively using them.
+Shut down the game and try again.
+
+=== UATHelper: Package Mod Task Parsing command line ERROR: Failed to load script DLL Operation is not supported
+
+This error could appear when packing a mod.
+
+This has happened because your computer is treating one of the files you downloaded as unsafe and is refusing to run it. 
+
+An example case of the full error message:
+
+// cspell:disable
+```
+UATHelper: Package Mod Task (Windows): Parsing command line: -ScriptsForProject=E:/SatisfactoryModLoader-master/FactoryGame.uproject PackagePlugin -Project=E:/SatisfactoryModLoader-master/FactoryGame.uproject -PluginName=DocMod -GameDir=E:/SatisfactoryEarlyAccess -CopyToGameDir
+UATHelper: Package Mod Task (Windows): ERROR: Failed to load script DLL: E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll: Could not load file or assembly 'Alpakit.Automation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. Operation is not supported. (Exception from HRESULT: 0x8013151
+5)
+```
+// cspell:enable
+
+To fix this, go to the file mentioned in the error message (in this specific example, `E:\SatisfactoryModLoader-master\Build\Alpakit.Automation\Scripts\Alpakit.Automation.dll`), right click on it, hit Properties, and tick the box at the bottom to unblock the file.
+
+You can avoid this issue in the future by using Git to clone the starter project instead of downloading a zip.
+
+=== Plugin failed to load because module could not be found
+
+This error could appear when launching the game.
+
+This issue appears when a mod's {cpp} module could not be loaded correctly at runtime.
+
+You should not normally encounter this issue at this stage in the tutorial
+because we created a plugin from the `Blueprint Only` template, not the `Blueprint and C++` template.
+However, if you used the other template, that is not a problem.
+
+You need to build the Shipping profile whenever {cpp} code changes and you want to test in-game.
+
+Similarly, you need to build for Development Editor
+when {cpp} code changes and you want it to update in the editor.
+You should have the editor closed when doing that though,
+because although Unreal Engine tries to implement hot reloading,
+it tends to break and just crashes the editor instead.
+
+This issue can usually be resolved by building the Shipping profile from Visual Studio.
+You may also need to
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files] first.
+
+=== Something Else
+
+If you run into a problem that isn't described above,
+please ask for help on the Discord, even if you fix it yourself.
+We can update the docs with your findings to help other people that might have a similar issue!
 
 == Next Steps
 
-We could build and test our mod right now,
-but it wouldn't do very much, outside of increase the loaded mod count on the main menu.
+Next up, let's get started making our own content by creating a recipe and a schematic,
+which will allow us to unlock and utilize a new crafting recipe in-game.
 
-Next up, let's get started making our own content by creating a recipe and a schematic.
+If you need a refresher on how to find the docs page for this step,
+check out the xref:Development/BeginnersGuide/index.adoc[Getting Started] section header.

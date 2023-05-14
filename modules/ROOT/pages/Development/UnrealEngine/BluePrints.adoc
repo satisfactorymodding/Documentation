@@ -30,7 +30,7 @@ for this its own reflection-system, the UObject-System.
 == Nodes
 
 Other than visual languages such as Scratch, the Blueprint system uses a
-nodes for describing behaviours. Everything is a node, from functions
+nodes for describing behaviors. Everything is a node, from functions
 and events to simple operators like addition and constant values. A node
 can have multiple inputs and outputs for values and flow (execution).
 

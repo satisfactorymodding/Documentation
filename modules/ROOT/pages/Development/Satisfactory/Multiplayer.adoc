@@ -37,6 +37,7 @@ But it should also be fine to call it on server one time before it could get use
 
 Here is some example C++ code we use in the StartupModule function to register a RCO:
 
+// cSpell:ignore UEAAXPEAVA
 [source,c++]
 ----
 SUBSCRIBE_METHOD("?PostLogin@AFGGameMode@@UEAAXPEAVAPlayerController@@@Z", AFGGameMode::PostLogin, [](auto& scope, AFGGameMode* gm, APlayerController* pc) {
