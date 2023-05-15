@@ -203,7 +203,9 @@ as well as integrating a new Wwise version.
 
 Your mod's files are probably all within its plugin folder,
 so you can simply transfer over that entire folder to the Plugins folder of the new project.
-Remember to regenerate visual studio project files and build after you do this.
+Remember to
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files]
+and build after you do this.
 
 ==== Bring Over Editor Configs
 

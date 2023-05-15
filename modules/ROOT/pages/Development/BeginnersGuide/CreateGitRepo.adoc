@@ -51,13 +51,14 @@ You are, of course, free to check out the other tutorials, but they cover topics
 
 ## Beginner Git Users
 
-You are free to use git from the command line, but it is recommended to use a GUI tool to make things easier to learn.
+You are free to use git from the command line, but it is recommended to use a GUI tool, as they are generally more approachable.
 
 Consider the following software:
 
 - https://desktop.github.com/[Github Desktop], free and great for beginners
 - https://www.sourcetreeapp.com/[Sourcetree], free but a bit more complicated than GitHub Desktop
 - https://www.gitkraken.com/[GitKraken], free for non-commercial use as long as your code is public to the internet
+- https://git-fork.com/[Fork], free evaluation copy
 
 This tutorial will use GitHub Desktop, but all are valid choices.
 
@@ -82,7 +83,8 @@ You can stop once you get to the "Commit your first change" section.
 You don't want to create your repository from a template.
 
 Your repository name can be anything you want,
-but it is highly recommended to use your xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
+but it is highly recommended to use your
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
 
 We suggest you leave your repository as 'Public' so others can learn from your mod, help you if you get stuck, and write extensions to your mod.
 
