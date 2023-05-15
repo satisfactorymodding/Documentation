@@ -37,15 +37,28 @@ Every Unreal Engine plugin is require to have a
 and Satisfactory mods are no exception.
 This file is json formatted and holds information about the mod,
 such as its version number, dependencies, credits, links, and more.
-
-You can find it in your mod's plugin directory,
-which is your modding project directory's `/Plugins/<mod reference>` folder.
-
 Only one uplugin file should exist in a plugin's directory,
 else the editor will get very confused.
 
-The file should have been automatically generated for you by the editor,
-but you'll have to modify couple fields yourself before you can release your mod.
+The file should have been automatically generated for you when you
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[created your mod with Alpakit].
+
+At that point in the tutorial, we said we'd come back to some fields later, and now is that time.
+
+Although you can find this file in your mod's plugin directory,
+which is your modding project directory's `/Plugins/<mod reference>` folder,
+you should generally edit it within the unreal editor via Alpakit.
+Alpakit will automatically handle the file's formatting for you
+and help to prevent mistakes that would create an invalid uplugin file and be annoying to track down.
+
+Open the Alpakit editor by clicking the `Edit` button next to your mod in the Alpakit mods list.
+
+You can hover over the labels on the left to get a tooltip that explains their purpose.
+
+image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
+
+Below we will go into more detail about their purpose.
+It is suggested that you read all of the field definitions below to make well-informed decisions about the values you specify.
 
 If you'd like, you can read about all the different Unreal settings available at the Plugins documentation
 https://docs.unrealengine.com/en-US/ProductionPipelines/Plugins/index.html#plugindescriptorfiles[here]
@@ -79,7 +92,7 @@ For example, a mod with a SemVersion of `1.0.0` should have a Version of `1`
 | This string will appear when someone looks at your mod in the in-game loaded mods list and configs screen.
 
 |CreatedBy
-| This string will appear when someone looks at your mod in the in-game loaded mods list and configs screen.
+| This string will appear as the author's name section when someone looks at your mod in the in-game loaded mods list and configs screen.
 
 |DocsURL
 | If a link is provided here, a button will appear in the in-game loaded mods list that will open the URL when clicked.
@@ -231,19 +244,9 @@ If your mod has {cpp} code, make sure that you list a
 UBT Module in the Modules plugin descriptor section.
 The examples below will demonstrate this.
 
-
 === Examples
 
-[NOTE]
-====
-You can check if your mod's uplugin file is in the correct
-format with the https://ficsit.app/help[validator on the SMR help page]).
-If it fails validation, keep your eyes out for things like missing commas
-and mismatched braces and brackets.
-Consider asking on the Discord if you get stuck on this step.
-====
-
-Some example `.uplugin` s are presented here:
+Some example `.uplugin` s are presented here in their JSON format.
 
 +++ <details><summary> +++
 Example Blueprint mod .uplugin:
@@ -334,6 +337,13 @@ You can paste in your uplugin file into the box on the right
 and it will display any error messages below the box.
 
 The validator isn't perfect, but it can help troubleshoot many errors that could occur during upload.
+
+If it fails validation, keep your eyes out for things like missing commas
+and mismatched braces and brackets.
+
+Remember, you can totally avoid formatting concerns by using the Alpakit widget in the editor!
+
+Consider asking on the Discord if you get stuck on this step.
 
 == Exporting
 

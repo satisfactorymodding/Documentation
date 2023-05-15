@@ -55,14 +55,15 @@ use to semi-automatically generate the starter project, and as such is usually k
 Take the `AssetGenerator` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-This plugin is only for use from the editor side.
+This plugin is only for use from the editor side. It will not appear in the Alpakit mods list.
 
 === Installing the Asset Dumper
 
 Take the `AssetDumper` folder out of the files you downloaded
 and move it to your modding project's `Plugins` folder.
 
-This plugin will be built as a mod to install in the game.
+This plugin is already set up as a Satisfactory mod, and will appear in the Alpakit mods list once compiled.
+It will later be built and installed in the game.
 
 === Compiling
 
@@ -70,7 +71,7 @@ After putting both plugins in your project's Plugins folder,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
 and build for Development Editor and Shipping.
 
-==== Troubleshooting Compile Errors
+=== Troubleshooting Compile Errors
 
 - Make sure you xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerated Visual Studio project files before building].
 - Make sure that you have updated to the latest version of the plugins from repository linked link:#_installation[above].
@@ -84,15 +85,13 @@ and build for Development Editor and Shipping.
 - If you get errors about unresolved external modules, try deleting the project's `Intermediates` folder, regenerating project files, and building again.
 - Ask for help on the discord.
 
-=== Building the Asset Dumper
+=== Packaging the Asset Dumper as a Mod
 
 To install the Asset Dumper in your copy of the game,
 build it with Alpakit like you would any other mod.
 Be sure you have "Copy Mods to Game" enabled and the "Game Path" set correctly.
 
-== Dumping and Importing Assets
-
-=== Dumping Game Assets
+== Dumping Game Assets
 
 [WARNING]
 ====
@@ -105,7 +104,11 @@ A user interface exists for using the dumper,
 but there are some crashing problems with it,
 so these directions will cover using the command line version instead.
 
-To dump assets, navigate to your game install directory, and then in Powershell, run 
+To dump assets, navigate to your game install directory in Powershell.
+For example, `C:\EpicGamesGames\SatisfactoryEarlyAccess`
+
+Next, from that directory, run the Powershell command:
+
 `Engine\Binaries\Win64\FactoryGame-Win64-Shipping.exe -EpicPortal -NoSteamClient -nullrhi -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log`
 
 [NOTE]
@@ -136,7 +139,7 @@ inside the `FactoryGame` folder of your game install directory.
 [NOTE]
 ====
 Asset dumping is also used to create the stater project stubs when the game updates.
-Check out the
+If you're interested in how this works, check out the
 https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
 or contact us on the discord for more info.
 ====
@@ -147,15 +150,20 @@ Make sure that you have updated to the latest version of the Asset Dumper built 
 
 If you're still encountering issues, ask for help on the discord.
 
-=== Importing Dumped Assets to the Editor
-
-Before using the Asset Generator, you should move your existing project Content folder to another location.
-This serves two purposes - one, giving you a copy of the files to return to in case the asset generation does not succeed.
-Two, moving the folder means that the asset generator is sure to re-generate every asset,
-which ensures any possible asset generator crashes aren't caused by it trying to update the existing files.
+== Importing Dumped Assets to the Editor
 
 You can expect a Content folder with all assets imported to take up about 7 GB.
 For comparison, a Content folder with placeholders takes up 366 MB.
+
+=== Create a Backup
+
+Before using the Asset Generator, you should move your existing modding project's Content folder to another location.
+This serves two purposes - one, giving you a copy of the files to return to in case the asset generation does not succeed.
+Two, moving the folder therefore leaves an empty directory behind where the assets used to be,
+meaning that the asset generator is sure to re-generate every asset,
+ensuring any possible asset generator crashes aren't caused by it trying to update the existing files.
+
+=== Run the Generator Commandlet
 
 Both a https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
 and and an in-editor UI are available for the Asset Generator,
@@ -168,9 +176,14 @@ You will need to modify the first few lines of the script to point to your Unrea
 
 Create a new Powershell script file (ex. `generate_assets.ps1`) in a location of your choice,
 then copy-paste the below script and save after editing the path lines.
+A Powershell script file is actually just a text file that ends in `.ps1`.
+If you're not sure how to make a file like this, see link:https://lzmods.com/85/how-to-create-a-text-document-with-custom-extension-in-pc/[here].
 
-To run the script, right click on the file and select "Run with Powershell" to begin the import.
-Alternatively, you can launch it from a running powershell window to read the output after it has finished (or crashed).
+To run the script, first open a new powershell terminal window in the folder where your generate assets file lives.
+You can do this by shift-right-clicking on empty space in File Explorer and selecting "Open PowerShell window here".
+More info on how to do can be found link:https://adamtheautomator.com/windows-open-powershell-in-a-folder/[here].
+
+If you were to run the script by right clicking on the file and selecting "Run with Powershell", the script would still run, but upon any error the window would immediately close, leaving you unable to read the error message, so this is not advised.
 
 [source,ps1]
 ----
@@ -224,14 +237,14 @@ CleanupTempFiles
 
 ----
 
-This will take a considerable amount of time.
+This script will take a considerable amount of time.
 Experts advise locating and petting a lizard doggo while you wait.
 
 You'll know it's finished when your powershell window closes or you are prompted to enter another command.
 
-After you're done, your project's content folder should be around 2 GB.
+After you're done, your modding project's content folder should be around 7 GB.
 
-=== Troubleshooting Assets Generation Crashes
+=== Troubleshooting Asset Generation Crashes
 
 If the commandlet crashes, there are a few approaches you can take to troubleshoot it.
 
@@ -252,7 +265,8 @@ If you're still encountering issues, ask for help on the discord.
 
 [NOTE]
 ====
-It is quite possible for asset generation to crash due to your computer running out of memory, especially if you have the debugger attached.
+It is quite possible for asset generation to crash due to your computer running out of memory,
+especially if you have the debugger attached.
 You should restart your computer to ensure that as much memory is available to the asset generator as possible.
 After restarting, run the generator again. It will keep most of the files generated from the previous run,
 making slightly more progress until the next out-of-memory crash.
@@ -276,6 +290,33 @@ https://github.com/DavidHGillen/SatisfactoryModLoader/tree/sml-dev/Content[here]
 
 You could either clone or download a zip of AngryBeaver's repo,
 but you won't need the downloaded repo any more once you have copied the files in.
+
+== Delete any Broken Assets
+
+Unfortunately the Asset Generator is not capable of correctly recreating every asset.
+You will have to clean up some broken assets after generation is complete.
+The list of what assets need correcting changes every update and varies
+depending on what asset dumping/generation troubleshooting steps you followed earlier,
+so it is not feasible for a complete list to be provided here.
+
+Unreal will usually complain about these assets in the Message Log
+(Window > Developer Tools > Message Log)
+when the editor opens.
+
+In order to detect these assets, attempt to Alpak any mod in the project, for example, SML.
+The packaging task will fail and the Output Log will have error messages referencing these assets.
+
+You have a couple options for dealing with these assets:
+
+* Delete the asset (without replacement) while the editor is open
+** Note, this will update other assets because the objects they were pointing to have been removed, blanking out the field.
+** If you choose not not save changes to these other assets upon exit, the situation described below will apply
+* Delete the assets from the filesystem while the editor is closed
+** Upon opening any other asset that depended on these deleted assets in the future, the editor will detect the missing reference and blank it out, requesting that the asset be re-saved. If you save it, the asset will be saved with the field emptied. If you don't save it, the editor will continue to detect this every time the editor is opened.
+* Replace the asset with the "stub" version from the backup of the original stubs content folder you made earlier while the editor is closed
+** This approach should not suffer from the side effects mentioned above
+
+After dealing with any broken assets, mods should package again as normal.
 
 == Additional Documentation
 

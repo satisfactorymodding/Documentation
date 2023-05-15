@@ -3,4 +3,4 @@
 build/
 *.rst
 node_modules/
-antora-playbook-dev.yml
+!.vscode/tasks.json

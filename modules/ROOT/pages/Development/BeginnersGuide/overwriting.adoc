@@ -1,4 +1,4 @@
-= Class Default Objects (CDOs) and Overwriting Content
+= Overwriting and Modifying Existing Content
 
 It is possible to overwrite or modify content from the base game or from other mods.
 This is not recommended as opposed to creating your own content that extends it,
@@ -35,7 +35,7 @@ The mod has been officially released, and its documentation describes how to con
 == Use CDO Manipulation
 
 If you still want to overwrite content without using a library,
-the correct mechanism for doing so is Class Default Object (CDO) manipulation.
+the correct mechanism for doing so is **Class Default Object (CDO)** manipulation.
 
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
@@ -53,6 +53,16 @@ Performing your CDO modifications earlier in the mod loading process can sometim
 
 When performing CDO manipulation, you need to keep the CDO in-memory to ensure that Unreal does not garbage collect your patched object (and its descendants) and later load it unmodified from disk, undoing your change. +
 To do this, you need to reference the CDO in a property. More on this in the language-specific sections below.
+
+=== Understanding the Limits of CDOs
+
+It is important to understand that Class Default Object modification is not capable of accomplishing everything.
+
+CDO modification can only influence behavior and properties that already exist an object - it can't define new behaviors.
+
+Also, the way some features are implemented behind the scenes
+could mean that modifying the class default object could have no effects whatsoever,
+as the values you changed could be overwritten by something else.
 
 === Blueprint
 
@@ -86,6 +96,25 @@ void UKBFLResourceNodeDescriptor_ResourceWell::AfterSpawning()
 	}
 }
 ```
+
 In this example, the CDO-referencing properties are `frackingActivatorCDO` and `frackingExtractorCDO`.
 To properly reference CDOs, create a property of type `UObject*` in the class where you also change the CDO. Make sure to mark the property as `UPROPERTY` or UE will not know about the property. +
 If you are modifying multiple CDOs, you can make the property a `TArray<UObject*>` instead, and add each CDO to the array.
+
+== Extending Existing Content
+
+If you need to add new behavior to existing content, it may be easier to extend it by making a subclass of it,
+then define the new behaviors in your subclass.
+
+This works well in tandem with the 
+xref:Development/ReuseGameFiles.adoc#_the_placeholder_system[Placeholder System] -
+even though we don't have the implementation details of the real version,
+by extending its placeholder, we will still be able to use those features at runtime.
+
+== Hooking
+
+If a CDO modification isn't working and extending the existing content is not an option,
+hooking existing functions on the content may allow for the modifications you want.
+
+Hooking is a very complicated topic covered in more detail on
+xref:Development/Cpp/hooking.adoc[its own page].

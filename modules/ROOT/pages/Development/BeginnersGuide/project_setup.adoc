@@ -87,16 +87,25 @@ Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
-Then select the same version you installed earlier `2021.1.0.7575`. 
+Then select the same version you installed earlier (likely `2021.1.8.7831`). 
 The version number may have additional numbers on the end of it e.g.
-`2021.1.0.7575.1234` but as long as it starts with `2021.1.0.7575` it should work.
+`2021.1.8.7831.1234` but as long as it starts with `2021.1.8.7831` it should work.
 
-If version `2021.1.0.7575` does not appear even after you have selected `All`,
+If version `2021.1.8.7831` does not appear even after you have selected `All`,
 edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
 is set to `4.26.2-CSS`.
 
+If this version still doesn't show up, try any other version starting with `2021.1.8`.
+
+[WARNING]
+====
+Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
+
+If you don't see this exact Wwise version, consider asking for help on the Discord.
+====
+
 If you missed a required component as part of the Wwise installation,
-it may show  a yellow warning box indicating what's missing
+it may show a yellow warning box indicating what's missing
 as well as a button to "Modify" the installation.
 Go ahead and follow what it says for this step.
 If Wwise warns you that it could not find an installation in a red warning box,
@@ -172,7 +181,9 @@ You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the blue bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
-After it completes, you should select `Shipping` in the toolbar and start another build. If you are building for dedicated servers, see link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
+After it completes, you should select `Shipping` in the toolbar and start another build.
+If you are building for dedicated servers, see
+link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
 
 [WARNING]
 ====
@@ -196,7 +207,8 @@ Now that you've built the binaries, your Editor should open without any issues.
 
 == Project Compilation - Dedicated Server Support (Optional)
 
-If desired, it is possible to build for dedicated server support. However, this is optional and not required to create a mod.
+If desired, it is possible to build for dedicated server support.
+However, this is optional and not required to create a mod.
 
 For Windows Dedicated Servers, select `Shipping_Server` and `Win64` in the top toolbar, then hit `Build`.
 
@@ -204,17 +216,30 @@ For Linux Dedicated Servers, select `Shipping_Server` and `Linux` in the top too
 
 == Batch Building (Optional)
 
-It is possible to select targets to build as a group. The advantage is that Visual Studio will perform all the builds requested without requiring user input to select and start each build separately. This is not required, but offered as a means to ease the project build requirements.
+It is possible to select multiple targets to be built as a group.
+The advantage is that Visual Studio will perform all the builds requested
+without requiring user input to select and start each build separately.
+This is not required, but should be considered as a means to simplify the project build process.
 
-It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top toolbar method, but they will still work the same. (see image below)
+An example of when you may *not* want batch build enabled
+is when you are testing changes to your mod in singleplayer.
+In the interest of iterating quickly,
+it is waste of time to also build the dedicated server targets every time you make a code change,
+since you won't be using them yet in your testing.
 
-Required: +
-Development_Editor - x64 / Development_Editor|Win64 - This is for using the Unreal Engine Editor for developing mods. +
+To configure batch building options in Visual Studio, navigate to `Build > Batch Build...`
 
-Optional: However, at least one of these is required to test your mod as well as release to link:https://ficsit.app[Satisfactory Modding Repository]. +
-Shipping - x64 / Shipping|Win64 - Client Support +
-Shipping_Server - x64 / Shipping_Server|Win64 - Windows Dedicated Server Support +
-Linux_Shipping_Server - Win32 / Shipping_Server|Linux - Linux Dedicated Server Support
+It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top-toolbar-of-visual-studio method, but they will still work the same. (see image below)
+
+Required:
+
+- `Development_Editor - x64 / Development_Editor|Win64`: This is for using the Unreal Engine Editor for developing mods. Without this target built, your editor won't open.
+- `Shipping - x64 / Shipping|Win64`: The game client uses this target. Without it, you can't open the game as a player. If you're developing a server-side-only mod, it technically isn't required.
+
+Optional:
+
+- `Shipping_Server - x64 / Shipping_Server|Win64`: Windows Dedicated Server Support
+- `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`: Linux Dedicated Server Support
 
 image:BeginnersGuide/BatchBuildingSettings.png[Batch Building, align="center"]
 
@@ -226,7 +251,7 @@ so make sure you don't change stuff in there unless you know what you're doing.
 
 In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
 You can find it by searching for it in the Windows search bar
-(it should appear as Unreal Engine - CSS)
+(it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
 `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
@@ -239,7 +264,7 @@ Opening the project for the first time can take a considerable amount of time.
 
 You might be told that some modules were
 "missing or built with a missing engine version"; press `Yes` and allow it to build.
-This will take some time, and will drastically increase the size of your mod folder
+This will take some time, and will drastically increase the size of your project folder
 - go find some more lizard doggos to pet.
 
 If this step fails, you should go back to
@@ -305,13 +330,15 @@ Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
-in which case you should either update your Starter Project
+in which case you should either
+xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
 
 == Ready to Rumble
 
 That should be it. Your starter project should now be set up and ready to go!
-In the next sections, we'll walk through creating the base Plugin for your mod,
+In the xref:Development/BeginnersGuide/SimpleMod/index.adoc[next section],
+we'll walk through creating the base Plugin for your mod,
 then run through a couple common modding examples
 to demonstrate how to get started making your own mods.
 

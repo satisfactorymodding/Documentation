@@ -70,6 +70,7 @@ The struct variable is read from multiple times as opposed to the wire being reu
 This is intentional, since reusing the wire means that the loaded config values don't get used.
 image:ModLoader/BlueprintInterface_ConfigExample.png[image]
 
+// cSpell:ignore modid
 === `void SaveConfig(String modid, Struct config)`
 Dumps the given config struct as a Json and saves it as the config file for the mod with the given name.
 You can find it in the configs folder of your Satisfactory install.
@@ -129,6 +130,7 @@ The `Blueprint Version Library` provides a couple of functions that allow you to
 This function tries to create a FVersion object from the provided string.
 Returns true if able to convert the string successfully and if not, sets the ErrorMessage accordingly.
 
+// cSpell:ignore Conv
 === `String Conv_VersionToString(FVersion Version)`
 Converts the given version structure to a string.
 

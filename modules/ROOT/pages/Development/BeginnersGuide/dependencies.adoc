@@ -75,11 +75,18 @@ https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
 If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
 ====
 
-== Linux Dedicated Server Support (Optional)
+== Clang Toolchain for Linux Dedicated Server Support (Optional)
 
-Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers. This can be found here: https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/[Cross-Compiling for Linux]
+Satisfactory's dedicated servers typically run on Linux.
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+The download link for these files can be found on the Unreal documentation page for 
+https://docs.unrealengine.com/4.26/en-US/SharingAndReleasing/Linux/GettingStarted/[Cross-Compiling for Linux].
 
-Currently, we are on UE 4.26.2 with custom changes provided by Coffee Stain Studios. Therefore, the toolchain version required is -v17 or clang-10.0.1-based.
+Currently, Satisfactory uses Unreal Engine 4.26.2 with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v17` or `clang-10.0.1-based`.
+
+Download the toolchain from the link above and run it to install the relevant files.
+The default options that the installer offers are fine.
 
 == Unreal Engine 4 (Custom Engine)
 
@@ -102,7 +109,7 @@ Directions on how to link so can be found
 https://www.unrealengine.com/en-US/ue4-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
-try turning off any adblockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
+try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
 
 You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
@@ -165,7 +172,21 @@ Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
 After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar.  Click the `Latest` drop-down and change it to `All`.  Select `2021.1` from the next dropdown.  Select version `2021.1.0.7575` from the final dropdown.  Click `Install`.
+Select `WWISE` from the top bar.
+Click the `Latest` drop-down and change it to `All`.
+Select `2021.1` from the next dropdown.
+Select version `2021.1.8.7831` from the final dropdown.
+Click `Install`.
+
+[WARNING]
+====
+Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
+
+If you don't see this exact Wwise version,
+try any other version starting with `2021.1`, preferring newer versions,
+or asking for help on the Discord.
+====
+
 Once presented with options on what to install, select:
 
 * Packages

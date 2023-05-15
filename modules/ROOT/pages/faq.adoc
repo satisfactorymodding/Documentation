@@ -1,0 +1,278 @@
+= Frequently Asked Questions
+
+You can find answers to frequently asked questions on the modding discord (and about modding in general) here.
+
+Consider using your browser's Find on Page functionality (usually `Ctrl+F`)
+to quickly search this page for key words in your question.
+
+Is there a question you see asked a lot and would like to see it here?
+Feel free to discuss them on the https://discord.gg/xkVJ73E[Discord Server],
+or add them yourself via the 'Edit this Page' button in the top right.
+
+== How do I install mods?
+
+The first step is to download the Satisfactory Mod Manager.
+You can get it from ficsit.app, or by clicking https://smm.ficsit.app/[here].
+
+Next, follow the steps below:
+
+=== For Windows 10:
+
+image:FAQ/win10_install_smm_guide.png[Steps to install SMM on Windows 10]
+
+=== For Windows 11:
+
+The installation process should be similar to that of Windows 10, but if you encounter a popup like this:
+
+image:FAQ/win11_subtle_block.png[Windows 11 "Search for app in store?" popup for untrusted installers]
+
+Ignore it because it is not correct. Instead, right-click on the installer in your file manager and go to the properties tab.
+
+image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM installer]
+
+Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
+for the rest of the steps.
+
+== The mod manager can't find my game!
+
+You might see error messages like:
+- `No Satisfactory Installs Found`
+
+SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
+If you moved its location after installation manually, your installer client will not know where it is.
+
+You will need to reinstall your game through your store client so that it is in a known location.
+
+This will not affect your saves.
+
+== Can I add mods to a save I've already started?
+
+It varies depending on the mod, but in general, yes, this is totally fine.
+The mod should say on its mod page on ficsit.app if it can't be added to an in-progress game.
+
+== Do mods work with multiplayer?
+
+It is up to the mod developer to support multiplayer.
+Check the mod's page on ficsit.app for information about multiplayer support.
+
+If the mod page doesn't say, try it out yourself and see!
+
+== Are Satisfactory mods safe?
+
+_Or: 'Why does Satisfactory Mod Manager trigger my antivirus?'_
+
+Using Satisfactory mods is safe, as long as you only download mods from ficsit.app and install them via the https://smm.ficsit.app/[Mod Manager].
+
+All files uploaded to ficsit.app are tested for malware and such before they are approved for download.
+
+Your computer may claim that the Mod Manager is unsafe when you try to open it.
+This is because the mod manager does not have a
+https://comodosslstore.com/resources/what-is-signing-certificate/[signing certificate].
+The certificate costs hundreds per year.
+It's completely unnecessary for normal operation, and not worth it to pay for it.
+
+But rest assured, this community created Satisfactory Mod Manager from scratch.
+We all use it. Provided you only get it via https://smm.ficsit.app/ we can assure you it is safe.
+You can find the source code for it here: https://github.com/satisfactorymodding/SatisfactoryModManager
+
+== How do I use <insert mod name here>?
+
+It is up to the mod developer to inform you how to use their mod.
+Check the mod's page on ficsit.app for documentation.
+
+Generally, most mods will require you to unlock something in the HUB or MAM before you can use them.
+Mods can be configured from the 'Mods' tab on the main menu,
+or from in-game via the 'Mod Configs' tab on the pause menu.
+
+== Do mods work with Experimental?
+
+It is up to the mod developer to support Satisfactory's experimental branch.
+Check the mod's page on ficsit.app, or the mod manager extended details, for support.
+
+Once you're on the page, check mods' Compatibility via two stickers found in the description.
+The rocket icon indicates Early Access and the flask icon is for Experimental.
+
+In the Mod Manager:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089302323966246973/unknown_1.png[SMM Compatibility Info screenshot]
+
+On ficsit.app:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089325949755084971/image.png[ficsit.app Compatibility Info screenshot]
+
+You can hover over the sticker for any notes that may have been left by the author.
+They may indicate a version to use, which you can change to in the Mod Manager with the dropdown right above the stickers.
+
+- *Green - Working*:
+  The mod should be functioning as intended.
+- *Yellow/Orange - Damaged*:
+  Something is wrong with the mod that is causing it to work improperly,
+  but it is partially working.
+  Be sure to click the icon to see an explanation of what is going wrong!
+- *Red - Broken*:
+  This mod is suffering from a critical problem,
+  and could do things like crash your game at launch if you were to install it.
+  Be sure to click the icon to see an explanation of what is going wrong!
+
+Please note, these are updated manually, and may be slightly out of date.
+If you find a mod that is missing its stickers or ones that seem to be incorrect,
+please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
+and we will investigate and update the info if necessary.
+
+== Satisfactory Mod Manager is open, but I can't see it's window!
+
+The program's window somehow got offscreen.
+We're still not sure what causes this.
+To fix it you need to edit the `%appdata%\SatisfactoryModManager\settings.json` file
+and within the `windowLocation` property, set the `x` and `y` to 0 to bring the window back on the screen.
+
+Restart SMM after you do that.
+
+== Where do I get help with a mod that is not in the mod portal?
+
+We try to keep everything we work on organized through the ficsit.app mod portal.
+If you need help with something that isn't there,
+check the mod's information page for a mod-specific discord to join,
+or ask nicely in the `#help-using-mods` discord channel.
+
+== What happens if I open up a save without mods installed?
+
+If you were to load up a save file without mods,
+all of the content from those mods will simply vanish from the save,
+and the game should load just fine with no modded content.
+
+Keep in mind that after saving the game after loading it with no mods,
+the modded content would be permanently gone from that point on.
+So, if you want to keep modded content, don't play in that save without your mods installed!
+
+If you ever load a save without mods by accident,
+just quit the game without saving and launch the game with your mods, your content should still be there.
+
+== How do I make my own mod?
+
+If you're looking to write your own mods, we suggest you start with
+making blueprint mods first rather than C++ mods.
+Check out the xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
+and consider picking up the `Aspiring Modder` role in our https://discord.gg/xkVJ73E[Discord]'s `#rules` channel.
+
+== How do I share my mods with my friends for multiplayer?
+
+You can use the Mod Manager's profile import/export functionality.
+
+image:https://cdn.discordapp.com/attachments/555507339969560586/833748278456746014/unknown.png[SMM Import/Export screenshot]
+
+== Where can I find the game's log files?
+
+You can find various log files at different locations:
+
+- In your game install folder, `pre-launch-debug.log` and `SatisfactoryModLoader.log`
+- At `%localappdata%/FactoryGame/Saved/logs`, where FactoryGame.log is located
+
+The easiest way to gather logs is the Mod Manager's "generate debug info" feature:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+
+== How do I verify my game files?
+
+On Steam:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039933446037605/unknown.png[Steam screenshot]
+
+On Epic:
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838751/unknown.png[Epic screenshot]
+
+== Why is the mod manager downloading slowly, or failing to download?
+
+You might see error messages like:
+
+// cspell:words getaddrinfo ENOENT ECONNRESET
+- `Unexpected error while downloading file: getaddrinfo ENOENT github.com`
+- `Unexpected error while downloading file: read ECONNRESET`
+- `Unexpected error while downloading file: unable to verify the first certificate`
+- `Unexpected error while downloading file: self signed certificate in certificate chain`
+
+Internet restrictions, and sometimes VPNs and proxies, mess with our services.
+To work around this, download the mod files mentioned in the error message from SMR manually.
+If they are named `[modname].zip` rename them to `[modname].smod`, then place the file into 
+`%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version you need]` for SML and
+`%localappdata%\SatisfactoryModManager\downloadCache\mods` for everything else.
+
+You can also try using a proxy or VPN.
+
+== The mod manager can't download any mods
+
+You might see messages like:
+
+// cspell:words ETIMEDOUT
+- `error while downloading file [...] Premature close`
+- `Error 3 attempts to download <ModName> failed`
+- `Error: Unexpected error while downloading file connect ETIMEDOUT`
+
+Your internet speed is likely too slow and the download is being cut off early.
+Try disabling the mod manager's timeout as shown below.
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089041903342862336/unknown.png[Timeout disable screenshot]
+
+
+== How can I troubleshoot crash issues?
+
+The easiest way to gather logs is the Mod Manager's "generate debug info" feature and send the file on the Modding Discord's `#help-using-mods` discord channel.
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+
+You can also follow this process to track down which mod(s) you have installed are leading to a crash (or other undesired behavior):
+
+image:https://cdn.discordapp.com/attachments/834348739539238922/1102661505255751801/debugmods.png[Troubleshooting flowchart]
+
+== How can I tell what mod added an item/milestone/recipe/thing?
+
+Consider using https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
+and https://ficsit.app/mod/MAMTips[MAM Enhancer]
+mods which add tools to help you identify content.
+
+== I'm having VRAM issues, how do I fix them?
+
+If you're having trouble with VRAM usage
+it's important to understand the two things that are the biggest contributions:
+graphics settings and texture content.
+Other things contribute, but there are a smaller fraction than these. 
+Additionally, with multiple monitors and/or other programs running,
+they will also eat up available VRAM,
+so consider closing extraneous programs
+especially things that are highly dynamic like streaming apps.
+
+The more mods you use that add more texture content,
+the more they will eat up your VRAM.
+This is a direct relationship that can't be change by any settings or details from the user's end.
+It is unlikely to be a single mod causing the problem.
+It is a death by a thousand small cuts
+and every mod author has to do their best,
+but more content means more space is used.
+
+If removing mod content is not desirable the other option is to adjust your graphics settings.
+Even at minimum there are extensive options Unreal provides for you to tune it even lower.
+These may cause unforeseen glitches and issues so be careful with them.
+
+https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-commands/308720
+
+== Can I put the Mod Manager on a drive other than my C drive?
+
+In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
+
+1. Close SMM
+2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
+3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
+4. Open SMM and download a mod to test and make sure the change has taken effect.
+
+== Why are my game's textures blurry or low resolution?
+
+No particular mod causes your textures to be low resolution -
+it's a base/engine game bug that can be exacerbated by mods.
+Unreal engine "streams" in low resolution textures at first and then gradually loads better versions.
+This process is getting stuck and thus some textures stay low resolution.
+In terms of fixing it there's three different things you can try.
+
+1. Try swapping your graphics mode between DX12/Vulkan/etc. Different people have different levels of success with each.
+2. Randomly pick mods that add a lot of new textures you aren't that into and uninstall them. It's never a specific mod.
+3. Try turning down some graphics settings or upgrading your graphics card. The issue has been reported on 30XX series though.

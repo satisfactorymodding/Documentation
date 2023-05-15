@@ -38,3 +38,9 @@ Thankfully, SML can do this for you using the xref:Development/ModLoader/ModModu
 Simply set the `M Resource Sink Item Points Data Table` variable in the defaults tab
 (in the Advanced subsection) to your own just created data table.
 SML will read the contents and adds them to the resource sink systems for you.
+
+== Overriding Vanilla Points Values
+
+It is possible to override the base-game's specified points values for an item by listing it with a new points value in your mod's Resource Sink data table.
+
+In the case that multiple mods specify a points value, the points value of the last mod to load will be the one used by the game.

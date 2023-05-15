@@ -11,7 +11,9 @@ It's important to understand the UE4 concept of https://docs.unrealengine.com/en
 
 [WARNING]
 ====
-Normal maps, AO Masks, and Surface Maps should have sRGB disabled. Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked. Albedo however should still be sRGB.
+**Normal maps, AO Masks, and Surface Maps should have sRGB disabled.** Unreal will do this automatically for normal maps, but is not smart enough to do it for all linear textures like the ReflectionMap on Factory_Baked.
+
+**Albedo textures should still have sRGB enabled.**
 ====
 
 == Factory Machine/Array (MM_Factory_Array)
@@ -19,6 +21,7 @@ Main material used on most buildable factory parts and recommended material for 
 
 Several materials are based off the one master material, many exist for legacy purposes to not break old content, for example.
 
+// cSpell:ignore Emsiv
 - `/FactoryGame/MasterMaterials/MM_Factory_Array` Master Material
 - `/FactoryGame/-Shared/Material/MI_Factory_Base_01` Instance of MM_Factory_Array
 - `/FactoryGame/-Shared/Material/MI_Factory_Base_01_Emsiv_AO` Instance of MI_Factory_Base_01
@@ -77,10 +80,12 @@ It is possible, and expected, to mirror flip and stretch the normal decals. Seve
 
 
 == Factory Baked (MM_FactoryBaked)
+
 This material handles several separate use cases; player equipment, items in world, items on belts, small detailed machines, and more. Works with the painting and conveyor systems. Requires unique textures per mesh to take advantage of. Never used directly and always used via material instances. Common examples are xeno-basher, workbench, power poles, and any conveyor belt items.
 
 === Inner workings
-The full internal workings of this material for Update 4.2 & 5.0 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project. Importantly this material went under major changes, 'Legacy' behaviour is 4.2 and documented behaviour is 5.0. Pre 4.2 behaviour is not longer available.
+
+The full internal workings of this material for Update 4.2 & 5.0 were provide by CSS (#PraiseBen) and are implemented in the material found in your Unreal starter project. Importantly this material went under major changes, 'Legacy' behavior is 4.2 and documented behavior is 5.0. Pre 4.2 behavior is not longer available.
 
 When marked as paintable the main Albedo texture is faded out to match the primary or secondary colour. This is done via the 'AOMasks' Texture's channel packing:
 
@@ -100,6 +105,7 @@ xref::/Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering] page.
 UV channel 0 is used for all textures.
 
 === How to use
+
 Setup a PBR painting workflow like Substance or Quixel and then configure its outputs to match what is listed in the Inner workings. Once your output textures are made, import them into your mod.
 
 Next step is to create a material instance of `MM_Factory_Baked` and configure it according to your intended use.

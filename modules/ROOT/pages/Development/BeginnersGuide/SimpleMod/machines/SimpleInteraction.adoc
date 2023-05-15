@@ -3,14 +3,17 @@
 Let's create a simple interaction GUI for our xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[Simple Machine].
 We'll use it to read the current data and to reset the counters.
 
+[TIP]
+=====
+A completed version of this interaction GUI is included in the ExampleMod in the starter project.
+Check there if something is unclear or you get stuck.
+=====
+
 == The Widget
 
 The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
 This works like every other regular UMG widget, so be sure you're familiar with how they work.
 In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
-
-The FGInteractWidget has the `M Interact Object` variable which represents the object that the player interacted with (aka. our simple machine).
-You can cast it to the simple machine so we can access the counters.
 
 [TIP]
 ====
@@ -34,6 +37,19 @@ Block Movement::
 +
 Block Mouse Look::
   Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like On Click.
+
+== Retrieving Information from our Machine
+
+FGInteractWidget, the parent class of Widget Usable Base,
+offers the `M Interact Object` field which represents the object that the player interacted with - in our case, our machine.
+
+This field is a plain Object, which is good in this situation -
+by keeping the field type so general, it allows us to use the widget with pretty much any object.
+
+Whenever you need to access data from the machine for display in the UI,
+you'll have to cast the object to the relevant type.
+In this case, the correct type is the Buildable of our machine that we created earlier.
+Once the variable is casted, we'll be able to access the fields on our buildable.
 
 == Make machine interactable
 
