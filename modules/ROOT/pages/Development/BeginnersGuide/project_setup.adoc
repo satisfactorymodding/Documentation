@@ -170,6 +170,12 @@ Unreal will give a very vague report as to what went wrong.
 As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
+[TIP]
+====
+You can optionally use Incredibuild to speed up the compilation process. More info 
+xref:Development/BeginnersGuide/incredibuild.adoc[here].
+====
+
 Open up the .sln file in your project folder.
 Once Visual Studio loads,
 make sure that you have `Development Editor`

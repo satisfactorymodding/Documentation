@@ -1,0 +1,48 @@
+= Setting Up Incredibuild
+
+Satisfactory is a very big game.
+As such, it can take an enormous amount of time to compile all of the source code, even on high end hardware.
+In this section, we will guide you through the process of setting up Incredibuild,
+which is a build acceleration tool for Microsoft Visual Studio and Jetbrains Rider.
+It can significantly reduce the amount of time it takes to compile the project,
+which is especially helpful if you're doing a lot of C++ modding.
+
+== Applying for a license
+
+Before we can install Incredibuild, we need to get a license.
+Now don't worry, it's completely free for up to 2 developers per license.
+All you need to do is visit the https://www.incredibuild.com/pricing[Incredibuild Website] and click on the "Free Forever" plan.
+Just fill out the application with your details (You can use your name for the "Company Name" field since you only need a personal license) and submit it.
+Within a few minutes you should receive an email in your inbox containing a link to download Incredibuild and a license activation code that looks something like this:
+
+image:BeginnersGuide/simpleMod/incredibuild-email.png[image]
+
+== Installing Incredibuild
+
+Now that we have our license, we can begin installing Incredibuild.
+If you haven't already, you can download the agent from https://dl.incredibuild.com/ib10-latest[here].
+Run the installer and read the license agreement before accepting, and then select "Grid" for the agent configuration.
+This will allow you to initiate builds from your machine and to distribute the load across any other machines you choose to install the agent on.
+
+Next, you will need to enter the license key you received earlier.
+Choose which directory to install the agent to and make sure to select "Install the Incredibuild add-in for MS Visual Studio IDE" if you are using Visual Studio.
+
+Finally, you have the option to use SSL to encrypt communication between your agents, but this is only necessary if you are distributing across multiple machines
+or exposing your coordinator web interface to the internet.
+For this tutorial, we won't need SSL so we will select "Do not use a trusted certificate".
+Now all you need to do is choose a username and password to log in to the coordinator interface and install the agent.
+When the agent is done installing, you can move on to the next step.
+
+== Post-Install
+
+Now that you have installed Incredibuild, you are ready to begin accelerating your project compilations!
+Whenever you initiate a build in Visual Studio, Rider, or Unreal Engine, they will automatically delegate the job to your Incredibuild agent(s).
+With Incredibuild, you should see a significant reduction in compile times across all projects.
+Some of our modders even saw a 90% reduction in time to compile the FactoryGame solution for both development and shipping!
+
+[TIP]
+====
+You can monitor the progress of your build more closely by right-clicking the system tray icon for Incredibuild and selecting "Build Monitor"
+
+image:BeginnersGuide/simpleMod/incredibuild-tray.png[image]
+====
