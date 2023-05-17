@@ -13,8 +13,5 @@
     "@antora/cli": "^2.3.4",
     "@antora/site-generator-default": "^2.3.4",
     "local-web-server": "^4.2.1"
-  },
-  "dependencies": {
-    "yarn": "^1.22.19"
   }
 }
