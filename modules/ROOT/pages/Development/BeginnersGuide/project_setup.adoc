@@ -322,9 +322,9 @@ For the following to be packaged, the requisite build (see xref:Development/Begi
 
 Make sure that you `Enable` the correct build types for packaging.
 
-image:BeginnersGuide/Alpakit-dedi.png[Batch Building, align="center"]
+image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
-You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
 
 Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.

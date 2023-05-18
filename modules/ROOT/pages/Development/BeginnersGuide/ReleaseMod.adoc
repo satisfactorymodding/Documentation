@@ -377,11 +377,16 @@ If you decide to change it, you'll have to edit a number of files, most of which
 == Upload to Satisfactory Mod Repository
 
 Once you're ready to release your mod, you will need to package your mod for uploading. 
-Due to changes for dedicated servers, a new checkbox has been added for packaging for xref:CommunityResources/AcronymVault.adoc#_satisfactory_mod_repository_smr_aka_ficsit_app[SMR]. 
-This is the `Create merged mod for release`, and will be found under `Linux Server` and 
-above `Search Plugin` as well as the `Alpakit Selected!`/`Check All`/`Check None` buttons.
+Due to changes for multiple build target support (i.e. dedicated servers), a new set of options has been added for packaging for xref:CommunityResources/AcronymVault.adoc#_satisfactory_mod_repository_smr_aka_ficsit_app[SMR]. 
 
-image:BeginnersGuide/Alpakit-dedi.png[Batch Building, align="center"]
+`Release Targets` is a selection for the `Alpakit Release` function that allows 
+selection of specific build targets for separate mods. (See example below.)
+
+`Windows` - `Requires Shipping - x64 / Shipping|Win64` - Client Version of Satisfactory, not specific to the Windows system.
+`Windows Server` - `Requires Shipping_Server - x64 / Shipping_Server|Win64` - Windows Dedicated Server of Satisfactory.
+`Linux Server` - `Requires Linux_Shipping_Server - Win32 / Linux_Shipping_Server|Linux` - Linux Dedicated Server of Satisfactory.
+
+image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
 You will then find your packaged file in `<SML Project Folder>\Saved\ArchivedPlugins\<ModReference>` as `<ModReference>.zip`. 
 The `<ModReference>-<TargetType>.zip` are your mod, but in the separate build targets (i.e. `WindowsNoEditor`, `WindowsServer`, `LinuxServer`).
