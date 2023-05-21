@@ -11,7 +11,6 @@
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
 *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
-*** xref:Development/BeginnersGuide/incredibuild.adoc[(Optional) Incredibuild]
 *** xref:Development/BeginnersGuide/SimpleMod/index.adoc[Create a Simple Mod]
 **** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module]
 **** xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe vs Schematic]
@@ -81,6 +80,7 @@
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
+** xref:CommunityResources/incredibuild.adoc[Incredibuild]
 ** xref:CommunityResources/TrainSignalGuide.adoc[Train Signaling Guide]
 
 * Community Mod Lists

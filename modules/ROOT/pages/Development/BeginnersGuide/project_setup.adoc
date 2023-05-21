@@ -173,7 +173,7 @@ so you don't have to build a second time to see the error report.
 [TIP]
 ====
 You can optionally use Incredibuild to speed up the compilation process. More info 
-xref:Development/BeginnersGuide/incredibuild.adoc[here].
+xref:CommunityResources/incredibuild.adoc[here].
 ====
 
 Open up the .sln file in your project folder.

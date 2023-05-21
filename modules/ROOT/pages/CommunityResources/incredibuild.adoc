@@ -7,6 +7,34 @@ which is a build acceleration tool for Microsoft Visual Studio and Jetbrains Rid
 It can significantly reduce the amount of time it takes to compile the modding project,
 which is especially helpful if you're doing a lot of C++ development.
 
+== How it works
+
+Incredibuild works by using some clever compiler optimizations,
+as well as allowing you to distribute build tasks across multiple of your own computers in order to speed up compilation of code.
+It does this locally on your computer and across your home network,
+so there is no need for you to own a build server or connect to one in the cloud.
+If you want a more in-depth technical explanation of how Incredibuild accomplishes this,
+we recommend you check out link:https://www.incredibuild.com/wp-content/uploads/2020/10/Incredibuild-Technology-Overview-v-2.pdf[this document] from Incredibuild themselves.
+
+== Requirements
+
+All of this software must be self-hosted on your own hardware.
+In order for Incredibuild to run smoothly, your primary computer and any helper computers must meet these minimum specifications:
+
+* The latest version of Windows 10 or 11 64-bit
+
+* 4 CPU Cores
+
+* 4 GB Memory
+
+* At least 10 GB Available Storage (Preferably solid state but not necessary)
+
+* 100 Mbps Network Connection
+
+All computers must be on the same network in order to be utilized.
+If you have an antivirus, you will need to add an exception to your Incredibuild and Visual Studio installation folders.
+Also, the coordinator makes use of RabbitMQ, so you will not be able to install it on a computer with RabbitMQ already installed.
+
 == Applying for a license
 
 Before we can install Incredibuild, we need to get a license.
