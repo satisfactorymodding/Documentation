@@ -315,16 +315,25 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
-For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
-** Windows Client - `Shipping - x64 / Shipping|Win64`
-** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
-** Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+=== Packaging Mods with Alpakit
 
-Make sure that you `Enable` the correct build types for packaging.
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and copy your mod to your Satisfactory installation(s).
+
+Note that for the following types of targets to be packaged, the requisite build
+(see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation])
+must be completed and successful.
+
+* Windows - `Shipping - x64 / Shipping|Win64`
+* Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
+* Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+
+For our local testing, we will only need Windows (the client) checked.
+
+// TODO retake this screenshot with just the example items and just the fields we want them to have checked
 
 image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
-You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+=== (Optional) Packaging SML
 
 Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
