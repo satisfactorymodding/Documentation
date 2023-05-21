@@ -172,6 +172,18 @@ The easiest way to gather logs is the Mod Manager's "generate debug info" featur
 
 image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
 
+== Where are my game files located?
+
+The answer to this question depends on if you installed the game via Steam or Epic.
+
+On Steam: 
+
+image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
+
+On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
+
+image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
 == How do I verify my game files?
 
 On Steam:

@@ -6,7 +6,10 @@ Through SML's configuration file system, it's easy for mod developers to create 
 
 The config files for all mods (and SML itself) reside in the same configuration file folder.
 
-The folder is located under `<game root>/FactoryGame/Configs`.
+The folder is located under `<game install directory>/FactoryGame/Configs`.
+
+You can find your game install directory via the steps
+xref:faq.adoc#_where_are_my_game_files_located[described in the FAQ].
 
 == Config File
 
