@@ -78,10 +78,10 @@ make sure to leave a note about it somewhere you can find later so you can reapp
 
 Similar to header edits, a mod may require you to modify certain placeholder blueprint assets in your project to function correctly. 
 
-An example of this is
-https://github.com/Nogg-aholic/MAMTips/blob/master/RequiredExternalEdits.md[MAM Enhancer],
+An example of this is MAM Enhancer,
 which modifies a field on a base-game widget to be Instance Editable so the mod can read the field.
 Without making this edit, the editor will not compile the mod.
+There is a https://github.com/Nogg-aholic/MAMTips/blob/master/RequiredExternalEdits.md[note in the repository root] that informs potential viewers of this requirement.
 
 ### Non-Standard Placeholders
 
