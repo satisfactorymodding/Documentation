@@ -27,7 +27,7 @@ In order for Incredibuild to run smoothly, your primary computer and any helper 
 
 * 4 GB Memory
 
-* At least 10 GB Available Storage (Preferably solid state but not necessary)
+* At least 30 GB Available Storage (Preferably solid state but not necessary)
 
 * 100 Mbps Network Connection
 
