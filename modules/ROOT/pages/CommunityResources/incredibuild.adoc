@@ -1,7 +1,7 @@
 = Setting Up Incredibuild
 
-Satisfactory is a very big game.
-As such, it can take an enormous amount of time to compile all of the source code, even on high end hardware.
+Satisfactory is a large game.
+As such, it can take an enormous amount of time to compile the relevant, even on high end hardware.
 In this section, we will guide you through the process of setting up Incredibuild,
 which is a build acceleration tool for Microsoft Visual Studio and Jetbrains Rider.
 It can significantly reduce the amount of time it takes to compile the modding project,
@@ -10,7 +10,7 @@ which is especially helpful if you're doing a lot of C++ development.
 == How it works
 
 Incredibuild works by using some clever compiler optimizations,
-as well as allowing you to distribute build tasks across multiple of your own computers in order to speed up compilation of code.
+as well as allowing you to **distribute build tasks across multiple of your own computers** in order to speed up compilation of code.
 It does this locally on your computer and across your home network,
 so there is no need for you to own a build server or connect to one in the cloud.
 If you want a more in-depth technical explanation of how Incredibuild accomplishes this,
@@ -43,7 +43,7 @@ All you need to do is visit the https://www.incredibuild.com/pricing[Incredibuil
 Just fill out the form with your details (You can use your name for the "Company Name" field since you only need a personal license) and submit it.
 Within a few minutes you should receive an email in your inbox containing a link to download Incredibuild and a license activation code that looks something like this:
 
-image:BeginnersGuide/simpleMod/incredibuild-email.png[image]
+image:CommunityResources/Incredibuild/incredibuild-email.png[image]
 
 == Installing Incredibuild
 
@@ -75,7 +75,7 @@ On your primary computer where you installed the coordinator, you will need to c
 To do this on Windows 10 or 11, open the settings app and go to Network and Internet -> Wi-fi (or Ethernet if you are using that).
 Ensure that the "Network Profile Type" is set to "Private", then find "IP Assignment" and click the "Edit" button.
 
-image:BeginnersGuide/simpleMod/incredibuild_ip_1.png[image]
+image:CommunityResources/Incredibuild/incredibuild_ip_1.png[image]
 
 Next, open search, type "cmd", and select "Command Prompt" from the list of results.
 In the terminal window, type "ipconfig /all". This will create a list of all network adapters on your computer.
@@ -83,13 +83,13 @@ Find the adapter you are using, and copy the details for your Internal IP Addres
 You can also configure preferred DNS servers if you would like.
 Save the changes and move on to the next step.
 
-image:BeginnersGuide/simpleMod/incredibuild_cmd.png[image]
-image:BeginnersGuide/simpleMod/incredibuild_ip_2.png[image]
+image:CommunityResources/Incredibuild/incredibuild_cmd.png[image]
+image:CommunityResources/Incredibuild/incredibuild_ip_2.png[image]
 
 Finally, on your other computer, enter the internal IP address of your primary computer into the setup field and install the agent.
 
 Now, Incredibuild will automatically distribute builds across both machines,
-and you can see how they're being utilized by checking the coordinator web panel (defaults to https://localhost:8000).
+and you can see how they're being utilized by checking the coordinator web panel (defaults to `https://localhost:8000`).
 
 [WARNING]
 ====
@@ -107,5 +107,5 @@ And, you should see a significant reduction in compile times across all projects
 ====
 You can monitor the progress of your build more closely by right-clicking the system tray icon for Incredibuild and selecting "Build Monitor".
 
-image:BeginnersGuide/simpleMod/incredibuild-tray.png[image]
+image:CommunityResources/Incredibuild/incredibuild-tray.png[image]
 ====
