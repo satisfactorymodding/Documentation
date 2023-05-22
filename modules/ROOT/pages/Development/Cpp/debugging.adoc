@@ -15,6 +15,24 @@ In order for things to work without all the source code available you'll need to
 In Visual Studio, this can be handled in 
 `Debug > Options...` then under `Debugging > General` find the entry for "Require source files to exactly match the original version" and uncheck it. It's roughly halfway down the scrollable area.
 
+== Launch Arguments
+
+Certain Unreal Engine launch arguments can be particularly useful when debugging.
+
+You can learn how to launch your game with launch arguments on the xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
+
+=== NoExceptionHandler
+
+The `-NoExceptionHandler` argument allows for the use of Just In Time debugging.
+Without it your attached debugger will not catch any access violations or checks,
+they will just crash the game instead.
+
+=== WaitForDebugger
+
+By adding the `-WaitForDebugger` argument to your launch arguments,
+the game will wait for a debugger to attach before continuing to launch.
+This can help with catching problems very early in the startup sequence.
+
 == Attach Debugger
 
 Now you need to attach your debugger of choice to the running Satisfactory process, `FactoryGame-Win64-Shipping.exe`.
