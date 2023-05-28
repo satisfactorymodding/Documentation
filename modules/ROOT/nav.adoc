@@ -55,6 +55,7 @@
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
+*** xref:Development/Satisfactory/Clipboard.adoc[Clipboard]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 

@@ -1,0 +1,22 @@
+= In-Game Clipboard
+
+Satisfactory offers a clipboard functionality to copy-paste configuration options between machines.
+It's possible to extend this functionality to work with your own custom buildings.
+
+The `AFGBuildable` class already implements the `IFGFactoryClipboardInterface` interface, the interface defining the functions that must be overridden to implement clipboard functionality, so listing this interface an extra time is not necessary.
+
+1. Create a class with basetype `FGFactoryClipboardSettings` and add variables for the stuff you want to save in the clipboard
+2. Override the `GetClipboardSettingsClass` function and set the return value to your class
+3. Override the `GetClipboardMappingClass` and set the return value to the class of object that uses this clipboard
+4. Override the `CanUseFactoryClipboard` function to return true
+5. Override the copy and paste functions and implement your own logic
+
+Below is an example implementation from the https://ficsit.app/mod/FicsitWiremod[Circuity] mod.
+
+image:https://cdn.discordapp.com/attachments/601030071221878784/1111655294003585044/image.png[GetClipboardSettingsClass]
+
+image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293630300160/image.png[GetClipboardMappingClass]
+
+image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293076643840/image.png[Copy]
+
+image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293382832158/image.png[Paste]
