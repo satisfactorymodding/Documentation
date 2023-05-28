@@ -24,14 +24,46 @@ You can learn how to launch your game with launch arguments on the xref:faq.adoc
 === NoExceptionHandler
 
 The `-NoExceptionHandler` argument allows for the use of Just In Time debugging.
-Without it your attached debugger will not catch any access violations or checks,
+When present, the main SEH exception handler is disabled.
+That prevents crash reporter from catching SEH exceptions (namely, access violation)
+and allows the debugger to handle them instead.
+Without it, your attached debugger will not catch any access violations or checks,
 they will just crash the game instead.
 
+This argument is added and handled by Unreal Engine.
+
 === WaitForDebugger
+
+[WARNING]
+====
+This launch argument is added in SML3.5, which may not yet be released at the time of reading.
+====
 
 By adding the `-WaitForDebugger` argument to your launch arguments,
 the game will wait for a debugger to attach before continuing to launch.
 This can help with catching problems very early in the startup sequence.
+
+This launch argument is added by Unreal Engine but does not normally work in Shipping builds of the game.
+SML includes custom handlers to allow it to work.
+In Shipping, the exact point it waits at is SML initialization.
+If not for SML handlers, it would otherwise be inside of the engine loop.
+
+=== BreakIntoDebuggerOnErrorAndEnsure
+
+[WARNING]
+====
+This launch argument is added in SML3.5, which may not yet be released at the time of reading.
+====
+
+The `-BreakIntoDebuggerOnErrorAndEnsure` makes failed
+https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assertions/#ensure[ensures]
+and
+https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assertions/#check[checks]
+break into the debugger if it is attached.
+
+Note that ensures will NOT crash the game when failed, but checks will crash the game.
+
+This launch argument is added and handled by SML.
 
 == Attach Debugger
 
