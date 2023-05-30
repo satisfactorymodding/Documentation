@@ -1,6 +1,6 @@
 = Core Redirect
 
-A Core Redirect is an Unreal Engine system that allows you you to tell the game and editor to expect to find an asset path in a different location than usual.
+A Core Redirect is an Unreal Engine system that allows you to tell the game and editor to expect to find an asset path in a different location than usual.
 
 You can learn more about them
 https://www.unrealdirective.com/articles/core-redirectors-what-you-need-to-know[here]
