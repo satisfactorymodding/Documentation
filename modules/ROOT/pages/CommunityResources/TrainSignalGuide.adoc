@@ -14,7 +14,7 @@ To view contribution and edit history, click "Edit this Page" in the top right c
 
 == Too Long, Didn't Read:
 
-==== Here are some quick best practices.
+=== Here are some quick best practices.
 
 
 * Don't mix parts in a Freight Car. 1 Car/Station per part
@@ -31,7 +31,7 @@ To view contribution and edit history, click "Edit this Page" in the top right c
 
 * You can get away with just using Block signals everywhere. Path signals can be completely ignored until your train network has a LOT of trains on it.
 
-==== Effectively, they're big belts.
+=== Effectively, they're big belts.
 
 Trains are, in effect, very high throughput belts. The difference from a belt is that the max throughput of a single car is not a set number but affected by the time it takes a train to make a round trip and the stack size of a given part being transported. With certain constraints explained further into this document in mind, you can generally consider that if you put X parts per minute into a station, you will over time be receiving X parts per minute at the output station (Factors include the Lock Out Timer on stations loading and loading, the stack size of the part in question, and the round trip time from start back to start.)
 
