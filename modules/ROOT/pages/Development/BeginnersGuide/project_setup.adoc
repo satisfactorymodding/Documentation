@@ -180,11 +180,16 @@ Open up the .sln file in your project folder.
 Once Visual Studio loads,
 make sure that you have `Development Editor`
 and `Win64` selected in the top toolbar.
-On the right side in Solution Explorer, right click on
-the `FactoryGame` project and hit `Build`.
+
+image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
+
+Now, from the top toolbar, select `Build` > `Build Solution`.
+
+image:BeginnersGuide/PressBuild.png[Build Solution]
+
 This will take some time; go pet some lizard doggos as you wait.
 You'll know it's done when the little box-with-cubes-piling-into-it
-icon in the blue bar at the bottom of Visual Studio goes away.
+icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
 After it completes, you should select `Shipping` in the toolbar and start another build.
