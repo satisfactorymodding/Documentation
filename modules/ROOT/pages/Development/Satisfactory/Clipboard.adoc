@@ -13,10 +13,10 @@ The `AFGBuildable` class already implements the `IFGFactoryClipboardInterface` i
 
 Below is an example implementation from the https://ficsit.app/mod/FicsitWiremod[Circuity] mod.
 
-image:https://cdn.discordapp.com/attachments/601030071221878784/1111655294003585044/image.png[GetClipboardSettingsClass]
+image:Satisfactory/Clipboard/GetClipboardSettingsClass.png[GetClipboardSettingsClass]
 
-image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293630300160/image.png[GetClipboardMappingClass]
+image:Satisfactory/Clipboard/GetClipboardMappingClass.png[GetClipboardMappingClass]
 
-image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293076643840/image.png[Copy]
+image:Satisfactory/Clipboard/ClipboardCopy.png[Copy]
 
-image:https://cdn.discordapp.com/attachments/601030071221878784/1111655293382832158/image.png[Paste]
+image:Satisfactory/Clipboard/ClipboardPaste.png[Paste]
