@@ -172,7 +172,7 @@ so you don't have to build a second time to see the error report.
 
 [TIP]
 ====
-You can optionally use Incredibuild to speed up the compilation process. More info 
+If you have multiple computers available on your network, you can optionally use Incredibuild to speed up the compilation process. More info 
 xref:CommunityResources/incredibuild.adoc[here].
 ====
 

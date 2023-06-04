@@ -9,8 +9,7 @@ which is especially helpful if you're doing a lot of C++ development.
 
 == How it works
 
-Incredibuild works by using some clever compiler optimizations,
-as well as allowing you to **distribute build tasks across multiple of your own computers** in order to speed up compilation of code.
+Incredibuild works by allowing you to **distribute build tasks across multiple of your own computers** in order to speed up compilation of code.
 It does this locally on your computer and across your home network,
 so there is no need for you to own a build server or connect to one in the cloud.
 If you want a more in-depth technical explanation of how Incredibuild accomplishes this,
