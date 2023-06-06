@@ -104,7 +104,7 @@ as well as making sure you're logged into your linked GitHub account when you fo
 === Download the Custom Engine
 
 Once you've done that, go to the
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
+https://github.com/satisfactorymodding/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
 and download three files from the latest release:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`

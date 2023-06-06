@@ -64,7 +64,7 @@ xref:Development/BeginnersGuide/ReleaseMod.adoc#_important_c_fields[Releasing Yo
 == New Editor Build
 
 You will need to download and install a new copy of the editor build for the new engine from
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
+https://github.com/satisfactorymodding/UnrealEngine/releases[here].
 
 We *strongly* suggest that you keep the old SML 2.2.1 editor installed
 until you are done porting your mods so that you can reference settings and BP code
