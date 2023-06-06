@@ -36,7 +36,7 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader[GitHub].
 
 === Satisfactory Mod Repository (SMR) aka ficsit.app
 
-https://ficsit.app[ficsit.app], or the Satisfactory Mod Repository, is the website at which mods, this documentation, guides, and more are hosted.
+https://ficsit.app[ficsit.app], also known as the Satisfactory Mod Repository or FICSIT Augmentation Database, is the website at which mods, this documentation, guides, and more are hosted.
 
 You can find the source code for the 
 https://github.com/satisfactorymodding/smr-frontend[frontend]
@@ -98,6 +98,10 @@ and common answers to them.
 
 You can find the Satisfactory Modding Community's FAQ
 xref:faq.adoc[on its respective docs page].
+
+=== FICSIT Augmentation Database (FAD)
+
+See link:#_satisfactory_mod_repository_smr_aka_ficsit_app[Satisfactory Mod Repository].
 
 === Too Many Acronyms (TMA)
 
