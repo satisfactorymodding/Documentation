@@ -46,7 +46,7 @@ xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[created your mod 
 At that point in the tutorial, we said we'd come back to some fields later, and now is that time.
 
 Although you can find this file in your mod's plugin directory,
-which is your modding project directory's `/Plugins/<mod reference>` folder,
+which is your modding project directory's `/Mods/<mod reference>` folder,
 you should generally edit it within the unreal editor via Alpakit.
 Alpakit will automatically handle the file's formatting for you
 and help to prevent mistakes that would create an invalid uplugin file and be annoying to track down.
