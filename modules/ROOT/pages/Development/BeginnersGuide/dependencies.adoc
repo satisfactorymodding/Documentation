@@ -107,7 +107,7 @@ if you don't already have one.
 Once you've got a GitHub account,
 you'll need to register it with Epic Games and join the Epic Games GitHub organization to be able to download this special version.
 Directions on how to link so can be found
-https://www.unrealengine.com/en-US/ue4-on-github[here].
+https://www.unrealengine.com/en-US/ue-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
 try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
