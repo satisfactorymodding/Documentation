@@ -89,7 +89,7 @@ Therefore, the toolchain version required is `-v17` or `clang-10.0.1-based`.
 Download the toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
 dedi-docs ////
-== Unreal Engine 4 (Custom Engine)
+== Unreal Engine 5 (Custom Engine)
 
 Because Satisfactory uses a modified version of Unreal Engine,
 we modders need to be using that same version as well to develop our mods.

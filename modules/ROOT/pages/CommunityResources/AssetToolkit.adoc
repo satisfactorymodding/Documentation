@@ -189,7 +189,7 @@ If you were to run the script by right clicking on the file and selecting "Run w
 ----
 # Change the below path lines to match the actual locations of these files and folders for your system
 # Using apostrophes so \ doesn't need to be escaped here
-$UE4CmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor-Cmd.exe'
+$UECmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor-Cmd.exe'
 $UProjectPath = 'D:\GitSecondary\SF_ModProject\FactoryGame.uproject'
 $AssetDumpDirectory = 'D:\Programs\EpicGamesGames\SatisfactoryExperimental\FactoryGame\AssetDump'
 
