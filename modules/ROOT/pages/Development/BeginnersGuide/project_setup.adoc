@@ -182,9 +182,10 @@ icon in the blue bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
 After it completes, you should select `Shipping` in the toolbar and start another build.
+//// dedi-docs
 If you are building for dedicated servers, see
 link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
-
+dedi-docs ////
 [WARNING]
 ====
 Some important notes for the future:
@@ -194,7 +195,8 @@ or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
-When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
+When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`.
+// dedi-docs , `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
 Without doing so, your mod will be missing important files.
 ====
 
@@ -204,7 +206,7 @@ you need to go back and re-do the Wwise integration step.
 If you encounter issues during this step, consider asking for help on the Discord.
 
 Now that you've built the binaries, your Editor should open without any issues.
-
+//// dedi-docs
 == Project Compilation - Dedicated Server Support (Optional)
 
 If desired, it is possible to build for dedicated server support.
@@ -213,7 +215,7 @@ However, this is optional and not required to create a mod.
 For Windows Dedicated Servers, select `Shipping_Server` and `Win64` in the top toolbar, then hit `Build`.
 
 For Linux Dedicated Servers, select `Shipping_Server` and `Linux` in the top toolbar, then hit `Build`.
-
+dedi-docs ////
 == Batch Building (Optional)
 
 It is possible to select multiple targets to be built as a group.
@@ -229,20 +231,22 @@ since you won't be using them yet in your testing.
 
 To configure batch building options in Visual Studio, navigate to `Build > Batch Build...`
 
-It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top-toolbar-of-visual-studio method, but they will still work the same. (see image below)
+It is required to compile the Development_Editor and at least one Shipping build to test/release the mod. Please note that the platforms will show slightly different than the top-toolbar-of-visual-studio method, but they will still work the same. 
+// dedi-docs (see image below)
 
 Required:
 
 - `Development_Editor - x64 / Development_Editor|Win64`: This is for using the Unreal Engine Editor for developing mods. Without this target built, your editor won't open.
-- `Shipping - x64 / Shipping|Win64`: The game client uses this target. Without it, you can't open the game as a player. If you're developing a server-side-only mod, it technically isn't required.
-
+- `Shipping - x64 / Shipping|Win64`: The game client uses this target. Without it, you can't open the game as a player. 
+//If you're developing a server-side-only mod, it technically isn't required.
+//// dedi-docs
 Optional:
 
 - `Shipping_Server - x64 / Shipping_Server|Win64`: Windows Dedicated Server Support
 - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`: Linux Dedicated Server Support
 
 image:BeginnersGuide/BatchBuildingSettings.png[Batch Building, align="center"]
-
+dedi-docs ////
 == Open Unreal Editor
 
 The Unreal Editor allows you to create new content for the game and helps build your mod.
@@ -315,6 +319,7 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
+//// dedi-docs
 For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
 ** Windows Client - `Shipping - x64 / Shipping|Win64`
 ** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
@@ -325,6 +330,7 @@ Make sure that you `Enable` the correct build types for packaging.
 image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
 You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+dedi-docs ////
 
 Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
