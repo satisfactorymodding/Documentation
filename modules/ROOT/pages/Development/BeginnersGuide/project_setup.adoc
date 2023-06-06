@@ -340,9 +340,9 @@ For our local testing, we will only need Windows (the client) checked.
 
 // TODO retake this screenshot with just the example items and just the fields we want them to have checked
 
-image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
-
 You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+
+image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
 dedi-docs ////
 === (Optional) Packaging SML
 
