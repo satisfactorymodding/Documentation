@@ -124,6 +124,13 @@ https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 ====
 
+[NOTE]
+====
+The repository at which the custom engine is hosted has changed since its initial creation.
+If you need an older build of the custom engine for some reason, you can find them at the old repo
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[here].
+====
+
 === Install the Custom Engine
 
 Once all 3 files have finished downloading,
