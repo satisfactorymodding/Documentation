@@ -289,6 +289,10 @@ As a general overview, changes could include any or all of the following:
 - `/Plugins/SML/`
 - `/Plugins/SMLEditor/`
 - `/Source/`
+- `/Mods/Alpakit/`
+- `/Mods/ExampleMod/`
+- `/Mods/SML/`
+- `/Mods/SMLEditor/`
 
 ==== Option 2C: You Have a Project Level Repo
 
