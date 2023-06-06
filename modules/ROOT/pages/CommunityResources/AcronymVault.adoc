@@ -102,6 +102,7 @@ xref:faq.adoc[on its respective docs page].
 === FICSIT Augmentation Database (FAD)
 
 See link:#_satisfactory_mod_repository_smr_aka_ficsit_app[Satisfactory Mod Repository].
+The mod repository is no longer frequently referenced by this name - one could say that doing so was a https://www.merriam-webster.com/dictionary/fad[FAD].
 
 === Too Many Acronyms (TMA)
 
