@@ -26,7 +26,7 @@ if you're interested, but know that this section of the docs is not yet updated 
 . Select the objects you wish to export
 . Open `File > Export > FBX`
 . On the export options on the right, set the following.
-.. In the topmost dropdown pick `Restore Operator Defaults` or your UE4 preset if you have one
+.. In the topmost dropdown pick `Restore Operator Defaults` or your UE5 preset if you have one
 .. Change `Include > Selected Objects` to true
 .. For Object types only `Armature` and `Mesh` should be on (blue)
 .. Change `Geometry > Smoothing` to `Face`
@@ -34,7 +34,7 @@ if you're interested, but know that this section of the docs is not yet updated 
 ... Only one of `All Actions` or `NLA Strips` should be checked to prevent duplicates.
 ... Its personal preference but NLA strips are more complex so I recommend unchecking them.
 .. Back in the topmost dropdown click the plus
-.. Save this as your default UE4 export and reuse it in the future
+.. Save this as your default UE5 export and reuse it in the future
 . Make sure your filename and path are correct
 . Click `Export FBX` and you're done
 

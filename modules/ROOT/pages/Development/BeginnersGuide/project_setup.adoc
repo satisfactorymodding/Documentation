@@ -258,7 +258,7 @@ You can find it by searching for it in the Windows search bar
 (it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
-`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
+`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor.exe`
 
 Once the Unreal Engine editor has launched,
 open your project by navigating to
