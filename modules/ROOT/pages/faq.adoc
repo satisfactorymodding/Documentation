@@ -172,6 +172,18 @@ The easiest way to gather logs is the Mod Manager's "generate debug info" featur
 
 image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
 
+== Where are my game files located?
+
+The answer to this question depends on if you installed the game via Steam or Epic.
+
+On Steam: 
+
+image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
+
+On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
+
+image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
 == How do I verify my game files?
 
 On Steam:
@@ -276,3 +288,14 @@ In terms of fixing it there's three different things you can try.
 1. Try swapping your graphics mode between DX12/Vulkan/etc. Different people have different levels of success with each.
 2. Randomly pick mods that add a lot of new textures you aren't that into and uninstall them. It's never a specific mod.
 3. Try turning down some graphics settings or upgrading your graphics card. The issue has been reported on 30XX series though.
+
+== How do I start the game with launch arguments?
+
+Launch arguments are special options passed to the game at startup to control its behavior. 
+
+The process for specifying them depends on how you are launching the game:
+
+- For https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
+- For https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
+- For xref:Development/TestingResources.adoc[Testing Scripts]
+- For other launch methods, use your search engine of choice.

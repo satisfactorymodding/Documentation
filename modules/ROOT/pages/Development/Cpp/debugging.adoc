@@ -15,6 +15,39 @@ In order for things to work without all the source code available you'll need to
 In Visual Studio, this can be handled in 
 `Debug > Options...` then under `Debugging > General` find the entry for "Require source files to exactly match the original version" and uncheck it. It's roughly halfway down the scrollable area.
 
+== Launch Arguments
+
+Certain Unreal Engine launch arguments can be particularly useful when debugging.
+
+You can learn how to launch your game with launch arguments on the xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
+
+=== NoExceptionHandler
+
+The `-NoExceptionHandler` argument allows for the use of Just In Time debugging.
+When present, the main SEH exception handler is disabled.
+That prevents crash reporter from catching SEH exceptions (namely, access violation)
+and allows the debugger to handle them instead.
+Without it, your attached debugger will not catch any access violations or checks,
+they will just crash the game instead.
+
+This argument is added and handled by Unreal Engine.
+
+=== WaitForDebugger
+
+[WARNING]
+====
+This launch argument is added in SML3.5, which may not yet be released at the time of reading.
+====
+
+By adding the `-WaitForDebugger` argument to your launch arguments,
+the game will wait for a debugger to attach before continuing to launch.
+This can help with catching problems very early in the startup sequence.
+
+This launch argument is added by Unreal Engine but does not normally work in Shipping builds of the game.
+SML includes custom handlers to allow it to work.
+In Shipping, the exact point it waits at is SML initialization.
+If not for SML handlers, it would otherwise be inside of the engine loop.
+
 == Attach Debugger
 
 Now you need to attach your debugger of choice to the running Satisfactory process, `FactoryGame-Win64-Shipping.exe`.
@@ -39,3 +72,22 @@ You'll have to try breaking on a different function.
 ====
 
 Once a function breakpoint has been hit you can view the local variables, view the Call Stack, and step through the code. When stepping through code you obviously won't be able to see the actual code, but you can get an idea of what happens in what order by setting multiple breakpoints and watching the Call Stack and local variables as different functions are called.
+
+== Asserts, Ensures, and Checks
+
+Assertion statements are tools used to check and validate assumptions or conditions in code.
+These conditions are often checks that a pointer is non-null,
+a divisor is non-zero, a function isn't running recursively,
+or other important assumptions that the code requires,
+but that would be inefficient to check every time.
+
+When used correctly, they can help catch bugs early and make debugging easier
+by pinpointing the exact location where an assumption was violated.
+
+You can read more about these utilities (and see usage examples) on the relevant
+https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assertions/[Unreal Engine documentation page].
+
+Note that Assert and Check statements will crash the game if their conditions are not met, however, Ensure statements will allow the game to keep running.
+
+When SML is installed and a debugger is attached, Checks and Ensures will be caught by the debugger.
+This is not normally the case in Shipping builds of Unreal Engine games; this behavior is enabled by SML.
