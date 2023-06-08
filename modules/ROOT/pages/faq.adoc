@@ -314,17 +314,24 @@ It is suggested to routinely and especially when the game updates, to backup you
 
 Both Steam and Epic Games version use the same PATH depending on OS used.
 
-Windows (either Path will work):
+Windows (either Path will work)
+
 Path 1:
+
 `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\{YOUR ID}`
+
 Path 2:
+
 `\Users\<your Windows username>\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
 
 If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
-Linux
-using Steam Play:
+
+Linux using Steam Play:
+
 `~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
+
 Steam:
+
 `~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
 Source: https://satisfactory.fandom.com/wiki/Save_files#Save_File_Location[Official Wiki on Save Files]
