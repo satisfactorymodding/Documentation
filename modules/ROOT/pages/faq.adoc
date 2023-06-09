@@ -39,11 +39,17 @@ You might see error messages like:
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
-If you moved its location after installation manually, your installer client will not know where it is.
+If you manually moved the game files after installation, your installer client will not know where it is.
+We do not support pirated copies of the game.
 
-You will need to reinstall your game through your store client so that it is in a known location.
+If you're playing on Steam, you need to point Steam to the new library folder.
+To do that in the top left click "Steam", select "Settings", in "Downloads" tab press "Steam library folders" and add the folder that you moved your game files to.
+More information can be found on this
+https://help.steampowered.com/en/faqs/view/4BD4-4528-6B2E-8327[Steam help page].
 
-This will not affect your saves.
+If you're playing on Epic Games, you have to reinstall the game as Epic Games Launcher does not have an option to locate the game files.
+
+Moving or reinstalling will not affect your save files.
 
 == Can I add mods to a save I've already started?
 
