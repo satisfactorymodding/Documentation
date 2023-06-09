@@ -305,3 +305,39 @@ The process for specifying them depends on how you are launching the game:
 - For https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
 - For xref:Development/TestingResources.adoc[Testing Scripts]
 - For other launch methods, use your search engine of choice.
+
+== How do I get the Experimental or Early Access Branch of the Game?
+
+On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list.
+image:FAQ/SteamBranch.png[Steam Installer]
+
+In the Epic Games Launcher they should be available as separate games. If either is not there, try restarting the launcher.
+image:FAQ/EpicBranch.png[Epic Installer]
+
+== How do I backup my save files?
+
+It is suggested to routinely and especially when the game updates, to backup your save files. You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
+
+Both Steam and Epic Games version use the same PATH depending on OS used.
+
+Windows (either Path will work)
+
+Path 1:
+
+`%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\{YOUR ID}`
+
+Path 2:
+
+`\Users\<your Windows username>\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
+
+If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
+
+Linux using Steam Play:
+
+`~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
+
+Steam:
+
+`~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
+
+Source: https://satisfactory.fandom.com/wiki/Save_files#Save_File_Location[Official Wiki on Save Files]
