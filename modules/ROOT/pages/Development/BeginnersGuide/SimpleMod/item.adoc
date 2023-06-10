@@ -241,6 +241,14 @@ This base-game-supplied master material contains a ton of optimization logic
 to make rendering conveyor items work at large scales without butchering game performance.
 We can plug in our own textures to the material parmeters to use something other than the default grid it comes with.
 
+[NOTE]
+====
+If your item mesh has dynamic properties that don't work with the baked-in material,
+it is possible to create your own master material and use that instead.
+Make sure that 'Used with Instanced Static Meshes' is checked in the material's details,
+otherwise it will render with the worldgrid material on belts.
+====
+
 === Importing the Textures
 
 Now we'll import the 3 textures from the earlier download.
