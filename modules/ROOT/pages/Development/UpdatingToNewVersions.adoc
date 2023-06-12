@@ -164,7 +164,7 @@ You may have to edit a registry key entry to fix this - ask on the Discord for h
 == Install the New Engine
 
 The new editor version can probably be downloaded from
-https://github.com/satisfactorymodding/UnrealEngine/releases[the GitHub releases page],
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[the GitHub releases page],
 but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
 The specific files to download are described in the
