@@ -1,6 +1,8 @@
 = Updating/Supporting Dedicated Servers
 
-This is a condensed guide for Dedicated Server Support, these instructions, either in exact or similiar form, are present in the normal setup documentation. 
+This is a condensed guide for Dedicated Server Support, these instructions, either in exact or similar form, are present in the normal setup documentation.
+
+// TODO do we just want to link to the respective pages that have this text? otherwise one copy will fall out of date with the other.
 
 == WWise for Linux Dedicated Server Support (Optional)
 
