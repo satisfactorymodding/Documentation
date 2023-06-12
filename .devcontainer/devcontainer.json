@@ -17,7 +17,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; yarn install",
-	"postAttachCommand": "yarn serve",
+	"postAttachCommand": "yarn run build:dev; echo 'There is no hot reload - use `yarn run build:dev` to rebuild'; yarn serve",
 
 	// Configure tool-specific properties.
 	"customizations": {

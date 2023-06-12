@@ -123,7 +123,7 @@ for example, TODO Arch Example
 
 You can filter which log messages are output via editing your Engine config file.
 
-From: `%LocalAppData%/FactoryGame/Saved/WindowsNoEditor/Configs/Engine.ini`
+From: `%LocalAppData%/FactoryGame/Saved/Config/WindowsNoEditor/Engine.ini`
 
 ```ini
 [Core.Log]

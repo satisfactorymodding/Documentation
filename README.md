@@ -37,7 +37,7 @@ If you already have Visual Studio Code and Docker installed,
 we offer a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers)
 for the repository that will be auto-detected when you open the folder in VSCode.
 
-This should™ also be supported by Github Codespaces, but we haven't tested it.
+This also means that Github Codespaces is a pretty convenient way to test out other people's PRs.
 
 Make sure you have [the Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 and [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
@@ -50,6 +50,8 @@ If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command P
 then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
+
+Note that you'll need to use `yarn run build:dev` to update the preview if you make changes.
 
 ### Manual
 
