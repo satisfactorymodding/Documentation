@@ -326,7 +326,8 @@ The process for specifying them depends on how you are launching the game:
 
 == How do I get the Experimental or Early Access Branch of the Game?
 
-On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list.
+On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list. "None" is Early Access and "experimental - experimental" is Experimental.
+
 image:FAQ/SteamBranch.png[Steam Installer]
 
 In the Epic Games Launcher they should be available as separate games. If either is not there, try restarting the launcher.
