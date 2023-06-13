@@ -33,6 +33,18 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
 
+== How do I turn off mods?
+
+_Or: 'How do I disable mods?'_
+
+If you want to turn off a single mod, press the pause button next to its name in the mod list.
+
+To turn off mods entirely, flip the "Mods" switch in the top left corner of the mod manager.
+
+image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
+
+If for some reason this still doesn't work, delete the "Mods" folder from your link:#_where_are_my_game_files_located[game's install directory].
+
 == The mod manager can't find my game!
 
 You might see error messages like:
