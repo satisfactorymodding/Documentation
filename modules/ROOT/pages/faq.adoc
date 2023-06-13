@@ -33,6 +33,24 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
 
+== How do I turn off mods?
+
+_Or: 'How do I disable mods?'_
+
+The mod manager handles putting mod files in the relevant locations in your game install.
+If you launch the game outside of the mod manager,
+those files will still be in those folders, so you will still have your mods loaded.
+If you want to turn off mods, you must disable them **from the mod manager** so the files get removed.
+
+If you want to turn off a single mod, press the pause button next to its name in the mod list.
+
+To turn off mods entirely, flip the "Mods" switch in the top left corner of the mod manager.
+
+image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
+
+If for some reason this still doesn't work, delete the "Mods" folder from your
+link:#_where_are_my_game_files_located[game's install directory].
+
 == The mod manager can't find my game!
 
 You might see error messages like:
@@ -308,7 +326,8 @@ The process for specifying them depends on how you are launching the game:
 
 == How do I get the Experimental or Early Access Branch of the Game?
 
-On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list.
+On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list. "None" is Early Access and "experimental - experimental" is Experimental.
+
 image:FAQ/SteamBranch.png[Steam Installer]
 
 In the Epic Games Launcher they should be available as separate games. If either is not there, try restarting the launcher.
@@ -340,4 +359,4 @@ Steam:
 
 `~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
-Source: https://satisfactory.fandom.com/wiki/Save_files#Save_File_Location[Official Wiki on Save Files]
+Source: https://satisfactory.wiki.gg/wiki/Save_files#Save_File_Location[Official Wiki on Save Files]
