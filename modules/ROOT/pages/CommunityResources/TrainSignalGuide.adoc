@@ -43,7 +43,7 @@ Trains are, in effect, very high throughput belts. The difference from a belt is
 
 image:CommunityResources/TrainSignalGuide/Engine_Left.png[An Engine facing left.]
 
-* Engines can pull a number of cars determined by their weight, which is determined by how full they are (the type of part of fluid in the car does not affect the weight). In general, aim to keep your trains under 8 freight/fluid cars, though you can go above that in certain given situations. See the https://satisfactory.fandom.com/wiki/Freight_Car#Weight[Satisfactory Wiki: Freight Car Weight] page for a full breakdown. To see the weight of a train car calculated live in-game, use https://ficsit.app/mod/TFIT[TFIT].
+* Engines can pull a number of cars determined by their weight, which is determined by how full they are (the type of part of fluid in the car does not affect the weight). In general, aim to keep your trains under 8 freight/fluid cars, though you can go above that in certain given situations. See the https://satisfactory.wiki.gg/wiki/Freight_Car#Weight[Satisfactory Wiki: Freight Car Weight] page for a full breakdown. To see the weight of a train car calculated live in-game, use https://ficsit.app/mod/TFIT[TFIT].
 
 * Engines use electricity - provided to them from the Rails, which is provided by powering stations. They use between 25mw and 110mw depending on the incline, speed, and how much
 they are pulling.

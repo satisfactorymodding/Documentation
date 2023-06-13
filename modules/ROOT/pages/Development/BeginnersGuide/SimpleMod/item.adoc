@@ -85,7 +85,7 @@ M Remember Pick Up::
 +
 M Energy Value::
   Describes how much energy in megawatt Seconds (MWs, aka MJ) this item should release when burned in a generator or vehicle.
-  You can find the fuel values of vanilla items on the https://satisfactory.fandom.com/wiki/Category:Fuels[wiki].
+  You can find the fuel values of vanilla items on the https://satisfactory.wiki.gg/wiki/Category:Fuels[wiki].
   Note that if you want your item to qualify as a biofuel for the Biomass Burner, you should subclass `FGItemDescriptorBiomass` instead.
   {blank} +
   Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
@@ -322,7 +322,7 @@ Making and setting up custom meshes can be a lot of work.
 If you don't want to use a custom mesh for items you create in the future, consider
 xref:Development/ReuseGameFiles.adoc[reusing the mesh]
 of a nondescript base game item, such as the
-https://satisfactory.fandom.com/wiki/HUB_Parts[HUB Parts],
+https://satisfactory.wiki.gg/wiki/HUB_Parts[HUB Parts],
 as opposed to leaving it as the default white cube.
 ====
 
