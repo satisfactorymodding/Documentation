@@ -1,0 +1,52 @@
+= Widget Blueprint Hooks
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Introduced in SML3.5, Widget Blueprint Hooks can be used to add your custom widget into one of the existing game widgets.
+
+This functionality is used by SML to add the 'Mods' button to the main menu and pause menu.
+
+Mods can define widget blueprint hooks in their
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
+
+An example usage of this feature applied to the player HUD can be found in the Example Mod shipped with the starter project.
+
+The system works on the widget archetype level so your widget ends up fully integrated into the game's asset.
+You have full control over slot properties and widget settings.
+
+[NOTE]
+====
+A similar effect to Widget Blueprint Hooks can be achieved by hooking the widget's construct
+(for example, using Bind on BPFunction 'Construct')
+and manually adding your widget via blueprint code, but this system provides a simpler and more convenient way.
+====
+
+== Useful Blueprint Nodes
+
+SML offers some utility functions that make working with widget blueprint hooking cleaner and easier.
+
+Use the editor 'Find in Blueprints' functionality to search for usage examples in SML itself.
+Only a brief description of the node's purpose is provided here.
+Read more information in the node's tooltip or the SMLBlueprintWidgetLibrary.h header file.
+
+=== Find Parent Widget of Class
+
+Traverses the outer hierarchy of the provided widget
+and attempts to find the first widget of the class that be casted to the provided one and returns it.
+
+Particularly useful for a widget that injected into another to operate on its parent widget tree to perform additional modifications or gather extra data.
+
+This should only be used when you have very clear knowledge of your supposed parent widget.
+
+=== Find Child Widgets Of Class
+
+Traverses all of the direct and potentially indirect widgets owned by the provided widget tree
+and attempts to find all the widget matching the provided class.
+
+An example use case is for obtaining and operating on children of a widget that you can't modify the implementation of.
+
+This should only be used when you have very clear knowledge of the widget tree
+since bindings and named slots should be used to implement this functionality when you do have control over the implementation.
