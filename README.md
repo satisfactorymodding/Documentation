@@ -9,6 +9,8 @@ with questions and suggestions, or contribute via PRs (see below).
 We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,
 but this is only loosely followed.
 
+An overview of Asciidoc syntax can be found [here](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/).
+
 Pull requests should target the `Dev` branch.
 
 Before you submit changes,
