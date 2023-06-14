@@ -91,6 +91,13 @@ designed to manage and control multiple satisfactory dedicated server instances.
 Its public source code can be found on
 https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
+=== Satisfactory Modding Environment Installer (SMEI)
+
+A command line tool that assists mod authors with installing dependencies and setting up the Starter Project files.
+
+Its source code can be found
+https://github.com/satisfactorymodding/SMEI[here].
+
 === Frequently Asked Questions (FAQ)
 
 A list of questions that are frequently asked,
