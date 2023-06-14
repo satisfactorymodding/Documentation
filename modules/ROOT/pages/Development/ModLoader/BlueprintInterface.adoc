@@ -44,6 +44,15 @@ Logs the given string in the "error-level".
 Logs the given string in the "fatal-level".
 Causes the game to crash.
 
+== Hooking
+
+[id="BindOnBPFunction"]
+=== BindOnBPFunction(const TSubclassOf<UObject> Class, FObjFunctionBind Binding, const FString FunctionName, bool HookOffsetStart)
+
+Allows binding an event to a function that is implemented in blueprint.
+
+HookOffsetStart controls if your event will be called before or after the hooked function. 
+
 == Config
 
 [WARNING]
