@@ -1,5 +1,13 @@
 = Blueprint Library
 
+[NOTE]
+====
+The most up to date information about SML blueprint library functions is the header files
+present in the https://github.com/satisfactorymodding/SatisfactoryModLoader/[source code].
+
+This page may fall behind what is actually available.
+====
+
 SML provides numerous helpful blueprint function libraries,
 allowing you to interact with the engine,
 Satisfactory, or the mod loader itself from blueprints with relative ease.
