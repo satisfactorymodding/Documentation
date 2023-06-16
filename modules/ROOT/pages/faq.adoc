@@ -36,7 +36,10 @@ for the rest of the steps.
 == How do I turn off mods?
 
 _Or: 'How do I disable mods?'_
+
 _Or: 'How do I uninstall my mods?'_
+
+_Or: 'How do I go back to play the vanilla game?'_
 
 The mod manager handles putting mod files in the relevant locations in your game install.
 If you launch the game outside of the mod manager,
@@ -49,8 +52,14 @@ To turn off mods entirely, flip the "Mods" switch in the top left corner of the 
 
 image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
 
+If this fails for some reason, go to `%appdata%\SatisfactoryModManager\profiles` and delete the vanilla folder,
+then restart SMM and turn mods on and back off.
+
 If for some reason this still doesn't work, delete the "Mods" folder from your
 link:#_where_are_my_game_files_located[game's install directory].
+
+Do note **uninstalling the mod manager will not uninstall mods from your game**.
+If you did that, you should reinstall the mod manager and turn the mods off using the above approach.
 
 If you're trying to remove a specific mod from your mod manager profile and it's not working,
 try creating a new profile.
