@@ -14,7 +14,7 @@ or add them yourself via the 'Edit this Page' button in the top right.
 The first step is to download the Satisfactory Mod Manager.
 You can get it from ficsit.app, or by clicking https://smm.ficsit.app/[here].
 
-Next, follow the steps below:
+To install it, follow the steps below:
 
 === For Windows 10:
 
@@ -32,6 +32,19 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
+
+=== Installing Mods
+
+After you've installed the Mod Manager, you can use it to seamlessly browse and install mods.
+
+If you prefer to browse mods on the ficsit.app website,
+it's easy to install them from there too.
+
+Once you're on the page for a mod, click the 'Versions' button in the top right,
+then click the "Install" button near the version you'd like to download.
+// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
+This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
+and handle installing the mod for you.
 
 == How do I turn off mods?
 
