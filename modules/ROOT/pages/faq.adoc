@@ -350,6 +350,9 @@ The process for specifying them depends on how you are launching the game:
 
 == How do I get the Experimental or Early Access Branch of the Game?
 
+Note that you may have to link:#_how_do_i_turn_off_mods[turn off your mods]
+for the game to launch after you switch branches, especially after a major update.
+
 On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list. "None" is Early Access and "experimental - experimental" is Experimental.
 
 image:FAQ/SteamBranch.png[Steam Installer]
