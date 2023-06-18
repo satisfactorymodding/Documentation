@@ -222,18 +222,10 @@ You can use the Mod Manager's profile import/export functionality.
 
 image:https://cdn.discordapp.com/attachments/555507339969560586/833748278456746014/unknown.png[SMM Import/Export screenshot]
 
-== Where can I find the game's log files?
-
-You can find various log files at different locations:
-
-- In your game install folder, `pre-launch-debug.log` and `SatisfactoryModLoader.log`
-- At `%localappdata%/FactoryGame/Saved/logs`, where FactoryGame.log is located
-
-The easiest way to gather logs is the Mod Manager's "generate debug info" feature:
-
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
-
 == Where are my game files located?
+
+[id="Files_GameInstall"]
+=== Game Install
 
 The answer to this question depends on if you installed the game via Steam or Epic.
 
@@ -244,6 +236,45 @@ image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_SaveFiles"]
+=== Save Files
+
+See link:#_how_do_i_backup_my_save_files[Backing Up Save Files]
+
+[id="Files_GameConfig"]
+=== Game Configuration Files
+
+The options you have selected in the base game's options menu are stored in
+`%LOCALAPPDATA%\FactoryGame\Saved\Config\Windows\GameUserSettings.ini`
+
+Note that this file stores differences from the default settings, so if you have not changed a setting,
+it will not be listed.
+
+[id="Files_ModConfig"]
+=== Mod Configuration Files
+
+Mod configuration files are stored in the link:#Files_GameInstall[game install directory] under `FactoryGame/Configs`.
+
+Note that some mods may have custom implementations or extra files that are not stored in this location.
+
+[id="Files_Logs"]
+=== Log Files
+
+You can find various log files at different locations:
+
+- `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
+  It can be found at `%LOCALAPPDATA%/FactoryGame/Saved/logs`
+- Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
+
+== Where can I find the game's log files?
+
+The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
+since it gathers game, SML, and Mod Manager logs for you.
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+
+The location of these files is mentioned link:#Files_Logs[above].
 
 == How do I verify my game files?
 
@@ -381,7 +412,11 @@ It is suggested to routinely and especially when the game updates, to backup you
 
 Both Steam and Epic Games version use the same PATH depending on OS used.
 
-Windows (either Path will work)
+Note that "{Your ID}" in the below examples refers to a unique user ID number, not the literal text "{Your ID}".
+
+=== Windows
+
+Both of the paths listed below lead to the same location, either will work.
 
 Path 1:
 
@@ -393,11 +428,13 @@ Path 2:
 
 If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
 
-Linux using Steam Play:
+=== Linux
+
+Using Steam Play:
 
 `~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
-Steam:
+Using Steam:
 
 `~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
