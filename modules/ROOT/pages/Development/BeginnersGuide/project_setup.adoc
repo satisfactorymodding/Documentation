@@ -66,7 +66,7 @@ Be sure to follow _only_ the steps listed here
 - Wwise will often present you with lots of additional messages
 that looks like errors or warnings but can be safely ignored.
 
-[WARNING]
+[IMPORTANT]
 ====
 If part of the setup process fails for you, it is most likely this step.
 If you have errors completing the setup process,
@@ -176,10 +176,11 @@ If you have multiple computers available on your network, you can optionally use
 xref:CommunityResources/incredibuild.adoc[here].
 ====
 
-Open up the .sln file in your project folder.
+Open up the FactoryGame.sln file in your project folder.
 Once Visual Studio loads,
-make sure that you have `Development Editor`
-and `Win64` selected in the top toolbar.
+make sure that you have `Development Editor` Solution Configuration
+and `Win64` Solution Platform selected in the top toolbar.
+It's near the undo/redo buttons and the play button menu items.
 
 image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
 
@@ -193,11 +194,15 @@ You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
-After it completes, you should select `Shipping` in the toolbar and start another build.
-Building both of these is required for the editor to function correctly,
+After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
+(the same place you selected `Development Editor` earlier)
+and start another build.
+Building both of these is required for the editor to function correctly
 and for you to be able to distribute your mod.
 
-[WARNING]
+Now that you've built the binaries, your Unreal Editor should open without any issues.
+
+[IMPORTANT]
 ====
 Some important notes for the future:
 
