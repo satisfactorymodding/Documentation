@@ -188,6 +188,7 @@ Now, from the top toolbar, select `Build` > `Build Solution`.
 image:BeginnersGuide/PressBuild.png[Build Solution]
 
 This will take some time; go pet some lizard doggos as you wait.
+See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
@@ -209,12 +210,40 @@ When you want to test or release your mod, make sure to build the project for `S
 Without doing so, your mod will be missing important files.
 ====
 
+[id='Compiling_Troubleshooting']
+=== Troubleshooting
+
+Almost all warnings, and occasionally some errors, reported by the editor can be safely ignored during the build process.
+This section will help you decide how to proceed if you encounter errors while building.
+
+==== The command ... exited with code 6
+
+This is not actually an error message, just a message that is informing you that the build task has failed.
+Keep reading the Error List to see what actually went wrong.
+
+==== Compiler is out of heap space
+
+Your computer ran out of RAM while trying to compile the project.
+This is a common issue even on computers with 32GB of RAM.
+Thankfully the completed build progress persists between attempts at building,
+so just keep re-running the build task and it will slowly make progress.
+Close other stuff on your computer that is using RAM if possible, such as web browsers and games.
+Restarting your computer and then trying the build again may also help.
+
+If the project still continues to fail to build with this reason after many attempts,
+contact us on the Discord for further troubleshooting.
+Your computer may unfortunately not have enough ram to compile the project.
+
+==== AkAudio
+
 If you see errors related to `AkAudio` or similar,
-you need to go back and re-do the Wwise integration step.
+you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step].
 
-If you encounter issues during this step, consider asking for help on the Discord.
+==== Something Else
 
-Now that you've built the binaries, your Editor should open without any issues.
+If you run into a problem that isn't described above,
+please ask for help on the Discord, even if you fix it yourself.
+We can update the docs with your findings to help other people that might have a similar issue!
 
 == Open Unreal Editor
 
