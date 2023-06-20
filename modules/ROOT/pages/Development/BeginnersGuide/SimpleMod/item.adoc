@@ -85,7 +85,7 @@ M Remember Pick Up::
 +
 M Energy Value::
   Describes how much energy in megawatt Seconds (MWs, aka MJ) this item should release when burned in a generator or vehicle.
-  You can find the fuel values of vanilla items on the https://satisfactory.fandom.com/wiki/Category:Fuels[wiki].
+  You can find the fuel values of vanilla items on the https://satisfactory.wiki.gg/wiki/Category:Fuels[wiki].
   Note that if you want your item to qualify as a biofuel for the Biomass Burner, you should subclass `FGItemDescriptorBiomass` instead.
   {blank} +
   Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
@@ -241,6 +241,14 @@ This base-game-supplied master material contains a ton of optimization logic
 to make rendering conveyor items work at large scales without butchering game performance.
 We can plug in our own textures to the material parmeters to use something other than the default grid it comes with.
 
+[NOTE]
+====
+If your item mesh has dynamic properties that don't work with the baked-in material,
+it is possible to create your own master material and use that instead.
+Make sure that 'Used with Instanced Static Meshes' is checked in the material's details,
+otherwise it will render with the worldgrid material on belts.
+====
+
 === Importing the Textures
 
 Now we'll import the 3 textures from the earlier download.
@@ -314,7 +322,7 @@ Making and setting up custom meshes can be a lot of work.
 If you don't want to use a custom mesh for items you create in the future, consider
 xref:Development/ReuseGameFiles.adoc[reusing the mesh]
 of a nondescript base game item, such as the
-https://satisfactory.fandom.com/wiki/HUB_Parts[HUB Parts],
+https://satisfactory.wiki.gg/wiki/HUB_Parts[HUB Parts],
 as opposed to leaving it as the default white cube.
 ====
 

@@ -273,7 +273,7 @@ but warning messages alone are very unlikely to be the cause of your mod failing
 
 Once you find the error message(s),
 proceed to fix the problems they describe,
-or ask for help on the DIscord
+or ask for help on the Discord
 
 === Failed to delete directory / Failed to delete file
 

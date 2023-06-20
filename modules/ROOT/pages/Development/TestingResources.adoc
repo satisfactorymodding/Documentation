@@ -189,3 +189,51 @@ you can edit your default game configuration, found at
 
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
+
+== Modify Online Subsystem Behavior
+
+// From https://discord.com/channels/555424930502541343/562722670974599227/1044575456659259472
+
++++ <details><summary> +++
+True offline mode information from Archengius:
++++ </summary><div> +++
+Example configuration file to run game offline with just IP sockets and no online subsystems and strings attached whatsoever
+
+[source,ini]
+----
+[/Script/EngineSettings.GameMapsSettings]
+GameDefaultMap=/Game/FactoryGame/Map/MenuScenes/Map_MenuScene_Update_06.Map_MenuScene_Update_06
+ServerDefaultMap=/Game/FactoryGame/Map/DedicatedserverEntry.DedicatedserverEntry
+LocalMapOptions=
+
+[URL]
+Name=Player
+Port=7777
+
+[/Script/Engine.Engine]
+NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
+NetDriverDefinitions=(DefName="BeaconNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
+NetDriverDefinitions=(DefName="DemoNetDriver",DriverClassName="/Script/Engine.DemoNetDriver",DriverClassNameFallback="/Script/Engine.DemoNetDriver")
+
+[OnlineSubsystem]
+DefaultPlatformService=NULL
+NativePlatformService=NULL
+
+[OnlineSubsystemSteam]
+bEnabled=false
+bRelaunchInSteam=false
+
+[OnlineSubsystemEOS]
+bEnabled=false
+
+[OnlineSubsystemNull]
+bEnabled=true
+----
+
+Example command line:
+
+`FactoryGame-Win64-Shipping.exe -NoEpicPortal -EngineIni="C:\EpicLibrary\SatisfactoryExperimental\OfflineEngineIni2.ini" -Multiprocess -Log`
+
+
+`-Multiprocess` prevents game writing to any files (which is really what you want if you plan running multiple instances simultaneously) and -Log opens the console log window
++++ </div></details> +++

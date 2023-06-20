@@ -256,7 +256,7 @@ To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
 and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
 Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
 as the asset generator is running - the process is called `UE4Editor-Cmd.exe` in the list.
-Now the package being processed will be visible as a log message inside the visual studio output section.
+Now the package being processed will be visible as a log message inside the Visual Studio output section.
 After running the asset generator again, next time it crashes, the debugger will catch it as a breakpoint,
 and you can look at the log messages to locate the troublesome asset in your dumped files, delete it, then re-run the asset generator.
 Note that the debugger can sometimes stop for breakpoints on non-crash errors - after reviewing the log, try pressing Continue to see if it recovers cleanly and continues.

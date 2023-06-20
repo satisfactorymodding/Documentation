@@ -384,7 +384,7 @@ You may need to temporarily move out some of the troublesome mods to allow build
 
 One way to do this is to rename the uplugin file to `<ModReference>.uplugin.disabled`
 to stop Unreal from loading it.
-You will probably have to regenerate the visual stuido project files if you do this.
+You will probably have to regenerate the Visual Studio project files if you do this.
 Directions for that can be found
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[here].
 
@@ -394,13 +394,13 @@ this approach lets you turn off mods without causing a torrent of Git file chang
 == Preparing to Update a Mod
 
 If your mod has dependencies, you should update them first,
-ideally without your the dependent mod present in the project.
+ideally without your dependent mod present in the project.
 Consider disabling the dependent mod via the approach described above
 until the dependency is ready.
 
 If you keep your mods in separate plugin repos,
-consider creating a branch or tag on each named after the version the code supported
-(ex. Update5) so that you and others can refer back to it later if needed.
+consider creating a branch or tag on each named after the game version the code supported
+(ex. Update5) so that you (and others) can refer back to it later if needed.
 
 == The Cycle of Updating
 
@@ -412,11 +412,11 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 
 - Adding/removing xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
   (note, also see link:#_seemingly_ignored_access_transformers[Seemingly Ignored Access Transformers] section)
-- Rewriting or To-Do commenting out broken functionality
+- Rewriting or To-Do commenting out broken functionality in your mod to account for codebase changes
 - Asking for help on the Discord
 
-3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping.
-4. Install the updated version of SML in your copy of the game.
+3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping
+4. Install the updated version of SML in your copy of the game
 5. Open the Unreal Engine Editor for your project
 6. Run Alpakit on your mod
 7. Deal with errors that Alpakit finds. Possible problems include:
@@ -431,11 +431,11 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
   To-Do comment them out or try to replace them.
 - Something else entirely. Consider asking for help on the Discord.
 
-8. Repeat steps 6-7 until Alpakit builds your mod successfully.
+8. Repeat steps 6-7 until Alpakit builds your mod successfully
 9. Launch the game with your mod installed
 10. Resolve crashes that occur when you try to launch the game
 11. Restore the functionality you had to comment out or unhook in steps 2 and 7
-12. Test functionality in your mod to ensure nothing has broken.
+12. Test functionality in your mod to ensure nothing has broken
 13. Resolve any problems you find by testing your mod further
 
 Below are some notes on a few things to watch out for.

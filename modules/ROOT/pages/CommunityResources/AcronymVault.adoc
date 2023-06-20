@@ -36,7 +36,7 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader[GitHub].
 
 === Satisfactory Mod Repository (SMR) aka ficsit.app
 
-https://ficsit.app[ficsit.app], or the Satisfactory Mod Repository, is the website at which mods, this documentation, guides, and more are hosted.
+https://ficsit.app[ficsit.app], also known as the Satisfactory Mod Repository or FICSIT Augmentation Database, is the website at which mods, this documentation, guides, and more are hosted.
 
 You can find the source code for the 
 https://github.com/satisfactorymodding/smr-frontend[frontend]
@@ -78,7 +78,7 @@ portions each have their own GitHub repositories.
 link:#_satisfactory_calculator_and_interactive_map_scim[SCIM]
 also features a https://satisfactory-calculator.com/en/blueprints[Blueprint Repository]
 which allows sharing Blueprints created by the Blueprint Designer introduced in Update 7. These blueprints can be downloaded and placed in the
-https://satisfactory.fandom.com/wiki/Blueprint_Designer#Blueprint_Files[respective folder]
+https://satisfactory.wiki.gg/wiki/Blueprint_Designer#Blueprint_Files[respective folder]
 to be used in-game.
 
 A separate https://satisfactory-calculator.com/en/megaprints[Megaprints Repository] is also available which contains larger blueprints that can only be created and used within SCIM.
@@ -91,6 +91,13 @@ designed to manage and control multiple satisfactory dedicated server instances.
 Its public source code can be found on
 https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
+=== Satisfactory Modding Environment Installer (SMEI)
+
+A command line tool that assists mod authors with installing dependencies and setting up the Starter Project files.
+
+Its source code can be found
+https://github.com/satisfactorymodding/SMEI[here].
+
 === Frequently Asked Questions (FAQ)
 
 A list of questions that are frequently asked,
@@ -98,6 +105,11 @@ and common answers to them.
 
 You can find the Satisfactory Modding Community's FAQ
 xref:faq.adoc[on its respective docs page].
+
+=== FICSIT Augmentation Database (FAD)
+
+See link:#_satisfactory_mod_repository_smr_aka_ficsit_app[Satisfactory Mod Repository].
+The mod repository is no longer frequently referenced by this name - one could say that doing so was a https://www.merriam-webster.com/dictionary/fad[FAD].
 
 === Too Many Acronyms (TMA)
 

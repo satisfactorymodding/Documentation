@@ -1,0 +1,11 @@
+= Session Settings
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Introduced in SML3.5, Session Settings are a feature similar to Advanced Game Settings that allows mods to store configuration information on a per-game-save basis.
+
+Mods can define Session Settings in their
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].

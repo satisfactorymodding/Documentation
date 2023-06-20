@@ -5,7 +5,7 @@ SML provides a few registry mechanisms for quick and easy content management.
 == Remote Call Object Registry
 
 The `Remote Call Object Registry` is a
-xref:Development/ModLoader/ModModules.adoc#_game_instance_module_ugameinstancemodule[Game Instance]
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
 xref:Development/ModLoader/Subsystems.adoc[Subsystem]
 that automatically registers all listed remote call objects in the Satisfactory Player Character.
 
@@ -15,7 +15,7 @@ so that it gets automatically registered in the player.
 == Subsystem Holder Registry
 
 The `Subsystem Holder Registry` ia a 
-xref:Development/ModLoader/ModModules.adoc#_game_instance_module_ugameinstancemodule[Game Instance]
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
 xref:Development/ModLoader/Subsystems.adoc[Subsystem]
 that automatically registers all listed subsystem holders to the mod loader lifecycle.
 The holders are then manged by SML and called at the correct times.

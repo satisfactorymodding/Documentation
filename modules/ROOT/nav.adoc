@@ -57,18 +57,23 @@
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 *** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
+*** xref:Development/Satisfactory/Clipboard.adoc[Clipboard]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 *** xref:Development/ModLoader/Logging.adoc[Logging]
-*** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
 *** xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
 *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
 *** xref:Development/ModLoader/Configuration.adoc[Configuration]
+*** xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks]
+*** xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
+*** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
+*** xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
+*** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
 
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
@@ -82,6 +87,7 @@
 ** xref:CommunityResources/ModelingTools.adoc[Modeling Tools]
 ** xref:CommunityResources/SFUIKIT.adoc[UI Kit]
 ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
+** xref:CommunityResources/incredibuild.adoc[Incredibuild]
 ** xref:CommunityResources/TrainSignalGuide.adoc[Train Signaling Guide]
 
 * Community Mod Lists

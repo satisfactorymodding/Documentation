@@ -21,10 +21,8 @@ To view the terminal, check the xref:SMLConfiguration.adoc#_sml_configuration_op
 and make `consoleWindow` = `true`, which will cause the window to open on game launch.
 
 You can also open the terminal by adding `-log` to the game's launch arguments.
-https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
-and 
-https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
-have different approaches for configuring games' launch arguments.
+Learn how to configure launch arguments on the
+xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
 
 == Logging from Blueprints
 
@@ -101,7 +99,7 @@ With these settings, all mod logging calls will be displayed in the terminal and
 
 == Redirect Logs for a Specific Mod
 
-You can use the Unreal Engine LogCategoryFiles launch argument to redirect a specific log category into a separate file.
+You can use the Unreal Engine `LogCategoryFiles` launch argument to redirect a specific log category into a separate file.
 This means that, in addition to appearing in `FactoryGame.log`,
 they will appear in a file of your choice.
 
@@ -125,7 +123,7 @@ for example, TODO Arch Example
 
 You can filter which log messages are output via editing your Engine config file.
 
-From: `%LocalAppData%/FactoryGame/Saved/WindowsNoEditor/Configs/Engine.ini`
+From: `%LocalAppData%/FactoryGame/Saved/Config/WindowsNoEditor/Engine.ini`
 
 ```ini
 [Core.Log]

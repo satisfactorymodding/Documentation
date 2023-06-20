@@ -175,7 +175,9 @@ This field is required.
 ! Version number for the mod dependency.
 Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
-You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
+// According to Mircea, this site does not work correctly
+// https://discord.com/channels/555424930502541343/562722670974599227/1037056112651931658
+// You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
 {blank} +
 {blank} +
 We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),

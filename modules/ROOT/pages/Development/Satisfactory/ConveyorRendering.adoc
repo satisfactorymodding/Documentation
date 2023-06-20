@@ -5,6 +5,9 @@
 Ben (CSS employee) has confirmed that, as of Update 5, this system is no longer in place.
 Conveyor items should now work with their mConveyorMesh field set in their descriptors.
 This page is kept around for historical reference purposes.
+
+If you are using a material for conveyor items that does not extend Factory Baked
+make sure to enable 'Used with Instanced Static Meshes' in the material's Details.
 ====
 
 Introduced with Update 4 was a new complex, high performance rendering system for item conveyers.
