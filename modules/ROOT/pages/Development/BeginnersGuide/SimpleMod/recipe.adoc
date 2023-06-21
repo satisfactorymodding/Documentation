@@ -20,7 +20,7 @@ Note that recipes are used to define both crafting recipes in the craft bench an
 All buildables actually have an item equivalent in game as well.
 ====
 
-'Schematics', on the other hand, define things like  https://satisfactory.gamepedia.com/Milestones[Milestones],
+'Schematics', on the other hand, define things like  https://satisfactory.wiki.gg/Milestones[Milestones],
 the shipments submitted to FICSIT via the HUB in order to unlock new recipes and features.
 This is far from their only purpose.
 They are backed by the FGSchematic class.
