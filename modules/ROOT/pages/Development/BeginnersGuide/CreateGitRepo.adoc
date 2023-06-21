@@ -1,8 +1,17 @@
 # Creating a Git Repo for your Mod
 
-TODO
+[NOTE]
+====
+This page is a work in progress.
+====
 
-If you're already experienced with Git, you can skip to the TODO section.
+Once you have started working on a mod of your own, you should set up a git repository for your mod.
+
+This page will begin by explaining why you should use git,
+provide links to resources that explain basic git concepts,
+then provide a tutorial on how to use git in the context of Satisfactory Modding.
+
+If you're already an experienced Git user you can skip to link:#ExperiencedGitUsers[this section].
 
 ## Why Use a Git Repo
 
@@ -12,8 +21,8 @@ Advantages:
 - Keep track of changes to write patch notes for a release
 - Easily share your source code with others
 - Backs up your files in case they get corrupted or you lose access to your computer
-- Makes it harder to misplace your files if return to modding after an extended break
-- Version control usage is an important skill that can benefit any coder.
+- Makes it harder to misplace your files if returning to modding after an extended break
+- Version control usage is an important skill that can benefit any coder
 
 Disadvantages:
 
@@ -62,16 +71,20 @@ Consider the following software:
 
 This tutorial will use GitHub Desktop, but all are valid choices.
 
+Once you have your git client installed, proceed to link:#CreateRepo[this section].
+
+[id="ExperiencedGitUsers"]
 ## Experienced Git Users
 
-TODO relocate this section
+Use the git tool you are comfortable with.
 
 Be extra careful with merge conflicts and branches in the context of Unreal Engine.
-
 Most Unreal Engine asset files are raw binary files, which means git diffing them is difficult.
 Panakotta has directions on using UE as diff tool
-https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here].
+https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
+but it's best to totally avoid merge conflicts wherever possible.
 
+[id="CreateRepo"]
 ## Creating a Repository and Adding your Files
 
 ### Create the Remote Repository on GitHub
@@ -145,3 +158,26 @@ If you created your mod with the Alpakit wizards, it will have already created t
 If not, you can pick one up
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Plugins/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
 
+## Commit the Existing Files
+
+Now that you have your repository set up, you need to commit your existing files to it.
+
+The gitignore file should have already excluded temporary files and build-related files for you,
+but you may have to stage it for commit before they will disappear from your git client's status list.
+
+TODO commiting with GitHub Desktop
+
+## Git Workflow
+
+1. Make changes to your code
+2. Commit your changes.
+   When is a good time to commit? That depends on your preference. Consider committing if you have made a significant change, or if you are about to make a significant change and want to be able to revert it easily.
+3. Push your changes to the Remote Repository
+
+## End of currently written content
+
+## Unsorted Notes
+
+Unreal Engine may offer to turn on version control integration,
+but you probably don't want this because it happens at the project level,
+whereas each of your mods is its own separate plugin repo.
