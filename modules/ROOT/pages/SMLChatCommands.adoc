@@ -145,7 +145,7 @@ Buildings are unaffected.
 If the inventory isn't big enough to hold it all,
 extra slots will be granted as well.
 You can find an item's Blueprint Path on the
-https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+https://satisfactory.wiki.gg/[Satisfactory Wiki],
 finding the content on a
 https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
 https://www.gildor.org/en/projects/umodel[UModel].
@@ -158,7 +158,7 @@ via `GiveItemStacks "" numberOfSlots`
 Unlike `GiveItemStacks`, if the inventory can't hold the items,
 the inventory will NOT be expanded.
 You can find an item's Blueprint Path on the
-https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+https://satisfactory.wiki.gg/[Satisfactory Wiki],
 finding the content on a
 https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
 https://www.gildor.org/en/projects/umodel[UModel].
