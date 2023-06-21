@@ -8,7 +8,7 @@ factory building models.
 
 These re-models have been optimized to have fewer vertices than the
 pieces of machines that one could take off of Satisfactory machines
-exported via UModel, and they still look great!
+exported via xref:Development/ExtractGameFiles.adoc#FModel[FModel], and they still look great!
 
 You can read more about the Modeling Tools on its
 https://github.com/DavidHGillen/Satisfactory_ModelingTools[GitHub page].
