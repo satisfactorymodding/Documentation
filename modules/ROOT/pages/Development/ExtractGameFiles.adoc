@@ -15,14 +15,67 @@ you should check out the
 xref:Development/ReuseGameFiles.adoc[Reusing Game Files page] instead.
 ====
 
-== Extracting Specific Models or Textures
+[id="FModel"]
+== FModel
 
-[TIP]
-====
-If you're looking to use parts of base game machines such as item
-and fluid ports, power connectors, or more, consider taking a look at
-xref:CommunityResources/ModelingTools.adoc[AngryBeaver's ModelingTools].
-====
+https://fmodel.app/[FModel] is a tool that can be used to view and extract game assets.
+Documentation for FModel is available on its https://github.com/4sval/FModel/wiki[Github Wiki].
+This section will cover how to configure FModel to read Satisfactory files.
+
+Unreal Engine 5 introduced changes in how assets are stored in pak files,
+meaning that you will need to provide FModel with extra information so it can read the data correctly.
+The required files can be found in your game install directory at
+`/CommunityResources/FactoryGame.usmap`
+and `/CommunityResources/CustomVersions.json`.
+
+=== Add Undetected Game
+
+The first time you open FModel you will be presented with a Directory Selector.
+If you have already opened FModel in the past, you'll be opened to another window,
+so you can bring the selector up again via `Directory` > `Selector`.
+
+Under the "Add Undetected Game" heading, click the two-arrows icon,
+enter `Satisfactory` as the "Name",
+and enter your game install directory as the "Directory"
+(for example, `C:\EpicGamesGames\SatisfactoryExperimental`).
+Next, press the blue Plus button (NOT the OK button!) to add the game to the Detected Game dropdown,
+which should automatically select it.
+After confirming that the game is selected, press the `OK` button.
+
+The program should launch and display `FactoryGame-Windows.pak` in the Archives tab list,
+along with the paks of any other mods you may have installed.
+If it opens another game instead,
+return to the directory selector and review the above steps.
+
+=== Specify Custom Version and Mapping
+
+Before you can view any files you must specify the mapping information.
+Navigate to `Settings` > `General`.
+In the "UE Versions" dropdown, select `GAME_UE5_1 (536870928)`,
+then press the `Custom Versions` button in the "Version Configuration" row.
+
+Delete the text contents of the popup window that appears
+and replace it with the contents of the `CustomVersions.json` file,
+then press `OK` to save changes.
+
+Back on the Settings screen, check the box for "Local Mapping File"
+and then enter the full path to your `FactoryGame.usmap` file
+(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
+
+Press `OK` to close the settings prompt,
+which will open another prompt asking you to restart FModel - press `OK`.
+
+== UModel
+
+UModel is another tool that can be used to view and extract game assets.
+
+However, at the time of writing, **it does not currently have support for Unreal Engine 5 (Update 8 and beyond)**.
+As such, FModel should be used instead.
+The following instructions are left here for reference when working with past versions.
+
++++ <details><summary> +++
+Outdated directions for using UModel:
++++ </summary><div> +++
 
 The tool https://www.gildor.org/en/projects/umodel[UModel]
 can be used to view game pak file content,
@@ -47,16 +100,66 @@ so that software such as Blender can open them easily.
 Note that not all of the content you can extract in this manner is directly useful.
 For example, directly exporting an `FGItemDescriptor` is not really helpful.
 
++++ </div></details> +++
+
+== Extracting Specific Models or Textures
+
+[TIP]
+====
+If you're looking to use parts of base game machines such as item
+and fluid ports, power connectors, or more, consider taking a look at
+xref:CommunityResources/ModelingTools.adoc[AngryBeaver's ModelingTools].
+====
+
+This section explains how to use FModel to extract specific static meshes, skeletal meshes, and textures.
+Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
+
+The https://github.com/4sval/FModel/wiki[FModel Documentation]
+explains its various UI elements and how to navigate through the pak file.
+
+To test your settings, select the FactoryGame pak in the Archives tab,
+which will take you to the Folders tab,
+then navigate to
+`FactoryGame/Content/FactoryGame/Resource/Parts/AIlimiter/Textures`
+and attempt to open the `TX_AiLimiter_BC.uasset` file.
+
+This will take you to the Packages tab,
+and will open a two-pane display with text on the left and an image on the right.
+
+To export a file, such as this texture, right click it in the Packages tab's list
+and select the relevant option, in this case `Save Texture`.
+A message "[INF] Successfully saved TX_AiLimiter_BC.png" should appear in the log at the bottom of the window.
+This will export the file to your Output directory, which is configured in the `Settings` > `General` menu.
+You can control what file format assets will be exported in via the `Settings` > `Models` menu.
+
+You can click on the text `TX_AiLimiter_BC.png` in the log to open your system file browser to the containing folder.
+
+Opening a mesh asset, such as
+`FactoryGame/Content/FactoryGame/Equipment/JetPack/Mesh/SK_Jetpack_01.uasset`,
+will cause a 3D Viewer window to appear.
+
 == Extracting Sounds/Music
 
-Because Satisfactory uses the Wwise sound system,
-extracting game sound files is a different process compared to many other Unreal Engine games. 
+This section explains how to use FModel to extract sound files.
+Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
 
-Thankfully, GitHub user AyrA has created a tool that can extract some of the game's sound files from the pak for you.
-You can either
-https://cable.ayra.ch/satisfactory/editor[download the save editor the tool is bundled with]
-to get the audio files yourself, or
-https://cable.ayra.ch/satisfactory/satsound/[play and export the sounds directly from your web browser].
+Because Satisfactory uses the Wwise sound system,
+game sound files are stored in a manner different from many other Unreal Engine games.
+
+FModel can be used to extract sound files to the WAV format via its Audio Player.
+All game audio can be found in subfolders of the pak's `FactoryGame/Content/WwiseAudio/Media/` folder.
+
+Unfortunately, Wwise sound files viewed in this manner
+are not logically and do not have "nice" names,
+meaning that finding the sound you want often involves a lot of digging around through hundreds of files.
+Furthermore, the sound files are stored in their unmixed forms,
+meaning that the sound is lacking additional audio effects that are applied real-time in-game.
+
+To extract a sound file, first open its Package in the main window,
+which will cause an Audio Player window to appear.
+After optionally previewing the sound file in the player,
+right click on it in the playlist and select Save,
+prompting a system dialog to select a save location.
 
 == Generating a Complete Starter Project
 
