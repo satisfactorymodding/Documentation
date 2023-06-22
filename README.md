@@ -9,6 +9,8 @@ with questions and suggestions, or contribute via PRs (see below).
 We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,
 but this is only loosely followed.
 
+An overview of Asciidoc syntax can be found [here](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/).
+
 Pull requests should target the `Dev` branch.
 
 Before you submit changes,
@@ -37,7 +39,7 @@ If you already have Visual Studio Code and Docker installed,
 we offer a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers)
 for the repository that will be auto-detected when you open the folder in VSCode.
 
-This should™ also be supported by Github Codespaces, but we haven't tested it.
+This also means that Github Codespaces is a pretty convenient way to test out other people's PRs.
 
 Make sure you have [the Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 and [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
@@ -50,6 +52,8 @@ If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command P
 then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
+
+Note that you'll need to use `yarn run build:dev` to update the preview if you make changes.
 
 ### Manual
 

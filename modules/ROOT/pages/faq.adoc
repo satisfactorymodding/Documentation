@@ -14,7 +14,7 @@ or add them yourself via the 'Edit this Page' button in the top right.
 The first step is to download the Satisfactory Mod Manager.
 You can get it from ficsit.app, or by clicking https://smm.ficsit.app/[here].
 
-Next, follow the steps below:
+To install it, follow the steps below:
 
 === For Windows 10:
 
@@ -33,17 +33,70 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
 
+=== Installing Mods
+
+After you've installed the Mod Manager, you can use it to seamlessly browse and install mods.
+
+If you prefer to browse mods on the ficsit.app website,
+it's easy to install them from there too.
+
+Once you're on the page for a mod, click the 'Versions' button in the top right,
+then click the "Install" button near the version you'd like to download.
+// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
+This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
+and handle installing the mod for you.
+
+== How do I turn off mods?
+
+_Or: 'How do I disable mods?'_
+
+_Or: 'How do I uninstall my mods?'_
+
+_Or: 'How do I go back to play the vanilla game?'_
+
+The mod manager handles putting mod files in the relevant locations in your game install.
+If you launch the game outside of the mod manager,
+those files will still be in those folders, so you will still have your mods loaded.
+If you want to turn off mods, you must disable them **from the mod manager** so the files get removed.
+
+If you want to turn off a single mod, press the pause button next to its name in the mod list.
+
+To turn off mods entirely, flip the "Mods" switch in the top left corner of the mod manager.
+
+image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
+
+If this fails for some reason, go to `%appdata%\SatisfactoryModManager\profiles` and delete the vanilla folder,
+then restart SMM and turn mods on and back off.
+
+If for some reason this still doesn't work, delete the "Mods" folder from your
+link:#_where_are_my_game_files_located[game's install directory].
+
+Do note **uninstalling the mod manager will not uninstall mods from your game**.
+If you did that, you should reinstall the mod manager and turn the mods off using the above approach.
+
+If you're trying to remove a specific mod from your mod manager profile and it's not working,
+try creating a new profile.
+You could also try
+link:#_how_do_i_share_my_mods_with_my_friends_for_multiplayer[exporting your profile],
+editing the file to delete the mod listing, then importing it again.
+
 == The mod manager can't find my game!
 
 You might see error messages like:
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
-If you moved its location after installation manually, your installer client will not know where it is.
+If you manually moved the game files after installation, your installer client will not know where it is.
+We do not support pirated copies of the game.
 
-You will need to reinstall your game through your store client so that it is in a known location.
+If you're playing on Steam, you need to point Steam to the new library folder.
+To do that in the top left click "Steam", select "Settings", in "Downloads" tab press "Steam library folders" and add the folder that you moved your game files to.
+More information can be found on this
+https://help.steampowered.com/en/faqs/view/4BD4-4528-6B2E-8327[Steam help page].
 
-This will not affect your saves.
+If you're playing on Epic Games, you have to reinstall the game as Epic Games Launcher does not have an option to locate the game files.
+
+Moving or reinstalling will not affect your save files.
 
 == Can I add mods to a save I've already started?
 
@@ -84,7 +137,15 @@ Generally, most mods will require you to unlock something in the HUB or MAM befo
 Mods can be configured from the 'Mods' tab on the main menu,
 or from in-game via the 'Mod Configs' tab on the pause menu.
 
+Some mods will provide a support link, such a documentation site or a Discord join link.
+You can access this from the in-game mods menu via the "Get Support" button.
+Note that the button will not appear if no link is provided by that mod.
+It is likely that the same link is present on the mod's page on ficsit.app.
+
 == Do mods work with Experimental?
+
+**If a major update has recently released to Experimental, there's a good chance NO mods will work on the Experimental branch!**
+**Check the Discord's Announcements for more up-to-date status information.**
 
 It is up to the mod developer to support Satisfactory's experimental branch.
 Check the mod's page on ficsit.app, or the mod manager extended details, for support.
@@ -161,18 +222,10 @@ You can use the Mod Manager's profile import/export functionality.
 
 image:https://cdn.discordapp.com/attachments/555507339969560586/833748278456746014/unknown.png[SMM Import/Export screenshot]
 
-== Where can I find the game's log files?
-
-You can find various log files at different locations:
-
-- In your game install folder, `pre-launch-debug.log` and `SatisfactoryModLoader.log`
-- At `%localappdata%/FactoryGame/Saved/logs`, where FactoryGame.log is located
-
-The easiest way to gather logs is the Mod Manager's "generate debug info" feature:
-
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
-
 == Where are my game files located?
+
+[id="Files_GameInstall"]
+=== Game Install
 
 The answer to this question depends on if you installed the game via Steam or Epic.
 
@@ -183,6 +236,45 @@ image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_SaveFiles"]
+=== Save Files
+
+See link:#_how_do_i_backup_my_save_files[Backing Up Save Files]
+
+[id="Files_GameConfig"]
+=== Game Configuration Files
+
+The options you have selected in the base game's options menu are stored in
+`%LOCALAPPDATA%\FactoryGame\Saved\Config\Windows\GameUserSettings.ini`
+
+Note that this file stores differences from the default settings, so if you have not changed a setting,
+it will not be listed.
+
+[id="Files_ModConfig"]
+=== Mod Configuration Files
+
+Mod configuration files are stored in the link:#Files_GameInstall[game install directory] under `FactoryGame/Configs`.
+
+Note that some mods may have custom implementations or extra files that are not stored in this location.
+
+[id="Files_Logs"]
+=== Log Files
+
+You can find various log files at different locations:
+
+- `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
+  It can be found at `%LOCALAPPDATA%/FactoryGame/Saved/logs`
+- Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
+
+== Where can I find the game's log files?
+
+The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
+since it gathers game, SML, and Mod Manager logs for you.
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+
+The location of these files is mentioned link:#Files_Logs[above].
 
 == How do I verify my game files?
 
@@ -299,3 +391,51 @@ The process for specifying them depends on how you are launching the game:
 - For https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
 - For xref:Development/TestingResources.adoc[Testing Scripts]
 - For other launch methods, use your search engine of choice.
+
+== How do I get the Experimental or Early Access Branch of the Game?
+
+Note that you may have to link:#_how_do_i_turn_off_mods[turn off your mods]
+for the game to launch after you switch branches, especially after a major update.
+
+On Steam, right click the game, select properties, select the betas tab and opt into Experimental in the dropdown list. "None" is Early Access and "experimental - experimental" is Experimental.
+
+image:FAQ/SteamBranch.png[Steam Installer]
+
+In the Epic Games Launcher they should be available as separate games. If either is not there, try restarting the launcher.
+image:FAQ/EpicBranch.png[Epic Installer]
+
+== How do I backup my save files?
+
+_Or: 'Where are my save files stored?'_
+
+It is suggested to routinely and especially when the game updates, to backup your save files. You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
+
+Both Steam and Epic Games version use the same PATH depending on OS used.
+
+Note that "{Your ID}" in the below examples refers to a unique user ID number, not the literal text "{Your ID}".
+
+=== Windows
+
+Both of the paths listed below lead to the same location, either will work.
+
+Path 1:
+
+`%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\{YOUR ID}`
+
+Path 2:
+
+`\Users\<your Windows username>\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
+
+If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
+
+=== Linux
+
+Using Steam Play:
+
+`~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
+
+Using Steam:
+
+`~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
+
+Source: https://satisfactory.wiki.gg/wiki/Save_files#Save_File_Location[Official Wiki on Save Files]

@@ -18,11 +18,11 @@ Call it "Points_YourModName" or similar so it's easy to find later.
 You'll need to create a row in the data table for each item you
 want to be sinkable. The `Row Name` does not matter, the `Item Class` should be 
 the FGItemDescriptor of the item, and the `Points` column is how many points it's worth
-in the sink. You can go to the https://satisfactory.gamepedia.com/AWESOME_Sink#Points_generated_per_item[Satisfactory Wiki] to see how many
+in the sink. You can go to the https://satisfactory.wiki.gg/AWESOME_Sink#Points_generated_per_item[Satisfactory Wiki] to see how many
 points each vanilla item is worth for comparison. Consider making your item worth more
 points than the sum of its components to encourage crafting and sinking
 it as opposed to just sinking the raw materials. You can see the "point profit"
-of various vanilla recipes https://satisfactory.gamepedia.com/AWESOME_Sink#Recipe_point_improvement_ratios[here] for comparison.
+of various vanilla recipes https://satisfactory.wiki.gg/AWESOME_Sink#Recipe_point_improvement_ratios[here] for comparison.
 
 There is an additional column, `Overridden Resource Sink Points`. This should always
 be set to -1. CSS uses a script to automatically calculate point values for them,

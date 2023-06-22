@@ -1,6 +1,15 @@
 = Blueprint Library
 
+[NOTE]
+====
+The most up to date information about SML blueprint library functions is the header files
+present in the https://github.com/satisfactorymodding/SatisfactoryModLoader/[source code].
+
+This page may fall behind what is actually available.
+====
+
 SML provides numerous helpful blueprint function libraries,
+and even some custom K2 nodes,
 allowing you to interact with the engine,
 Satisfactory, or the mod loader itself from blueprints with relative ease.
 
@@ -35,6 +44,30 @@ Logs the given string in the "error-level".
 === `LogFatal(String str)`
 Logs the given string in the "fatal-level".
 Causes the game to crash.
+
+== Custom K2 Nodes
+
+=== Sort Array
+
+When supplied with an array of any type and a comparator function,
+the array elements will be sorted in place
+using the comparator function to determine which elements are greater/less than others.
+
+After hooking up the array pin, `[Create a matching function]` will appear as an option in the in the Select Function dropdown which, when selected, will create a function stub with the correct function signature.
+
+The comparator function should return `true` when item A is "less" than item B,
+meaning that A will be sorted before B.
+
+Use `TArray::StableSort` instead of this node when working in {cpp}.
+
+== Hooking
+
+[id="BindOnBPFunction"]
+=== BindOnBPFunction(const TSubclassOf<UObject> Class, FObjFunctionBind Binding, const FString FunctionName, bool HookOffsetStart)
+
+Allows binding an event to a function that is implemented in blueprint.
+
+HookOffsetStart controls if your event will be called before or after the hooked function. 
 
 == Config
 
