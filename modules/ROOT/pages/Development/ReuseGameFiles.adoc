@@ -6,7 +6,7 @@ Doing this is a fairly straightforward process,
 and you do not need to extract any files from the game to do so.
 
 As an example, you could reuse the base game's
-https://satisfactory.gamepedia.com/HUB_Parts[HUB Parts] icon and mesh
+https://satisfactory.wiki.gg/HUB_Parts[HUB Parts] icon and mesh
 for your custom items as a placeholder until you have created assets of your own.
 
 When you use the method described on this page to re-use base game content,
@@ -50,12 +50,12 @@ You'll be placeholdering the descriptor instead of a mesh or texture, though.
 == Example Static Mesh and Icon Reuse
 
 As an example, let's say you wanted to reuse the static mesh and icon from the
-https://satisfactory.gamepedia.com/HUB_Parts[HUB Parts]
+https://satisfactory.wiki.gg/HUB_Parts[HUB Parts]
 component mentioned earlier.
 
 The first step is to track down the location of the asset in the base game.
 This is done by figuring out the Blueprint Path of the asset via the
-https://satisfactory.gamepedia.com/[Satisfactory Wiki],
+https://satisfactory.wiki.gg/[Satisfactory Wiki],
 finding the content on a
 https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
 https://www.gildor.org/en/projects/umodel[UModel]
