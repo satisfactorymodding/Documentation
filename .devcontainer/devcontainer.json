@@ -6,7 +6,9 @@
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm": "latest"
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8000],
@@ -16,8 +18,8 @@
 	"workspaceFolder": "/workspaces/SML_Documentation",
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; yarn install",
-	"postAttachCommand": "yarn run build:dev; echo 'There is no hot reload - use `yarn run build:dev` to rebuild'; yarn serve",
+	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; pnpm install",
+	"postAttachCommand": "pnpm run build:dev; echo 'There is no hot reload - use `pnpm run build:dev` to rebuild'; pnpm run serve",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -34,7 +36,7 @@
 			],
 			// cSpell:enable
 			"settings": {
-				"npm.packageManager": "yarn"
+				"npm.packageManager": "pnpm"
 			}
 		}
 	}

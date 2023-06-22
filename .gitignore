@@ -4,3 +4,4 @@ build/
 *.rst
 node_modules/
 !.vscode/tasks.json
+.pnpm-store/

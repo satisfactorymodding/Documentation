@@ -53,7 +53,7 @@ then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
 
-Note that you'll need to use `yarn run build:dev` to update the preview if you make changes.
+Note that you'll need to use `pnpm run build:dev` to update the preview if you make changes.
 
 ### Manual
 
@@ -70,30 +70,28 @@ follow the below directions.
 
 #### Installing
 
-1. Install [Node.js](https://nodejs.org/en/download/) and [Yarn Package Manager](https://classic.yarnpkg.com/en/docs/install) through your preferred method
+1. Install [Node.js](https://nodejs.org/en/download/) (the CI uses 16 but newer should be fine) and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
 
-2. Use Yarn to install dependencies
+2. Clone the repository
+
+3. Use pnpm to install dependencies
 
 ```bash
-yarn install
+pnpm install
 ```
 
 #### Building
 
-To build the docs for SML and all other hosted mods (slow):
+To build the docs for **SML and all other hosted mods** (slow):
 
 ```bash
-yarn run build
+pnpm run build
 ```
 
-To build the docs for just SML, download an alternate
-[Antora playbook file](https://cdn.discordapp.com/attachments/629385164115673108/689142080043352073/antora-playbook-dev.yml)
-and put it in the root folder of the repo.
-
-Then, run the following:
+To build the docs for **just SML** (much faster):
 
 ```bash
-yarn run build:dev
+pnpm run build:dev
 ```
 
 The output HTML files for both commands can be found in `\build\site`.
@@ -102,7 +100,7 @@ The output HTML files for both commands can be found in `\build\site`.
 
 To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
 
-You can also run `yarn serve` which will start a local webserver.
+You can also run `pnpm run serve` which will start a local webserver.
 
 ## Adding Docs for Another Mod
 

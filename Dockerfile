@@ -4,14 +4,16 @@ ARG BUILD=build
 
 WORKDIR /app
 
-COPY package.json package.json
-COPY yarn.lock yarn.lock
+RUN npm install -g pnpm
 
-RUN yarn install
+COPY package.json package.json
+COPY pnpm-lock.yaml pnpm-lock.yaml
+
+RUN pnpm install
 
 COPY . .
 
-RUN yarn run $BUILD
+RUN pnpm run $BUILD
 
 
 FROM nginx
