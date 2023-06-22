@@ -62,7 +62,7 @@ The Dependencies list should already be pre-populated with a dependency on the c
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
 
-Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Mods/<Mod Reference>`.
 
 All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
 which you can optionally read more about 

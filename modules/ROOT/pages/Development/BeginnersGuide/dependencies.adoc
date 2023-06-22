@@ -75,7 +75,24 @@ https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
 If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
 ====
 
-== Unreal Engine 4 (Custom Engine)
+//// dedi-docs
+== Clang Toolchain for Linux Dedicated Server Support (Optional)
+
+Satisfactory's dedicated servers typically run on Linux.
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+The download link for these files can be found on the Unreal documentation page for 
+https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
+
+Currently, Satisfactory uses Unreal Engine 5.1.1 with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
+
+// UE5.2 Dedi //Currently, Satisfactory uses Unreal Engine 5.2.1 with custom changes provided by Coffee Stain Studios.
+// UE5.2 Dedi //Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+
+Download the toolchain from the link above and run it to install the relevant files.
+The default options that the installer offers are fine.
+dedi-docs ////
+== Unreal Engine 5 (Custom Engine)
 
 Because Satisfactory uses a modified version of Unreal Engine,
 we modders need to be using that same version as well to develop our mods.
@@ -93,7 +110,7 @@ if you don't already have one.
 Once you've got a GitHub account,
 you'll need to register it with Epic Games and join the Epic Games GitHub organization to be able to download this special version.
 Directions on how to link so can be found
-https://www.unrealengine.com/en-US/ue4-on-github[here].
+https://www.unrealengine.com/en-US/ue-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
 try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
@@ -182,6 +199,7 @@ Once presented with options on what to install, select:
 * Deployment Platforms
 ** Apple
 *** macOS
+// dedi-docs ** Linux (Optional, but required for Linux Dedicated Server Support)
 ** Microsoft 
 *** Windows
 **** Visual Studio 2017

@@ -284,11 +284,11 @@ As a general overview, changes could include any or all of the following:
 
 - `/Build/Alpakit.Automation/`
 - `/Content/` stub files
-- `/Plugins/Alpakit/`
-- `/Plugins/ExampleMod/`
-- `/Plugins/SML/`
-- `/Plugins/SMLEditor/`
 - `/Source/`
+- `/Mods/Alpakit/`
+- `/Mods/ExampleMod/`
+- `/Mods/SML/`
+- `/Mods/SMLEditor/`
 
 ==== Option 2C: You Have a Project Level Repo
 
