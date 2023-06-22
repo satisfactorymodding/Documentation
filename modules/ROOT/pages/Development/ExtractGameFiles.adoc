@@ -65,6 +65,12 @@ and then enter the full path to your `FactoryGame.usmap` file
 Press `OK` to close the settings prompt,
 which will open another prompt asking you to restart FModel - press `OK`.
 
+=== Searching for Files
+
+In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
+You can also search within a specific package by navigating to it in the Folders tab
+then using the search bar built into the Packages tab.
+
 == UModel
 
 UModel is another tool that can be used to view and extract game assets.
@@ -147,13 +153,74 @@ Because Satisfactory uses the Wwise sound system,
 game sound files are stored in a manner different from many other Unreal Engine games.
 
 FModel can be used to extract sound files to the WAV format via its Audio Player.
-All game audio can be found in subfolders of the pak's `FactoryGame/Content/WwiseAudio/Media/` folder.
 
 Unfortunately, Wwise sound files viewed in this manner
 are not logically and do not have "nice" names,
-meaning that finding the sound you want often involves a lot of digging around through hundreds of files.
+meaning that finding the sound you want through this system involves digging around through hundreds of files.
 Furthermore, the sound files are stored in their unmixed forms,
 meaning that the sound is lacking additional audio effects that are applied real-time in-game.
+
+Thankfully, another tool exists to help with this problem.
+https://github.com/bnnm/wwiser[wwiser] is capable of viewing data in Wwise bnk files,
+allowing you to connect a Wwise sound event with a human-readable-name to the sound files it references.
+
+=== Locating the Bnk File
+
+Bnk files contain information about what sound files are used by the game when a sound event is triggered.
+We can extract this file and use it in wwiser to find the sound files we care about.
+
+Wwise audio event names are human-readable and can be found in subfolders of the pak's
+`FactoryGame/Content/WwiseAudio/Event/` folder.
+Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
+
+Once you have found the bnk you want to extract
+(for example, `FactoryGame/Content/WwiseAudio/Event/19/Play_EQ_JetPack_Activate.bnk`)
+right click on it and select `Export Raw Data (.uasset)`,
+which will export the bnk file despite the tooltip option claiming it will be a uasset.
+
+You can click on the text
+(ex. `Play_EQ_JetPack_Activate.bnk`)
+in the log to open your system file browser to the containing folder.
+
+=== Extracting sourceIDs with wwiser
+
+[WARNING]
+====
+This section is a work in progress.
+====
+
+You will need Python installed to utilize wwiser.
+Python 3.8.10 is known to work,
+and https://github.com/pyenv-win/pyenv-win[pyenv] is the suggested method of install.
+
+Download the latest copy of wwiser from its https://github.com/bnnm/wwiser/releases[releases page].
+// cspell:ignore wwnames
+You'll want both `wwiser.pyz` and `wwnames.db3`
+
+Use a zip extracting program of your choice to extract the files from `wwiser.pyz`
+and place the `wwnames.db3` file in the same directory as the extracted files.
+
+To open the wwiser interface, run `python .\wwiser.py` in a terminal in that folder.
+Next, select `Load banks...` and select the bnk file you extracted earlier.
+After the file loads, select `View bank contents` which will open an interactive browser window.
+
+// cspell:ignore HircChunk
+If the bnk is linked to any sound files, their id numbers will be displayed in the
+`HircChunk > CAkSound > SoundInitialValues > AkMediaInformation > sourceID` field.
+Click on the plus buttons and scroll to navigate through the data structure.
+Note that multiple sound files can be linked to a single sound event,
+each having their own CAkSound entry and sourceID.
+
+Take note of the sourceIDs of the sound file you want to extract,
+as you will likely need to review a few sounds to find the exact one you're looking for.
+
+=== Extracting Sound Files
+
+Now that we have a sourceID, we can use FModel to extract the sound file.
+All game audio can be found in subfolders of the pak's `FactoryGame/Content/WwiseAudio/Media/` folder.
+
+First, locate the sound file via its sourceID, which will be its package file name.
+Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
 
 To extract a sound file, first open its Package in the main window,
 which will cause an Audio Player window to appear.
