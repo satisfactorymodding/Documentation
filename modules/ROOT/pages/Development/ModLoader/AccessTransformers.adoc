@@ -8,14 +8,14 @@ As of UE-CSS 4.26.2 build 30, BlueprintCallable is also supported.
 Additionally, access transformers that are not written correctly,
 or refer to fields that are no longer present,
 will result in an error message at compile time:
-`Unused <transfromer type> for class <ClassName>, <extra details>. Requested by <ModReference>`.
+`Unused <transformer type> for class <ClassName>, <extra details>. Requested by <ModReference>`.
 If you see this error message, it means you probably made a typo in your access transformer, or you are not using that access transformer type correctly.
 
 [NOTE]
 ====
 Remember, Access Transformers only work for {cpp} classes.
 If you're trying to make a particular property on a blueprint asset Blueprint Read/Write,
-you will have to find the parent {cpp} class that owns that property and use it in the access transfomer.
+you will have to find the parent {cpp} class that owns that property and use it in the access transformer.
 
 An xref:_blueprint_asset_property_tracing_example[example of this] can be found below.
 ====

@@ -333,7 +333,7 @@ You must be careful with how you bring the regenerated assets into version contr
 GitHub (and most other VC platforms) has a size limit on how big they will alow an individual commit to be,
 and hitting this limit is quite feasible when bringing in this many assets.
 
-Before commiting the regenerated assets,
+Before committing the regenerated assets,
 consider running a TreeSize or WinDirStat analysis
 to find out which directories are the largest
 so that you can split up the changes into separately committed and pushed units.

@@ -185,7 +185,7 @@ image:BeginnersGuide/simpleMod/UnsavedAssetContentBrowser.png[Content Browser]
 
 image:BeginnersGuide/simpleMod/UnsavedAssetTab.png[Asset Tab]
 
-- If you have the asset editor panel open, the Compile button's icon will be differnet.
+- If you have the asset editor panel open, the Compile button's icon will be different.
 
 image:BeginnersGuide/simpleMod/DirtyBlueprint.png[Dirty Blueprint - click this to compile it!]
 
@@ -243,7 +243,7 @@ Once Alpakit has completed, you can launch the game to try it out.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
 Even if this worked correctly,
-you should still read the Troubleshotting section below
+you should still read the Troubleshooting section below
 to see how to deal with errors you may encounter later.
 
 image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]

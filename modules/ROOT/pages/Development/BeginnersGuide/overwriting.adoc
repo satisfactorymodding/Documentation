@@ -13,7 +13,7 @@ They can save you a lot of time.
 === TweakIt
 
 TweakIt by Feyko allows you to write
-https://lua.org/[Lua] scripts to programatically modify game content.
+https://lua.org/[Lua] scripts to programmatically modify game content.
 
 Documentation can be found via the 'docs switcher' on this site's sidebar, or
 https://docs.ficsit.app/tweakit/latest/index.html[here]
@@ -25,7 +25,7 @@ and find its source code https://github.com/Feyko/TweakIt[here].
 === ContentLib
 
 https://ficsit.app/mod/ContentLib[ContentLib] by Nog and Robb allows creating and modifying content via writing JSON files.
-It also offers a Blueprint and {cpp} API to programatically generate, modify, or parse content at runtime.
+It also offers a Blueprint and {cpp} API to programmatically generate, modify, or parse content at runtime.
 Additionally, it offers a limited form of CDO modification (described below) via JSON files.
 
 Documentation, including a step-by-step walkthrough of some common tasks, can be found https://docs.ficsit.app/contentlib/latest/index.html[here].

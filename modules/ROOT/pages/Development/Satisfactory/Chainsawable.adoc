@@ -38,6 +38,6 @@ You should extend the base chainsaw when creating your own for simplicity.
 The property of a chainsaw that controls the radius of
 plant collection is `mCollateralPickupRadius`.
 
-If you want something else to destory foliage,
+If you want something else to destroy foliage,
 it will need to create the foliage removal markers
 that existing methods use.
