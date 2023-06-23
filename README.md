@@ -51,11 +51,9 @@ It reserves a lot of system memory even when not actively in use.
 If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
 then type "Reopen in Container" and select the option that appears.
 
-The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
-
-The container will automatically start a file watcher as well,
-but it doesn't seem to be working correctly in containers.
-You may need to manually run `pnpm run build:dev` to update the preview's contents if you make changes.
+The container will automatically serve the built content upon opening for preview in your browser or within VSCode,
+as well as a file watcher to automatically rebuild the preview upon detecting changes.
+You will still have to manually refresh your browser, though...
 
 If you are switching between container and local dev you may have to delete the `node_modules` and/or `.pnpm_store` folder.
 
