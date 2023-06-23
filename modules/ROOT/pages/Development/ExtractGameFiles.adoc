@@ -205,11 +205,12 @@ Next, select `Load banks...` and select the bnk file you extracted earlier.
 // cspell:ignore txtp
 After the file loads, select `Generate TXTP` which will create a folder in the same directory as the bnk file
 containing a txtp file which can be opened with a text editor.
-(ex. `Play_EQ_JetPack_Activate {s} {m}.txtp`)
+// Need the + symbols to make sure Asciidoc doesn't see them as attributes 
+(ex. `+Play_EQ_JetPack_Activate {s} {m}.txtp+`)
 
 If the bnk is linked to any sound files,
 their sourceID numbers will be displayed at the top of the file
-(ex. ` wem/633850317.wem` has the sourceID number `633850317`)
+(ex. `wem/633850317.wem` has the sourceID number `633850317`)
 along with additional audio information.
 
 Take note of the sourceIDs of the sound file you want to extract,
