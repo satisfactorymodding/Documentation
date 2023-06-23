@@ -19,7 +19,13 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; pnpm install",
-	"postAttachCommand": "pnpm run build:dev; echo 'There is no hot reload - use `pnpm run build:dev` to rebuild'; pnpm run serve",
+	// Print a warning about the hot reload watcher not working, after which, start the web server and watcher
+	"postAttachCommand": "{ echo \"WARNING: Hot reload watcher doesn't seem to be working on containers?\" & sleep 5; }; { pnpm run serve & pnpm run watch:dev ; }",
+
+	// Fix `$SHELL environment variable is not set` (https://github.com/open-cli-tools/chokidar-cli/issues/62)
+	"containerEnv": {
+		"SHELL": "/bin/bash"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {

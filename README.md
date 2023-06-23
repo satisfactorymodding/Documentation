@@ -53,7 +53,11 @@ then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
 
-Note that you'll need to use `pnpm run build:dev` to update the preview if you make changes.
+The container will automatically start a file watcher as well,
+but it doesn't seem to be working correctly in containers.
+You may need to manually run `pnpm run build:dev` to update the preview's contents if you make changes.
+
+If you are switching between container and local dev you may have to delete the `node_modules` and/or `.pnpm_store` folder.
 
 ### Manual
 
@@ -81,6 +85,12 @@ pnpm install
 ```
 
 #### Building
+
+To set up a development watch server that will automatically rebuild the docs when you make changes:
+
+```bash
+pnpm run watch:dev
+```
 
 To build the docs for **SML and all other hosted mods** (slow):
 
