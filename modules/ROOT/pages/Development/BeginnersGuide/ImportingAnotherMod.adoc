@@ -1,0 +1,160 @@
+# Importing Another Mod
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+This modding documentation requires time to update and can only cover so much.
+Looking at other mods' source code is a great way to expand your skillset and learn new things.
+This page will cover how to import another mod into your Starter Project so you can look at it in the editor and tweak it.
+
+[WARNING]
+====
+Do not release modified versions of someone else's mod
+unless you have explicit permission from them
+or the license file in their repository allows for it.
+It's still their work, after all!
+====
+
+## Packaged Mods versus Source Code
+
+It's important to understand why importing a mod to your project is not as simple as
+downloading the released mod and putting it in your project's plugins directory.
+
+When a mod is packaged for release, it is compiled into a `.pak` file.
+This is a compressed archive that contains all the mod's code, assets, and other files.
+This is what you download from ficsit.app and install into your game.
+
+The packaging process is like baking a cake.
+You can't un-bake a cake, meaning that you can't get all the original ingredients back.
+You can't open a `.pak` file in the Unreal editor.
+
+Although it is possible to
+xref:Development/ExtractGameFiles.adoc[extract some kinds of assets]
+from a mod's pak file,
+you'll usually need the mod's source code to be able to learn from it and modify it.
+
+## Find the Source Code
+
+If a mod developer is sharing the mod's source code,
+it is probably listed on the modpage on ficsit.app in the 'Source' link section.
+If you don't see it there, consider asking them on the Discord.
+Many are happy to share it, and sometimes they simply forgot to link it there.
+
+If your own mod isn't stored in a git repo yet, you can learn how to do that
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
+
+## Download the Source Code
+
+You could download as a zip, but consider cloning the repository 
+
+Put it in your project's Plugins directory
+
+## Dependencies
+
+Depending on how the mod is set up,
+you may need to download additional mods or tools to be able to build and use a mod in the editor.
+The exact steps to follow will vary depending on the mod, but this section will cover some common cases.
+
+[TIP]
+====
+Look for text files in the root folder of the repo that might explain additional changes that need to be made to your project for the mod to work.
+====
+
+### Other Mods
+
+If the mod you're trying to load has a dependency on another mod,
+you will also need to obtain the source code for the dependency mod and import it into your project.
+
+// dedi-docs SMR frontend now displays dependencies on the mod page and you can click to jump to their pages
+You can find out what other mods a mod depends on by looking at the dependencies secton of its `.uplugin` file.
+
+This section lists other mods by their
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
+You can learn more about this section on the
+xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[Releasing Your Mod page].
+
+An example of this is the PowerSuit Modules mod, which requires both the `PowerSuit` and `MAMTips` mods to be installed.
+
+Note that a mod's display name does not always match its mod reference.
+Furthermore, a dependency mod could be hidden for display on the mod repository.
+In this case, you can track down the mod page by entering the mod reference into a ficsit.app URL.
+For example, to find the mod page for the `MAMTips` mod, you can enter `MAMTips` into the URL like so:
+`https://ficsit.app/mod/MAMTips`.
+Note that the URL is case sensitive.
+
+### Header Edits
+
+Although xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
+should be used instead where possible,
+some mods may still require you to manually edit the header files included with the starter project.
+Be careful, as these edits will take effect for every other mod you have in that starter project,
+and they will be erased when you xref:Development/UpdatingToNewVersions.adoc[update your starter project] as the game updates.
+
+If you find yourself having to make a header edit,
+make sure to leave a note about it somewhere you can find later so you can reapply it after updates and understand why you made it!
+
+### Asset Edits
+
+Similar to header edits, a mod may require you to modify certain placeholder blueprint assets in your project to function correctly. 
+
+An example of this is MAM Enhancer,
+which modifies a field on a base-game widget to be Instance Editable so the mod can read the field.
+Without making this edit, the editor will not compile the mod.
+There is a https://github.com/Nogg-aholic/MAMTips/blob/master/RequiredExternalEdits.md[note in the repository root]
+that informs potential viewers of this requirement.
+
+### Non-Standard Placeholders
+
+It is possible for a mod to require non-standard
+xref:Development/ReuseGameFiles.adoc#_the_placeholder_system[placeholder assets],
+to be created, or even a
+xref:CommunityResources/AssetToolkit.adoc[complete starter project],
+for a mod to work properly in the editor.
+If the mod references assets that your project lacks placeholders for, the editor will blank out these fields, potentially causing errors.
+
+An example of this is the PowerSuit mod requiring a placeholder for the hoverpack arm animations to exist.
+Without this file present, the equipment item will be packaged with no arm animations, leading to improper behavior in-game.
+
+## Building in Visual Studio
+
+Although not all mods will require you to rebuild {cpp} files,
+it's good practice to do so anyways to avoid any potential issues.
+
+### Regenerate Visual Studio Files
+
+By introducing another mod to the project, you have changed the project's structure.
+As such, you will need to
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files]
+before you can proceed, otherwise Visual Studio will not notice the new mod.
+
+### Seemingly Ignored Access Transformers
+
+Many mods make use of
+xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
+to gain additional access to the game's code.
+Due to how this system works, Visual Studio may mistakenly ignore the access transformers of the mod you just imported, leading to errors when you try to build it.
+You can learn more about this issue and how to correct it
+xref:Development/UpdatingToNewVersions.adoc#_seemingly_ignored_access_transformers[here].
+
+### Build the Project
+
+xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Build for Development Editor in Visual Studio],
+and once that succeeds, build for Shipping as well.
+
+## Something is Still Wrong
+
+It's easy for a dev that works on multiple mods to accidentally reference files in their own mod without realizing, so if you see any errors about missing files, you should contact them and let them know
+
+### References to Files from Another Mod
+
+After making sure you got the dependencies
+
+[WARNING]
+====
+Watch out for missing files that may be excluded for copyright reasons (ex. audio, meshes, and textures)
+====
+
+
+Keep in mind that most devs will not have their art assets available in the repos for copyright reasons so those may be missing.

@@ -17,16 +17,36 @@ Be sure to read over the steps here as well to be sure you're doing things corre
 
 == Starter Project
 
-You should have already downloaded the Starter Project in the previous steps of the tutorial.
+You should have already downloaded the Starter Project in the previous steps of the tutorial,
+or you are prepating to clone it now.
 
-If you cloned it, the directory should be good to go.
+The Starter Project folder will be your modding workspace,
+and could grow to a considerable file size depending on what kinds of mods you make.
+As such, you should extract the folder somewhere convenient so that you can find it later,
+such as a folder on a secondary storage drive, or inside your Documents folder.
+It is unwise to keep it in your Downloads folder
+because Windows can automatically clean up that folder depending on your system settings.
+It should also not be placed into any directory that could be managed by cloud sync services
+like Dropbox, Google Drive, or OneDrive, because they can corrupt your project files.
 
-If you downloaded the Starter Project as a zip,
-unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
-If you're having issues extracting the zip,
-try using another zip extracting software
-such as https://www.7-zip.org/[7zip]
-or https://www.win-rar.com/start.html[WinRAR].
+You can use this Starter Project for developing multiple mods at once,
+since each mod will be its own separate plugin folder within the project.
+
+Feel free to rename the Starter Project folder to whatever you like.
+
+Try to keep the file path to the folder as short as possible.
+When packing Unreal projects, some filenames can get long,
+so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
+
+Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
+
+=== You're Cloning the Starter Project
+
+For convenience, https://github.com/satisfactorymodding/SatisfactoryModLoader/[here's another link to the repo to clone].
+The directory is ready for use as soon as the clone is complete.
+Move on to the next section.
+
+=== You Downloaded a Zip
 
 [WARNING]
 ====
@@ -35,27 +55,19 @@ You will run into problems later on because of this.
 To get around this issues, right-click the zip and "unblock" it before unzipping it.
 ====
 
-The Starter Project folder will be your modding workspace,
-and could grow to a considerable file size depending on what kinds of mods you make.
-As such, you should extract the folder somewhere convenient so that you can find it later,
-such as a folder on a secondary storage drive, or inside your Documents folder.
-It is unwise to keep it in your Downloads folder
-because Windows can automatically clean up that folder depending on your system settings.
-
-Feel free to rename the Starter Project folder to whatever you like.
-
-Try to keep the file path to the folder as short as possible.
-When packing Unreal projects, some filenames can get long,
-so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
+If you downloaded the Starter Project as a zip,
+unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
+If you're having issues extracting the zip,
+try using another zip extracting software
+such as https://www.7-zip.org/[7zip]
+or https://www.win-rar.com/start.html[WinRAR].
 
 You should strongly consider using version control software,
 such as Git, to manage your mod's files.
-But doing so is outside the scope of this tutorial.
+If you'd like to do this, you can learn more about that process
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 As mentioned earlier, you probably want to clone the Starter Project repo
 instead of downloading a zip file of it.
-
-You can use this Starter Project for developing multiple mods at once,
-since each mod will be its own separate plugin folder within the project.
 
 == Setting up Wwise
 
