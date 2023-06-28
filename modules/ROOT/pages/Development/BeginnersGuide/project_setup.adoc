@@ -57,7 +57,7 @@ To get around this issues, right-click the zip and "unblock" it before unzipping
 
 If you downloaded the Starter Project as a zip,
 unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
-If you're having issues extracting the zip,
+If you're encountering issues extracting the zip,
 try using another zip extracting software
 such as https://www.7-zip.org/[7zip]
 or https://www.win-rar.com/start.html[WinRAR].

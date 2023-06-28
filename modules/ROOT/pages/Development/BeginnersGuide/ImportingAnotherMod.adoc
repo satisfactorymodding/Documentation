@@ -34,6 +34,7 @@ Although it is possible to
 xref:Development/ExtractGameFiles.adoc[extract some kinds of assets]
 from a mod's pak file,
 you'll usually need the mod's source code to be able to learn from it and modify it.
+Extracted `.uasset` files typically can't be loaded in a project for similar reasons.
 
 ## Find the Source Code
 
@@ -47,9 +48,17 @@ xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 
 ## Download the Source Code
 
-You could download as a zip, but consider cloning the repository 
+The next step is to download the mod's source code and place it in your own project's Plugins directory.
 
-Put it in your project's Plugins directory
+You could their plugin download as a zip and extract it,
+but consider cloning the repository to make it easy to update your copy with future changes to the mod.
+
+Regardless of if you extracted a zip or cloned,
+make sure that the name of folder containing the mod's `.uplugin` file
+exactly matches the mod's
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+ - the filename of the mod's `.uplugin` file.
+Otherwise the editor will not properly identify the plugin.
 
 ## Dependencies
 
@@ -117,10 +126,34 @@ If the mod references assets that your project lacks placeholders for, the edito
 An example of this is the PowerSuit mod requiring a placeholder for the hoverpack arm animations to exist.
 Without this file present, the equipment item will be packaged with no arm animations, leading to improper behavior in-game.
 
+### Accidental References to Files from Another Mod
+
+Even after making sure you downloaded and set up any dependency mods,
+you could still be missing some required files from another mod.
+This issue is more likely to be encountered when trying to package the mod from the editor,
+but it could still affect the {cpp} build process.
+
+It's easy for a dev that works on multiple mods to accidentally reference files in their own mod without realizing,
+and the possible errors that can stem from this are difficult for the dev to detect
+since they have those files in their editor.
+
+If you see errors about missing files from another mod, you should contact the developer and let them know
+so they can fix the problem accordingly.
+
+### Purposefully Excluded Files
+
+Some mod developers may chose to leave certain files out of their mod's source code for various reasons,
+such as copyright or privacy.
+This issue is more likely to be encountered when trying to package the mod from the editor,
+but it could still affect the {cpp} build process.
+
+If you encounter this issue, you should contact the mod developer and either ask them for a copy of the files or how to work around their absence.
+
 ## Building in Visual Studio
 
 Although not all mods will require you to rebuild {cpp} files,
 it's good practice to do so anyways to avoid any potential issues.
+Make sure to follow the below steps before trying to build the project again.
 
 ### Regenerate Visual Studio Files
 
@@ -135,7 +168,7 @@ Many mods make use of
 xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
 to gain additional access to the game's code.
 Due to how this system works, Visual Studio may mistakenly ignore the access transformers of the mod you just imported, leading to errors when you try to build it.
-You can learn more about this issue and how to correct it
+You can learn more about this issue, and how to correct, it
 xref:Development/UpdatingToNewVersions.adoc#_seemingly_ignored_access_transformers[here].
 
 ### Build the Project
@@ -143,18 +176,24 @@ xref:Development/UpdatingToNewVersions.adoc#_seemingly_ignored_access_transforme
 xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Build for Development Editor in Visual Studio],
 and once that succeeds, build for Shipping as well.
 
-## Something is Still Wrong
+If the build fails, review the previous steps to make sure
+you have all required dependencies
+and have forced a rebuild of the access transformers.
+If it's still failing, ask for help on the Discord and/or from the mod developer.
 
-It's easy for a dev that works on multiple mods to accidentally reference files in their own mod without realizing, so if you see any errors about missing files, you should contact them and let them know
+## Loading the Mod in the Editor
 
-### References to Files from Another Mod
+Once you have successfully built the mod in Visual Studio
+you should be able to open the Unreal Editor and package the imported mod yourself with Alpakit.
+This is a good test of whether or not you have imported the mod's files correctly.
 
-After making sure you got the dependencies
+Be aware that sometimes the presence of an improperly set-up mod
+can prevent the editor from packaging any other mods until the mod is removed or the issues are resolved.
+Follow the directions
+xref:Development/UpdatingToNewVersions.adoc#_dealing_with_multiple_mods_in_one_project[here]
+if you need to disable mods while still keeping their files around.
 
-[WARNING]
-====
-Watch out for missing files that may be excluded for copyright reasons (ex. audio, meshes, and textures)
-====
+### Something is Still Wrong
 
-
-Keep in mind that most devs will not have their art assets available in the repos for copyright reasons so those may be missing.
+If you are still encountering issues,
+consider asking for help on the Discord and/or from the mod developer.

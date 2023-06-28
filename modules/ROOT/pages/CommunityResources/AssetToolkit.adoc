@@ -347,7 +347,7 @@ Commandlet name is AssetGenerator
 
 [IMPORTANT]
 ====
-If you are having issues using the command line versions of the Asset Toolkit,
+If you are encountering issues using the command line versions of the Asset Toolkit,
 trying to use the UI usually won't fix them!
 Ask for help on the discord.
 
