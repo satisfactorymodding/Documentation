@@ -80,24 +80,6 @@ image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content
 
 [TIP]
 ====
-If you want to Open Source your mod,
-or simply want to use a version control system like Git,
-the mod's plugin folder (containing the `.uplugin file`)
-is the ideal place for you to create the repository.
-
-Using version control is essential for collaborating on a mod with others,
-it helps write patch notes when you release an update,
-and you can use it to go back to previous versions of your files if something breaks.
-
-If you work on multiple mods,
-you only need one modding project set up
-(which can be the cloned SatisfactoryModLoader repository)
-and each mod that you make will be a plugin in this project setup.
-The plugin's folder would be the version control repository for that mod.
-====
-
-[TIP]
-====
 If, for some reason, you want the editor or game to not load your plugin,
 simply change the extension of your uplugin file to `.disabled`,
 meaning Unreal Engine will not be able to tell the directory represents a plugin.
@@ -107,6 +89,24 @@ This is helpful when xref:Development/UpdatingToNewVersions.adoc[updating your m
 If your uplugin file was previously `ExampleMod.uplugin`,
 change it to `ExampleMod.uplugin.disabled`
 ====
+
+=== Optional: Create a Git Repository for your Mod
+
+It is worth considering using Git, a version control system, for managing your mod files.
+
+Using version control is essential for collaborating on a mod with others,
+it helps write patch notes when you release an update,
+and you can use it to go back to previous versions of your files if something breaks.
+
+A guide for setting up Git to work with your mod can be found
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
+It is safe to pause following this guide and switch to following that guide now.
+
+If you work on multiple mods,
+you only need one modding project set up
+(which can be the cloned SatisfactoryModLoader repository)
+and each mod that you make will be a plugin in this project setup.
+Each plugin's folder is the version control repository for that individual mod.
 
 == Create Game World Module
 
