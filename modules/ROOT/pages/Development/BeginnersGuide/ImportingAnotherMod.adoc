@@ -5,7 +5,7 @@
 This page is a work in progress.
 ====
 
-This modding documentation requires time to update and can only cover so much.
+The modding documentation requires time to update and can only cover so much.
 Looking at other mods' source code is a great way to expand your skillset and learn new things.
 This page will cover how to import another mod into your Starter Project so you can look at it in the editor and tweak it.
 
@@ -23,8 +23,8 @@ It's important to understand why importing a mod to your project is not as simpl
 downloading the released mod and putting it in your project's plugins directory.
 
 When a mod is packaged for release, it is compiled into a `.pak` file.
-This is a compressed archive that contains all the mod's code, assets, and other files.
-This is what you download from ficsit.app and install into your game.
+A Pak is a compressed archive that contains all the mod's code, assets, and other files.
+It's one of the files download from ficsit.app and what gets install in your game.
 
 The packaging process is like baking a cake.
 You can't un-bake a cake, meaning that you can't get all the original ingredients back.
