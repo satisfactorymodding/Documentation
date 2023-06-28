@@ -65,6 +65,9 @@ and then enter the full path to your `FactoryGame.usmap` file
 Press `OK` to close the settings prompt,
 which will open another prompt asking you to restart FModel - press `OK`.
 
+image: ExtractingGameFiles/fModelExport.png[fModel Export Configuration]
+
+
 === Searching for Files
 
 In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
