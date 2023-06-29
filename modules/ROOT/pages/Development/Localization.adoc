@@ -1,0 +1,112 @@
+# Localizing your Mod
+
+Satisfactory has been translated to multiple languages other than English,
+and it's possible to implement this feature in your mods as well.
+
+Before you can start writing translations,
+or crowdsourcing them from your users,
+you must make sure that the assets in your mod are set up to interact with Unreal Engine's localization system.
+
+## Use The Right Kinds of Strings
+
+In order to start localizing your mod, you need to make sure that text content is stored in the right format.
+
+This means using FText and Format Text operations instead of FStrings and Appends.
+In blueprints, you can tell you're working with FText when you see the triangle dropdown arrow 
+
+You can read more about this on the
+https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Localization/Formatting/[Unreal documentation].
+
+This documentation page will not talk about how to use Unreal's text formatting features, since the Unreal documentation already covers that well.
+
+## Mark Fields as Localizable, or Not
+
+In order to make sure that Unreal gathers text as localizable, it must be assigned a localization key.
+In Blueprint assets, Unreal will do this for you automatically as long as it has been marked as such in the 'advanced settings' dropdown.
+
+image:Localization/SchematicDisplayNameAdvancedSettings.png[Advanced Settings]
+
+If a text field is not marked to be localized, it won't be gathered and exported for translation later on in the process.
+
+A few Satisfactory asset types have fields that are notably not gathered for localization by default:
+
+- Schematic Display Names
+- Schematic Descriptions
+- Item Display Names
+- Item Descriptions
+- Item Abbreviated Display Names
+- Recipe Display Name (Overrides)
+- Buildable Display Names
+- Buildable Descriptions
+
+As such, when adding your own values for these fields, you should be sure to mark the fields to be localized.
+
+You may wish to intentionally exclude some fields from gathering.
+Examples include placeholders in widgets that get replaced by bindings, since they'd only be visible in the editor preview for the widgets.
+
+[NOTE]
+====
+Note that you can't (easily) localize textures or images, such as those used in UI.
+As such, you should avoid embedding text inside of your UI graphics, as they can't be localized.
+In widgets, consider using Canvas Panels, Overlays, and Render Transforms if you want to add stylized text to your widgets while still keeping it localized.
+====
+
+## Enable the Experimental Localization Dashboard
+
+## Set up a Localization Target
+
+
+## Exporting Translations
+
+## Allow your Users to Contribute Translations
+
+It is suggested that you use the Crowdin platform to allow your users to contribute translations for use in your mod.
+
+This is the platform that Satisfactory itself uses to gather translations.
+If you'd like to get involved, you can find information on how in the Welcome channel of the
+https://discord.com/invite/satisfactory[official Satisfactory discord].
+
+as well as some other community projects like
+https://crowdin.com/project/satisfactory-calculator[Satisfactory Calculator]
+
+Crowdin projects are free for open source projects, and you can apply
+https://crowdin.com/page/open-source-project-setup-request[here].
+
+
+## Importing Translations from Crowdin to Unreal
+
+
+## Compiling Localization Files
+
+TODO engine changes being made to keep them in plugin dirs so shouldn't have to move via script
+
+Compile in Unreal and run the Kyrium script or manually move to put them in your plugin's folder
+
+## Plugin Settings
+
+TODO seems to only listen to one Engine.ini, Mircea says there is a base UE field in plugins to specify localization directories, use that instead?
+
+`YourModReference/Config/Engine.ini`
+
+```ini
+[Internationalization]
+LocalizationPaths=../../../FactoryGame/Mods/YourModReference/Localization/YourModReference
+```
+
+In order to tell Unreal to package your localization files with your plugin,
+you will need to add a line to your plugin's `YourModReference/Config/PluginSettings.ini`
+to tell it to include both your Localization folder and your `Engine.ini` with the mod's files.
+
+Config/PluginSettings.ini
+
+```ini
+[StageSettings]
++AdditionalNonUSFDirectories=Localization
++AdditionalNonUSFDirectories=Config
+```
+
+## Testing In-Game
+
+Base game Satisfactory 'quick switch debug language' feature
+
+Run the quick language switch command in the in-game Unreal console to see if the strings are loaded correctly.

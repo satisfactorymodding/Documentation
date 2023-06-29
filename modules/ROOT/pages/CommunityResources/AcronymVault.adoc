@@ -98,6 +98,13 @@ A command line tool that assists mod authors with installing dependencies and se
 Its source code can be found
 https://github.com/satisfactorymodding/SMEI[here].
 
+=== Simple Construction Script (SCS)
+
+Simple Construction Script is Unreal Engine's solution for building actor component trees.
+You can find it in the top left corner of the blueprint editor, looking like a tree of the components.
+SML provides hooks for adding modded components to the Simple Construction Scripts of the base game
+blueprints.
+
 === Frequently Asked Questions (FAQ)
 
 A list of questions that are frequently asked,
