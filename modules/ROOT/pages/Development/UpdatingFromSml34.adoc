@@ -1,0 +1,126 @@
+= Upgrading from SML 3.4.x to 3.5
+
+== Update your Starter Project
+
+First, read the special notes about this update below.
+
+After you have finished reading them,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+[IMPORTANT]
+====
+Remember to keep the old engine installed and a working copy of your previous starter project around
+until you are certain you don't need them anymore!
+====
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Switch to Visual Studio 2022
+
+Unreal Engine 5 no longer supports Visual Studio 2019.
+
+You can find information on installing Visual Studio on the
+xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page].
+
+=== Rider users: Mods no longer detected 
+
+The structure of the project has changed and Rider can no longer auto discover mod targets.
+You can still edit {cpp} files as usual, though.
+
+=== Folder Move: Plugins to Mods
+
+Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
+Why the change?
+
+- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out
+- It keeps base-game plugins (Wwise, AbstractInstance) clearly separate from mods
+- Previously, Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes.
+- This move is just preparation for that well in advance
+
+==== What you have to do:
+
+1. Move your own mod folders from your `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
+
+* SML 3.4.x Locations:
+  image:BeginnersGuide/SML_Plugins.png[SML 3.4.x, align="center"]
+
+* SML 3.5.x Locations:
+  image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
+
+2. link:BeginnersGuide\project_setup.adoc#_project_compilation[Compile your project like normal]
+
+This change also affects the game client -
+mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
+Alpakit's "copy mods" feature has already been updated to account for this.
+
+=== Unreal Engine 5 new Keybinds system
+
+Unreal Engine 5 has overhauled how user input and key bindings are handled.
+If you mod made use of keybindings, they will stop working,
+and possibly prevent your mod from compiling,
+until you change to the new system.
+
+TODO directions on how to use this
+
+== Notable New Features
+
+Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
+or implement as part of a future update to your mod.
+
+=== Research Tree Editor
+
+Have you been holding off on implementing a MAM research tree in your mod because of how tedious it is?
+Wait no more!
+
+The new Research Tree Editor allows you to create and edit research trees in a visual interface
+and provides basic error checking functionality.
+
+To launch the tool, navigate to the `SMLEditor Content/ResearchTree/` folder in the Content Browser,
+right click on the `ResearchTreeHelper` asset, then select `Run Editor Utility Widget`.
+Hover over elements in the tool to see tooltips explaining what they do.
+
+The Example Mod has been updated with a complex research tree (created by the tool)
+to demonstrate and explain some important research tree concepts.
+Explore this tree, and the base game's trees, to learn more about how research trees work.
+
+=== ExampleMod Multiplayer Examples
+
+ExampleMod has been updated to include some examples of correctly adding multiplayer functionality to your mod.
+The xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
+page has also been updated with more information and tutorials.
+
+=== Widget Blueprint Hooks
+
+Widget Blueprint Hooks can be used to add your custom widget into one of the existing game widgets.
+If you've previously been using `Bind on BPFunction` 'Construct', this system may be a better fit for you.
+
+Read more about it on the
+xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks] page.
+
+See the Example Mod and SML itself for examples of how to use this system.
+
+=== Simple Construction Script Hooks
+
+Blueprint Simple Construction Script hooks allow adding modded
+https://docs.unrealengine.com/5.1/en-US/components-in-unreal-engine/[Components]
+to any blueprint-based actor.
+
+Read more about it on the
+xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks] page.
+
+See the Example Mod for examples of how to use this system.
+
+=== Custom Level Support
+
+This feature has not yet been documented in detail, however,
+the Example Mod has been updated with its own custom level that
+properly registers itself through the Custom Level system and demonstrates many custom level concepts.
+
+// WIP_SessionSettings === Session Settings
+
+// WIP_SessionSettings xref:Development/ModLoader/SessionSettings.adoc[Session Settings]

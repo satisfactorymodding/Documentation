@@ -3,7 +3,6 @@
 
 To get started with modding Satisfactory,
 you'll need multiple other pieces of software installed first.
-
 Don't worry, we'll guide you through each step
 of downloading and installing these dependencies.
 
@@ -75,7 +74,27 @@ https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
 If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
 ====
 
-== Unreal Engine 4 (Custom Engine)
+////
+dedi-docs
+== Clang Toolchain for Linux Dedicated Server Support
+
+Satisfactory's dedicated servers typically run on Linux.
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+The download link for these files can be found on the Unreal documentation page for 
+https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
+
+Currently, Satisfactory uses Unreal Engine 5.1.1 with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
+
+// UE5.2 Dedi //Currently, Satisfactory uses Unreal Engine 5.2.1 with custom changes provided by Coffee Stain Studios.
+// UE5.2 Dedi //Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+
+Download the toolchain from the link above and run it to install the relevant files.
+The default options that the installer offers are fine.
+dedi-docs
+////
+
+== Unreal Engine 5 (Custom Engine)
 
 Because Satisfactory uses a modified version of Unreal Engine,
 we modders need to be using that same version as well to develop our mods.
@@ -93,7 +112,7 @@ if you don't already have one.
 Once you've got a GitHub account,
 you'll need to register it with Epic Games and join the Epic Games GitHub organization to be able to download this special version.
 Directions on how to link so can be found
-https://www.unrealengine.com/en-US/ue4-on-github[here].
+https://www.unrealengine.com/en-US/ue-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
 try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
@@ -105,7 +124,7 @@ as well as making sure you're logged into your linked GitHub account when you fo
 
 Once you've done that, go to the
 https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
-and download three files from the latest release:
+and download some files from the latest release:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
@@ -126,25 +145,34 @@ If your GitHub account is already listed as linked on the Epic Games page you ca
 
 === Install the Custom Engine
 
-Once all 3 files have finished downloading,
-run the .exe to and follow through its prompts
+Once all files have finished downloading,
+run the `.exe` and follow through its prompts
 to install the custom Unreal Engine version and corresponding Editor.
 
 [WARNING]
 ====
 If the installer asks you to select the folder with the next medium files,
-select the folder that contains the two `.bin` files you downloaded.
+select the folder that contains the `.bin` files you downloaded.
 
 Additionally, make sure to name the downloaded files exactly as stated above,
-otherwise the installer may be unable to locate the two `.bin` files.
+otherwise the installer may be unable to locate the `.bin` files.
 ====
 
 This install process, and opening Unreal for the first time afterwards, can take some time.
-Don't worry about opening Unreal yet though.
+Don't worry about opening Unreal yet, though.
 It will probably ask you to compile things you haven't properly set up yet.
 
-// Visual Studio extension no longer needed, but may be needed when dedicated server support comes out for easily building multiple targets
-// === Install the Visual Studio Extension
+=== Install the Visual Studio Extension (Optional)
+
+Once the installer is done you can optionally install a Visual Studio extension shipped with the Editor.
+This extension allows you to directly open {cpp} files from the Unreal editor.
+
+Navigate to where you installed the Editor, which is likely
+`C:\Program Files\Unreal Engine - CSS\`,
+then navigate to the folder `\Engine\Extras\UnrealVS\`.
+Open the sub folder for the version of Visual Studio you have installed (probably 2022)
+// cspell:ignore vsix
+and run the `.vsix` installer.
 
 == Wwise
 
@@ -162,15 +190,15 @@ After you finished downloading Wwise, open the installer.
 Select `WWISE` from the top bar.
 Click the `Latest` drop-down and change it to `All`.
 Select `2021.1` from the next dropdown.
-Select version `2021.1.8.7831` from the final dropdown.
+Select version `2022.1.3.8179` from the final dropdown.
 Click `Install`.
 
 [WARNING]
 ====
-Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
+Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
 
 If you don't see this exact Wwise version,
-try any other version starting with `2021.1`, preferring newer versions,
+try any other version starting with `2022.1`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
@@ -182,10 +210,12 @@ Once presented with options on what to install, select:
 * Deployment Platforms
 ** Apple
 *** macOS
+// dedi-docs ** Linux
 ** Microsoft 
 *** Windows
 **** Visual Studio 2017
 **** Visual Studio 2019
+**** Visual Studio 2022
 
 Click `Next`.
 You don't need to add any plugins so just press `Install` to skip in the bottom left to begin the installation process.

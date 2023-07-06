@@ -206,6 +206,13 @@ You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
+////
+dedi-docs
+If you are building for dedicated servers, see
+link:UpdatingToDedi.adoc#_DedicatedServerProjectCompilation[Project Compilation - Dedicated Server Support (Optional)]
+dedi-docs
+////
+
 After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
 (the same place you selected `Development Editor` earlier)
 and start another build.
@@ -223,9 +230,17 @@ or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
-When you want to test or release your mod, make sure to build the project for `Shipping`.
+When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`.
+
 Without doing so, your mod will be missing important files.
 ====
+
+////
+dedi-docs
+Block comments don't work inside ==== blocks, this goes inside the IMPORTANT
+
+, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
+////
 
 [id='Compiling_Troubleshooting']
 === Troubleshooting
@@ -273,7 +288,7 @@ You can find it by searching for it in the Windows search bar
 (it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
-`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
+`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor.exe`
 
 Once the Unreal Engine editor has launched,
 open your project by navigating to
@@ -333,7 +348,35 @@ They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
-You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
+
+////
+dedi-docs
+=== Packaging Mods with Alpakit
+For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
+** Windows Client - `Shipping - x64 / Shipping|Win64`
+** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
+** Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and copy your mod to your Satisfactory installation(s).
+
+Note that for the following types of targets to be packaged, the requisite build
+(see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation])
+must be completed and successful.
+
+* Windows - `Shipping - x64 / Shipping|Win64`
+* Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
+* Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+
+For our local testing, we will only need Windows (the client) checked.
+
+// TODO retake this screenshot with just the example items and just the fields we want them to have checked
+
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+
+image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
+dedi-docs
+////
+=== (Optional) Packaging SML
 
 Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.

@@ -190,6 +190,28 @@ you can edit your default game configuration, found at
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
 
+////
+dedi-docs
+== Dedicated Servers
+
+In order to start testing on dedicated servers, you will first need to set up your own dedicated server.
+
+Follow the directions on the https://satisfactory.fandom.com/wiki/Dedicated_servers[Satisfactory Wiki]
+to set up a working dedicated server and verify that you can connect to it with an unmodified client.
+
+Note that in order to perform the first time server claiming process
+you will need to use a client of the game that was launched normally (ex. through Steam or Epic).
+After the server claiming process is complete you can return to using a copy launched with the launch scripts described elsewhere on this page.
+
+Since the dedicated server will be sharing your own copy of the game's save folder,
+attempting to upload saves to it will fail, since the save is already present in that folder.
+
+Since the dedicated server you will be testing with does not need to connect to the internet,
+following the wiki's directions for correctly authenticating with Steam or Epic servers are not required.
+The minimum suggested launch arguments for a dedicated server is `.\FactoryServer.exe -log -EpicPortal`
+dedi-docs
+////
+
 == Modify Online Subsystem Behavior
 
 // From https://discord.com/channels/555424930502541343/562722670974599227/1044575456659259472

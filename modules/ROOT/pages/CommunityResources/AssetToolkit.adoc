@@ -1,5 +1,10 @@
 = Unreal Engine Asset Toolkit
 
+[WARNING]
+====
+The Asset Toolkit has not yet been fully tested on UE5.
+====
+
 [NOTE]
 ====
 This article is a work-in-progress. Please contact us on the Discord if you run into any issues here.
@@ -189,7 +194,7 @@ If you were to run the script by right clicking on the file and selecting "Run w
 ----
 # Change the below path lines to match the actual locations of these files and folders for your system
 # Using apostrophes so \ doesn't need to be escaped here
-$UE4CmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor-Cmd.exe'
+$UECmdPath = 'C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor-Cmd.exe'
 $UProjectPath = 'D:\GitSecondary\SF_ModProject\FactoryGame.uproject'
 $AssetDumpDirectory = 'D:\Programs\EpicGamesGames\SatisfactoryExperimental\FactoryGame\AssetDump'
 
@@ -230,7 +235,7 @@ Write-Output "/Game/FactoryGame/Character/Player/Animation/FirstPerson/" >> $Bla
 Write-Output "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/" >> $BlacklistFile
 
 # Run the generator commandlet
-& $UE4CmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\$ForceGenerateFile" -SkipSavePackages="$(Get-Location)\\$SkipSaveFile" -BlacklistPackageNames="$(Get-Location)\\$BlacklistFile" -stdout -unattended -NoLogTimes
+& $UECmdPath $UProjectPath -run=AssetGenerator -DumpDirectory="$AssetDumpDirectory" -ForceGeneratePackageNames="$(Get-Location)\\$ForceGenerateFile" -SkipSavePackages="$(Get-Location)\\$SkipSaveFile" -BlacklistPackageNames="$(Get-Location)\\$BlacklistFile" -stdout -unattended -NoLogTimes
 
 # Clean up the temp files on exit
 CleanupTempFiles
@@ -255,8 +260,9 @@ For this to be tracked, you must change the LogAssetGenerator logging category d
 To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
 and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
 Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
-as the asset generator is running - the process is called `UE4Editor-Cmd.exe` in the list.
-Now the package being processed will be visible as a log message inside the Visual Studio output section.
+as the asset generator is running - the process is called `UnrealEditor-Cmd.exe` in the list.
+Now the package being processed will be visible as a log message inside the visual studio output section.
+
 After running the asset generator again, next time it crashes, the debugger will catch it as a breakpoint,
 and you can look at the log messages to locate the troublesome asset in your dumped files, delete it, then re-run the asset generator.
 Note that the debugger can sometimes stop for breakpoints on non-crash errors - after reviewing the log, try pressing Continue to see if it recovers cleanly and continues.

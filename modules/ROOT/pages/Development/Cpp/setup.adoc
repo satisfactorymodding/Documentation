@@ -46,7 +46,7 @@ SF or third party libraries you might want to include.
 == Creating the Mod-Module
 
 To start off, navigate to the base folder of your mod, the location of your `FactoryGame.uproject` and `FactoryGame.sln` files.
-Then navigate to the path 'Plugins/<mod_reference>/' where your '<mod_reference>.uplugin' file is located.
+Then navigate to the path 'Mods/<mod_reference>/' where your '<mod_reference>.uplugin' file is located.
 Create a new folder named 'Source' inside of which we should create a subfolder, the name of which will be your mod reference.
 As a reminder, the concept of a mod reference is explained xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
 Within this folder, you should create a new file called `<your mod reference>.Build.cs`.
