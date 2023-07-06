@@ -27,6 +27,13 @@ Unreal Engine 5 no longer supports Visual Studio 2019.
 You can find information on installing Visual Studio on the
 xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page].
 
+=== Install New Visual Studio Component
+
+Even if you already have Visual Studio 2022 installed,
+you'll need to modify your installation via the installer to add a new MSVC build tools component.
+See the xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page]
+for more information.
+
 === Rider users: Mods no longer detected 
 
 The structure of the project has changed and Rider can no longer auto discover mod targets.

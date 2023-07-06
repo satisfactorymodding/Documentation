@@ -52,8 +52,7 @@ and "Gaming > Game development with {cpp}".
 You might have to scroll a bit to find them.
 
 Next, from the "Individual Components" tab,
-// cspell:ignore MSVC
-search for and select `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.31-17.4)`
+search for and select `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.34-17.4)`
 
 If you already have Visual Studio installed,
 you can run the installer again
