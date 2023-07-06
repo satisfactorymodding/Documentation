@@ -99,7 +99,7 @@ You can find a quick guide to the Unreal portion in the https://docs.unrealengin
 Due to technical limitations, there are some functions/features of Satisfactory and Unreal Engine 4 that
 we are not able to access or need to use a work around to call correctly. This is the world we live in right now, and we can't do much about it.
 
-If you experience a crash or some undefined behavior while using a function from UE5 or Satisfactory,
+If you experience a crash or some undefined behavior while using a function from Unreal Engine or Satisfactory,
 you should read the javadoc comment that has been added to the function. Sometimes the comment will tell you that it doesn't work
 and suggest you use the workaround written in the comment.
 

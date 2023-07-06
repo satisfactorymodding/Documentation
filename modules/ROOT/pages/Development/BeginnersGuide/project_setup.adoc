@@ -340,8 +340,8 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
-=== Packaging Mods with Alpakit
 //// dedi-docs
+=== Packaging Mods with Alpakit
 For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
 ** Windows Client - `Shipping - x64 / Shipping|Win64`
 ** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`

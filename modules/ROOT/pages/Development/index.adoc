@@ -9,7 +9,7 @@ If you're just looking to play Satisfactory with mods, check out how to install 
 
 == Resources
 
-Below is a list of some good resources about making mods for SF, UE5, C++ and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
+Below is a list of some good resources about making mods for Satisfactory, Unreal Engine, C++ and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
 
 - https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
 +
