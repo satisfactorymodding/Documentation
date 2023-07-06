@@ -334,7 +334,7 @@ Commandlet name is AssetGenerator
 
 -DumpDirectory= is the path to the root directory of the dump, as specified in the asset dumper
 
--ForceGeneratePackageNames= is optional file contaning a newline-separated list of packages to be generated first, you want /Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot there to avoid the weird bug with editor crashing while generating the full project from ground up
+-ForceGeneratePackageNames= is optional file containing a newline-separated list of packages to be generated first, you want /Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot there to avoid the weird bug with editor crashing while generating the full project from ground up
 
 -BlacklistPackageNames= is optional, semantics are the same as for ForceGeneratePackageNames, except that it also supports wildcard paths if they end with /, not really needed by default
 
@@ -349,7 +349,7 @@ Commandlet name is AssetGenerator
 
 [IMPORTANT]
 ====
-If you are having issues using the command line versions of the Asset Toolkit,
+If you are encountering issues using the command line versions of the Asset Toolkit,
 trying to use the UI usually won't fix them!
 Ask for help on the discord.
 

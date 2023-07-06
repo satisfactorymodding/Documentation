@@ -1,1 +1,1 @@
-yarn run build:dev
+pnpm run build:dev

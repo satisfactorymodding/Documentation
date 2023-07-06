@@ -6,7 +6,9 @@
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm": "latest"
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [8000],
@@ -16,8 +18,14 @@
 	"workspaceFolder": "/workspaces/SML_Documentation",
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; yarn install",
-	"postAttachCommand": "yarn run build:dev; echo 'There is no hot reload - use `yarn run build:dev` to rebuild'; yarn serve",
+	"postCreateCommand": "git config --global --add safe.directory \"/workspaces/SML_Documentation\"; pnpm install",
+	// Print a warning about the hot reload watcher not working, after which, start the web server and watcher
+	"postAttachCommand": "export CHOKIDAR_USEPOLLING=1; { pnpm run serve & pnpm run watch:dev ; }",
+
+	// Fix `$SHELL environment variable is not set` (https://github.com/open-cli-tools/chokidar-cli/issues/62)
+	"containerEnv": {
+		"SHELL": "/bin/bash"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -34,7 +42,7 @@
 			],
 			// cSpell:enable
 			"settings": {
-				"npm.packageManager": "yarn"
+				"npm.packageManager": "pnpm"
 			}
 		}
 	}

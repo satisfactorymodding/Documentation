@@ -1,0 +1,253 @@
+# Localizing your Mod
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Satisfactory has been translated to multiple languages other than English.
+It's possible to set up mods to be translated in a similar manner.
+
+Before you can start writing translations,
+or crowdsourcing them from your users,
+you must make sure that the assets in your mod are set up to interact with Unreal Engine's localization system.
+
+## Use The Right Kinds of Strings
+
+In order to start localizing your mod, you need to make sure that text content is stored in the right format.
+
+This means using FText and Format Text operations instead of FStrings and Appends.
+In blueprints, you can tell you're working with FText when you see the triangle dropdown arrow 
+
+You can read more about this on the
+https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Localization/Formatting/[Unreal documentation].
+
+This documentation page will not talk about how to use Unreal's text formatting features, since the Unreal documentation already covers that well.
+
+[id="IncludeExcludeFields"]
+## Mark Fields as Localizable, or Not
+
+In order to make sure that Unreal gathers text as localizable, it must be assigned a localization key.
+In Blueprint assets, Unreal will do this for you automatically as long as it has been marked as such in the 'advanced settings' dropdown.
+
+image:Localization/SchematicDisplayNameAdvancedSettings.png[Advanced Settings]
+
+If a text field is not marked to be localized, it won't be gathered and exported for translation later on in the process.
+A small warning icon is usually displayed next to these text fields when viewing assets in the editor.
+
+A few Satisfactory asset types have fields that are notably not gathered for localization by default:
+
+- Schematic Display Names
+- Schematic Descriptions
+- Item Display Names
+- Item Descriptions
+- Item Abbreviated Display Names
+- Recipe Display Name (Overrides)
+- Buildable Display Names
+- Buildable Descriptions
+
+As such, when adding your own values for these fields, you should be sure to mark the fields to be localized.
+
+You may wish to intentionally exclude some fields from gathering.
+Examples include placeholders in widgets that get replaced by bindings,
+since they'd only be visible in the editor preview for the widgets.
+
+[NOTE]
+====
+Note that you can't (easily) localize textures or images, such as those used in UI.
+As such, you should avoid embedding text inside of your UI graphics, as they can't be localized.
+In widgets, consider using Canvas Panels, Overlays, and Render Transforms if you want to add stylized text to your widgets while still keeping it localized.
+====
+
+### {cpp} Localization
+
+Detailed documentation for {cpp} localization can be found in the
+https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Localization/Formatting/[Unreal documentation].
+
+When working in {cpp}, you can use the `NSLOCTEXT` and `LOCTEXT` macros to mark text as localizable.
+
+It's important to note that you must define a localization namespace at the top of files using the `LOCTEXT` macro.
+Before using the macro, define the namespace (for example, `#define LOCTEXT_NAMESPACE "SML"`)
+then use `#undef LOCTEXT_NAMESPACE` at the end of the file.
+
+## Enable the Experimental Localization Dashboard
+
+In order to open the Localization Dashboard,
+navigate to `Window > (Experimental subheading) Localization Dashboard`.
+
+If the item does not appear,
+you must enable the Localization Dashboard in the editor preferences.
+To do this, navigate to `Edit > Editor Preferences` and search for `Localization Dashboard`,
+then check the box.
+
+image:L10n/OpenDashboard.png[Editor screenshot of Open Localization Dashboard]
+
+## Setting up a Localization Target
+
+### Adding a Localization Target
+
+Next, add a new **Plugin** Localization Target by clicking the `Add New Target` button in the "Plugin Targets" panel on the left.
+
+[WARNING]
+====
+Make sure not to click "Add New Target" under the Game Targets heading - this target type can't be packaged with a mod.
+====
+
+image:L10n/AddTarget.png[Add New Target button hovered]
+
+You will be prompted to select a plugin to localize.
+Select your mod and press `Done`.
+
+image:L10n/PickPlugin.png[Pick A Plugin dialog example]
+
+### Configuring the Localization Target
+
+To view your target, click on its name in the table row.
+
+image:L10n/ViewTarget.png[Target row hovered]
+
+If the target's name is not already your
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference],
+rename it to match.
+
+image:L10n/RenameTarget.png[Rename your target]
+
+[TIP]
+====
+Localization Target names can be arbitrary, and you can have multiple localization targets in a single plugin.
+For organization purposes though, it's better to have them matching your mod reference.
+Additionally, localization target names must be globally unique (unique across all mods installed)
+so it's important to use a target name that will not be used by other mods
+- part of why the mod reference is a good choice.
+====
+
+The default localization settings will be completely fine and should not be changed for the majority of the plugins.
+However, if you add another C++ module after you've made the localization target,
+rename the plugin,
+or want extra configurability or custom settings,
+you can change the generated localization profile yourself.
+
+## Gathering Text
+
+Next, Unreal's localization system must gather all of the text that needs to be translated.
+To start the process, scroll down in the panel for your target and press `Gather Text`.
+
+image:L10n/GatherText.png[Gather Text button]
+
+Wait until the dialog box shows a green check mark next to the Gather Text task to close the dialog box.
+The "Word Count" for your mod should now be greater than 0.
+
+You should repeat the text gathering process after adding new strings to your mod,
+for example, adding new item desctiptors or widgets with text fields.
+It's a good idea to run this and review the results before each release of your mod
+to make sure that translation data is up to date.
+
+## Editing Translations
+
+English, the default native culture, is the only currently listed culture.
+You can view the text that was gathered by clicking the `Edit Translations For Culture` button. 
+
+image:L10n/EditTranslationsForCulture.png[Edit Translations For Culture button]
+
+The button will open an editor that allows viewing and editing the gathered text in real time.
+Changes you make in the native culture here will be reflected on the assets the text is gathered from.
+Changes made in other cultures will be stored in their culture data entry.
+
+image:L10n/EditTranslationsInEditor.png[Editing translations in the editor]
+
+Navigating between the "Untranslated", "Needs Review", and "Completed" tabs
+will show the gathered text items in their various translation states.
+Note that for the native culture all text will inherently be "Completed" by default.
+
+Reviewing the gathered native language data will help you track down text that should not have been gathered for localization.
+Check out the directions link:#IncludeExcludeFields[here] to remove entries that should not be gathered.
+
+## Adding New Languages
+
+In order to support additional languages, you must first create a culture entry to hold its data.
+Do this by selecting 'Add New Culture' in the Cultures table for your target.
+
+image:L10n/AddNewCulture.png[Add New Culture button]
+
+After creating a new culture you'll need to Gather Text again before you can open the editor for the new culture.
+
+## Compiling Translations
+
+You can use Compile Translations to compile localization for all of your cultures, too
+
+TODO what does this actually do, does it need to be done before releases?
+
+image:L10n/CompileTranslations.png[Compile Translations button]
+
+## Packaging Translations
+
+TODO should just pack normally with your mod, test in 
+
+## Testing In-Game
+
+TODO mention Base game Satisfactory 'quick switch debug language' feature
+
+Run the quick language switch command in the in-game Unreal console to see if the strings are loaded correctly.
+
+
+## Enabling Users to Contribute Translations
+
+TODO thought that the editor could integrate with Crowdin for import/export, was it turned off?
+
+It is suggested that you use the Crowdin platform to allow your users to contribute translations for your mod.
+
+This is the platform that Satisfactory itself uses to gather translations.
+If you'd like to get involved, you can find information on how in the `#welcome` channel of the
+https://discord.com/invite/satisfactory[official Satisfactory discord].
+
+Another Satisfactory community project making use of Crowdin is the
+https://crowdin.com/project/satisfactory-calculator[Satisfactory Calculator].
+
+Crowdin is free for open source projects.
+If your mod is open source, you can apply for a free plan
+https://crowdin.com/page/open-source-project-setup-request[here].
+Otherwise, you will have to pay to use the service.
+
+### Exporting Strings to Crowdin
+
+TODO click the export PO button
+
+### Importing Translations from Crowdin to Unreal
+
+TODO import PO button
+
+TODO arch note: If you want to manually change localization data or use 3rd party tools, it's stored in %PluginName%/Content/Localization/%LocalizationTargetName%. After you change csv or po files, make sure to sync them with the engine before packaging using the localization dashboard.
+
+## Compiling Localization Files
+
+TODO engine changes being made to keep them in plugin dirs so shouldn't have to move via script
+
+Compile in Unreal and run the Kyrium script or manually move to put them in your plugin's folder
+
+## Plugin Settings
+
+TODO seems to only listen to one Engine.ini, Mircea says there is a base UE field in plugins to specify localization directories, use that instead?
+
+`YourModReference/Config/Engine.ini`
+
+```ini
+[Internationalization]
+LocalizationPaths=../../../FactoryGame/Mods/YourModReference/Localization/YourModReference
+```
+
+In order to tell Unreal to package your localization files with your plugin,
+you will need to add a line to your plugin's `YourModReference/Config/PluginSettings.ini`
+to tell it to include both your Localization folder and your `Engine.ini` with the mod's files.
+
+Config/PluginSettings.ini
+
+```ini
+[StageSettings]
++AdditionalNonUSFDirectories=Localization
++AdditionalNonUSFDirectories=Config
+```
+
+## Cross-plugin Localization
+
+localization target is bound to one particular plugin. This does not mean source strings cannot overlap though. dependent translations and localization dependencies are also supported by the UE out of box, you can basically re-use strings from other localization targets (read other plugins) inside of your plugin without duplicating them. To do that you have to manually add your dependency localization targets into the configuration of your dependent localization target. It's this setting in the localization dashboard (TargetDependencies.png)
+

@@ -65,6 +65,27 @@ and then enter the full path to your `FactoryGame.usmap` file
 Press `OK` to close the settings prompt,
 which will open another prompt asking you to restart FModel - press `OK`.
 
+image:ExtractingGameFiles/fModelExport.png[FModel Export Configuration]
+
+=== Specify Model Export Settings
+
+After specifying FModel's Custom Version and Mapping for Satisfactory you will want change model export settings so it's easier to work with exported results.
+To do so, return to the Settings menu and select `Models` on the left side.
+
+From here there are several fields to modify in order to properly export models for use with modeling software such as Blender:
+
+* `Model Export Directory` - This can be the same or different from the output directory you chose in the previous steps.
+* `Mesh Format` - Similarly to UModel, you will want to select `glTF 2.0` as your format
+* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export. 
+* `Texture Format` - Set to PNG so textures will be exported to a lossless format that supports transparency.
+ 
+image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
+
+[WARNING] 
+====
+Any other changes made are at user discretion, and dependent on level of knowledge.
+====
+
 === Searching for Files
 
 In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
@@ -155,7 +176,7 @@ game sound files are stored in a manner different from many other Unreal Engine 
 FModel can be used to extract sound files to the WAV format via its Audio Player.
 
 Unfortunately, Wwise sound files viewed in this manner
-are not logically and do not have "nice" names,
+are not logically organized and do not have "nice" names,
 meaning that finding the sound you want through this system involves digging around through hundreds of files.
 Furthermore, the sound files are stored in their unmixed forms,
 meaning that the sound is lacking additional audio effects that are applied real-time in-game.
@@ -202,14 +223,16 @@ and place the `wwnames.db3` file in the same directory as the extracted files.
 
 To open the wwiser interface, run `python .\wwiser.py` in a terminal in that folder.
 Next, select `Load banks...` and select the bnk file you extracted earlier.
-After the file loads, select `View bank contents` which will open an interactive browser window.
+// cspell:ignore txtp
+After the file loads, select `Generate TXTP` which will create a folder in the same directory as the bnk file
+containing a txtp file which can be opened with a text editor.
+// Need the + symbols to make sure Asciidoc doesn't see them as attributes 
+(ex. `+Play_EQ_JetPack_Activate {s} {m}.txtp+`)
 
-// cspell:ignore HircChunk
-If the bnk is linked to any sound files, their id numbers will be displayed in the
-`HircChunk > CAkSound > SoundInitialValues > AkMediaInformation > sourceID` field.
-Click on the plus buttons and scroll to navigate through the data structure.
-Note that multiple sound files can be linked to a single sound event,
-each having their own CAkSound entry and sourceID.
+If the bnk is linked to any sound files,
+their sourceID numbers will be displayed at the top of the file
+(ex. `wem/633850317.wem` has the sourceID number `633850317`)
+along with additional audio information.
 
 Take note of the sourceIDs of the sound file you want to extract,
 as you will likely need to review a few sounds to find the exact one you're looking for.

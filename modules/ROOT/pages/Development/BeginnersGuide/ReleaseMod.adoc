@@ -201,7 +201,7 @@ But if it exists, our mod might be able to unlock more functionality that depend
 {blank} +
 This field is optional, and defaults to `false` if unspecified.
 
-!bIsBasePlugin
+!BasePlugin
 ! This boolean property should be set to `true` for all plugin dependencies that are not *mod* dependencies.
 For example, regular Unreal Engine plugins your mod requires.
 SMM will not attempt to download these because they aren't mods.

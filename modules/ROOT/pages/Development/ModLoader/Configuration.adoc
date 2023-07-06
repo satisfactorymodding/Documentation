@@ -198,14 +198,14 @@ The description of this configuration shown to the user.
 === `UConfigPropertySection RootSection`
 Holds the root "node" of your configuration schema.
 
-This is an instancable variable, meaning, you can create inline an instance of this object and define its default values in the editors "defaults" panel.
+This is an instanceable variable, meaning, you can create inline an instance of this object and define its default values in the editors "defaults" panel.
 
 == `UConfigProperty`
 A config property is essentially a node of a configuration schema, describing a specific value.
 
 This used for creating the config value in the end.
 
-Default values of child classes are also instancable, so you can further define the schema.
+Default values of child classes are also instanceable, so you can further define the schema.
 
 === `FString DisplayName`
 The display name of this property that is shown to the user.

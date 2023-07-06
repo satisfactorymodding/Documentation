@@ -60,7 +60,7 @@ It allows you to...
 
 * Register a chat command instance manually
 * Get a list of registered commands
-* Executed a command programatically
+* Executed a command programmatically
 * Access the `ParsePlayerName` function, which allows you to get the `AFGPlayerController`
 based on the player name. 
 ** This is generally used to parse the player name that was passed as command argument.

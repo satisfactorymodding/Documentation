@@ -18,10 +18,12 @@
 **** xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[First Simple Machine]
 **** xref:Development/BeginnersGuide/SimpleMod/machines/SimpleInteraction.adoc[Simple Interaction GUI]
+*** xref:Development/BeginnersGuide/CreateGitRepo.adoc[Creating a Mod Git Repo]
 *** xref:Development/BeginnersGuide/generating_icons.adoc[Generating Icon Images]
 *** xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc[In-Game Mod Menu Icon]
 *** xref:Development/BeginnersGuide/overwriting.adoc[Class Default Objects (CDOs) and Overwriting Content]
 *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
+*** xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
@@ -73,6 +75,7 @@
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
 
+** xref:Development/Localization.adoc[Localizing Mods]
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]

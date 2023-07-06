@@ -239,7 +239,7 @@ Afterwards, save the asset.
 
 This base-game-supplied master material contains a ton of optimization logic
 to make rendering conveyor items work at large scales without butchering game performance.
-We can plug in our own textures to the material parmeters to use something other than the default grid it comes with.
+We can plug in our own textures to the material parameters to use something other than the default grid it comes with.
 
 [NOTE]
 ====
