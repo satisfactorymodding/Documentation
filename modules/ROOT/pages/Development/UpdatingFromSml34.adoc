@@ -21,3 +21,7 @@
 3. Congratulations! You are now up to date, and can continue modding as normal.
 Just remember that mods go in the `<SF_Install>\FactoryGame\Mods` folder now!
 Alpakit's "copy mods" feature has already been updated to account for this.
+
+// WIP_SessionSettings === Session Settings
+
+// WIP_SessionSettings xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
