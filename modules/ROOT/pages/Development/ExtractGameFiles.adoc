@@ -67,6 +67,25 @@ which will open another prompt asking you to restart FModel - press `OK`.
 
 image:ExtractingGameFiles/fModelExport.png[FModel Export Configuration]
 
+=== Specify Model Export Settings
+
+After specifying FModel's Custom Version and Mapping for Satisfactory you will want change model export settings so it's easier to work with exported results.
+To do so, return to the Settings menu and select `Models` on the left side.
+
+From here there are several fields to modify in order to properly export models for use with modeling software such as Blender:
+
+* `Model Export Directory` - This can be the same or different from the output directory you chose in the previous steps.
+* `Mesh Format` - Similarly to UModel, you will want to select `glTF 2.0` as your format
+* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export. 
+* `Texture Format` - Set to PNG so textures will be exported to a lossless format that supports transparency.
+ 
+image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
+
+[WARNING] 
+====
+Any other changes made are at user discretion, and dependent on level of knowledge.
+====
+
 === Searching for Files
 
 In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
