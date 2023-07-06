@@ -58,21 +58,21 @@ use to semi-automatically generate the starter project, and as such is usually k
 === Installing the Asset Generator
 
 Take the `AssetGenerator` folder out of the files you downloaded
-and move it to your modding project's `Plugins` folder.
+and move it to your modding project's `Mods/` folder.
 
 This plugin is only for use from the editor side. It will not appear in the Alpakit mods list.
 
 === Installing the Asset Dumper
 
 Take the `AssetDumper` folder out of the files you downloaded
-and move it to your modding project's `Plugins` folder.
+and move it to your modding project's `Mods/` folder.
 
 This plugin is already set up as a Satisfactory mod, and will appear in the Alpakit mods list once compiled.
 It will later be built and installed in the game.
 
 === Compiling
 
-After putting both plugins in your project's Plugins folder,
+After putting both plugins in your project's Mods folder,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
 and build for Development Editor and Shipping.
 

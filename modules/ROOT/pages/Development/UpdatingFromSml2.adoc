@@ -295,7 +295,7 @@ NEW DOCUMENTATION AND SML PROJECT
  - You can get new SML project on SML github (https://github.com/satisfactorymodding/SatisfactoryModLoader). MAKE SURE TO CHANGE BRANCH TO "sml-dev" BEFORE DOWNLOADING!
  - Creation of the mods in new SML version is done by opening the editor, clicking on "Plugins" button in one of the drop-down menus and then using "New Plugin" button to create your new mod. Make sure to use "Content Only" or "Blank"
 presets for your newly created plugin.
- - You might need to click on Content Browser options -> Show Plugins Content to view contents of your mod. You can browse to them by clicking on the Content Browser root folder and selecting <Your Mod Name> Content there
+ - You might need to click on Content Browser's View Options -> Show Plugin Content to view contents of your mod. You can browse to them by clicking on the Content Browser root folder and selecting <Your Mod Name> Content there
  - Satisfactory assets HAVE NOT BEEN UPDATED TO U4 YET. If you're looking to use new items from the Update 4, you will need to create stub blueprints for them yourself. But don't worry, we are working hard on updating project, and new version will include even more content than the old one did.
  - Keep questions related to SML v3.0.0 and U4 transition in #development.
 

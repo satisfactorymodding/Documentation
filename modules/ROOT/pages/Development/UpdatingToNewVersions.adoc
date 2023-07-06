@@ -202,7 +202,7 @@ which includes getting the new SML version and new Starter Project,
 as well as integrating a new Wwise version.
 
 Your mod's files are probably all within its plugin folder,
-so you can simply transfer over that entire folder to the Plugins folder of the new project.
+so you can simply transfer over that entire folder to the Mods folder of the new project.
 Remember to
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files]
 and build after you do this.
@@ -219,7 +219,7 @@ while still keeping the old values you want.
 
 === Option 2: Replace Changed Files
 
-If you have a lot of plugins set up in one project,
+If you have a lot of mods set up in one project,
 the changes to SML or game systems are small,
 or you want to preserve your git history,
 this may be the route to update your existing project.
@@ -326,7 +326,7 @@ which could lead to confusion or name conflicts when trying to use them in your 
 Remember to copy back in AngryBeaver's recreated assets.
 The process for doing this is covered on the Asset Toolkit page.
 
-Also, make sure to download an updated version of the Asset Toolkit plugins,
+Also, make sure to download an updated version of the Asset Toolkit mods,
 because they may have been patched since you last generated your project.
 
 === Watch Out: Complete Starter Projects and Version Control
@@ -356,9 +356,9 @@ This step allows you to catch any problems that could have occurred now,
 as opposed to later when you're trying to fix your mods,
 and it's unclear what the cause is.
 
-Temporarily move out all items from your Plugins folder
+Temporarily move out all items from your `Mods/` folder
 except those that came with the Starter Project
-(Alpakit, ExampleMod, SML, SMLEditor, Wwise),
+(Alpakit, ExampleMod, SML, SMLEditor),
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
 and rebuild the project.
 This ensures that any potential problems with your mods don't affect the build process.

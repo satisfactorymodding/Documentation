@@ -44,7 +44,7 @@ Why the change?
 
 ==== What you have to do:
 
-1. Move your own mod folders from your `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
+1. Move your own mod folders from `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
 
 * SML 3.4.x Locations:
   image:BeginnersGuide/SML_Plugins.png[SML 3.4.x, align="center"]
@@ -114,6 +114,14 @@ Read more about it on the
 xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks] page.
 
 See the Example Mod for examples of how to use this system.
+
+=== Mod Localization
+
+We have started hosting our own Tolgee instance
+that makes it easy to crowdsource and contrbute translations to the modding toolkit and to mods.
+
+Read more about how you can get started on the
+xref:Development/Localization.adoc[Localizing Mods] page.
 
 === Custom Level Support
 

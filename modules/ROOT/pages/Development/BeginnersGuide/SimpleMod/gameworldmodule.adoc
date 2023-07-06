@@ -74,7 +74,7 @@ This folder is where you will be putting most of the assets
 Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
 subfolder of the Content Browser root folder.
 
-You might need to click on `View Options` -> `Show Plugins Content`
+You might need to click on `View Options` -> `Show Plugin Content`
 in a Content Browser to view the contents of your mod in the Unreal Editor.
 image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
 

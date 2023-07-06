@@ -320,7 +320,7 @@ if you haven't taken or dismissed it yet.
 
 Alpakit is a tool made by the modding community
 to make building and testing your mod more convenient.
-It's one of the plugins that comes pre-installed with the starter project.
+It's one of the mods that comes pre-installed with the starter project.
 
 Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its panel.
 It looks like an alpaca peeking out of a cardboard box.

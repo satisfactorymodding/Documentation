@@ -28,7 +28,7 @@ public class <third_party>Library : ModuleRules
 
 == Module Usage
 
-After you have defined the third party module, you need to reference it in your plugins base modules `<mod_reference>Library.Build.cs` file as a public dependency.
+After you have defined the third party module, you need to reference it in your mod's base module's `<mod_reference>Library.Build.cs` file as a public dependency.
 
 [source,cpp]
 ----

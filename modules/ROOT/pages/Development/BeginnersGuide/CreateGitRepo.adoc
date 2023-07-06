@@ -128,18 +128,18 @@ then moving our own mod's files into that folder.
 
 Make sure you have the Unreal editor closed before proceeding.
 
-Locate the folder for your mod in your Starter Project's `Plugins/` folder,
-for example, `Plugins/YourModReference/`.
+Locate the folder for your mod in your Starter Project's `Mods/` folder,
+for example, `Mods/YourModReference/`.
 Rename your mod's folder to something else, for example `YourModReference_Original/`.
 We are renaming this folder because
 your git client will complain if you try to clone into a folder that already contains files.
 As such, we are temporarily giving the folder another name so the clone process doesn't complain.
 
-Now, use your git client of choice to clone the remote repository you created on GitHub inside your project's `Plugins/` folder.
+Now, use your git client of choice to clone the remote repository you created on GitHub inside your project's `Mods/` folder.
 Directions for doing this in GitHub Desktop can be found
 https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop[here].
 Assuming your GitHub repository is named `TheRepositoryName`,
-you should now have two relevant folders in your projects `Plugins/` folder:
+you should now have two relevant folders in your projects `Mods/` folder:
 
 - The repository folder you just cloned, `TheRepositoryName/`
 - Your original mod folder which you renamed to `YourModReference_Original/`
@@ -182,7 +182,7 @@ git uses a file called `.gitignore` to keep track of what files to exclude.
 
 If you created your mod with the Alpakit wizards, it will have already created this file for you.
 If not, you can pick one up
-https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Plugins/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
 
 You can optionally learn more about how this file works 
 https://www.atlassian.com/git/tutorials/saving-changes/gitignore[here],

@@ -20,7 +20,7 @@ It's still their work, after all!
 ## Packaged Mods versus Source Code
 
 It's important to understand why importing a mod to your project is not as simple as
-downloading the released mod and putting it in your project's plugins directory.
+downloading the released mod and putting it in your project's mods directory.
 
 When a mod is packaged for release, it is compiled into a `.pak` file.
 A Pak is a compressed archive that contains all the mod's code, assets, and other files.
@@ -48,7 +48,7 @@ xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 
 ## Download the Source Code
 
-The next step is to download the mod's source code and place it in your own project's Plugins directory.
+The next step is to download the mod's source code and place it in your own project's Mods directory.
 
 You could their plugin download as a zip and extract it,
 but consider cloning the repository to make it easy to update your copy with future changes to the mod.
