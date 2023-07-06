@@ -88,6 +88,12 @@ The Example Mod has been updated with a complex research tree (created by the to
 to demonstrate and explain some important research tree concepts.
 Explore this tree, and the base game's trees, to learn more about how research trees work.
 
+=== ExampleMod Multiplayer Examples
+
+ExampleMod has been updated to include some examples of correctly adding multiplayer functionality to your mod.
+The xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
+page has also been updated with more information and tutorials.
+
 === Widget Blueprint Hooks
 
 Widget Blueprint Hooks can be used to add your custom widget into one of the existing game widgets.
@@ -118,12 +124,3 @@ properly registers itself through the Custom Level system and demonstrates many 
 // WIP_SessionSettings === Session Settings
 
 // WIP_SessionSettings xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
-
-=== ExampleMod Multiplayer Examples
-
-ExampleMod has been updated to include some examples of correctly adding multiplayer functionality to your mod.
-
-Check out
-`/ExampleMod/Buildings/MultiplayerDemoBuilding/Build_MultiplayerDemoBuilding.Build_MultiplayerDemoBuilding`,
-`/ExampleMod/ReplicationExampleSubsystem.ReplicationExampleSubsystem`,
-and `/ExampleMod/RCO_ExampleMod.RCO_ExampleMod`.
