@@ -13,7 +13,7 @@ Below is a list of some good resources about making mods for Satisfactory, Unrea
 
 - https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
 +
-A good YouTube Channel showing a more in-depth look at features of UE5 (BP only).
+A good YouTube Channel showing a more in-depth look at features of Unreal Engine (BP only).
 - https://www.youtube.com/c/AlexForsythe[Alex Forsythe]
 +
 A YouTube Channel that covers Unreal concepts (both BP and C++) in detail, including replication.

@@ -26,6 +26,7 @@ Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
 Download the toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
 
+[id="DedicatedServerProjectCompilation"]
 == Project Compilation - Dedicated Server Support
 
 For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
