@@ -179,15 +179,15 @@ After you finished downloading Wwise, open the installer.
 Select `WWISE` from the top bar.
 Click the `Latest` drop-down and change it to `All`.
 Select `2021.1` from the next dropdown.
-Select version `2021.1.8.7831` from the final dropdown.
+Select version `2022.1.3.8179` from the final dropdown.
 Click `Install`.
 
 [WARNING]
 ====
-Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
+Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
 
 If you don't see this exact Wwise version,
-try any other version starting with `2021.1`, preferring newer versions,
+try any other version starting with `2022.1`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
@@ -204,6 +204,7 @@ Once presented with options on what to install, select:
 *** Windows
 **** Visual Studio 2017
 **** Visual Studio 2019
+**** Visual Studio 2022
 
 Click `Next`.
 You don't need to add any plugins so just press `Install` to skip in the bottom left to begin the installation process.
