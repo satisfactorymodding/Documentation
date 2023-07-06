@@ -40,12 +40,32 @@ Launch the game at least once to ensure all files get set up correctly.
 == Visual Studio
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
-and download the version you want.
-We suggest Visual Studio 2022 Community,
-because it is free of charge and modern.
-It may force you to sign up to access the older versions, but they are free.
+and select the button for Visual Studio 2022 Community, which is free of charge.
 
-Run the installer, and agree to prompts you receive along the way.
+If you already have Visual Studio installed,
+you can run the installer again and still follow the steps below to modify your existing installation.
+
+After the installer has downloaded, run it and agree to any authorization prompts you receive along the way.
+Once you are prompted to install Visual Studio 2022
+you have two options for selecting the relevant components.
+
+[id="ImportConfiguration"]
+=== Option 1: Import an Installer Configuration
+
+If the installer took you directly to the component selection screen
+you'll have to use the smaller X button in the top right to close out of that prompt first.
+
+Instead of clicking "Install" next to Visual Studio 2022,
+click the 'More' dropdown and select `Import Configuration`.
+
+// cspell:ignore vsconfig
+Download link:{attachmentsdir}/BeginnersGuide/dependencies/SML.vsconfig[this configuration file]
+and select it in the installer's prompt.
+Next, press `Review details` and continue with the installation.
+
+[id="ManuallySelectComponents"]
+=== Option 2: Manually Select Components
+
 From the "Workloads" tab select
 "Desktop & Mobile > Desktop development with {cpp}"
 and "Gaming > Game development with {cpp}".
@@ -54,21 +74,16 @@ You might have to scroll a bit to find them.
 Next, from the "Individual Components" tab,
 search for and select `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.34-17.4)`
 
-If you already have Visual Studio installed,
-you can run the installer again
-and choose `Modify` to select these two workloads to add them to your installation.
-
-Continue through the rest of the prompts to install Visual Studio.
-Downloading and installing Visual Studio can take a while,
-so we advise you to find some lizard doggos to pet while you wait,
-or working on some of the other install steps below.
-
-[WARNING]
-====
-You will also need the .NET Framework SDK, version 4.6 or higher (but not Core/v5).
+You will also need the .NET Framework SDK version 4.8 or higher (but not Core/v5).
 If you do not know if you have the .NET Framework SDK,
-the VS installer should provide an option to install it. It is recommended to tick it.
-====
+the VS installer should provide an option to install it.
+It is recommended to tick it.
+
+=== While Visual Studio Installs
+
+Downloading and installing Visual Studio can take a while.
+We advise you to find some lizard doggos to pet while you wait,
+or work on some of the other install steps below.
 
 [TIP]
 ====
