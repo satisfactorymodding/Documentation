@@ -206,10 +206,12 @@ You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
-//// dedi-docs
+////
+dedi-docs
 If you are building for dedicated servers, see
 link:#_project_compilation_dedicated_server_support_optional[Project Compilation - Dedicated Server Support (Optional)]
-dedi-docs ////
+dedi-docs
+////
 
 After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
 (the same place you selected `Development Editor` earlier)
@@ -229,9 +231,16 @@ you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
 When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`.
-// dedi-docs , `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
+
 Without doing so, your mod will be missing important files.
 ====
+
+////
+dedi-docs
+Block comments don't work inside ==== blocks, this goes inside the IMPORTANT
+
+, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
+////
 
 [id='Compiling_Troubleshooting']
 === Troubleshooting
@@ -340,7 +349,8 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
-//// dedi-docs
+////
+dedi-docs
 === Packaging Mods with Alpakit
 For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
 ** Windows Client - `Shipping - x64 / Shipping|Win64`
@@ -364,7 +374,8 @@ For our local testing, we will only need Windows (the client) checked.
 You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
 
 image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
-dedi-docs ////
+dedi-docs
+////
 === (Optional) Packaging SML
 
 Note that if you have not yet installed SML in your game files,

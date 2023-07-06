@@ -1,5 +1,10 @@
 = Unreal Engine Asset Toolkit
 
+[WARNING]
+====
+The Asset Toolkit has not yet been fully tested on UE5.
+====
+
 [NOTE]
 ====
 This article is a work-in-progress. Please contact us on the Discord if you run into any issues here.
@@ -255,7 +260,6 @@ For this to be tracked, you must change the LogAssetGenerator logging category d
 To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
 and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
 Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
-
 as the asset generator is running - the process is called `UnrealEditor-Cmd.exe` in the list.
 Now the package being processed will be visible as a log message inside the visual studio output section.
 

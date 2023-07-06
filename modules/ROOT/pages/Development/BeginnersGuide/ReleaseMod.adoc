@@ -380,7 +380,9 @@ If you decide to change it, you'll have to edit a number of files, most of which
 
 Once you're ready to release your mod, you will need to package your mod for uploading. 
 
-//// dedi-docs
+////
+dedi-docs
+
 Due to changes for multiple build target support (i.e. dedicated servers), a new set of options has been added for packaging for xref:CommunityResources/AcronymVault.adoc#_satisfactory_mod_repository_smr_aka_ficsit_app[SMR]. 
 
 `Release Targets` is a selection for the `Alpakit Release` function that allows 
@@ -394,7 +396,8 @@ image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
 You will then find your packaged file in `<SML Project Folder>\Saved\ArchivedPlugins\<ModReference>` as `<ModReference>.zip`. 
 The `<ModReference>-<TargetType>.zip` are your mod, but in the separate build targets (i.e. `WindowsNoEditor`, `WindowsServer`, `LinuxServer`).
-dedi-docs ////
+dedi-docs
+////
 
-follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
+Follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
 page to create a modpage and a release.
