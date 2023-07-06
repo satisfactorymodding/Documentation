@@ -3,6 +3,8 @@
 [NOTE]
 ====
 This page is a work in progress.
+
+There is currently a bug that causes plugin target localization settings to be lost upon editor restart.
 ====
 
 Satisfactory has been translated to multiple languages other than English.
@@ -121,7 +123,7 @@ so it's important to use a target name that will not be used by other mods
 - part of why the mod reference is a good choice.
 ====
 
-The default localization settings will be completely fine and should not be changed for the majority of the plugins.
+The default localization settings will be completely fine and should not be changed for the majority of mods.
 However, if you add another C++ module after you've made the localization target,
 rename the plugin,
 or want extra configurability or custom settings,
@@ -192,27 +194,24 @@ Run the quick language switch command in the in-game Unreal console to see if th
 
 ## Enabling Users to Contribute Translations
 
-TODO thought that the editor could integrate with Crowdin for import/export, was it turned off?
+TODO thought that the editor could integrate with Crowdin/external stuff for import/export, was it turned off?
 
-It is suggested that you use the Crowdin platform to allow your users to contribute translations for your mod.
+It is suggested that you use the Tolgee platform to allow your users to contribute translations for your mod.
 
-This is the platform that Satisfactory itself uses to gather translations.
+The modding community hosts its own free to use instance of Tolgee at https://translate.ficsit.app/ that all Satisfactory mods and tools can use to crowdsource translations.
+
+Satisfactory uses the Crowdin platform to gather translations.
 If you'd like to get involved, you can find information on how in the `#welcome` channel of the
 https://discord.com/invite/satisfactory[official Satisfactory discord].
 
-Another Satisfactory community project making use of Crowdin is the
-https://crowdin.com/project/satisfactory-calculator[Satisfactory Calculator].
+However, Crowdin is expensive to for most cases and has heavy restrictions on how many strings can be translated.
+The Tolgee platform is free and open source, and can be self-hosted.
 
-Crowdin is free for open source projects.
-If your mod is open source, you can apply for a free plan
-https://crowdin.com/page/open-source-project-setup-request[here].
-Otherwise, you will have to pay to use the service.
-
-### Exporting Strings to Crowdin
+### Exporting Strings to Tolgee
 
 TODO click the export PO button
 
-### Importing Translations from Crowdin to Unreal
+### Importing Translations from Tolgee to Unreal
 
 TODO import PO button
 
