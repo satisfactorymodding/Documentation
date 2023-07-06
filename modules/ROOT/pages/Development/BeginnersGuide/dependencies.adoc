@@ -46,10 +46,14 @@ because it is free of charge and modern.
 It may force you to sign up to access the older versions, but they are free.
 
 Run the installer, and agree to prompts you receive along the way.
-From the "Workloads" page select
+From the "Workloads" tab select
 "Desktop & Mobile > Desktop development with {cpp}"
 and "Gaming > Game development with {cpp}".
 You might have to scroll a bit to find them.
+
+Next, from the "Individual Components" tab,
+// cspell:ignore MSVC
+search for and select `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.31-17.4)`
 
 If you already have Visual Studio installed,
 you can run the installer again
