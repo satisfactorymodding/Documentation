@@ -257,6 +257,13 @@ They include, but are not necessarily limited to:
 Once you have stashed or discared your changes to these files,
 you should be able to pull/merge in the files.
 
+You may wish to delete some project temporary folders, especially after an engine update, to save on disk space.
+
+- `<project directory>/Intermediate/`
+- `<project directory>/Build/`
+- `<project directory>/Binaries/`
+- `<your mod's directory>/Saved/`
+
 ===== Dealing With the Content Folder
 
 The content folder will be regenerated with most game updates
