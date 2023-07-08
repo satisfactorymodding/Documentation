@@ -73,6 +73,32 @@ until you change to the new system.
 
 TODO directions on how to use this
 
+=== Increased Access Transformer Specificity
+
+If you are using BlueprintReadWrite or BlueprintCallable access transformers
+you will have to update their Class field to use their runtime class path.
+This means adding the prefix `/Script/FactoryGame.` to the class name
+and removing any Unreal prefixes like `A` or `U`.
+
+For example, if you were previously using the access transformer:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="AFGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+You will have to switch to:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+This is done as part of a move away from using ANY_PACKAGE,
+which you can read more about in the Unreal documentation if you are interested.
+
 == Notable New Features
 
 Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
