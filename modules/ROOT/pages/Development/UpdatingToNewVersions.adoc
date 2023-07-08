@@ -221,7 +221,8 @@ while still keeping the old values you want.
 
 If you have a lot of mods set up in one project,
 the changes to SML or game systems are small,
-or you want to preserve your git history,
+or you want to preserve your _project's_ git history,
+(not mod, that would still be preserved by Option 1)
 this may be the route to update your existing project.
 
 After performing any of these approaches,
@@ -297,6 +298,8 @@ As a general overview, changes could include any or all of the following:
 - `/Build/Alpakit.Automation/`
 - `/Content/` stub files
 - `/Source/`
+- `/Plugins/`
+- `/Mods/AccessTransformers/`
 - `/Mods/Alpakit/`
 - `/Mods/ExampleMod/`
 - `/Mods/SML/`
@@ -311,7 +314,7 @@ working with a team of people on multiple interdependent mods at once,
 or having custom project settings you want to preserve.
 
 If you have a project level git repo,
-your git history is probably vastly different from the base SML repo,
+your project git history is probably vastly different from the base SML repo,
 so trying to merge in the changes is likely infeasible.
 
 You'll have to go through most of the same process as the zip project download.
