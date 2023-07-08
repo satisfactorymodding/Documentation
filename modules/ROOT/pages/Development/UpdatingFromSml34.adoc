@@ -99,6 +99,38 @@ BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefau
 This is done as part of a move away from using ANY_PACKAGE,
 which you can read more about in the Unreal documentation if you are interested.
 
+=== {cpp} Mod Module Build.cs Format Changes
+
+When generating visual studio project files for your project, you may encounter an error similar to the below:
+
+```
+Running C:/Program Files/Unreal Engine - CSS U8/Engine/Build/BatchFiles/Build.bat  -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
+Log file: C:\Git\SatisfactoryModLoader\Saved\Logs\UnrealVersionSelector-2023.07.08-13.29.57.log
+Log file: C:\Users\Rob\AppData\Local\UnrealBuildTool\Log_GPF.txt
+
+Some Platforms were skipped due to invalid SDK setup: Linux, LinuxArm64.
+See the log file for detailed information
+
+Discovering modules, targets and source code for project...
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(5,7): error CS0246: The type or namespace name 'Tools' could not be found (are you missing a using directive or an assembly reference?)
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(13,32): error CS0246: The type or namespace name 'DirectoryReference' could not be found (are you missing a using directive or an assembly reference?)
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(14,64): error CS0246: The type or namespace name 'DirectoryReference' could not be found (are you missing a using directive or an assembly reference?)
+Expecting to find a type to be declared in a target rules named 'FactoryEditorTarget'.  This type must derive from the 'TargetRules' type defined by Unreal Build Tool.
+```
+
+Unreal Engine 5 includes updates to UBT to make it more extensible.
+You may have to add additional `using` directives to your mod module's Build.cs file.
+In the case of this example error message, adding the following directives resolved the issue.
+
+[source,cs]
+----
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+using EpicGames.Core;
+----
+
 == Notable New Features
 
 Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
