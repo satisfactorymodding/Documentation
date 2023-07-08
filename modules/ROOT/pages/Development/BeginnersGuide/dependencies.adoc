@@ -200,14 +200,15 @@ you'll need to install and integrate Wwise with your mod project,
 even if you do not plan to modify sounds.
 
 Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
-`+Get Wwise+` -> `+Download Wwise+` button in the upper right corner.
+`+Get Started+` -> `+Download Wwise+` button in the upper right corner.
 Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
 After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar.
+After the installer is complete it should open the Wwise launcher for you.
+In the launcher, select `WWISE` from the sidebar.
 Click the `Latest` drop-down and change it to `All`.
-Select `2021.1` from the next dropdown.
+Select `2022.1` from the next dropdown.
 Select version `2022.1.3.8179` from the final dropdown.
 Click `Install`.
 
@@ -222,28 +223,20 @@ or asking for help on the Discord.
 
 Once presented with options on what to install, select:
 
-* Packages
+* _Packages_
 ** Authoring
 ** SDK (C++)
-* Deployment Platforms
-** Apple
-*** macOS
+* _Deployment Platforms_
 // dedi-docs ** Linux
-** Microsoft 
-*** Windows
-**** Visual Studio 2017
+** _Microsoft_
+*** _Windows_
 **** Visual Studio 2019
 **** Visual Studio 2022
 
-Click `Next`.
-You don't need to add any plugins so just press `Install` to skip in the bottom left to begin the installation process.
+Click `Next` (you may need to scroll down to see the button).
+You don't need to add any plugins,
+so press `Deselect All` then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
-
-[TIP]
-====
-If you encounter a checksum error during Wwise integration,
-installing any other Wwise version should fix the problem.
-====
 
 == Starter Project
 
@@ -264,7 +257,7 @@ although it's most likely `master`.
 The Project Setup page (up next) will tell you where to clone it.
 
 If you're not familiar with version control,
-https://www.gitkraken.com/learn/git/tutorials[now is a great time to learn]!
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[now is a great time to learn]!
 Using Version Control Software (VCS) is a great skill to have for developers
 and will greatly help with updating your project in the future,
 as well as protect you from losing your mod sources if you upload them to a hosting website like GitHub.
@@ -285,10 +278,9 @@ To enable it, change your selected profile to `development`.
 If you're using Satisfactory Mod Manager,
 you can skip the below steps and move on to the next page of the tutorial. 
 
-If you're not using the mod manager, you'll need to follow the
+If you're not using the mod manager, you can follow the
 xref:ManualInstallDirections.adoc[manual install directions]
 to get the relevant files set up.
-
 Alternatively, once your modding environment is set up,
 you can use Alpakit to automatically build and install SML.
 This process is covered on the next page.

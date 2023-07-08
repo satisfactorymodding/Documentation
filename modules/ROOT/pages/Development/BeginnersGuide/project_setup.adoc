@@ -5,16 +5,6 @@ project setup. With a misconfigured or suboptimal setup, you'll lose
 valuable time. That's why we will guide you now through making a good
 project setup for Satisfactory.
 
-[TIP]
-====
-If you'd prefer a different format of guide, you can find a video guide
-https://youtu.be/-HVw6-3Awqs?t=249[here].
-**As of SML 3.0.0, these video tutorials are out of date,
-but some of the concepts will still carry over.**
-If you get stuck in the video tutorials, return here and follow these guides instead.
-Be sure to read over the steps here as well to be sure you're doing things correctly.
-====
-
 == Starter Project
 
 You should have already downloaded the Starter Project in the previous steps of the tutorial,
@@ -23,11 +13,15 @@ or you are prepating to clone it now.
 The Starter Project folder will be your modding workspace,
 and could grow to a considerable file size depending on what kinds of mods you make.
 As such, you should extract the folder somewhere convenient so that you can find it later,
-such as a folder on a secondary storage drive, or inside your Documents folder.
+such as a folder on a secondary storage drive.
+
 It is unwise to keep it in your Downloads folder
 because Windows can automatically clean up that folder depending on your system settings.
+
 It should also not be placed into any directory that could be managed by cloud sync services
 like Dropbox, Google Drive, or OneDrive, because they can corrupt your project files.
+You should also not place it in your Documents folder
+because those folders are sometimes connected to cloud sync services that you may not be aware of.
 
 You can use this Starter Project for developing multiple mods at once,
 since each mod will be its own separate plugin folder within the project.
@@ -50,7 +44,7 @@ Move on to the next section.
 
 [WARNING]
 ====
-By default, Windows marked files downloaded from the internet as "blocked".
+By default, Windows marks files downloaded from the internet as "blocked".
 You will run into problems later on because of this.
 To get around this issues, right-click the zip and "unblock" it before unzipping it.
 ====
@@ -73,7 +67,7 @@ instead of downloading a zip file of it.
 
 Wwise is an audio and sound system used by Satisfactory,
 and setting it up is required to get your modding environment working.
-Setting up Wwise can be difficult, but we'll walk through the steps here.
+Setting up Wwise can be confusing, but we'll walk through the steps here.
 Be sure to follow _only_ the steps listed here
 - Wwise will often present you with lots of additional messages
 that looks like errors or warnings but can be safely ignored.
@@ -85,45 +79,39 @@ If you have errors completing the setup process,
 come back to here and make sure you followed these steps correctly.
 ====
 
-Start the Wwise launcher that you installed earlier and update the launcher if needed.
-Next, open the `UNREAL ENGINE` tab in the upper tab-bar.
+Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
+Next, open the `UNREAL` tab in the sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
-Click on the three lines next to the "RECENT UNREAL ENGINE PROJECTS" label
+Click on the three-lines button next to the "RECENT UNREAL ENGINE PROJECTS" label
 and click `Browse for project...`.
-Now select the `FactoryGame.uproject` file in your mod's project folder.
+Now select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
-Then select the same version you installed earlier (likely `2021.1.8.7831`). 
+Then select the same version you installed earlier (likely `2022.1.3.8179`). 
 The version number may have additional numbers on the end of it e.g.
-`2021.1.8.7831.1234` but as long as it starts with `2021.1.8.7831` it should work.
+`2022.1.3.8179.1234` but as long as it starts with `2022.1.3.8179` it should work.
 
-If version `2021.1.8.7831` does not appear even after you have selected `All`,
-edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `4.26.2-CSS`.
+If version `2022.1.3.8179` does not appear even after you have selected `All`,
+edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
+is set to `5.1.1-CSS`.
 
-If this version still doesn't show up, try any other version starting with `2021.1.8`.
-
-[WARNING]
-====
-Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
-
-If you don't see this exact Wwise version, consider asking for help on the Discord.
-====
+If this version still doesn't show up, try any other version starting with `2022.1.3`.
 
 If you missed a required component as part of the Wwise installation,
 it may show a yellow warning box indicating what's missing
 as well as a button to "Modify" the installation.
-Go ahead and follow what it says for this step.
+Go ahead and follow what it says for this step only.
 If Wwise warns you that it could not find an installation in a red warning box,
-be sure that you have selected the correct version as stated above.
+that means you have not selected the correct version as stated above.
 If you see a blue box offering both "Modify" and "Add Plug-in",
-do nothing and continue to the next step.
+that means it's configured correctly,
+so continue to the next step.
 
 Under "Wwise Project Path", click the little triangle dropdown on the right
 and choose `New` to clear the path.
@@ -134,18 +122,26 @@ Do so, and agree to the terms to start the process.
 
 That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
+You can close the Wwise launcher.
+
+_Note: the below gif may select a version that does not match what is written above._
+_Please use the version mentioned in the text above._
 
 image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
+
+[TIP]
+====
+If you encounter a checksum error during Wwise integration,
+installing another Wwise version similar in version number should fix the problem.
+====
 
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-To do this, you'll need to run a command,
-unless you already have another version of Unreal Engine installed.
-If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`.
-Go ahead and skip down to the link:#_project_compilation[next section] if this works for you.
+Right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+If this option appears for you, skip down to the link:#_project_compilation[next section].
 
 Otherwise, you'll need to run a tool from the command line to generate the project files.
 
@@ -155,7 +151,7 @@ The command will follow the form below:
 "<path to your Unreal build tool here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
 
-Here is an example of a complete command.
+Here is an example of a completed command:
 
 ```
 "C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
@@ -177,18 +173,21 @@ It is not correctly formatted for Powershell.
 
 Next up is compiling the project from Visual Studio.
 It is possible for Unreal to compile the project as well on launch,
-but if there is an error,
-Unreal will give a very vague report as to what went wrong.
+but if there are any errors,
+Unreal will give a very vague report as to what went wrong
+and you'll have to rebuild from Visual Studio anyways to get more details.
 As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
 [TIP]
 ====
-If you have multiple computers available on your network, you can optionally use Incredibuild to speed up the compilation process. More info 
+If you have multiple computers available on your network,
+you can optionally use Incredibuild to speed up the compilation process.
+More info
 xref:CommunityResources/incredibuild.adoc[here].
 ====
 
-Open up the FactoryGame.sln file in your project folder.
+Open up the `FactoryGame.sln` file in your project folder.
 Once Visual Studio loads,
 make sure that you have `Development Editor` Solution Configuration
 and `Win64` Solution Platform selected in the top toolbar.
