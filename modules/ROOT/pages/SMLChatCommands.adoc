@@ -6,7 +6,7 @@ If you're looking to create your own chat commands, check out
 xref:Development/ModLoader/ChatCommands.adoc[this page].
 ====
 
-SML adds two kinds of commands to the game by default, xref:#_chat_commands[*Chat Commands*] and xref:_console_cheat_commands[*Console Cheat Commands*].
+SML adds two kinds of commands to the game by default, link:#_chat_commands[*Chat Commands*] and link:#_console_cheat_commands[*Console Cheat Commands*].
 
 == Chat Commands
 
@@ -32,24 +32,19 @@ Also lists all currently loaded mods.
 |Provides a list of currently connected players.
 |===
 
-// == Development Mode Only commands
-
-// To enable these commands, you must have the `developmentMode` setting enabled in the xref:SMLConfiguration.adoc[SML config file]. This list may not be up to date, and commands listed here may not function as expected.
-
-// [cols="1,4a"]
-// |===
-// |Command |Description
-
-// |None at the moment.
-// |
-// |===
-
 == Console Cheat Commands
 
-These commands can be run *from the in-game developer console* which is opened when you press the grave/tilde key (``` or `~`), or when you press F2.
+These commands can be run *from the in-game developer console*
+which is opened when you press the grave/tilde key (``` or `~`).
+If the console does not open upon keypress, check out the
+https://satisfactory.wiki.gg/wiki/Console#Accessing[Satisfactory Wiki's page on the Console]
+to try alternate approaches.
 
-To use these, you must have `enableCheatConsoleCommands` enabled in the
-xref:SMLConfiguration.adoc[SML config].
+[IMPORTANT]
+====
+In order to use these commands the "Enable Cheats" Session Setting must be enabled for the save.
+Furthermore, you must run the `EnableCheats` console command once in the game session before any of the other console commands will work.
+====
 
 This list consists of some of the most useful ones, but there are more.
 
