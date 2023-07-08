@@ -9,3 +9,8 @@ Introduced in SML3.5, Session Settings are a feature similar to Advanced Game Se
 
 Mods can define Session Settings in their
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
+
+TODO verify
+Session settings are stored in the session settings subsystem https://discord.com/channels/555424930502541343/562722670974599227/1126996669481889903
+
+Session Settings can optionally be marked as TODO, meaning that they will be stored (uncompressed) in the Unreal session URL as part of the save header. This means their values will be loaded as soon as the game mode is initalized and before world actors are initalized.

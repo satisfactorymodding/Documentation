@@ -44,10 +44,9 @@ You can still edit {cpp} files as usual, though.
 Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
 Why the change?
 
-- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out
+- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out. This move is just preparation for that well in advance
 - It keeps base-game plugins (Wwise, AbstractInstance) clearly separate from mods
-- Previously, Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes.
-- This move is just preparation for that well in advance
+- Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes in the past anyways
 
 ==== What you have to do:
 
@@ -68,7 +67,7 @@ Alpakit's "copy mods" feature has already been updated to account for this.
 === Unreal Engine 5 new Keybinds system
 
 Unreal Engine 5 has overhauled how user input and key bindings are handled.
-If you mod made use of keybindings, they will stop working,
+If your mod made use of keybindings, they will stop working,
 and possibly prevent your mod from compiling,
 until you change to the new system.
 
@@ -100,6 +99,13 @@ Explore this tree, and the base game's trees, to learn more about how research t
 ExampleMod has been updated to include some examples of correctly adding multiplayer functionality to your mod.
 The xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 page has also been updated with more information and tutorials.
+
+=== Session Settings
+
+Session Settings are a feature similar to the base game's Advanced Game Settings that allows mods to store configuration information on a per-game-save basis.
+
+Read more about it on the
+xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page.
 
 === Widget Blueprint Hooks
 
@@ -135,7 +141,3 @@ xref:Development/Localization.adoc[Localizing Mods] page.
 This feature has not yet been documented in detail, however,
 the Example Mod has been updated with its own custom level that
 properly registers itself through the Custom Level system and demonstrates many custom level concepts.
-
-// WIP_SessionSettings === Session Settings
-
-// WIP_SessionSettings xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
