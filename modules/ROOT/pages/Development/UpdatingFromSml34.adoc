@@ -20,6 +20,16 @@ until you are certain you don't need them anymore!
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
 
+=== Obtain the New Engine (Special Directions!)
+
+We have moved our fork of Unreal Engine to be inside the Satisfactory Modding organization
+instead of being owned by a separate github user.
+As such, the URL for downloading the engine has changed
+as well as the means of accessing it.
+
+More information can be found
+xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
+
 === Switch to Visual Studio 2022
 
 Unreal Engine 5 no longer supports Visual Studio 2019.

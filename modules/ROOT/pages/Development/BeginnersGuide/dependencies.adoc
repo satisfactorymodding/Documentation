@@ -112,7 +112,8 @@ The default options that the installer offers are fine.
 dedi-docs
 ////
 
-== Unreal Engine 5 (Custom Engine)
+[id="CustomEngine"]
+== Custom Unreal Engine Version
 
 Because Satisfactory uses a modified version of Unreal Engine,
 we modders need to be using that same version as well to develop our mods.
@@ -138,10 +139,30 @@ try turning off any ad-blockers or content filters you may have enabled and refr
 You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
 
+[id="UnrealLinker"]
+=== Link Your GitHub Account to Our Repository
+
+In addition to the changes Coffee Stain has made to Unreal Engine,
+the modding community has also applied engine some changes of our own.
+
+You'll have to link your account through a tool we created in order to view our repository and download the required files.
+To use the tool, visit the following link: https://linker.ficsit.app/link
+
+After the linking process is complete you should be redirected to the engine GitHub repository.
+
+After you have access to the custom engine repository it's safe to remove the application's permissions
+by visiting your https://github.com/settings/connections/applications/bdde02a7b3318bf2b84d[GitHub settings page].
+
+[TIP]
+====
+If you're curious, you can find the source code for the tool used to perform the linking process
+https://github.com/satisfactorymodding/unreal-linker[here].
+====
+
 === Download the Custom Engine
 
-Once you've done that, go to the
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
+Next, go to the
+https://github.com/satisfactorymodding/UnrealEngine/releases[Satisfactory Modding Unreal Engine project releases page]
 and download some files from the latest release:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
@@ -159,6 +180,8 @@ Check for emails from both Epic and GitHub, and be sure that you followed the ab
 You can verify that you've correctly joined the GitHub organization by checking for "EpicGames" on the
 https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
+
+You also must have used the link:#UnrealLinker[Unreal Linker] tool descirbed above to link your GitHub account to our repository.
 ====
 
 === Install the Custom Engine
