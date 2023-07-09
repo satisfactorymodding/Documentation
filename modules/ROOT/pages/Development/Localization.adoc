@@ -32,7 +32,7 @@ This documentation page will not talk about how to use Unreal's text formatting 
 In order to make sure that Unreal gathers text as localizable, it must be assigned a localization key.
 In Blueprint assets, Unreal will do this for you automatically as long as it has been marked as such in the 'advanced settings' dropdown.
 
-image:Localization/SchematicDisplayNameAdvancedSettings.png[Advanced Settings]
+image:L10n/SchematicDisplayNameAdvancedSettings.png[Advanced Settings]
 
 If a text field is not marked to be localized, it won't be gathered and exported for translation later on in the process.
 A small warning icon is usually displayed next to these text fields when viewing assets in the editor.
@@ -72,15 +72,10 @@ It's important to note that you must define a localization namespace at the top 
 Before using the macro, define the namespace (for example, `#define LOCTEXT_NAMESPACE "SML"`)
 then use `#undef LOCTEXT_NAMESPACE` at the end of the file.
 
-## Enable the Experimental Localization Dashboard
+## Open the Localization Dashboard
 
 In order to open the Localization Dashboard,
-navigate to `Window > (Experimental subheading) Localization Dashboard`.
-
-If the item does not appear,
-you must enable the Localization Dashboard in the editor preferences.
-To do this, navigate to `Edit > Editor Preferences` and search for `Localization Dashboard`,
-then check the box.
+navigate to `Tools > (Tools subheading) Localization Dashboard`.
 
 image:L10n/OpenDashboard.png[Editor screenshot of Open Localization Dashboard]
 
@@ -89,6 +84,8 @@ image:L10n/OpenDashboard.png[Editor screenshot of Open Localization Dashboard]
 ### Adding a Localization Target
 
 Next, add a new **Plugin** Localization Target by clicking the `Add New Target` button in the "Plugin Targets" panel on the left.
+
+Plugin Localization Targets are a custom feature added to the engine by the Satisfactory Modding team.
 
 [WARNING]
 ====
@@ -183,29 +180,36 @@ image:L10n/CompileTranslations.png[Compile Translations button]
 
 ## Packaging Translations
 
-TODO should just pack normally with your mod, test in 
+TODO when correctly configured it should just pack normally with your mod
 
 ## Testing In-Game
 
-TODO mention Base game Satisfactory 'quick switch debug language' feature
-
-Run the quick language switch command in the in-game Unreal console to see if the strings are loaded correctly.
-
+A quick way to test your translations in-game is to set up the base game's
+https://satisfactory.wiki.gg/wiki/Settings#Debug[Quick Switch Language feature].
+This feature, added for use by translators of the base game,
+allows using the `QuickSwitchLanguage` console command to toggle between your normal language and second one you select in the settings.
 
 ## Enabling Users to Contribute Translations
 
 TODO thought that the editor could integrate with Crowdin/external stuff for import/export, was it turned off?
 
-It is suggested that you use the Tolgee platform to allow your users to contribute translations for your mod.
+It is unlikely that a single developer will be fluent in all of the languages the community wishes for a mod to support.
+As such, most mods set up a system to allow users to contribute translations to the mod.
 
-The modding community hosts its own free to use instance of Tolgee at https://translate.ficsit.app/ that all Satisfactory mods and tools can use to crowdsource translations.
+The modding community hosts its own free to use instance of Tolgee at https://translate.ficsit.app/
+that all Satisfactory mods and tools can use to crowdsource translations.
+We have also modified it to offer some extra features particularly helpful for modders.
 
 Satisfactory uses the Crowdin platform to gather translations.
 If you'd like to get involved, you can find information on how in the `#welcome` channel of the
 https://discord.com/invite/satisfactory[official Satisfactory discord].
-
 However, Crowdin is expensive to for most cases and has heavy restrictions on how many strings can be translated.
 The Tolgee platform is free and open source, and can be self-hosted.
+
+If you'd like to get started helping to translate a mod,
+or get a project started for your own mod on the site,
+join the modding discord, pick up the translator role in the `#rules` channel,
+then follow the directions in the pinned thread in `#mod-translations`.
 
 ### Exporting Strings to Tolgee
 
@@ -213,7 +217,7 @@ TODO click the export PO button
 
 ### Importing Translations from Tolgee to Unreal
 
-TODO import PO button
+TODO import PO button (but Tolgee doesn't offer export yet)
 
 TODO arch note: If you want to manually change localization data or use 3rd party tools, it's stored in %PluginName%/Content/Localization/%LocalizationTargetName%. After you change csv or po files, make sure to sync them with the engine before packaging using the localization dashboard.
 

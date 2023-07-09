@@ -32,7 +32,8 @@ xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
 
 === Switch to Visual Studio 2022
 
-Unreal Engine 5 no longer supports Visual Studio 2019.
+Unreal Engine 5 no longer supports Visual Studio 2019,
+nor the 2017 or 2019 toolchains.
 
 You can find information on installing Visual Studio on the
 xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page].
