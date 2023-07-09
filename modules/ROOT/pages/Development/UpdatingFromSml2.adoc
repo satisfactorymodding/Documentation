@@ -166,7 +166,7 @@ you will need to create stub blueprints for them yourself.
 You can read more about this
 xref:Development/ReuseGameFiles.adoc[on the Reusing Base Game Files page].
 Instead of trying to placeholder a mesh or texture,
-you will be placeholdering an FGItemDescriptor or similar.
+you will be creating a placeholder for the an FGItemDescriptor or similar.
 
 But don't worry, we are working hard on updating the project,
 and upcoming versions will include even more content than the old ones did.
@@ -184,7 +184,7 @@ If you encounter SML changes not listed here, please contact us on the Discord
 so that we can add them to this list, or add it yourself via 'Edit this Page.'
 ====
 
-* The Bootstraper is no longer needed, and has been removed.
+* The Bootstrapper is no longer needed, and has been removed.
 Unreal Engine and SML now take care of what it used to do.
 * InitMod is no more, and has been supplanted by the Mod Modules system.
 Most things that involved InitMod now involve the

@@ -178,7 +178,7 @@ xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
 == Preparing to Update your Starter Project
 
 Depending on how you downloaded your modding starter project,
-one of these approches will be easier than the rest,
+one of these approaches will be easier than the rest,
 or you may _have_ to use one to get what you want.
 
 You should read both options in full to make an informed decision.
@@ -255,7 +255,7 @@ They include, but are not necessarily limited to:
   (see the link:#_dealing_with_the_content_folder[Dealing With the Content Folder]
   and link:#_watch_out_complete_starter_projects_and_version_control[Watch Out: Complete Starter Projects and Version Control] sections)
 
-Once you have stashed or discared your changes to these files,
+Once you have stashed or discarded your changes to these files,
 you should be able to pull/merge in the files.
 
 You may wish to delete some project temporary folders, especially after an engine update, to save on disk space.

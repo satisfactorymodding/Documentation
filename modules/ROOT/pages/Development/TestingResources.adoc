@@ -254,6 +254,8 @@ bEnabled=true
 
 Example command line:
 
+// cspell:ignore Multiprocess
+
 `FactoryGame-Win64-Shipping.exe -NoEpicPortal -EngineIni="C:\EpicLibrary\SatisfactoryExperimental\OfflineEngineIni2.ini" -Multiprocess -Log`
 
 

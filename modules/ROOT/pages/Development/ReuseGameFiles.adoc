@@ -45,7 +45,7 @@ This process is described below.
 
 If you are missing an `FGItemDescriptor` placeholder,
 you can also create it using the same process.
-You'll be placeholdering the descriptor instead of a mesh or texture, though.
+You'll be creating a placeholder for the descriptor instead of a mesh or texture, though.
 
 == Example Static Mesh and Icon Reuse
 
@@ -116,13 +116,13 @@ For the mesh, we can reuse the
 link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[Plantpot of Knowledge]
 from the
 xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial],
-which you can copy in from the ExampleMod in your project, or redownload from the above link.
+which you can copy in from the ExampleMod in your project, or download it again from the above link.
 
 For the icon texture, we can reuse the 
 link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[Soon™ Icon]
 from the
 xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe/Schematic tutorial],
-which you can copy in from the ExampleMod in your project or redownload from the above link.
+which you can copy in from the ExampleMod in your project or download it again from the above link.
 
 image:ReuseContent/PlaceholderMesh.png[Final Placeholder Mesh]
 image:ReuseContent/PlaceholderIcon.png[Final Placeholder Icon]

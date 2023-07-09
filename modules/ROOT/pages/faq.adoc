@@ -298,7 +298,7 @@ You might see error messages like:
 
 Internet restrictions, and sometimes VPNs and proxies, mess with our services.
 To work around this, download the mod files mentioned in the error message from SMR manually.
-If they are named `[modname].zip` rename them to `[modname].smod`
+If they are named `[ModName].zip` rename them to `[ModName].smod`
 
 If the mod you downloaded is SML,
 then place the file into 
@@ -370,6 +370,7 @@ https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-
 
 In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
 
+// cspell:ignore mklink
 1. Close SMM
 2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
 3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
@@ -438,6 +439,7 @@ If you cannot find your steam save folder (probably because you have owned the g
 
 Using Steam Play:
 
+// cspell:ignore steamapps compatdata steamuser valvesoftware
 `~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
 Using Steam:

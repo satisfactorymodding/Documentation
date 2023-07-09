@@ -114,6 +114,7 @@ which you can read more about in the Unreal documentation if you are interested.
 
 When generating visual studio project files for your project, you may encounter an error similar to the below:
 
+// cspell:ignore projectfiles
 ```
 Running C:/Program Files/Unreal Engine - CSS U8/Engine/Build/BatchFiles/Build.bat  -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
 Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
@@ -200,7 +201,7 @@ See the Example Mod for examples of how to use this system.
 === Mod Localization
 
 We have started hosting our own Tolgee instance
-that makes it easy to crowdsource and contrbute translations to the modding toolkit and to mods.
+that makes it easy to crowdsource and contribute translations to the modding toolkit and to mods.
 
 Read more about how you can get started on the
 xref:Development/Localization.adoc[Localizing Mods] page.

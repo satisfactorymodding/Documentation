@@ -181,7 +181,7 @@ You can verify that you've correctly joined the GitHub organization by checking 
 https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 
-You also must have used the link:#UnrealLinker[Unreal Linker] tool descirbed above to link your GitHub account to our repository.
+You also must have used the link:#UnrealLinker[Unreal Linker] tool described above to link your GitHub account to our repository.
 ====
 
 === Install the Custom Engine
