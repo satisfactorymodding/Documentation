@@ -188,6 +188,13 @@ xref:CommunityResources/incredibuild.adoc[here].
 ====
 
 Open up the `FactoryGame.sln` file in your project folder.
+
+[TIP]
+====
+Visual Studio may tell you "Based on your solution, you might need to install extra components for a full development experience" at the top of the Solution Explorer window.
+It is safe to ignore this message.
+====
+
 Once Visual Studio loads,
 make sure that you have `Development Editor` Solution Configuration
 and `Win64` Solution Platform selected in the top toolbar.
