@@ -48,11 +48,6 @@ you'll need to modify your installation via the installer to add a new MSVC buil
 See the xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page]
 for more information.
 
-=== Rider users: Mods no longer detected 
-
-The structure of the project has changed and Rider can no longer auto discover mod targets.
-You can still edit {cpp} files as usual, though.
-
 === Folder Move: Plugins to Mods
 
 Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
@@ -166,6 +161,13 @@ note that this has been deprecated in UE5.1.
 Some alternatives include specifying the full class path or using the safe variants of the functions.
 More info can be found
 https://forums.unrealengine.com/t/findobject-withough-any-package/742812/3[here].
+
+=== Rider users: Mods no longer detected 
+
+The structure of the project has changed and Rider can no longer auto discover mod targets
+if you're using the `.uproject` model.
+The `.sln` model should still work as it did before.
+You can still edit {cpp} files as usual even if using the `.uproject` model.
 
 == Notable New Features
 
