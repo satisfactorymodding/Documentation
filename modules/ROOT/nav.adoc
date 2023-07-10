@@ -7,6 +7,7 @@
 
 * xref:Development/index.adoc[Development]
 
+** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]
 ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
@@ -80,7 +81,6 @@
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 
-** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]
 ** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
 // dedi-docs **xref:Development/UpdatingToDedi.adoc[Updating to Dedicated Server Support]
 

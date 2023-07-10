@@ -33,6 +33,13 @@ as well as the means of accessing it.
 More information can be found
 xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
 
+=== Re-Enable Show Plugin Content
+
+Your saved editor setting for the UE4 option "Show Plugin Content" in Content Browsers does not carry over to UE5.
+You'll have to turn it back on again.
+
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
+
 === Switch to Visual Studio 2022
 
 Unreal Engine 5 no longer supports Visual Studio 2019,
@@ -148,6 +155,19 @@ using EpicGames.Core;
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
+=== Online Subsystem Changes
+
+Changes to the Unreal Engine Online Subsystem have made it impossible to
+launch the game with a fixed username from the command line.
+This affects the launch scripts provided in the
+xref:Development/TestingResources.adoc#LaunchScript[Testing/Multiplayer Testing] page.
+Although this functionality has not returned at the time of writing,
+the page has been updated with an improved version of the launch script.
+
+We're looking for help resolving this - if you'd like to help,
+please contact us on the Discord and read
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/182[this issue].
+
 === IsLocationNearABase Deprecation
 
 According to Ben from Coffee Stain,
@@ -224,6 +244,12 @@ xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Scr
 
 See the Example Mod for examples of how to use this system.
 
+=== New Debugging Capabilities
+
+There are two new launch flags to assist with debugging {cpp} mods.
+You can read more about them on the
+xref:Development/Cpp/debugging.adoc#_launch_Arguments[Debugging] page.
+
 === Mod Localization
 
 We have started hosting our own Tolgee instance
@@ -237,3 +263,9 @@ xref:Development/Localization.adoc[Localizing Mods] page.
 This feature has not yet been documented in detail, however,
 the Example Mod has been updated with its own custom level that
 properly registers itself through the Custom Level system and demonstrates many custom level concepts.
+
+=== Exploration Sink Points Registration
+
+You can now provide a data table for registering items for the Resource Sink to be put on the Exploration track.
+The only base-game item on that track is the Alien DNA Capsule.
+See the Example Mod for an example of how to use this system.
