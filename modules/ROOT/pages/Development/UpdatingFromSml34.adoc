@@ -107,7 +107,9 @@ You will have to switch to:
 BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefaultPowerPoleRecipe")
 ----
 
-This is done as part of a move away from using ANY_PACKAGE,
+If you don't update your access transformers messages will be generated in your output log explaining what needs to be changed, for example, `LogAccessTransformers: Warning: Resolving BlueprintReadWrite AFGRecipeManager:mAvailableRecipes requested by MAMTips: Using deprecated class specification. The loaded class was /Script/FactoryGame.FGRecipeManager. Please update your AccessTransformers config file. This will become an error in a future version.`
+
+This change was made as part of a move away from using ANY_PACKAGE,
 which you can read more about in the Unreal documentation if you are interested.
 
 === {cpp} Mod Module Build.cs Format Changes

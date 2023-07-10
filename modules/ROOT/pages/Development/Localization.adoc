@@ -211,13 +211,47 @@ or get a project started for your own mod on the site,
 join the modding discord, pick up the translator role in the `#rules` channel,
 then follow the directions in the pinned thread in `#mod-translations`.
 
+## Tolgee Plugin Configuration
+
+TODO when they finish their docs could link to this https://github.com/tolgee/documentation/pull/420/files
+
+1. Add the plugin's repo to your mods folder following the directions on the
+xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project] page.
+The Tolgee plugin source can be found https://github.com/tolgee/tolgee-unreal[here].
+2. Enable the plugin in the editor from the `Edit` > `Plugins` menu, which will require restarting the editor
+3. Create an API key for your editor to use on your https://translate.ficsit.app/account/apiKeys[account page].
+ The API key should be created for your mod's project on Tolgee.
+ You may wish to set the Expiration to `Never expires`.
+ Enable all Scopes that you can, except disable the `admin` scope.
+ Once the key is created, click to copy it.
+ Note that this API key is for a single mod.
+ Don't share it publicly because actions taken using the key are considered performed by you.
+4. Back in the Unreal Editor, open the `Edit` > `Project Settings` menu and search "tolgee".
+ Enter the following data:
+ - Api Key: (The API key you just copied)
+ - Api Url: `https://translate.ficsit.app` (Note that there is no slash at the end!)
+ - Project Id: (Upon entering the last 2 fields, this should populate with your project's ID, an integer. If it's `INVALID`, make sure you filled in the last 2 fields correctly.)
+ - Live Translation Updates: True
+ - Update Interval: 60
+
+
+## Upload Strings to Tolgee
+
+TODO only works with Game targets but still 500s when used https://discord.com/channels/555424930502541343/1126271289640894605/1127757678626754650
+
+Once you have your targets set up you can use this
+
+image:L10n/TolgeePluginButtonLocation.png[Tolgee button in the editor]
+
+"Upload missing keys"
+
 ### Exporting Strings to Tolgee
 
-TODO click the export PO button
+TODO click the export PO button?
 
 ### Importing Translations from Tolgee to Unreal
 
-TODO import PO button (but Tolgee doesn't offer export yet)
+TODO import PO button? (but Tolgee doesn't offer export yet)
 
 TODO arch note: If you want to manually change localization data or use 3rd party tools, it's stored in %PluginName%/Content/Localization/%LocalizationTargetName%. After you change csv or po files, make sure to sync them with the engine before packaging using the localization dashboard.
 
@@ -225,30 +259,33 @@ TODO arch note: If you want to manually change localization data or use 3rd part
 
 TODO engine changes being made to keep them in plugin dirs so shouldn't have to move via script
 
-Compile in Unreal and run the Kyrium script or manually move to put them in your plugin's folder
+Compile in Unreal 
+// and run the Kyrium script or manually move to put them in your plugin's folder
 
-## Plugin Settings
+// ## Plugin Settings
 
-TODO seems to only listen to one Engine.ini, Mircea says there is a base UE field in plugins to specify localization directories, use that instead?
+// TODO seems to only listen to one Engine.ini, Mircea says there is a base UE field in plugins to specify localization directories, use that instead?
 
-`YourModReference/Config/Engine.ini`
+// This should have been replaced by the plugin targets system
 
-```ini
-[Internationalization]
-LocalizationPaths=../../../FactoryGame/Mods/YourModReference/Localization/YourModReference
-```
+// `YourModReference/Config/Engine.ini`
 
-In order to tell Unreal to package your localization files with your plugin,
-you will need to add a line to your plugin's `YourModReference/Config/PluginSettings.ini`
-to tell it to include both your Localization folder and your `Engine.ini` with the mod's files.
+// ```ini
+// [Internationalization]
+// LocalizationPaths=../../../FactoryGame/Mods/YourModReference/Localization/YourModReference
+// ```
 
-Config/PluginSettings.ini
+// In order to tell Unreal to package your localization files with your plugin,
+// you will need to add a line to your plugin's `YourModReference/Config/PluginSettings.ini`
+// to tell it to include both your Localization folder and your `Engine.ini` with the mod's files.
 
-```ini
-[StageSettings]
-+AdditionalNonUSFDirectories=Localization
-+AdditionalNonUSFDirectories=Config
-```
+// Config/PluginSettings.ini
+
+// ```ini
+// [StageSettings]
+// +AdditionalNonUSFDirectories=Localization
+// +AdditionalNonUSFDirectories=Config
+// ```
 
 ## Cross-plugin Localization
 
