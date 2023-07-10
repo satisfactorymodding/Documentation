@@ -9,6 +9,9 @@ follow the directions on the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
 
+If Update 8 has not yet been released on Early Access when you are reading this guide,
+make sure to grab the `dev` branch of the Starter Project instead of `master`.
+
 [IMPORTANT]
 ====
 Remember to keep the old engine installed and a working copy of your previous starter project around
