@@ -6,7 +6,9 @@ If you're looking to create your own chat commands, check out
 xref:Development/ModLoader/ChatCommands.adoc[this page].
 ====
 
-SML adds two kinds of commands to the game by default, link:#_chat_commands[*Chat Commands*] and link:#_console_cheat_commands[*Console Cheat Commands*].
+SML adds two kinds of commands to the game by default,
+link:#_chat_commands[*Chat Commands*]
+and link:#ConsoleCommands[*Console Commands*].
 
 == Chat Commands
 
@@ -32,7 +34,8 @@ Also lists all currently loaded mods.
 |Provides a list of currently connected players.
 |===
 
-== Console Cheat Commands
+[id="ConsoleCommands"]
+== Console Commands
 
 These commands can be run *from the in-game developer console*
 which is opened when you press the grave/tilde key (``` or `~`).
