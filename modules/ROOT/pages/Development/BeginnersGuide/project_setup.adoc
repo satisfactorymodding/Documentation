@@ -1,4 +1,4 @@
-= Project-Setup
+= Project Setup
 
 A key aspect of fast and efficient development is a proper Workspace and
 project setup. With a misconfigured or suboptimal setup, you'll lose
@@ -154,7 +154,7 @@ The command will follow the form below:
 Here is an example of a completed command:
 
 ```
-"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
+"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.exe" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
 
 [WARNING]
