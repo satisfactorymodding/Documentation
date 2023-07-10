@@ -145,6 +145,25 @@ using System.Text;
 using EpicGames.Core;
 ----
 
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== IsLocationNearABase Deprecation
+
+According to Ben from Coffee Stain,
+`AFGProximitySubsystem::IsNearBase` should be used instead of `IsLocationNearABase`.
+
+=== ANY_PACKAGE Deprecation
+
+If you are using features that look up classes or objects with ANY_PACKAGE filters,
+note that this has been deprecated in UE5.1.
+
+Some alternatives include specifying the full class path or using the safe variants of the functions.
+More info can be found
+https://forums.unrealengine.com/t/findobject-withough-any-package/742812/3[here].
+
 == Notable New Features
 
 Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
