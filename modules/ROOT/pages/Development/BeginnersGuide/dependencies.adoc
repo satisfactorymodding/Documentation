@@ -88,7 +88,8 @@ or work on some of the other install steps below.
 ====
 An alternative to Visual Studio which is very popular among {cpp} modders is
 https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
-If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
+If you consider using it, make sure you still have the necessary VS-{cpp} packages installed,
+and make sure to use the `.sln` project model.
 ====
 
 ////

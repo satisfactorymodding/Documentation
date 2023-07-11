@@ -182,12 +182,12 @@ Some alternatives include specifying the full class path or using the safe varia
 More info can be found
 https://forums.unrealengine.com/t/findobject-withough-any-package/742812/3[here].
 
-=== Rider users: Mods no longer detected 
+=== Rider users: Mods no longer detected and uproject model no longer supported
 
 The structure of the project has changed and Rider can no longer auto discover mod targets
 if you're using the `.uproject` model.
+Furthermore, using the `.uproject` model will cause Rider to try and build the Engine, which files are not present for, corrupting the Rider project.
 The `.sln` model should still work as it did before.
-You can still edit {cpp} files as usual even if using the `.uproject` model.
 
 == Notable New Features
 
