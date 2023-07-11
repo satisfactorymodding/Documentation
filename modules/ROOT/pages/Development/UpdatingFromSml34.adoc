@@ -1,10 +1,19 @@
 = Upgrading from SML 3.4.x to 3.5
 
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.5 brings support for Unreal Engine 5 and a number of new game systems.
+
 == Update your Starter Project
 
-First, read the special notes about this update below.
+First, please read this entire page before you begin updating your mod.
+It will save you time later to have an idea going in of what to expect while updating.
 
-After you have finished reading them,
+After you have finished reading this page,
 follow the directions on the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
@@ -17,6 +26,25 @@ make sure to grab the `dev` branch of the Starter Project instead of `master`.
 Remember to keep the old engine installed and a working copy of your previous starter project around
 until you are certain you don't need them anymore!
 ====
+
+== Not Done Yet
+
+The following features are not ready to use yet.
+This section will change often!
+
+=== Unreal Engine 5 new Keybinds system
+
+User input and key bindings were overhauled in Unreal Engine 5 and Update 8.
+Please help us test it out and write docs for the system by trying it out and discussing on the Discord.
+
+=== Plugin Translation Targets
+
+The new mod translation system is not totally ready for use.
+It is functioning, and you don't have to use the workaround for adding game translation targets at runtime,
+but the editor does not save data properly and it will be wiped upon closing the editor.
+You can still use the system and package mods with translations,
+but you'll have to re-set up the target
+and re-import the translated strings every time you restart the editor.
 
 == Required Changes
 
