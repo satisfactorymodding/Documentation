@@ -28,10 +28,10 @@ In order to use Access Transformers, create a file in `YourPluginModReference\Co
 ----
 [AccessTransformers]
 ; You can use semicolons for comments if you want to leave notes about the purpose of an access transformer
-Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
-Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
-BlueprintReadWrite=(Class="AFGSomeClass", Property="mSomeProperty")
-BlueprintCallable=(Class="AFGSomeClass", Function="SomeFunction")
+Friend=(Class="/Script/FactoryGame.FGSomeClass", FriendClass="UMyClass")
+Accessor=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="SomeFunction")
 ----
 
 You can have multiple (or none) of each of the access transformer types in one file,
@@ -105,13 +105,13 @@ Some of the Friend classes are from the Area Actions mod.
 [source,ini]
 ----
 [AccessTransformers]
-Friend=(Class="AFGBuildableFactory", FriendClass="UAACopyBuildingsComponent")
-Friend=(Class="AFGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent")
-Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
-Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
-Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
-BlueprintReadWrite=(Class="AFGSchematicManager", Property="mPurchasedSchematics")
-BlueprintCallable=(Class="IFGDismantleInterface", Function="Dismantle")
+Friend=(Class="/Script/FactoryGame.FGBuildableFactory", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="/Script/FactoryGame.FGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="/Script/FactoryGame.FGBuildableConveyorBase", FriendClass="AAAClearInventories")
+Friend=(Class="/Script/FactoryGame.FGHologram", FriendClass="UAACopyBuildingsComponent")
+Accessor=(Class="/Script/FactoryGame.FGBuildableFactory", Property="mInventoryPotential")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGSchematicManager", Property="mPurchasedSchematics")
+BlueprintCallable=(Class="/Script/FactoryGame.FGDismantleInterface", Function="Dismantle")
 ----
 
 === Blueprint Asset Property Tracing Example
@@ -130,5 +130,5 @@ which will make the `mMaxZoopAmount` property on _any asset_ that is a descenden
 [source,ini]
 ----
 [AccessTransformers]
-BlueprintReadWrite=(Class="AFGFoundationHologram", Property="mMaxZoopAmount")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGFoundationHologram", Property="mMaxZoopAmount")
 ----
