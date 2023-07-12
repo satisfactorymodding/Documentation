@@ -6,7 +6,8 @@ This page is a work in progress.
 ====
 
 Unreal Engine 5 introduces the Enhanced Input System which assits games in handling user input.
-Satisfactory extends this system to allow for automatic detection of mod keybinds in the game's settings menu.
+Satisfactory extends this system to allow for automatic detection of mod keybinds in the game's settings menu
+and automatic integration with the base game's contexts.
 
 The https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/[Unreal Engine documentation]
 provides a good overview of the system, and you should read that page first,
@@ -66,20 +67,26 @@ Look at the base game's input actions for other examples.
 
 Satisfactory adds additional functionality to Input Mapping Contexts that are used instead of some of Unreal's fields.
 
-Your Input Mapping Contexts should be of type `FGInputMappingContext` and not `InputMappingContext` -
-**you can't create them in Blueprint with Create Advanced Asset** because it doesn't show up in the list.
-Instead, you must copy an existing mapping context and blank it out for your own use,
+Your Input Mapping Contexts should be of type `FGInputMappingContext` and NOT `InputMappingContext`.
+Note that in order to create one in Blueprint you must use
+`Create Advanced Asset` > `Miscellaneous` > `Data Asset` and search for `FGInputMappingContext`.
+Alternatively, you can copy an existing mapping context and blank it out for your own use,
 for example, you can copy one from the base game or from ExampleMod.
 The Unreal documentation explains how to create them in {cpp},
 but you need to adapt it to use the aforementioned Satisfactory-specific parent class.
+
+[IMPORTANT]
+====
+Again, make sure that you are using `FGInputMappingContext` and NOT `InputMappingContext`!
+====
 
 Input Mapping Contexts should have all of the relevant Input Actions provided in the Mapping field,
 which is also where you are allowed to assign default key bindings for each action.
 For each Input Action you list, you must:
 
-- Enable "Is Player Mappable"
+- Enable "Is Player Mappable" (unless you don't want it to be edited by the user, but 99% of the time you do)
 - Under "Player Mappable Options":
-    - Provide a "Name", otherwise the user's setting presumably won't be saved when the game reloads.
+    - Provide a "Name", otherwise the bind will not be user editable and attempting to look up its display name will fail.
     - Set a "Display Name", which is the text that will appear to users when they view or search for the action in the settings menu.
     - Note: the "Display Category" field here is ignored by Satisfactory.
 
@@ -92,14 +99,13 @@ This should usually be your mod's user friendly name.
 
 Once an input action is added to a Context and the Context is properly formatted
 with a Display Name it will appear in the settings menu.
-You do not need to register your actions nor contexts anywhere else for the purposes of the _settings_ menu.
-
-TODO check with Arch
+You do not need to register your actions nor contexts anywhere else.
 
 If your mod has relatively few key binds you will probably only have one or two contexts for your mod:
 one that will be applied when the player is moving about as normal
 and one for when they are in the user interface.
 
+[id="ParentContext"]
 === Parent Context
 
 Parent Contexts are a feature provided by Satisfactory for usage by mods.
@@ -108,8 +114,6 @@ but we can instead specify a Parent Context for our own Contexts.
 When the Context we specified as a parent is applied by the game,
 our context will also be applied,
 and vice versa when the parent context is removed.
-
-TODO check with Arch
 
 If you want the context to be available:
 
@@ -129,36 +133,74 @@ If you want the context to be available:
 == Responding to Input Actions in Code
 
 It is suggested that your code respond to input actions in either an actor
-(such as a xref:Development/ModLoader/Subsystems.adoc[Subsystems]) or a widget.
-
-In order to create the Blueprint event node for responding to an input action,
-you may have to turn off "Context Sensitive" in the blueprint action selector for it to appear in the search results.
-
-The Unreal documentation explains how to handle responding to Input Actions in {cpp}.
+(such as a xref:Development/ModLoader/Subsystems.adoc[Subsystems]), a widget,
+or a custom actor component on the player character or controller attached
+via xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks].
 
 On some actors, such as Subsystems,
 you may need to call EnableInput for them to process user input.
 
+[id="RespondInputActionsBlueprint"]
+=== Blueprint
 
+In order to create the Blueprint event node for responding to an input action,
+you may have to turn off "Context Sensitive" in the blueprint action selector for it to appear in the search results.
+
+[id="RespondInputActionsCpp"]
+=== {cpp}
+
+The Unreal documentation explains how to handle responding to Input Actions in {cpp},
+except it assumes we have control over the player controller, which modders do not.
+Thankfully Coffee Stain has created a delegate `AFGCharacterPlayer::OnPlayerInputInitialized`
+which mods can bind to.
+Each time `SetupPlayerInputComponent` is called
+the delegate will be called, giving you a chance to register your custom inputs.
 
 [id="ManualRegisterContext"]
 == Manual Mapping Context Registration
 
-The primary method of registering your Contexts is usually via the [[Parent Context]] system,
+The primary method of registering your Contexts is usually via the
+link:#ParentContext[Parent Context] system,
 however, is is possible to manually manage the registration of your context.
 
 You can get a reference to the EnhancedInputLocalPlayerSubsystem via a Get node on a player controller instance.
-From there, you can call Add Mapping Context and Remove Mapping Context to control when your context is applied.
+From there, you can call `AFGPlayerController::SetMappingContextBound` to control when your context is applied.
+
+You should not use Add Mapping Context or Remove Mapping Context because those do not interact with Satisfactory's
+parent context system, meaning your contexts cannot be extended as described in the[Parent Context section.
 
 == Chorded Actions
 
 TODO ask D4rk, required to do Ctrl/Alt/Shift + key
 
+== Handling input in UIs
+
+Sometimes a modded user interface requires extra Actions to be bound while it is active.
+An example of this is the Workbench UI in the base game,
+which binds the spacebar to holding down the craft button.
+
+Create a Context and Actions for use when the widget is open.
+As long as the widget extends Widget Usable Base, context management is handled for you.
+Simply specify the MC_UserInterfaceBase context and your own custom context
+in the widget's `mInputMappingContexts` field
+and enable `mInputGateDelayOpen`.
+
+An example of this can be found in `Widget_InputExample` in the ExampleMod.
+
+[IMPORTANT]
+=====
+If you override the Destruct method in your widget, make sure to call the parent implementation
+or the widget will not properly unregister the input contexts!
+=====
+
+If your widget does not extend Widget Usable base you will have to
+link:#ManualRegisterContext[manually manage context registration].
+
 == Debugging
 
-As mentioned on the
-https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/#debugcommands[Unreal documentation],
-the in-game console command `showdebug enhancedinput`
-will display extended information about what Contexts and Actions are loaded by the game.
-
-TODO this doesn't seem to be there in game but `showdebug INPUT` is?
+Unfortunately the very useful `showdebug enhancedinput` console command
+described in the
+https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/#debugcommands[Unreal documentation]
+is not available in shipping builds.
+However, the command `showdebug INPUT` is available and displays a reduced set of information,
+such as which mapping contexts are currently bound.
