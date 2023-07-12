@@ -5,12 +5,32 @@
 This page is a work in progress.
 ====
 
-Introduced in SML3.5, Session Settings are a feature similar to Advanced Game Settings that allows mods to store configuration information on a per-game-save basis.
+Introduced in SML3.5, Session Settings are a feature similar to Advanced Game Settings
+that allows mods to store configuration information on a per-game-save basis.
+They do not require Advanced Game Settings to be enabled to be used.
 
-Mods can define Session Settings in their
+Mods can register Session Settings in their
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
+As soon as the Session Setting is registered it will be available to be set in the SML Session Settings menu,
+which is available at both world creation and in the pause menu.
+
+Session Settings are defined by data assets in the same format as how the game defines the configuration options in the settings menu.
+
+Check ExampleMod for some example session settings and how to read their values
+
+TODO the only ExampleMod case of reading the value right now is in the Level Blueprint which is kinda obscure
+
+TODO are they currently synced from clients to host? SML forces them all to be "for all players" so it can be saved with the savegame.
 
 TODO verify
 Session settings are stored in the session settings subsystem https://discord.com/channels/555424930502541343/562722670974599227/1126996669481889903
 
 Session Settings can optionally be marked as TODO, meaning that they will be stored (uncompressed) in the Unreal session URL as part of the save header. This means their values will be loaded as soon as the game mode is initialized and before world actors are initialized.
+
+== Session Settings vs. Mod Config
+
+TODO
+
+Mod Config is better for user interface or visual stuff since it is saved with the user's game and carries over between saves.
+
+Session Settings are good for things you want to be a choice per-save file, such as options for a custom level.
