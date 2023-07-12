@@ -117,6 +117,21 @@ until you change to the new system.
 
 TODO directions on how to use this
 
+TODO link the docs page https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/
+
+mention how you have to copy an existing FGInputMappingContext asset because it doesn't show up in create
+
+mention what fields actually end up displayed in the keybinds menu and what doesn't
+
+mention calling Enable Input on unusual actors so they 
+
+mention having to turn off Context Sensitive to be allowed to create the input action events in ex. a subsystem
+
+TODO examplemod binding still triggers when in interact widgets, probably not good
+
+TODO ask D4rk about handling it for widgets
+
+
 === Increased Access Transformer Specificity
 
 If you are using BlueprintReadWrite or BlueprintCallable access transformers
