@@ -37,6 +37,15 @@ This section will change often!
 You might run into troubles accessing the new Unreal Engine repo.
 Please contact us on the Discord if you get stuck.
 
+=== SMLEditor Generate Config Structs
+
+The SMLEditor utility to generate config structs from mod configurations
+does not correctly appear in the scripted asset actions menu.
+
+=== Sort Array Node
+
+The sort array node is not currently working correctly.
+
 === Plugin Translation Targets
 
 The new mod translation system is not totally ready for use.
@@ -247,6 +256,13 @@ Hover over elements in the tool to see tooltips explaining what they do.
 The Example Mod has been updated with a complex research tree (created by the tool)
 to demonstrate and explain some important research tree concepts.
 Explore this tree, and the base game's trees, to learn more about how research trees work.
+
+=== Sort Array Node
+
+SMLEditor now provides a custom Blueprint node for sorting arrays
+that does so in a much more performant way than a sorting algorithm implemented in Blueprint.
+Provide an array of any type and create a function to be used as a comparator.
+The comparator should return `true` if item A is less than item B.
 
 === ExampleMod Multiplayer Examples
 
