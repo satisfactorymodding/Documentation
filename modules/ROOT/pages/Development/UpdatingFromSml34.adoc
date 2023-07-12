@@ -32,10 +32,10 @@ until you are certain you don't need them anymore!
 The following features are not ready to use yet.
 This section will change often!
 
-=== Unreal Engine 5 new Keybinds system
+=== UE Linker still having some bugs ironed out
 
-User input and key bindings were overhauled in Unreal Engine 5 and Update 8.
-Please help us test it out and write docs for the system by trying it out and discussing on the Discord.
+You might run into troubles accessing the new Unreal Engine repo.
+Please contact us on the Discord if you get stuck.
 
 === Plugin Translation Targets
 
@@ -112,24 +112,11 @@ Alpakit's "copy mods" feature has already been updated to account for this.
 
 Unreal Engine 5 has overhauled how user input and key bindings are handled.
 If your mod made use of keybindings, they will stop working,
-and possibly prevent your mod from compiling,
+and the dead code will possibly prevent your mod from compiling,
 until you change to the new system.
 
-TODO directions on how to use this
-
-TODO link the docs page https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/
-
-mention how you have to copy an existing FGInputMappingContext asset because it doesn't show up in create
-
-mention what fields actually end up displayed in the keybinds menu and what doesn't
-
-mention calling Enable Input on unusual actors so they 
-
-mention having to turn off Context Sensitive to be allowed to create the input action events in ex. a subsystem
-
-TODO examplemod binding still triggers when in interact widgets, probably not good
-
-TODO ask D4rk about handling it for widgets
+More info can be found on the
+xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System] page.
 
 
 === Increased Access Transformer Specificity

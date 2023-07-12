@@ -1,0 +1,162 @@
+= Enhanced Input System
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Unreal Engine 5 introduces the Enhanced Input System which assits games in handling user input.
+Satisfactory extends this system to allow for automatic detection of mod keybinds in the game's settings menu.
+
+The https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/[Unreal Engine documentation]
+provides a good overview of the system, and you should read that page first,
+but there are a few extra steps required to interface correctly with Satisfactory's version of the system.
+
+== Introduction
+
+The Enhanced Input System differs from Unreal's previous input system in that it is data-driven.
+Actions that the player can take are defined in Input Action data assets,
+and Input Mapping Context data assets group actions into situations with information on how they are triggered.
+
+During gameplay, multiple Input Mapping Contexts are dynamically added or removed
+to process the player's input and determine which Input Actions to fire based on actual keyboard and mouse input.
+
+For example, the base game has controls for walking around and driving a train.
+Walking forwards and throttling the speed up on a train are generally both bound to the W key,
+so how does the game know what to do when the player presses W?
+The Enhanced Input System decides by looking ath at Mapping Contexts are in play and what their priorities are.
+Separate Input Actions exist for walking as a player and throttling trains.
+The walking action is included in Mapping Context `MC_PlayerMovement` 
+and the train throttle action is included in `MC_Trains`.
+The `MC_Trains` context is only applied to the player when they enter a train and is removed when they exit it.
+
+When the player presses W, the Enhanced Input System checks the contexts in order of priority.
+If `MC_Trains` is active, the throttle action is fired,
+but if `MC_PlayerMovement` is active, the walking action is fired instead.
+
+In the real game, there are many more contexts and actions at play,
+and it could be the case that the player movement context is actually removed while the player is in a vehicle.
+Regardless, hopefully this example gives you an idea of how the system works.
+
+== Organization
+
+The existing structure of the Enhanced Input System lends itself well to
+storing Input Action assets in folders with their contexts.
+Base-game input actions and contexts are mostly stored in `/FactoryGame/Inputs/`
+and `/FactoryGame/Interface/UI/Inputs/`.
+You can take inspiration on how your mod should organize its contexts from looking at those folders.
+
+== Input Actions
+
+Input Action assets can be created in Blueprint via
+`Create Advanced Asset` > `Input` > `Input Action` in a content browser window.
+The Unreal documentation explains how to create them in {cpp}.
+
+Note that Input Actions do not have any definition about what key they are bound to -
+that information is set by the context they are in.
+
+The "Action Description" text will appear to the user when they hover over the binding in the settings menu.
+"Consume Input" should be set to false unless you have a good reason to set it otherwise, since this means it will prevent any other bindings on this key from taking effect if the relevant Context the Action is in has higher priority.
+
+Standard 'key presses' usually have a Value Type of `Digital (bool)`
+and have Triggers on `Pressed` and `Released` with a threshold of `0.5`.
+Look at the base game's input actions for other examples.
+
+== Input Mapping Contexts
+
+Satisfactory adds additional functionality to Input Mapping Contexts that are used instead of some of Unreal's fields.
+
+Your Input Mapping Contexts should be of type `FGInputMappingContext` and not `InputMappingContext` -
+**you can't create them in Blueprint with Create Advanced Asset** because it doesn't show up in the list.
+Instead, you must copy an existing mapping context and blank it out for your own use,
+for example, you can copy one from the base game or from ExampleMod.
+The Unreal documentation explains how to create them in {cpp},
+but you need to adapt it to use the aforementioned Satisfactory-specific parent class.
+
+Input Mapping Contexts should have all of the relevant Input Actions provided in the Mapping field,
+which is also where you are allowed to assign default key bindings for each action.
+For each Input Action you list, you must:
+
+- Enable "Is Player Mappable"
+- Under "Player Mappable Options":
+    - Provide a "Name", otherwise the user's setting presumably won't be saved when the game reloads.
+    - Set a "Display Name", which is the text that will appear to users when they view or search for the action in the settings menu.
+    - Note: the "Display Category" field here is ignored by Satisfactory.
+
+Satisfactory adds its own custom fields to Input Mapping Contexts that appear in the "Mapping" category.
+
+- The "Display Name" is the name of the section heading the Actions will be grouped under in the settings menu.
+This should usually be your mod's user friendly name.
+- "Menu Priority" presumably allows for reordering categories, but is `0.0` for all base-game Contexts and has not been tested.
+- "Parent Context" is described in detail below.
+
+Once an input action is added to a Context and the Context is properly formatted
+with a Display Name it will appear in the settings menu.
+You do not need to register your actions nor contexts anywhere else for the purposes of the _settings_ menu.
+
+TODO check with Arch
+
+If your mod has relatively few key binds you will probably only have one or two contexts for your mod:
+one that will be applied when the player is moving about as normal
+and one for when they are in the user interface.
+
+=== Parent Context
+
+Parent Contexts are a feature provided by Satisfactory for usage by mods.
+We can't add our own Actions to the existing Contexts that are shipped with the base game,
+but we can instead specify a Parent Context for our own Contexts.
+When the Context we specified as a parent is applied by the game,
+our context will also be applied,
+and vice versa when the parent context is removed.
+
+TODO check with Arch
+
+If you want the context to be available:
+
+- All the time, even when in interaction widgets such as the inventory,
+  use `MC_PlayerController`. Be careful with this!
+- Whenever the player can interact with buildings and their held equipment,
+  use `MC_PlayerActions`
+- Whenever the player is in a widget,
+  use `MC_UserInterfaceBase`
+- In a special condition, such as when the build gun is open in a certian mode,
+  look at the existing contexts to see which is the best choice
+- In an even more specific condition, then you may wish to use
+  link:#ManualRegisterContext[manual mapping context registration] instead.
+
+== Responding to Input Actions in Code
+
+It is suggested that your code respond to input actions in either an actor
+(such as a xref:Development/ModLoader/Subsystems.adoc[Subsystems]) or a widget.
+
+In order to create the Blueprint event node for responding to an input action,
+you may have to turn off "Context Sensitive" in the blueprint action selector for it to appear in the search results.
+
+The Unreal documentation explains how to handle responding to Input Actions in {cpp}.
+
+On some actors, such as Subsystems,
+you may need to call EnableInput for them to process user input.
+
+
+
+[id="ManualRegisterContext"]
+== Manual Mapping Context Registration
+
+The primary method of registering your Contexts is usually via the [[Parent Context]] system,
+however, is is possible to manually manage the registration of your context.
+
+You can get a reference to the EnhancedInputLocalPlayerSubsystem via a Get node on a player controller instance.
+From there, you can call Add Mapping Context and Remove Mapping Context to control when your context is applied.
+
+== Chorded Actions
+
+TODO ask D4rk, required to do Ctrl/Alt/Shift + key
+
+== Debugging
+
+As mentioned on the
+https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/#debugcommands[Unreal documentation],
+the in-game console command `showdebug enhancedinput`
+will display extended information about what Contexts and Actions are loaded by the game.
+
+TODO this doesn't seem to be there in game but `showdebug INPUT` is?
