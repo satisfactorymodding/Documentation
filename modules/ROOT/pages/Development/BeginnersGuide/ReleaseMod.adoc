@@ -392,6 +392,8 @@ selection of specific build targets for separate mods. (See example below.)
 `Windows Server` - `Requires Shipping_Server - x64 / Shipping_Server|Win64` - Windows Dedicated Server of Satisfactory.
 `Linux Server` - `Requires Linux_Shipping_Server - Win32 / Linux_Shipping_Server|Linux` - Linux Dedicated Server of Satisfactory.
 
+TODO update with this info from Mircea https://discord.com/channels/555424930502541343/601030071221878784/1128762351915630735
+
 image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
 
 You will then find your packaged file in `<SML Project Folder>\Saved\ArchivedPlugins\<ModReference>` as `<ModReference>.zip`. 
