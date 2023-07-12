@@ -117,8 +117,10 @@ If you want the context to be available:
   use `MC_PlayerController`. Be careful with this!
 - Whenever the player can interact with buildings and their held equipment,
   use `MC_PlayerActions`
-- Whenever the player is in a widget,
+- Whenever the player is in a building interaction widget,
   use `MC_UserInterfaceBase`
+- Whenever the player is in their inventory,
+  use `MC_Window`
 - In a special condition, such as when the build gun is open in a certian mode,
   look at the existing contexts to see which is the best choice
 - In an even more specific condition, then you may wish to use
