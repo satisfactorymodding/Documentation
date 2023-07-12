@@ -189,6 +189,9 @@ using System.Text;
 using EpicGames.Core;
 ----
 
+You may also need to remove or change some dependencies from the target list, such as PhysX because they no longer exist.
+Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creating_the_mod_module_from_scratch[C++ Setup page] if you're encountering issues.
+
 == Additional Changes
 
 You might not be affected by these changes,
