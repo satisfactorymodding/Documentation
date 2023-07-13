@@ -10,7 +10,7 @@ SML3.5 brings support for Unreal Engine 5 and a number of new game systems.
 
 == Update your Starter Project
 
-First, please read this entire page before you begin updating your mod.
+First, please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
 
 After you have finished reading this page,
@@ -37,50 +37,15 @@ This section will change often!
 You might run into troubles accessing the new Unreal Engine repo.
 Please contact us on the Discord if you get stuck.
 
-=== SMLEditor Generate Config Structs
-
-The SMLEditor utility to generate config structs from mod configurations
-does not correctly appear in the scripted asset actions menu.
-
-=== Sort Array Node
-
-The sort array node is not currently working correctly.
-
-=== Plugin Translation Targets
-
-The new mod translation system is not totally ready for use.
-It is functioning, and you don't have to use the workaround for adding game translation targets at runtime,
-but the editor does not save data properly and it will be wiped upon closing the editor.
-You can still use the system and package mods with translations,
-but you'll have to re-set up the target
-and re-import the translated strings every time you restart the editor.
-
 == Required Changes
 
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
 
-=== Obtain the New Engine (Special Directions!)
-
-We have moved our fork of Unreal Engine to be inside the Satisfactory Modding organization
-instead of being owned by a separate github user.
-As such, the URL for downloading the engine has changed
-as well as the means of accessing it.
-
-More information can be found
-xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
-
-=== Re-Enable Show Plugin Content
-
-Your saved editor setting for the UE4 option "Show Plugin Content" in Content Browsers does not carry over to UE5.
-You'll have to turn it back on again.
-
-image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
-
 === Switch to Visual Studio 2022
 
 Although Unreal Engine 5 still supports some previous versions of Visual Studio,
-they have not been tested by the community and we are not supporting them.
+they have not been tested by the community and we are no longer supporting them.
 You should switch to Visual Studio 2022, and the 2022 toolchain,
 to avoid any potential issues.
 
@@ -94,69 +59,15 @@ you'll need to modify your installation via the installer to add a new MSVC buil
 See the xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page]
 for more information.
 
-=== Folder Move: Plugins to Mods
+=== Obtain the New Engine (Special Directions!)
 
-Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
-Why the change?
+We have moved our fork of Unreal Engine to be inside the Satisfactory Modding organization
+instead of being owned by a separate github user.
+As such, the URL for downloading the engine has changed
+as well as the means of accessing it.
 
-- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out. This move is just preparation for that well in advance
-- It keeps base-game plugins (Wwise, AbstractInstance) clearly separate from mods
-- Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes in the past anyways
-
-==== What you have to do:
-
-1. Move your own mod folders from `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
-
-* SML 3.4.x Locations:
-  image:BeginnersGuide/SML_Plugins.png[SML 3.4.x, align="center"]
-
-* SML 3.5.x Locations:
-  image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
-
-2. link:BeginnersGuide\project_setup.adoc#_project_compilation[Compile your project like normal]
-
-This change also affects the game client -
-mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
-Alpakit's "copy mods" feature has already been updated to account for this.
-
-=== Unreal Engine 5 new Keybinds system
-
-Unreal Engine 5 has overhauled how user input and key bindings are handled.
-If your mod made use of keybindings, they will stop working,
-and the dead code will possibly prevent your mod from compiling,
-until you change to the new system.
-
-More info can be found on the
-xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System] page.
-
-
-=== Increased Access Transformer Specificity
-
-If you are using BlueprintReadWrite or BlueprintCallable access transformers
-you will have to update their Class field to use their runtime class path.
-This means adding the prefix `/Script/FactoryGame.` to the class name
-and removing any Unreal prefixes like `A` or `U`.
-
-For example, if you were previously using the access transformer:
-
-[source,ini]
-----
-[AccessTransformers]
-BlueprintReadWrite=(Class="AFGWireHologram", Property="mDefaultPowerPoleRecipe")
-----
-
-You will have to switch to:
-
-[source,ini]
-----
-[AccessTransformers]
-BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefaultPowerPoleRecipe")
-----
-
-If you don't update your access transformers messages will be generated in your output log explaining what needs to be changed, for example, `LogAccessTransformers: Warning: Resolving BlueprintReadWrite AFGRecipeManager:mAvailableRecipes requested by MAMTips: Using deprecated class specification. The loaded class was /Script/FactoryGame.FGRecipeManager. Please update your AccessTransformers config file. This will become an error in a future version.`
-
-This change was made as part of a move away from using ANY_PACKAGE,
-which you can read more about in the Unreal documentation if you are interested.
+More information can be found
+xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
 
 === {cpp} Mod Module Build.cs Changes
 
@@ -195,6 +106,76 @@ using EpicGames.Core;
 
 You may also need to remove or change some dependencies from the target list, such as PhysX because they no longer exist.
 Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creating_the_mod_module_from_scratch[C++ Setup page] if you're encountering issues.
+
+=== Increased Access Transformer Specificity
+
+If you are using BlueprintReadWrite or BlueprintCallable access transformers
+you will have to update their Class field to use their runtime class path.
+This means adding the prefix `/Script/FactoryGame.` to the class name
+and removing any Unreal prefixes like `A` or `U`.
+
+For example, if you were previously using the access transformer:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="AFGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+You will have to switch to:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+If you don't update your access transformers messages will be generated in your output log explaining what needs to be changed, for example, `LogAccessTransformers: Warning: Resolving BlueprintReadWrite AFGRecipeManager:mAvailableRecipes requested by MAMTips: Using deprecated class specification. The loaded class was /Script/FactoryGame.FGRecipeManager. Please update your AccessTransformers config file. This will become an error in a future version.`
+
+This change was made as part of a move away from using ANY_PACKAGE,
+which you can read more about in the Unreal documentation if you are interested.
+
+=== Folder Move: Plugins to Mods
+
+Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
+Why the change?
+
+- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out. This move is just preparation for that well in advance
+- It keeps base-game plugins (Wwise, AbstractInstance) clearly separate from mods
+- Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes in the past anyways
+
+==== What you have to do:
+
+1. Move your own mod folders from `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
+
+* SML 3.4.x Locations:
+  image:BeginnersGuide/SML_Plugins.png[SML 3.4.x, align="center"]
+
+* SML 3.5.x Locations:
+  image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
+
+2. link:BeginnersGuide\project_setup.adoc#_project_compilation[Compile your project like normal]
+
+This change also affects the game client -
+mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
+Alpakit's "copy mods" feature has already been updated to account for this.
+
+=== Re-Enable Show Plugin Content
+
+Your saved editor setting for the UE4 option "Show Plugin Content" in Content Browsers does not carry over to UE5.
+You'll have to turn it back on again.
+
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
+
+=== Unreal Engine 5 new Keybinds system
+
+Unreal Engine 5 has overhauled how user input and key bindings are handled.
+If your mod made use of keybindings, they will stop working,
+and the dead code will possibly prevent your mod from compiling
+until you change to the new system.
+
+More info can be found on the
+xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System] page.
 
 == Additional Changes
 
