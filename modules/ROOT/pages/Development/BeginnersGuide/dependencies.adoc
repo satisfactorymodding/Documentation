@@ -15,16 +15,6 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left. 
 
-[TIP]
-====
-If you'd prefer a different format of guide, you can find a video guide
-https://www.youtube.com/watch?v=-HVw6-3Awqs[here].
-**As of SML 3.0.0, these video tutorials are out of date,
-but some of the concepts will still carry over.**
-If you get stuck in the video tutorials, return here and follow these guides instead.
-Be sure to read over the steps here as well to be sure you're doing things correctly.
-====
-
 == Before you Begin
 
 Make sure you've read the starting information on the
