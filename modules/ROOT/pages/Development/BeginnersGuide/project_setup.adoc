@@ -5,6 +5,14 @@ project setup. With a misconfigured or suboptimal setup, you'll lose
 valuable time. That's why we will guide you now through making a good
 project setup for Satisfactory.
 
+[IMPORTANT]
+====
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to follow the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
+====
+
 == Starter Project
 
 You should either be preparing to clone the Starter Project,

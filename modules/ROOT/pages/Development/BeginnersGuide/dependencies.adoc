@@ -1,4 +1,3 @@
-
 = Dependencies
 
 To get started with modding Satisfactory,
@@ -20,6 +19,14 @@ Keep this in mind when deciding where put all your files
 Make sure you've read the starting information on the
 xref:Development/BeginnersGuide/index.adoc[Getting Started title page]
 to learn important information about how to use these docs.
+
+[IMPORTANT]
+====
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to follow the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
+====
 
 == Satisfactory
 
@@ -188,6 +195,14 @@ You also must have used the link:#UnrealLinker[Unreal Linker] tool described abo
 Once all files have finished downloading,
 run the `.exe` and follow through its prompts
 to install the custom Unreal Engine version and corresponding Editor.
+
+[IMPORTANT]
+====
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to back up your past engine version as described in the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
+====
 
 [WARNING]
 ====

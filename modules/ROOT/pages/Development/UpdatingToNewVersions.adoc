@@ -1,5 +1,11 @@
 = Updating your Mod and Starter Project
 
+[IMPORTANT]
+====
+If you are updating from SML3.4 to SML3.5, make sure to check out the
+xref:Development/UpdatingFromSml34.adoc[dedicated Updating from SML 3.4.1 guide page] first.
+====
+
 When Coffee Stain updates Satisfactory,
 changes can occur to game internals that require mod developers to update their mods.
 
