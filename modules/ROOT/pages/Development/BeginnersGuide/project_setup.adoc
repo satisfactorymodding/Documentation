@@ -206,6 +206,8 @@ Open up the `FactoryGame.sln` file in your project folder.
 ====
 Visual Studio may tell you "Based on your solution, you might need to install extra components for a full development experience" at the top of the Solution Explorer window.
 It is safe to ignore this message.
+Alternatively, you can install the requested components to keep Visual Studio from complaining about this
+at the cost of additional disk space.
 ====
 
 Once Visual Studio loads,
