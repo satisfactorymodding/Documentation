@@ -148,7 +148,7 @@ It's a very recent addition to the setup process and we're still ironing out the
 ====
 
 In addition to the changes Coffee Stain has made to Unreal Engine,
-the modding community has also applied engine some changes of our own.
+the modding community has also applied some engine changes of our own.
 
 You'll have to link your account through a tool we created
 in order to view our repository and download the required files.
