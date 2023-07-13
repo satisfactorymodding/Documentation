@@ -25,7 +25,7 @@ to process the player's input and determine which Input Actions to fire based on
 For example, the base game has controls for walking around and driving a train.
 Walking forwards and throttling the speed up on a train are generally both bound to the W key,
 so how does the game know what to do when the player presses W?
-The Enhanced Input System decides by looking ath at Mapping Contexts are in play and what their priorities are.
+The Enhanced Input System decides by looking at which Mapping Contexts are in play and what their priorities are.
 Separate Input Actions exist for walking as a player and throttling trains.
 The walking action is included in Mapping Context `MC_PlayerMovement` 
 and the train throttle action is included in `MC_Trains`.
