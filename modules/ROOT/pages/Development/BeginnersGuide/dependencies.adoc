@@ -142,10 +142,19 @@ as well as making sure you're logged into your linked GitHub account when you fo
 [id="UnrealLinker"]
 === Link Your GitHub Account to Our Repository
 
+[WARNING]
+====
+**Update 8/SML3.5 Special Note**:
+If you have trouble getting the linker to work,
+please contact us on the Discord.
+It's a very recent addition to the setup process and we're still ironing out the bugs.
+====
+
 In addition to the changes Coffee Stain has made to Unreal Engine,
 the modding community has also applied engine some changes of our own.
 
-You'll have to link your account through a tool we created in order to view our repository and download the required files.
+You'll have to link your account through a tool we created
+in order to view our repository and download the required files.
 To use the tool, visit the following link: https://linker.ficsit.app/link
 
 After the linking process is complete you should be redirected to the engine GitHub repository.
