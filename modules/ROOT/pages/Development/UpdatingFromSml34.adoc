@@ -27,8 +27,14 @@ until you are certain you don't need them anymore!
 
 == Not Done Yet
 
-The following features are not ready to use yet.
-This section will change often!
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Plugin Localization
+
+The new plugin localization system is not totally ready for use.
+You may encounter issues with translation data not saving,
+and the system for importing and exporting translations to the community translation portal is not yet complete.
 
 === UE Linker still having some bugs ironed out
 
