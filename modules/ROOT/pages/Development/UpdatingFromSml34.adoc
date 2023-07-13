@@ -21,8 +21,8 @@ make sure to grab the `dev` branch of the Starter Project instead of `master`.
 
 [IMPORTANT]
 ====
-Remember to keep the old engine installed and a working copy of your previous starter project around
-until you are certain you don't need them anymore!
+Remember to not install the new engine until you have made a backup copy of the engine files, and Starter Project,
+as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] tutorial!
 ====
 
 == Not Done Yet
