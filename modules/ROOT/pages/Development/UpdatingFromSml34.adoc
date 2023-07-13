@@ -8,8 +8,6 @@ Keep your eyes on the `#modding-info-feed` discord channel to be notified when u
 
 SML3.5 brings support for Unreal Engine 5 and a number of new game systems.
 
-== Update your Starter Project
-
 First, please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
 
@@ -251,6 +249,9 @@ SMLEditor now provides a custom Blueprint node for sorting arrays
 that does so in a much more performant way than a sorting algorithm implemented in Blueprint.
 Provide an array of any type and create a function to be used as a comparator.
 The comparator should return `true` if item A is less than item B.
+
+Read more about it on the
+xref:Development/ModLoader/BlueprintInterface.adoc#_sort_array[Blueprint Interface] page.
 
 === ExampleMod Multiplayer Examples
 
