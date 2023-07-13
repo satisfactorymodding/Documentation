@@ -181,6 +181,22 @@ the page is not dead, you need to log into the right GitHub account.
 More info on this can be found
 xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
 
+== Fixing the Start Menu Shortcuts (Optional)
+
+If you typically launch the editor via the Windows Start Menu
+you will likely have to repair the shortcuts there after moving engine folders around.
+You can open the folder containing the shortcuts by searching for "Unreal Engine - CSS" in the start menu,
+right clicking on the shortcut, then choosing "Open File Location".
+From there you can edit the shortcut's properties to configure its target, name, and launch location.
+
+You may also want to assign custom icons to each shortcut.
+This will change the appearance of the editor in the taskbar,
+making it easier to distinguish between multiple versions of the editor running at once.
+You can create your own icons or use 
+https://discord.com/channels/555424930502541343/689188183048585244/1043643638577631263[these ones from on the Discord].
+You may have to restart your computer for the icon changes to take effect,
+as windows aggressively caches icon images.
+
 == Preparing to Update your Starter Project
 
 Depending on how you downloaded your modding starter project,
