@@ -7,8 +7,8 @@ project setup for Satisfactory.
 
 == Starter Project
 
-You should have already downloaded the Starter Project in the previous steps of the tutorial,
-or you are prepating to clone it now.
+You should either be preparing to clone the Starter Project,
+or you downloaded a zip of it in the previous steps of the tutorial.
 
 The Starter Project folder will be your modding workspace,
 and could grow to a considerable file size depending on what kinds of mods you make.
@@ -36,9 +36,20 @@ Depending on if you plan to clone the project or downloaded the zip, go to the r
 
 === You're Cloning the Starter Project
 
-For convenience, https://github.com/satisfactorymodding/SatisfactoryModLoader/[here's another link to the repo to clone].
+Make sure to read the notes in the above Starter Project heading about where to clone the files.
+
+If you're developing mods for the Early Access version of the game,
+or the Experimental branch is identical to the Early Access branch,
+then you probably want to clone the `master` branch.
+If you're developing mods for the Experimental version of the game,
+then you probably want to download the `dev` branch.
+
+If you're uncertain which to download, ask us on the Discord.
+
+https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
+
 The directory is ready for use as soon as the clone is complete.
-Move on to the next section.
+Move on to the link:#_setting_up_wwise[next heading].
 
 === You Downloaded a Zip
 
@@ -49,8 +60,10 @@ You will run into problems later on because of this.
 To get around this issues, right-click the zip and "unblock" it before unzipping it.
 ====
 
+Make sure to read the notes in the above Starter Project heading about where to unzip the files.
+
 If you downloaded the Starter Project as a zip,
-unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
+unzip `SatisfactoryModLoader-master.zip` (or the `-dev.zip`) to get the Starter Project files.
 If you're encountering issues extracting the zip,
 try using another zip extracting software
 such as https://www.7-zip.org/[7zip]

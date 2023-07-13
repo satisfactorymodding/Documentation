@@ -273,11 +273,9 @@ while still keeping their files separate,
 which will be covered later in the docs.
 
 If you are familiar with version control software (ex. Git),
-we suggest that you https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo],
+we suggest that you clone the repository,
 which drastically simplifies the process of updating the files later when the game updates.
-Check on the Discord to find out which branch to clone,
-although it's most likely `master`.
-The Project Setup page (up next) will tell you where to clone it.
+The Project Setup page (up next) will tell you how and where to clone it.
 
 If you're not familiar with version control,
 xref:Development/BeginnersGuide/CreateGitRepo.adoc[now is a great time to learn]!
@@ -287,8 +285,26 @@ as well as protect you from losing your mod sources if you upload them to a host
 
 However, if you'd just like to get started modding,
 you can download a zip of the Starter Project
-from the Satisfactory Modding GitHub,
-or directly via https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+from the Satisfactory Modding GitHub.
+
+=== Downloading a Zip
+
+[TIP]
+====
+If you're planning to clone the project,
+skip to the link:#_satisfactory_mod_manager[next heading].
+====
+
+If you're developing mods for the Early Access version of the game,
+or the Experimental branch is identical to the Early Access branch,
+then you probably want to download the `master` branch via
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+
+If you're developing mods for the Experimental version of the game,
+then you probably want to download the `dev` branch via
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[this link].
+
+If you're uncertain which to download, ask us on the Discord.
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
 
