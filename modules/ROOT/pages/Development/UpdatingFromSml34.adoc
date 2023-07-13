@@ -158,7 +158,7 @@ If you don't update your access transformers messages will be generated in your 
 This change was made as part of a move away from using ANY_PACKAGE,
 which you can read more about in the Unreal documentation if you are interested.
 
-=== {cpp} Mod Module Build.cs Format Changes
+=== {cpp} Mod Module Build.cs Changes
 
 When generating visual studio project files for your project, you may encounter an error similar to the below:
 
@@ -180,7 +180,9 @@ Expecting to find a type to be declared in a target rules named 'FactoryEditorTa
 ```
 
 Unreal Engine 5 includes updates to UBT to make it more extensible.
-You may have to add additional `using` directives to your mod module's Build.cs file.
+As part of these updates, certain libraries have moved to other names or paths.
+For example, `Tools` has been replaced with `EpicGames.Core`.
+You may have to modify or add additional `using` directives to your mod module's Build.cs file.
 In the case of this example error message, adding the following directives resolved the issue.
 
 [source,cs]
