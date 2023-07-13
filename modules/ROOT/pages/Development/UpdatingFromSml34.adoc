@@ -79,8 +79,10 @@ image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content
 
 === Switch to Visual Studio 2022
 
-Unreal Engine 5 no longer supports Visual Studio 2019,
-nor the 2017 or 2019 toolchains.
+Although Unreal Engine 5 still supports some previous versions of Visual Studio,
+they have not been tested by the community and we are not supporting them.
+You should switch to Visual Studio 2022, and the 2022 toolchain,
+to avoid any potential issues.
 
 You can find information on installing Visual Studio on the
 xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page].
