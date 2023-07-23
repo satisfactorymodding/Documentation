@@ -228,6 +228,16 @@ if you're using the `.uproject` model.
 Furthermore, using the `.uproject` model will cause Rider to try and build the Engine, which files are not present for, corrupting the Rider project.
 The `.sln` model should still work as it did before.
 
+=== Wwise Migration Popup
+
+If your project contains any Wwise stubs or assets,
+you may be greeted with a popup upon opening the project
+or opening an asset that references the Wwise asset.
+
+image:https://media.discordapp.net/attachments/1036634533077979146/1131263355089322054/image.png[Drejn screenshot of Wwise popup]
+
+You can safely cancel or close the prompt to take no action.
+
 == Notable New Features
 
 Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
