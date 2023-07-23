@@ -263,6 +263,9 @@ it's a lot simpler to completely toss a broken copy instead of trying to patch i
 
 You will have to pull (if you cloned) or merge (if you forked)
 the changes made in the main SML repository.
+You may also have to switch branches and/or check out a newer commit.
+Check the xref:Development/BeginnersGuide/project_setup.adoc#CloneStarterProject[Project Setup page]
+to determine what branch/commit you should be on.
 
 There are a few files that will likely have been automatically modified,
 and you will have to discard or stash your own changes

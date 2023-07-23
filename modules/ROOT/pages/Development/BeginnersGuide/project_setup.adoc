@@ -42,6 +42,7 @@ so a deeply nested location may cause bizarre issues because Windows handles lon
 
 Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
 
+[id="CloneStarterProject"]
 === You're Cloning the Starter Project
 
 Make sure to read the notes in the above Starter Project heading about where to clone the files.
