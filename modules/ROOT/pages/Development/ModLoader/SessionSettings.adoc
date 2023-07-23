@@ -5,7 +5,9 @@
 This page is a work in progress.
 ====
 
-Introduced in SML3.5, Session Settings are a feature similar to Advanced Game Settings
+Introduced in SML3.5, Session Settings
+(referred to in-game as Mod Savegame Settings)
+are a feature similar to Advanced Game Settings
 that allows mods to store configuration information on a per-game-save basis.
 They do not require Advanced Game Settings to be enabled to be used.
 
@@ -79,4 +81,4 @@ TODO
 
 Mod Config is better for user interface or visual stuff since it is saved with the user's game and carries over between saves.
 
-Session Settings are good for things you want to be a choice per-save file, such as options for a custom level.
+Session Settings are good for things you want to be a choice per save file, such as options for a custom level.
