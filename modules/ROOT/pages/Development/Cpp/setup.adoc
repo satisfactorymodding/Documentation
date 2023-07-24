@@ -147,8 +147,15 @@ public class <mod_reference> : ModuleRules
 Note that the file we just created is a C# file (.cs) and not a C++ file (.cpp).
 ====
 
-This configuration will add the basic Unreal Engine framework, Satisfactory and
-the Mod Loader as dependencies to your module, in addition to setting up some other useful stuff for you.
+This configuration will add the basic Unreal Engine framework,
+Satisfactory, and the Mod Loader as dependencies to your module,
+in addition to setting up some other useful stuff for you.
+
+It's important to note that this example lists more PublicDependencyModuleNames than are required bare minimum.
+They are included "just in case" - without them, if you were to include a FG header that happens to use one of those,
+you would get a confusing error because module dependencies are not transitive.
+Upon encountering that error you would need to add the module containing the mentioned header to this file,
+but the error message contains no indication of what that Module Name you need to add is.
 
 You can come back to this configuration file later and change things here if needed.
 
