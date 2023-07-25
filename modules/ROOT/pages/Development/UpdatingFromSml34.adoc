@@ -188,9 +188,14 @@ but we'd like to draw extra attention to them.
 
 === Default Button Style Change
 
-UE5 seems to default the Appearance of buttons to Draw As: Rounded Box.
-You may need to change them back to Draw As: Image (the previous default)
+UE5 changes the default Appearance of buttons to `Draw As: Rounded Box`,
+and it seems to have overwritten the selected properties of some existing buttons in the process.
+You may need to change them back to `Draw As: Image` (the previous default),
+or your previously set value,
 in order to get the same look as they did before.
+
+You may also need to adjust buttons' Pressed and Normal paddings
+as those also seem to have been reset.
 
 image:https://cdn.discordapp.com/attachments/1036634533077979146/1128346194012282971/image.png[D4rk screenshot of changing button Draw As]
 
