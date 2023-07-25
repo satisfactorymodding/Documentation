@@ -41,12 +41,13 @@ for more info.
 
 == Installation
 
-The Asset Toolkit consists of two plugins,
+The Asset Toolkit repository consists of two plugins,
 a dumper, to be installed in the game,
 and an asset generator, to be installed in the editor.
 Both are contained in the https://github.com/mircearoata/UEAssetToolkit/tree/dev[Asset Toolkit repository].
 Download a zip of the repository and extract somewhere,
 or clone it if desired.
+Regardless, make sure the copy you obtain is of the `dev` branch.
 
 [NOTE]
 ====
@@ -55,28 +56,29 @@ Said fork is the one that the https://github.com/mircearoata/satisfactory-moddin
 use to semi-automatically generate the starter project, and as such is usually kept more up to date.
 ====
 
-=== Installing the Asset Generator
-
-Take the `AssetGenerator` folder out of the files you downloaded
+Once you have downloaded the files,
+either place the folder containing the two plugins,
+or each plugin folder,
 and move it to your modding project's `Mods/` folder.
-
-This plugin is only for use from the editor side. It will not appear in the Alpakit mods list.
-
-=== Installing the Asset Dumper
-
-Take the `AssetDumper` folder out of the files you downloaded
-and move it to your modding project's `Mods/` folder.
-
-This plugin is already set up as a Satisfactory mod, and will appear in the Alpakit mods list once compiled.
-It will later be built and installed in the game.
+It's okay if there's extra layers of folders in between -
+UE will still be able to discover them.
 
 === Compiling
 
-After putting both plugins in your project's Mods folder,
+After the plugins have been moved into your modding project,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
 and build for Development Editor and Shipping.
 
-=== Troubleshooting Compile Errors
+While you wait for it to compile, here's some info about the roles of each plugin.
+
+This AssetDumper plugin is already set up as a Satisfactory mod and will appear in the Alpakit mods list once compiled.
+It will later be built and installed in the game.
+It produces files that are later used by the AssetGenerator plugin to recreate the assets.
+
+The AssetGenerator plugin is only for use from the editor side. It will not appear in the Alpakit mods list.
+It takes files produced by the dumper and generates the uasset files your editor can use.
+
+==== Troubleshooting Compile Errors
 
 - Make sure you xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerated Visual Studio project files before building].
 - Make sure that you have updated to the latest version of the plugins from repository linked link:#_installation[above].
@@ -116,6 +118,13 @@ Next, from that directory, run the Powershell command:
 
 `Engine\Binaries\Win64\FactoryGame-Win64-Shipping.exe -EpicPortal -NoSteamClient -nullrhi -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log`
 
+[IMPORTANT]
+=====
+UE5/Update 8 Note: As of July 25th 2023,
+using the `-nullrhi` argument crashes the game regardless of if the dumper is in use.
+The next experimental patch is expected to fix this issue.
+=====
+
 [NOTE]
 ====
 Excluding the `-log` argument could result in a shorter runtime, but will make troubleshooting more difficult if something goes wrong.
@@ -126,20 +135,22 @@ leaving you with the option to run another command.
 Shortly after, you should see the Satisfactory splash screen and a console log window 
 which will provide info regarding the dumping process (since `-log` was used).
 
-Once you see the console log window, you can safely close the Powershell window.
+You can safely close the Powershell window once you see the console log window,
+although you may wish to keep it open to restart it if it crashes.
 
 The game window itself will never open since the `-nullrhi` argument was used.
 After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
 This will take a bit; go pet a lizard doggo to pass the time.
 
-You'll know it's finished when the command prompt window that was spawned closes.
+You'll know it's finished when the command prompt window that was spawned closes
+and your game log file does not end in an crash dump.
 
 You can expect a full dump to take up about 8.5 GB.
-You can delete it later after you have imported the assets.
+You can delete it later after you have successfully used the Asset Generator.
 
 Once it completes, the console window and game should close,
-and you should have an `AssetDump` folder
-inside the `FactoryGame` folder of your game install directory.
+and you should have a new `FactoryGame/AssetDump/` folder
+inside your game install directory.
 
 [NOTE]
 ====
@@ -152,6 +163,9 @@ or contact us on the discord for more info.
 === Troubleshooting Asset Dumping Crashes
 
 Make sure that you have updated to the latest version of the Asset Dumper built from the repository linked link:#_installation[above].
+
+You can add the xref:Development/Cpp/debugging.adoc#_waitfordebugger[WaitForDebugger]
+flag to allow attaching a debugger to further troubleshoot crashes.
 
 If you're still encountering issues, ask for help on the discord.
 
@@ -230,7 +244,7 @@ Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> $SkipSave
 Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> $SkipSaveFile
 
 # Skip a few assets that cause annoying problems in the editor (ex. missing animation data spam errors)
-# TODO not certain this functionality is working?
+# TODO this functionality does not seem to be working?
 Write-Output "/Game/FactoryGame/Character/Player/Animation/FirstPerson/" >> $BlacklistFile
 Write-Output "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/" >> $BlacklistFile
 
