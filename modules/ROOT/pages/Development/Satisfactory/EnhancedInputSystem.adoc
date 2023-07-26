@@ -146,6 +146,8 @@ you may need to call EnableInput for them to process user input.
 In order to create the Blueprint event node for responding to an input action,
 you may have to turn off "Context Sensitive" in the blueprint action selector for it to appear in the search results.
 
+Type the name of the input action to create the Event node for responding to it.
+
 [id="RespondInputActionsCpp"]
 === {cpp}
 
@@ -155,6 +157,19 @@ Thankfully Coffee Stain has created a delegate `AFGCharacterPlayer::OnPlayerInpu
 which mods can bind to.
 Each time `SetupPlayerInputComponent` is called
 the delegate will be called, giving you a chance to register your custom inputs.
+
+== Reading Input Action Information
+
+In order to retrieve the name(s) of the key(s) bound to an action for display to the user,
+call the FGInputLibrary function `Get Input Action Name as Text`
+on a Player Controller instance passing in the Name given to the action in its Mapping Context.
+This will automatically handle multi-key binds and display them in a combined format like `Left Alt + Q`.
+Note that if the mapping context is not registered at call time you will get back `UNKNOWN_KEY()`.
+
+If you need to retrieve the exact key structures involved in an input action,
+call the FGInputLibrary function `Get Current Mapping for Action`
+on a Player Controller instance passing in the Name given to the action in its Mapping Context.
+Be sure to check the boolean return value for success/failure status.
 
 [id="ManualRegisterContext"]
 == Manual Mapping Context Registration
