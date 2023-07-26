@@ -323,12 +323,15 @@ As a general overview, changes could include any or all of the following:
 - `/Build/Alpakit.Automation/`
 - `/Content/` stub files
 - `/Source/`
+- `/Config/`
 - `/Plugins/`
 - `/Mods/AccessTransformers/`
 - `/Mods/Alpakit/`
 - `/Mods/ExampleMod/`
 - `/Mods/SML/`
 - `/Mods/SMLEditor/`
+- `FactoryGame.uproject`
+- `.gitignore`
 
 ==== Option 2C: You Have a Project Level Repo
 

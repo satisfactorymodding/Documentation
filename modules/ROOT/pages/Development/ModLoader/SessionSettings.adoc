@@ -82,3 +82,13 @@ TODO
 Mod Config is better for user interface or visual stuff since it is saved with the user's game and carries over between saves.
 
 Session Settings are good for things you want to be a choice per save file, such as options for a custom level.
+
+== Advanced Game Settings
+
+In order to create an Advanced Game Setting instead of a Session Setting,
+create a data asset of type `FGUserSetting` instead of `SMLSessionSetting`.
+
+Once the type is set to `Advanced Game Setting` in the asset properties,
+the game will automatically discover it and add it to the Advanced Game Settings menu for you.
+You can use the same category system as Session Settings to control what categories it appears in.
+This is also true for Photo Mode and Options Menu settings, if for some reason you want to add values to those.

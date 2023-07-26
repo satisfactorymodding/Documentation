@@ -41,6 +41,13 @@ and the system for importing and exporting translations to the community transla
 You might run into troubles accessing the new Unreal Engine repo.
 Please contact us on the Discord if you get stuck.
 
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
 == Required Changes
 
 In addition to any specific-to-your-mod issues you may encounter,
