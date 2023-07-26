@@ -44,9 +44,17 @@ This should only be used when you have very clear knowledge of your supposed par
 === Find Child Widgets Of Class
 
 Traverses all of the direct and potentially indirect widgets owned by the provided widget tree
-and attempts to find all the widget matching the provided class.
+and attempts to find all the widgets matching the provided class.
 
 An example use case is for obtaining and operating on children of a widget that you can't modify the implementation of.
 
 This should only be used when you have very clear knowledge of the widget tree
 since bindings and named slots should be used to implement this functionality when you do have control over the implementation.
+
+[WARNING]
+====
+Note that the search process can't break through the sandboxing of child user widgets,
+so you must either chain calls to this function on those child widgets
+or pass the "closest" child if you have access to it.
+Examples of this situation include content in named slots or widgets that use other User Widgets in their hierarchy.
+====
