@@ -338,6 +338,13 @@ You have a couple options for dealing with these assets:
 
 After dealing with any broken assets, mods should package again as normal.
 
+== Cleanup
+
+After you have finished generating assets,
+you can safely delete the `AssetDump` folder from your game install directory.
+You should also remove the AssetDumper mod from your game install
+because it adds a significant amount of time to game startup.
+
 == Additional Documentation
 
 If you'd like to learn more about the Asset Toolkit, you can continue reading below.
