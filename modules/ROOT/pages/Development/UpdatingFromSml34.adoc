@@ -193,6 +193,11 @@ xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System] pa
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
+=== SML consoleWindow Configuration option replaced with UE -log startup parameter
+
+The SML configuration option has been removed because it was redundant and does the same thing as the startup parameter.
+See xref:Development/ModLoader/Logging.adoc[Logging] for more information.
+
 === Default Button Style Change
 
 UE5 changes the default Appearance of buttons to `Draw As: Rounded Box`,
