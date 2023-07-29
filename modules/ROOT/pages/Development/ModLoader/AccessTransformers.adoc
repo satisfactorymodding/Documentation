@@ -37,11 +37,6 @@ BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="SomeFuncti
 You can have multiple (or none) of each of the access transformer types in one file,
 but they should all be under the same `[AccessTransformers]` section header.
 
-[NOTE]
-====
-After making changes in this file, you still have to build for Development Editor for the properties you made BlueprintReadWrite and BlueprintCallable to show up in the editor.
-====
-
 == Definitions
 
 === Friend
@@ -71,6 +66,16 @@ Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access tha
 === BlueprintCallable
 
 Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints (it cannot be added to a non-UFUNCTION function).
+
+== Loading
+
+As of SML3.5.0, BlueprintReadWrite and BlueprintCallable Access Transformers are now applied at runtime,
+meaning you don't need to rebuild {cpp} nor restart your editor the project to apply them.
+As soon as you modify the `.ini` file the editor should pop up with a notice
+informing you that the changes have been applied.
+Check the Output Log for more details.
+
+Friend and Accessor transformers require rebuilding {cpp} to take effect.
 
 == Disclaimers
 

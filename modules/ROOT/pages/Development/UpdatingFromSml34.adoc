@@ -292,6 +292,14 @@ ExampleMod has been updated to include some examples of correctly adding multipl
 The xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
 page has also been updated with more information and tutorials.
 
+=== Some Access Transformers Now Applied Live
+
+xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers],
+everyone's favorite neighborhood superhero of accessing things that weren't intended to be,
+just got better.
+BlueprintReadWrite and BlueprintCallable access transformers will now be hot reloaded in the editor
+as soon as you modify the `.ini` file.
+
 === Session Settings
 
 Session Settings are a feature similar to the base game's Advanced Game Settings that allows mods to store configuration information on a per-game-save basis.
