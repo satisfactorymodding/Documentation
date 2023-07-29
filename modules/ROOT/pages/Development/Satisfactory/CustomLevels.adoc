@@ -1,0 +1,60 @@
+= Custom Levels
+
+Custom Levels
+
+== Overview [.title-ref]#(Overview)#
+
+Satisfactory Update 8 brings with it a host of new features, and one of those features is the ability to create custom levels.
+
+Custom levels depend on many assets, all of which will be detailed below, additionally, an example can be found within the ExampleMod included in the SML project.
+
+The following will explain the different parts of creating a level, for a guide on how to use these to create your own level, skip to xref::/Development/Satisfactory/CustomLevels.adoc#CreatingaLevel[Creating a level]
+
+== SMLGameMapData
+
+SML implements a custom blueprint class to use as the base of all custom maps, named SMLGameMapData. This defines all the info required for the game to display the level on the main menu, as well as other info, such as what level the game should open. The fields used to define this info are:
+
+* {blank}
++
+Map Asset::
+  A drop down to select the level you created.
+* {blank}
++
+Map Name::
+  A field to define the name of the level as it should show in the main menu.
+* {blank}
++
+Map Description::
+  This field determins the map description as it should show in the main menu.
+* {blank}
++
+Map Icon::
+  Defines the image to show for the map in the main menu.
+* {blank}
++
+Starting Locations::
+  Created as an array, this defines the different possible locations the pioneer can spawn in. Refer to the Defining Spawn Points section on how to use this array.
+
+== Starting Locations Array [title-ref]#(StartingLocationsArray)#
+
+The starting locations array, part of the SMLGameMapData asset defines where the player is able to start at.
+
+    TO-DO: Figure out how to create/add Starting Location objects, and create the array
+
+== Creating a Level [title-ref]#(CreatingaLevel)#
+
+This section is meant to be closer to a tutorial on implementing everything mentioned on this page to add your own level.
+
+The process of creating a level is fairly simple, with these docs meant to guide you through, using the info above as reference.
+
+The first step to creating a level is, of course, creating a level, not to be confused with creating a level, of course. The recommended way to do this would be to open the Example Mod folder, and copy the Maps folder into your own plugin, which you can then modify. The docs will asume, from this point, that is what you did.
+
+To begin, open the new copied folder, and open the SMLGameMapData asset, which, when copied will posses the name GameMapAsset_ExampleLevel. Renaming this asset, as well as the ExampleLevel asset is highly recommended, to avoid confusion with the original files from the Example Mod folder.
+
+Next, open the GameMapAsset, and change the following fields.
+
+Map Asset to match the new Level file you have inside your mods plugin. After you do this, change the Map Name to the name you would like to show inside the game, then set the Map Description to the description you would like to show in game, then set the Map Icon to an icon you would like (the recommended image size to use for the Map Icon is 1024x1024). After which, set the Starting Location array by doing the following:
+
+    TO-DO: Starting Location Array Guide
+
+Once these steps are done, you should be good to go! Simply Alpakit your mod into the game, and open the New Game tab, and, assuming everything was done correctly, you should have your custom map.
