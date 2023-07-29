@@ -25,6 +25,7 @@
 *** xref:Development/BeginnersGuide/overwriting.adoc[Class Default Objects (CDOs) and Overwriting Content]
 *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 *** xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project]
+*** xref:Development/Satisfactory/CustomLevels.adoc[Custom Levels]
 
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
