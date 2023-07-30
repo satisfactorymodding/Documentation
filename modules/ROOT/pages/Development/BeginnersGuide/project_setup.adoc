@@ -282,6 +282,8 @@ This section will help you decide how to proceed if you encounter errors while b
 
 This is not actually an error message, just a message that is informing you that the build task has failed.
 Keep reading the Error List to see what actually went wrong.
+Sometimes the real error does not show up until the build has finished.
+You may also have to check the Output > (Show output from: Build) tab instead of the Error List to see the actual error message(s).
 
 ==== Compiler is out of heap space
 
