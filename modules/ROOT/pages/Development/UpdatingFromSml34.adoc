@@ -245,6 +245,36 @@ if you're using the `.uproject` model.
 Furthermore, using the `.uproject` model will cause Rider to try and build the Engine, which files are not present for, corrupting the Rider project.
 The `.sln` model should still work as it did before.
 
+=== Bitmask BitmaskEnum Increased Specificity
+
+You may encounter an error like this while packaging your blueprints:
+
+```
+LogClass: Warning: Short type name "Something" provided for TryFindType. Please convert it to a path name (suggested: "/Script/ModRef.Something"). Callstack:
+UATHelper: Package Mod Task (Windows): UnknownFunction []
+UATHelper: Package Mod Task (Windows): UnknownFunction []
+<...>
+```
+
+This error is caused by Unreal increasing the specificity of the `BitmaskEnum` UPARAM meta specifier.
+
+If your code was originally this:
+
+```h
+UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
+	float CalculateDamage(float DmgIn, UPARAM(meta = (Bitmask, BitmaskEnum = ENDamageType)) int32 Type, TSubclassOf<class UFGDamageType> BpType, FHitResult Impact);
+```
+
+You can fix it by changing the BitmaskEnum to what the error message mentioned, like this:
+
+```h
+UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
+	float CalculateDamage(float DmgIn, UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/PowerSuit.ENDamageType")) int32 Type, TSubclassOf<class UFGDamageType> BpType, FHitResult Impact);
+```
+
+More information can be found
+https://forums.unrealengine.com/t/fixing-short-type-name-warning-messages/696553[here].
+
 === Wwise Migration Popup
 
 If your project contains any Wwise stubs or assets,
@@ -254,6 +284,8 @@ or opening an asset that references the Wwise asset.
 image:https://media.discordapp.net/attachments/1036634533077979146/1131263355089322054/image.png[Drejn screenshot of Wwise popup]
 
 You can safely cancel or close the prompt to take no action.
+However, you may need to delete any Wwise assets you have in your mod,
+or Wwise could block that mod from packaging with a vague error message.
 
 == Notable New Features
 
