@@ -245,7 +245,7 @@ if you're using the `.uproject` model.
 Furthermore, using the `.uproject` model will cause Rider to try and build the Engine, which files are not present for, corrupting the Rider project.
 The `.sln` model should still work as it did before.
 
-=== Bitmask BitmaskEnum Increased Specificity
+=== Unreal MetaData Increased Specificity
 
 You may encounter an error like this while packaging your blueprints:
 
@@ -256,16 +256,17 @@ UATHelper: Package Mod Task (Windows): UnknownFunction []
 <...>
 ```
 
-This error is caused by Unreal increasing the specificity of the `BitmaskEnum` UPARAM meta specifier.
+This error is caused by Unreal now requiring increased specificity
+for things that look up classes via MetaData specifiers, such as the `BitmaskEnum` UPARAM meta specifier.
 
-If your code was originally this:
+For example, if your code was originally this:
 
 ```h
 UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
 	float CalculateDamage(float DmgIn, UPARAM(meta = (Bitmask, BitmaskEnum = ENDamageType)) int32 Type, TSubclassOf<class UFGDamageType> BpType, FHitResult Impact);
 ```
 
-You can fix it by changing the BitmaskEnum to what the error message mentioned, like this:
+You can fix the warning by changing the BitmaskEnum to what the error message mentioned, like this:
 
 ```h
 UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
