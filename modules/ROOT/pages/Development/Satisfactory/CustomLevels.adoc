@@ -37,7 +37,7 @@ Starting Locations::
 
 The starting locations array, part of the SMLGameMapData asset defines where the player is able to start at.
 
-    TO-DO: Figure out how to create/add Starting Location objects, and create the array
+    TODO: Figure out how to create/add Starting Location objects, and create the array
 
 == Creating a Level [.title-ref]#(LevelCreation)#
 
@@ -53,7 +53,7 @@ Next, open the GameMapAsset, and change the following fields.
 
 Map Asset to match the new Level file you have inside your mods plugin. After you do this, change the Map Name to the name you would like to show inside the game, then set the Map Description to the description you would like to show in game, then set the Map Icon to an icon you would like (the recommended image size to use for the Map Icon is 1024x1024). After which, set the Starting Location array by doing the following:
 
-    TO-DO: Starting Location Array Guide
+    TODO: Starting Location Array Guide
 
 Once these steps are done, you should be good to go! Simply Alpakit your mod into the game, and open the New Game tab, and, assuming everything was done correctly, you should have your custom map.
 
