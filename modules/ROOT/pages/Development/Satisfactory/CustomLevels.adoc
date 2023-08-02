@@ -1,7 +1,5 @@
 = Custom Levels
 
-Custom Levels
-
 == Overview
 
 Satisfactory Update 8 brings with it a host of new features, and one of those features is the ability to create custom levels.
