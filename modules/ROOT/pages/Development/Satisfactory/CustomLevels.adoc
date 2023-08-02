@@ -2,13 +2,13 @@
 
 Custom Levels
 
-== Overview [.title-ref]#(Overview)#
+== Overview
 
 Satisfactory Update 8 brings with it a host of new features, and one of those features is the ability to create custom levels.
 
 Custom levels depend on many assets, all of which will be detailed below, additionally, an example can be found within the ExampleMod included in the SML project.
 
-The following will explain the different parts of creating a level, for a guide on how to use these to create your own level, skip to xref::/Development/Satisfactory/CustomLevels.adoc#CreatingaLevel[Creating a level]
+The following will explain the different parts of creating a level, for a guide on how to use these to create your own level, skip to xref::/Development/Satisfactory/CustomLevels.adoc#LevelCreation[Creating a level]
 
 == SMLGameMapData
 
@@ -35,13 +35,13 @@ Map Icon::
 Starting Locations::
   Created as an array, this defines the different possible locations the pioneer can spawn in. Refer to the Defining Spawn Points section on how to use this array.
 
-== Starting Locations Array [title-ref]#(StartingLocationsArray)#
+== Starting Locations Array
 
 The starting locations array, part of the SMLGameMapData asset defines where the player is able to start at.
 
     TO-DO: Figure out how to create/add Starting Location objects, and create the array
 
-== Creating a Level [title-ref]#(CreatingaLevel)#
+== Creating a Level [.title-ref]#(LevelCreation)#
 
 This section is meant to be closer to a tutorial on implementing everything mentioned on this page to add your own level.
 
@@ -58,3 +58,9 @@ Map Asset to match the new Level file you have inside your mods plugin. After yo
     TO-DO: Starting Location Array Guide
 
 Once these steps are done, you should be good to go! Simply Alpakit your mod into the game, and open the New Game tab, and, assuming everything was done correctly, you should have your custom map.
+
+== Adding Objects To a Custom Level
+
+If you have a custom level loading, odds are you want some objects in there, this list details how to do just that.
+
+To add items, simply open the Blueprints/ folder. This should be included with the folder you copied from the Example Mod. Then, find what you want to place, in this case, let's do an ore node, which would be Blueprints/Node_ExampleDynamic, and drag it where you want on the map. While it might not look right in the Editor, it will be replaced with the proper model and texture in the game.
