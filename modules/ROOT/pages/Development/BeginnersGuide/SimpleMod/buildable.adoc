@@ -78,7 +78,33 @@ the FGBuildingDescriptor asset you just created for your buildable.
 
 That's it! You don't need to register anything else. When the recipe gets loaded, everything else also gets loaded and the buildable in the save file has soft references to the classes, and if they get loaded also the classes like our newly created buildable get loaded.
 
-If you load up the game now, you should be able to build the Doc Build in game, but it is purely an object that sits there and exists. You should be able to paint it with the paint tool, and it should look roughly like it does in the icon image. If it just has a gray checkerboard on it, check in both the Buildable and the Mesh that the correct Factory Inst texture is selected. 
+== Trying it Out
+
+If you load up the game now, you should be able to build the Doc Build in game, but it is purely an object that sits there and exists. You should be able to paint it with the paint tool, and it should look roughly like it does in the icon image.
+
+== Troubleshooting
+
+=== Placing the building creates nothing in the world
+
+Make sure that your building has an instanced static mesh component
+and that a mesh is assigned to it.
+
+=== Building has a gray checkerboard texture
+
+Check in both the Buildable's mesh component the mesh's own settings that the correct Factory Inst texture is selected. 
+
+=== Building doesn't appear in the build gun
+
+- Make sure the FGBuildingDescriptor has a category and sub-category set
+- Make sure `BP_BuildGun` is in the producers list of the FGRecipe
+
+=== Crash when selecting the building in the build gun
+
+The crash message will likely contain `UStruct::IsChildOf()` and `AFGBuildGun::GotoBuildState()`
+
+You forgot to assign a hologram class in the FGBuildable - the default is `None`, which leads to this crash.
+
+=== Something Else
 
 If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
 

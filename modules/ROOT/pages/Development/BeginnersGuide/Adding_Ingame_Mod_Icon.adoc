@@ -35,7 +35,7 @@ If you didn't create your mod using the Alpakit Create Mod Utility,
 or if you want to add another custom directory to be included, see the steps below.
 
 Let's navigate to our SML project (where the FactoryGame.uproject file is located)
-and from there go to `/Plugins/<mod_reference>`
+and from there go to `/Mods/<mod_reference>`
 (read more on mod references xref:Development/BeginnersGuide/index.adoc#_mod_reference[here]).
 We should now be in the folder where our mod's .uplugin file is located.
 

@@ -2,54 +2,71 @@
 
 [WARNING]
 ====
-This page has not yet been updated for SML3.0 concepts,
-so it may be slightly out of date.
-Check the xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
-for details about what has changed between the versions.
+This page is in the process of being updated.
 ====
 
 In order to get started with C++ modding, you should first begin by performing the setup the project for a Blueprint-based modding project, as shown in the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
 This guide assumes that you have already installed all required dependencies and followed the setup process described there.
 
-== Basics
+== Background Information
 
 To build {cpp} code, Unreal uses its own written build pipeline called the "Unreal Build Tool" (aka. UBT).
 The UBT then does the job of copying files, running the "Unreal Header Tool" (UHT), and building for the desired platform automatically.
 The UHT is a tool which analyzes the source code you have written and replaces specific macros, like the `UFUNCTION`-Macro, with automatically generated code.
 It also generates separate files containing even more additional automatically generated code for you.
 
-The UBT will run in the "Development Editor"-Configuration automatically
-when you open the `.uproject` file or when you run a build in the Visual Studio solution file.
+The UBT will run in the "Development Editor" configuration automatically
+when you open the `.uproject` file in the editor or when you run a build in the Visual Studio solution file.
 
-UBT uses multiple files placed into your source code for configuration of the source component you make. An overview of these files is provided below.
+UBT uses multiple files placed into your source code for configuration of the source component you make.
+An overview of these files is provided below.
 
 === Targets
+
 `Targets` are UBTs "programs" that you write.
 Most of the time, like in our modding case, there are two `targets`.
 One target is for compiling our `modules` compatible with the Unreal Editor,
 and the second target is for compiling our `modules` compatible with the final game.
-You can find the configuration files for them in the `/Source` folder of your project.
+The configuration files for these modules will be located in the `/Source/<mod_reference>` folder of your mod.
 The target configurations follow the `<ModuleName>.Target.cs` naming pattern for the "shipping" configuration
 and the `<ModuleName>Editor.Target.cs` naming pattern for the "development editor" configuration.
 
 === Modules
+
 `Modules` are UBTs components of programs. Each target depends on at least one `module`.
 A `module` can be a library, Unreal Engine itself, plugins, the headers of Satisfactory, or your mod code.
 Most `modules` are located within their own folders in the `/Source` folder of the project.
-The Satisfactory headers used to reference functions and data structures
+
+For example, the Satisfactory headers used to reference functions and data structures
 are contained in the "FactoryGame" `module` located under `/Source/FactoryGame`.
 Each `module` folder then has again a configuration file in its root folder.
-For the "FactoryGame" `module`, this will be the file `/Source/FactoryGame/FactoryGame.build.cs`.
-In those configuration files you also define dependencies of the module like the unreal engine itself,
-SF or third party libraries you might want to include.
+For the "FactoryGame" `module`, this will be the file `/Source/FactoryGame/FactoryGame.Build.cs`.
 
-== Creating the Mod-Module
+Module configuration files allow for writing custom code to control how your module is compiled.
+Unreal uses C# to implement this configuration system.
 
-To start off, navigate to the base folder of your mod, the location of your `FactoryGame.uproject` and `FactoryGame.sln` files.
-Then navigate to the path 'Plugins/<mod_reference>/' where your '<mod_reference>.uplugin' file is located.
-Create a new folder named 'Source' inside of which we should create a subfolder, the name of which will be your mod reference.
+Example uses cases include:
+
+- Specifying dependencies to Satisfactory, Unreal Engine, or third-party code
+- Doing defines for public/private build based on env vars
+- Adding external .lib files
+- Calculating information (such as build ID) from the state of the file system
+
+== Using the Alpakit Template
+
+The Alpakit Create Mod wizard contains a template
+that creates most of the files mentioned in the below sections automatically.
+You can learn more about the wizard on the
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module] page.
+
+== Creating the Mod-Module From Scratch
+
+To begin adding {cpp} code to your mod you'll have to create a Module build configuration file.
+
+Navigate to your mod's folder, `Mods/<mod_reference>/`, where your '<mod_reference>.uplugin' file is located.
+Create a new folder named `Source` and within it a subfolder named `<mod_reference>`.
 As a reminder, the concept of a mod reference is explained xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
-Within this folder, you should create a new file called `<your mod reference>.Build.cs`.
+Within this folder, you should create a new file called `<mod_reference>.Build.cs`.
 You can do this by creating a new text file and then changing the extension to a `.cs` file, for example.
 If you chose to create the file in this manner, we suggest you turn on
 https://www.howtogeek.com/205086/beginner-how-to-make-windows-show-file-extensions/[showing file name extensions]
@@ -58,7 +75,10 @@ to assist with this.
 Within this new file you will need to add the following configuration text.
 
 Make sure to replace all instances of `<mod_reference>` with your actual mod reference. Don't keep the `<>`s.
-[source,c#]
+
+// cspell:ignore ISPC
+
+[source,cs]
 ----
 using UnrealBuildTool;
 using System.IO;
@@ -70,41 +90,72 @@ public class <mod_reference> : ModuleRules
     {
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] {
+        // FactoryGame transitive dependencies
+        // Not all of these are required, but including the extra ones saves you from having to add them later.
+        PublicDependencyModuleNames.AddRange(new[] {
             "Core", "CoreUObject",
             "Engine",
+            "DeveloperSettings",
+            "PhysicsCore",
             "InputCore",
-            "OnlineSubsystem", "OnlineSubsystemUtils", "OnlineSubsystemNULL",
+            "OnlineSubsystem", "OnlineSubsystemNull", "OnlineSubsystemUtils",
             "SignificanceManager",
-            "PhysX", "APEX", "PhysXVehicles", "ApexDestruction",
-            "AkAudio",
-            "ReplicationGraph",
-            "UMG",
-            "AIModule",
-            "NavigationSystem",
-            "AssetRegistry",
-            "GameplayTasks",
+            "GeometryCollectionEngine",
+            "ChaosVehiclesCore", "ChaosVehicles", "ChaosSolverEngine",
             "AnimGraphRuntime",
-            "Slate", "SlateCore",
-            "Json",
-	    "AbstractInstance"
-            });
+            "AkAudio", 
+            "AssetRegistry",
+            "NavigationSystem",
+            "ReplicationGraph",
+            "AIModule",
+            "GameplayTasks",
+            "SlateCore", "Slate", "UMG",
+            "InstancedSplines",
+            "RenderCore",
+            "CinematicCamera",
+            "Foliage",
+            "Niagara",
+            "EnhancedInput",
+            "GameplayCameras",
+            "TemplateSequence",
+            "NetCore",
+            "GameplayTags",
+		});
 
+        // FactoryGame plugins
+        PublicDependencyModuleNames.AddRange(new[] {
+            "AbstractInstance",
+            "InstancedSplinesComponent",
+            "SignificanceISPC"
+        });
+
+        // Header stubs
+        PublicDependencyModuleNames.AddRange(new[] {
+            "DummyHeaders",
+        });
 
         if (Target.Type == TargetRules.TargetType.Editor) {
-			PublicDependencyModuleNames.AddRange(new string[] {"OnlineBlueprintSupport", "AnimGraph"});
-		}
+            PublicDependencyModuleNames.AddRange(new string[] {"OnlineBlueprintSupport", "AnimGraph"});
+        }
         PublicDependencyModuleNames.AddRange(new string[] {"FactoryGame", "SML"});
     }
 }
 ----
+
 [WARNING]
 ====
 Note that the file we just created is a C# file (.cs) and not a C++ file (.cpp).
 ====
 
-This configuration will add the basic Unreal Engine framework, Satisfactory and
-the Mod Loader as dependencies to your module, in addition to setting up some other useful stuff for you.
+This configuration will add the basic Unreal Engine framework,
+Satisfactory, and the Mod Loader as dependencies to your module,
+in addition to setting up some other useful stuff for you.
+
+It's important to note that this example lists more PublicDependencyModuleNames than are required bare minimum.
+They are included "just in case" - without them, if you were to include a FG header that happens to use one of those,
+you would get a confusing error because module dependencies are not transitive.
+Upon encountering that error you would need to add the module containing the mentioned header to this file,
+but the error message contains no indication of what that Module Name you need to add is.
 
 You can come back to this configuration file later and change things here if needed.
 
@@ -113,6 +164,7 @@ It's now time to get started adding the module source code.
 Do this by creating a file called `<your mod reference>Module.h` and fill it with this template.
 Replace `<mod reference>` with your actual mod reference.
 Remember to replace all instances of `<mod_reference>` with your actual mod reference. Don't keep the `<>`s.
+
 [source,cpp]
 ----
 #pragma once
@@ -129,6 +181,7 @@ public:
 
 Next up we need another new file called `<mod_reference>Module.cpp`. Go ahead and fill it with the following template code.
 Again, replace `<mod_reference>` with your actual mod reference.
+
 [source,cpp]
 ----
 #include "<mod_reference>Module.h"
@@ -174,6 +227,9 @@ Don't write your code in the FactoryGame or SML modules by accident.
 == Adding a Class
 
 When you want to add a new class, there are two generally safe ways to go about it.
+Note that **you should not create new files from Visual Studio directly** -
+it is not knowledgeable about the project structure
+and will create files in a temporary directory where they won't be detected by UBT.
 
 1. Navigate to the folder in which you want to add your class in Windows Explorer
 and create the `.cpp`-File and the `.h`-File manually.

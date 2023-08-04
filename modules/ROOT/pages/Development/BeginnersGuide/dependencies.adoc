@@ -1,9 +1,7 @@
-
 = Dependencies
 
 To get started with modding Satisfactory,
 you'll need multiple other pieces of software installed first.
-
 Don't worry, we'll guide you through each step
 of downloading and installing these dependencies.
 
@@ -16,21 +14,19 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left. 
 
-[TIP]
-====
-If you'd prefer a different format of guide, you can find a video guide
-https://www.youtube.com/watch?v=-HVw6-3Awqs[here].
-**As of SML 3.0.0, these video tutorials are out of date,
-but some of the concepts will still carry over.**
-If you get stuck in the video tutorials, return here and follow these guides instead.
-Be sure to read over the steps here as well to be sure you're doing things correctly.
-====
-
 == Before you Begin
 
 Make sure you've read the starting information on the
 xref:Development/BeginnersGuide/index.adoc[Getting Started title page]
 to learn important information about how to use these docs.
+
+[IMPORTANT]
+====
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to follow the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
+====
 
 == Satisfactory
 
@@ -41,41 +37,80 @@ Launch the game at least once to ensure all files get set up correctly.
 == Visual Studio
 
 Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
-and download the version you want.
-We suggest Visual Studio 2022 Community,
-because it is free of charge and modern.
-It may force you to sign up to access the older versions, but they are free.
+and select the button for Visual Studio 2022 Community, which is free of charge.
 
-Run the installer, and agree to prompts you receive along the way.
-From the "Workloads" page select
+If you already have Visual Studio installed,
+you can run the installer again and still follow the steps below to modify your existing installation.
+
+After the installer has downloaded, run it and agree to any authorization prompts you receive along the way.
+Once you are prompted to install Visual Studio 2022
+you have two options for selecting the relevant components.
+
+[id="ImportConfiguration"]
+=== Option 1: Import an Installer Configuration
+
+If the installer took you directly to the component selection screen
+you'll have to use the smaller X button in the top right to close out of that prompt first.
+
+Instead of clicking "Install" next to Visual Studio 2022,
+click the 'More' dropdown and select `Import Configuration`.
+
+// cspell:ignore vsconfig
+Download link:{attachmentsdir}/BeginnersGuide/dependencies/SML.vsconfig[this configuration file]
+and select it in the installer's prompt.
+Next, press `Review details` and continue with the installation.
+
+[id="ManuallySelectComponents"]
+=== Option 2: Manually Select Components
+
+From the "Workloads" tab select
 "Desktop & Mobile > Desktop development with {cpp}"
 and "Gaming > Game development with {cpp}".
 You might have to scroll a bit to find them.
 
-If you already have Visual Studio installed,
-you can run the installer again
-and choose `Modify` to select these two workloads to add them to your installation.
+Next, from the "Individual Components" tab,
+search for and select:
 
-Continue through the rest of the prompts to install Visual Studio.
-Downloading and installing Visual Studio can take a while,
-so we advise you to find some lizard doggos to pet while you wait,
-or working on some of the other install steps below.
+- `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.34-17.4)`
+- `.NET 6.0 Runtime (Long Term Support)`
+- `.NET Framework 4.8.1 SDK`
 
-[WARNING]
-====
-You will also need the .NET Framework SDK, version 4.6 or higher (but not Core/v5).
-If you do not know if you have the .NET Framework SDK,
-the VS installer should provide an option to install it. It is recommended to tick it.
-====
+=== While Visual Studio Installs
+
+Downloading and installing Visual Studio can take a while.
+We advise you to find some lizard doggos to pet while you wait,
+or work on some of the other install steps below.
 
 [TIP]
 ====
 An alternative to Visual Studio which is very popular among {cpp} modders is
 https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
-If you consider using it, make sure you still have the necessary VS-{cpp} packages installed.
+If you consider using it, make sure you still have the necessary VS-{cpp} packages installed,
+and make sure to use the `.sln` project model.
 ====
 
-== Unreal Engine 4 (Custom Engine)
+////
+dedi-docs
+== Clang Toolchain for Linux Dedicated Server Support
+
+Satisfactory's dedicated servers typically run on Linux.
+Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+The download link for these files can be found on the Unreal documentation page for 
+https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
+
+Currently, Satisfactory uses Unreal Engine 5.1.1 with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
+
+// UE5.2 Dedi //Currently, Satisfactory uses Unreal Engine 5.2.1 with custom changes provided by Coffee Stain Studios.
+// UE5.2 Dedi //Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+
+Download the toolchain from the link above and run it to install the relevant files.
+The default options that the installer offers are fine.
+dedi-docs
+////
+
+[id="CustomEngine"]
+== Custom Unreal Engine Version
 
 Because Satisfactory uses a modified version of Unreal Engine,
 we modders need to be using that same version as well to develop our mods.
@@ -93,7 +128,7 @@ if you don't already have one.
 Once you've got a GitHub account,
 you'll need to register it with Epic Games and join the Epic Games GitHub organization to be able to download this special version.
 Directions on how to link so can be found
-https://www.unrealengine.com/en-US/ue4-on-github[here].
+https://www.unrealengine.com/en-US/ue-on-github[here].
 
 If the page says, "Sorry, the service is temporarily unavailable. Please try back later."
 try turning off any ad-blockers or content filters you may have enabled and refreshing the page without cache (Ctrl+Shift+R).
@@ -101,11 +136,40 @@ try turning off any ad-blockers or content filters you may have enabled and refr
 You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
 
+[id="UnrealLinker"]
+=== Link Your GitHub Account to Our Repository
+
+[WARNING]
+====
+**Update 8/SML3.5 Special Note**:
+If you have trouble getting the linker to work,
+please contact us on the Discord.
+It's a very recent addition to the setup process and we're still ironing out the bugs.
+====
+
+In addition to the changes Coffee Stain has made to Unreal Engine,
+the modding community has also applied some engine changes of our own.
+
+You'll have to link your account through a tool we created
+in order to view our repository and download the required files.
+To use the tool, visit the following link: https://linker.ficsit.app/link
+
+After the linking process is complete you should be redirected to the engine GitHub repository.
+
+After you have access to the custom engine repository it's safe to remove the application's permissions
+by visiting your https://github.com/settings/connections/applications/bdde02a7b3318bf2b84d[GitHub settings page].
+
+[TIP]
+====
+If you're curious, you can find the source code for the tool used to perform the linking process
+https://github.com/satisfactorymodding/unreal-linker[here].
+====
+
 === Download the Custom Engine
 
-Once you've done that, go to the
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
-and download three files from the latest release:
+Next, go to the
+https://github.com/satisfactorymodding/UnrealEngine/releases[Satisfactory Modding Unreal Engine project releases page]
+and download some files from the latest release:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
@@ -122,29 +186,48 @@ Check for emails from both Epic and GitHub, and be sure that you followed the ab
 You can verify that you've correctly joined the GitHub organization by checking for "EpicGames" on the
 https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
+
+You also must have used the link:#UnrealLinker[Unreal Linker] tool described above to link your GitHub account to our repository.
 ====
 
 === Install the Custom Engine
 
-Once all 3 files have finished downloading,
-run the .exe to and follow through its prompts
+Once all files have finished downloading,
+run the `.exe` and follow through its prompts
 to install the custom Unreal Engine version and corresponding Editor.
+
+[IMPORTANT]
+====
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to back up your past engine version as described in the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
+====
 
 [WARNING]
 ====
 If the installer asks you to select the folder with the next medium files,
-select the folder that contains the two `.bin` files you downloaded.
+select the folder that contains the `.bin` files you downloaded.
 
 Additionally, make sure to name the downloaded files exactly as stated above,
-otherwise the installer may be unable to locate the two `.bin` files.
+otherwise the installer may be unable to locate the `.bin` files.
 ====
 
 This install process, and opening Unreal for the first time afterwards, can take some time.
-Don't worry about opening Unreal yet though.
+Don't worry about opening Unreal yet, though.
 It will probably ask you to compile things you haven't properly set up yet.
 
-// Visual Studio extension no longer needed, but may be needed when dedicated server support comes out for easily building multiple targets
-// === Install the Visual Studio Extension
+=== Install the Visual Studio Extension (Optional)
+
+Once the installer is done you can optionally install a Visual Studio extension shipped with the Editor.
+This extension allows you to directly open {cpp} files from the Unreal editor.
+
+Navigate to where you installed the Editor, which is likely
+`C:\Program Files\Unreal Engine - CSS\`,
+then navigate to the folder `\Engine\Extras\UnrealVS\`.
+Open the sub folder for the version of Visual Studio you have installed (probably 2022)
+// cspell:ignore vsix
+and run the `.vsix` installer.
 
 == Wwise
 
@@ -154,48 +237,43 @@ you'll need to install and integrate Wwise with your mod project,
 even if you do not plan to modify sounds.
 
 Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
-`+Get Wwise+` -> `+Download Wwise+` button in the upper right corner.
+`+Get Started+` -> `+Download Wwise+` button in the upper right corner.
 Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
 After you finished downloading Wwise, open the installer.
 
-Select `WWISE` from the top bar.
+After the installer is complete it should open the Wwise launcher for you.
+In the launcher, select `WWISE` from the sidebar.
 Click the `Latest` drop-down and change it to `All`.
-Select `2021.1` from the next dropdown.
-Select version `2021.1.8.7831` from the final dropdown.
+Select `2022.1` from the next dropdown.
+Select version `2022.1.3.8179` from the final dropdown.
 Click `Install`.
 
 [WARNING]
 ====
-Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
+Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
 
 If you don't see this exact Wwise version,
-try any other version starting with `2021.1`, preferring newer versions,
+try any other version starting with `2022.1`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
 Once presented with options on what to install, select:
 
-* Packages
+* _Packages_
 ** Authoring
 ** SDK (C++)
-* Deployment Platforms
-** Apple
-*** macOS
-** Microsoft 
-*** Windows
-**** Visual Studio 2017
+* _Deployment Platforms_
+// dedi-docs ** Linux
+** _Microsoft_
+*** _Windows_
 **** Visual Studio 2019
+**** Visual Studio 2022
 
-Click `Next`.
-You don't need to add any plugins so just press `Install` to skip in the bottom left to begin the installation process.
+Click `Next` (you may need to scroll down to see the button).
+You don't need to add any plugins,
+so press `Deselect All` then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
-
-[TIP]
-====
-If you encounter a checksum error during Wwise integration,
-installing any other Wwise version should fix the problem.
-====
 
 == Starter Project
 
@@ -209,21 +287,38 @@ while still keeping their files separate,
 which will be covered later in the docs.
 
 If you are familiar with version control software (ex. Git),
-we suggest that you https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo],
+we suggest that you clone the repository,
 which drastically simplifies the process of updating the files later when the game updates.
-Check on the Discord to find out which branch to clone,
-although it's most likely `master`.
+The Project Setup page (up next) will tell you how and where to clone it.
 
 If you're not familiar with version control,
-https://www.gitkraken.com/learn/git/tutorials[now is a great time to learn]!
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[now is a great time to learn]!
 Using Version Control Software (VCS) is a great skill to have for developers
 and will greatly help with updating your project in the future,
 as well as protect you from losing your mod sources if you upload them to a hosting website like GitHub.
 
 However, if you'd just like to get started modding,
 you can download a zip of the Starter Project
-from the Satisfactory Modding GitHub,
-or directly via https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+from the Satisfactory Modding GitHub.
+
+=== Downloading a Zip
+
+[TIP]
+====
+If you're planning to clone the project,
+skip to the link:#_satisfactory_mod_manager[next heading].
+====
+
+If you're developing mods for the Early Access version of the game,
+or the Experimental branch is identical to the Early Access branch,
+then you probably want to download the `master` branch via
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+
+If you're developing mods for the Experimental version of the game,
+then you probably want to download the `dev` branch via
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[this link].
+
+If you're uncertain which to download, ask us on the Discord.
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
 
@@ -236,10 +331,9 @@ To enable it, change your selected profile to `development`.
 If you're using Satisfactory Mod Manager,
 you can skip the below steps and move on to the next page of the tutorial. 
 
-If you're not using the mod manager, you'll need to follow the
+If you're not using the mod manager, you can follow the
 xref:ManualInstallDirections.adoc[manual install directions]
 to get the relevant files set up.
-
 Alternatively, once your modding environment is set up,
 you can use Alpakit to automatically build and install SML.
 This process is covered on the next page.

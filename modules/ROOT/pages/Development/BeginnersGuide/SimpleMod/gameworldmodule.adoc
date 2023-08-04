@@ -62,7 +62,7 @@ The Dependencies list should already be pre-populated with a dependency on the c
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
 
-Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Plugins/<Mod Reference>`.
+Creating your plugin with this wizard will create a plugin workspace folder inside the project folder under `<project>/Mods/<Mod Reference>`.
 
 All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
 which you can optionally read more about 
@@ -74,27 +74,9 @@ This folder is where you will be putting most of the assets
 Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
 subfolder of the Content Browser root folder.
 
-You might need to click on `View Options` -> `Show Plugins Content`
+You might need to click on `View Options` -> `Show Plugin Content`
 in a Content Browser to view the contents of your mod in the Unreal Editor.
 image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
-
-[TIP]
-====
-If you want to Open Source your mod,
-or simply want to use a version control system like Git,
-the mod's plugin folder (containing the `.uplugin file`)
-is the ideal place for you to create the repository.
-
-Using version control is essential for collaborating on a mod with others,
-it helps write patch notes when you release an update,
-and you can use it to go back to previous versions of your files if something breaks.
-
-If you work on multiple mods,
-you only need one modding project set up
-(which can be the cloned SatisfactoryModLoader repository)
-and each mod that you make will be a plugin in this project setup.
-The plugin's folder would be the version control repository for that mod.
-====
 
 [TIP]
 ====
@@ -107,6 +89,24 @@ This is helpful when xref:Development/UpdatingToNewVersions.adoc[updating your m
 If your uplugin file was previously `ExampleMod.uplugin`,
 change it to `ExampleMod.uplugin.disabled`
 ====
+
+=== Optional: Create a Git Repository for your Mod
+
+It is worth considering using Git, a version control system, for managing your mod files.
+
+Using version control is essential for collaborating on a mod with others,
+it helps write patch notes when you release an update,
+and you can use it to go back to previous versions of your files if something breaks.
+
+A guide for setting up Git to work with your mod can be found
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
+It is safe to pause following this guide and switch to following that guide now.
+
+If you work on multiple mods,
+you only need one modding project set up
+(which can be the cloned SatisfactoryModLoader repository)
+and each mod that you make will be a plugin in this project setup.
+Each plugin's folder is the version control repository for that individual mod.
 
 == Create Game World Module
 
@@ -185,7 +185,7 @@ image:BeginnersGuide/simpleMod/UnsavedAssetContentBrowser.png[Content Browser]
 
 image:BeginnersGuide/simpleMod/UnsavedAssetTab.png[Asset Tab]
 
-- If you have the asset editor panel open, the Compile button's icon will be differnet.
+- If you have the asset editor panel open, the Compile button's icon will be different.
 
 image:BeginnersGuide/simpleMod/DirtyBlueprint.png[Dirty Blueprint - click this to compile it!]
 
@@ -243,7 +243,7 @@ Once Alpakit has completed, you can launch the game to try it out.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
 Even if this worked correctly,
-you should still read the Troubleshotting section below
+you should still read the Troubleshooting section below
 to see how to deal with errors you may encounter later.
 
 image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
@@ -273,7 +273,7 @@ but warning messages alone are very unlikely to be the cause of your mod failing
 
 Once you find the error message(s),
 proceed to fix the problems they describe,
-or ask for help on the DIscord
+or ask for help on the Discord
 
 === Failed to delete directory / Failed to delete file
 

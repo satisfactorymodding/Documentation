@@ -1,46 +1,38 @@
-= Project-Setup
+= Project Setup
 
 A key aspect of fast and efficient development is a proper Workspace and
 project setup. With a misconfigured or suboptimal setup, you'll lose
 valuable time. That's why we will guide you now through making a good
 project setup for Satisfactory.
 
-[TIP]
+[IMPORTANT]
 ====
-If you'd prefer a different format of guide, you can find a video guide
-https://youtu.be/-HVw6-3Awqs?t=249[here].
-**As of SML 3.0.0, these video tutorials are out of date,
-but some of the concepts will still carry over.**
-If you get stuck in the video tutorials, return here and follow these guides instead.
-Be sure to read over the steps here as well to be sure you're doing things correctly.
+Are you a returning Satisfactory modder who already has a past modding environment set up?
+Make sure to follow the
+xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
+guide before following these directions.
 ====
 
 == Starter Project
 
-You should have already downloaded the Starter Project in the previous steps of the tutorial.
-
-If you cloned it, the directory should be good to go.
-
-If you downloaded the Starter Project as a zip,
-unzip `SatisfactoryModLoader-master.zip` to get the Starter Project files.
-If you're having issues extracting the zip,
-try using another zip extracting software
-such as https://www.7-zip.org/[7zip]
-or https://www.win-rar.com/start.html[WinRAR].
-
-[WARNING]
-====
-By default, Windows marked files downloaded from the internet as "blocked".
-You will run into problems later on because of this.
-To get around this issues, right-click the zip and "unblock" it before unzipping it.
-====
+You should either be preparing to clone the Starter Project,
+or you downloaded a zip of it in the previous steps of the tutorial.
 
 The Starter Project folder will be your modding workspace,
 and could grow to a considerable file size depending on what kinds of mods you make.
 As such, you should extract the folder somewhere convenient so that you can find it later,
-such as a folder on a secondary storage drive, or inside your Documents folder.
+such as a folder on a secondary storage drive.
+
 It is unwise to keep it in your Downloads folder
 because Windows can automatically clean up that folder depending on your system settings.
+
+It should also not be placed into any directory that could be managed by cloud sync services
+like Dropbox, Google Drive, or OneDrive, because they can corrupt your project files.
+You should also not place it in your Documents folder
+because those folders are sometimes connected to cloud sync services that you may not be aware of.
+
+You can use this Starter Project for developing multiple mods at once,
+since each mod will be its own separate plugin folder within the project.
 
 Feel free to rename the Starter Project folder to whatever you like.
 
@@ -48,70 +40,100 @@ Try to keep the file path to the folder as short as possible.
 When packing Unreal projects, some filenames can get long,
 so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
 
+Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
+
+[id="CloneStarterProject"]
+=== You're Cloning the Starter Project
+
+Make sure to read the notes in the above Starter Project heading about where to clone the files.
+
+If you're developing mods for the Early Access version of the game,
+or the Experimental branch is identical to the Early Access branch,
+then you probably want to clone the `master` branch.
+If you're developing mods for the Experimental version of the game,
+then you probably want to download the `dev` branch.
+
+If you're uncertain which to download, ask us on the Discord.
+
+https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
+
+The directory is ready for use as soon as the clone is complete.
+Move on to the link:#_setting_up_wwise[next heading].
+
+=== You Downloaded a Zip
+
+[WARNING]
+====
+By default, Windows marks files downloaded from the internet as "blocked".
+You will run into problems later on because of this.
+To get around this issues, right-click the zip and "unblock" it before unzipping it.
+====
+
+Make sure to read the notes in the above Starter Project heading about where to unzip the files.
+
+If you downloaded the Starter Project as a zip,
+unzip `SatisfactoryModLoader-master.zip` (or the `-dev.zip`) to get the Starter Project files.
+If you're encountering issues extracting the zip,
+try using another zip extracting software
+such as https://www.7-zip.org/[7zip]
+or https://www.win-rar.com/start.html[WinRAR].
+
 You should strongly consider using version control software,
 such as Git, to manage your mod's files.
-But doing so is outside the scope of this tutorial.
+If you'd like to do this, you can learn more about that process
+xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 As mentioned earlier, you probably want to clone the Starter Project repo
 instead of downloading a zip file of it.
-
-You can use this Starter Project for developing multiple mods at once,
-since each mod will be its own separate plugin folder within the project.
 
 == Setting up Wwise
 
 Wwise is an audio and sound system used by Satisfactory,
 and setting it up is required to get your modding environment working.
-Setting up Wwise can be difficult, but we'll walk through the steps here.
+Setting up Wwise can be confusing, but we'll walk through the steps here.
 Be sure to follow _only_ the steps listed here
 - Wwise will often present you with lots of additional messages
 that looks like errors or warnings but can be safely ignored.
 
-[WARNING]
+[IMPORTANT]
 ====
 If part of the setup process fails for you, it is most likely this step.
 If you have errors completing the setup process,
 come back to here and make sure you followed these steps correctly.
 ====
 
-Start the Wwise launcher that you installed earlier and update the launcher if needed.
-Next, open the `UNREAL ENGINE` tab in the upper tab-bar.
+Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
+Next, open the `UNREAL` tab in the sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
-Click on the three lines next to the "RECENT UNREAL ENGINE PROJECTS" label
+Click on the three-lines button next to the "RECENT UNREAL ENGINE PROJECTS" label
 and click `Browse for project...`.
-Now select the `FactoryGame.uproject` file in your mod's project folder.
+Now select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
-Then select the same version you installed earlier (likely `2021.1.8.7831`). 
+Then select the same version you installed earlier (likely `2022.1.3.8179`). 
 The version number may have additional numbers on the end of it e.g.
-`2021.1.8.7831.1234` but as long as it starts with `2021.1.8.7831` it should work.
+`2022.1.3.8179.1234` but as long as it starts with `2022.1.3.8179` it should work.
 
-If version `2021.1.8.7831` does not appear even after you have selected `All`,
-edit your `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `4.26.2-CSS`.
+If version `2022.1.3.8179` does not appear even after you have selected `All`,
+edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
+is set to `5.1.1-CSS`.
 
-If this version still doesn't show up, try any other version starting with `2021.1.8`.
-
-[WARNING]
-====
-Watch out - most newer versions of Wwise don't have support for Unreal Engine 4, which this project needs.
-
-If you don't see this exact Wwise version, consider asking for help on the Discord.
-====
+If this version still doesn't show up, try any other version starting with `2022.1.3`.
 
 If you missed a required component as part of the Wwise installation,
 it may show a yellow warning box indicating what's missing
 as well as a button to "Modify" the installation.
-Go ahead and follow what it says for this step.
+Go ahead and follow what it says for this step only.
 If Wwise warns you that it could not find an installation in a red warning box,
-be sure that you have selected the correct version as stated above.
+that means you have not selected the correct version as stated above.
 If you see a blue box offering both "Modify" and "Add Plug-in",
-do nothing and continue to the next step.
+that means it's configured correctly,
+so continue to the next step.
 
 Under "Wwise Project Path", click the little triangle dropdown on the right
 and choose `New` to clear the path.
@@ -122,31 +144,39 @@ Do so, and agree to the terms to start the process.
 
 That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
+You can close the Wwise launcher.
+
+_Note: the below gif may select a version that does not match what is written above._
+_Please use the version mentioned in the text above._
 
 image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
+
+[TIP]
+====
+If you encounter a checksum error during Wwise integration,
+installing another Wwise version similar in version number should fix the problem.
+====
 
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-To do this, you'll need to run a command,
-unless you already have another version of Unreal Engine installed.
-If you do, right-click on the `.uproject` file and select `Generate Visual Studio project files`.
-Go ahead and skip down to the link:#_project_compilation[next section] if this works for you.
+Right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+If this option appears for you, skip down to the link:#_project_compilation[next section].
 
 Otherwise, you'll need to run a tool from the command line to generate the project files.
 
 The command will follow the form below:
 
 ```
-"<path to your Unreal build tool here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
+"<path to your Unreal build batch file here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
 
-Here is an example of a complete command.
+Here is an example of a completed command:
 
 ```
-"C:\Program Files\Unreal Engine - CSS\Engine\Binaries\DotNET\UnrealBuildTool.exe" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
+"C:\Program Files\Unreal Engine - CSS\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
 
 [WARNING]
@@ -165,21 +195,34 @@ It is not correctly formatted for Powershell.
 
 Next up is compiling the project from Visual Studio.
 It is possible for Unreal to compile the project as well on launch,
-but if there is an error,
-Unreal will give a very vague report as to what went wrong.
+but if there are any errors,
+Unreal will give a very vague report as to what went wrong
+and you'll have to rebuild from Visual Studio anyways to get more details.
 As such, it's best just to always compile from Visual Studio
 so you don't have to build a second time to see the error report.
 
 [TIP]
 ====
-If you have multiple computers available on your network, you can optionally use Incredibuild to speed up the compilation process. More info 
+If you have multiple computers available on your network,
+you can optionally use Incredibuild to speed up the compilation process.
+More info
 xref:CommunityResources/incredibuild.adoc[here].
 ====
 
-Open up the .sln file in your project folder.
+Open up the `FactoryGame.sln` file in your project folder.
+
+[TIP]
+====
+Visual Studio may tell you "Based on your solution, you might need to install extra components for a full development experience" at the top of the Solution Explorer window.
+It is safe to ignore this message.
+Alternatively, you can install the requested components to keep Visual Studio from complaining about this
+at the cost of additional disk space.
+====
+
 Once Visual Studio loads,
-make sure that you have `Development Editor`
-and `Win64` selected in the top toolbar.
+make sure that you have `Development Editor` Solution Configuration
+and `Win64` Solution Platform selected in the top toolbar.
+It's near the undo/redo buttons and the play button menu items.
 
 image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
 
@@ -188,15 +231,27 @@ Now, from the top toolbar, select `Build` > `Build Solution`.
 image:BeginnersGuide/PressBuild.png[Build Solution]
 
 This will take some time; go pet some lizard doggos as you wait.
+See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output log window if desired.
 
-After it completes, you should select `Shipping` in the toolbar and start another build.
-Building both of these is required for the editor to function correctly,
+////
+dedi-docs
+If you are building for dedicated servers, see
+link:UpdatingToDedi.adoc#_DedicatedServerProjectCompilation[Project Compilation - Dedicated Server Support (Optional)]
+dedi-docs
+////
+
+After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
+(the same place you selected `Development Editor` earlier)
+and start another build.
+Building both of these is required for the editor to function correctly
 and for you to be able to distribute your mod.
 
-[WARNING]
+Now that you've built the binaries, your Unreal Editor should open without any issues.
+
+[IMPORTANT]
 ====
 Some important notes for the future:
 
@@ -205,16 +260,54 @@ or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
-When you want to test or release your mod, make sure to build the project for `Shipping`.
+When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`.
+
 Without doing so, your mod will be missing important files.
 ====
 
+////
+dedi-docs
+Block comments don't work inside ==== blocks, this goes inside the IMPORTANT
+
+, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
+////
+
+[id='Compiling_Troubleshooting']
+=== Troubleshooting
+
+Almost all warnings, and occasionally some errors, reported by the editor can be safely ignored during the build process.
+This section will help you decide how to proceed if you encounter errors while building.
+
+==== The command ... exited with code 6
+
+This is not actually an error message, just a message that is informing you that the build task has failed.
+Keep reading the Error List to see what actually went wrong.
+Sometimes the real error does not show up until the build has finished.
+You may also have to check the Output > (Show output from: Build) tab instead of the Error List to see the actual error message(s).
+
+==== Compiler is out of heap space
+
+Your computer ran out of RAM while trying to compile the project.
+This is a common issue even on computers with 32GB of RAM.
+Thankfully the completed build progress persists between attempts at building,
+so just keep re-running the build task and it will slowly make progress.
+Close other stuff on your computer that is using RAM if possible, such as web browsers and games.
+Restarting your computer and then trying the build again may also help.
+
+If the project still continues to fail to build with this reason after many attempts,
+contact us on the Discord for further troubleshooting.
+Your computer may unfortunately not have enough ram to compile the project.
+
+==== AkAudio
+
 If you see errors related to `AkAudio` or similar,
-you need to go back and re-do the Wwise integration step.
+you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step].
 
-If you encounter issues during this step, consider asking for help on the Discord.
+==== Something Else
 
-Now that you've built the binaries, your Editor should open without any issues.
+If you run into a problem that isn't described above,
+please ask for help on the Discord, even if you fix it yourself.
+We can update the docs with your findings to help other people that might have a similar issue!
 
 == Open Unreal Editor
 
@@ -227,7 +320,7 @@ You can find it by searching for it in the Windows search bar
 (it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
-`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UE4Editor.exe`
+`C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor.exe`
 
 Once the Unreal Engine editor has launched,
 open your project by navigating to
@@ -259,7 +352,7 @@ if you haven't taken or dismissed it yet.
 
 Alpakit is a tool made by the modding community
 to make building and testing your mod more convenient.
-It's one of the plugins that comes pre-installed with the starter project.
+It's one of the mods that comes pre-installed with the starter project.
 
 Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
@@ -287,7 +380,35 @@ They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
-You can press the 'Alpakit!' button next to a mod to have Alpakit pack the files for you.
+
+////
+dedi-docs
+=== Packaging Mods with Alpakit
+For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
+** Windows Client - `Shipping - x64 / Shipping|Win64`
+** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
+** Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and copy your mod to your Satisfactory installation(s).
+
+Note that for the following types of targets to be packaged, the requisite build
+(see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation])
+must be completed and successful.
+
+* Windows - `Shipping - x64 / Shipping|Win64`
+* Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
+* Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
+
+For our local testing, we will only need Windows (the client) checked.
+
+// TODO retake this screenshot with just the example items and just the fields we want them to have checked
+
+You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+
+image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
+dedi-docs
+////
+=== (Optional) Packaging SML
 
 Note that if you have not yet installed SML in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.

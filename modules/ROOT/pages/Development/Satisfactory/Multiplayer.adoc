@@ -1,54 +1,99 @@
 = Multiplayer
 
-Adding Multiplayer support to mods is just like adding multiplayer support to other Unreal Engine projects.
-
-We won't discuss how replication works in here, so you should _really_ read through https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[Unreal's documentation about replication] before continuing.
-
 [WARNING]
 ====
-Again, please read first the Unreal https://docs.unrealengine.com/en-US/Resources/ContentExamples/Networking/index.html[documentation] and https://wiki.unrealengine.com/Replication[Wiki] about replication first
-before continuing with this guide! Replication can be a difficult concept to understand, but understanding it is crucial to making your mods support multiplayer.
+This page is a work in progress.
 ====
 
-There are still some parts that are very difficult to archive, and how to work around them, we will discuss in here further.
+Although not all mods need special code to handle multiplayer,
+it's important to create your mods with multiplayer in mind.
 
-== Client-to-Server Remote Procedure Calling
+Adding support for multiplayer to your mod is similar to creating multiplayer code for any other Unreal Engine project.
 
-You might have noticed that triggering a Remote Procedure Call (RPC) isn't as straightforward as it may first appear.
-The reason is simple: as you might be aware, to be able to call a RPC from the client, the calling object needs to be the authority of the object.
-This is only the case if the object is somehow owned by the player connection. The player controller, for example, is owned by the player connection.
+[id="DetermineIfSpecialMultiplayerCodeNeeded"]
+== Does your mod need special changes to support multiplayer?
 
-Our problem now is, we are not able to add more functionality to the player controller and so we are not able to add functions
-in the player connection owning scope.
+Short answer: xref:Development/TestingResources.adoc[Try it yourself and find out!]
 
-CSS was so nice and has implemented a system that allows us to add functionality owned by the player connection afterwards in runtime.
-This system is implemented through `Remote Call Objects`.
+Long answer: It's complicated.
+It's always best to xref:Development/TestingResources.adoc[test your mod]
+to determine if it's working or not.
+But, in general, if your mod only adds new items, recipes, and schematics,
+or adds content only by extending base-game classes,
+you _probably_ don't need to write any multiplayer code.
+As soon as you start handling user input or using custom logic to modify the state of the game,
+you should start thinking about multiplayer.
 
-Remote Call Objects (aka. RCOs) get created by the CSS code in runtime individually once for every player controller there is.
-They get created, replicated, and then become owned by their respective player controllers.
+== Before You Continue
 
-Now, the client owning the player controller is able to get the RCO instance by passing the class of the RCO to the `AFGPlayerController::GetRemoteCallObjectByClass` function.
-With that RCO reference, you will be able to call anywhere RPCs of the RCO, even in the GUI which exists only on the client side.
+Replication in Unreal Engine can be a very confusing system at first,
+so it's important to build a strong understanding before continuing.
 
-But before any client can even do that, you need to tell the game to create these RCO instances when a player spawns.
-You simply need to register your RCO class by calling the `AFGGameMode::RegisterRemoteCallObjectClass` function.
-CSS recommends to call this function in `AFGGameMode::PostLogin` when `AFGGameMode::IsMainMenuGameMode` returns false and the game instance has authority of the game mode (if it is host).
-But it should also be fine to call it on server one time before it could get used by something.
+This https://www.youtube.com/watch?v=JOJP0CvpB8w[Alex Forsythe video]
+provides an excellent introduction to replication in Unreal Engine,
+and you should watch it before continuing on this page.
+By watching this video now, you'll save yourself hours of troubleshooting in the future.
 
-Here is some example C++ code we use in the StartupModule function to register a RCO:
+The rest of this page will assume you have watched, and understand, the video.
 
-// cSpell:ignore UEAAXPEAVA
-[source,c++]
-----
-SUBSCRIBE_METHOD("?PostLogin@AFGGameMode@@UEAAXPEAVAPlayerController@@@Z", AFGGameMode::PostLogin, [](auto& scope, AFGGameMode* gm, APlayerController* pc) {
-	if (gm->HasAuthority() && !gm->IsMainMenuGameMode()) {
-		gm->RegisterRemoteCallObjectClass(UDocModRCO::StaticClass());
-	}
-});
-----
+After watching the video, check out the
+https://unrealcommunity.wiki/replication-vyrv8r37[Unreal Community Wiki's replication page].
+You will not need to use every concept here,
+but understanding the factors at play will help you figure out what is going wrong when things don't work as expected.
 
-The RCO itself just needs to derive from `FGRemoteCallObject` and then contains the RPCs
-you want to be able to call as client.
+Consider checking out Unreal's own examples in the
+https://docs.unrealengine.com/4.26/en-US/Resources/ContentExamples/Networking/[Networking Content Examples pack].
+
+[IMPORTANT]
+====
+Again, please https://www.youtube.com/watch?v=JOJP0CvpB8w[watch the video] before continuing.
+====
+
+== ExampleMod
+
+The ExampleMod (included in the starter project)
+contains some examples of correctly adding multiplayer functionality to mods.
+
+The examples are not exhaustive, but they should help you get started.
+
+== Remote Call Objects
+
+Remote Call Objects are an Unreal concept described in the video.
+Note that dedicated servers have no player controller they can't make use of Remote Call Objects.
+In that case, consider using a link:_ReplicatedSubsystems[Replicated Subsystem] instead.
+
+Coffee Stain Studios has written custom code to make it easier for mods to register their own Remote Call Objects.
+The inner details of this system are described in the link:_HowRCOsImplemented[appendix].
+
+Remote call objects can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
+
+Remote call objects can be retrieved from a player controller instance via 
+`FGPlayerController::GetRemoteCallObjectOfClass`
+which is accessible in both blueprints and {cpp}.
+
+If for some reason you need to manually register a remote call object it can be done via
+`FGPlayerController::RegisterRemoteCallObjectOfClass` or
+`FGGameMode::RegisterRemoteCallObjectClass`.
+
+[id="NoMulticastInRCOs"]
+=== Do Not Use Multicast in RCOs!
+
+It is important to note that since the RCOs are owned by the player controller,
+they do not exist on every connection.
+As such, you should not use them for any multicast RPCs - triggering one will softlock and crash client players!
+If you want to use Multicast, do it from an link:_ReplicatedSubsystems[Replicated Subsystem] instead.
+
+An example why you should not do this is demonstrated in the ExampleMod.
+
+=== Blueprint Example
+
+Your remote call objects should inherit from `BP Remote Call Object`.
+
+The ExampleMod demonstrates blueprint remote call object registration and usage from a building.
+
+=== {cpp} Example
+
+Your remote call objects should inherit from `FGRemoteCallObject`.
 
 If you were to try this as is, it still won't work because Unreal is weird and we still need to do one more thing.
 You will need to add any kind of `UPROPERTY` to the RCO, which is replicated.
@@ -102,4 +147,66 @@ rco->SetSomeStuffOfTheDocMachineRPC(machine, false); // call the RPC of the RCO
 ----
 
 You might also want check if `AFGPlayerController::GetRemoteCallObjectByClass` actually returns something.
-If it returns nothing (nullptr) under various conditions, such as when the RCO is not registered yet.
+It returns nothing (nullptr) under various conditions, such as when the RCO is not registered yet.
+
+[id="ReplicatedSubsystems"]
+== Replicated Mod Subsystems
+
+Mod Subsystems are a concept implemented by Satisfactory Mod Loader.
+
+Learn more about them on the xref:Development/ModLoader/Subsystems.adoc[Subsystems] page.
+
+Configure if a subsystem is replicated via its `Replication Policy` field.
+
+Replicated subsystems are a good place to implement multicast RPCs since they will be present on all connections.
+
+=== Blueprint Example
+
+The ExampleMod uses a replicated property on the Multiplayer Demo Building.
+
+=== {cpp} Example
+
+No example is currently provided.
+
+== Replicated Properties
+
+See the video or Unreal documentation for more info on their purpose.
+
+=== Blueprint Example
+
+Variables can be configured to replicate by specifying their `Replication` option in the details panel.
+
+The ExampleMod uses a replicated property on the Multiplayer Demo Building.
+
+=== {cpp} Example
+
+See the video or Unreal documentation for more info.
+
+== Replication Detail Components
+
+Replication Detail Components are critical in handling replication of inventories to multiplayer clients.
+
+TODO
+
+== Appendix
+
+Additional information on various topics.
+
+[id="HowRCOsImplemented"]
+=== Note on Client-to-Server Remote Procedure Calling
+
+You might have noticed that triggering a Remote Procedure Call (RPC) isn't as straightforward as it may first appear.
+The reason is simple: as you might be aware, to be able to call a RPC from the client, the calling object needs to be the authority of the object.
+This is only the case if the object is somehow owned by the player connection. The player controller, for example, is owned by the player connection.
+
+As modders, we are not able to directly add more functionality to the player controller,
+so we are not able to add functions in the player connection owning scope at compile time.
+
+Thankfully Coffee Stain has implemented a system that allows us to add functionality owned by the player connection afterwards in runtime.
+This system is implemented through `Remote Call Objects`.
+
+Remote Call Objects (aka. RCOs) get created by the in runtime individually once for each player controller.
+CSS's code handles the creation, replication, and ownership transfer to their respective player controllers for us.
+
+The client owning the player controller is able to get the RCO instance by passing the class of the RCO to the `AFGPlayerController::GetRemoteCallObjectByClass` function.
+With that RCO reference, you will be able to call anywhere RPCs of the RCO, even in the GUI which exists only on the client side.

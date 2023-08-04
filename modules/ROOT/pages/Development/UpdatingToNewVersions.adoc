@@ -1,5 +1,11 @@
 = Updating your Mod and Starter Project
 
+[IMPORTANT]
+====
+If you are updating from SML3.4 to SML3.5, make sure to check out the
+xref:Development/UpdatingFromSml34.adoc[dedicated Updating from SML 3.4.1 guide page] first.
+====
+
 When Coffee Stain updates Satisfactory,
 changes can occur to game internals that require mod developers to update their mods.
 
@@ -164,7 +170,7 @@ You may have to edit a registry key entry to fix this - ask on the Discord for h
 == Install the New Engine
 
 The new editor version can probably be downloaded from
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[the GitHub releases page],
+https://github.com/satisfactorymodding/UnrealEngine/releases[the GitHub releases page],
 but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
 The specific files to download are described in the
@@ -173,22 +179,41 @@ xref:Development/BeginnersGuide/dependencies.adoc#_download_the_custom_engine[De
 Remember, if you see a 404 page following that link,
 the page is not dead, you need to log into the right GitHub account.
 More info on this can be found
-xref:Development/BeginnersGuide/dependencies.adoc#_unreal_engine_4_custom_engine[here].
+xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
+
+== Fixing the Start Menu Shortcuts (Optional)
+
+If you typically launch the editor via the Windows Start Menu
+you will likely have to repair the shortcuts there after moving engine folders around.
+You can open the folder containing the shortcuts by searching for "Unreal Engine - CSS" in the start menu,
+right clicking on the shortcut, then choosing "Open File Location".
+From there you can edit the shortcut's properties to configure its target, name, and launch location.
+
+You may also want to assign custom icons to each shortcut.
+This will change the appearance of the editor in the taskbar,
+making it easier to distinguish between multiple versions of the editor running at once.
+You can create your own icons or use 
+https://discord.com/channels/555424930502541343/689188183048585244/1043643638577631263[these ones from on the Discord].
+You may have to restart your computer for the icon changes to take effect,
+as windows aggressively caches icon images.
 
 == Preparing to Update your Starter Project
 
 Depending on how you downloaded your modding starter project,
-one of these approches will be easier than the rest,
+one of these approaches will be easier than the rest,
 or you may _have_ to use one to get what you want.
 
 You should read both options in full to make an informed decision.
 
-=== Option 1: Start Fresh
+=== Option 1: Fresh Starter Project
 
 If you have a small, self contained mod,
 or the changes to SML or game systems are immense,
 it may be easier to simply set up a new starter project
 than bother trying to update your existing one.
+
+Note that getting a new starter project doesn't mean starting over on your mod -
+you still keep all of your mod-specific files.
 
 If you have lots of project-level specific settings,
 such as special packaging rules or editor configurations, this may not be ideal.
@@ -199,8 +224,10 @@ which includes getting the new SML version and new Starter Project,
 as well as integrating a new Wwise version.
 
 Your mod's files are probably all within its plugin folder,
-so you can simply transfer over that entire folder to the Plugins folder of the new project.
-Remember to regenerate Visual Studio project files and build after you do this.
+so you can simply transfer over that entire folder to the Mods folder of the new project.
+Remember to
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files]
+and build after you do this.
 
 ==== Bring Over Editor Configs
 
@@ -214,9 +241,10 @@ while still keeping the old values you want.
 
 === Option 2: Replace Changed Files
 
-If you have a lot of plugins set up in one project,
+If you have a lot of mods set up in one project,
 the changes to SML or game systems are small,
-or you want to preserve your git history,
+or you want to preserve your _project's_ git history,
+(not mod, that would still be preserved by Option 1)
 this may be the route to update your existing project.
 
 After performing any of these approaches,
@@ -235,6 +263,9 @@ it's a lot simpler to completely toss a broken copy instead of trying to patch i
 
 You will have to pull (if you cloned) or merge (if you forked)
 the changes made in the main SML repository.
+You may also have to switch branches and/or check out a newer commit.
+Check the xref:Development/BeginnersGuide/project_setup.adoc#CloneStarterProject[Project Setup page]
+to determine what branch/commit you should be on.
 
 There are a few files that will likely have been automatically modified,
 and you will have to discard or stash your own changes
@@ -249,8 +280,15 @@ They include, but are not necessarily limited to:
   (see the link:#_dealing_with_the_content_folder[Dealing With the Content Folder]
   and link:#_watch_out_complete_starter_projects_and_version_control[Watch Out: Complete Starter Projects and Version Control] sections)
 
-Once you have stashed or discared your changes to these files,
+Once you have stashed or discarded your changes to these files,
 you should be able to pull/merge in the files.
+
+You may wish to delete some project temporary folders, especially after an engine update, to save on disk space.
+
+- `<project directory>/Intermediate/`
+- `<project directory>/Build/`
+- `<project directory>/Binaries/`
+- `<your mod's directory>/Saved/`
 
 ===== Dealing With the Content Folder
 
@@ -284,11 +322,16 @@ As a general overview, changes could include any or all of the following:
 
 - `/Build/Alpakit.Automation/`
 - `/Content/` stub files
-- `/Plugins/Alpakit/`
-- `/Plugins/ExampleMod/`
-- `/Plugins/SML/`
-- `/Plugins/SMLEditor/`
 - `/Source/`
+- `/Config/`
+- `/Plugins/`
+- `/Mods/AccessTransformers/`
+- `/Mods/Alpakit/`
+- `/Mods/ExampleMod/`
+- `/Mods/SML/`
+- `/Mods/SMLEditor/`
+- `FactoryGame.uproject`
+- `.gitignore`
 
 ==== Option 2C: You Have a Project Level Repo
 
@@ -299,7 +342,7 @@ working with a team of people on multiple interdependent mods at once,
 or having custom project settings you want to preserve.
 
 If you have a project level git repo,
-your git history is probably vastly different from the base SML repo,
+your project git history is probably vastly different from the base SML repo,
 so trying to merge in the changes is likely infeasible.
 
 You'll have to go through most of the same process as the zip project download.
@@ -321,7 +364,7 @@ which could lead to confusion or name conflicts when trying to use them in your 
 Remember to copy back in AngryBeaver's recreated assets.
 The process for doing this is covered on the Asset Toolkit page.
 
-Also, make sure to download an updated version of the Asset Toolkit plugins,
+Also, make sure to download an updated version of the Asset Toolkit mods,
 because they may have been patched since you last generated your project.
 
 === Watch Out: Complete Starter Projects and Version Control
@@ -333,7 +376,7 @@ You must be careful with how you bring the regenerated assets into version contr
 GitHub (and most other VC platforms) has a size limit on how big they will alow an individual commit to be,
 and hitting this limit is quite feasible when bringing in this many assets.
 
-Before commiting the regenerated assets,
+Before committing the regenerated assets,
 consider running a TreeSize or WinDirStat analysis
 to find out which directories are the largest
 so that you can split up the changes into separately committed and pushed units.
@@ -351,9 +394,9 @@ This step allows you to catch any problems that could have occurred now,
 as opposed to later when you're trying to fix your mods,
 and it's unclear what the cause is.
 
-Temporarily move out all items from your Plugins folder
+Temporarily move out all items from your `Mods/` folder
 except those that came with the Starter Project
-(Alpakit, ExampleMod, SML, SMLEditor, Wwise),
+(Alpakit, ExampleMod, SML, SMLEditor),
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
 and rebuild the project.
 This ensures that any potential problems with your mods don't affect the build process.

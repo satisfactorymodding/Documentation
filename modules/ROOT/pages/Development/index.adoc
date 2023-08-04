@@ -9,11 +9,11 @@ If you're just looking to play Satisfactory with mods, check out how to install 
 
 == Resources
 
-Below is a list of some good resources about making mods for SF, UE4, C++ and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
+Below is a list of some good resources about making mods for Satisfactory, Unreal Engine, C++ and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
 
 - https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
 +
-A good YouTube Channel showing a more in-depth look at features of UE4 (BP only).
+A good YouTube Channel showing a more in-depth look at features of Unreal Engine (BP only).
 - https://www.youtube.com/c/AlexForsythe[Alex Forsythe]
 +
 A YouTube Channel that covers Unreal concepts (both BP and C++) in detail, including replication.

@@ -9,6 +9,8 @@ with questions and suggestions, or contribute via PRs (see below).
 We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,
 but this is only loosely followed.
 
+An overview of Asciidoc syntax can be found [here](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/).
+
 Pull requests should target the `Dev` branch.
 
 Before you submit changes,
@@ -49,9 +51,11 @@ It reserves a lot of system memory even when not actively in use.
 If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
 then type "Reopen in Container" and select the option that appears.
 
-The container will automatically serve the built content upon opening for preview in your browser or within VSCode.
+The container will automatically serve the built content upon opening for preview in your browser or within VSCode,
+as well as a file watcher to automatically rebuild the preview upon detecting changes.
+You will still have to manually refresh your browser, though...
 
-Note that you'll need to use `yarn run build:dev` to update the preview if you make changes.
+If you are switching between container and local dev you may have to delete the `node_modules` and/or `.pnpm_store` folder.
 
 ### Manual
 
@@ -68,30 +72,34 @@ follow the below directions.
 
 #### Installing
 
-1. Install [Node.js](https://nodejs.org/en/download/) and [Yarn Package Manager](https://classic.yarnpkg.com/en/docs/install) through your preferred method
+1. Install [Node.js](https://nodejs.org/en/download/) (the CI uses 16 but newer should be fine) and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
 
-2. Use Yarn to install dependencies
+2. Clone the repository
+
+3. Use pnpm to install dependencies
 
 ```bash
-yarn install
+pnpm install
 ```
 
 #### Building
 
-To build the docs for SML and all other hosted mods (slow):
+To set up a development watch server that will automatically rebuild the docs when you make changes:
 
 ```bash
-yarn run build
+pnpm run watch:dev
 ```
 
-To build the docs for just SML, download an alternate
-[Antora playbook file](https://cdn.discordapp.com/attachments/629385164115673108/689142080043352073/antora-playbook-dev.yml)
-and put it in the root folder of the repo.
-
-Then, run the following:
+To build the docs for **SML and all other hosted mods** (slow):
 
 ```bash
-yarn run build:dev
+pnpm run build
+```
+
+To build the docs for **just SML** (much faster):
+
+```bash
+pnpm run build:dev
 ```
 
 The output HTML files for both commands can be found in `\build\site`.
@@ -100,7 +108,7 @@ The output HTML files for both commands can be found in `\build\site`.
 
 To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
 
-You can also run `yarn serve` which will start a local webserver.
+You can also run `pnpm run serve` which will start a local webserver.
 
 ## Adding Docs for Another Mod
 

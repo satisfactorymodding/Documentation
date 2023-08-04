@@ -1,0 +1,94 @@
+= Session Settings
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Introduced in SML3.5, Session Settings
+(referred to in-game as Mod Savegame Settings)
+are a feature similar to Advanced Game Settings
+that allows mods to store configuration information on a per-game-save basis.
+They do not require Advanced Game Settings to be enabled to be used.
+
+Session Settings are currently stored in the Map Travel URL,
+making them available exceedingly early in the loading process.
+This may change in the future.
+
+It's possible to make a session setting specific to only a certain level,
+making them particularly useful for configuring options for custom levels.
+
+== Creation
+
+Session Settings are defined by Data Assets.
+To create a Session Setting in Blueprint, in a content browser right click and select
+`Create Advanced Asset` > `Miscellaneous` > `Data Asset` and search for `SMLSessionSetting`.
+
+== Registration
+
+To register a Session Setting, list it the relevant array in your mod's
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
+
+As soon as the Session Setting is registered it will be available to be set in the SML Session Settings menu,
+which is available at both world creation and in the pause menu.
+
+== Configuration
+
+Session Settings inherit from `UFGUserSetting`, the class the game uses to define the configuration options in the settings menu.
+
+Not all of the properties of `UFGUserSetting` are relevant to Session Settings.
+You will have to experiment to see which ones have an effect.
+Please update this documentation page via "Edit This Page" in the top right with your findings.
+
+The "Str Id" field is a unique identifier for the session setting.
+It should include your Mod Reference and is used for retriving the value of the session setting later.
+
+Checking the "Use CVar" field is only required
+if you wish to allow modifying the value of the session setting via the game console.
+
+SML automatically forces the following property values on Session Settings.
+If you change any of these properties they will be automatically reset to these values
+next time the asset is loaded.
+
+- ShowInBuilds: `Public Builds` to ensure that session settings are visible to the user
+- ManagerAvailability: `USM MAX`, which is an invalid value, ensuring that the setting never displays in base-game options menus.
+- IsSettingSessionWide: `true` to ensure that multiplayer clients are able to modify session settings and have their changes stored with the save file.
+
+In order to have a session setting only editable at save creation, use the "Don't show in game" Visibility Disqualifier.
+
+== Reading and Writing Session Settings
+
+You can read the value of a session setting via the "Get <something> Option Value" method of the Session Settings Manager.
+You can also subscribe to changes via "Subscribe to Dynamic Option Update".
+
+Check ExampleMod for some example session settings and how to read their values.
+There is an example in the ExampleMod Level Blueprint and in the Game World Module.
+
+If you want to programatically modify the value of a session setting,
+use the "Set <something> Option Value" method of the Session Settings Manager.
+
+
+// TODO are they currently synced from clients to host? SML forces them all to be "for all players" so it can be saved with the savegame.
+
+// TODO verify
+// Session settings are stored in the session settings subsystem https://discord.com/channels/555424930502541343/562722670974599227/1126996669481889903
+
+// Session Settings can optionally be marked as TODO, meaning that they will be stored (uncompressed) in the Unreal session URL as part of the save header. This means their values will be loaded as soon as the game mode is initialized and before world actors are initialized.
+
+== Session Settings vs. Mod Config
+
+TODO
+
+Mod Config is better for user interface or visual stuff since it is saved with the user's game and carries over between saves.
+
+Session Settings are good for things you want to be a choice per save file, such as options for a custom level.
+
+== Advanced Game Settings
+
+In order to create an Advanced Game Setting instead of a Session Setting,
+create a data asset of type `FGUserSetting` instead of `SMLSessionSetting`.
+
+Once the type is set to `Advanced Game Setting` in the asset properties,
+the game will automatically discover it and add it to the Advanced Game Settings menu for you.
+You can use the same category system as Session Settings to control what categories it appears in.
+This is also true for Photo Mode and Options Menu settings, if for some reason you want to add values to those.

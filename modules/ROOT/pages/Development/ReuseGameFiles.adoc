@@ -39,13 +39,13 @@ The Starter Project includes `FGItemDescriptor` placeholders for most base game 
 If the game has updated since you downloaded your copy of the Starter Project,
 or you are looking for some less commonly used assets,
 you may be missing some of these placeholders.
-In this case, you can create the placeholder yourself by finding the correct path
-to the asset with UModel, then creating an asset of the same type
-with the same name in that location. This process is described below.
+In this case, you can create the placeholder yourself by finding the correct path to the asset,
+then creating an asset of the same type with the same name at that path in your Starter Project.
+This process is described below.
 
 If you are missing an `FGItemDescriptor` placeholder,
 you can also create it using the same process.
-You'll be placeholdering the descriptor instead of a mesh or texture, though.
+You'll be creating a placeholder for the descriptor instead of a mesh or texture, though.
 
 == Example Static Mesh and Icon Reuse
 
@@ -58,7 +58,7 @@ This is done by figuring out the Blueprint Path of the asset via the
 https://satisfactory.wiki.gg/[Satisfactory Wiki],
 finding the content on a
 https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materials[reference list], or via searching around for it in
-https://www.gildor.org/en/projects/umodel[UModel]
+xref:Development/ExtractGameFiles.adoc#FModel[FModel]
 (the case for most GUI elements).
 
 image:ReuseContent/WikiHubPartsBox.png[HUB Parts on the Satisfactory Wiki]
@@ -66,34 +66,37 @@ image:ReuseContent/WikiHubPartsBox.png[HUB Parts on the Satisfactory Wiki]
 
 _HUB Parts on the Satisfactory Wiki_
 
-Next, you can go to that blueprint path in UModel to find out
+Next, you can go to that blueprint path in FModel to find out
 what the paths of the relevant static mesh and icon objects are.
 
 For the HUB Parts, this path is
 `/Game/FactoryGame/Resource/Parts/HUBParts/Desc_HUBParts.Desc_HUBParts_C`,
 so we should go to
-`\Game\FactoryGame\Resource\Parts\HUBParts`
-in UModel to find the relevant files.
+`\FactoryGame\Resource\Parts\HUBParts`
+in FModel to find the relevant files.
 
-image:ReuseContent/UModelFoundPath.png[HUB Parts inside of UModel]
-
-
-_HUB Parts inside of the UModel package browser_
-
-Lo and behold, here is the `FGItemDescriptor` of the hub parts, its static mesh,
-and folders that contain its Material Instance, textures, and icons.
-
-If you want, you can open up the asset to view and make sure you've found
-the right thing.
-
-image:ReuseContent/UModelHubParts.png[HUB Parts in the UModel Viewer]
+image:ReuseContent/FModelFoundPath.png[HUB Parts inside of FModel]
 
 
-_HUB Parts in the UModel UE Viewer_
+_HUB Parts inside of the FModel Folders browser_
+
+Upon switching to the Packages tab we can see
+the `FGItemDescriptor` (`Desc_HUBParts.uasset`)
+and its static mesh (`SM_HUBparts_01.uasset`).
+Back in the Folders tab, we can see sub-folders that contain its Material Instance, textures, and icons.
+
+If you want, you can open up the asset to view and make sure you've found the right thing.
+For this example, make sure you have `HUBParts` selected in the Folders tab,
+then open `SM_HUBparts_01` from the Packages tab to bring up the 3D viewer.
+Use the Commands button in the top left of the viewer to see navigation keybinds.
+
+image:ReuseContent/FModelHubParts.png[HUB Parts in the FModel 3D Viewer]
+
+_HUB Parts in the FModel 3D Viewer_
 
 Now that you've found the location of the asset in the base game,
 you're ready to set up the placeholder for it. Within your editor,
-you should go to the same path that you followed in UModel, creating
+you should go to the same path that you followed in FModel, creating
 folders with the exact same name if needed to reach your destination.
 
 Since we are looking to reuse the static mesh and icons of the HUB parts
@@ -113,13 +116,13 @@ For the mesh, we can reuse the
 link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[Plantpot of Knowledge]
 from the
 xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial],
-which you can copy in from the ExampleMod in your project, or redownload from the above link.
+which you can copy in from the ExampleMod in your project, or download it again from the above link.
 
 For the icon texture, we can reuse the 
 link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[Soon™ Icon]
 from the
 xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe/Schematic tutorial],
-which you can copy in from the ExampleMod in your project or redownload from the above link.
+which you can copy in from the ExampleMod in your project or download it again from the above link.
 
 image:ReuseContent/PlaceholderMesh.png[Final Placeholder Mesh]
 image:ReuseContent/PlaceholderIcon.png[Final Placeholder Icon]

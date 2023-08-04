@@ -4,7 +4,7 @@ To add a third party library to your mod, you must add it as a module under your
 
 == Module Definition
 
-You must first create a directory structure that follows this example: `Plugins/<mod_reference>/Source/ThirdParty/<third_party>Library/` and place a file named after that library in the directory called `<third_party>Library.Build.cs`
+You must first create a directory structure that follows this example: `Mods/<mod_reference>/Source/ThirdParty/<third_party>Library/` and place a file named after that library in the directory called `<third_party>Library.Build.cs`
 
 The file must contain a class named after the module, and references to any include paths and library paths.
 
@@ -28,7 +28,7 @@ public class <third_party>Library : ModuleRules
 
 == Module Usage
 
-After you have defined the third party module, you need to reference it in your plugins base modules `<mod_reference>Library.Build.cs` file as a public dependency.
+After you have defined the third party module, you need to reference it in your mod's base module's `<mod_reference>Library.Build.cs` file as a public dependency.
 
 [source,cpp]
 ----

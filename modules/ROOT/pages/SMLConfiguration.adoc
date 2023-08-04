@@ -1,6 +1,7 @@
 = SML Configuration
 
-Through SML's configuration file system, it's easy for mod developers to create config files for their mods, and easy for users to change mod settings.
+SML's configuration file system makes it easy for mod developers to create config files for their mods
+and easy for users to change mod settings.
 
 == Config Folder
 
@@ -21,28 +22,17 @@ If you don't see a mod's config file listed here, it's most likely because the m
 
 == SML configuration options
 
-SML itself also provides a couple of configuration settings, allowing you to control its behavior.
+SML itself also provides a couple of configuration settings allowing you to control its behavior.
 
 [cols="1,1,1,4a"]
 |===
 |Name |Type |Default |Description
 
-|enableCheatConsoleCommands
+|enableFunchookLogging
 |bool
 |false
-|Enables all available SML console cheat commands, a list of which can be found xref:SMLChatCommands.adoc#_console_cheat_commands[here].
-
-|developmentMode
-|bool
-|false
-|Leave this at false, otherwise the game will load slower to no benefit (as a user).
-It is necessary for part of SML development.
-
-|consoleWindow
-|bool
-|false
-|Toggles whether or not the external SML console window is visible.
-This is also known as SML Logging. More info can be found xref:Development/TestingResources.adoc#logging[here].
+|Enables additional logging functionality to assist with troubleshooting a
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/131[rare crash].
 
 |disabledChatCommands
 |string array

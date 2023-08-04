@@ -33,7 +33,7 @@ be sure to call the super functions, or the subsystem will not be handled correc
 If you want to have a subsystem you will need at least one class that inherits the `ModSubsystem` class. 
 
 To register a subsystem, you should add it to the `Mod Subsystems` array of the
-xref:Development/ModLoader/ModModules.adoc#_game_instance_module_ugameinstancemodule[Game World Module].
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game World Module].
 
 image:Satisfactory/Subsystems/Subsystems_gwm.PNG[GameWorldModule]
 

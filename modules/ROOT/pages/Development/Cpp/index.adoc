@@ -1,23 +1,16 @@
 = C++ Modding
 
-[WARNING]
-====
-This page has not yet been updated for SML3.0 concepts,
-so it may be slightly out of date.
-Check the xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
-for details about what has changed between the versions.
-====
+Utilizing {cpp} code in your mod allows access to a much wider variety of game systems and features.
+Furthermore, {cpp} code is often compiled into far more performance friendly code than its Blueprint equivalent.
 
-{cpp} modding is the holy grail of Satisfactory modding. As opposed to the visual programming style of the Blueprints system,
-text-based {cpp} code can be compiled into far more efficient code. Additionally, with {cpp} mods, you have access to modify
-nearly every aspect of the game, whereas there are still many features not exposed to Blueprints.
-
-That being said, Blueprint scripting is still very useful for quick stuff, or for things that don't need to be high performance (like UI).
+However, {cpp} systems have their own shortcomings as well.
+Writing a mod with {cpp} does not mean replacing all of your Blueprint assets with {cpp} code.
+The best mods are implemented with a careful combination of both {cpp} and Blueprint code.
 
 == Understanding Blueprint vs C++
 
-Alex Forsythe has an excellent writeup (and corresponding video) that explains the different roles of {cpp} and blueprint in an Unreal project.
-
+Alex Forsythe has an excellent writeup (and corresponding video)
+that explains the different roles of {cpp} and blueprint in an Unreal project.
 Alex's summary of the article:
 
 ====
@@ -26,6 +19,8 @@ Learn what makes C++ and Blueprints different, what they have in common, and how
 ====
 
 You can find the article (and a link to the video) http://awforsythe.com/unreal/blueprints_vs_cpp/[here].
+You should at the very least watch the video before proceeding.
+Reading the article is also highly recommended.
 
 == Requirements
 
@@ -96,10 +91,10 @@ You can find a quick guide to the Unreal portion in the https://docs.unrealengin
 
 == Warning
 
-Due to technical limitations, there are some functions/features of Satisfactory and Unreal Engine 4 that
+Due to technical limitations, there are some functions/features of Satisfactory and Unreal Engine that
 we are not able to access or need to use a work around to call correctly. This is the world we live in right now, and we can't do much about it.
 
-If you experience a crash or some undefined behavior while using a function from UE4 or Satisfactory,
+If you experience a crash or some undefined behavior while using a function from Unreal Engine or Satisfactory,
 you should read the javadoc comment that has been added to the function. Sometimes the comment will tell you that it doesn't work
 and suggest you use the workaround written in the comment.
 

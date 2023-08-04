@@ -28,47 +28,64 @@ will affect every instance of Command Prompt on your system.
 See the link:#_launch_script_enhancements[Launch Script Enhancements] section below
 for another method of controlling where the window will appear.
 
-== Multiplayer Testing
+[id="LaunchScript"]
+== Quick Launch Script
 
-=== Instructions
+Testing mods often involves frequent restarts of the game.
+You can shave some time off of this process by launching via a script that loads you directly into the game world.
+In order to use this script, create a file with the `.ps1` extension somewhere convenient to you.
 
-Run 2 games of Satisfactory for multiplayer testing in a few easy steps!
-
-1. Create a new Powershell script with the contents of the below 
-code block and edit the first line to the game install folder.
-Note: You can edit the 2nd and 3rd line for a custom name
-
-2. Run the script in Powershell (by right clicking it and hit "run by powershell")
-and wait for both copies of the game to load.
-
-3. Open up your save file in either copy of the game. 
-
-4. Once you've loaded in, go to the second game instance
-and open the console by pressing the ` (backtick/grave) key.
-Then type in `open 127.0.0.1` and hit enter.
-The second instance will now connect to the game hosted by the first instance.
-
-[NOTE]
-====
-Using backtick to open the console seems to work only with the Windows UK keyboard Layout,
-not a physical one, but in Windows set it to UK keyboard layout.
-On some other keyboard layouts, F2 works instead.
-If you are having trouble opening the console,
-you can edit the settings in Satisfactory's `Input.ini` file
-(found at `%appdata%\Local\FactoryGame\Saved\Config\WindowsNoEditor\Input.ini`)
-to change the console key to another key of your choice.
-====
-
-=== Powershell Launch Script
+Next, copy the contents of the below codeblock into the file.
+Note that you will have to modify the section near the top
+to match the location of files on your system.
 
 [source,ps1]
 ----
-$GameDir = "C:\Program Files\Epic Games\SatisfactoryEarlyAccess"
-$Username1 = "Player1"
-$Username2 = "Player2"
+param (
+	[string]$branch = "EA",
+	[switch]$multiplayer = $false,
+	[switch]$loadLatestSave = $false
+)
 
-$Args1 = "-EpicPortal", "-NoSteamClient", "-NoMultiplayer", '-Username="'+$Username1+'"'
-$Args2 = "-EpicPortal", "-NoSteamClient", "-NoMultiplayer", '-Username="'+$Username2+'"'
+# Configure these to match your system and preferences
+$GameDir_EA = "C:\EpicGamesGames\SatisfactoryEarlyAccess"
+$GameDir_EXP = "C:\EpicGamesGames\SatisfactoryExperimental"
+$SaveFolder = "C:\Users\YourUserName\AppData\Local\FactoryGame\Saved\SaveGames\YourID"
+$Username1 = "Host" # Note - Unreal Engine 5 has broken the Username functionality, so this is currently ignored
+$Username2 = "Client"
+$CommonArgs = "-EpicPortal", "-NoSteamClient", "-NoMultiplayer", "-log"
+# End configuration section
+
+$AutolaunchTempFileName = "AutolaunchScript_Temp.ini"
+
+if ($branch -eq "EA") {
+	$GameDir = $GameDir_EA
+} elseif ($branch -eq "EXP") {
+	$GameDir = $GameDir_EXP
+} else {
+	Write-Error "Unknown branch type: '$branch'"
+	return
+}
+
+# You can optionally configure the window size and position on the screen per instance
+$Args1 = "$CommonArgs", "-Username=`"$Username1`""#, "-WinX=0", "-WinY=32", "ResX=960", "ResY=1040"
+
+# TODO multiplayer and loadLatestSave arguments incompatible. direct loading into a save does not allow joining via `open 127.0.0.1` in the client, the host must manually load another save file for that to be set up
+
+if ($loadLatestSave) {
+	# https://stackoverflow.com/questions/9675658/powershell-get-childitem-most-recent-file-in-directory
+	$latestSaveFile = (Get-ChildItem $SaveFolder | sort LastWriteTime | select -last 1)
+	$latestSaveFileName = $latestSaveFile.Basename
+
+	$AutolaunchFilePath = "$GameDir\$AutolaunchTempFileName"
+	New-Item $AutolaunchFilePath -ItemType File -Force -Value "[/Script/EngineSettings.GameMapsSettings]`n"
+	Add-Content $AutolaunchFilePath "LocalMapOptions=??skipOnboarding?loadgame=$latestSaveFileName"
+	Add-Content $AutolaunchFilePath "GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level`nGameInstanceClass=/Script/FactoryGame.FGGameInstance"
+
+	$Args1 = "$Args1", "EngineINI=`"$AutolaunchFilePath`""
+}
+
+$Args2 = "$CommonArgs", "-Username=`"$Username2`""#, "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
 
 function BGProcess(){
     Start-Process -NoNewWindow @args
@@ -76,10 +93,33 @@ function BGProcess(){
 
 BGProcess "$($GameDir)\FactoryGame.exe" $Args1
 
-sleep -m 5000
+if ($multiplayer) {
+	sleep -m 5000
+} else {
+	return
+}
 
 BGProcess "$($GameDir)\FactoryGame.exe" $Args2
+
 ----
+
+=== Usage
+
+After the launch script has been set up, use flags when running it to controls its behavior.
+Note that in order to use the branch feature you must have separate copies of the game installed in the locations you specified in the config section.
+
+Assuming your powershell file is named `SFLaunch_Advanced`:
+
+- `.\SFLaunch_Advanced.ps1` will launch the Early Access version of the game
+- `.\SFLaunch_Advanced.ps1 -loadLatestSave` will automatically load you into the last save file you made.
+- `.\SFLaunch_Advanced.ps1 -branch EXP` will launch the Experimental copy of the game
+- `.\SFLaunch_Advanced.ps1 -multiplayer` will launch two copies of the game
+- `.\SFLaunch_Advanced.ps1 -branch EXP -multiplayer` will launch two copies of the Experimental game
+
+Note that the `-multiplayer` flag is currently incompatible with the `-loadLatestSave` flag
+and that the `-loadLatestSave` flag requires
+link:#LoadCustomLevel[extra configuration] to work with saves made in custom levels
+and doesn't guarantee that you'll be put into the same player pawn.
 
 === Launch Script Enhancements
 
@@ -103,12 +143,33 @@ $Args1 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username1+'"', "-WinX=0
 $Args2 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username2+'"', "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
 ----
 
-== Automatically Load a Map on Launch
+== Multiplayer Testing
 
-It's possible to make the game to automatically load to the game world on launch,
+Locally testing multiplayer functionality requires running two copies of the game at once.
+Normally the Steam and Epic Games client don't allow you to do this,
+but the link:#LaunchScript[launch script] in the previous section will allow you to do so.
+
+=== Instructions
+
+1. First, run the launch script with the `-multiplayer` flag to open two copies of the game.
+
+2. Open up your save file in either copy of the game - this one will be the host, the other copy is the client.
+
+3. Once you've loaded in, go to the client game instance and open the in-game console.
+Learn how to do this
+xref:SMLChatCommands.adoc#ConsoleCommands[here].
+Then type in `open 127.0.0.1` and hit enter.
+The second instance will now connect to the game hosted by the first instance.
+
+[id="LoadCustomLevel"]
+== Load a Custom Level on Launch
+
+The link:#LaunchScript[launch script] demonstrates how to make the game to automatically load to the game world on launch,
 as opposed to the main menu, cutting down on load time and clicks when testing your mod.
+However, you will need to tweak it slightly if the level you want to load is a custom level.
 
-To do this, you'll need to either create a file with some configuration settings
+To do this, you'll need to either need to modify the powershell script,
+create a file with some configuration settings
 or add them to the default game configuration.
 
 To get started, create a `.ini` file in a convenient location
@@ -126,7 +187,8 @@ In place of `LastLight_autosave_0` you should put the name of your desired save 
 Note that loading last autosaves of a map works as well if you format it correctly.
 The example will load the latest autosave of a save called `LastLight`.
 
-Note that doing this will prevent you from returning to the main menu in that game session - when you try to do so, you will instead re-load your selected game save.
+Note that doing this will prevent you from returning to the main menu in that game session -
+when you try to do so, you will instead re-load your selected game save.
 
 There are a few other flags you can use as well:
 
@@ -189,3 +251,77 @@ you can edit your default game configuration, found at
 
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
+
+////
+dedi-docs
+== Dedicated Servers
+
+In order to start testing on dedicated servers, you will first need to set up your own dedicated server.
+
+Follow the directions on the https://satisfactory.fandom.com/wiki/Dedicated_servers[Satisfactory Wiki]
+to set up a working dedicated server and verify that you can connect to it with an unmodified client.
+
+Note that in order to perform the first time server claiming process
+you will need to use a client of the game that was launched normally (ex. through Steam or Epic).
+After the server claiming process is complete you can return to using a copy launched with the launch scripts described elsewhere on this page.
+
+Since the dedicated server will be sharing your own copy of the game's save folder,
+attempting to upload saves to it will fail, since the save is already present in that folder.
+
+Since the dedicated server you will be testing with does not need to connect to the internet,
+following the wiki's directions for correctly authenticating with Steam or Epic servers are not required.
+The minimum suggested launch arguments for a dedicated server is `.\FactoryServer.exe -log -EpicPortal`
+dedi-docs
+////
+
+== Modify Online Subsystem Behavior
+
+// From https://discord.com/channels/555424930502541343/562722670974599227/1044575456659259472
+
+Additional information about the Online Subsystem.
+
++++ <details><summary> +++
+True offline mode information from Archengius:
++++ </summary><div> +++
+Example configuration file to run game offline with just IP sockets and no online subsystems and strings attached whatsoever
+
+[source,ini]
+----
+[/Script/EngineSettings.GameMapsSettings]
+GameDefaultMap=/Game/FactoryGame/Map/MenuScenes/Map_MenuScene_Update_06.Map_MenuScene_Update_06
+ServerDefaultMap=/Game/FactoryGame/Map/DedicatedserverEntry.DedicatedserverEntry
+LocalMapOptions=
+
+[URL]
+Name=Player
+Port=7777
+
+[/Script/Engine.Engine]
+NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
+NetDriverDefinitions=(DefName="BeaconNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
+NetDriverDefinitions=(DefName="DemoNetDriver",DriverClassName="/Script/Engine.DemoNetDriver",DriverClassNameFallback="/Script/Engine.DemoNetDriver")
+
+[OnlineSubsystem]
+DefaultPlatformService=NULL
+NativePlatformService=NULL
+
+[OnlineSubsystemSteam]
+bEnabled=false
+bRelaunchInSteam=false
+
+[OnlineSubsystemEOS]
+bEnabled=false
+
+[OnlineSubsystemNull]
+bEnabled=true
+----
+
+Example command line:
+
+// cspell:ignore Multiprocess
+
+`FactoryGame-Win64-Shipping.exe -NoEpicPortal -EngineIni="C:\EpicLibrary\SatisfactoryExperimental\OfflineEngineIni2.ini" -Multiprocess -Log`
+
+
+`-Multiprocess` prevents game writing to any files (which is really what you want if you plan running multiple instances simultaneously) and `-Log` opens the console log window
++++ </div></details> +++

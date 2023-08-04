@@ -46,7 +46,7 @@ xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[created your mod 
 At that point in the tutorial, we said we'd come back to some fields later, and now is that time.
 
 Although you can find this file in your mod's plugin directory,
-which is your modding project directory's `/Plugins/<mod reference>` folder,
+which is your modding project directory's `/Mods/<mod reference>` folder,
 you should generally edit it within the unreal editor via Alpakit.
 Alpakit will automatically handle the file's formatting for you
 and help to prevent mistakes that would create an invalid uplugin file and be annoying to track down.
@@ -175,7 +175,9 @@ This field is required.
 ! Version number for the mod dependency.
 Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
-You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
+// According to Mircea, this site does not work correctly
+// https://discord.com/channels/555424930502541343/562722670974599227/1037056112651931658
+// You can use https://jubianchi.github.io/semver-check/[this site] to test if a version would match a range.
 {blank} +
 {blank} +
 We suggest using the prefix `^`, which generally allows any number in the patch field (the `3` in `1.2.3`),
@@ -199,7 +201,7 @@ But if it exists, our mod might be able to unlock more functionality that depend
 {blank} +
 This field is optional, and defaults to `false` if unspecified.
 
-!bIsBasePlugin
+!BasePlugin
 ! This boolean property should be set to `true` for all plugin dependencies that are not *mod* dependencies.
 For example, regular Unreal Engine plugins your mod requires.
 SMM will not attempt to download these because they aren't mods.
@@ -376,6 +378,28 @@ If you decide to change it, you'll have to edit a number of files, most of which
 
 == Upload to Satisfactory Mod Repository
 
-Once you're ready to release your mod,
-follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
+Once you're ready to release your mod, you will need to package your mod for uploading. 
+
+////
+dedi-docs
+
+Due to changes for multiple build target support (i.e. dedicated servers), a new set of options has been added for packaging for xref:CommunityResources/AcronymVault.adoc#_satisfactory_mod_repository_smr_aka_ficsit_app[SMR]. 
+
+`Release Targets` is a selection for the `Alpakit Release` function that allows 
+selection of specific build targets for separate mods. (See example below.)
+
+`Windows` - `Requires Shipping - x64 / Shipping|Win64` - Client Version of Satisfactory, not specific to the Windows system.
+`Windows Server` - `Requires Shipping_Server - x64 / Shipping_Server|Win64` - Windows Dedicated Server of Satisfactory.
+`Linux Server` - `Requires Linux_Shipping_Server - Win32 / Linux_Shipping_Server|Linux` - Linux Dedicated Server of Satisfactory.
+
+TODO update with this info from Mircea https://discord.com/channels/555424930502541343/601030071221878784/1128762351915630735
+
+image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
+
+You will then find your packaged file in `<SML Project Folder>\Saved\ArchivedPlugins\<ModReference>` as `<ModReference>.zip`. 
+The `<ModReference>-<TargetType>.zip` are your mod, but in the separate build targets (i.e. `WindowsNoEditor`, `WindowsServer`, `LinuxServer`).
+dedi-docs
+////
+
+Follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
 page to create a modpage and a release.

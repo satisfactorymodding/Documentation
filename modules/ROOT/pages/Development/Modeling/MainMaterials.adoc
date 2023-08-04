@@ -6,7 +6,7 @@ If you want to re-use other existing materials or textures that are not currentl
 
 [NOTE]
 ====
-It's important to understand the UE4 concept of https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
+It's important to understand the Unreal Engine concept of https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances].
 ====
 
 [WARNING]

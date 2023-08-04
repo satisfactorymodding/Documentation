@@ -7,11 +7,15 @@
     "build": "antora antora-playbook.yml --clean --fetch",
     "build:ci": "antora antora-playbook-ci.yml --clean --fetch",
     "build:dev": "antora antora-playbook-dev.yml",
-    "serve": "ws -d build/site"
+    "watch:dev": "chokidar -c \"antora antora-playbook-dev.yml\" --initial \"modules/ROOT/**/*.*\"",
+    "serve": "ws -d build/site",
+    "spellcheck": "cspell \"**/*.{adoc,md}\""
   },
   "devDependencies": {
     "@antora/cli": "^2.3.4",
     "@antora/site-generator-default": "^2.3.4",
+    "chokidar-cli": "^3.0.0",
+    "cspell": "^6.31.1",
     "local-web-server": "^4.2.1"
   }
 }
