@@ -239,7 +239,7 @@ You can monitor its progress from the Output log window if desired.
 ////
 dedi-docs
 If you are building for dedicated servers, see
-link:UpdatingToDedi.adoc#_DedicatedServerProjectCompilation[Project Compilation - Dedicated Server Support (Optional)]
+xref:UpdatingToDedi.adoc#_DedicatedServerProjectCompilation[Project Compilation - Dedicated Server Support (Optional)]
 dedi-docs
 ////
 

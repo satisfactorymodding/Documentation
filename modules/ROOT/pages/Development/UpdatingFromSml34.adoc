@@ -165,7 +165,7 @@ Why the change?
 * SML 3.5.x Locations:
   image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
 
-2. link:BeginnersGuide\project_setup.adoc#_project_compilation[Compile your project like normal]
+2. xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Compile your project like normal]
 
 This change also affects the game client -
 mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
