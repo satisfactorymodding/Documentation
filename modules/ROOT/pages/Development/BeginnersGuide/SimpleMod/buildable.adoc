@@ -97,6 +97,7 @@ Check in both the Buildable's mesh component the mesh's own settings that the co
 
 - Make sure the FGBuildingDescriptor has a category and sub-category set
 - Make sure `BP_BuildGun` is in the producers list of the FGRecipe
+- Make sure that you have purchased a schematic that unlocks the recipe you defined for your building
 
 === Crash when selecting the building in the build gun
 
