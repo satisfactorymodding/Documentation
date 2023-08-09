@@ -34,7 +34,28 @@ public class <third_party>Library : ModuleRules
 }
 ----
 
-[source,cpp]
+== Shared (dynamic) libraries
+
+Shared libraries need some additional setup,
+since the runtime linker only looks for shared libraries under the relevant `Binaries/<PlatformName>` folders of Plugins, Mods, and the game.
+
+To have the `.dll` or `.so` files copied from the source folder to `Binaries`,
+you can make use of the `RuntimeDependencies` list of the module.
+This marks files that should be included in the build output of the mod,
+and can additionally copy files to a different location than the original one, which is what you need for shared libraries.
+
+[WARNING]
+====
+Unreal Engine overrides the `new` and `delete` functions, using its custom memory management system,
+Because of this, passing STL objects to/from externally compiled shared libraries is not possible,
+as they will be allocated with one `new` function on one side, and deallocated with an unmatched `delete` function on the other. 
+Doing so will result in a crash similar to `FMallocBinned2 Attempt to realloc an unrecognized block 0000023E58B80000 canary == 0x0 != 0xe3`
+====
+
+Below is an example where all library header files are placed in `inc`
+and compiled libraries (`.lib` and `.dll` for Windows, `.a` and `.so` for Linux) are placed in `lib/Win64` and `lib/Linux` respectively:
+
+[source,cs]
 ----
 using System.IO;
 using UnrealBuildTool;
@@ -45,7 +66,9 @@ public class <third_party>Library : ModuleRules
     {
         Type = ModuleType.External;
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
-        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "x64", "Release"));
+        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "lib", PlatformName));
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(ModuleDirectory, "lib", PlatformName, "*.dll")); // Windows
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(ModuleDirectory, "lib", PlatformName, "*.so")); // Linux
     }
 }
 ----
