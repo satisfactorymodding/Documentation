@@ -14,9 +14,6 @@ and `lib/<PlatformName>` containing the compiled library files,
 where `<PlatformName>` is one of the
 https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs#L254-L292[Unreal Target Platform names].
 Currently, Satisfactory is released for `Win64` and `Linux`.
-Using `<PlatformName>` makes it easy to handle all the different platforms at once.
-
-Below is an example where all library header files are placed in `inc` and compiled libraries (`.lib`) are placed in `lib/Win64`:
 
 [source,cs]
 ----
@@ -29,7 +26,20 @@ public class <third_party>Library : ModuleRules
     {
         Type = ModuleType.External;
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
-        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "lib", PlatformName));
+
+        var PlatformName = Target.Platform.ToString();
+
+        var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
+        if (Target.Platform == UnrealTargetPlatform.Win64)
+        {
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+        }
+        else if (Target.Platform == UnrealTargetPlatform.Linux)
+        {
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+        }
     }
 }
 ----
@@ -52,9 +62,6 @@ as they will be allocated with one `new` function on one side, and deallocated w
 Doing so will result in a crash similar to `FMallocBinned2 Attempt to realloc an unrecognized block 0000023E58B80000 canary == 0x0 != 0xe3`
 ====
 
-Below is an example where all library header files are placed in `inc`
-and compiled libraries (`.lib` and `.dll` for Windows, `.a` and `.so` for Linux) are placed in `lib/Win64` and `lib/Linux` respectively:
-
 [source,cs]
 ----
 using System.IO;
@@ -66,9 +73,23 @@ public class <third_party>Library : ModuleRules
     {
         Type = ModuleType.External;
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
-        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "lib", PlatformName));
-        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(ModuleDirectory, "lib", PlatformName, "*.dll")); // Windows
-        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(ModuleDirectory, "lib", PlatformName, "*.so")); // Linux
+
+        var PlatformName = Target.Platform.ToString();
+
+        var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
+        if (Target.Platform == UnrealTargetPlatform.Win64)
+        {
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+        }
+        else if (Target.Platform == UnrealTargetPlatform.Linux)
+        {
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+        }
+
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.dll")); // Windows
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.so")); // Linux
     }
 }
 ----
