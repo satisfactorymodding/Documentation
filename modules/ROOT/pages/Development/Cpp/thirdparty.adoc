@@ -8,7 +8,31 @@ You must first create a directory structure that follows this example: `Mods/<mo
 
 The file must contain a class named after the module, and references to any include paths and library paths.
 
-Here is an example where all source files are placed in `inc` and compiled libraries (`.lib`) are placed in `x64/Release`:
+The recommended structure is
+`inc` (or `include`) containing the library header files,
+and `lib/<PlatformName>` containing the compiled library files,
+where `<PlatformName>` is one of the
+https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs#L254-L292[Unreal Target Platform names].
+Currently, Satisfactory is released for `Win64` and `Linux`.
+Using `<PlatformName>` makes it easy to handle all the different platforms at once.
+
+Below is an example where all library header files are placed in `inc` and compiled libraries (`.lib`) are placed in `lib/Win64`:
+
+[source,cs]
+----
+using System.IO;
+using UnrealBuildTool;
+
+public class <third_party>Library : ModuleRules
+{
+    public <third_party>Library(ReadOnlyTargetRules Target) : base(Target)
+    {
+        Type = ModuleType.External;
+        PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
+        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "lib", PlatformName));
+    }
+}
+----
 
 [source,cpp]
 ----
