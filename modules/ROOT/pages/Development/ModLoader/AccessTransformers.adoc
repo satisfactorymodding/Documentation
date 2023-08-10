@@ -28,8 +28,8 @@ In order to use Access Transformers, create a file in `YourPluginModReference\Co
 ----
 [AccessTransformers]
 ; You can use semicolons for comments if you want to leave notes about the purpose of an access transformer
-Friend=(Class="/Script/FactoryGame.FGSomeClass", FriendClass="UMyClass")
-Accessor=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
+Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
 BlueprintReadWrite=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
 BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="SomeFunction")
 ----
@@ -110,11 +110,11 @@ Some of the Friend classes are from the Area Actions mod.
 [source,ini]
 ----
 [AccessTransformers]
-Friend=(Class="/Script/FactoryGame.FGBuildableFactory", FriendClass="UAACopyBuildingsComponent")
-Friend=(Class="/Script/FactoryGame.FGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent")
-Friend=(Class="/Script/FactoryGame.FGBuildableConveyorBase", FriendClass="AAAClearInventories")
-Friend=(Class="/Script/FactoryGame.FGHologram", FriendClass="UAACopyBuildingsComponent")
-Accessor=(Class="/Script/FactoryGame.FGBuildableFactory", Property="mInventoryPotential")
+Friend=(Class="AFGBuildableFactory", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="AFGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent")
+Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
+Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
+Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
 BlueprintReadWrite=(Class="/Script/FactoryGame.FGSchematicManager", Property="mPurchasedSchematics")
 BlueprintCallable=(Class="/Script/FactoryGame.FGDismantleInterface", Function="Dismantle")
 ----
