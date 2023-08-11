@@ -195,5 +195,9 @@ if you need to disable mods while still keeping their files around.
 
 ### Something is Still Wrong
 
+If you get an error when trying to package the mod along the lines of
+"UATHelper: Package Mod Task (Windows): ERROR: System.IO.DirectoryNotFoundException: Could not find a part of the path",
+make sure that the name of the mod folder exactly matches the mod reference.
+
 If you are still encountering issues,
 consider asking for help on the Discord and/or from the mod developer.
