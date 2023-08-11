@@ -1,16 +1,24 @@
 = Third Party Libraries
 
-To add a third party library to your mod, you must add it as a module under your UPlugin.
+Adding third-party {cpp} libaries to your mod is possible but requires some additional setup.
+The third party library must be included as a Module in your mod plugin.
 
 == Module Definition
 
-You must first create a directory structure that follows this example: `Mods/<mod_reference>/Source/ThirdParty/<third_party>Library/` and place a file named after that library in the directory called `<third_party>Library.Build.cs`
+You must first create a directory structure that follows this example:
+`Mods/<mod_reference>/Source/ThirdParty/<third_party>Library/`
+and place a file named after that library in the directory called `<third_party>Library.Build.cs`
 
 The file must contain a class named after the module, and references to any include paths and library paths.
 
-Here is an example where all source files are placed in `inc` and compiled libraries (`.lib`) are placed in `x64/Release`:
+The recommended structure is
+`inc` (or `include`) containing the library header files,
+and `lib/<PlatformName>` containing the compiled library files,
+where `<PlatformName>` is one of the
+https://github.com/EpicGames/UnrealEngine/blob/release/Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs#L254-L292[Unreal Target Platform names].
+Currently, Satisfactory is released for `Win64` and `Linux`.
 
-[source,cpp]
+[source,cs]
 ----
 using System.IO;
 using UnrealBuildTool;
@@ -21,14 +29,77 @@ public class <third_party>Library : ModuleRules
     {
         Type = ModuleType.External;
         PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
-        PublicLibraryPaths.Add(Path.Combine(ModuleDirectory, "x64", "Release"));
+
+        var PlatformName = Target.Platform.ToString();
+
+        var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
+        if (Target.Platform == UnrealTargetPlatform.Win64)
+        {
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+        }
+        else if (Target.Platform == UnrealTargetPlatform.Linux)
+        {
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+        }
+    }
+}
+----
+
+== Shared (Dynamic) Libraries
+
+Shared libraries need some additional setup,
+since the runtime linker only looks for shared libraries under the relevant `Binaries/<PlatformName>` folders of Plugins, Mods, and the game.
+
+To have the `.dll` or `.so` files copied from the source folder to `Binaries`,
+you can make use of the `RuntimeDependencies` list of the module.
+This marks files that should be included in the build output of the mod,
+and can additionally copy files to a different location than the original one, which is what you need for shared libraries.
+
+[WARNING]
+====
+Unreal Engine overrides the `new` and `delete` functions using its custom memory management system.
+Because of this, passing STL objects to/from externally compiled shared libraries is not possible,
+as they will be allocated with one `new` function on one side, and deallocated with an unmatched `delete` function on the other. 
+Doing so will result in a crash similar to `FMallocBinned2 Attempt to realloc an unrecognized block 0000023E58B80000 canary == 0x0 != 0xe3`
+====
+
+[source,cs]
+----
+using System.IO;
+using UnrealBuildTool;
+
+public class <third_party>Library : ModuleRules
+{
+    public <third_party>Library(ReadOnlyTargetRules Target) : base(Target)
+    {
+        Type = ModuleType.External;
+        PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "inc"));
+
+        var PlatformName = Target.Platform.ToString();
+
+        var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
+        if (Target.Platform == UnrealTargetPlatform.Win64)
+        {
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+        }
+        else if (Target.Platform == UnrealTargetPlatform.Linux)
+        {
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+        }
+
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.dll")); // Windows
+        RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.so")); // Linux
     }
 }
 ----
 
 == Module Usage
 
-After you have defined the third party module, you need to reference it in your mod's base module's `<mod_reference>Library.Build.cs` file as a public dependency.
+After you have defined the third party module, you need to reference it in your mod's base module's `<mod_reference>.Build.cs` file as a public dependency.
 
 [source,cpp]
 ----
@@ -37,7 +108,8 @@ PublicDependencyModuleNames.AddRange(new string[] {"<third_party>Library"});
 
 == Import Errors
 
-Unreal Engine has stricter standards about what warnings are treated as errors, but some libraries ignore those warnings as they are non-critical to their use case.
+Unreal Engine has stricter standards about what warnings are treated as errors,
+but some libraries ignore those warnings as they are non-critical to their use case.
 
 In those cases, you need to wrap any imports from that library in several layers of compatibility macros and headers.
 
@@ -64,4 +136,14 @@ PRAGMA_POP_PLATFORM_DEFAULT_PACKING
 #include "Windows/HideWindowsPlatformTypes.h"
 ----
 
-If even after wrapping the imports you are getting errors from compiling the library, you will need to fix those errors and recompile the library.
+If you are getting errors from compiling the library
+even after wrapping the imports,
+you will need to fix those errors and recompile the library.
+
+== Multiple Mods Using the Same Third Party Library
+
+If you plan to develop multiple mods using the same external library
+you should consider creating a dependency mod to hold the library.
+Although there shouldn't be any issues at runtime if each mod contains the library as a module (untested),
+at development time, Unreal will complain about it when building if both mods are in the project at the same time
+and the third party module name is the same in both.
