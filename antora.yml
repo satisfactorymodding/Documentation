@@ -1,5 +1,5 @@
 name: satisfactory-modding
 title: Satisfactory Modding Documentation
-version: latest
+version: v3.3.2
 nav:
   - modules/ROOT/nav.adoc
