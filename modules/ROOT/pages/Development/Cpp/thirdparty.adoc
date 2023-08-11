@@ -140,3 +140,10 @@ If you are getting errors from compiling the library
 even after wrapping the imports,
 you will need to fix those errors and recompile the library.
 
+== Multiple Mods Using the Same Third Party Library
+
+If you plan to develop multiple mods using the same external library
+you should consider creating a dependency mod to hold the library.
+Although there shouldn't be any issues at runtime if each mod contains the library as a module (untested),
+at development time, Unreal will complain about it when building if both mods are in the project at the same time
+and the third party module name is the same in both.
