@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-This page serves as a temporary solution until the Mog Tags system is implemented on the Mod Repository.
+This page serves as a temporary solution until the Mod Tags system is implemented on the Mod Repository.
 ====
 
 Mods in this list are generally considered by the community to add convenient, quality-of-life-improving features to Satisfactory without significantly affecting the game's balance or progression.
