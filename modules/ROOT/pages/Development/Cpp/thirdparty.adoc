@@ -32,13 +32,13 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
         }
     }
 }
@@ -79,13 +79,13 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
-            PublicLibraryPaths.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
+            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
         }
 
         RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.dll")); // Windows
