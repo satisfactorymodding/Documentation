@@ -247,7 +247,7 @@ You might want to save it in a batch file or powershell script for easy executio
 
 Instead of creating a new file for your configuration,
 you can edit your default game configuration, found at
-`%APPDATA%/Local/FactoryGame/Saved/WindowsNoEditor/Engine.ini`.
+`%APPDATA%/Local/FactoryGame/Saved/Windows/Engine.ini`.
 
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.

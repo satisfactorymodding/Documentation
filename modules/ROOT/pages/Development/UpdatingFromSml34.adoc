@@ -165,7 +165,7 @@ Why the change?
 * SML 3.5.x Locations:
   image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
 
-2. link:BeginnersGuide\project_setup.adoc#_project_compilation[Compile your project like normal]
+2. xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Compile your project like normal]
 
 This change also affects the game client -
 mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
@@ -197,6 +197,19 @@ but we'd like to draw extra attention to them.
 
 The SML configuration option has been removed because it was redundant and does the same thing as the startup parameter.
 See xref:Development/ModLoader/Logging.adoc[Logging] for more information.
+
+== Player Hud Widget Functionality Change
+
+Some widget features (ex. Text Block element bindings of text to a value or function) no longer function correctly when your widget is a child of the player HUD's widget tree.
+
+In the case of text element bindings,
+the function will execute as normal,
+and return the expected value,
+but the displayed text will never update.
+
+A fix for this example case is
+to call the binding function on tick
+and set the text element's value to the function's return.
 
 === Default Button Style Change
 

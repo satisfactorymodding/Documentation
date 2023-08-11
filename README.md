@@ -130,8 +130,9 @@ Contact us for more details if you'd like to set this up. The general steps are 
 We typically create new version branches once a new major or minor version of SML has released.
 The goal is to provide a point of reference in the docs for working with older versions.
 
-In order to add a new frozen version branch of the docs...
+In order to add a new frozen version branch of the docs:
 
-1. Create a tag on a commit on the `master` branch following the name format `vX.X.X`, for example, `v3.1.1`
-2. Add the tag name to front of the branches list in `antora-playbook.yml` and `antora-playbook-ci.yml`, after the HEAD item
-3. You're good to go - CI will take care of deploying it for you.
+1. Create a branch on a commit following the name format `vX.X.X`, for example, `v3.1.1`
+2. Add the branch name to the branches list in `antora-playbook.yml` and `antora-playbook-ci.yml`
+3. Edit `antora.yml` on the branch to have a `version` that matches the branch name (instead of `latest`). [Here's](https://gitlab.com/antora/antora/-/issues/496) an explanation of why that needs to happen.
+4. You're good to go - CI will take care of deploying it for you.
