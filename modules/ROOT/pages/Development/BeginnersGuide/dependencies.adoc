@@ -167,7 +167,7 @@ https://github.com/satisfactorymodding/unreal-linker[here].
 
 === Download the Custom Engine
 
-Next, navigate to the Satisfactory Modding custom Unreal Engine github project to download some installer files.
+Next, navigate to the Satisfactory Modding custom Unreal Engine GitHub project to download some installer files.
 
 The below box will contain a link to the specific release that you should download.
 It's imperative that you download the correct engine for the version of the game you're modding
