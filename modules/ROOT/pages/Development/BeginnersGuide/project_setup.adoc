@@ -47,15 +47,27 @@ Depending on if you plan to clone the project or downloaded the zip, go to the r
 
 Make sure to read the notes in the above Starter Project heading about where to clone the files.
 
-If you're developing mods for the Early Access version of the game,
-or the Experimental branch is identical to the Early Access branch,
-then you probably want to clone the `master` branch.
-If you're developing mods for the Experimental version of the game,
-then you probably want to download the `dev` branch.
+The below box will contain directions on which branch to clone.
+It's imperative that you download the correct Starter Project version of the game you're modding
+or you will have to repeat some of the setup process again.
 
-If you're uncertain which to download, ask us on the Discord.
+====
+This is the *latest* version of the docs.
+
+If you want to develop mods for the Experimental version (Update 8)
+you should clone the **`master` branch**.
+// Dev link for easy swapping later
+// you should clone the **`dev` branch**.
+
+If you want to develop mods for the Early Access version (Update 7)
+you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
+====
+
+If you're still uncertain which to download, ask us on the Discord.
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
+Again, make sure to clone the correct branch - it will probably start you on the `master` branch by default
+and you may have to switch branches to the correct one.
 
 The directory is ready for use as soon as the clone is complete.
 Move on to the link:#_setting_up_wwise[next heading].

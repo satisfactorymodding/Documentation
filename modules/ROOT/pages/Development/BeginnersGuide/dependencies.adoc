@@ -167,9 +167,25 @@ https://github.com/satisfactorymodding/unreal-linker[here].
 
 === Download the Custom Engine
 
-Next, go to the
-https://github.com/satisfactorymodding/UnrealEngine/releases[Satisfactory Modding Unreal Engine project releases page]
-and download some files from the latest release:
+Next, navigate to the Satisfactory Modding custom Unreal Engine github project to download some installer files.
+
+The below box will contain a link to the specific release that you should download.
+It's imperative that you download the correct engine for the version of the game you're modding
+or you will have to repeat a large amount of the setup process again.
+
+====
+This is the *latest* version of the docs.
+
+If you want to develop mods for the Experimental version (Update 8)
+you should download from the *latest release*,
+which an be found at the top of this page:
+https://github.com/satisfactorymodding/UnrealEngine/releases
+
+If you want to develop mods for the Early Access version (Update 7)
+you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
+====
+
+Download the following files from the release linked above:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
@@ -309,16 +325,25 @@ If you're planning to clone the project,
 skip to the link:#_satisfactory_mod_manager[next heading].
 ====
 
-If you're developing mods for the Early Access version of the game,
-or the Experimental branch is identical to the Early Access branch,
-then you probably want to download the `master` branch via
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+The below box will contain a link to the specific zip that you should download.
+It's imperative that you download the correct Starter Project version of the game you're modding
+or you will have to repeat some of the setup process again.
 
-If you're developing mods for the Experimental version of the game,
-then you probably want to download the `dev` branch via
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[this link].
+====
+This is the *latest* version of the docs.
 
-If you're uncertain which to download, ask us on the Discord.
+If you want to develop mods for the Experimental version (Update 8)
+you should download from the *latest release*, which an be found at
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link]
+
+// Dev link for easy swapping later
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[this link].
+
+If you want to develop mods for the Early Access version (Update 7)
+you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
+====
+
+If you're still uncertain which to download, ask us on the Discord.
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
 
