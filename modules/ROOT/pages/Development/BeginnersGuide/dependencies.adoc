@@ -103,9 +103,24 @@ as well as making sure you're logged into your linked GitHub account when you fo
 
 === Download the Custom Engine
 
-Once you've done that, go to the
-https://github.com/SatisfactoryModdingUE/UnrealEngine/releases[Satisfactory Modding Unreal Engine project]
-and download three files from the latest release:
+Next, navigate to the Satisfactory Modding custom Unreal Engine GitHub project to download some installer files.
+
+The below box will contain a link to the specific release that you should download.
+It's imperative that you download the correct engine for the version of the game you're modding
+or you will have to repeat a large amount of the setup process again.
+
+====
+This is the *archived 3.4.1* version of the docs.
+
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
+
+To develop for 3.4.1, use this version:
+https://github.com/SatisfactoryModdingUE/UnrealEngine/releases/tag/4.26.2-css-40
+====
+
+Download three files from the linked release:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
@@ -211,8 +226,16 @@ which will be covered later in the docs.
 If you are familiar with version control software (ex. Git),
 we suggest that you https://github.com/satisfactorymodding/SatisfactoryModLoader/[clone the repo],
 which drastically simplifies the process of updating the files later when the game updates.
-Check on the Discord to find out which branch to clone,
-although it's most likely `master`.
+
+====
+This is the *archived 3.4.1* version of the docs.
+
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
+
+To develop for 3.4.1, clone the `v3.4.1` tag of the repo.
+====
 
 If you're not familiar with version control,
 https://www.gitkraken.com/learn/git/tutorials[now is a great time to learn]!
@@ -223,7 +246,18 @@ as well as protect you from losing your mod sources if you upload them to a host
 However, if you'd just like to get started modding,
 you can download a zip of the Starter Project
 from the Satisfactory Modding GitHub,
-or directly via https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link].
+or directly via the link below.
+
+====
+This is the *archived 3.4.1* version of the docs.
+
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
+
+To develop for 3.4.1, use this zip:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/tags/v3.4.1.zip
+====
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
 
