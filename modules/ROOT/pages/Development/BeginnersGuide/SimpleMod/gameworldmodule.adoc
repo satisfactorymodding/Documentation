@@ -323,6 +323,15 @@ This issue can usually be resolved by building the Shipping profile from Visual 
 You may also need to
 xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files] first.
 
+=== This project requires ... which has a missing dependency on the SML plugin
+
+This error could appear when launching the game.
+
+You probably don't have Satisfactory Mod Loader installed in your copy of the game,
+and Unreal Engine is telling you it must be installed for your own mod to function.
+You can package a copy of SML yourself using Alpakit following the steps
+xref:Development/BeginnersGuide/project_setup.adoc#_optional_packaging_sml[on the previous page].
+
 === Something Else
 
 If you run into a problem that isn't described above,
