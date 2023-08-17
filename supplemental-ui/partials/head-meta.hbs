@@ -5,6 +5,9 @@
 <meta property="og:description" content="{{#if page.description}}{{detag page.description}}{{else}}{{#unless (eq page.layout '404')}}{{{og-description page.contents}}}{{/unless}}{{/if}}">
 
 <link rel="stylesheet" href="{{uiRootPath}}/css/site-extra.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/androidstudio.min.css" integrity="sha256-YSbArrnKaJ05w0kASSAYJu/S174kd3l1wbGarhjTd5g=" crossorigin="anonymous" />
+
+<meta name="docsearch:component_name" content="{{ @root.page.componentVersion.name }}"/>
+<meta name="docsearch:component_version" content="{{ @root.page.componentVersion.version }}"/>
