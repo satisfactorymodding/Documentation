@@ -10,5 +10,11 @@
     container: '#docsearch',
     debug: false,
     insights: true,
+    searchParameters: {
+      facetFilters: [
+        'component_name:{{ @root.page.componentVersion.name }}',
+        'component_version:{{ @root.page.componentVersion.version }}'
+      ],
+    },
 });
 </script>
