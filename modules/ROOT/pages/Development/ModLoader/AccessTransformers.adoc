@@ -74,6 +74,9 @@ meaning you don't need to rebuild {cpp} nor restart your editor the project to a
 As soon as you modify the `.ini` file the editor should pop up with a notice
 informing you that the changes have been applied.
 Check the Output Log for more details.
+If the changes to Blueprint nodes don't appear when you search,
+try checking and then un-checking "Context Sensitive" in the popup for searching for a node,
+and if that doesn't work, try restarting the editor.
 
 Friend and Accessor transformers require rebuilding {cpp} to take effect.
 
