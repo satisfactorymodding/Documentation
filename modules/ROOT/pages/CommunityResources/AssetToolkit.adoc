@@ -304,7 +304,7 @@ you can manually copy in the assets from AngryBeaver's repository,
 replacing the ones created by the Asset Generator.
 
 You can find the list of assets to copy in
-https://github.com/mircearoata/satisfactory-modding-actions/blob/master/BeaverAssets.txt[here],
+https://github.com/mircearoata/satisfactory-modding-actions/blob/master/CustomAssets.txt[here],
 and the repository they are stored in
 https://github.com/DavidHGillen/SatisfactoryModLoader/tree/sml-dev/Content[here].
 
