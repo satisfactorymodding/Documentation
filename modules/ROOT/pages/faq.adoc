@@ -284,7 +284,7 @@ image:https://cdn.discordapp.com/attachments/719242895114108938/1089039933446037
 
 On Epic:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838751/unknown.png[Epic screenshot]
+image:https://cdn.discordapp.com/attachments/555782140533407764/1151551938631057539/image.png[Epic screenshot]
 
 == Why is the mod manager downloading slowly, or failing to download?
 
