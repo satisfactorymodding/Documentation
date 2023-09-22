@@ -37,6 +37,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         with:
           args: --verbose --exclude-all-private './build/**/*.html'
+          token: ${{ secrets.LYCHEE_TOKEN }}
 
       - name: Create Issue From File
         if: env.lychee_exit_code != 0
