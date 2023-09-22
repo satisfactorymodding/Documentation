@@ -36,8 +36,7 @@ jobs:
       - id: lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --exclude-all-private --accept '200,429' './build/**/*.html'
-          token: ${{ secrets.LYCHEE_TOKEN }}
+          args: --verbose --exclude-all-private --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/**/*.html'
 
       - name: Create Issue From File
         if: env.lychee_exit_code != 0
