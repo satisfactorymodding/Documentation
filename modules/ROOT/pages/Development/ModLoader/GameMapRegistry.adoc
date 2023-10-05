@@ -1,10 +1,5 @@
 = Game Map Registry
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 Introduced in SML3.5, the Game Map Registry feature allows mods to add additional game levels without fighting each others' main menu widget blueprint hooks to add the level select UI.
 
 SML automatically creates a Game Map Registry entry for the base game's level and populates it with the original 4 starting locations.

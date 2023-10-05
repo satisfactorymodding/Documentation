@@ -1,10 +1,5 @@
 = Simple Construction Script (SCS) Hooks
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 Introduced in SML3.5, Blueprint Simple Construction Script hooks allow adding modded
 https://docs.unrealengine.com/5.1/en-US/components-in-unreal-engine/[Components]
 to any blueprint-based actor.

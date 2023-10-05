@@ -1,10 +1,5 @@
 = Chainsaw and Foliage
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 In Satisfactory, the location of foliage is stored
 as part of the game map file that is shared across all saves.
 Imagine how large your save files would be if every save contained

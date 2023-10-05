@@ -1,10 +1,5 @@
 # Importing Another Mod
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 The modding documentation requires time to update and can only cover so much.
 Looking at other mods' source code is a great way to expand your skillset and learn new things.
 This page will cover how to import another mod into your Starter Project so you can look at it in the editor and tweak it.

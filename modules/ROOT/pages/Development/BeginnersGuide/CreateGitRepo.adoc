@@ -1,10 +1,5 @@
 # Creating a Git Repo for your Mod
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 Once you have started working on a mod of your own, you should set up a git repository for your mod.
 
 This page will begin by explaining why you should use git,

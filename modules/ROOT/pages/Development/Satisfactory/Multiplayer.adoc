@@ -1,10 +1,5 @@
 = Multiplayer
 
-[WARNING]
-====
-This page is a work in progress.
-====
-
 Although not all mods need special code to handle multiplayer,
 it's important to create your mods with multiplayer in mind.
 
