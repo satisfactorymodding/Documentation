@@ -5,7 +5,9 @@
 # Please explain the inclusion of each one.
 exclude = [
     # This will always be a 404 unless you're authed
-    "https://github.com/satisfactorymodding/UnrealEngine/releases",
+    "https://github.com/satisfactorymodding/UnrealEngine/",
+    # This will always be a 404 unless you're authed
+    "https://github.com/EpicGames/UnrealEngine/",
     # Site seems to disallow robots
     "https://cable.ayra.ch/satisfactory/editor.php"
 ]
