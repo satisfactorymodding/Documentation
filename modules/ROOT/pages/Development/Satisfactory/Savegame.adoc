@@ -74,6 +74,13 @@ This would end in the save system wanting to save but the Unreal serializer just
 But by default, it shouldn't be set.
 ====
 
+Note that not all types can be directly saved.
+Examples include the Soft Class Reference and Soft Object Reference types.
+In this case you must write code to serialize the type yourself as described above.
+For the Soft Class Reference example, instead of having the Soft Class Reference property saved,
+instead have a saved String property that PreSaveGame copies out of
+and PostLoadGame populates the "real" field from respectively.
+
 == The IFGSaveInterface
 
 The save system of Satisfactory uses the IFGSaveInterface to filter now between objects we need to save,
