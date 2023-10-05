@@ -110,6 +110,12 @@ To preview the content, you can open the output HTML files in your browser, ex. 
 
 You can also run `pnpm run serve` which will start a local webserver.
 
+#### Link Checker
+
+The CI will also run the [lychee link checker](https://github.com/lycheeverse/lychee/tree/master) to check for broken links.
+Its reports can be found in the the [Actions tab](https://github.com/satisfactorymodding/Documentation/actions) of the repo.
+You can optionally install the tool yourself if you want to run it locally by following the lychee documentation.
+
 ## Adding Docs for Another Mod
 
 If you'd like, you can write docs for other mods and have them be included on the live site.
