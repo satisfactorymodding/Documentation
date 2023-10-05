@@ -40,7 +40,6 @@
 ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
 *** xref:Development/UnrealEngine/Code.adoc[Code]
 *** xref:Development/UnrealEngine/BluePrints.adoc[Blueprints]
-*** xref:Development/UnrealEngine/UObject.adoc[UObject]
 *** xref:Development/UnrealEngine/Editor/index.adoc[Unreal Editor]
 **** xref:Development/UnrealEngine/Editor/MainWindow.adoc[Main Window]
 *** xref:Development/UnrealEngine/CoreRedirect.adoc[Core Redirects]
