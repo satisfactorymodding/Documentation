@@ -13,7 +13,6 @@ Check there if something is unclear or you get stuck.
 
 The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
 This works like every other regular UMG widget, so be sure you're familiar with how they work.
-In our case, we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
 
 == Retrieving Information from our Machine
 
@@ -33,25 +32,61 @@ Once the variable is cast, we'll be able to access the fields on our buildable.
 You could cast the `M Interact Object` already in one of the constructor functions and then cache it in a new variable so you don't need to cast the object every time.
 ====
 
-Bind the content of two new TextBlocks to individual functions. One of them should return an appended text of `"Count: "` plus the `itemCount` of the machine.
-The other should return `typeCount` and `"different Types"`. Place them wherever you want.
+== Display Count Information
+
+Let's add some text to our widget to display the current count of items and types.
+In our case, we'll add two TextBlocks.
+You can use a VerticalBox to arrange them in a column.
+
+Bindings are an efficient way to live update our display with information from the machine.
+In the Designer tab, bind the Text content of each of your TextBlocks to their own functions (Bind > Create Binding).
+
+The "Format Text" node is a clean way to prepate text for display to the user.
+Use curly brackets `{}` in its format input to indicate where you want to insert a variable.
+The node will automatically add new ports that match the names you type inside the curly braces.
+Consider reading more about this node in the Unreal documentation.
+
+For one of the text elements, use Format Text with `Total item count: {itemCount}` and feed it the machine's ItemAmount integer value.
+
+For the second one, use `# of unique items: {uniqueItemCount}` and feed it the Length of the ItemTypes set from the machine.
+
+[TIP]
+====
+Sometimes text element bindings will not function properly when part of the player's HUD,
+as in, the always-visible display with your health bar, hotbar, and so on.
+In this situation, you can instead call the Set Text function with the return value of your binding called on widget's On Tick event.
+====
+
+== Reset Button
 
 Now we have the display of our text, but we still need to add the reset functionality.
-For that bind an event to the `On Clicked` event of a new button. Set both counters of the machine to 0.
+For that, go back to the Designer and create a new button.
+You should probably put a text element inside the button to label what it does as well.
+Next, bind an event to the `On Clicked` event of a the button.
+In the event's code, modify the building's data to set both counters of the machine to 0.
 
-== Make widget receive user input
+[TIP]
+====
+Note that the reset button we created here does not work correctly in multiplayer.
+Check out the MultiplayerDemoBuilding in the Example Mod to see how to handle this.
+====
 
-There's still a problem if you use the machine, the user can't physically interact with the widget. The reason is that we don't capture any input from the user.
+== Make the widget receive user input
+
+There's still a problem if you use the machine: the user can't actually interact with the widget.
+The reason is that we don't capture any input from the user.
 To fix that you'll need to change some of the class default values on the widget.
 
 * {blank}
 +
 Block Movement::
-  Activate this so the widget consumes keystrokes, meaning it can use them to trigger events. An example keystroke would be pressing `Esc` to exit the widget.
+  Activate this so the widget consumes keystrokes, meaning it can use them to trigger events.
+  An example keystroke would be pressing `Esc` to exit the widget.
 * {blank}
 +
 Block Mouse Look::
-  Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like `On Clicked`.
+  Activate this so the widget shows the mouse cursor and receives mouse input,
+  allowing it to react to events like `On Clicked`.
 
 == Make machine interactable
 
@@ -134,6 +169,9 @@ you will have to use this snippet again in each widget you create that contains 
 == Next Steps
 
 You've reached the end of the getting started guide - congratulations!
+If you'd like to keep going on this widget,
+check out the version of this GUI included in the ExampleMod in the starter project.
+It includes some extra features, such as a scrollable list of every item type the machine has processed by name.
 
 If you're still looking to learn about a specific concept,
 check and see if we have a page on it in the other sections of the documentation.
