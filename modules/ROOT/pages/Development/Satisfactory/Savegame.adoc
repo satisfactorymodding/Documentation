@@ -97,6 +97,12 @@ so please make sure you overwrite the function and return true.
 All of the other functions allow you to further customize the serialization and filter process
 when the save state gets stored or loaded.
 
+== Saving Per-Player Data
+
+You may encounter a situation where you want to save data per-player in a multiplayer game
+without it being tied to any tangible game object like a building or equipment item.
+The best way to implement this is with
+xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks].
 
 == Where Modded Save Content Ends Up
 
