@@ -55,10 +55,10 @@ The examples are not exhaustive, but they should help you get started.
 
 Remote Call Objects are an Unreal concept described in the video.
 Note that dedicated servers have no player controller they can't make use of Remote Call Objects.
-In that case, consider using a link:_ReplicatedSubsystems[Replicated Subsystem] instead.
+In that case, consider using a link:#ReplicatedSubsystems[Replicated Subsystem] instead.
 
 Coffee Stain Studios has written custom code to make it easier for mods to register their own Remote Call Objects.
-The inner details of this system are described in the link:_HowRCOsImplemented[appendix].
+The inner details of this system are described in the link:#HowRCOsImplemented[appendix].
 
 Remote call objects can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
 
