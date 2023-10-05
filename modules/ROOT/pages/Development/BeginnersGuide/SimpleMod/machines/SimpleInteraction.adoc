@@ -13,18 +13,33 @@ Check there if something is unclear or you get stuck.
 
 The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
 This works like every other regular UMG widget, so be sure you're familiar with how they work.
-In our case we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
+In our case, we'll add two TextBlocks, and a button with a TextBlock in it which has the label "Reset".
+
+== Retrieving Information from our Machine
+
+`FGInteractWidget`, the parent class of `Widget_UseableBase`,
+offers the `M Interact Object` field which represents the object that the player interacted with - in our case, our machine.
+
+This field is a plain `Object`, which is good in this situation -
+by keeping the field type so general, it allows us to use the widget with pretty much any object.
+
+Whenever you need to access data from the machine for display in the UI,
+you'll have to cast the object to the relevant type.
+In this case, the correct type is the Buildable of our machine that we created earlier.
+Once the variable is cast, we'll be able to access the fields on our buildable.
 
 [TIP]
 ====
 You could cast the `M Interact Object` already in one of the constructor functions and then cache it in a new variable so you don't need to cast the object every time.
 ====
 
-Bind the content of two new TextBlocks to individual functions. One of them should return an appended text of  "Count: " plus the itemCount of the machine.
-The other should return typeCount and "different Types". Place them wherever you want.
+Bind the content of two new TextBlocks to individual functions. One of them should return an appended text of `"Count: "` plus the `itemCount` of the machine.
+The other should return `typeCount` and `"different Types"`. Place them wherever you want.
 
 Now we have the display of our text, but we still need to add the reset functionality.
-For that bind a event to the `on click` event of a new button. Set both counters of the machine to 0.
+For that bind an event to the `On Clicked` event of a new button. Set both counters of the machine to 0.
+
+== Make widget receive user input
 
 There's still a problem if you use the machine, the user can't physically interact with the widget. The reason is that we don't capture any input from the user.
 To fix that you'll need to change some of the class default values on the widget.
@@ -36,20 +51,7 @@ Block Movement::
 * {blank}
 +
 Block Mouse Look::
-  Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like On Click.
-
-== Retrieving Information from our Machine
-
-FGInteractWidget, the parent class of Widget Usable Base,
-offers the `M Interact Object` field which represents the object that the player interacted with - in our case, our machine.
-
-This field is a plain Object, which is good in this situation -
-by keeping the field type so general, it allows us to use the widget with pretty much any object.
-
-Whenever you need to access data from the machine for display in the UI,
-you'll have to cast the object to the relevant type.
-In this case, the correct type is the Buildable of our machine that we created earlier.
-Once the variable is casted, we'll be able to access the fields on our buildable.
+  Activate this so the widget shows the mouse cursor and receives mouse input, allowing it to react to events like `On Clicked`.
 
 == Make machine interactable
 
@@ -74,7 +76,7 @@ Most of the time you will add a Canvas Panel and in it other widgets, so you can
 ====
 
 If you want to add the functionality to close the whole interact widget by clicking the "X" Button,
-not just the the window,
+not just the window,
 you need to bind the `OnEscapePressed` Event of the interact widget (or custom stuff) to the `OnClose` Event on the `WindowDark`.
 
 === UI is hidden in the editor using the Window Dark widget
@@ -97,12 +99,12 @@ After opening the widget:
 - Set it to 0.0
 - Click Save & Compile in the upper left editor window
 
-Now you should see the content inside your widget. See the following image as reference for the steps.
+Now you should see the content inside your widget. See the following image as a reference for the steps.
 
 [NOTE]
 ====
-If the original uasset get updated in the SML repo, you'll have to redo this edit in your project.
-Same thing happens if you're using a clone/fork of the SML project.
+If the original uasset gets updated in the SML repo, you'll have to redo this edit in your project.
+The same thing happens if you're using a clone/fork of the SML project.
 This will effectively revert your changes.
 ====
 
