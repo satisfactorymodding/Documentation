@@ -1,0 +1,25 @@
+# CI Link checker configuration
+# See https://github.com/lycheeverse/lychee/blob/master/lychee.example.toml
+
+# Exclude URLs and mail addresses from checking (supports regex).
+# Please explain the inclusion of each one.
+exclude = [
+    # This will always be a 404 unless you're authed
+    "https://github.com/satisfactorymodding/UnrealEngine/",
+    # This will always be a 404 unless you're authed
+    "https://github.com/EpicGames/UnrealEngine/",
+    # This will always be a 404 unless you're authed
+    "https://github.com/SatisfactoryModdingUE/UnrealEngine/",
+    # Site seems to disallow robots
+    "https://cable.ayra.ch/satisfactory/editor.php",
+    # Reports a 404 despite the link working?
+    "https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons"
+]
+
+# Exclude these filesystem paths from getting checked.
+# TODO find a better way to handle sub-mods, as they currently must be ignored here
+# else they'll fail the the whole build if they have broken links.
+exclude_path = [
+    "./build/site/ficsit-networks/",
+    "./build/site/ficsitremotemonitoring/"
+]

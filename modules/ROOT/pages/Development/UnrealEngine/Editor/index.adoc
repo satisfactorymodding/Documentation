@@ -1,7 +1,8 @@
 = Unreal Editor
 
-The Unreal Editor should have been installed during the xref:/Development/BeginnersGuide/index.adoc[Getting Started setup process]. This is
-your IDE where you will spend the most time in to add especially
+The Unreal Editor should have been installed during the
+xref:/Development/BeginnersGuide/index.adoc[Getting Started setup process].
+This is your IDE where you will spend the most time in to add especially
 "visible" content called `assets`. But it's also used to add simple
 logic to your mod with an integrated visual programming language called
 Blueprints.
@@ -9,9 +10,9 @@ Blueprints.
 [TIP]
 ====
 If you want to learn more about `Blueprints` and the so called
-`UObject-System` we recommend you the concept pages for
-xref:Development/UnrealEngine/BluePrints.adoc[Blueprints] and the
-xref:Development/UnrealEngine/UObject.adoc[UObject-System].
+`UObject-System` we recommend you the concept page for
+xref:Development/UnrealEngine/BluePrints.adoc[Blueprints]
+and Unreal's documentation on the UObject system.
 ====
 
 [TIP]
