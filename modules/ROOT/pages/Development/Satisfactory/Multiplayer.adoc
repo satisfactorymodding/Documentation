@@ -162,6 +162,7 @@ The ExampleMod uses a replicated property on the Multiplayer Demo Building.
 === {cpp} Example
 
 No example is currently provided.
+Consider looking at an open-source mod instead.
 
 == Replicated Properties
 
@@ -179,9 +180,12 @@ See the video or Unreal documentation for more info.
 
 == Replication Detail Components
 
-Replication Detail Components are critical in handling replication of inventories to multiplayer clients.
+Replication Detail Components were previously critical in handling replication of inventories to multiplayer clients.
 
-TODO
+As of Update 8, this system has been replaced with a new system involving structs,
+which Arch has informed us is planned to be phased out soon.
+If you have questions about this system, please ask about it on the discord,
+as it's not worth documenting something that will be removed so soon.
 
 == Appendix
 
