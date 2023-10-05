@@ -8,6 +8,8 @@ exclude = [
     "https://github.com/satisfactorymodding/UnrealEngine/",
     # This will always be a 404 unless you're authed
     "https://github.com/EpicGames/UnrealEngine/",
+    # This will always be a 404 unless you're authed
+    "https://github.com/SatisfactoryModdingUE/UnrealEngine/",
     # Site seems to disallow robots
     "https://cable.ayra.ch/satisfactory/editor.php"
 ]
