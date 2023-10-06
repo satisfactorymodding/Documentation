@@ -80,6 +80,7 @@
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
+** xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods]
 
 ** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
 // dedi-docs **xref:Development/UpdatingToDedi.adoc[Updating to Dedicated Server Support]
