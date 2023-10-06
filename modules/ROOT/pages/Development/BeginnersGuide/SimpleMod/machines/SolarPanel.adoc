@@ -1,0 +1,110 @@
+= Solar Generator
+
+In this chapter we will create a simple custom power generator -
+a Solar Panel that only produces energy during the daytime.
+
+== Create the buildable
+
+As in previous examples, we need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] (let's name it `Build_DocSolarPanel`) with a mesh, descriptor, recipe, and to add that recipe to our schematic.
+This time we will use `FGBuildableGenerator` as the parent class of the buildable,
+as it's the base class for buildings that generate power.
+
+Assign names, descriptions, build categories, and other properties of these assets as you see fit.
+However, this time around we'll be using the default `M Hologram Class`, `FGFactoryHologram`, on the Buildable
+instead of the previously used value of `FGBuildableHologram`
+since `FGBuildableGenerator` that we are deriving from is a child of `FGBuildableFactory`.
+
+We don't have a building mesh for you to use for the solar panel, but please let us know if you can contribute one!
+For now, just use the Plantpot of Knowledge mesh as a placeholder.
+
+At this point you should be able to construct your buildable in game just like the Plantpot of Knowledge,
+and just like the plantpot, it doesn't do anything ... just yet!
+
+[TIP]
+=====
+There are also subclasses of `FGBuildableGenerator` such as
+`FGBuildableGeneratorFuel`, `FGBuildableGeneratorGeoThermal`, and `FGBuildableGeneratorNuclear`
+which, as you can judge from their names, contain some specific logic for different types of power generators.
+Since as our Solar Panel does not require the custom behaviors of any of these, we will not use them.
+=====
+
+== Adding Power Generation Logic
+
+The first thing we want to add to our `Build_DocSolarPanel` is an `FGPowerConnection` component,
+as we need to connect our Solar Panel to the power lines to use its generated power to.
+The process for adding a component is the same as in the xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[Item Counter Machine] chapter.
+However, unlike the counter, we don't need to add an `FGPowerInfo` this time
+because the `FGBuildableGenerator` class already contains one.
+
+The buildable class we are extending already has code
+to associate our Power Connection with the building's internal Power Info.
+If that wasn't the case for some reason, we could use
+the `Get Power Info` node and the power connection's `Set Power Info` node to establish the connection.
+
+// TODO must set the "M Power Production" property of the buildable for the buildgun to report the power
+
+// TODO revise this paragraph with the new way of setting power output
+Then, we need to set the amount of power our Solar Panel would produce and we can do that with PowerInfo's `Set Base Production` node, specifying the amount of, for example, 20.0.
+For now, the code should look like this:
+
+// TODO retake new screenshot from examplemod
+image:BeginnersGuide/simpleMod/SolarPanel_1.png[image]
+
+With this code, we now have a generator that always produces power,
+which might be okay if we were making an https://en.wikipedia.org/wiki/Radioisotope_thermoelectric_generator[RTG],
+but we're making a solar panel, so we want it to only work during the day.
+
+To do that, we first need to figure out whether it's day or night, then set the base production amount accordingly. 
+Thankfully, the `FGTimeOfDaySubsystem` offers some helpful methods for that.
+Get an instance of the `FGTimeOfDaySubsystem` with the `GetTimeSubsystem` node to make use of its `Is Day` method.
+Combining this with a `Select Float` node allows setting the base production set depending on the time of day:
+
+// TODO retake new screenshot from examplemod
+image:BeginnersGuide/simpleMod/SolarPanel_2.png[image]
+
+However, we need to assess the time of day on multiple occasions - once when the building first spawns, and then each time it becomes day or night.
+For that, we can subscribe to the `OnDayStateChanged` delegate of the time subsystem
+to know when this happens and switch our generator accordingly.
+We will bind a custom event to the delegate using `Bind Event to OnDayStateChanged` node, providing it with the time subsystem object.
+The event (let's name it `mOnDayStateChanged`) is created by using the `Add Custom Event...` action or by dragging from `Event` pin of `Bind Event to OnDayStateChanged` node.
+
+// TODO reword
+And the event would set the base production amount in the same way as we did before:
+
+// TODO retake new screenshot from examplemod
+image:BeginnersGuide/simpleMod/SolarPanel_3.png[image]
+
+To summarize, here's a screenshot of all of the code written in our solar panel:
+
+// TODO retake new screenshot from examplemod
+image:BeginnersGuide/simpleMod/SolarPanel_4.png[image]
+
+That should be it, try out your newly created power generator in-game!
+
+== Troubleshooting 
+
+A quick way to test is to pop down a Power Storage and see if it is charging or not after connecting your solar panel.
+
+[TIP]
+=====
+A quick way to test the generator's time-dependent generation is to use the `SetTimeOfDay` console command.
+
+* Day time: `SetTimeOfDay 12 00`
+* Night time: `SetTimeOfDay 23 00`
+
+More info xref:SMLChatCommands.adoc[here].
+=====
+
+If you're having trouble getting your generator to work, check out the completed one in Example Mod,
+or ask for help on the Discord.
+
+== Next Steps
+
+You may wish to add functionality to make the solar panel require direct access to the sky to function,
+however, implementing this in a performance-friendly way is not trivial,
+which is why it was excluded from this tutorial.
+This tutorial may eventually be expanded to include this functionality,
+but for now, ask about it on the Discord if you want to do this.
+
+Check out the xref:Development/BeginnersGuide/SimpleMod/NextSteps.adoc[Next Steps] page
+to see where to go from here.
