@@ -1,6 +1,6 @@
-= Simple Interaction GUI
+= Machine Interaction GUI
 
-Let's create a simple interaction GUI for our xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[Simple Machine].
+Let's create a simple interaction GUI for our xref:Development/BeginnersGuide/SimpleMod/machines/SimpleMachine.adoc[Item Counter Machine].
 We'll use it to read the current data and to reset the counters.
 
 [TIP]
@@ -88,14 +88,14 @@ Block Mouse Look::
   Activate this so the widget shows the mouse cursor and receives mouse input,
   allowing it to react to events like `On Clicked`.
 
-== Make machine interactable
+== Make the Machine Interactable
 
-Now we need to attach our UI to the simple machine.
+Now we need to attach our UI to the item counter machine.
 There's very little to do, we just need to enable `M Is Useable` and set `M Interact Widget Class` to your newly created widget.
 
 Done! Now you can interact with your machine by looking at it and hitting `E`.
 
-== Use the SF Window
+== Use the Satisfactory Window
 
 You can make your widget look more like the other Satisfactory interface by using `Widget_Window_DarkMode`.
 This base-game widget is provided with the modding starter content.
@@ -168,20 +168,8 @@ you will have to use this snippet again in each widget you create that contains 
 
 == Next Steps
 
-You've reached the end of the getting started guide - congratulations!
-If you'd like to keep going on this widget,
+If you'd like to keep working on this widget,
 check out the version of this GUI included in the ExampleMod in the starter project.
 It includes some extra features, such as a scrollable list of every item type the machine has processed by name.
 
-If you're still looking to learn about a specific concept,
-check and see if we have a page on it in the other sections of the documentation.
-
-You can also ask questions on the https://discord.gg/xkVJ73E[Discord Server].
-
-You may also be interested in {cpp} modding,
-which allows modifying and creating much more advanced game behaviors.
-More info can be found on that xref:Development/Cpp/index.adoc[here].
-
-Once you have a mod you're ready to upload, follow the
-xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
-directions to export and upload it for other people to use.
+In the next section we'll create a custom power generator - a solar panel.

@@ -1,4 +1,4 @@
-= First Simple Machine
+= Item Counter Machine
 
 In this chapter we'll create a machine which simply counts the items and types of items that pass through it, outputting them again on the other side. 
 
@@ -8,7 +8,7 @@ A completed version of this machine is included in the ExampleMod in the starter
 Check there if something is unclear or you get stuck.
 =====
 
-== Create the machine
+== Create the Machine
 
 First thing to make our counting machine, you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] with descriptor and recipe, but this time use link:{attachmentsdir}/BeginnersGuide/simpleMod/SM_SampleMachine.fbx[this] as the mesh and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] as icon so that it looks a bit more like a machine.
 
@@ -72,4 +72,4 @@ That should be it, try out your newly created machine!
 
 == Next Steps
 
-In the next section, we'll add a GUI to our counter that we can use to reset the internal tally.
+In the next section, we'll add a GUI to our counter that we can use to view and reset the internal tally.
