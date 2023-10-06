@@ -43,7 +43,15 @@ image:BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
 (Logic in the Event Graph)
 
-== Grab logic
+== Grab Logic
+
+[WARNING]
+====
+It is generally unwise to implement conveyor grab logic in Unreal Blueprint code as the tutorial does here.
+If you plan for your buildings to be used in any substantive quantity,
+you should implement this logic in C++ to avoid the performance overhead of Blueprint.
+This tutorial will eventually™ be replaced with another one following better practices.
+====
 
 The `FGBuildable` class provides a `FactoryGrabOutput` function that will get executed by our output connector when a new item gets requested.
 Connecting a belt will cause a new item to be requested at the speed of the belt.
