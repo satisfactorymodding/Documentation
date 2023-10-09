@@ -174,8 +174,6 @@ Remember to replace all instances of `<mod_reference>` with your actual mod refe
 class F<mod_reference>Module : public FDefaultGameModuleImpl {
 public:
 	virtual void StartupModule() override;
-
-	virtual bool IsGameModule() const override { return true; }
 };
 ----
 
