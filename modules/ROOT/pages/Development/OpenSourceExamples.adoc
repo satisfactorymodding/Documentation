@@ -73,7 +73,7 @@ _Notable Techniques Used:_
 * Save/loading of soft class and soft object fields
 * Hybrid Blueprint/{cpp} subsystems
 ** Subsystems' final implementations are in Blueprint,
-   but they are backed by custom {c++} parent classes to allow 
+   but they are backed by custom {cpp} parent classes to allow 
 * Zero-dependency cross mod interaction
 ** Mod is coded to inspect other mod's assets for fields with a certain name,
    and then change behavior based on those fields values.
@@ -81,7 +81,7 @@ _Notable Techniques Used:_
 
 _Notable Satisfactory Features Used:_
 
-None
+* None
 
 _Notable Mod Loader Features Used:_
 
