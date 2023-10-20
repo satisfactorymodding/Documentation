@@ -38,7 +38,7 @@ Let's add some text to our widget to display the current count of items and type
 In our case, we'll add two TextBlocks.
 You can use a VerticalBox to arrange them in a column.
 
-Bindings are an efficient way to live update our display with information from the machine.
+Bindings are an convenient way to live update our display with information from the machine.
 In the Designer tab, bind the Text content of each of your TextBlocks to their own functions (Bind > Create Binding).
 
 The "Format Text" node is a clean way to prepate text for display to the user.
@@ -55,6 +55,13 @@ For the second one, use `# of unique items: {uniqueItemCount}` and feed it the L
 Sometimes text element bindings will not function properly when part of the player's HUD,
 as in, the always-visible display with your health bar, hotbar, and so on.
 In this situation, you can instead call the Set Text function with the return value of your binding called on widget's On Tick event.
+====
+
+[TIP]
+====
+Bindings aren't the most efficient, as they run every tick even when the resulting content wouldn't change,
+but because we're using it inside of a building interaction widget (only one of which will ever appear at a time)
+the performance is not a big concern here.
 ====
 
 == Reset Button
