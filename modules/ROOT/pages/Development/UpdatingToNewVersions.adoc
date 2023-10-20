@@ -115,10 +115,14 @@ In order to do this, simply make a copy of your entire game install directory,
 and put it somewhere that Steam/Epic won't try to meddle with it.
 
 Note that you can only do this _before_ updating your copy of the game -
-there is no way to obtain older versions of the game from Steam or Epic,
-outside of switching between the two branches - Early Access and Experimental.
+outside of switching between the two branches, Early Access and Experimental,
+you can't go backwards in update history.
 This is a great reason to *turn off auto-update*,
 so that you can make a copy before Steam/Epic pulls out the rug under you.
+
+There is an involved process for downloading older versions of the game from Steam,
+as described in the xref:faq.adoc#PlayOlderVersion_SteamCMD[FAQ],
+but it is time consuming and you'll save a lot of time by making backups instead.
 
 After making a copy, you are safe to update your game install as you normally would.
 
