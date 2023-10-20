@@ -320,10 +320,10 @@ You might see messages like:
 Your internet speed is likely too slow and the download is being cut off early.
 Try disabling the mod manager's timeout as shown below.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089041903342862336/unknown.png[Timeout disable screenshot]
-
-If this still doesn't work, try
+If that still doesn't work, try
 link:#_why_is_the_mod_manager_downloading_slowly_or_failing_to_download[this approach instead].
+
+image:https://cdn.discordapp.com/attachments/719242895114108938/1089041903342862336/unknown.png[Timeout disable screenshot]
 
 == How can I troubleshoot crash issues?
 
@@ -337,9 +337,9 @@ image:https://cdn.discordapp.com/attachments/834348739539238922/1102661505255751
 
 == How can I tell what mod added an item/milestone/recipe/thing?
 
-Consider using https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
+Consider using the https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
 and https://ficsit.app/mod/MAMTips[MAM Enhancer]
-mods which add tools to help you identify content.
+mods, which add tools to help you identify content.
 
 == I'm having VRAM issues, how do I fix them?
 
@@ -522,10 +522,10 @@ link:#_how_do_i_verify_my_game_files[use Steam to verify your game files].
 
 _Or: 'Where are my save files stored?'_
 
-It is suggested to routinely and especially when the game updates, to backup your save files. You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
+It is suggested to routinely backup your save files, especially when the game updates.
+You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
 
 Both Steam and Epic Games version use the same PATH depending on OS used.
-
 Note that "{Your ID}" in the below examples refers to a unique user ID number, not the literal text "{Your ID}".
 
 === Windows
@@ -538,7 +538,7 @@ Path 1:
 
 Path 2:
 
-`\Users\<your Windows username>\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
+`\Users\{your Windows username}\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
 
 If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
 
