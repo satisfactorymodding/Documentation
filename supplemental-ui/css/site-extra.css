@@ -127,7 +127,7 @@ iframe.blueprint + div:after {
     display: none;
 }
 
+/* Keep versions in the picker from being split across multiple lines */
 span.version {
-    // Keep versions in the picker from being split across multiple lines
     min-width: fit-content;
 }
