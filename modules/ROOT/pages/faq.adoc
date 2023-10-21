@@ -267,6 +267,13 @@ You can find various log files at different locations:
   It can be found at `%LOCALAPPDATA%/FactoryGame/Saved/logs`
 - Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
 
+[id="Files_SMMProfiles"]
+=== Mod Manager Profiles
+
+Mod manager profiles are stored at:
+
+`%appdata%\SatisfactoryModManager\profiles`
+
 == Where can I find the game's log files?
 
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
