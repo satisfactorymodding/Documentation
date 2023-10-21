@@ -38,7 +38,7 @@ Let's add some text to our widget to display the current count of items and type
 In our case, we'll add two TextBlocks.
 You can use a VerticalBox to arrange them in a column.
 
-Bindings are an convenient way to live update our display with information from the machine.
+Bindings are a convenient way to live update our display with information from the machine.
 In the Designer tab, bind the Text content of each of your TextBlocks to their own functions (Bind > Create Binding).
 
 The "Format Text" node is a clean way to prepate text for display to the user.
