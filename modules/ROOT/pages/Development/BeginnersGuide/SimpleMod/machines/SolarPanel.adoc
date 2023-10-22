@@ -60,9 +60,9 @@ image:BeginnersGuide/simpleMod/machines/SolarPanel/DisableDynamicProduction.png[
 
 Next, we need to figure out whether it's day or night and adjust power production accordingly.
 Thankfully, the `FGTimeOfDaySubsystem` offers some helpful methods for that.
-Get an instance of the `FGTimeOfDaySubsystem` with the `GetTimeSubsystem` node to make use of its `Is Day` method.
+Get an instance of the `FGTimeOfDaySubsystem` with the `GetTimeSubsystem` node.
 
-However, we need to assess the time of day on multiple occasions - once when the actor spawns, and then each time it changes from day to night, or vice versa.
+We need to assess the time of day on multiple occasions - once when the actor spawns, and then each time it changes from day to night, or vice versa.
 For that, we can subscribe to the `OnDayStateChanged` event dispatcher of the time subsystem
 to be notified when this happens and switch our generator accordingly.
 Drag from the Return Value pin of a `Get Time Subsystem` node to create a `Bind Event to OnDayStateChanged` node.
