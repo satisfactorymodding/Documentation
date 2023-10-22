@@ -76,7 +76,7 @@ Next, we need to set the power production depending on the passed time value.
 We'll be using the `Set Base Production` method of the power info to do this,
 since unlike the dynamic production, this power production is always "full blast" and will charge batteries.
 Use a Select Float node to select between a daytime production value and a night time production value of zero.
-We can avoid repeating outselves here and use the parent class `Get Default Power Production Capacity` method
+We can avoid repeating ourselves here and use the parent class `Get Default Power Production Capacity` method
 to retrieve the value we set in the class defaults.
 
 image:BeginnersGuide/simpleMod/machines/SolarPanel/SettingPowerProduction.png[Responding to the Event]
