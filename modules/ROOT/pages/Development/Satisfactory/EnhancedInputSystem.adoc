@@ -127,7 +127,7 @@ If you want the context to be available:
   use `MC_UserInterfaceBase`
 - Whenever the player is in their inventory,
   use `MC_Window`
-- In a special condition, such as when the build gun is open in a certian mode,
+- In a special condition, such as when the build gun is open in a certain mode,
   look at the existing contexts to see which is the best choice
 - In an even more specific condition, then you may wish to use
   link:#ManualRegisterContext[manual mapping context registration] instead.

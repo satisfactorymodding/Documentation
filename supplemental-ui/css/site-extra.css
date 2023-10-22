@@ -126,3 +126,8 @@ iframe.blueprint + div:after {
 .hidden {
     display: none;
 }
+
+/* Keep versions in the picker from being split across multiple lines */
+span.version {
+    min-width: fit-content;
+}

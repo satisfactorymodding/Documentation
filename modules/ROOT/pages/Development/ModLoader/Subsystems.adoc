@@ -45,6 +45,10 @@ image:Satisfactory/Subsystems/Subsystems_sam_node.PNG[GameWorldModule]
 
 As long as you have correctly registered the subsystem,
 there is no need to for you to spawn its actor - SML will take care of spawning it for you.
+Subsystems are spawned early in the
+xref:Development/ModLoader/ModModules.adoc#_dispatch_lifecycle_event[Construction phase]
+and their Begin Play method is called as part of the
+xref:Development/ModLoader/ModModules.adoc#_dispatch_lifecycle_event[Initialization phase].
 
 If the actor doesn't seem to be spawning for some reason,
 make sure that you have correctly configured its Replication Policy.

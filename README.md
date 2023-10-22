@@ -48,7 +48,7 @@ Remember to [turn off Docker starting with system startup](https://superuser.com
 and to [close Docker after you're done using it](https://www.reddit.com/r/docker/comments/ol11ve/how_to_completely_stop_docker_desktop/).
 It reserves a lot of system memory even when not actively in use.
 
-If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
+If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Palette,
 then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode,
@@ -109,6 +109,12 @@ The output HTML files for both commands can be found in `\build\site`.
 To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
 
 You can also run `pnpm run serve` which will start a local webserver.
+
+#### Link Checker
+
+The CI will also run the [lychee link checker](https://github.com/lycheeverse/lychee/tree/master) to check for broken links.
+Its reports can be found in the the [Actions tab](https://github.com/satisfactorymodding/Documentation/actions) of the repo.
+You can optionally install the tool yourself if you want to run it locally by following the lychee documentation.
 
 ## Adding Docs for Another Mod
 

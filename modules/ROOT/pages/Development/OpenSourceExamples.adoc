@@ -1,0 +1,97 @@
+= Open Source Examples
+
+It's impossible for this documentation to cover every aspect of making Satisfactory mods.
+However, there are quite a few open-source mods you can download and check out the code of
+to learn how they accomplish certain behaviors or features.
+
+This page contains a community-maintained list of open-source mods,
+as well as what Satisfactory and SML features they make use of,
+to help guide your learning.
+
+Open source mods typically provide their source code in the "Source" section of the infobox on the mod repository.
+
+You can set up these mods in your editor by following the
+xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project] guide.
+
+Would you like to make your mod open source so others can learn from it as well?
+Get started by following the xref:Development/BeginnersGuide/CreateGitRepo.adoc[Creating a Mod Git Repo] guide.
+
+[TIP]
+====
+This page is a continual work in progress.
+Are you aware of an open-source mod to list here?
+Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.
+====
+
+== MAM Enhancer
+
+Modifies the base game MAM, HUB, and AWESOME Shop UI to provide additional information to the player and improve the user experience.
+
+_Source Code_: Linked on the https://ficsit.app/mod/MAMTips[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Widget Injection
+** Modify the base game's interface to hide, change, and add new elements
+* Runtime asset generation
+** Used to generate the fake recipe entries for display in the To-Do list
+* In-game tutorial
+** An icon with a tooltip that encourages the player to see how to use the mod after installing it,
+   then dismisses itself for later
+
+_Notable Satisfactory Features Used:_
+
+* To-Do List
+** Automatically adds items to the player's To-Do list
+
+_Notable Mod Loader Features Used:_
+
+* Mod Configuration
+** Live preview of user's selected config options
+** Binding events to the change of config options
+** Programatically modifying config values and saving the changes
+* Bind on BP Function
+* Widget Blueprint Hooks
+* Session Settings
+
+== Free Samples
+
+Whenever you unlock a technology that grants you a recipe, receive a configurable amount of 'free samples' of that recipe. For equipment and component crafting recipes, this is the output product. For buildings, this is the ingredients for the building. Every player in multiplayer gets a copy of the free sample items.
+
+_Source Code_: Linked on the https://ficsit.app/mod/FreeSamples[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Programatically giving items to players
+* Compatibility with runtime-generated assets
+** Works properly with Recipes and Schematics that might not yet exist when the player loads the world
+* Per-player data storage (multiplayer compatibility)
+* Save/loading of soft class and soft object fields
+* Hybrid Blueprint/{cpp} subsystems
+** Subsystems' final implementations are in Blueprint,
+   but they are backed by custom {cpp} parent classes to allow 
+* Zero-dependency cross mod interaction
+** Mod is coded to inspect other mod's assets for fields with a certain name,
+   and then change behavior based on those fields values.
+   Enables cross-mod interaction without either mod needing the other's source code.
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* Mod Subsystems
+** Server-side only subsystems since adding inventory items requires authority
+* Simple Construction Script (SCS) Hooks
+** Used to implement per-player data storage
+* Chat Commands
+* Mod Configuration
+** Custom config widget to make entering data easier
+** Tracking if the user has modified the config from the defaults
+   to know if future mod updates should automatically overwrite them with updated default data
+** Programatically modifying config values and saving the changes
