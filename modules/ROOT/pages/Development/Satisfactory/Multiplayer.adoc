@@ -162,7 +162,7 @@ The ExampleMod uses a replicated property on the Multiplayer Demo Building.
 === {cpp} Example
 
 No example is currently provided.
-Consider looking at an open-source mod instead.
+Consider looking at an xref:Development/OpenSourceExamples.adoc[open-source mod] instead.
 
 == Replicated Properties
 
