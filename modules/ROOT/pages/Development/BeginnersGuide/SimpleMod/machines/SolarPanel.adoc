@@ -114,6 +114,13 @@ or ask for help on the Discord.
 You may wish to add functionality to make the solar panel require direct access to the sky to function,
 however, implementing this in a performance-friendly way is not trivial,
 which is why it was excluded from this tutorial.
+
+One possible way to implement a sky requirement involves performing a line trace when the buildable is intialized
+and caching the success/fail of that trace on the actor,
+then using the cached value to determine the power output.
+However, this approach does not respond to new buildings being constructed after the solar panel,
+nor does it allow the building to re-check for sky access without being destroyed and rebuilt.
+
 This tutorial may eventually be expanded to include this functionality,
 but for now, ask about it on the Discord if you want to do this.
 
