@@ -470,7 +470,7 @@ Copy the manifest ID from this row for usage later.
 For example, Update 8.1's manifest ID is `3616459586959574031`.
 
 3. Open the Windows Run dialog. You can find it in "Start programs" or by using Win+R shortcut.
-and enter this command while Steam the client window is open: `steam://open/console`
+Enter this command in the dialog while Steam the client window is open: `steam://open/console`
 
 4. Navigate to the newly-revealed extra tab in your Steam app called 'Console'.
 It may take a few seconds to load after you run the command.
