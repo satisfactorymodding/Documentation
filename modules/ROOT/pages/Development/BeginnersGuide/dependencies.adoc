@@ -49,11 +49,13 @@ you have two options for selecting the relevant components.
 [id="ImportConfiguration"]
 === Option 1: Import an Installer Configuration
 
-If the installer took you directly to the component selection screen
+If the installer took you directly to the Workflow or Component selection screen
 you'll have to use the smaller X button in the top right to close out of that prompt first.
 
 Instead of clicking "Install" next to Visual Studio 2022,
 click the 'More' dropdown and select `Import Configuration`.
+If the option does not appear, make sure that your existing installation is not "pending"
+by allowing it to finish installing.
 
 // cspell:ignore vsconfig
 Download link:{attachmentsdir}/BeginnersGuide/dependencies/SML.vsconfig[this configuration file]
