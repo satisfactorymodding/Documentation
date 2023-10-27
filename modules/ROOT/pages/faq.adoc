@@ -431,11 +431,16 @@ This works for both the Epic and Steam distributions of the game.
 
 First, turn off automatic updates for Satisfactory so that when Coffee Stain releases an update,
 you can make a backup copy of your game files before the platform automatically downloads the update.
+Note that neither Steam nor Epic offer the ability to permanently turn off updates,
+so instead, chose the option that makes it so it only updates when you launch it
+(instead of automatically in the background).
+This gives you a chance to copy the files elsewhere before the platform automatically updates them on you.
 
 Steam explains how to disable automatic updates in
 https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their FAQ].
 
-On Epic, this can be done on the game's "Manage" menu. Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
+On Epic, this can be done on the game's "Manage" menu.
+Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
 
 Once an update releases, follow the directions
 xref:Development/UpdatingToNewVersions.adoc#_back_up_your_game[here]
@@ -456,8 +461,12 @@ Epic Games has not created a system that allows for this.
 
 This guide is written for Windows, but similar steps can probably be used on Linux with some changes.
 
-1. Disable auto update for Satisfactory. Steam explains how to do this on
+1. Modify Steam's update settings for Satisfactory
+so that Steam will only try to update the game when you launch it
+instead of automatically in the background.
+Steam explains how to do this on
 https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their documentation].
+Don't worry, a later step will ensure that Steam doesn't try to update the game even when you launch it.
 
 2. Find the manifest ID for the version you want to download.
 The easiest way to do this is on the https://steamdb.info/app/526870/[SteamDB page for Satisfactory].
@@ -513,13 +522,15 @@ Copy the following files:
 * `/FactoryGame/Configs/` (this folder contains your mod configuration files)
 * Keep in mind that other mods may also produce folders and files you want to hold on to.
 
-11. Download the mods you want to play with  into this new copy of the game.
-You may be able to restore some of them from your backup copy.
+11. Download the mods you want to play with into this new copy of the game.
+You may be able to reuse some of them from your backup copy (`/FactoryGame/Mods`).
 Just like Steam, the mod manager doesn't know that this copy is an older version,
 so you may have to do a lot of work at this step to make sure you've grabbed compatible mod versions.
 Remember, we will not provide support for this process, you're on your own here.
 
 12. You should be good to go.
+In order to launch the game, simply launch it through Steam or the mod manager as usual.
+If you've followed these steps correctly, Steam will not try to update the game when you launch it.
 Once you are certain all data has been transferred, feel free to remove your backup of the previous folder contents.
 
 In order to revert this process and return to the latest version of the game,
