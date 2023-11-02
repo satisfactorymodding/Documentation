@@ -46,9 +46,9 @@ Use curly brackets `{}` in its format input to indicate where you want to insert
 The node will automatically add new ports that match the names you type inside the curly braces.
 Consider reading more about this node in the Unreal documentation.
 
-For one of the text elements, use Format Text with `Total item count: {itemCount}` and feed it the machine's ItemAmount integer value.
+For one of the text elements, use Format Text with `Total item count: \{itemCount\}` and feed it the machine's ItemAmount integer value.
 
-For the second one, use `# of unique items: {uniqueItemCount}` and feed it the Length of the ItemTypes set from the machine.
+For the second one, use `# of unique items: \{uniqueItemCount\}` and feed it the Length of the ItemTypes set from the machine.
 
 [TIP]
 ====
