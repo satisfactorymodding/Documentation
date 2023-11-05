@@ -191,6 +191,17 @@ Functions that are `FORCEINLINE` cannot be hooked.
 
 A function being a `UFUNCTION` or not makes no difference on whether it can be hooked.
 
+=== Unhooking
+
+[WARNING]
+====
+Unhooking functionality has not been extensively tested. Please report issues you encounter on the Discord.
+====
+
+Macros will return a delegate that can be used with the
+`UNSUBSCRIBE_METHOD` or `UNSUBSCRIBE_UOBJECT_METHOD` macro respectively
+in order to unsubscribe from the function.
+
 == Blueprint-Hooking
 
 Blueprint function hooking works by changing the instructions of a Blueprint UFunction
