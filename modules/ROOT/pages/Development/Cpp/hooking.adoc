@@ -15,7 +15,7 @@ There is a normal hook which gets called before the actual function gets called.
 Through this hook you are able to prevent the final function call and you are also able to overwrite the return value.
 If you cancel the execution of the final function, you can prevent the following hooks from being called.
 Keep in mind that this means that another hook can prevent your hooks from being called by Satisfactory.
-The normal hook's signature is `void(CallScope<HookFuncSignature>&, hookFuncParams)`.
+The normal hook's signature is `void(TCallScope<HookFuncSignature>&, hookFuncParams)`.
 If you hook a member function, the `this` pointer is handled like a parameter and is the first parameter used.
 As long as you don't cancel the final function execution, or do it yourself by calling the scope object,
 the final function will be implicitly called after your hook function returns.
@@ -33,7 +33,7 @@ The call scope object allows you to:
 +
 [source,cpp]
 ----
-void hook(CallScope<...>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<...>& Scope, class* exampleClass, int exampleArg)
  scope.Cancel();
 }
 ----
@@ -42,7 +42,7 @@ Calling the scope need to have all the same parameters as the func hook signatur
 +
 [source,cpp]
 ----
-void hook(CallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 	// stuff before final function call
 	int result = scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
@@ -52,7 +52,7 @@ void hook(CallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 +
 [source,cpp]
 ----
-void hook(CallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 	// final function might get called
 	scope.Override(customReturnValue);
 	// final function wont get called anymore
@@ -64,7 +64,7 @@ no care about if the final function got called or not we introduce the "after" h
 These hooks get all called after the normal hook calls and only allow you to
 read the parameters as well as the resulting return value.
 That means you can't influence the final function call.
-These also don't use the CallScope object, instead the first parameter of your hooks signature
+Also, don't use the TCallScope object, instead the first parameter of your hooks signature
 is the return value following by the function call parameters.
 
 [source,cpp]
