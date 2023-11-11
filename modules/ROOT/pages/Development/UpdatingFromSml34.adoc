@@ -198,7 +198,7 @@ but we'd like to draw extra attention to them.
 The SML configuration option has been removed because it was redundant and does the same thing as the startup parameter.
 See xref:Development/ModLoader/Logging.adoc[Logging] for more information.
 
-== Player Hud Widget Functionality Change
+=== Player Hud Widget Functionality Change
 
 Some widget features (ex. Text Block element bindings of text to a value or function) no longer function correctly when your widget is a child of the player HUD's widget tree.
 
