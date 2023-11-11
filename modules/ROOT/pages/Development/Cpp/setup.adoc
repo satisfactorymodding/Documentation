@@ -110,7 +110,6 @@ public class <mod_reference> : ModuleRules
             "AIModule",
             "GameplayTasks",
             "SlateCore", "Slate", "UMG",
-            "InstancedSplines",
             "RenderCore",
             "CinematicCamera",
             "Foliage",
