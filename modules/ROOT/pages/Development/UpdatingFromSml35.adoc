@@ -74,13 +74,21 @@ Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creatin
 
 === Engine Subsystem to Game Instance Subsystem Migration
 
-TODO
+Every mod loader subsystem that was previously an Engine Subsystem is now a Game Instance Subsystem instead.
+Functions that use the subsystems now require a world context object.
 
 === Content Registry Rewrite
 
 TODO
 
+The Content Registry was completely rewritten.
+
 `AModContentRegistry` is now `UModContentRegistry`
+
+=== Hooking CallScope deprecation
+
+TCallScope should now be used instead of CallScope.
+Using CallScope will produce a deprecation warning when compiling.
 
 === Hooking Macro Syntax Change
 
@@ -93,6 +101,14 @@ See the xref:Development/Cpp/hooking.adoc[Hooking] page for example syntax.
 
 Numerous new features have been introduced in SML3.6 which you may wish to switch your mod over to using
 or implement as part of a future update to your mod.
+
+=== Documentation: Open Source Examples
+
+The documentation now contains a list of open-source mods that you can learn from to develop your own mods.
+Each listing provides an overview of what kinds of Satisfactory and Mod Loader features the mod uses.
+
+Check it out and consider listing your own mods on the
+xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods] page.
 
 === Unhooking Support
 
