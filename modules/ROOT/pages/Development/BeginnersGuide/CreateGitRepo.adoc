@@ -276,3 +276,9 @@ When cd-ing inside a symlinked folder, git bash will pass the real path to UE4Gi
 rather than the plugin path inside the SML project.
 The workaround for this is to either run it from command prompt or powershell,
 or to open git bash directly in the plugin folder and not cd from there.
+
+## Nested Mod Folders
+
+It's possible to keep the files for multiple mods in one git repository
+by having a parent folder as the git repository with a subfolder for each mod.
+The xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit] is an example of a project that does this.
