@@ -1,0 +1,99 @@
+= Upgrading from SML 3.5.x to 3.6.x
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.6 brings support for Unreal Engine 5.2 and the Early Access release Satisfactory Update 8.
+
+First, please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== Have You Updated to Update 8.1 Yet?
+
+If you are updating your mod **directly from Update 7 (SML 3.4.x) to Update 8**,
+there are more steps to follow and more changes you should be aware of.
+Make sure to read the xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1] guide first!
+
+[IMPORTANT]
+====
+Remember to not install the new engine until you have made a backup copy of the engine files, and Starter Project,
+as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] tutorial!
+====
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Plugin Localization
+
+The new plugin localization system is not totally ready for use.
+You may encounter issues with translation data not saving,
+and the system for importing and exporting translations to the community translation portal is not yet complete.
+
+=== UE Linker still having some bugs ironed out
+
+You might run into troubles accessing the new Unreal Engine repo.
+Please contact us on the Discord if you get stuck.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+TODO Required Changes
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== {cpp} Mod Module Build.cs Changes
+
+You may encounter errors generating visual studio project files for your project.
+
+The InstancedSplines plugin should no longer be referenced in your .Build.cs file and can be safely removed.
+
+You may also need to remove or change some dependencies from the target list, such as PhysX because they no longer exist.
+Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creating_the_mod_module_from_scratch[C++ Setup page] if you're encountering issues.
+
+=== Engine Subsystem to Game Instance Subsystem Migration
+
+TODO
+
+=== Content Registry Rewrite
+
+TODO
+
+`AModContentRegistry` is now `UModContentRegistry`
+
+=== Hooking Macro Syntax Change
+
+Hooking macros such as `SUBSCRIBE_METHOD()` must now be concluded with a semicolon
+as they are now expressions, not statements.
+The semicolon was previously optional.
+See the xref:Development/Cpp/hooking.adoc[Hooking] page for example syntax.
+
+== Notable New Features
+
+Numerous new features have been introduced in SML3.6 which you may wish to switch your mod over to using
+or implement as part of a future update to your mod.
+
+=== Unhooking Support
+
+See the xref:Development/Cpp/hooking.adoc#_unhooking[Hooking] page for more info.
