@@ -258,7 +258,7 @@ dedi-docs
 
 In order to start testing on dedicated servers, you will first need to set up your own dedicated server.
 
-Follow the directions on the https://satisfactory.fandom.com/wiki/Dedicated_servers[Satisfactory Wiki]
+Follow the directions on the https://satisfactory.wiki.gg/wiki/Dedicated_servers[Satisfactory Wiki]
 to set up a working dedicated server and verify that you can connect to it with an unmodified client.
 
 Note that in order to perform the first time server claiming process
