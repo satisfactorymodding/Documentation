@@ -229,7 +229,7 @@ void registerHooks() {
 		FString* localStr = helper.GetLocalVarPtr<FString>("StrVariable"); // getting the pointer to a local variable
 		FString* output = helper.GetOutVariablePtr<FString>("OutValue"); // getting the pointer to a output variable
 		// do some nice stuff there
-	})
+	});
 }
 ----
 
