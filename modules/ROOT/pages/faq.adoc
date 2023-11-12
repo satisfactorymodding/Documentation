@@ -60,14 +60,14 @@ Here is what each option of the dropdown does:
   **This is the suggested mode to keep the Manager in when searching for new mods to use.**
   Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
 - `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
-- The `Enabled` option will show mods all mods that will load when you launch the game.
+- The `Enabled` option will show all mods that will load when you launch the game.
   These mods are here either because you have manually chosen to install them,
   or because they were automatically installed as requirements of other mods.
   You can Pause these mods to keep them from loading when you launch the game.
-- The `Disabled` option shows mods you have downloaded, but "paused," which means they will not be loaded.
+- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
 - The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
 - `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
-  A mod being favortied has no relation to whether or not it is installed.
+  A mod being favorited has no relation to whether or not it is installed.
 
 ==== Via ficsit.app
 

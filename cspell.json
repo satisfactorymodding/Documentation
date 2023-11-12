@@ -36,6 +36,7 @@
         "doggos",
         "DOREPLIFETIME",
         "FACTORYGAME",
+        "favorited",
         "Feyko",
         "fgrecipe",
         "FGUnlock",
@@ -124,6 +125,7 @@
     "flagWords": [
         "hte",
         "reccomend",
-        "outselves"
+        "outselves",
+        "favortied"
     ]
 }
