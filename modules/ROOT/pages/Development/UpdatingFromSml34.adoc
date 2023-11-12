@@ -222,7 +222,7 @@ in order to get the same look as they did before.
 You may also need to adjust buttons' Pressed and Normal paddings
 as those also seem to have been reset.
 
-image:https://cdn.discordapp.com/attachments/1036634533077979146/1128346194012282971/image.png[D4rk screenshot of changing button Draw As]
+image:Development/ChangeButtonDrawAs.png[D4rk screenshot of changing button Draw As]
 
 === Online Subsystem Changes
 
