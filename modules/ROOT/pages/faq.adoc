@@ -237,6 +237,16 @@ On Epic: (Note that the Early Access and Experimental branches are separate entr
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
 
+[id="Files_Mods"]
+=== Mods
+
+As described link:#_how_do_i_turn_off_mods[here],
+the Mod Manager handles downloading and placing mod files into the correct folder for you.
+Interfering with mod files manually is not recommended,
+and the Mod Manager is likely to undo or overwrite your changes.
+
+Mods are stored in the link:#Files_GameInstall[game install directory] under `FactoryGame/Mods`.
+
 [id="Files_SaveFiles"]
 === Save Files
 
