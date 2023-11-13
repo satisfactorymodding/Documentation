@@ -112,6 +112,13 @@ as they are now expressions, not statements.
 The semicolon was previously optional.
 See the xref:Development/Cpp/hooking.adoc[Hooking] page for example syntax.
 
+=== Editor Viewport Shadows Warning
+
+`r.ContactShadows.NonShadowCastingIntensity is set but ignored. Use setting on the Light Component instead.`
+
+To get rid of this error, edit `/Project/Config/DefaultEngine.ini`
+and remove any lines that assign values to `r.ContactShadows.NonShadowCastingIntensity`.
+
 == Notable New Features
 
 Numerous new features have been introduced in SML3.6 which you may wish to switch your mod over to using
