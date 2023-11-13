@@ -62,7 +62,7 @@ You can only register two axis binding pairs.
 One of them should be a keyboard axis and the other a gamepad axis (optional).
 
 == Mod Content Registry
-The Mod Content Registry is a xref:Development/ModLoader/Subsystems.adoc[subsystem]
+The Mod Content Registry is a xref:Development/ModLoader/Subsystems.adoc[game instance subsystem]
 that manages registration and lifetime of any kind of modded content.
 
 All content you create and add with your mod that is of supported types
@@ -71,117 +71,122 @@ Meaning, you should **not** register it yourself in the games subsystems.
 
 This essential in ensuring that it is correctly saved, loaded, and identified by the game and other mods.
 
-If you don't need any dynamic behaviors the Mod Content Registry provides,
+If you don't need any of the dynamic behaviors the Mod Content Registry provides,
 you should use properties in your
 xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[RootGameWorld_YourModReferenceHere]
 module instance instead of calling methods on this object directly.
 
 [WARNING]
 ====
-Content can only be registered before a save is loaded.
+Schematic and Research Tree registrations are frozen on BeginPlay.
 After that moment, the registry is frozen and no changes can be made after that!
 ====
 
-Registered content is then also tracked automatically for changes/overwrites if possible.
-By f.e. looking up Alpakit overwrite data.
+=== `UModContentRegistry* Get(UObject* WorldContext)`
 
-You can use it's `Get(UObject*)`-Function to get a instance of the registry.
+Get the global instance of the registry.
 
 === `RegisterSchematic(FName ModReference, TSubclassOf<UFGSchematic> Schematic)`
-Registers the given schematic.
-
-It additionally also registers referenced recipes and items automatically.
+Registers schematic to be usable by the game.
+All recipes referenced by schematic are registered automatically.
+All items referenced by registered recipes are associated with passed mod reference too.
 
 You must also provide your mod reference so the content can get associated properly.
 
 === `RegisterResearchTree(FName ModReference, TSubclassOf<UFGResearchTree> ResearchTree)`
-Registers the given research tree.
-
-It additionally also registers referenced schematics automatically.
+Registers research tree to be usable by the game.
+Also updates research trees so tree can be unlocked instantly if criteria are met.
+All schematics referenced by this research tree are registered automatically.
+Nodes should be of default BPD_ResearchTreeNode type to be discoverable for schematics.
 
 You must also provide your mod reference so the content can get associated properly.
-
-Nodes should be type of default BPD_ResearchTreeNode.
 
 === `RegisterRecipe(FName ModReference, TSubclassOf<UFGRecipe> Recipe)`
-Registers the given recipe.
-
-It additionally also registers referenced items automatically.
-
-You must also provide your mod reference so the content can get associated properly.
-
-=== `RegisterResourceSinkItemPointTable(FName ModReference, UDataTable* PointTable)`
-Registers the given resource sink item point table.
+Registers recipe to be usable by the game.
+Also associates items referenced by this recipe with passed mod reference if they are not.
+associated with any other mod reference yet.
 
 You must also provide your mod reference so the content can get associated properly.
 
-=== `TArray<FItemRegistrationInfo> GetLoadedItemDescriptors()`
+=== `RegisterResourceSinkItemPointTable(FName ModReference, UDataTable* PointTable, EResourceSinkTrack Track)`
+Register resource sink item points for each item row in the passed table object.
+
+You must also provide your mod reference so the content can get associated properly.
+
+=== `RemoveSchematic(TSubclassOf<UFGSchematic> Schematic)`
+Explicitly removes the given schematic from the registry
+
+=== `RemoveResearchTree(TSubclassOf<UFGResearchTree> ResearchTree)`
+Explicitly removes the given research tree from the registry
+
+=== `TArray<FGameObjectRegistration> GetLoadedItemDescriptors()`
 Returns a list of all currently loaded item descriptors.
 
-=== `TArray<FItemRegistrationInfo> GetObtainableItemDescriptors()`
-Returns a list of all item descriptors that are referenced as product in recipes.
+=== `GetObtainableItemDescriptors(TArray<FGameObjectRegistration>& OutItemDescriptors, EGetObtainableItemDescriptorsFlags Flags)`
+Retrieves list of all obtainable item descriptors, e.g ones referenced by any recipe.
 
-=== `FItemRegistrationInfo GetItemDescriptorInfo(TSubclassOf<UFGItemDescriptor> ItemDescriptor)`
-Returns the registration info of the given item descriptor.
+Use the Flags to further filter the results.
 
-=== `TArray<FRecipeRegistrationInfo> GetRegisteredRecipes()`
-Returns a list of all currently registered recipes.
-
-=== `FRecipeRegistrationInfo GetRecipeInfo(TSubclassOf<UFGRecipe> Recipe)`
-Returns the registration info of the given recipe.
-
-=== `TArray<FResearchTreeRegistrationInfo> GetRegisteredResearchTrees()`
-Returns a list of all currently registered research trees.
-
-=== `FResearchTreeRegistrationInfo GetResearchTreeRegistrationInfo(TSubclassOf<UFGResearchTree> ResearchTree)`
-Returns the registration info of the given research tree.
-
-=== `TArray<FSchematicRegistrationInfo> GetRegisteredSchematics()`
+=== `TArray<FGameObjectRegistration> GetRegisteredSchematics()`
 Returns a list of all currently registered schematics.
 
-=== `FSchematicRegistrationInfo GetSchematicRegistrationInfo(TSubclassOf<UFGSchematic> Schematic)`
+=== `TArray<FGameObjectRegistration> GetRegisteredResearchTrees()`
+Returns a list of all currently registered research trees.
+
+=== `TArray<FGameObjectRegistration> GetRegisteredRecipes()`
+Returns a list of all currently registered recipes.
+
+=== `FGameObjectRegistration GetResearchTreeRegistrationInfo(TSubclassOf<UFGResearchTree> ResearchTree)`
+Returns the registration info of the given research tree.
+
+=== `FGameObjectRegistration GetSchematicRegistrationInfo(TSubclassOf<UFGSchematic> Schematic)`
 Returns the registration info of the given schematic.
 
-=== `bool IsRecipeRegistered(TSubclassOf<UFGRecipe> Recipe)`
-Allows checking if the given recipe is already registered.
+=== `FGameObjectRegistration GetRecipeInfo(TSubclassOf<UFGRecipe> Recipe)`
+Returns the registration info of the given recipe.
 
-=== `bool IsSchematicRegistered(TSubclassOf<UFGSchematic> Schematic)`
-Allows checking if the given schematic is already registered.
+=== `FGameObjectRegistration GetItemDescriptorInfo(TSubclassOf<UFGItemDescriptor> ItemDescriptor)`
+Returns the registration info of the given item descriptor.
 
-=== `bool IsResearchTreeRegistered(TSubclassOf<UFGResearchTree> Recipe)`
-Allows checking if the given research tree is already registered.
+=== `bool IsItemDescriptorVanilla(TSubclassOf<UFGItemDescriptor> ItemDescriptor)`
+Returns true when given item descriptor is considered vanilla.
 
-=== `FBasicRegistrationInfo`
-This struct is the base struct for all registration info structures.
-It holds information about the actual object it holds information for, and it references the registering mod.
+=== `bool IsRecipeVanilla(TSubclassOf<UFGRecipe> Recipe)`
+Returns true when given recipe is considered vanilla.
 
-==== `FName ModReference`
-The mod reference of the mod that originally registered this content.
+=== `bool IsSchematicVanilla(TSubclassOf<UFGSchematic> Schematic)`
+Returns true when given schematic is considered vanilla.
 
-==== `FName OverwrittenByModReference`
-If the object was overwritten, this holds the reference to the mod owning the overwritten asset.
+=== `bool IsResearchTreeVanilla(TSubclassOf<UFGResearchTree> ResearchTree)`
+Returns true when given research tree is considered vanilla.
 
-==== `UClass* RegisteredObject`
+=== `FOnGameObjectRegistered OnRecipeRegistered`
+Called when recipe is registered into content registry.
+
+=== `FOnGameObjectRegistered OnSchematicRegistered`
+Called when schematic is registered into content registry.
+
+=== `FOnGameObjectRegistered OnResearchTreeRegistered`
+Called when research tree is registered into the registry.
+
+=== `FGameObjectRegistration`
+
+Holds basic information about a single content registration entry.
+
+This struct is used to hold information about all registered content types,
+so you must cast `UObject*`s into the relevant classes depending on what type of content you're working with
+
+==== `FName RegistrarModReference`
+Mod reference of the plugin which actually performed the object registration. Usually same as OwnedByModReference.
+
+==== `FName OwnedByModReference`
+Mod reference of the plugin which owns the actual registered object.
+
+==== `UObject* RegisteredObject`
 The object/content this registration info holds registry information about.
 
-// cSpell:ignore fbasicregistrationinfo
-=== `FItemRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
-This struct holds registry information for `UFGItemDescriptors`.
+=== `EGameObjectRegistrationFlags Flags`
+Flags set on this object.
 
-==== `TArray<TSubclassOf<UFGRecipe>> ReferencedBy`
-Holds a list of recipes that reference this item.
-
-=== `FRecipeRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
-This struct holds registry information for `UFGRecipes`.
-
-==== `TArray<TSubclassOf<UFGSchematic>> ReferencedBy`
-Holds a list of schematics that reference this recipe.
-
-=== `FSchematicRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
-This struct holds registry information for `UFGSchematics`.
-
-==== `TArray<TSubclassOf<UFGResearchTree>> ReferencedBy`
-Holds a list of research trees that reference this schematic.
-
-=== `FResearchTreeRegistrationInfo (extends <<_fbasicregistrationinfo, FBasicRegistrationInfo>>)`
-This struct holds registry information for `UFGResearchTrees`.
+==== `TArray<UObject*> ReferencedBy`
+List of all objects that reference this one.

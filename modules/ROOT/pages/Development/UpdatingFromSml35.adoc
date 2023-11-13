@@ -124,6 +124,12 @@ and remove any lines that assign values to `r.ContactShadows.NonShadowCastingInt
 Numerous new features have been introduced in SML3.6 which you may wish to switch your mod over to using
 or implement as part of a future update to your mod.
 
+=== Mod Content Registry: Content Removal
+
+The Mod Content Registry now supports requesting to explicitly remove Schematics and Research Trees from registration.
+Requests for removal follow the same loading time restrictions as new content registration.
+See the xref:Development/ModLoader/Registry.adoc[Registry] page for more info.
+
 === Documentation: Open Source Examples
 
 The documentation now contains a list of open-source mods that you can learn from to develop your own mods.
