@@ -61,7 +61,7 @@ Session Settings still function correctly - their values are saved.
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
 
-TODO Required Changes
+As of the time of writing, there are no known required changes for this update.
 
 == Additional Changes
 
