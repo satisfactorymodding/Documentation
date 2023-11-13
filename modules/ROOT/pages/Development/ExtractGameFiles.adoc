@@ -205,11 +205,6 @@ in the log to open your system file browser to the containing folder.
 
 === Extracting sourceIDs with wwiser
 
-[WARNING]
-====
-This section is a work in progress.
-====
-
 You will need Python installed to utilize wwiser.
 Python 3.8.10 is known to work,
 and https://github.com/pyenv-win/pyenv-win[pyenv] is the suggested method of install.
