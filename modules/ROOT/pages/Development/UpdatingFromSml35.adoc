@@ -33,6 +33,11 @@ as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mo
 The following features are not quite ready to use yet.
 This section will change often, so be sure to come back here and check as you update your mods!
 
+== Decal_Normal Broken on Modded Parts using Mesh Proxies
+
+This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
+More info and screenshots can be found link:https://discord.com/channels/555424930502541343/599990474668769290/1173262027175772270[here].
+
 === Plugin Localization
 
 The new plugin localization system is not totally ready for use.
@@ -77,13 +82,23 @@ Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creatin
 Every mod loader subsystem that was previously an Engine Subsystem is now a Game Instance Subsystem instead.
 Functions that use the subsystems now require a world context object.
 
+==== Blueprint Getter Nodes Affected
+
+If you were previously using an engine subsystem blueprint get node, for example, "Get Mod Loading Library",
+you will need to recreate it and replace it with the (visually identical) new one.
+
+You'll see an error similar to `Node  Get ModLoadingLibrary  must have a class specified.` when this is the case.
+
 === Content Registry Rewrite
 
 TODO
 
 The Content Registry was completely rewritten.
 
-`AModContentRegistry` is now `UModContentRegistry`
+- `AModContentRegistry` is now `UModContentRegistry`
+- All content-specific registration structs (ex. `FItemRegistrationInfo`) have been replaced by `FGameObjectRegistration`.
+  In order to use content-specific ReferencedBy data you will have to cast the UObject pointers to type UClass,
+  then class cast them to the relevant type (ex. `UFGRecipe`)
 
 === Hooking CallScope deprecation
 
