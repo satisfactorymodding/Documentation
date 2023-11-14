@@ -24,10 +24,7 @@ The download link for these files can be found on the Unreal documentation page 
 https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
 
 Currently, Satisfactory uses Unreal Engine 5.2.1 with custom changes provided by Coffee Stain Studios.
-Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
-
-// UE5.2 Dedi //Currently, Satisfactory uses Unreal Engine 5.2.x with custom changes provided by Coffee Stain Studios.
-// UE5.2 Dedi //Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
 
 Download the toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
