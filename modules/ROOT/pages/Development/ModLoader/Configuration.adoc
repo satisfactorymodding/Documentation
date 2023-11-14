@@ -135,7 +135,7 @@ and check out the ExampleMod.
 
 == Configuration Manager
 
-The configuration manager is a engine subsystem that manages all configurations loaded into the game.
+The configuration manager is a Game Instance subsystem that manages all configurations loaded into the game.
 
 It will then be able to load and save registered configurations.
 

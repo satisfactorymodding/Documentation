@@ -35,7 +35,41 @@ for the rest of the steps.
 
 === Installing Mods
 
+==== Via the Mod Manager
+
 After you've installed the Mod Manager, you can use it to seamlessly browse and install mods.
+It will automatically detect your game installation,
+and if you have multiple, you can pick between them with the "Install" dropdown.
+
+Browse the list of available mods by scrolling, or search for a mod with the search bar.
+Click on a mod to open its mod page in an details panel to the side.
+
+To install a mod, click the download arrow button.
+After the download completes, it will turn into another icon depending on its compatibility status.
+
+To uninstall a mod, use the button that has appeared instead of the download arrow -
+it will turn into a trash can when you hover over it.
+Alternatively, click the Play button to "Pause" the mod,
+preventing it from loading with the game but still keeping the files downloaded on your computer.
+This can be useful for troubleshooting.
+
+You can use the "Show" dropdown to filter what mods are displayed.
+Here is what each option of the dropdown does:
+
+- `Compatible` will only display mods that are compatible with your selected game install's branch (Early Access or Experimental).
+  **This is the suggested mode to keep the Manager in when searching for new mods to use.**
+  Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
+- `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
+- The `Enabled` option will show all mods that will load when you launch the game.
+  These mods are here either because you have manually chosen to install them,
+  or because they were automatically installed as requirements of other mods.
+  You can Pause these mods to keep them from loading when you launch the game.
+- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
+- The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
+- `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
+  A mod being favorited has no relation to whether or not it is installed.
+
+==== Via ficsit.app
 
 If you prefer to browse mods on the ficsit.app website,
 it's easy to install them from there too.
@@ -155,11 +189,11 @@ The rocket icon indicates Early Access and the flask icon is for Experimental.
 
 In the Mod Manager:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089302323966246973/unknown_1.png[SMM Compatibility Info screenshot]
+image:FAQ/SmmCompatibilityInfo.png[SMM Compatibility Info screenshot]
 
 On ficsit.app:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089325949755084971/image.png[ficsit.app Compatibility Info screenshot]
+image:FAQ/FicsitAppCompatibility.png[ficsit.app Compatibility Info screenshot]
 
 You can hover over the sticker for any notes that may have been left by the author.
 They may indicate a version to use, which you can change to in the Mod Manager with the dropdown right above the stickers.
@@ -220,7 +254,7 @@ and consider picking up the `Aspiring Modder` role in our https://discord.gg/xkV
 
 You can use the Mod Manager's profile import/export functionality.
 
-image:https://cdn.discordapp.com/attachments/555507339969560586/833748278456746014/unknown.png[SMM Import/Export screenshot]
+image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 
 == Where are my game files located?
 
@@ -236,6 +270,16 @@ image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_Mods"]
+=== Mods
+
+As described link:#_how_do_i_turn_off_mods[here],
+the Mod Manager handles downloading and placing mod files into the correct folder for you.
+Interfering with mod files manually is not recommended,
+and the Mod Manager is likely to undo or overwrite your changes.
+
+Mods are stored in the link:#Files_GameInstall[game install directory] under `FactoryGame/Mods`.
 
 [id="Files_SaveFiles"]
 === Save Files
@@ -279,7 +323,7 @@ Mod manager profiles are stored at:
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
 since it gathers game, SML, and Mod Manager logs for you.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+image:FAQ/SmmGenerateDebugInfo.png[SMM Generate Debug Info screenshot]
 
 The location of these files is mentioned link:#Files_Logs[above].
 
@@ -287,11 +331,11 @@ The location of these files is mentioned link:#Files_Logs[above].
 
 On Steam:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039933446037605/unknown.png[Steam screenshot]
+image:FAQ/SteamVerifyIntegrity.png[Steam screenshot]
 
 On Epic:
 
-image:https://cdn.discordapp.com/attachments/555782140533407764/1151551938631057539/image.png[Epic screenshot]
+image:FAQ/EpicVerifyIntegrity.png[Epic screenshot]
 
 == Why is the mod manager downloading slowly, or failing to download?
 
@@ -330,17 +374,17 @@ Try disabling the mod manager's timeout as shown below.
 If that still doesn't work, try
 link:#_why_is_the_mod_manager_downloading_slowly_or_failing_to_download[this approach instead].
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089041903342862336/unknown.png[Timeout disable screenshot]
+image:FAQ/SmmDisableDownloadTimeout.png[Timeout disable screenshot]
 
 == How can I troubleshoot crash issues?
 
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature and send the file on the Modding Discord's `#help-using-mods` discord channel.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+image:FAQ/SmmGenerateDebugInfo.png[SMM Generate Debug Info screenshot]
 
 You can also follow this process to track down which mod(s) you have installed are leading to a crash (or other undesired behavior):
 
-image:https://cdn.discordapp.com/attachments/834348739539238922/1102661505255751801/debugmods.png[Troubleshooting flowchart]
+image:FAQ/DebugModsFlowchart.png[Troubleshooting flowchart]
 
 == How can I tell what mod added an item/milestone/recipe/thing?
 
@@ -431,11 +475,16 @@ This works for both the Epic and Steam distributions of the game.
 
 First, turn off automatic updates for Satisfactory so that when Coffee Stain releases an update,
 you can make a backup copy of your game files before the platform automatically downloads the update.
+Note that neither Steam nor Epic offer the ability to permanently turn off updates,
+so instead, chose the option that makes it so it only updates when you launch it
+(instead of automatically in the background).
+This gives you a chance to copy the files elsewhere before the platform automatically updates them on you.
 
 Steam explains how to disable automatic updates in
 https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their FAQ].
 
-On Epic, this can be done on the game's "Manage" menu. Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
+On Epic, this can be done on the game's "Manage" menu.
+Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
 
 Once an update releases, follow the directions
 xref:Development/UpdatingToNewVersions.adoc#_back_up_your_game[here]
@@ -456,8 +505,12 @@ Epic Games has not created a system that allows for this.
 
 This guide is written for Windows, but similar steps can probably be used on Linux with some changes.
 
-1. Disable auto update for Satisfactory. Steam explains how to do this on
+1. Modify Steam's update settings for Satisfactory
+so that Steam will only try to update the game when you launch it
+instead of automatically in the background.
+Steam explains how to do this on
 https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their documentation].
+Don't worry, a later step will ensure that Steam doesn't try to update the game even when you launch it.
 
 2. Find the manifest ID for the version you want to download.
 The easiest way to do this is on the https://steamdb.info/app/526870/[SteamDB page for Satisfactory].
@@ -470,7 +523,7 @@ Copy the manifest ID from this row for usage later.
 For example, Update 8.1's manifest ID is `3616459586959574031`.
 
 3. Open the Windows Run dialog. You can find it in "Start programs" or by using Win+R shortcut.
-and enter this command while Steam the client window is open: `steam://open/console`
+Enter this command in the dialog while Steam the client window is open: `steam://open/console`
 
 4. Navigate to the newly-revealed extra tab in your Steam app called 'Console'.
 It may take a few seconds to load after you run the command.
@@ -513,13 +566,15 @@ Copy the following files:
 * `/FactoryGame/Configs/` (this folder contains your mod configuration files)
 * Keep in mind that other mods may also produce folders and files you want to hold on to.
 
-11. Download the mods you want to play with  into this new copy of the game.
-You may be able to restore some of them from your backup copy.
+11. Download the mods you want to play with into this new copy of the game.
+You may be able to reuse some of them from your backup copy (`/FactoryGame/Mods`).
 Just like Steam, the mod manager doesn't know that this copy is an older version,
 so you may have to do a lot of work at this step to make sure you've grabbed compatible mod versions.
 Remember, we will not provide support for this process, you're on your own here.
 
 12. You should be good to go.
+In order to launch the game, simply launch it through Steam or the mod manager as usual.
+If you've followed these steps correctly, Steam will not try to update the game when you launch it.
 Once you are certain all data has been transferred, feel free to remove your backup of the previous folder contents.
 
 In order to revert this process and return to the latest version of the game,

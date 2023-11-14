@@ -208,6 +208,15 @@ This backs them up on the GitHub servers and makes them available to other users
 Directions for pushing files in GitHub Desktop can be found
 https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop[here].
 
+## Enable UE VCS Integration
+
+The custom engine version used in the Satisfactory Modding community has been modified to allow Unreal Engine's Git integration to recognize and work with multiple git repos in a single project.
+
+To enable, navigate to "Tools" > (Source Control heading) > "Connect to Source Control...".
+Select Git from the dropdown, then click "Accept Settings".
+
+You can now right click on assets in the Content Browser to view their change history, diff assets, and more.
+
 ## Git Workflow
 
 Congratulations, you have now set up your local repository and pushed it to GitHub.
@@ -255,3 +264,21 @@ Most Unreal Engine asset files are raw binary files, which means git diffing the
 Panakotta has directions on using UE as diff tool
 https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
 but it's best to totally avoid merge conflicts wherever possible.
+
+## UE4GitDiff
+
+A tool that runs the UE diff interface from git command line.
+
+https://github.com/mircearoata/UE4GitDiff
+
+It currently has an issue in finding the project and engine when using symlinked plugin folders and git bash.
+When cd-ing inside a symlinked folder, git bash will pass the real path to UE4GitDiff,
+rather than the plugin path inside the SML project.
+The workaround for this is to either run it from command prompt or powershell,
+or to open git bash directly in the plugin folder and not cd from there.
+
+## Nested Mod Folders
+
+It's possible to keep the files for multiple mods in one git repository
+by having a parent folder as the git repository with a subfolder for each mod.
+The xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit] is an example of a project that does this.

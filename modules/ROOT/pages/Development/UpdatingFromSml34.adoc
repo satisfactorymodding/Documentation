@@ -198,7 +198,7 @@ but we'd like to draw extra attention to them.
 The SML configuration option has been removed because it was redundant and does the same thing as the startup parameter.
 See xref:Development/ModLoader/Logging.adoc[Logging] for more information.
 
-== Player Hud Widget Functionality Change
+=== Player Hud Widget Functionality Change
 
 Some widget features (ex. Text Block element bindings of text to a value or function) no longer function correctly when your widget is a child of the player HUD's widget tree.
 
@@ -222,7 +222,7 @@ in order to get the same look as they did before.
 You may also need to adjust buttons' Pressed and Normal paddings
 as those also seem to have been reset.
 
-image:https://cdn.discordapp.com/attachments/1036634533077979146/1128346194012282971/image.png[D4rk screenshot of changing button Draw As]
+image:Development/ChangeButtonDrawAs.png[D4rk screenshot of changing button Draw As]
 
 === Online Subsystem Changes
 

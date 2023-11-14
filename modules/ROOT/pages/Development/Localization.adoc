@@ -2,9 +2,11 @@
 
 [NOTE]
 ====
+The new plugin localization system is not ready for use.
+You may encounter issues with translation data not saving,
+and the system for importing and exporting translations to the community translation portal is not yet complete.
+
 This page is a work in progress.
-Our integration with the Tolgee localization systems are not completed yet,
-so ask on the Discord if you'd like to set this up.
 ====
 
 Satisfactory has been translated to multiple languages other than English.

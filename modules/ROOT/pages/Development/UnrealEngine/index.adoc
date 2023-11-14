@@ -1,6 +1,6 @@
 = Unreal Engine
 
-Satisfactory uses the Unreal Engine (UE) 5.1.1 by Epic Games as their Game Engine.
+Satisfactory uses the Unreal Engine (UE) 5.2.1 by Epic Games as their Game Engine.
 UE provides a solid framework for developing fast executing native code and a interface for artists to use a more easy way for creating content.
 
 In this section we go over some minor basics you should know.

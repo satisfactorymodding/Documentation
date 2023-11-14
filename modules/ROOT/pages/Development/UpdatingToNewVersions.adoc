@@ -324,7 +324,6 @@ Just keep in mind that it can't preview uasset files for you.
 
 As a general overview, changes could include any or all of the following:
 
-- `/Build/Alpakit.Automation/`
 - `/Content/` stub files
 - `/Source/`
 - `/Config/`

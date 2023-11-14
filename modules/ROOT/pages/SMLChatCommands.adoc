@@ -55,7 +55,7 @@ A full list Satisfactory-specific cheats can be found
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/sml-dev/Source/FactoryGame/Public/FGCheatManager.h[here].
 
 The native Unreal cheats
-https://github.com/satisfactorymodding/UnrealEngine/blob/5.1.1-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
+https://github.com/satisfactorymodding/UnrealEngine/blob/5.2.1-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
 can also be used. Note that to view this link,
 you must be signed into a GitHub account registered with Epic Games,
 otherwise it will display as a 404 page.

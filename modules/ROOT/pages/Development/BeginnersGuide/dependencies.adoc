@@ -49,11 +49,13 @@ you have two options for selecting the relevant components.
 [id="ImportConfiguration"]
 === Option 1: Import an Installer Configuration
 
-If the installer took you directly to the component selection screen
+If the installer took you directly to the Workflow or Component selection screen
 you'll have to use the smaller X button in the top right to close out of that prompt first.
 
 Instead of clicking "Install" next to Visual Studio 2022,
 click the 'More' dropdown and select `Import Configuration`.
+If the option does not appear, make sure that your existing installation is not "pending"
+by allowing it to finish installing.
 
 // cspell:ignore vsconfig
 Download link:{attachmentsdir}/BeginnersGuide/dependencies/SML.vsconfig[this configuration file]
@@ -98,11 +100,8 @@ Cross-compiling from Windows to Linux requires the compatible version of Unreal 
 The download link for these files can be found on the Unreal documentation page for 
 https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
 
-Currently, Satisfactory uses Unreal Engine 5.1.1 with custom changes provided by Coffee Stain Studios.
-Therefore, the toolchain version required is `-v20` or `clang-13.0.1-based`.
-
-// UE5.2 Dedi //Currently, Satisfactory uses Unreal Engine 5.2.1 with custom changes provided by Coffee Stain Studios.
-// UE5.2 Dedi //Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+Currently, Satisfactory uses Unreal Engine 5.2.x with custom changes provided by Coffee Stain Studios.
+Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
 
 Download the toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
@@ -262,7 +261,7 @@ After the installer is complete it should open the Wwise launcher for you.
 In the launcher, select `WWISE` from the sidebar.
 Click the `Latest` drop-down and change it to `All`.
 Select `2022.1` from the next dropdown.
-Select version `2022.1.3.8179` from the final dropdown.
+Select version `2022.1.5.8242.2714` from the final dropdown.
 Click `Install`.
 
 [WARNING]
