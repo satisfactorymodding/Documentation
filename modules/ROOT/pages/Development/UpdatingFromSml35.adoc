@@ -61,7 +61,12 @@ Session Settings still function correctly - their values are saved.
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
 
-As of the time of writing, there are no known required changes for this update.
+=== New Wwise Version
+
+With a new Unreal Engine version comes a new required Wwise update for your project.
+Be sure to follow the xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page instructions]
+to download the new Wwise version and integrate it into your project as you follow the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
 
 == Additional Changes
 
@@ -89,16 +94,42 @@ you will need to recreate it and replace it with the (visually identical) new on
 
 You'll see an error similar to `Node  Get ModLoadingLibrary  must have a class specified.` when this is the case.
 
+=== Regenerate {cpp} Configration Structs
+
+The format of auto-generated {cpp} configuration structs has changed in response to a change in Unreal Engine.
+In order for your {cpp} project to compile,
+you may have to manually delete any pre-existing auto-generated {cpp} configuration structs,
+then compile your project,
+then generate them again once it's possible to open the editor.
+Remember to delete them from outside Visual Studio,
+since deleting them from Visual Studio does not actually remove the file on disk.
+
+Errors reported from this issue will not report correctly in the Error List - you'll have to look at the full output log,
+as the generated configuration struct will be one of many supposed problem classes listed,
+including some engine header files that incorrectly appear as part of the error message.
+
 === Content Registry Rewrite
 
-TODO
-
-The Content Registry was completely rewritten.
+The Content Registry internals were completely rewritten.
+Its external API remains generally the same except for these changes:
 
 - `AModContentRegistry` is now `UModContentRegistry`
 - All content-specific registration structs (ex. `FItemRegistrationInfo`) have been replaced by `FGameObjectRegistration`.
   In order to use content-specific ReferencedBy data you will have to cast the UObject pointers to type UClass,
   then class cast them to the relevant type (ex. `UFGRecipe`)
+
+=== DOREPLIFETIME Includes
+
+In order to use the `DOREPLIFETIME` macro,
+you now must use add an additional include:
+`#include "Net/UnrealNetwork.h"`
+
+Without it, you will get errors similar to the following:
+
+```
+C3861	'DOREPLIFETIME': identifier not found
+C2275 'TheClassYouHadAsTheFirstArgument': expected an expression instead of a type
+```
 
 === Hooking CallScope deprecation
 
