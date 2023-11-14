@@ -33,7 +33,7 @@ as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mo
 The following features are not quite ready to use yet.
 This section will change often, so be sure to come back here and check as you update your mods!
 
-== Decal_Normal Broken on Modded Parts using Mesh Proxies
+=== Decal_Normal Broken on Modded Parts using Mesh Proxies
 
 This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
 More info and screenshots can be found link:https://discord.com/channels/555424930502541343/599990474668769290/1173262027175772270[here].
