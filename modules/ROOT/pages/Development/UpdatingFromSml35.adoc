@@ -35,19 +35,9 @@ This section will change often, so be sure to come back here and check as you up
 
 === Decal_Normal Broken on Modded Parts using Mesh Proxies
 
+Mesh proxies past the first instance may not render correctly.
 This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
-More info and screenshots can be found link:https://discord.com/channels/555424930502541343/599990474668769290/1173262027175772270[here].
-
-=== Plugin Localization
-
-The new plugin localization system is not totally ready for use.
-You may encounter issues with translation data not saving,
-and the system for importing and exporting translations to the community translation portal is not yet complete.
-
-=== UE Linker still having some bugs ironed out
-
-You might run into troubles accessing the new Unreal Engine repo.
-Please contact us on the Discord if you get stuck.
+You can work around this for the time being by using a default masked material.
 
 === Advanced Game Settings values not saved
 
