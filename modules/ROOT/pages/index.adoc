@@ -45,10 +45,16 @@ We highly recommend you to use the launcher for installing mods, as it simplifie
 
 If you'd like to write a mod of your own, this section is for you.
 
-The Satisfactory Mod Manager offers a convenient developer mode that automatically installs SML. To enable it, change your selected profile to `development`.
+Satisfactory mods can be written in Unreal Blueprint or {cpp}.
+Some community created libraries also allow writing mods
+with JSON files xref:Development/BeginnersGuide/overwriting.adoc#_contentlib[(ContentLib)]
+// cspell:ignore tweakit
+or Lua xref:Development/BeginnersGuide/overwriting.adoc#_tweakit[(TweakIt)].
 
 If you're looking to write your own mods, we suggest you start with
-making pak mods first rather than C++ mods. Learn more in our xref:Development/BeginnersGuide/index.adoc[Getting Started Guide].
+making blueprint mods first rather than C++ mods.
+Check out the xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
+and consider picking up the `Aspiring Modder` role in our https://discord.gg/xkVJ73E[Discord]'s `#rules` channel.
 
 If you're looking to make models, it's best to learn how to put a mod together first.
 Once you've completed the `Buildable` step in `Beginners Guide`, then check out our xref:Development/Modeling/index.adoc[Modeling Guide].

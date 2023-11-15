@@ -245,10 +245,9 @@ just quit the game without saving and launch the game with your mods, your conte
 
 == How do I make my own mod?
 
-If you're looking to write your own mods, we suggest you start with
-making blueprint mods first rather than C++ mods.
-Check out the xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
-and consider picking up the `Aspiring Modder` role in our https://discord.gg/xkVJ73E[Discord]'s `#rules` channel.
+Check out
+xref:index.adoc#_for_developers[this section of the main page]
+for more information.
 
 == How do I share my mods with my friends for multiplayer?
 
