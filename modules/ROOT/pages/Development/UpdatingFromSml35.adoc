@@ -78,6 +78,11 @@ Every mod loader subsystem that was previously an Engine Subsystem is now a Game
 Functions that use the subsystems now require a world context object.
 Notable subsystems that have changed include the Mod Loading Library and the Config Manager.
 
+In {cpp} you must manually supply a context.
+There are multiple approaches to getting a world context object -
+if your calling context is an actor, the GetWorld method should work.
+Otherwise, any object that is specific to the world can be provided, for example, the player.
+
 ==== Blueprint Getter Nodes Affected
 
 If you were previously using an engine subsystem blueprint get node, for example, "Get Mod Loading Library",
