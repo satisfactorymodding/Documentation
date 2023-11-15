@@ -76,6 +76,7 @@ Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creatin
 
 Every mod loader subsystem that was previously an Engine Subsystem is now a Game Instance Subsystem instead.
 Functions that use the subsystems now require a world context object.
+Notable subsystems that have changed include the Mod Loading Library and the Config Manager.
 
 ==== Blueprint Getter Nodes Affected
 
@@ -87,6 +88,11 @@ You'll see an error similar to `Node  Get ModLoadingLibrary  must have a class s
 === Regenerate {cpp} Configration Structs
 
 The format of auto-generated {cpp} configuration structs has changed in response to a change in Unreal Engine.
+
+Errors reported from this issue will not report correctly in the Error List - you'll have to look at the full output log,
+as the generated configuration struct will be one of many supposed problem classes listed,
+including some engine header files that incorrectly appear as part of the error message.
+
 In order for your {cpp} project to compile,
 you may have to manually delete any pre-existing auto-generated {cpp} configuration structs,
 then compile your project,
@@ -94,9 +100,59 @@ then generate them again once it's possible to open the editor.
 Remember to delete them from outside Visual Studio,
 since deleting them from Visual Studio does not actually remove the file on disk.
 
-Errors reported from this issue will not report correctly in the Error List - you'll have to look at the full output log,
-as the generated configuration struct will be one of many supposed problem classes listed,
-including some engine header files that incorrectly appear as part of the error message.
+You can also attempt to manually update the generated configuration struct.
+You'll have to add `{}` initializers after every property
+and change GetActiveConfig to use the new world context approach.
+For example, if it previously contained the following:
+
+// cspell:ignore FFMC
+```cpp
+// Includes left out
+
+/* Struct generated from Mod Configuration Asset '/FasterManualCraftingRedux/FMC_FasterManualCraftingReduxConfig' */
+USTRUCT(BlueprintType)
+struct FFMC_FasterManualCraftingReduxConfigStruct {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite)
+    float DocsExample;
+
+    /* Retrieves active configuration value and returns object of this struct containing it */
+    static FFMC_FasterManualCraftingReduxConfigStruct GetActiveConfig() {
+        FFMC_FasterManualCraftingReduxConfigStruct ConfigStruct{};
+        FConfigId ConfigId{"FasterManualCraftingRedux", ""};
+        UConfigManager* ConfigManager = GEngine->GetEngineSubsystem<UConfigManager>();
+        ConfigManager->FillConfigurationStruct(ConfigId, FDynamicStructInfo{FFMC_FasterManualCraftingReduxConfigStruct::StaticStruct(), &ConfigStruct});
+        return ConfigStruct;
+    }
+};
+```
+
+Then you should change it to:
+
+```cpp
+// Includes left out
+
+/* Struct generated from Mod Configuration Asset '/FasterManualCraftingRedux/FMC_FasterManualCraftingReduxConfig' */
+USTRUCT(BlueprintType)
+struct FFMC_FasterManualCraftingReduxConfigStruct {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite)
+    float DocsExample{};
+
+    /* Retrieves active configuration value and returns object of this struct containing it */
+    static FFMC_FasterManualCraftingReduxConfigStruct GetActiveConfig(UObject* WorldContext) {
+        FFMC_FasterManualCraftingReduxConfigStruct ConfigStruct{};
+        FConfigId ConfigId{"FasterManualCraftingRedux", ""};
+        if (const UWorld* World = GEngine->GetWorldFromContextObject(WorldContext, EGetWorldErrorMode::ReturnNull)) {
+            UConfigManager* ConfigManager = World->GetGameInstance()->GetSubsystem<UConfigManager>();
+            ConfigManager->FillConfigurationStruct(ConfigId, FDynamicStructInfo{FFMC_FasterManualCraftingReduxConfigStruct::StaticStruct(), &ConfigStruct});
+        }
+        return ConfigStruct;
+    }
+};
+```
 
 === Content Registry Rewrite
 
