@@ -52,15 +52,14 @@ It's imperative that you download the correct Starter Project version of the gam
 or you will have to repeat some of the setup process again.
 
 ====
-This is the *latest* version of the docs.
+This is the *archived 3.5.1* version of the docs.
 
-If you want to develop mods for the Experimental version (Update 8)
-you should clone the **`master` branch**.
-// Dev link for easy swapping later
-// you should clone the **`dev` branch**.
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-If you want to develop mods for the Early Access version (Update 7)
-you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
+To develop for 3.5.1, use this zip:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/tags/v3.5.1.zip
 ====
 
 If you're still uncertain which to download, ask us on the Discord.
