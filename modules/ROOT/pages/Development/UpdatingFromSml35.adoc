@@ -182,6 +182,12 @@ C3861	'DOREPLIFETIME': identifier not found
 C2275 'TheClassYouHadAsTheFirstArgument': expected an expression instead of a type
 ```
 
+=== Enhanced Input System {cpp} Changes
+
+SML no longer provides the interface for creating gameplay tag->input action mappings, you must instead make a custom SomethingModule in {cpp} containing a map of gameplay tag->input action, then retrieve data from that instead.
+
+See https://discord.com/channels/555424930502541343/601030071221878784/1174669018087571567[this discord conversation] for more information.
+
 === Hooking CallScope deprecation
 
 TCallScope should now be used instead of CallScope.
