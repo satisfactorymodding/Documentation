@@ -6,7 +6,7 @@ site:
 content:
   sources:
     - url: ./
-      branches: HEAD, v3.4.1, v3.3.2, v3.1.1, v2.2.1, v2.1.1, v2.0.0, v1.0.2
+      branches: HEAD, v3.5.1, v3.4.1, v3.3.2, v3.1.1, v2.2.1, v2.1.1, v2.0.0, v1.0.2
 
     - url: https://github.com/CoderDE/FicsIt-Networks.git
       branches: master
