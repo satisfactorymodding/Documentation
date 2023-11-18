@@ -53,7 +53,7 @@ This is beneficial when you are trying to access a field and you are not in a cl
 ----
 // Instead of this ...
 SuitCostToUse = Parent->EquipmentParent->mCostToUse;
-// ... use ths
+// ... use this
 SuitCostToUse = Parent->EquipmentParent.GetCostToUse();
 ----
 
