@@ -345,8 +345,9 @@ Make sure you are following the latest version of the docs
 and have downloaded the correct version of the engine
 and starter project as mentioned in the previous setup pages.
 
-Also make sure that your mod depends on the latest version of SML
-(and nothing newer than that).
+If that isn't the issue,
+make sure that your mod depends on the latest version of SML
+and not something newer than that.
 You can find out what SML version your project has
 by opening the mod editor widget on SML's listing in the Alpakit list.
 
