@@ -271,6 +271,7 @@ Make sure that you have updated to the latest version of the Asset Generator bui
 The first step in troubleshooting is to see what asset the generator was processing before it crashed.
 For this to be tracked, you must change the LogAssetGenerator logging category detail level to `VeryVerbose`.
 To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
+(_not_ the plural Configs, that's mod configs)
 and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
 Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
 as the asset generator is running - the process is called `UnrealEditor-Cmd.exe` in the list.
