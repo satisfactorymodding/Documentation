@@ -199,6 +199,10 @@ More info on how to do can be found link:https://adamtheautomator.com/windows-op
 
 If you were to run the script by right clicking on the file and selecting "Run with Powershell", the script would still run, but upon any error the window would immediately close, leaving you unable to read the error message, so this is not advised.
 
+If you have never ran a powershell script before on your Windows install,
+you may need to
+https://pureinfotech.com/change-execution-policy-run-scripts-powershell/[modify the system execution policy to allow them to run].
+
 [source,ps1]
 ----
 # Change the below path lines to match the actual locations of these files and folders for your system
