@@ -134,6 +134,8 @@ although you may wish to keep it open to restart it if it crashes.
 The game window itself will never open since the `-nullrhi` argument was used.
 After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
 This will take a bit; go pet a lizard doggo to pass the time.
+If you don't see any `LogAssetDumper` after a minute or so,
+the dumper isn't running - you probably didn't package the mod correctly.
 
 You'll know it's finished when the command prompt window that was spawned closes
 and your game log file does not end in an crash dump.
@@ -177,19 +179,19 @@ ensuring any possible asset generator crashes aren't caused by it trying to upda
 
 === Run the Generator Commandlet
 
-Both a https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
-and and an in-editor UI are available for the Asset Generator,
-but at the time of writing, the in-editor UI is unstable
-as it has various issues related to Materials.
-As such, the commandlet should be used instead.
+The next step is using the Asset Generator's
+https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
+features to turn the dumped files into usable assets for your editor.
 
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
-You will need to modify the first few lines of the script to point to your Unreal Engine install, project path, and chosen dump directory.
+You will need to modify the first few lines of the script to point to your
+Unreal Engine install, project path, and chosen dump directory.
 
 Create a new Powershell script file (ex. `generate_assets.ps1`) in a location of your choice,
 then copy-paste the below script and save after editing the path lines.
 A Powershell script file is actually just a text file that ends in `.ps1`.
-If you're not sure how to make a file like this, see link:https://lzmods.com/85/how-to-create-a-text-document-with-custom-extension-in-pc/[here].
+If you're not sure how to make a file like this,
+see link:https://lzmods.com/85/how-to-create-a-text-document-with-custom-extension-in-pc/[here].
 
 To run the script, first open a new powershell terminal window in the folder where your generate assets file lives.
 You can do this by shift-right-clicking on empty space in File Explorer and selecting "Open PowerShell window here".
@@ -285,6 +287,10 @@ After restarting, run the generator again. It will keep most of the files genera
 making slightly more progress until the next out-of-memory crash.
 ====
 
+If you're still having issues using the asset generator commandlet,
+consider using the link:#UI_Generate[in-editor GUI] instead,
+which is not actively maintained.
+
 == Bring in AngryBeaver's Recreated Assets
 
 Community member AngryBeaver has recreated a number of texturing assets
@@ -376,6 +382,7 @@ Unless you have a specific reason for using the UI,
 you should probably use the command line directions above to dump and generate assets instead.
 ====
 
+[id="UI_Dump"]
 ==== Dumping
 
 In order to extract the assets to be imported to the editor,
@@ -395,6 +402,7 @@ and optionally restrict what is exported with the Asset Type Filter dropdown.
 Once you're ready, press "Begin Asset Dumping".
 This will take some time; go pet a lizard doggo while you wait.
 
+[id="UI_Generate"]
 ==== Generating
 
 To open the in-editor interface, navigate to Window -> Developer Tools -> Asset Generator.
