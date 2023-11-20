@@ -1,7 +1,17 @@
 = Generating Item and Building Icon Files
 
 ====
-This docs page has yet to be written. Looking to help out? Feel free to contribute. Contact us on the discord if you have any questions.
+This docs page has yet to be written. Looking to help out? Feel free to contribute.
+Contact us on the discord if you have any questions.
 ====
 
-This page will eventually walk through using an Icon Generator tool to create icon images from the meshes of items and buildings. More info on such tools can be found xref:CommunityResources/IconGenerator.adoc[here].
+This page will eventually walk through using an Icon Generator tool to create icon images from the meshes of items and buildings.
+Until then, look at the xref:CommunityResources/IconGenerator.adoc[list of community created tools]
+and the tools' own documentation.
+
+== Information from Coffee Stain Studios
+
+// cspell:ignore Nathalie
+Nathalie at Coffee Stain has shared a document containing information on how the base game's icons are created.
+You can view said document
+link:{attachmentsdir}/BeginnersGuide/generating_icons/Iconguide.pdf[here].
