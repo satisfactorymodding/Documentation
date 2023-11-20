@@ -160,6 +160,36 @@ which mods can bind to.
 Each time `SetupPlayerInputComponent` is called
 the delegate will be called, giving you a chance to register your custom inputs.
 
+==== Gameplay Tags
+
+If you have a large number of input actions, it may be helpful to use Gameplay Tags to reference them.
+
+To use them, create a custom GameInstanceModule class in {cpp} containing a `TMap<FGameplayTag, UInputAction*>`
+and use your new class as the parent of your "real" GameInstanceModule blueprint asset:
+
+// cspell:ignore MYMOD
+```cpp
+// Includes left out
+
+UCLASS(Blueprintable)
+class MYMOD_API UMyModGameInstanceModule : public UGameInstanceModule {
+    GENERATED_BODY()
+public:
+    UPROPERTY(EditDefaultsOnly, Category = "Advanced | Input")
+    TMap<UInputAction*, FGameplayTag> InputActionTagBindings;
+};
+```
+
+Make sure to add calls to super functions if you add any additional blueprint code in this asset.
+Then, to use the bindings, you would do as follows:
+
+```cpp
+UGameInstance* GameInstance = GetWorld()->GetGameInstance(); // May vary depending on the class you're using this from 
+UGameInstanceModuleManager* GameInstanceModuleManager = GameInstance->GetSubsystem<UGameInstanceModuleManager>();
+UMyModGameInstanceModule* MyModGameInstanceModule = Cast<UMyModGameInstanceModule>(GameInstanceModuleManager ->FindModule(TEXT("MyMod")));
+EnhancedInputComponent->BindAction(MyModGameInstanceModule->InputActionTagBindings[FGameplayTag::RequestGameplayTag(TEXT("Tag.Name"))], ETriggerEvent::Triggered, this, &Class::Function);
+```
+
 == Reading Input Action Information
 
 In order to retrieve the name(s) of the key(s) bound to an action for display to the user,

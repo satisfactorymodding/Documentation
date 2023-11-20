@@ -184,7 +184,17 @@ C2275 'TheClassYouHadAsTheFirstArgument': expected an expression instead of a ty
 
 === Enhanced Input System {cpp} Changes
 
-SML no longer provides the interface for creating gameplay tag->input action mappings, you must instead make a custom SomethingModule in {cpp} containing a map of gameplay tag->input action, then retrieve data from that instead.
+The GameInstanceModule no longer provides the interface for creating GameplayTag->InputAction mappings, since it was previously modifying one of the game's config classes, which is unsafe.
+
+Previously, to bind to an action using a GameplayTag, you would add your mappings to the GameInstanceModule blueprint and use the following in {cpp}:
+
+```cpp
+// DO NOT DO THIS!
+EnhancedInputComponent->BindActionByTag(FGameplayTag::RequestGameplayTag(TEXT("Tag.Name")), ETriggerEvent::Triggered, this, &Class::Function);
+```
+
+The new approach is documented on the
+xref:Development/Satisfactory/EnhancedInputSystem.adoc#_gameplay_tags[Enhanced Input System] page.
 
 See https://discord.com/channels/555424930502541343/601030071221878784/1174669018087571567[this discord conversation] for more information.
 
