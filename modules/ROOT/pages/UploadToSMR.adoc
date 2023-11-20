@@ -188,7 +188,13 @@ We suggest taking the following steps to encourage users to try out your mod:
 
 - Credit other users that contributed ideas, models, etc. by name and/or by link.
 
-== Future Updates to your Mod
+== Uploading an Update
 
-When you update a new version of your mod in the future,
-the only thing in `<mod reference>.uplugin` that you'll need to change is likely the `Version`, `VersionName`, and `SemVersion` fields.
+When you upload a new version of your mod,
+make sure to change the `Version`, `VersionName`, and `SemVersion` fields
+in your `<mod reference>.uplugin`.
+You should also change the version specified in the mod's dependency on SML to the latest release of SML.
+You can find the latest SML version release number https://ficsit.app/sml-versions[here].
+
+These edits can be performed in the editor via the Alpakit helper
+or by directly editing the `.uplugin` file in a text editor.

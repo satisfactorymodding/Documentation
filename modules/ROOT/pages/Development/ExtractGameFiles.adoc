@@ -51,7 +51,7 @@ return to the directory selector and review the above steps.
 
 Before you can view any files you must specify the mapping information.
 Navigate to `Settings` > `General`.
-In the "UE Versions" dropdown, select `GAME_UE5_1 (536870928)`,
+In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
 then press the `Custom Versions` button in the "Version Configuration" row.
 
 Delete the text contents of the popup window that appears

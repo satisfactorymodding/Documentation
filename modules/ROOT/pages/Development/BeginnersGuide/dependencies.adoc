@@ -175,13 +175,11 @@ or you will have to repeat a large amount of the setup process again.
 ====
 This is the *latest* version of the docs.
 
-If you want to develop mods for the Experimental version (Update 8)
-you should download from the *latest release*,
+Early Access and Experimental are currently both the same version - Update 8.
+
+You should download from the *latest release*,
 which an be found at the top of this page:
 https://github.com/satisfactorymodding/UnrealEngine/releases
-
-If you want to develop mods for the Early Access version (Update 7)
-you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
 ====
 
 Download the following files from the release linked above:
@@ -333,15 +331,10 @@ or you will have to repeat some of the setup process again.
 ====
 This is the *latest* version of the docs.
 
-If you want to develop mods for the Experimental version (Update 8)
-you should download from the *latest release*, which an be found at
+Early Access and Experimental are currently both the same version - Update 8.
+
+You should download from the *latest release*, which an be found at
 https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link]
-
-// Dev link for easy swapping later
-// https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[this link].
-
-If you want to develop mods for the Early Access version (Update 7)
-you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
 ====
 
 If you're still uncertain which to download, ask us on the Discord.

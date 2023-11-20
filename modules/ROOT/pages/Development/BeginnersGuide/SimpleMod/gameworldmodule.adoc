@@ -332,6 +332,25 @@ and Unreal Engine is telling you it must be installed for your own mod to functi
 You can package a copy of SML yourself using Alpakit following the steps
 xref:Development/BeginnersGuide/project_setup.adoc#_optional_packaging_sml[on the previous page].
 
+=== Corrupt data found, please verify your installation
+
+This error could appear when launching the game.
+
+First, make sure that the game will load correctly without your mod.
+Consider xref:faq.adoc#_how_do_i_verify_my_game_files[verifying your game files] to be sure.
+
+If the game loads correctly without your mod,
+then it is likely you have the wrong version of the engine installed.
+Make sure you are following the latest version of the docs
+and have downloaded the correct version of the engine
+and starter project as mentioned in the previous setup pages.
+
+If that isn't the issue,
+make sure that your mod depends on the latest version of SML
+and not something newer than that.
+You can find out what SML version your project has
+by opening the mod editor widget on SML's listing in the Alpakit list.
+
 === Something Else
 
 If you run into a problem that isn't described above,

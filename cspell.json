@@ -111,6 +111,7 @@
         "uproject",
         "UPROPERTY",
         "usmap",
+        "USTRUCT",
         "VRAM",
         "Vulkan",
         "winget",

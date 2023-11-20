@@ -54,13 +54,8 @@ or you will have to repeat some of the setup process again.
 ====
 This is the *latest* version of the docs.
 
-If you want to develop mods for the Experimental version (Update 8)
+If you want to develop mods for Update 8,
 you should clone the **`master` branch**.
-// Dev link for easy swapping later
-// you should clone the **`dev` branch**.
-
-If you want to develop mods for the Early Access version (Update 7)
-you should follow the link:https://docs.ficsit.app/satisfactory-modding/v3.4.1/index.html[archived documentation for SML 3.4.1].
 ====
 
 If you're still uncertain which to download, ask us on the Discord.
