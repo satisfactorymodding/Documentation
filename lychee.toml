@@ -15,7 +15,9 @@ exclude = [
     # Reports a 404 despite the link working?
     "https://www.unrealengine.com/en-US/blog/download-our-new-blender-addons",
     # Possible not allowing robots, receiving 403
-    "https://steamdb.info/app/526870/"
+    "https://steamdb.info/app/526870/",
+    # Don't check edit links for the docs itself (randomly 403s but also why check these anyways)
+    "https://github.com/satisfactorymodding/Documentation/edit/"
 ]
 
 # Exclude these filesystem paths from getting checked.

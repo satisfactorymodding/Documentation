@@ -199,6 +199,10 @@ More info on how to do can be found link:https://adamtheautomator.com/windows-op
 
 If you were to run the script by right clicking on the file and selecting "Run with Powershell", the script would still run, but upon any error the window would immediately close, leaving you unable to read the error message, so this is not advised.
 
+If you have never ran a powershell script before on your Windows install,
+you may need to
+https://pureinfotech.com/change-execution-policy-run-scripts-powershell/[modify the system execution policy to allow them to run].
+
 [source,ps1]
 ----
 # Change the below path lines to match the actual locations of these files and folders for your system
@@ -267,6 +271,7 @@ Make sure that you have updated to the latest version of the Asset Generator bui
 The first step in troubleshooting is to see what asset the generator was processing before it crashed.
 For this to be tracked, you must change the LogAssetGenerator logging category detail level to `VeryVerbose`.
 To do this, edit `<starter project directory>\Config\DefaultEngine.ini`
+(_not_ the plural Configs, that's mod configs)
 and add `LogAssetGenerator=VeryVerbose` to the `[Core.Log]` section.
 Next, https://learn.microsoft.com/en-us/visualstudio/debugger/attach-to-running-processes-with-the-visual-studio-debugger?view=vs-2022[attach the Visual Studio debugger]
 as the asset generator is running - the process is called `UnrealEditor-Cmd.exe` in the list.
@@ -298,17 +303,23 @@ that make working with models in the editor a lot more pleasant.
 They are not exactly like the 'real' ones used in game,
 but they are very close.
 
+These are the assets that are included by default in the Starter Project,
+but by running the generator,
+they have been replaced by the less accurate generated assets.
+
 Once the Asset Generator has completed,
-you can manually copy in the assets from AngryBeaver's repository,
-replacing the ones created by the Asset Generator.
+you'll need to grab multiple files from your backup copy of the starter project's content
+and bring some in to replace the ones in your current copy.
 
-You can find the list of assets to copy in
+The list of files to move is
 https://github.com/mircearoata/satisfactory-modding-actions/blob/master/CustomAssets.txt[here],
-and the repository they are stored in
-https://github.com/DavidHGillen/SatisfactoryModLoader/tree/sml-dev/Content[here].
+except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
+because the generator's copy of textures is more accurate.
 
-You could either clone or download a zip of AngryBeaver's repo,
-but you won't need the downloaded repo any more once you have copied the files in.
+Make sure your editor is closed before you move the files in.
+
+If you lost your backup folder
+you can download them from the starter project git repo.
 
 == Delete any Broken Assets
 

@@ -39,6 +39,10 @@ Next, copy the contents of the below codeblock into the file.
 Note that you will have to modify the section near the top
 to match the location of files on your system.
 
+If you have never ran a powershell script before on your Windows install,
+you may need to
+https://pureinfotech.com/change-execution-policy-run-scripts-powershell/[modify the system execution policy to allow them to run].
+
 [source,ps1]
 ----
 param (
