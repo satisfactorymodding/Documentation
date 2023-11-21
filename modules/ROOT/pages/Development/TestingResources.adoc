@@ -149,6 +149,14 @@ $Args2 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username2+'"', "-WinX=9
 
 == Multiplayer Testing
 
+[WARNING]
+====
+Update 8 has recently changed how local multiplayer testing works.
+This page has not yet been updated to reflect these changes.
+You must load with the `-offline` flag and use a Map Travel URL with the `?listen` argument to be able to connect.
+For example, `open Persistent_Level?loadgame=NameOfYourSaveGame?listen`.
+====
+
 Locally testing multiplayer functionality requires running two copies of the game at once.
 Normally the Steam and Epic Games client don't allow you to do this,
 but the link:#LaunchScript[launch script] in the previous section will allow you to do so.
