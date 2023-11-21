@@ -303,17 +303,23 @@ that make working with models in the editor a lot more pleasant.
 They are not exactly like the 'real' ones used in game,
 but they are very close.
 
+These are the assets that are included by default in the Starter Project,
+but by running the generator,
+they have been replaced by the less accurate generated assets.
+
 Once the Asset Generator has completed,
-you can manually copy in the assets from AngryBeaver's repository,
-replacing the ones created by the Asset Generator.
+you'll need to grab multiple files from your backup copy of the starter project's content
+and bring some in to replace the ones in your current copy.
 
-You can find the list of assets to copy in
+The list of files to move is
 https://github.com/mircearoata/satisfactory-modding-actions/blob/master/CustomAssets.txt[here],
-and the repository they are stored in
-https://github.com/DavidHGillen/SatisfactoryModLoader/tree/sml-dev/Content[here].
+except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
+because the generator's copy of textures is more accurate.
 
-You could either clone or download a zip of AngryBeaver's repo,
-but you won't need the downloaded repo any more once you have copied the files in.
+Make sure your editor is closed before you move the files in.
+
+If you lost your backup folder
+you can download them from the starter project git repo.
 
 == Delete any Broken Assets
 
