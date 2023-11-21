@@ -20,25 +20,35 @@ or you downloaded a zip of it in the previous steps of the tutorial.
 
 The Starter Project folder will be your modding workspace,
 and could grow to a considerable file size depending on what kinds of mods you make.
-As such, you should extract the folder somewhere convenient so that you can find it later,
-such as a folder on a secondary storage drive.
+As such, you should extract the folder somewhere convenient so that you can find it later.
 
-It is unwise to keep it in your Downloads folder
-because Windows can automatically clean up that folder depending on your system settings.
+**DO NOT** put the project in any of the following locations:
 
-It should also not be placed into any directory that could be managed by cloud sync services
-like Dropbox, Google Drive, or OneDrive, because they can corrupt your project files.
-You should also not place it in your Documents folder
-because those folders are sometimes connected to cloud sync services that you may not be aware of.
+* ❌ Downloads folder
+    ** Windows sometimes automatically cleans up this folder depending on your system settings, deleting your files.
+* ❌ Cloud-synced folder
+    ** Cloud sync services like Dropbox, Google Drive, and OneDrive can corrupt your project files.
+* ❌ Documents folder
+    ** Some cloud sync services will automatically sync your Documents folder without telling you about it.
+* ❌ Nested within many folders
+    ** When packing Unreal projects, some filenames can get long,
+       so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
+* ❌ In a folder path with unusual/international characters in any folder name
+    ** Unreal and Windows are easily be confused by unicode characters in file and folder names.
+
+**DO** consider putting your project folder in one of these locations:
+
+* ✔️ Near the root of your drive (for example, `C:\Modding\Satisfactory\`)
+    ** This avoids long path issues and avoids including your computer user's name in files distributed with your mod.
+* ✔️ On your SSD
+    ** Most modding operations will run significantly faster if you keep the project on an SSD, assuming you have one.
+* ✔️ On a secondary drive
+    ** This will help keep your primary drive from filling up with modding files.
 
 You can use this Starter Project for developing multiple mods at once,
 since each mod will be its own separate plugin folder within the project.
 
 Feel free to rename the Starter Project folder to whatever you like.
-
-Try to keep the file path to the folder as short as possible.
-When packing Unreal projects, some filenames can get long,
-so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
 
 Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
 
@@ -309,6 +319,11 @@ Your computer may unfortunately not have enough ram to compile the project.
 
 If you see errors related to `AkAudio` or similar,
 you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step].
+
+==== Something.pch : No such file or directory
+
+Make sure that your project folder is not stored in a folder path that contains unicode characters.
+Review the directions in the link:#_starter_project[Starter Project] section.
 
 ==== Something Else
 
