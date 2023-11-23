@@ -440,6 +440,13 @@ in which case you should either
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
 
+=== (Optional) Modify Editor Color Scheme
+
+The Unreal Engine 5 editor is very dark by default.
+It may be difficult to read depending on your computer settings and eye health.
+https://youtu.be/xb4kmfIy2kw[This video] shows how to change the editor's color scheme
+and provides an alterative grey theme you can use out of the box.
+
 == Ready to Rumble
 
 That should be it. Your starter project should now be set up and ready to go!
