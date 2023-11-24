@@ -13,3 +13,25 @@ of type UnlockScannableResource.
 If you dynamically spawn ore nodes that are not part of the game level,
 they will not appear on the scanner unless you call the AFGResourceScanner GenerateNodeClustersAccessor function
 to rebuild the scanner's internal data.
+
+
+////
+== Spawning Custom Ore Nodes
+
+TODO write this section
+
+If you do this with the world partition system you don't need your own node classes (need to ask the Refind R&D devs about how this works)
+
+If manually spawning nodes, you need to create your own node classes
+
+https://discord.com/channels/555424930502541343/862002311579435028/1177733658585604116
+
+Need to deal with the following edge cases
+
+- you changed an existing node's position/location/scale
+- you added a new node that isn't in their save file yet
+- you removed a node that was present in their save file
+
+https://blueprintue.com/blueprint/zj9143mp/
+
+////
