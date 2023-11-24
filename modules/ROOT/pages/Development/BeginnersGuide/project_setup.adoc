@@ -405,6 +405,14 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
+// dedi-docs must switch out this section once dedi is ready
+=== Packaging Mods with Alpakit
+
+In order to package a mod, press the "Alpakit!" button next to it in the list.
+
+Alternatively, you can package multiple mods at once by marking the checkboxes and using "Alpakit Selected".
+If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
+
 ////
 dedi-docs
 === Packaging Mods with Alpakit
