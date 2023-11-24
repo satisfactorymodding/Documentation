@@ -121,13 +121,12 @@ come back to here and make sure you followed these steps correctly.
 Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
-Next, open the `UNREAL` tab in the sidebar.
+Next, open the `Unreal Engine` tab in the sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
-Click on the three-lines button next to the "RECENT UNREAL ENGINE PROJECTS" label
-and click `Browse for project...`.
-Now select the `FactoryGame.uproject` file contained in your Starter Project folder.
+Click on the `Open Other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
+and select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
@@ -153,7 +152,7 @@ that means it's configured correctly,
 so continue to the next step.
 
 Under "Wwise Project Path", click the little triangle dropdown on the right
-and choose `New` to clear the path.
+and choose `New project` to clear the path.
 
 If everything worked according to plan,
 you should now be able to click on the blue `Integrate` button.
@@ -337,18 +336,21 @@ The Unreal Editor allows you to create new content for the game and helps build 
 It also heavily relies on the C++ project,
 so make sure you don't change stuff in there unless you know what you're doing.
 
-In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
+Depending on how your copy of Unreal Engine installed,
+you may be able to double-click the `FactoryGame.uproject` file in the Starter Project folder to open the editor,
+which will directly open your project.
+
+If that doesn't work, you'll have to open the Unreal Editor separately, then browse to your project.
 You can find it by searching for it in the Windows search bar
 (it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
 `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor.exe`
+Once the welcome panel has opened, click "Recent Projects",
+then "Browse" and select the file `FactoryGame.uproject` in your starter project folder.
 
-Once the Unreal Engine editor has launched,
-open your project by navigating to
-`Projects` -> `Browse` (bottom right corner)
-and selecting the file `FactoryGame.uproject` in your starter project folder.
-Opening the project for the first time can take a considerable amount of time.
+Opening the project for the first time can take a considerable amount of time
+as it compiles shaders.
 
 You might be told that some modules were
 "missing or built with a missing engine version"; press `Yes` and allow it to build.
