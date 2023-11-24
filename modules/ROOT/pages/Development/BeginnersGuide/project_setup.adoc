@@ -250,7 +250,7 @@ This will take some time; go pet some lizard doggos as you wait.
 See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
-You can monitor its progress from the Output log window if desired.
+You can monitor its progress from the Output pane (View > Output) if desired.
 
 ////
 dedi-docs
