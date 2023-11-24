@@ -382,6 +382,9 @@ Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its p
 It looks like an alpaca peeking out of a cardboard box.
 You can also bring it up via `File > Alpakit`.
 
+You can open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log".
+This information is also present in the UE Output Log, albeit mixed with other editor messages.
+
 Click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
 It will be something like
@@ -412,6 +415,9 @@ In order to package a mod, press the "Alpakit!" button next to it in the list.
 
 Alternatively, you can package multiple mods at once by marking the checkboxes and using "Alpakit Selected".
 If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
+
+A popup will appear informing you that the mod is being packaged
+and the Alpakit Log window will reflect the packaging results.
 
 ////
 dedi-docs

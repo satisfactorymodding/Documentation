@@ -239,6 +239,10 @@ To package the mod, run Alpakit.
 You can find info on how to use it back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
+After starting the package process
+you can click the "Show Alpakit Log" text to bring up the Alpakit-specific log window if you'd like.
+This information is also present in the UE Output Log, albeit mixed with other editor messages.
+
 Once Alpakit has completed, you can launch the game to try it out.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
