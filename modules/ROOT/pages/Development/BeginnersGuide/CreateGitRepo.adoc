@@ -6,6 +6,10 @@ This page will begin by explaining why you should use git,
 provide links to resources that explain basic git concepts,
 then provide a tutorial on how to use git in the context of Satisfactory Modding.
 
+This tutorial assumes you have already followed the
+xref:Development/BeginnersGuide/index.adoc[Getting Started] guides for creating a simple mod
+and that you want to take your existing mod and place it into a git repository.
+
 If you're already an experienced Git user you can skip to link:#ExperiencedGitUsers[this section].
 
 ## Why Use a Git Repo

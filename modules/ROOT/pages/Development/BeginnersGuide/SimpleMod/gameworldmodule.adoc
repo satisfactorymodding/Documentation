@@ -239,6 +239,10 @@ To package the mod, run Alpakit.
 You can find info on how to use it back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
+After starting the package process
+you can click the "Show Alpakit Log" text to bring up the Alpakit-specific log window if you'd like.
+This information is also present in the UE Output Log, albeit mixed with other editor messages.
+
 Once Alpakit has completed, you can launch the game to try it out.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
@@ -259,13 +263,14 @@ Alpakit will display this message in the editor when something has prevented the
 
 This message alone tells you nothing about the error - you'll have to look at the Output Log.
 
-The Output Log is a tab in the editor that should already be open,
-but in case it isn't, you can bring it up via `Window > Developer Tools > Output Log`.
+The Output Log is a tab in the editor that may already be open,
+but in case it isn't, you can bring it up via `Window > (Log subheading) Output Log`.
 
 Once in the output log, look for red-colored Error messages, as it will likely contain the reason the task failed.
 If you'd like, you can use the Filters dropdown to show only errors.
 
-Note that there will be probably be tens or hundreds of Warning messages - this is to be expected, and is usually not a problem.
+Note that there will be probably be tens or hundreds of Warning messages -
+this is to be expected, and is usually not a problem.
 We don't have complete versions of the files Coffee Stain Studios uses to build the game,
 so various Unreal Engine and game systems will complain about pieces being missing or incomplete. 
 Consider reading these warning messages from time to time to see if they pertain to your mod,

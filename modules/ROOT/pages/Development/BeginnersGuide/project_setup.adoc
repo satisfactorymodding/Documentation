@@ -20,25 +20,35 @@ or you downloaded a zip of it in the previous steps of the tutorial.
 
 The Starter Project folder will be your modding workspace,
 and could grow to a considerable file size depending on what kinds of mods you make.
-As such, you should extract the folder somewhere convenient so that you can find it later,
-such as a folder on a secondary storage drive.
+As such, you should extract the folder somewhere convenient so that you can find it later.
 
-It is unwise to keep it in your Downloads folder
-because Windows can automatically clean up that folder depending on your system settings.
+**DO NOT** put the project in any of the following locations:
 
-It should also not be placed into any directory that could be managed by cloud sync services
-like Dropbox, Google Drive, or OneDrive, because they can corrupt your project files.
-You should also not place it in your Documents folder
-because those folders are sometimes connected to cloud sync services that you may not be aware of.
+* ❌ Downloads folder
+    ** Windows sometimes automatically cleans up this folder depending on your system settings, deleting your files.
+* ❌ Cloud-synced folder
+    ** Cloud sync services like Dropbox, Google Drive, and OneDrive can corrupt your project files.
+* ❌ Documents folder
+    ** Some cloud sync services will automatically sync your Documents folder without telling you about it.
+* ❌ Nested within many folders
+    ** When packing Unreal projects, some filenames can get long,
+       so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
+* ❌ In a folder path with unusual/international characters in any folder name
+    ** Unreal and Windows are easily be confused by unicode characters in file and folder names.
+
+**DO** consider putting your project folder in one of these locations:
+
+* ✔️ Near the root of your drive (for example, `C:\Modding\Satisfactory\`)
+    ** This avoids long path issues and avoids including your computer user's name in files distributed with your mod.
+* ✔️ On your SSD
+    ** Most modding operations will run significantly faster if you keep the project on an SSD, assuming you have one.
+* ✔️ On a secondary drive
+    ** This will help keep your primary drive from filling up with modding files.
 
 You can use this Starter Project for developing multiple mods at once,
 since each mod will be its own separate plugin folder within the project.
 
 Feel free to rename the Starter Project folder to whatever you like.
-
-Try to keep the file path to the folder as short as possible.
-When packing Unreal projects, some filenames can get long,
-so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
 
 Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
 
@@ -111,13 +121,12 @@ come back to here and make sure you followed these steps correctly.
 Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
-Next, open the `UNREAL` tab in the sidebar.
+Next, open the `Unreal Engine` tab in the sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
-Click on the three-lines button next to the "RECENT UNREAL ENGINE PROJECTS" label
-and click `Browse for project...`.
-Now select the `FactoryGame.uproject` file contained in your Starter Project folder.
+Click on the `Open Other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
+and select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
 Click on the `Integrate Wwise into Project...` button.
 
@@ -143,7 +152,7 @@ that means it's configured correctly,
 so continue to the next step.
 
 Under "Wwise Project Path", click the little triangle dropdown on the right
-and choose `New` to clear the path.
+and choose `New project` to clear the path.
 
 If everything worked according to plan,
 you should now be able to click on the blue `Integrate` button.
@@ -241,7 +250,7 @@ This will take some time; go pet some lizard doggos as you wait.
 See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
-You can monitor its progress from the Output log window if desired.
+You can monitor its progress from the Output pane (View > Output) if desired.
 
 ////
 dedi-docs
@@ -310,6 +319,11 @@ Your computer may unfortunately not have enough ram to compile the project.
 If you see errors related to `AkAudio` or similar,
 you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step].
 
+==== Something.pch : No such file or directory
+
+Make sure that your project folder is not stored in a folder path that contains unicode characters.
+Review the directions in the link:#_starter_project[Starter Project] section.
+
 ==== Something Else
 
 If you run into a problem that isn't described above,
@@ -322,18 +336,21 @@ The Unreal Editor allows you to create new content for the game and helps build 
 It also heavily relies on the C++ project,
 so make sure you don't change stuff in there unless you know what you're doing.
 
-In order to open the project in Unreal Engine, you'll have to open the Unreal Editor.
+Depending on how your copy of Unreal Engine installed,
+you may be able to double-click the `FactoryGame.uproject` file in the Starter Project folder to open the editor,
+which will directly open your project.
+
+If that doesn't work, you'll have to open the Unreal Editor separately, then browse to your project.
 You can find it by searching for it in the Windows search bar
 (it should appear as `Unreal Engine - CSS`)
 or by navigating to where you installed it,
 which is probably something similar to
 `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealEditor.exe`
+Once the welcome panel has opened, click "Recent Projects",
+then "Browse" and select the file `FactoryGame.uproject` in your starter project folder.
 
-Once the Unreal Engine editor has launched,
-open your project by navigating to
-`Projects` -> `Browse` (bottom right corner)
-and selecting the file `FactoryGame.uproject` in your starter project folder.
-Opening the project for the first time can take a considerable amount of time.
+Opening the project for the first time can take a considerable amount of time
+as it compiles shaders.
 
 You might be told that some modules were
 "missing or built with a missing engine version"; press `Yes` and allow it to build.
@@ -365,6 +382,9 @@ Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its p
 It looks like an alpaca peeking out of a cardboard box.
 You can also bring it up via `File > Alpakit`.
 
+You can open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log".
+This information is also present in the UE Output Log, albeit mixed with other editor messages.
+
 Click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
 It will be something like
@@ -387,6 +407,17 @@ They are listed first by friendly name and then by
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
+
+// dedi-docs must switch out this section once dedi is ready
+=== Packaging Mods with Alpakit
+
+In order to package a mod, press the "Alpakit!" button next to it in the list.
+
+Alternatively, you can package multiple mods at once by marking the checkboxes and using "Alpakit Selected".
+If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
+
+A popup will appear informing you that the mod is being packaged
+and the Alpakit Log window will reflect the packaging results.
 
 ////
 dedi-docs
@@ -424,6 +455,13 @@ is not up to date with the latest SML changes,
 in which case you should either
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
+
+=== (Optional) Modify Editor Color Scheme
+
+The Unreal Engine 5 editor is very dark by default.
+It may be difficult to read depending on your computer settings and eye health.
+https://youtu.be/xb4kmfIy2kw[This video] shows how to change the editor's color scheme
+and provides an alterative grey theme you can use out of the box.
 
 == Ready to Rumble
 

@@ -82,8 +82,12 @@ When making a recipe, be sure avoid the following common pitfalls:
 
 - Specifying more input/output types than the machine has ports
 - Requiring a fluid in a machine that doesn't have (enough) pipe ports.
-- Ingredient or product quantity that exceeds the item's its stack size.
-If you do this, the machine will never run, because it can't hold all of the required items.
+- Ingredient or product quantity that **exceeds** the item's stack size.
+If you do this, the machine will never run, because it can't hold all of the items required to start operating.
+- Ingredient or product quantity that **exceeds half** of the item's stack size.
+If you do this, the machine will still run, but it will never reach 100% uptime (efficiency).
+Satisfactory machines consume ingredients upon the completion of a production cycle,
+meaning the machine must wait for more items to be delivered by belts before it can begin crafting again.
 
 If you use a fluid, multiply the quantity by 1000, since they are treated as liters internally, but displayed as cubic meters (1 cubic meter per 1000 liters).
 ====

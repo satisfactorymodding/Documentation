@@ -267,7 +267,7 @@ Click `Install`.
 Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
 
 If you don't see this exact Wwise version,
-try any other version starting with `2022.1`, preferring newer versions,
+try any other version starting with `2022.1.5`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
@@ -287,7 +287,7 @@ If anything is selected by default, do not uncheck them. They are required for V
 
 Click `Next` (you may need to scroll down to see the button).
 You don't need to add any plugins,
-so press `Deselect All` then `Install` in the bottom left to begin the installation process.
+so press `Select None` then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
 == Starter Project
