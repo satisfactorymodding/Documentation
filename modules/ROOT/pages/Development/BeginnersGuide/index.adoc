@@ -8,9 +8,14 @@ and provide important information regarding modding.
 The Getting Started Guide is written assuming that you follow each page in sequence,
 getting progressively less step-by-step as you get used to how things work.
 
+====
 It is imperative that you follow the documentation closely,
 *skipping nothing*, while you are still learning.
 Every step in the docs is here for a good reason.
+
+Spending thirty seconds reading now can save you **hours** of frustration later.
+This is not an exaggeration.
+====
 
 == Navigating the Docs
 
@@ -45,6 +50,12 @@ As you read, keep your eyes out for boxes like these,
 which draw attention to particularly important things to watch out for,
 or helpful tips to help further your modding knowledge.
 ====
+
+== Join the Discord
+
+Making mods for Satisfaction can be complex and confusing, but we're here to help.
+Join our community https://discord.gg/xkVJ73E[Discord Server]
+and pick up the `Aspiring Modder` role in the `#rules` channel to get access to dedicated help channels for mod makers.
 
 == Contributing to the Docs
 
