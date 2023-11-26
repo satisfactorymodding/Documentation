@@ -1,6 +1,5 @@
 * xref:index.adoc[Introduction]
 * xref:faq.adoc[FAQ - Frequently Asked Questions]
-* xref:SMLConfiguration.adoc[SML Configuration]
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
 
@@ -86,6 +85,7 @@
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
+*** xref:SMLConfiguration.adoc[SML Configuration]
 
 *** Legacy
 **** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
