@@ -3,7 +3,6 @@
 * xref:SMLConfiguration.adoc[SML Configuration]
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
-* xref:UploadToSMR.adoc[Uploading to SMR]
 
 * xref:Development/index.adoc[Development]
 
@@ -90,6 +89,8 @@
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 ** xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods]
+
+** xref:UploadToSMR.adoc[Uploading your Mod to SMR]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]
