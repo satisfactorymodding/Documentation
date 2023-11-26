@@ -126,6 +126,7 @@ editing the file to delete the mod listing, then importing it again.
 == The mod manager can't find my game!
 
 You might see error messages like:
+
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
