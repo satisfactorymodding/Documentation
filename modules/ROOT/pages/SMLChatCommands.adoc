@@ -47,6 +47,15 @@ to try alternate approaches.
 ====
 In order to use these commands the "Enable Cheats" Session Setting must be enabled for the save.
 Furthermore, you must run the `EnableCheats` console command once in the game session before any of the other console commands will work.
+Because of how the command is implemented, the game will claim that the command is not recognized when you run it,
+but assuming you enabled the session setting correctly, other cheat console commands will then begin to function.
+====
+
+[TIP]
+====
+If you plan to use console commands frequently,
+consider installing a mod that will automatically enable cheats for you such as
+https://ficsit.app/mod/NogsCheats[Nog's Cheats].
 ====
 
 This list consists of some of the most useful ones, but there are more.
