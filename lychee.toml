@@ -17,7 +17,7 @@ exclude = [
     # Possible not allowing robots, receiving 403
     "https://steamdb.info/app/526870/",
     # Don't check edit links for the docs itself (randomly 403s but also why check these anyways)
-    "https://github.com/satisfactorymodding/Documentation/edit/"
+    "https://github.com/satisfactorymodding/Documentation/edit/",
     # So it doesn't fail checks. Drew
     "https://gnu.org/"
 ]
