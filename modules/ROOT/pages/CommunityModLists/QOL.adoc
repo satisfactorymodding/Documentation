@@ -78,9 +78,6 @@ Note that the short descriptions here do not explain the whole mod - read the li
 * https://ficsit.app/mod/Zippier[Zippier]: This mod allows Zipline speeds and settings to be changed through the mod config menu.
 
 
-
-
-
 == Background Info
 
 This list was initially written by https://ficsit.app/user/6dvhEL4fWEqwcg[Deantendo] as a SMR Guide, then later updated by https://ficsit.app/user/5gaZx7HvvPEE2[DaLumma], https://ficsit.app/user/CmPjgRZdvqMk96[Savage] and https://ficsit.app/user/DBWiJ9ex1jamom[Ficsit Industries]
