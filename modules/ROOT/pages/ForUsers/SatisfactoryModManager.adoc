@@ -1,0 +1,133 @@
+= Using Satisfactory Mod Manager
+
+[TIP]
+====
+Answers to frequent questions and troubleshooting steps for using the Mod Manager
+can be found on the xref:faq.adoc[Frequently Asked Questions] page.
+====
+
+The Satisfactory Mod Manager (SMM) allows players to easily install
+mods, their dependencies, and the Mod Loader (SML) with minimal hassle.
+It connects to https://ficsit.app/[the Mod Repository (SMR)],
+allowing for quick and easy installation of all mods.
+
+The Mod Manager handles downloading the right files and putting them in the right place for you,
+so even if you launch the game from outside the Mod Manager (ex. normal Steam/Epic launch)
+mods will still be loaded.
+
+[id="Installation"]
+== Installing the Mod Manager
+
+Installing the Mod Manager is covered on the
+xref:faq.adoc#_how_do_i_install_mods[Frequently Asked Questions] page.
+
+// TODO move those steps here?
+
+== Detecting your Game Installation Directory
+
+After you've installed the Mod Manager it will automatically detect your game installation,
+and if you have multiple, you can pick between them with the "Install" dropdown.
+
+If your game install is not automatically detected,
+try xref:faq.adoc#_the_mod_manager_cant_find_my_game[following the steps linked here].
+
+We do not provide support for pirated copies of the game.
+
+== Finding Mods
+
+=== Via the Mod Manager
+
+Browse the list of available mods by scrolling, or search for a mod with the search bar.
+Click on a mod to open its mod page in an details panel to the side.
+
+If you're looking for new mods to use, make sure that your "Show" dropdown is set to "Compatible".
+
+=== Via ficsit.app
+
+If you prefer to browse mods on the ficsit.app website,
+it's easy to install mods from there too.
+
+Once you're on the page for a mod, click the 'Versions' button in the top right,
+then click the "Install" button near the version you'd like to download.
+// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
+This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
+and handle installing the mod for you.
+
+== Installing Mods
+
+To install a mod, click the download arrow button.
+After the download completes, it will turn into another icon depending on its compatibility status.
+
+== Managing Mods
+
+You can use the "Show" dropdown to filter what mods are displayed.
+Here is what each option of the dropdown does:
+
+- `Compatible` will only display mods that are compatible with your selected game install's branch (Early Access or Experimental).
+  **This is the suggested mode to keep the Manager in when searching for new mods to use.**
+  Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
+- `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
+- The `Enabled` option will show all mods that will load when you launch the game.
+  These mods are here either because you have manually chosen to install them,
+  or because they were automatically installed as requirements of other mods.
+  You can Pause these mods to keep them from loading when you launch the game.
+- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
+- The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
+- `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
+  A mod being favorited has no relation to whether or not it is installed.
+
+== Sharing Profiles
+
+
+
+== Uninstalling Mods
+
+The mod manager handles putting mod files in the relevant locations in your game install.
+If you launch the game outside of the mod manager,
+those files will still be in those folders, so you will still have your mods loaded.
+If you want to turn off mods, you must disable them **from the mod manager** so the files get removed.
+
+To remove a mod from your system, use the button that has taken the place of the download arrow -
+it will turn into a trash can when you hover over it.
+
+Alternatively, click the Play button to "Pause" the mod,
+preventing it from loading with the game but still keeping the files downloaded on your computer.
+This can be useful if you want to temporarily turn a mod off for troubleshooting something.
+
+If you're trying to remove a specific mod from your mod manager profile and it's not working,
+try creating a new profile.
+You could also try
+link:#_how_do_i_share_my_mods_with_my_friends_for_multiplayer[exporting your profile],
+editing the file to delete the mod listing, then importing it again.
+
+== Turning Off All Mods
+
+To turn off mods entirely, flip the "Mods" switch in the top left corner of the mod manager.
+
+image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
+
+If this fails for some reason, go to `%appdata%\SatisfactoryModManager\profiles` and delete the vanilla folder,
+then restart SMM and turn mods on and back off.
+
+If for some reason this still doesn't work, delete the "Mods" folder from your
+xref:faq.adoc#_where_are_my_game_files_located[game's install directory].
+
+Do note **uninstalling the mod manager will not uninstall mods from your game**.
+If you did that, you should reinstall the mod manager and turn the mods off using the above approach.
+
+[id="InstallSpecificModVersion"]
+== Installing a Specific Version of a Mod
+
+By default, the Mod Manager will install the latest version of a mod that it thinks is compatible with your game version.
+However, it will avoid versions that end in a prerelease tag (ex. `1.0.0-PrereleaseTagHere`).
+
+If you want to install a specific version of a mod, such as a prerelease version,
+first install the mod normally.
+Afterwards, a "Mod Version Options" dropdown will appear in the mod description panel.
+Use this dropdown to select the version you want to install.
+
+== Source Code
+
+The Mod Manager is written in (TODO mention electron+TS here or Go?) and is open source.
+You can find the source code on
+https://github.com/satisfactorymodding/SatisfactoryModLauncher/releases[GitHub]!

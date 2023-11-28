@@ -166,7 +166,7 @@ you will need to create stub blueprints for them yourself.
 You can read more about this
 xref:Development/ReuseGameFiles.adoc[on the Reusing Base Game Files page].
 Instead of trying to placeholder a mesh or texture,
-you will be placeholdering an FGItemDescriptor or similar.
+you will be creating a placeholder for the an FGItemDescriptor or similar.
 
 But don't worry, we are working hard on updating the project,
 and upcoming versions will include even more content than the old ones did.
@@ -184,7 +184,7 @@ If you encounter SML changes not listed here, please contact us on the Discord
 so that we can add them to this list, or add it yourself via 'Edit this Page.'
 ====
 
-* The Bootstraper is no longer needed, and has been removed.
+* The Bootstrapper is no longer needed, and has been removed.
 Unreal Engine and SML now take care of what it used to do.
 * InitMod is no more, and has been supplanted by the Mod Modules system.
 Most things that involved InitMod now involve the
@@ -295,7 +295,7 @@ NEW DOCUMENTATION AND SML PROJECT
  - You can get new SML project on SML github (https://github.com/satisfactorymodding/SatisfactoryModLoader). MAKE SURE TO CHANGE BRANCH TO "sml-dev" BEFORE DOWNLOADING!
  - Creation of the mods in new SML version is done by opening the editor, clicking on "Plugins" button in one of the drop-down menus and then using "New Plugin" button to create your new mod. Make sure to use "Content Only" or "Blank"
 presets for your newly created plugin.
- - You might need to click on Content Browser options -> Show Plugins Content to view contents of your mod. You can browse to them by clicking on the Content Browser root folder and selecting <Your Mod Name> Content there
+ - You might need to click on Content Browser's View Options -> Show Plugin Content to view contents of your mod. You can browse to them by clicking on the Content Browser root folder and selecting <Your Mod Name> Content there
  - Satisfactory assets HAVE NOT BEEN UPDATED TO U4 YET. If you're looking to use new items from the Update 4, you will need to create stub blueprints for them yourself. But don't worry, we are working hard on updating project, and new version will include even more content than the old one did.
  - Keep questions related to SML v3.0.0 and U4 transition in #development.
 

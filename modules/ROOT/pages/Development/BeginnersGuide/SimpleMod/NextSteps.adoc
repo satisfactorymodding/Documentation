@@ -1,0 +1,21 @@
+= Next Steps
+
+You've reached the end of the getting started guide - congratulations!
+
+If you're still looking to learn about a specific concept,
+check and see if we have a page on it in the other sections of the documentation.
+
+Once you have a mod you're ready to upload, follow the
+xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
+directions to export and upload it for other people to use.
+
+You can also ask questions on the https://discord.gg/xkVJ73E[Discord Server].
+
+You may also be interested in {cpp} modding,
+which allows modifying and creating much more advanced game behaviors.
+More info can be found on that xref:Development/Cpp/index.adoc[here].
+
+// TODO link to xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods] once that page is ready
+Consider checking out what mods on ficsit.app have their source code available and
+xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[checking them out in your editor]
+to learn from their code.

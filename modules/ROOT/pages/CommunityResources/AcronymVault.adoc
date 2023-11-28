@@ -120,6 +120,12 @@ xref:faq.adoc[on its respective docs page].
 See link:#_satisfactory_mod_repository_smr_aka_ficsit_app[Satisfactory Mod Repository].
 The mod repository is no longer frequently referenced by this name - one could say that doing so was a https://www.merriam-webster.com/dictionary/fad[FAD].
 
+=== Satisfactory Official Discord (SOD)
+
+The public Discord server that Coffee Stain Studios runs for the game.
+We may tell people to visit the official discord for support with issues that do not involve mods.
+You can join it via https://discord.gg/satisfactory[this link].
+
 === Too Many Acronyms (TMA)
 
 Used to summarize the https://discord.com/channels/555424930502541343/555516979260293132/1034938314018525275[abundance] of Satisfactory Modding acronyms.

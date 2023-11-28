@@ -33,9 +33,52 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
 
+[id="Install_Winget"]
+=== With Winget
+
+If you have
+https://learn.microsoft.com/en-us/windows/package-manager/winget/[winget]
+installed you can install the mod manager by running this command in a command prompt:
+
+`winget install SatisfactoryModding.SatisfactoryModManager`.
+
 === Installing Mods
 
+==== Via the Mod Manager
+
 After you've installed the Mod Manager, you can use it to seamlessly browse and install mods.
+It will automatically detect your game installation,
+and if you have multiple, you can pick between them with the "Install" dropdown.
+
+Browse the list of available mods by scrolling, or search for a mod with the search bar.
+Click on a mod to open its mod page in an details panel to the side.
+
+To install a mod, click the download arrow button.
+After the download completes, it will turn into another icon depending on its compatibility status.
+
+To uninstall a mod, use the button that has appeared instead of the download arrow -
+it will turn into a trash can when you hover over it.
+Alternatively, click the Play button to "Pause" the mod,
+preventing it from loading with the game but still keeping the files downloaded on your computer.
+This can be useful for troubleshooting.
+
+You can use the "Show" dropdown to filter what mods are displayed.
+Here is what each option of the dropdown does:
+
+- `Compatible` will only display mods that are compatible with your selected game install's branch (Early Access or Experimental).
+  **This is the suggested mode to keep the Manager in when searching for new mods to use.**
+  Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
+- `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
+- The `Enabled` option will show all mods that will load when you launch the game.
+  These mods are here either because you have manually chosen to install them,
+  or because they were automatically installed as requirements of other mods.
+  You can Pause these mods to keep them from loading when you launch the game.
+- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
+- The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
+- `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
+  A mod being favorited has no relation to whether or not it is installed.
+
+==== Via ficsit.app
 
 If you prefer to browse mods on the ficsit.app website,
 it's easy to install them from there too.
@@ -83,6 +126,7 @@ editing the file to delete the mod listing, then importing it again.
 == The mod manager can't find my game!
 
 You might see error messages like:
+
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
@@ -155,11 +199,11 @@ The rocket icon indicates Early Access and the flask icon is for Experimental.
 
 In the Mod Manager:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089302323966246973/unknown_1.png[SMM Compatibility Info screenshot]
+image:FAQ/SmmCompatibilityInfo.png[SMM Compatibility Info screenshot]
 
 On ficsit.app:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089325949755084971/image.png[ficsit.app Compatibility Info screenshot]
+image:FAQ/FicsitAppCompatibility.png[ficsit.app Compatibility Info screenshot]
 
 You can hover over the sticker for any notes that may have been left by the author.
 They may indicate a version to use, which you can change to in the Mod Manager with the dropdown right above the stickers.
@@ -211,16 +255,15 @@ just quit the game without saving and launch the game with your mods, your conte
 
 == How do I make my own mod?
 
-If you're looking to write your own mods, we suggest you start with
-making blueprint mods first rather than C++ mods.
-Check out the xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
-and consider picking up the `Aspiring Modder` role in our https://discord.gg/xkVJ73E[Discord]'s `#rules` channel.
+Check out
+xref:index.adoc#_for_developers[this section of the main page]
+for more information.
 
 == How do I share my mods with my friends for multiplayer?
 
 You can use the Mod Manager's profile import/export functionality.
 
-image:https://cdn.discordapp.com/attachments/555507339969560586/833748278456746014/unknown.png[SMM Import/Export screenshot]
+image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 
 == Where are my game files located?
 
@@ -236,6 +279,16 @@ image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_Mods"]
+=== Mods
+
+As described link:#_how_do_i_turn_off_mods[here],
+the Mod Manager handles downloading and placing mod files into the correct folder for you.
+Interfering with mod files manually is not recommended,
+and the Mod Manager is likely to undo or overwrite your changes.
+
+Mods are stored in the link:#Files_GameInstall[game install directory] under `FactoryGame/Mods`.
 
 [id="Files_SaveFiles"]
 === Save Files
@@ -267,12 +320,19 @@ You can find various log files at different locations:
   It can be found at `%LOCALAPPDATA%/FactoryGame/Saved/logs`
 - Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
 
+[id="Files_SMMProfiles"]
+=== Mod Manager Profiles
+
+Mod manager profiles are stored at:
+
+`%appdata%\SatisfactoryModManager\profiles`
+
 == Where can I find the game's log files?
 
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
 since it gathers game, SML, and Mod Manager logs for you.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+image:FAQ/SmmGenerateDebugInfo.png[SMM Generate Debug Info screenshot]
 
 The location of these files is mentioned link:#Files_Logs[above].
 
@@ -280,11 +340,11 @@ The location of these files is mentioned link:#Files_Logs[above].
 
 On Steam:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039933446037605/unknown.png[Steam screenshot]
+image:FAQ/SteamVerifyIntegrity.png[Steam screenshot]
 
 On Epic:
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039946263838751/unknown.png[Epic screenshot]
+image:FAQ/EpicVerifyIntegrity.png[Epic screenshot]
 
 == Why is the mod manager downloading slowly, or failing to download?
 
@@ -298,7 +358,7 @@ You might see error messages like:
 
 Internet restrictions, and sometimes VPNs and proxies, mess with our services.
 To work around this, download the mod files mentioned in the error message from SMR manually.
-If they are named `[modname].zip` rename them to `[modname].smod`
+If they are named `[ModName].zip` rename them to `[ModName].smod`
 
 If the mod you downloaded is SML,
 then place the file into 
@@ -320,26 +380,26 @@ You might see messages like:
 Your internet speed is likely too slow and the download is being cut off early.
 Try disabling the mod manager's timeout as shown below.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089041903342862336/unknown.png[Timeout disable screenshot]
-
-If this still doesn't work, try
+If that still doesn't work, try
 link:#_why_is_the_mod_manager_downloading_slowly_or_failing_to_download[this approach instead].
+
+image:FAQ/SmmDisableDownloadTimeout.png[Timeout disable screenshot]
 
 == How can I troubleshoot crash issues?
 
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature and send the file on the Modding Discord's `#help-using-mods` discord channel.
 
-image:https://cdn.discordapp.com/attachments/719242895114108938/1089039840512852019/debuginfo.png[SMM Generate Debug Info screenshot]
+image:FAQ/SmmGenerateDebugInfo.png[SMM Generate Debug Info screenshot]
 
 You can also follow this process to track down which mod(s) you have installed are leading to a crash (or other undesired behavior):
 
-image:https://cdn.discordapp.com/attachments/834348739539238922/1102661505255751801/debugmods.png[Troubleshooting flowchart]
+image:FAQ/DebugModsFlowchart.png[Troubleshooting flowchart]
 
 == How can I tell what mod added an item/milestone/recipe/thing?
 
-Consider using https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
+Consider using the https://ficsit.app/mod/TFIT[TFIT - The Ficsit Information Tool]
 and https://ficsit.app/mod/MAMTips[MAM Enhancer]
-mods which add tools to help you identify content.
+mods, which add tools to help you identify content.
 
 == I'm having VRAM issues, how do I fix them?
 
@@ -370,6 +430,7 @@ https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-
 
 In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
 
+// cspell:ignore mklink
 1. Close SMM
 2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
 3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
@@ -410,14 +471,132 @@ image:FAQ/SteamBranch.png[Steam Installer]
 In the Epic Games Launcher they should be available as separate games. If either is not there, try restarting the launcher.
 image:FAQ/EpicBranch.png[Epic Installer]
 
+[id="PlayOlderVersion"]
+== How do I play an older version of the game?
+
+You may wish to download an older version of the game
+in order to play with mods that are not yet updated.
+
+=== Make a Backup
+
+The easiest way to use an older copy of the game is to plan for it in advance.
+This works for both the Epic and Steam distributions of the game.
+
+First, turn off automatic updates for Satisfactory so that when Coffee Stain releases an update,
+you can make a backup copy of your game files before the platform automatically downloads the update.
+Note that neither Steam nor Epic offer the ability to permanently turn off updates,
+so instead, chose the option that makes it so it only updates when you launch it
+(instead of automatically in the background).
+This gives you a chance to copy the files elsewhere before the platform automatically updates them on you.
+
+Steam explains how to disable automatic updates in
+https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their FAQ].
+
+On Epic, this can be done on the game's "Manage" menu.
+Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
+
+Once an update releases, follow the directions
+xref:Development/UpdatingToNewVersions.adoc#_back_up_your_game[here]
+to make a copy of your files and learn how to launch the game from that copy.
+
+[id="PlayOlderVersion_SteamCMD"]
+=== Use SteamCMD
+
+[WARNING]
+====
+We do not provide support for using older versions of the game.
+By following this process, you are volunteering to fix any issues that may arise yourself,
+and you are accepting the risk of possible data loss.
+====
+
+Unfortunately, this process is only possible if you own the game on Steam -
+Epic Games has not created a system that allows for this.
+
+This guide is written for Windows, but similar steps can probably be used on Linux with some changes.
+
+1. Modify Steam's update settings for Satisfactory
+so that Steam will only try to update the game when you launch it
+instead of automatically in the background.
+Steam explains how to do this on
+https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their documentation].
+Don't worry, a later step will ensure that Steam doesn't try to update the game even when you launch it.
+
+2. Find the manifest ID for the version you want to download.
+The easiest way to do this is on the https://steamdb.info/app/526870/[SteamDB page for Satisfactory].
+Go to the Depots section and select the branch you're looking for,
+then click on the ID for the depot that contains
+the game files and target platform you want (probably `526871` or `526872`).
+Next, go to the Manifests section and find the entry that corresponds to when the update you want was released,
+for example, Update 8.1 is `5 September 2023 – 17:36:47 UTC`.
+Copy the manifest ID from this row for usage later.
+For example, Update 8.1's manifest ID is `3616459586959574031`.
+
+3. Open the Windows Run dialog. You can find it in "Start programs" or by using Win+R shortcut.
+Enter this command in the dialog while Steam the client window is open: `steam://open/console`
+
+4. Navigate to the newly-revealed extra tab in your Steam app called 'Console'.
+It may take a few seconds to load after you run the command.
+
+5. Prepare a download_depot command for the version you wish to download in the text box.
+The format is: `download_depot appId depotId targetManifestId`.
+Satisfactory's appId is `526870`.
+For example, the command to download Update 8.1 would be `download_depot 526870 526871 3616459586959574031`
+
+6. Make sure you have enough space (~30GB) in **the drive that you installed Steam on**.
+**Important note - this is NOT your game installation folder!**
+Again, this will be the same folder you have installed the Steam program on, not a library folder.
+If you haven't changed it during installation of Steam, it will probably be `C:\Program Files (x86)\Steam\`.
+Once you're sure you have enough space, execute the command by pressing Enter.
+
+7. Steam will now download the depot into a new folder.
+Continuing the previous examples, the folder would be
+`C:\Program Files (x86)\Steam\steamapps\content\app_526870\depot_526871`.
+This will take a while (the whole game is being downloaded again from scratch), and **there's no progress bar.**
+Once it's done, an extra line will appear in the Steam console announcing the command's completion.
+
+8. Open up your **game installation folder** - not the depot this time.
+You can find your folder by following link:#Files_GameInstall[these directions].
+Back up the folder's contents to another folder by copying or moving them out.
+
+9. Delete all of the files from your game installation folder and move in the files produced by the download depot command you ran earlier.
+Don't skip out on making that backup - you'll need some of those files in the next step.
+
+10. Next, go back to your backup to obtain some files.
+You'll be replacing some of the files you just brought in from the depot with ones from the backup.
+This tricks Steam into thinking that the contents of the folder are that of the latest depot,
+when in reality they are the past version you just downloaded,
+meaning Steam won't try to update the files before you launch.
+This means you can play without putting Steam in offline mode.
+Copy the following files:
+
+* `Manifest_DebugFiles_Win64.txt`
+* `Manifest_NonUFSFiles_Win64.txt`
+* `Manifest_UFSFiles_Win64.txt`
+* `/FactoryGame/Configs/` (this folder contains your mod configuration files)
+* Keep in mind that other mods may also produce folders and files you want to hold on to.
+
+11. Download the mods you want to play with into this new copy of the game.
+You may be able to reuse some of them from your backup copy (`/FactoryGame/Mods`).
+Just like Steam, the mod manager doesn't know that this copy is an older version,
+so you may have to do a lot of work at this step to make sure you've grabbed compatible mod versions.
+Remember, we will not provide support for this process, you're on your own here.
+
+12. You should be good to go.
+In order to launch the game, simply launch it through Steam or the mod manager as usual.
+If you've followed these steps correctly, Steam will not try to update the game when you launch it.
+Once you are certain all data has been transferred, feel free to remove your backup of the previous folder contents.
+
+In order to revert this process and return to the latest version of the game,
+link:#_how_do_i_verify_my_game_files[use Steam to verify your game files].
+
 == How do I backup my save files?
 
 _Or: 'Where are my save files stored?'_
 
-It is suggested to routinely and especially when the game updates, to backup your save files. You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
+It is suggested to routinely backup your save files, especially when the game updates.
+You may copy them to the same disk/drive, a USB stick, the cloud, or anywhere you feel would make your save files be safe.
 
 Both Steam and Epic Games version use the same PATH depending on OS used.
-
 Note that "{Your ID}" in the below examples refers to a unique user ID number, not the literal text "{Your ID}".
 
 === Windows
@@ -430,7 +609,7 @@ Path 1:
 
 Path 2:
 
-`\Users\<your Windows username>\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
+`\Users\{your Windows username}\AppData\Local\FactoryGame\Saved\SaveGames\{YOUR ID}`
 
 If you cannot find your steam save folder (probably because you have owned the game in Epic and just bought the Steam copy recently), first start a new game with Steam, then save the new game. You should now be able to see your steam save folder beside epic. The steam ID is usually shorter than the Epic ID. The folder location is stated above.
 
@@ -438,6 +617,7 @@ If you cannot find your steam save folder (probably because you have owned the g
 
 Using Steam Play:
 
+// cspell:ignore steamapps compatdata steamuser valvesoftware
 `~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
 Using Steam:

@@ -1,15 +1,14 @@
 # Creating a Git Repo for your Mod
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 Once you have started working on a mod of your own, you should set up a git repository for your mod.
 
 This page will begin by explaining why you should use git,
 provide links to resources that explain basic git concepts,
 then provide a tutorial on how to use git in the context of Satisfactory Modding.
+
+This tutorial assumes you have already followed the
+xref:Development/BeginnersGuide/index.adoc[Getting Started] guides for creating a simple mod
+and that you want to take your existing mod and place it into a git repository.
 
 If you're already an experienced Git user you can skip to link:#ExperiencedGitUsers[this section].
 
@@ -128,18 +127,18 @@ then moving our own mod's files into that folder.
 
 Make sure you have the Unreal editor closed before proceeding.
 
-Locate the folder for your mod in your Starter Project's `Plugins/` folder,
-for example, `Plugins/YourModReference/`.
+Locate the folder for your mod in your Starter Project's `Mods/` folder,
+for example, `Mods/YourModReference/`.
 Rename your mod's folder to something else, for example `YourModReference_Original/`.
 We are renaming this folder because
 your git client will complain if you try to clone into a folder that already contains files.
 As such, we are temporarily giving the folder another name so the clone process doesn't complain.
 
-Now, use your git client of choice to clone the remote repository you created on GitHub inside your project's `Plugins/` folder.
+Now, use your git client of choice to clone the remote repository you created on GitHub inside your project's `Mods/` folder.
 Directions for doing this in GitHub Desktop can be found
 https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop[here].
 Assuming your GitHub repository is named `TheRepositoryName`,
-you should now have two relevant folders in your projects `Plugins/` folder:
+you should now have two relevant folders in your projects `Mods/` folder:
 
 - The repository folder you just cloned, `TheRepositoryName/`
 - Your original mod folder which you renamed to `YourModReference_Original/`
@@ -182,7 +181,7 @@ git uses a file called `.gitignore` to keep track of what files to exclude.
 
 If you created your mod with the Alpakit wizards, it will have already created this file for you.
 If not, you can pick one up
-https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Plugins/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/Alpakit/Templates/CPPAndBlueprintBlank/.gitignore[here].
 
 You can optionally learn more about how this file works 
 https://www.atlassian.com/git/tutorials/saving-changes/gitignore[here],
@@ -212,6 +211,15 @@ This backs them up on the GitHub servers and makes them available to other users
 
 Directions for pushing files in GitHub Desktop can be found
 https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/committing-and-reviewing-changes-to-your-project-in-github-desktop[here].
+
+## Enable UE VCS Integration
+
+The custom engine version used in the Satisfactory Modding community has been modified to allow Unreal Engine's Git integration to recognize and work with multiple git repos in a single project.
+
+To enable, navigate to "Tools" > (Source Control heading) > "Connect to Source Control...".
+Select Git from the dropdown, then click "Accept Settings".
+
+You can now right click on assets in the Content Browser to view their change history, diff assets, and more.
 
 ## Git Workflow
 
@@ -260,3 +268,21 @@ Most Unreal Engine asset files are raw binary files, which means git diffing the
 Panakotta has directions on using UE as diff tool
 https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
 but it's best to totally avoid merge conflicts wherever possible.
+
+## UE4GitDiff
+
+A tool that runs the UE diff interface from git command line.
+
+https://github.com/mircearoata/UE4GitDiff
+
+It currently has an issue in finding the project and engine when using symlinked plugin folders and git bash.
+When cd-ing inside a symlinked folder, git bash will pass the real path to UE4GitDiff,
+rather than the plugin path inside the SML project.
+The workaround for this is to either run it from command prompt or powershell,
+or to open git bash directly in the plugin folder and not cd from there.
+
+## Nested Mod Folders
+
+It's possible to keep the files for multiple mods in one git repository
+by having a parent folder as the git repository with a subfolder for each mod.
+The xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit] is an example of a project that does this.

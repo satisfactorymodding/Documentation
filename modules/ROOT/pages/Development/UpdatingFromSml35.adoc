@@ -1,0 +1,241 @@
+= Upgrading from SML 3.5.x to 3.6.x
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.6 brings support for Unreal Engine 5.2 and the Early Access release Satisfactory Update 8.
+
+First, please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== Have You Updated to Update 8.1 Yet?
+
+If you are updating your mod **directly from Update 7 (SML 3.4.x) to Update 8**,
+there are more steps to follow and more changes you should be aware of.
+Make sure to read the xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1] guide first!
+
+[IMPORTANT]
+====
+Remember to not install the new engine until you have made a backup copy of the engine files, and Starter Project,
+as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] tutorial!
+====
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Decal_Normal Broken on Modded Parts using Mesh Proxies
+
+Mesh proxies past the first instance may not render correctly.
+This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
+You can work around this for the time being by using a default masked material.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== New Wwise Version
+
+With a new Unreal Engine version comes a new required Wwise update for your project.
+Be sure to follow the xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page instructions]
+to download the new Wwise version and integrate it into your project as you follow the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== {cpp} Mod Module Build.cs Changes
+
+You may encounter errors generating visual studio project files for your project.
+
+The InstancedSplines plugin should no longer be referenced in your .Build.cs file and can be safely removed.
+
+You may also need to remove or change some dependencies from the target list, such as PhysX because they no longer exist.
+Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creating_the_mod_module_from_scratch[C++ Setup page] if you're encountering issues.
+
+=== Engine Subsystem to Game Instance Subsystem Migration
+
+Every mod loader subsystem that was previously an Engine Subsystem is now a Game Instance Subsystem instead.
+Functions that use the subsystems now require a world context object.
+Notable subsystems that have changed include the Mod Loading Library and the Config Manager.
+
+In {cpp} you must manually supply a context.
+There are multiple approaches to getting a world context object -
+if your calling context is an actor, the GetWorld method should work.
+Otherwise, any object that is specific to the world can be provided, for example, the player.
+
+==== Blueprint Getter Nodes Affected
+
+If you were previously using an engine subsystem blueprint get node, for example, "Get Mod Loading Library",
+you will need to recreate it and replace it with the (visually identical) new one.
+
+You'll see an error similar to `Node  Get ModLoadingLibrary  must have a class specified.` when this is the case.
+
+=== Regenerate {cpp} Configration Structs
+
+The format of auto-generated {cpp} configuration structs has changed in response to a change in Unreal Engine.
+
+Errors reported from this issue will not report correctly in the Error List - you'll have to look at the full output log,
+as the generated configuration struct will be one of many supposed problem classes listed,
+including some engine header files that incorrectly appear as part of the error message.
+
+In order for your {cpp} project to compile,
+you may have to manually delete any pre-existing auto-generated {cpp} configuration structs,
+then compile your project,
+then generate them again once it's possible to open the editor.
+Remember to delete them from outside Visual Studio,
+since deleting them from Visual Studio does not actually remove the file on disk.
+
+You can also attempt to manually update the generated configuration struct.
+You'll have to add `{}` initializers after every property
+and change GetActiveConfig to use the new world context approach.
+For example, if it previously contained the following:
+
+// cspell:ignore FFMC
+```cpp
+// Includes left out
+
+/* Struct generated from Mod Configuration Asset '/FasterManualCraftingRedux/FMC_FasterManualCraftingReduxConfig' */
+USTRUCT(BlueprintType)
+struct FFMC_FasterManualCraftingReduxConfigStruct {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite)
+    float DocsExample;
+
+    /* Retrieves active configuration value and returns object of this struct containing it */
+    static FFMC_FasterManualCraftingReduxConfigStruct GetActiveConfig() {
+        FFMC_FasterManualCraftingReduxConfigStruct ConfigStruct{};
+        FConfigId ConfigId{"FasterManualCraftingRedux", ""};
+        UConfigManager* ConfigManager = GEngine->GetEngineSubsystem<UConfigManager>();
+        ConfigManager->FillConfigurationStruct(ConfigId, FDynamicStructInfo{FFMC_FasterManualCraftingReduxConfigStruct::StaticStruct(), &ConfigStruct});
+        return ConfigStruct;
+    }
+};
+```
+
+Then you should change it to:
+
+```cpp
+// Includes left out
+
+/* Struct generated from Mod Configuration Asset '/FasterManualCraftingRedux/FMC_FasterManualCraftingReduxConfig' */
+USTRUCT(BlueprintType)
+struct FFMC_FasterManualCraftingReduxConfigStruct {
+    GENERATED_BODY()
+public:
+    UPROPERTY(BlueprintReadWrite)
+    float DocsExample{};
+
+    /* Retrieves active configuration value and returns object of this struct containing it */
+    static FFMC_FasterManualCraftingReduxConfigStruct GetActiveConfig(UObject* WorldContext) {
+        FFMC_FasterManualCraftingReduxConfigStruct ConfigStruct{};
+        FConfigId ConfigId{"FasterManualCraftingRedux", ""};
+        if (const UWorld* World = GEngine->GetWorldFromContextObject(WorldContext, EGetWorldErrorMode::ReturnNull)) {
+            UConfigManager* ConfigManager = World->GetGameInstance()->GetSubsystem<UConfigManager>();
+            ConfigManager->FillConfigurationStruct(ConfigId, FDynamicStructInfo{FFMC_FasterManualCraftingReduxConfigStruct::StaticStruct(), &ConfigStruct});
+        }
+        return ConfigStruct;
+    }
+};
+```
+
+=== Content Registry Rewrite
+
+The Content Registry internals were completely rewritten.
+Its external API remains generally the same except for these changes:
+
+- `AModContentRegistry` is now `UModContentRegistry`
+- All content-specific registration structs (ex. `FItemRegistrationInfo`) have been replaced by `FGameObjectRegistration`.
+  In order to use content-specific ReferencedBy data you will have to cast the UObject pointers to type UClass,
+  then class cast them to the relevant type (ex. `UFGRecipe`)
+
+=== DOREPLIFETIME Includes
+
+In order to use the `DOREPLIFETIME` macro,
+you now must use add an additional include:
+`#include "Net/UnrealNetwork.h"`
+
+Without it, you will get errors similar to the following:
+
+```
+C3861	'DOREPLIFETIME': identifier not found
+C2275 'TheClassYouHadAsTheFirstArgument': expected an expression instead of a type
+```
+
+=== Enhanced Input System {cpp} Changes
+
+The GameInstanceModule no longer provides the interface for creating GameplayTag->InputAction mappings, since it was previously modifying one of the game's config classes, which is unsafe.
+
+Previously, to bind to an action using a GameplayTag, you would add your mappings to the GameInstanceModule blueprint and use the following in {cpp}:
+
+```cpp
+// DO NOT DO THIS!
+EnhancedInputComponent->BindActionByTag(FGameplayTag::RequestGameplayTag(TEXT("Tag.Name")), ETriggerEvent::Triggered, this, &Class::Function);
+```
+
+The new approach is documented on the
+xref:Development/Satisfactory/EnhancedInputSystem.adoc#_gameplay_tags[Enhanced Input System] page.
+
+See https://discord.com/channels/555424930502541343/601030071221878784/1174669018087571567[this discord conversation] for more information.
+
+=== Hooking CallScope deprecation
+
+TCallScope should now be used instead of CallScope.
+Using CallScope will produce a deprecation warning when compiling.
+
+=== Hooking Macro Syntax Change
+
+Hooking macros such as `SUBSCRIBE_METHOD()` must now be concluded with a semicolon
+as they are now expressions, not statements.
+The semicolon was previously optional.
+See the xref:Development/Cpp/hooking.adoc[Hooking] page for example syntax.
+
+=== Editor Viewport Shadows Warning
+
+`r.ContactShadows.NonShadowCastingIntensity is set but ignored. Use setting on the Light Component instead.`
+
+To get rid of this error, edit `/Project/Config/DefaultEngine.ini`
+and remove any lines that assign values to `r.ContactShadows.NonShadowCastingIntensity`.
+
+== Notable New Features
+
+Numerous new features have been introduced in SML3.6 which you may wish to switch your mod over to using
+or implement as part of a future update to your mod.
+
+=== Mod Content Registry: Content Removal
+
+The Mod Content Registry now supports requesting to explicitly remove Schematics and Research Trees from registration.
+Requests for removal follow the same loading time restrictions as new content registration.
+See the xref:Development/ModLoader/Registry.adoc[Registry] page for more info.
+
+=== Documentation: Open Source Examples
+
+The documentation now contains a list of open-source mods that you can learn from to develop your own mods.
+Each listing provides an overview of what kinds of Satisfactory and Mod Loader features the mod uses.
+
+Check it out and consider listing your own mods on the
+xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods] page.
+
+=== Unhooking Support
+
+See the xref:Development/Cpp/hooking.adoc#_unhooking[Hooking] page for more info.

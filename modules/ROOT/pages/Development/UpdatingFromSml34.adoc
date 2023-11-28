@@ -1,0 +1,401 @@
+= Upgrading from SML 3.4.x to 3.5
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.5 brings support for Unreal Engine 5 and a number of new game systems.
+
+First, please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+If Update 8 has not yet been released on Early Access when you are reading this guide,
+make sure to grab the `dev` branch of the Starter Project instead of `master`.
+
+[IMPORTANT]
+====
+Remember to not install the new engine until you have made a backup copy of the engine files, and Starter Project,
+as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] tutorial!
+====
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Plugin Localization
+
+The new plugin localization system is not totally ready for use.
+You may encounter issues with translation data not saving,
+and the system for importing and exporting translations to the community translation portal is not yet complete.
+
+=== UE Linker still having some bugs ironed out
+
+You might run into troubles accessing the new Unreal Engine repo.
+Please contact us on the Discord if you get stuck.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Switch to Visual Studio 2022
+
+Although Unreal Engine 5 still supports some previous versions of Visual Studio,
+they have not been tested by the community and we are no longer supporting them.
+You should switch to Visual Studio 2022, and the 2022 toolchain,
+to avoid any potential issues.
+
+You can find information on installing Visual Studio on the
+xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page].
+
+=== Install New Visual Studio Component
+
+Even if you already have Visual Studio 2022 installed,
+you'll need to modify your installation via the installer to add a new MSVC build tools component.
+See the xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Dependencies page]
+for more information.
+
+=== Obtain the New Engine (Special Directions!)
+
+We have moved our fork of Unreal Engine to be inside the Satisfactory Modding organization
+instead of being owned by a separate github user.
+As such, the URL for downloading the engine has changed
+as well as the means of accessing it.
+
+More information can be found
+xref:Development/BeginnersGuide/dependencies.adoc#UnrealLinker[here].
+
+=== {cpp} Mod Module Build.cs Changes
+
+When generating visual studio project files for your project, you may encounter an error similar to the below:
+
+// cspell:ignore projectfiles
+```
+Running C:/Program Files/Unreal Engine - CSS U8/Engine/Build/BatchFiles/Build.bat  -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -projectfiles -project="C:/Git/SatisfactoryModLoader/FactoryGame.uproject" -game -rocket -progress -log="C:\Git\SatisfactoryModLoader/Saved/Logs/UnrealVersionSelector-2023.07.08-13.29.57.log"
+Log file: C:\Git\SatisfactoryModLoader\Saved\Logs\UnrealVersionSelector-2023.07.08-13.29.57.log
+Log file: C:\Users\Rob\AppData\Local\UnrealBuildTool\Log_GPF.txt
+
+Some Platforms were skipped due to invalid SDK setup: Linux, LinuxArm64.
+See the log file for detailed information
+
+Discovering modules, targets and source code for project...
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(5,7): error CS0246: The type or namespace name 'Tools' could not be found (are you missing a using directive or an assembly reference?)
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(13,32): error CS0246: The type or namespace name 'DirectoryReference' could not be found (are you missing a using directive or an assembly reference?)
+C:\Git\SatisfactoryModLoader\Mods\MAMTips\Source\MAMTips\MAMTips.Build.cs(14,64): error CS0246: The type or namespace name 'DirectoryReference' could not be found (are you missing a using directive or an assembly reference?)
+Expecting to find a type to be declared in a target rules named 'FactoryEditorTarget'.  This type must derive from the 'TargetRules' type defined by Unreal Build Tool.
+```
+
+Unreal Engine 5 includes updates to UBT to make it more extensible.
+As part of these updates, certain libraries have moved to other names or paths.
+For example, `Tools` has been replaced with `EpicGames.Core`.
+You may have to modify or add additional `using` directives to your mod module's Build.cs file.
+In the case of this example error message, adding the following directives resolved the issue.
+
+[source,cs]
+----
+using System;
+using System.Runtime.InteropServices;
+using System.Text;
+using EpicGames.Core;
+----
+
+You may also need to remove or change some dependencies from the target list, such as PhysX because they no longer exist.
+Try using the example Build.cs from the xref:Development/Cpp/setup.adoc#_creating_the_mod_module_from_scratch[C++ Setup page] if you're encountering issues.
+
+=== Increased Access Transformer Specificity
+
+If you are using BlueprintReadWrite or BlueprintCallable access transformers
+you will have to update their Class field to use their runtime class path.
+This means adding the prefix `/Script/FactoryGame.` to the class name
+and removing any Unreal prefixes like `A` or `U`.
+
+For example, if you were previously using the access transformer:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="AFGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+You will have to switch to:
+
+[source,ini]
+----
+[AccessTransformers]
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGWireHologram", Property="mDefaultPowerPoleRecipe")
+----
+
+If you don't update your access transformers messages will be generated in your output log explaining what needs to be changed, for example, `LogAccessTransformers: Warning: Resolving BlueprintReadWrite AFGRecipeManager:mAvailableRecipes requested by MAMTips: Using deprecated class specification. The loaded class was /Script/FactoryGame.FGRecipeManager. Please update your AccessTransformers config file. This will become an error in a future version.`
+
+This change was made as part of a move away from using ANY_PACKAGE,
+which you can read more about in the Unreal documentation if you are interested.
+
+=== Folder Move: Plugins to Mods
+
+Instead of being placed in the `Plugins/` folder, mod folders are now located in the project's `Mods/` folder.
+Why the change?
+
+- Real™️ Official™️ mods will be in the Mods folder instead of Plugins, when they eventually™️ come out. This move is just preparation for that well in advance
+- It keeps base-game plugins (Wwise, AbstractInstance) clearly separate from mods
+- Alpakit was already remapping mods from the Plugins folder to Mods behind the scenes in the past anyways
+
+==== What you have to do:
+
+1. Move your own mod folders from `<Starter_Project_Folder>\Plugins` to `<Starter_Project_Folder>\Mods`
+
+* SML 3.4.x Locations:
+  image:BeginnersGuide/SML_Plugins.png[SML 3.4.x, align="center"]
+
+* SML 3.5.x Locations:
+  image:BeginnersGuide/SML_Mods.png[SML 3.5.x, align="center"]
+
+2. xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Compile your project like normal]
+
+This change also affects the game client -
+mods are now placed in the `<SF_Install>\FactoryGame\Mods` folder!
+Alpakit's "copy mods" feature has already been updated to account for this.
+
+=== Re-Enable Show Plugin Content
+
+Your saved editor setting for the UE4 option "Show Plugin Content" in Content Browsers does not carry over to UE5.
+You'll have to turn it back on again.
+
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
+
+=== Unreal Engine 5 new Keybinds system
+
+Unreal Engine 5 has overhauled how user input and key bindings are handled.
+If your mod made use of keybindings, they will stop working,
+and the dead code will possibly prevent your mod from compiling
+until you change to the new system.
+
+More info can be found on the
+xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System] page.
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== SML consoleWindow Configuration option replaced with UE -log startup parameter
+
+The SML configuration option has been removed because it was redundant and does the same thing as the startup parameter.
+See xref:Development/ModLoader/Logging.adoc[Logging] for more information.
+
+=== Player Hud Widget Functionality Change
+
+Some widget features (ex. Text Block element bindings of text to a value or function) no longer function correctly when your widget is a child of the player HUD's widget tree.
+
+In the case of text element bindings,
+the function will execute as normal,
+and return the expected value,
+but the displayed text will never update.
+
+A fix for this example case is
+to call the binding function on tick
+and set the text element's value to the function's return.
+
+=== Default Button Style Change
+
+UE5 changes the default Appearance of buttons to `Draw As: Rounded Box`,
+and it seems to have overwritten the selected properties of some existing buttons in the process.
+You may need to change them back to `Draw As: Image` (the previous default),
+or your previously set value,
+in order to get the same look as they did before.
+
+You may also need to adjust buttons' Pressed and Normal paddings
+as those also seem to have been reset.
+
+image:Development/ChangeButtonDrawAs.png[D4rk screenshot of changing button Draw As]
+
+=== Online Subsystem Changes
+
+Changes to the Unreal Engine Online Subsystem have made it impossible to
+launch the game with a fixed username from the command line.
+This affects the launch scripts provided in the
+xref:Development/TestingResources.adoc#LaunchScript[Testing/Multiplayer Testing] page.
+Although this functionality has not returned at the time of writing,
+the page has been updated with an improved version of the launch script.
+
+We're looking for help resolving this - if you'd like to help,
+please contact us on the Discord and read
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/182[this issue].
+
+=== IsLocationNearABase Deprecation
+
+According to Ben from Coffee Stain,
+`AFGProximitySubsystem::IsNearBase` should be used instead of `IsLocationNearABase`.
+
+=== ANY_PACKAGE Deprecation
+
+If you are using features that look up classes or objects with ANY_PACKAGE filters,
+note that this has been deprecated in UE5.1.
+
+Some alternatives include specifying the full class path or using the safe variants of the functions.
+More info can be found
+https://forums.unrealengine.com/t/findobject-withough-any-package/742812/3[here].
+
+=== Rider users: Mods no longer detected and uproject model no longer supported
+
+The structure of the project has changed and Rider can no longer auto discover mod targets
+if you're using the `.uproject` model.
+Furthermore, using the `.uproject` model will cause Rider to try and build the Engine, which files are not present for, corrupting the Rider project.
+The `.sln` model should still work as it did before.
+
+=== Unreal MetaData Increased Specificity
+
+You may encounter an error like this while packaging your blueprints:
+
+```
+LogClass: Warning: Short type name "Something" provided for TryFindType. Please convert it to a path name (suggested: "/Script/ModRef.Something"). Callstack:
+UATHelper: Package Mod Task (Windows): UnknownFunction []
+UATHelper: Package Mod Task (Windows): UnknownFunction []
+<...>
+```
+
+This error is caused by Unreal now requiring increased specificity
+for things that look up classes via MetaData specifiers, such as the `BitmaskEnum` UPARAM meta specifier.
+
+For example, if your code was originally this:
+
+```h
+UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
+	float CalculateDamage(float DmgIn, UPARAM(meta = (Bitmask, BitmaskEnum = ENDamageType)) int32 Type, TSubclassOf<class UFGDamageType> BpType, FHitResult Impact);
+```
+
+You can fix the warning by changing the BitmaskEnum to what the error message mentioned, like this:
+
+```h
+UFUNCTION(BlueprintCallable, Category = "EquipmentModule")
+	float CalculateDamage(float DmgIn, UPARAM(meta = (Bitmask, BitmaskEnum = "/Script/PowerSuit.ENDamageType")) int32 Type, TSubclassOf<class UFGDamageType> BpType, FHitResult Impact);
+```
+
+More information can be found
+https://forums.unrealengine.com/t/fixing-short-type-name-warning-messages/696553[here].
+
+=== Wwise Migration Popup
+
+If your project contains any Wwise stubs or assets,
+you may be greeted with a popup upon opening the project
+or opening an asset that references the Wwise asset.
+
+image:https://media.discordapp.net/attachments/1036634533077979146/1131263355089322054/image.png[Drejn screenshot of Wwise popup]
+
+You can safely cancel or close the prompt to take no action.
+However, you may need to delete any Wwise assets you have in your mod,
+or Wwise could block that mod from packaging with a vague error message.
+
+== Notable New Features
+
+Numerous new features have been introduced in SML3.5 which you may wish to switch your mod over to using
+or implement as part of a future update to your mod.
+
+=== Research Tree Editor
+
+Have you been holding off on implementing a MAM research tree in your mod because of how tedious it is?
+Wait no more!
+
+The new Research Tree Editor allows you to create and edit research trees in a visual interface
+and provides basic error checking functionality.
+
+To launch the tool, navigate to the `SMLEditor Content/ResearchTree/` folder in the Content Browser,
+right click on the `ResearchTreeHelper` asset, then select `Run Editor Utility Widget`.
+Hover over elements in the tool to see tooltips explaining what they do.
+
+The Example Mod has been updated with a complex research tree (created by the tool)
+to demonstrate and explain some important research tree concepts.
+Explore this tree, and the base game's trees, to learn more about how research trees work.
+
+=== Sort Array Node
+
+SMLEditor now provides a custom Blueprint node for sorting arrays
+that does so in a much more performant way than a sorting algorithm implemented in Blueprint.
+Provide an array of any type and create a function to be used as a comparator.
+The comparator should return `true` if item A is less than item B.
+
+Read more about it on the
+xref:Development/ModLoader/BlueprintInterface.adoc#_sort_array[Blueprint Interface] page.
+
+=== ExampleMod Multiplayer Examples
+
+ExampleMod has been updated to include some examples of correctly adding multiplayer functionality to your mod.
+The xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
+page has also been updated with more information and tutorials.
+
+=== Some Access Transformers Now Applied Live
+
+xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers],
+everyone's favorite neighborhood superhero of accessing things that weren't intended to be,
+just got better.
+BlueprintReadWrite and BlueprintCallable access transformers will now be hot reloaded in the editor
+as soon as you modify the `.ini` file.
+
+=== Session Settings
+
+Session Settings are a feature similar to the base game's Advanced Game Settings that allows mods to store configuration information on a per-game-save basis.
+
+Read more about it on the
+xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page.
+
+=== Widget Blueprint Hooks
+
+Widget Blueprint Hooks can be used to add your custom widget into one of the existing game widgets.
+If you've previously been using `Bind on BPFunction` 'Construct', this system may be a better fit for you.
+
+Read more about it on the
+xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks] page.
+
+See the Example Mod and SML itself for examples of how to use this system.
+
+=== Simple Construction Script Hooks
+
+Blueprint Simple Construction Script hooks allow adding modded
+https://docs.unrealengine.com/5.1/en-US/components-in-unreal-engine/[Components]
+to any blueprint-based actor.
+
+Read more about it on the
+xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks] page.
+
+See the Example Mod for examples of how to use this system.
+
+=== New Debugging Capabilities
+
+There are two new launch flags to assist with debugging {cpp} mods.
+You can read more about them on the
+xref:Development/Cpp/debugging.adoc#_launch_Arguments[Debugging] page.
+
+=== Mod Localization
+
+We have started hosting our own Tolgee instance
+that makes it easy to crowdsource and contribute translations to the modding toolkit and to mods.
+
+Read more about how you can get started on the
+xref:Development/Localization.adoc[Localizing Mods] page.
+
+=== Custom Level Support
+
+This feature has not yet been documented in detail, however,
+the Example Mod has been updated with its own custom level that
+properly registers itself through the Custom Level system and demonstrates many custom level concepts.
+
+=== Exploration Sink Points Registration
+
+You can now provide a data table for registering items for the Resource Sink to be put on the Exploration track.
+The only base-game item on that track is the Alien DNA Capsule.
+See the Example Mod for an example of how to use this system.

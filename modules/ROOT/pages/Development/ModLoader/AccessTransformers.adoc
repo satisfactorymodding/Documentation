@@ -30,17 +30,12 @@ In order to use Access Transformers, create a file in `YourPluginModReference\Co
 ; You can use semicolons for comments if you want to leave notes about the purpose of an access transformer
 Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
 Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
-BlueprintReadWrite=(Class="AFGSomeClass", Property="mSomeProperty")
-BlueprintCallable=(Class="AFGSomeClass", Function="SomeFunction")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="SomeFunction")
 ----
 
 You can have multiple (or none) of each of the access transformer types in one file,
 but they should all be under the same `[AccessTransformers]` section header.
-
-[NOTE]
-====
-After making changes in this file, you still have to build for Development Editor for the properties you made BlueprintReadWrite and BlueprintCallable to show up in the editor.
-====
 
 == Definitions
 
@@ -58,7 +53,7 @@ This is beneficial when you are trying to access a field and you are not in a cl
 ----
 // Instead of this ...
 SuitCostToUse = Parent->EquipmentParent->mCostToUse;
-// ... use ths
+// ... use this
 SuitCostToUse = Parent->EquipmentParent.GetCostToUse();
 ----
 
@@ -71,6 +66,19 @@ Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access tha
 === BlueprintCallable
 
 Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints (it cannot be added to a non-UFUNCTION function).
+
+== Loading
+
+As of SML3.5.0, BlueprintReadWrite and BlueprintCallable Access Transformers are now applied at runtime,
+meaning you don't need to rebuild {cpp} nor restart your editor the project to apply them.
+As soon as you modify the `.ini` file the editor should pop up with a notice
+informing you that the changes have been applied.
+Check the Output Log for more details.
+If the changes to Blueprint nodes don't appear when you search,
+try checking and then un-checking "Context Sensitive" in the popup for searching for a node,
+and if that doesn't work, try restarting the editor.
+
+Friend and Accessor transformers require rebuilding {cpp} to take effect.
 
 == Disclaimers
 
@@ -110,8 +118,8 @@ Friend=(Class="AFGBuildableConveyorBase", FriendClass="UAACopyBuildingsComponent
 Friend=(Class="AFGBuildableConveyorBase", FriendClass="AAAClearInventories")
 Friend=(Class="AFGHologram", FriendClass="UAACopyBuildingsComponent")
 Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
-BlueprintReadWrite=(Class="AFGSchematicManager", Property="mPurchasedSchematics")
-BlueprintCallable=(Class="IFGDismantleInterface", Function="Dismantle")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGSchematicManager", Property="mPurchasedSchematics")
+BlueprintCallable=(Class="/Script/FactoryGame.FGDismantleInterface", Function="Dismantle")
 ----
 
 === Blueprint Asset Property Tracing Example
@@ -130,5 +138,5 @@ which will make the `mMaxZoopAmount` property on _any asset_ that is a descenden
 [source,ini]
 ----
 [AccessTransformers]
-BlueprintReadWrite=(Class="AFGFoundationHologram", Property="mMaxZoopAmount")
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGFoundationHologram", Property="mMaxZoopAmount")
 ----

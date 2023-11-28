@@ -27,6 +27,12 @@ jobs:
       - name: Build
         run: npm run build:ci
 
+      - id: lychee
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --exclude-all-private --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/**/*.html'
+          fail: true
+
   image:
     name: Image
     runs-on: ubuntu-latest

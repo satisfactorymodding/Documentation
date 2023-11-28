@@ -1,0 +1,18 @@
+= Tags and Tag Search
+
+[WARNING]
+====
+You found a "hidden" docs page!
+This page (and tag search) are not complete yet.
+====
+
+The Satisfactory Mod Repository (ficsit.app) features a tag system to help users find mods relevant to them.
+Example tags include "buildings", "equipment", "quality of life", and "cheats".
+
+You can also search for mods based on tags.
+For example, if you want to find all mods that add new equipment, you can search for the "equipment" tag.
+
+The list of tags is managed by the site moderators to avoid an abundance of low-mod-count tags,
+but you can suggest new tags in the on our Discord server.
+
+Mod developers and site moderators can attach tags to mods on the mod edit page.

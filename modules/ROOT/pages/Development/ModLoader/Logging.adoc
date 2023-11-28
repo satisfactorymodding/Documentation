@@ -17,10 +17,7 @@ By default, the game's logs will be stored in
 `\AppData\Local\FactoryGame\Saved\Logs\FactoryGame.log`.
 
 You can also view the logs live in a terminal as the game is running.
-To view the terminal, check the xref:SMLConfiguration.adoc#_sml_configuration_options[SML Config page]
-and make `consoleWindow` = `true`, which will cause the window to open on game launch.
-
-You can also open the terminal by adding `-log` to the game's launch arguments.
+To view the terminal, add `-log` to the game's launch arguments.
 Learn how to configure launch arguments on the
 xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
 
@@ -93,7 +90,7 @@ Examples:
 
 By default, the game will obey the logging verbosity settings configured by CSS,
 followed by the settings you set in
-`%LOCALAPPDATA%\FactoryGame\Saved\Config\WindowsNoEditor\Engine.ini`
+`%LOCALAPPDATA%\FactoryGame\Saved\Config\Windows\Engine.ini`
 
 With these settings, all mod logging calls will be displayed in the terminal and `FactoryGame.log`.
 
@@ -123,7 +120,7 @@ for example, TODO Arch Example
 
 You can filter which log messages are output via editing your Engine config file.
 
-From: `%LocalAppData%/FactoryGame/Saved/Config/WindowsNoEditor/Engine.ini`
+From: `%LocalAppData%/FactoryGame/Saved/Config/Windows/Engine.ini`
 
 ```ini
 [Core.Log]

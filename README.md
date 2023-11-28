@@ -48,7 +48,7 @@ Remember to [turn off Docker starting with system startup](https://superuser.com
 and to [close Docker after you're done using it](https://www.reddit.com/r/docker/comments/ol11ve/how_to_completely_stop_docker_desktop/).
 It reserves a lot of system memory even when not actively in use.
 
-If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Pallatte,
+If it doesn't automatically prompt you, press Ctrl+Shift+P to open the Command Palette,
 then type "Reopen in Container" and select the option that appears.
 
 The container will automatically serve the built content upon opening for preview in your browser or within VSCode,
@@ -110,6 +110,12 @@ To preview the content, you can open the output HTML files in your browser, ex. 
 
 You can also run `pnpm run serve` which will start a local webserver.
 
+#### Link Checker
+
+The CI will also run the [lychee link checker](https://github.com/lycheeverse/lychee/tree/master) to check for broken links.
+Its reports can be found in the the [Actions tab](https://github.com/satisfactorymodding/Documentation/actions) of the repo.
+You can optionally install the tool yourself if you want to run it locally by following the lychee documentation.
+
 ## Adding Docs for Another Mod
 
 If you'd like, you can write docs for other mods and have them be included on the live site.
@@ -130,8 +136,9 @@ Contact us for more details if you'd like to set this up. The general steps are 
 We typically create new version branches once a new major or minor version of SML has released.
 The goal is to provide a point of reference in the docs for working with older versions.
 
-In order to add a new frozen version branch of the docs...
+In order to add a new frozen version branch of the docs:
 
-1. Create a tag on a commit on the `master` branch following the name format `vX.X.X`, for example, `v3.1.1`
-2. Add the tag name to front of the branches list in `antora-playbook.yml` and `antora-playbook-ci.yml`, after the HEAD item
-3. You're good to go - CI will take care of deploying it for you.
+1. Create a branch on a commit following the name format `vX.X.X`, for example, `v3.1.1`
+2. Add the branch name to the branches list in `antora-playbook.yml` and `antora-playbook-ci.yml`
+3. Edit `antora.yml` on the branch to have a `version` that matches the branch name (instead of `latest`). [Here's](https://gitlab.com/antora/antora/-/issues/496) an explanation of why that needs to happen.
+4. You're good to go - CI will take care of deploying it for you.

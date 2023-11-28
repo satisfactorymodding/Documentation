@@ -1,10 +1,5 @@
 # Importing Another Mod
 
-[NOTE]
-====
-This page is a work in progress.
-====
-
 The modding documentation requires time to update and can only cover so much.
 Looking at other mods' source code is a great way to expand your skillset and learn new things.
 This page will cover how to import another mod into your Starter Project so you can look at it in the editor and tweak it.
@@ -20,7 +15,7 @@ It's still their work, after all!
 ## Packaged Mods versus Source Code
 
 It's important to understand why importing a mod to your project is not as simple as
-downloading the released mod and putting it in your project's plugins directory.
+downloading the released mod and putting it in your project's mods directory.
 
 When a mod is packaged for release, it is compiled into a `.pak` file.
 A Pak is a compressed archive that contains all the mod's code, assets, and other files.
@@ -48,7 +43,7 @@ xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 
 ## Download the Source Code
 
-The next step is to download the mod's source code and place it in your own project's Plugins directory.
+The next step is to download the mod's source code and place it in your own project's Mods directory.
 
 You could their plugin download as a zip and extract it,
 but consider cloning the repository to make it easy to update your copy with future changes to the mod.
@@ -77,7 +72,7 @@ If the mod you're trying to load has a dependency on another mod,
 you will also need to obtain the source code for the dependency mod and import it into your project.
 
 // dedi-docs SMR frontend now displays dependencies on the mod page and you can click to jump to their pages
-You can find out what other mods a mod depends on by looking at the dependencies secton of its `.uplugin` file.
+You can find out what other mods a mod depends on by looking at the dependencies section of its `.uplugin` file.
 
 This section lists other mods by their
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
@@ -194,6 +189,10 @@ xref:Development/UpdatingToNewVersions.adoc#_dealing_with_multiple_mods_in_one_p
 if you need to disable mods while still keeping their files around.
 
 ### Something is Still Wrong
+
+If you get an error when trying to package the mod along the lines of
+"UATHelper: Package Mod Task (Windows): ERROR: System.IO.DirectoryNotFoundException: Could not find a part of the path",
+make sure that the name of the mod folder exactly matches the mod reference.
 
 If you are still encountering issues,
 consider asking for help on the Discord and/or from the mod developer.

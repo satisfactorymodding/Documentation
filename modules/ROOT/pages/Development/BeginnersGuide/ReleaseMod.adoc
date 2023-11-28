@@ -46,7 +46,7 @@ xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[created your mod 
 At that point in the tutorial, we said we'd come back to some fields later, and now is that time.
 
 Although you can find this file in your mod's plugin directory,
-which is your modding project directory's `/Plugins/<mod reference>` folder,
+which is your modding project directory's `/Mods/<mod reference>` folder,
 you should generally edit it within the unreal editor via Alpakit.
 Alpakit will automatically handle the file's formatting for you
 and help to prevent mistakes that would create an invalid uplugin file and be annoying to track down.
@@ -352,7 +352,12 @@ Consider asking on the Discord if you get stuck on this step.
 Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature to move files to the game's folders for testing.
 
 Alpakit will generate a ready to distribute zip-archive for you, located at
-`<project folder>/Saved/ArchivedPlugins/WindowsNoEditor/<mod reference>.zip`.
+`<starter project folder>/Saved/ArchivedPlugins/Windows/<YourModReference/<ModReference>-Windows.zip`.
+
+// TODO dedi-docs will need to upload the combined file
+
+Note that this folder is in the **starter project's Saved folder**,
+not the Saved folder of any of your mods.
 
 This zip contains all of your mod's files, although it does not contain any dependency mods -
 you must specify those via the system described in the link:#_your_mods_uplugin_file[uplugin section].
@@ -378,6 +383,28 @@ If you decide to change it, you'll have to edit a number of files, most of which
 
 == Upload to Satisfactory Mod Repository
 
-Once you're ready to release your mod,
-follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
+Once you're ready to release your mod, you will need to package your mod for uploading. 
+
+////
+dedi-docs
+
+Due to changes for multiple build target support (i.e. dedicated servers), a new set of options has been added for packaging for xref:CommunityResources/AcronymVault.adoc#_satisfactory_mod_repository_smr_aka_ficsit_app[SMR]. 
+
+`Release Targets` is a selection for the `Alpakit Release` function that allows 
+selection of specific build targets for separate mods. (See example below.)
+
+`Windows` - `Requires Shipping - x64 / Shipping|Win64` - Client Version of Satisfactory, not specific to the Windows system.
+`Windows Server` - `Requires Shipping_Server - x64 / Shipping_Server|Win64` - Windows Dedicated Server of Satisfactory.
+`Linux Server` - `Requires Linux_Shipping_Server - Win32 / Linux_Shipping_Server|Linux` - Linux Dedicated Server of Satisfactory.
+
+TODO update with this info from Mircea https://discord.com/channels/555424930502541343/601030071221878784/1128762351915630735
+
+image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
+
+You will then find your packaged file in `<SML Project Folder>\Saved\ArchivedPlugins\<ModReference>` as `<ModReference>.zip`. 
+The `<ModReference>-<TargetType>.zip` are your mod, but in the separate build targets (i.e. `Windows`, `WindowsServer`, `LinuxServer`).
+dedi-docs
+////
+
+Follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
 page to create a modpage and a release.

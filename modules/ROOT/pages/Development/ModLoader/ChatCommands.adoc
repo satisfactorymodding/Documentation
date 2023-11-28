@@ -3,7 +3,7 @@
 SML adds a system allowing you to add your own chat commands.
 It is highly recommended that you use this system as opposed to
 writing your own so that the behavior of chat commands is
-consistnt across different mods.
+consistent across different mods.
 
 == AChatCommandInstance
 
