@@ -2,8 +2,10 @@
 
 [IMPORTANT]
 ====
-If you are updating from SML3.4 to SML3.5, make sure to check out the
-xref:Development/UpdatingFromSml34.adoc[dedicated Updating from SML 3.4.1 guide page] first.
+Make sure to check the docs sidebar to see if there's an Updating guide written for the version you're updating to!
+It will have special directions and information that will save you a lot of time.
+
+They're near the top of the Development section, usually directly above this page's listing.
 ====
 
 When Coffee Stain updates Satisfactory,

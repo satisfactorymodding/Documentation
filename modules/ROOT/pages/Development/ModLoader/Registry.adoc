@@ -62,6 +62,7 @@ You can only register two axis binding pairs.
 One of them should be a keyboard axis and the other a gamepad axis (optional).
 
 == Mod Content Registry
+
 The Mod Content Registry is a xref:Development/ModLoader/Subsystems.adoc[game instance subsystem]
 that manages registration and lifetime of any kind of modded content.
 
@@ -75,6 +76,13 @@ If you don't need any of the dynamic behaviors the Mod Content Registry provides
 you should use properties in your
 xref:Development/ModLoader/ModModules.adoc#_game_world_module_ugameworldmodule[RootGameWorld_YourModReferenceHere]
 module instance instead of calling methods on this object directly.
+
+[IMPORTANT]
+====
+Note that all `UObject*`s used by Mod Content Registry functions and in `FGameObjectRegistration`s
+are actually `UClass*`s (since UClass is a subclass of UObject),
+so you must cast them to UClass first before they can be used.
+====
 
 [WARNING]
 ====

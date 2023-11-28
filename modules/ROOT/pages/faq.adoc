@@ -33,6 +33,15 @@ image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM
 Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
 for the rest of the steps.
 
+[id="Install_Winget"]
+=== With Winget
+
+If you have
+https://learn.microsoft.com/en-us/windows/package-manager/winget/[winget]
+installed you can install the mod manager by running this command in a command prompt:
+
+`winget install SatisfactoryModding.SatisfactoryModManager`.
+
 === Installing Mods
 
 ==== Via the Mod Manager
@@ -117,6 +126,7 @@ editing the file to delete the mod listing, then importing it again.
 == The mod manager can't find my game!
 
 You might see error messages like:
+
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.

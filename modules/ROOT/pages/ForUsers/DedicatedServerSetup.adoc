@@ -1,0 +1,31 @@
+= Installing Mods on Dedicated Servers
+
+TODO write this page (it's hidden from the sidebar for now)
+
+== Install the Vanilla Server
+
+The first step is to obtain a copy of the vanilla dedicated server.
+The Satisfactory Official Wiki already has a
+https://satisfactory.wiki.gg/wiki/Dedicated_servers[detailed guide covering how to do this].
+
+== Install Ficsit-CLI
+
+https://github.com/satisfactorymodding/ficsit-cli
+
+== Import Profile from SMM
+
+Suggest importing a profile you configured locally instead of browsing via the CLI
+since it helps ensure installed versions will match.
+
+== Configuring Mods on Servers
+
+Configure the mod client side and copy the config files over to avoid making syntax mistakes when editing config files.
+Also, some mods could stop working correctly if client and server configs don't match,
+so this is a good way to ensure they match.
+
+Check the xref:faq.adoc#Files_ModConfig[FAQ on where game files are located] to see where config files are stored.
+
+== Third Party Server Hosts
+
+TODO Can we expect them to have ficsit CLI installed?
+Tell people to follow the server provider's instructions for installing mods.

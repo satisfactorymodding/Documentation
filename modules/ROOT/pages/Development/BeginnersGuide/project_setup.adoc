@@ -65,7 +65,12 @@ or you will have to repeat some of the setup process again.
 This is the *latest* version of the docs.
 
 If you want to develop mods for Update 8,
-you should clone the **`master` branch**.
+you should clone either the **`dev` branch`**,
+which will have the latest changes and fixes,
+or the **`master` branch** .
+
+Of those two, you probably want whichever branch was pushed to most recently, which you can see
+https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 ====
 
 If you're still uncertain which to download, ask us on the Discord.
