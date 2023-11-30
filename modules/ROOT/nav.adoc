@@ -63,6 +63,7 @@
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
 *** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
+*** xref:Development/Satisfactory/AbstractInstance.adoc[Abstract Instances]
 *** xref:Development/Satisfactory/Paintable.adoc[Paintable]
 *** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
