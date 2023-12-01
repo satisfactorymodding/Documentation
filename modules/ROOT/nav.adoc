@@ -56,6 +56,7 @@
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
+*** xref:Development/Satisfactory/ItemCrate.adoc[Item Crates]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System]

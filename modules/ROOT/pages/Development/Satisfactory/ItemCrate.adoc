@@ -1,0 +1,22 @@
+= Item Crates
+
+If you dismantle a building and you don't have enough space in your inventory to hold its ingredients and contents,
+Satisfactory will spawn a temporary crate containing those items instead.
+
+You may wish to reuse this functionality for your own purposes in mods.
+
+== Spawning Item Crates
+
+Remember that spawning actors and performing inventory operations
+should be done with authority (server side) in multiplayer.
+
+To spawn an item crate with items from an MInventoryStack array:
+
+1. Spawn actor BP_Crate
+** Make sure to use an "Always Spawns" collision handling option to ensure the crate is always spawned
+2. Call "Set Allow Adding Items" with `true` on the crate actor
+3. Call the FGInventoryLibrary utility function "Get Min Num Slots for Items" with the crate actor and array of items
+4. Get the crate's inventory component and call Resize with the num slots, then call Add Stacks
+5. (Optional) Clear the array of MInventoryStack entries to ensure you don't duplicate them later on accident
+
+image:Satisfactory/ItemCrate/SpawnCrateExample.png[Blueprint code screenshot]
