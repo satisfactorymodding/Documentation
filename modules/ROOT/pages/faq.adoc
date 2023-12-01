@@ -383,8 +383,11 @@ You might see messages like:
 - `error while downloading file [...] Premature close`
 - `Error 3 attempts to download <ModName> failed`
 - `Error: Unexpected error while downloading file connect ETIMEDOUT`
+- `The server aborted pending request`
 
-Your internet speed is likely too slow and the download is being cut off early.
+Something is causing the download to be cut off early.
+It could sometimes be due to your internet speed or interruptions in the connection.
+Mod files are hosted on Backblaze B2 and SML releases are hosted on GitHub.
 Try disabling the mod manager's timeout as shown below.
 
 If that still doesn't work, try
