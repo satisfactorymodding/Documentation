@@ -72,6 +72,7 @@
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
 *** xref:Development/Satisfactory/Clipboard.adoc[Clipboard]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
+*** xref:Development/Satisfactory/ShoppingList.adoc[To-Do/Shopping List]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]

@@ -1,0 +1,40 @@
+= To-Do List and Shopping List
+
+Satisfactory offers players a to-do list to keep track of items to craft and leave notes for themselves and other multiplayer players.
+
+The list is displayed on the right side of the screen when it contains something,
+and players can edit the contents of the list by clicking on the right side of the screen
+from most GUIs (build gun, codex, etc).
+
+== Shopping List
+
+The shopping list portion of the to-do list is a list of items that the player wants to craft.
+Players can manually add items to it from the codex, crafting bench, and buildgun.
+
+The shopping list can hold arbitrary data,
+but the base game seems to have only implemented visualization of Recipes and Blueprints.
+
+Obtain a reference to the player's shopping list via
+the Get Shopping List Component static function of FGShoppingListComponent.
+
+=== Adding and Modifying Entries
+
+[NOTE]
+====
+This functionality has not been tested in multiplayer.
+====
+
+To work with shopping list entries, first call "Get Shopping List Object from Class"
+supplying the class (for example, recipe) you wish to either add or retrieve info for.
+
+If the entry exists, it will be returned as an `FGShoppingListObject_Object`.
+If the entry doesn't exist yet, the function will return false
+and you can create one via Construct Object from Class: `FGShoppingListObject_Class`.
+Use the Shopping List Componenet as the Outer and your class as the mSubclass.
+
+You can then call Get, Set, Increase, or Decrease Amount to modify the values in the list.
+
+== Notes
+
+No documentation has been written yet about interacting with the Notes feature of the list.
+Please add some if you know how to use it.
