@@ -1,6 +1,5 @@
-= Using Satisfactory Mod Manager
+= Installing Mods and Using the Satisfactory Mod Manager
 
-[TIP]
 ====
 Answers to frequent questions and troubleshooting steps for using the Mod Manager
 can be found on the xref:faq.adoc[Frequently Asked Questions] page.
@@ -15,13 +14,71 @@ The Mod Manager handles downloading the right files and putting them in the righ
 so even if you launch the game from outside the Mod Manager (ex. normal Steam/Epic launch)
 mods will still be loaded.
 
+[TIP]
+====
+The Satisfactory Mod Manager (SMM) and Satisfactory Mod Loader (SML) are two different things!
+
+_SMM_ is the app that you download and interact with.
+It downloads files (mods and SML) to where they should go, so that you don't need to deal with them.
+
+_SML_ is the mod loader which provides APIs that mods use to cleanly interact with the game.
+You don't need to do anything for SML - SMM will handle updating it for you!
+====
+
 [id="Installation"]
 == Installing the Mod Manager
 
-Installing the Mod Manager is covered on the
-xref:faq.adoc#_how_do_i_install_mods[Frequently Asked Questions] page.
+1. Launch the game to the title screen at least once on your computer.
+You've probably already done this!
 
-// TODO move those steps here?
+2. Download the Satisfactory Mod Manager.
+You can get it from ficsit.app
+or by clicking https://smm.ficsit.app/[this link], which points to the latest release on GitHub.
+
+3. Go to the heading that matches what operating system you're using and follow the steps below to install it.
+
+** Windows
+*** link:#Install_Win10[Windows 10]
+*** link:#Install_Win11[Windows 11]
+*** link:#Install_Winget[Automatic via Winget]
+** link:#Install_Linux[Linux]
+
+[id="Install_Win10"]
+=== For Windows 10:
+
+image:FAQ/win10_install_smm_guide.png[Steps to install SMM on Windows 10]
+
+Wondering why you get the "unknown publisher" warning?
+Learn more xref:faq.adoc#_are_satisfactory_mods_safe[here].
+
+[id="Install_Win11"]
+=== For Windows 11:
+
+The installation process should be similar to that of Windows 10, but if you encounter a popup like this:
+
+image:FAQ/win11_subtle_block.png[Windows 11 "Search for app in store?" popup for untrusted installers]
+
+Ignore it because it is not correct. Instead, right-click on the installer in your file manager and go to the properties tab.
+
+image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM installer]
+
+Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
+for the rest of the steps.
+
+[id="Install_Linux"]
+=== Linux
+
+The latest Linux build of the mod manager can be downloaded from the
+https://github.com/satisfactorymodding/SatisfactoryModManager/releases/latest/download/Satisfactory-Mod-Manager.AppImage[github releases page].
+
+[id="Install_Winget"]
+=== With Winget
+
+If you have
+https://learn.microsoft.com/en-us/windows/package-manager/winget/[winget]
+installed you can install the mod manager by running this command in a command prompt:
+
+`winget install SatisfactoryModding.SatisfactoryModManager`.
 
 == Detecting your Game Installation Directory
 
@@ -33,30 +90,23 @@ try xref:faq.adoc#_the_mod_manager_cant_find_my_game[following the steps linked 
 
 We do not provide support for pirated copies of the game.
 
-== Finding Mods
-
-=== Via the Mod Manager
-
-Browse the list of available mods by scrolling, or search for a mod with the search bar.
-Click on a mod to open its mod page in an details panel to the side.
-
-If you're looking for new mods to use, make sure that your "Show" dropdown is set to "Compatible".
-
-=== Via ficsit.app
-
-If you prefer to browse mods on the ficsit.app website,
-it's easy to install mods from there too.
-
-Once you're on the page for a mod, click the 'Versions' button in the top right,
-then click the "Install" button near the version you'd like to download.
-// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
-This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
-and handle installing the mod for you.
-
 == Installing Mods
 
-To install a mod, click the download arrow button.
+[TIP]
+====
+If you'd prefer a visual version of the below information,
+check out this **slightly outdated** https://ficsit.app/guide/NG4DD9UhWjMUK[guide].
+====
+
+To install a mod, simply click the download arrow button next to its listing in the Mod Manager.
 After the download completes, it will turn into another icon depending on its compatibility status.
+
+The mod manager handles putting mod files in the relevant locations in your game install.
+**If you launch the game outside of the mod manager,**
+those files will still be in those folders, so **you will still have your mods loaded!**
+
+If you're encountering issues while trying to download mods,
+check the xref:faq.adoc[Frequently Asked Questions] page for common fixes.
 
 == Managing Mods
 
@@ -78,13 +128,15 @@ Here is what each option of the dropdown does:
 
 == Sharing Profiles
 
+The mod manager allows you to export your profile as a file others can import to install the same mods.
 
+image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
+
+If you're looking to share your mods list in a more human-readable format,
+use the "Copy Mods List" option in the settings menu.
 
 == Uninstalling Mods
 
-The mod manager handles putting mod files in the relevant locations in your game install.
-If you launch the game outside of the mod manager,
-those files will still be in those folders, so you will still have your mods loaded.
 If you want to turn off mods, you must disable them **from the mod manager** so the files get removed.
 
 To remove a mod from your system, use the button that has taken the place of the download arrow -
@@ -126,8 +178,14 @@ first install the mod normally.
 Afterwards, a "Mod Version Options" dropdown will appear in the mod description panel.
 Use this dropdown to select the version you want to install.
 
+== Troubleshooting
+
+Answers to frequent questions and troubleshooting steps for using the Mod Manager
+can be found on the xref:faq.adoc[Frequently Asked Questions] page.
+
 == Source Code
 
-The Mod Manager is written in (TODO mention electron+TS here or Go?) and is open source.
+// TODO SMMv3 update the language mentioned here
+The Mod Manager is written in Vue and is open source.
 You can find the source code on
 https://github.com/satisfactorymodding/SatisfactoryModLauncher/releases[GitHub]!

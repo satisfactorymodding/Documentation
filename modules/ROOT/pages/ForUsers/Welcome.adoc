@@ -1,0 +1,80 @@
+= Welcome to the Satisfactory Modding Community
+
+Hello, and welcome to the Satisfactory Modding Community and the ficsit.app mod repository!
+
+Below we'll explain how to find and install mods, as well as how to get help with them.
+
+== Frequently Asked Questions
+
+If you have a question, there's a pretty good chance it has been answered on our
+xref:faq.adoc[FAQ - Frequently Asked Questions] page.
+
+If it's not answered there, or something is unclear, feel free to ask in our
+https://discord.gg/xkVJ73E[Discord server].
+
+== Installing the Mod Manager
+
+To use mods you will need to install the Satisfactory Mod Manager (SMM)
+which takes care of all the configurations at install,
+and is also the best way to get mods working and into the game.
+Learn how to install and use the Mod Manager on the
+xref:ForUsers/SatisfactoryModManager.adoc[Using the Mod Manager] page.
+
+== Discovering New Mods
+
+All Satisfactory mods are uploaded to the Satisfactory Mod Repository (https://ficsit.app/),
+but there's more than one way to peruse the list.
+
+=== Via the Mod Manager
+
+You can browse the list of all available mods directly within your mod manager!
+Make sure that your "Show" dropdown is set to "Compatible".
+Explore the options by scrolling, or search for a specific mod with the search bar.
+Click on a mod to open its mod page in an details panel to the side.
+
+// TODO tags tag search in SMM
+
+=== Via ficsit.app
+
+If you prefer to browse mods on the ficsit.app website,
+it's easy to install mods from there too.
+
+Once you're on the page for a mod, click the 'Versions' button in the top right,
+then click the "Install" button near the version you'd like to download.
+// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
+This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
+and handle installing the mod for you.
+
+== Suggested Mods
+
+In order to experience Satisfactory as the developers intended it,
+we suggest you play the game for a while without mods, unlocking at least
+https://satisfactory.wiki.gg/wiki/Milestones#Tier_6[Tier 6 of the HUB].
+However, since you're here, you're probably not looking to just play the base game!
+// TODO tags mention tags here, will it replace this list?
+If you'd still like to keep the base-game feel and balance,
+we maintain a list of community-recommended mods that don't alter the game's balance much, if at all.
+Check out this  xref:CommunityModLists/QOL.adoc[here].
+
+If you're looking for new experiences, check out the mod repository 
+
+[id="GettingInfoAboutMods"]
+== Getting Info About Mods
+
+It is up to the mod developer to inform you how to use their mod.
+Check the mod's page on ficsit.app for documentation.
+
+Generally, most mods will require you to unlock something in the HUB or MAM before you can use them.
+Mods can be configured from the 'Mods' tab on the main menu,
+or from in-game via the 'Mod Configs' tab on the pause menu.
+
+Some mods will provide a support link, such a documentation site or a Discord join link.
+You can access this from the in-game mods menu via the "Get Support" button.
+Note that the button will not appear if no link is provided by that mod.
+It is likely that the same link is present on the mod's page on ficsit.app.
+
+== Making Your Own Mods
+
+Check out
+xref:index.adoc#_for_developers[this section of the home page]
+for more information.

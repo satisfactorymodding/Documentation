@@ -10,20 +10,25 @@ In this page, we will provide some surface level information for both mod users 
 
 [TIP]
 ====
-If you want to take part in this great community, we recommend you
-join our https://discord.gg/xkVJ73E[Discord Server].
+We suggest you join our https://discord.gg/xkVJ73E[Discord Server]
+to get support and discuss
 ====
 
 == For Users
 
 If you'd like to get started using mods, this section is for you.
 
+=== Welcome Guide
+
+If this is your first time modding Satisfactory,
+check out the xref:ForUsers/Welcome.adoc[Welcome to the Community] guide to get started with mods quickly.
+
 === Satisfactory Mod Repository [.title-ref]#(aka. SMR aka. ficsit.app aka. FICSIT Augmentation Database)#
 
 The Satisfactory Mod Repository (SMR) is the most extensive collection of mods made for Satisfactory.
 It's easy to upload a mod of your own or write a guide for other users.
 Uploaded content is tested for malware and such before it is approved for download.
-Visit https://ficsit.app/[ficsit.app] to learn more.
+Visit https://ficsit.app/[ficsit.app] to see it for yourself!
 
 === Satisfactory Mod Manager [.title-ref]#(aka. SMM)#
 
