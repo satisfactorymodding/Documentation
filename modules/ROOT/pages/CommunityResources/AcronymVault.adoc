@@ -1,6 +1,6 @@
 = Satisfactory Acronym Vault (SAV)
 
-This page exists to helps remember the excessive amount of acronyms used in our community.
+This page exists to help keep track of the arguably excessive amount of acronyms used in our community.
 
 Originally a
 https://github.com/satisfactorymodding/SatisfactoryAcronymVault[GitHub repository of its own],
