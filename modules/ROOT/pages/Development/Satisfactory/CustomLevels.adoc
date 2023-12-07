@@ -1,5 +1,7 @@
 = Custom Levels
 
+Custom Levels
+
 == Overview
 
 Satisfactory Update 8 brings with it a host of new features, and one of those features is the ability to create custom levels.
@@ -8,7 +10,7 @@ Custom levels depend on many assets, all of which will be detailed below, additi
 
 The following will explain the different parts of creating a level, for a guide on how to use these to create your own level, skip to xref::/Development/Satisfactory/CustomLevels.adoc#LevelCreation[Creating a level]
 
-== SMLGameMapData
+== SMLGameMapData [.title-ref]#(SMLGameMapData)#
 
 SML implements a custom blueprint class to use as the base of all custom maps, named SMLGameMapData. This defines all the info required for the game to display the level on the main menu, as well as other info, such as what level the game should open. The fields used to define this info are:
 
@@ -37,7 +39,26 @@ Starting Locations::
 
 The starting locations array, part of the SMLGameMapData asset defines where the player is able to start at.
 
-    TODO: Figure out how to create/add Starting Location objects, and create the array
+* {blank}
++
+Display Name::
+  A field to define the name of the starting location in the location select menu.
+* {blank}
++
+Description::
+  A field to describe the starting location.
+* {blank}
++
+Difficulty::
+  A field to define the how difficult the starting location is. 
+* {blank}
++
+Location Icon::
+  Defines the image to show in the location select menu. Recommended size : 1024px*1024px
+* {blank}
++
+Player Start Tag::
+  A field to define actual starting location. This field needs to be the exact same name as "PlayerStart" actor has. Will explain at xref::/Development/Satisfactory/CustomLevels.adoc#AddStartingLocation[here]
 
 == Creating a Level [.title-ref]#(LevelCreation)#
 
@@ -51,14 +72,103 @@ To begin, open the new copied folder, and open the SMLGameMapData asset, which, 
 
 Next, open the GameMapAsset, and change the following fields.
 
-Map Asset to match the new Level file you have inside your mods plugin. After you do this, change the Map Name to the name you would like to show inside the game, then set the Map Description to the description you would like to show in game, then set the Map Icon to an icon you would like (the recommended image size to use for the Map Icon is 1024x1024). After which, set the Starting Location array by doing the following:
+Map Asset to match the new Level file you have inside your mods plugin. After you do this, change the Map Name to the name you would like to show inside the game, then set the Map Description to the description you would like to show in game, then set the Map Icon to an icon you would like (the recommended image size to use for the Map Icon is 1024x1024). After which, set the Starting Location array by doing the xref::/Development/Satisfactory/CustomLevels.adoc#SMLGameMapData[SMLGameMapData]
 
-    TODO: Starting Location Array Guide
+Next, create GameInstanceModule. Then set GameMapData to "World"->"Game Maps" section. Don't forget check Root Module too.
 
 Once these steps are done, you should be good to go! Simply Alpakit your mod into the game, and open the New Game tab, and, assuming everything was done correctly, you should have your custom map.
+
+[IMPORTANT]
+====
+You need to re-set some of the references in the assets one by one, due to we copied from Example mod.
+====
+
+== Adding Starting location [.title-ref]#(AddStartingLocation)#
+
+To add new starting location, Open "Window"->"Level Editor"->"Place Actor". Then Search "Player Start" in search bar.
+
+You will see "Player Start", drag and drop it into Viewport window, place wherever you want.
+When you look closer to "Player Start", you will see skyblue arrow. This arrow indicates where player will look when it spawned.
+
+Select placed "Player Start", In Details tab, you will see "Object"->"Player Start Tag". Put the name then go back to xref::/Development/Satisfactory/CustomLevels.adoc#SMLGameMapData[SMLGameMapData] and put your "Player Start Tag" name to SMLGameMapData's "Player Start Tag" field.
 
 == Adding Objects To a Custom Level
 
 If you have a custom level loading, odds are you want some objects in there, this list details how to do just that.
 
-To add items, simply open the Blueprints/ folder. This should be included with the folder you copied from the Example Mod. Then, find what you want to place, in this case, let's do an ore node, which would be Blueprints/Node_ExampleDynamic, and drag it where you want on the map. While it might not look right in the Editor, it will be replaced with the proper model and texture in the game.
+To add items, use Place Actor window or manually drag and drop from Content Browser. Let's place an ore node. To add this, simply go to /Content/FactoryGame/Resource/BP_ResourceNode, and drag it onto your level. It won't quite look right in editor, but when loaded at runtime, it will automatically be replaced with the right model, and textures.
+
+Or If you want to see actual model, search "ManuallyPlacedIronNode" in Outliner window, then duplicate it. You need to change StaticMesh and Materials.
+
+After you place the node, you can select it in the viewport (it doesn't have any model, so you might have to use the World Hierarchy instead), then on the side in the details panel you can set all the properties, such as what the node produces, the node purity, or how much it can produce. 
+
+== Level Blueprint
+
+There is a special blueprint tied to Level. To open Level Blueprint, Look for blueprint icon in top area, then you will find it in drop down.
+
+	TODO: Add Gif or Image here.
+
+In the blueprint, there are blueprint nodes from Example mod. Those nodes will not work, due to we havn't change reference from Example mod. Highly recommended to unlink node after "BuildEffectsPostProcessVolume" set enabled.
+
+	TODO: check MapManager needs to disable.
+
+
+== MiniMap Setup
+
+As you try open Minimap(M) in game, game will crash. To avoid this crash, you need to set mMinimapCaptureActor field.
+
+Open "Window"->"World Settings" window. Scroll down to find "Minimap" section. Search "BP_MinimapCaptureActor" in Outliner window then assign it to that field. Now you can open minimap in the game.
+
+As you open minimap, you will see origiinal map in custom level. To change map texture, you need to change /Content/FactoryGame/Interface/UI/Minimap/Widget_Map->mMap->Appearance->Brush->Image material.  figure it by yourself. It is too much to descrive how to imprement that in here.
+
+[NOTE]
+====
+Currently, we cannot change Map Coordinate. Player and other icon will be in corner, due to there is no way to tell system to set coordinate. It is confirmed by CSS.
+====
+
+== Known Issues / Quick Answer some questions
+
+* {blank}
++
+There are info icon in example map. But How do I get info?::
+  Select info actor then see Details window. There is "Help Documentation" section and there should be help sentence. Hover mouse on field to read them all.
+* {blank}
++
+Where is Oil node mesh?::
+  Make it by yourself. You need to use decal material, not Static mesh.
+* {blank}
++
+No Green Effect from Gas pillar?::
+  No idea how to setup it. More research needs.
+* {blank}
++
+Crab hatcher doesn't detect player!::
+  Don't forget to change Sphere Radius field in CharacterDetection under Char_CrabHatcher.
+* {blank}
++
+I don't see any actual model in my editor::
+  Check xref::/CommunityResources/AssetToolkit.adoc[Asset Toolkit]
+* {blank}
++
+There is no music!::
+  Yes. we can't play wwise audio.
+* {blank}
++
+Creatures don't spawn / move!::
+  Do not fotget to increase area of NavMeshBoundsVolume.
+* {blank}
++
+My map looks so terrible::
+  Learn how to design level from original game.
+* {blank}
++
+Lumen is not on!::
+  Need resarch how to apply video settings to post process volume.
+* {blank}
++
+There is no stars in the night!::
+  Yes. You need to add stars somehow.
+
+== World Partition System
+
+	TODO: Needs resarch how to use it.
