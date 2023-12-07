@@ -37,6 +37,7 @@
 *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 *** xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project]
 
+
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/debugging.adoc[Debugging]
@@ -59,6 +60,7 @@
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
 *** xref:Development/Satisfactory/ItemCrate.adoc[Item Crates]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
+*** xref:Development/Satisfactory/CustomLevels.adoc[Custom Levels]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
