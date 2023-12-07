@@ -250,7 +250,7 @@ and in order to develop mods,
 you'll need to install and integrate Wwise with your mod project,
 even if you do not plan to modify sounds.
 
-Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
+Visit https://www.audiokinetic.com/en/products/wwise/[Wwise] and click on the
 `+Get Started+` -> `+Download Wwise+` button in the upper right corner.
 Click the download button, which will ask you to sign in.
 Create an account if you don't have one yet, or sign in, to download the launcher.
