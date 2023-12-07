@@ -1,7 +1,7 @@
 = Custom Levels
 
-
-Satisfactory Update 8 brings with it a host of new features, and one of those features is the ability to create custom levels.
+Features introduced in SML3.5.0 and Satisfactory Update 8
+make it much easier to create custom game levels.
 
 Custom levels depend on many assets, all of which will be detailed below, additionally, an example can be found within the ExampleMod included in the SML project.
 
@@ -110,7 +110,7 @@ There is a special blueprint tied to Level.
 This is a good place to run level-specific setup code.
 To view and edit the Level Blueprint, open it with the dedicated button in the top bar's Blueprints button.
 
-	TODO: Add Gif or Image here.
+image:Development/CustomLevels/OpenLevelBlueprint.png[Open Level Blueprint button]
 
 In the blueprint, there are blueprint nodes from Example mod. Those nodes will not work, due to we haven't change reference from Example mod. Highly recommended to unlink node after "BuildEffectsPostProcessVolume" set enabled.
 
