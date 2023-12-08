@@ -19,7 +19,9 @@ exclude = [
     # Don't check edit links for the docs itself (randomly 403s but also why check these anyways)
     "https://github.com/satisfactorymodding/Documentation/edit/",
     # Don't check license links at the bottom of pages, seems to frequently "Failed: Network error: unexpected EOF"
-    "https://www.gnu.org/"
+    "https://www.gnu.org/",
+    # This is a valid page but still 404s for some reason
+    "https://www.audiokinetic.com/en/download/"
 ]
 
 # Exclude these filesystem paths from getting checked.
