@@ -3,89 +3,222 @@
 Features introduced in SML3.5.0 and Satisfactory Update 8
 make it much easier to create custom game levels.
 
-Custom levels depend on many assets, all of which will be detailed below, additionally, an example can be found within the ExampleMod included in the SML project.
+Custom levels depend on too many assets and systems to succinctly summarize here,
+so this page will cover the most important topics.
 
-The following will explain the different parts of creating a level, for a guide on how to use these to create your own level, skip to xref:Development/Satisfactory/CustomLevels.adoc#LevelCreation[Creating a level]
+[TIP]
+====
+Be sure to check out the Example Level included in the Starter Project's ExampleMod.
+====
+
+== Custom Level Data
+
+SML provides a framework for registering alternative levels with the game in order to avoid conflicts between mods.
+This section covers the assets involved in registering your custom level.
+
+You don't need to create any of the assets mentioned in this section yet,
+a tutorial on how to do so is provided later on the page.
+
+=== Unreal Engine Level Asset
+
+Custom levels are backed by Unreal Engine Level assets.
+The Creating a Level section below will cover how to create a level asset.
 
 [id="SMLGameMapData"]
-== SMLGameMapData
+=== SMLGameMapData
 
-SML implements a custom blueprint class to use as the base of all custom maps, named SMLGameMapData. This defines all the info required for the game to display the level on the main menu, as well as other info, such as what level the game should open. The fields used to define this info are:
+SML provides a data asset for holding data about your custom level for SML's main menu changes to use.
+Although it's technically possible to have a custom level without this,
+you must code some other way to transport the user to the level if you don't use SML's systems.
+
+The tutorial later on the page will have you copy an existing one for your use,
+but if you ever need to create a new one, you can do so by right clicking in a Content Browser then using
+Create Advanced Asset -> Miscellaneous -> Data Asset then search for `SMLGameMapData`.
 
 * {blank}
 +
 Map Asset::
-  A drop down to select the level you created.
+  A drop down to select the level asset you created.
 * {blank}
 +
 Map Name::
-  A field to define the name of the level as it should show in the main menu.
+  The user-friendly name of the level for display in the main menu.
 * {blank}
 +
 Map Description::
-  This field determins the map description as it should show in the main menu.
+  The map description to display in the main menu.
 * {blank}
 +
 Map Icon::
-  Defines the image to show for the map in the main menu.
+  The image to display for the map in the main menu.
 * {blank}
 +
 Starting Locations::
-  Created as an array, this defines the different possible locations the pioneer can spawn in. Refer to the Defining Spawn Points section on how to use this array.
+  Defines the different possible locations the pioneer can spawn in.
+  See the below section for more info.
 
-== Starting Locations Array
+==== Starting Locations Array
 
-The starting locations array, part of the SMLGameMapData asset defines where the player is able to start at.
+The starting locations array defines where the player is able to start at.
 
 * {blank}
 +
 Display Name::
-  A field to define the name of the starting location in the location select menu.
+  User-friendly name of the starting location in the location select menu.
 * {blank}
 +
 Description::
-  A field to describe the starting location.
+  User-facing description providing info/lore for this starting location.
 * {blank}
 +
 Difficulty::
-  A field to define the how difficult the starting location is. 
+  Flavor text describing the challenge of playing in this starting location.
 * {blank}
 +
 Location Icon::
-  Defines the image to show in the location select menu. Recommended size : 1024px*1024px
+  The image to display in the location select menu.
+  Recommended size : 1024px*1024px
 * {blank}
 +
 Player Start Tag::
-  A field to define actual starting location. This field needs to be the exact same name as "PlayerStart" actor has. Will explain at xref:Development/Satisfactory/CustomLevels.adoc#AddStartingLocation[here]
+  Links this information to an actual starting location.
+  This field needs to be the exact same name as a "PlayerStart" placed in your level.
+  Defining player starts in the level is explained xref:Development/Satisfactory/CustomLevels.adoc#AddStartingLocation[here].
+
+=== Game Instance Module
+
+Register your Game Map data asset with SML by listing it in the Game Maps field on your 
+xref:Development/ModLoader/ModModules.adoc[Game Instance Module].
 
 [id="LevelCreation"]
 == Creating a Level
 
-This section is meant to be closer to a tutorial on implementing everything mentioned on this page to add your own level.
+This section provides an overview on getting a basic level set up and packaged with your mod.
+It assumes you already have a functioning mod created by following the
+xref:Development/BeginnersGuide/index.adoc[Getting Started Guide].
 
-The process of creating a level is fairly simple, with these docs meant to guide you through, using the info above as reference.
+=== Copying the Example Level with the Unreal Migration Tool
 
-The first step to creating a level is, of course, creating a level, not to be confused with creating a level, of course.
-The recommended way to do this would be to open the Example Mod folder, and copy the Maps folder into your own plugin,
-which you can then modify. The docs will assume, from this point, that is what you did.
+Because there are a lot of "gotchas" in the process of setting up a custom level,
+we highly recommend you copy the existing Example Level from the Starter Project's ExampleMod
+as opposed to creating a level from scratch.
+Copying the Example Level as a starting point avoids many confusing error states and mistakes.
 
-To begin, open the new copied folder, and open the SMLGameMapData asset, which, when copied will posses the name GameMapAsset_ExampleLevel. Renaming this asset, as well as the ExampleLevel asset is highly recommended, to avoid confusion with the original files from the Example Mod folder.
+Copying an Unreal asset results normally in the copy pointing back to the same assets it was previously referencing.
+This is usually a good thing, but not what we want right now when copying the Example Level.
+If we used the standard method of copying files,
+we would end up with a level that still references all of the Example Mod's assets,
+meaning that if the Example Mod was not installed, parts of your level would no longer work.
 
-Next, open the GameMapAsset, and change the following fields.
+In order to avoid this we'll be using the Migrate Asset action.
+Navigate to the Example Mod's content folder in your editor and find the _game map data asset_ for the example level
+(`/ExampleMod/Maps/ExampleLevel/GameMapAsset_ExampleLevel`) - notably NOT the level asset itself.
+Right click on it, then go to the Asset Actions dropdown and select `Migrate...`, which will cause a popup to open.
+This popup's default settings include more assets than we want to copy, so we'll have to narrow it down.
 
-Map Asset to match the new Level file you have inside your mods plugin. After you do this, change the Map Name to the name you would like to show inside the game, then set the Map Description to the description you would like to show in game, then set the Map Icon to an icon you would like (the recommended image size to use for the Map Icon is 1024x1024). After which, set the Starting Location array by doing the xref:Development/Satisfactory/CustomLevels.adoc#SMLGameMapData[SMLGameMapData]
+Uncheck anything that is outside of the the `/ExampleMod/Maps/` directory.
+When you're done, it'll look like this:
 
-Next, create GameInstanceModule. Then set GameMapData to "World"->"Game Maps" section. Don't forget check Root Module too.
+image:Development/CustomLevels/AssetMigrator.png[Screenshot of Asset Migrator popup with unwanted content deselected]
 
-Once these steps are done, you should be good to go! Simply Alpakit your mod into the game, and open the New Game tab, and, assuming everything was done correctly, you should have your custom map.
+Press `Ok` to be taken to a system file browser window.
+Navigate to your mod's Content folder and press Select Folder to continue.
+If everything worked correctly, you should now have a `/Maps/ExampleLevel` folder in your mod's content folder
+and copies of assets referenced by the Example Level.
+You may need to relaunch your editor for them to appear.
 
-[IMPORTANT]
+Check to make sure that the migrated assets are correctly referencing your mod's content and not ExampleMod's.
+You can do this by right clicking on your version of the Example Level and selecting `Reference Viewer...`,
+then hovering over any of the items in the first branch level to the right of the Level in the viewer.
+The path should start with your own mod reference and not `/ExampleMod/`.
+
+image:Development/CustomLevels/CorrectReferenceViewer.png[Screenshot of a correctly migrated level in the Reference Viewer]
+
+=== Renaming Your Assets
+
+You should start to rename your copied versions of the assets to avoid
+the game (and you) from getting confused about which level assets are which.
+At the very least, rename the following assets:
+
+- The folder in your mod containing the copied level assets to something like `YourModReferenceLevel`.
+- The level asset, ExampleLevel, to something like `YourModReferenceLevel`.
+- The Game Map Data asset, GameMapAsset_ExampleLevel, to something like `GameMapAsset_YourModReferenceLevel`.
+
+=== Setting Up your Game Map Asset
+
+The migration process already created a Game Map Data asset for you
+(it's one of the files you just renamed in the last step).
+
+Open it up and configure it to your liking.
+The purpose of each field is described in
+xref:Development/Satisfactory/CustomLevels.adoc#SMLGameMapData[this section].
+
+If you don't already have a
+xref:Development/ModLoader/ModModules.adoc[Game Instance Module], create one now and mark it as the root module.
+Then add your level's Game Map data asset to the Game Maps field.
+
+=== Opening the Level in the Editor
+
+You can open your level in the editor by double clicking on the level asset.
+You can fly around the level in a viewport editor with the usual editor camera controls.
+Making changes to the level will be covered in later sections.
+
+[NOTE]
 ====
-You need to re-set some of the references in the assets one by one, due to we copied from Example mod.
+Since we do not have a complete set of game code
+it's not possible to use the "Play In Editor" editor feature to test your custom level.
+
+Note that this feature may still partially work in a few some situations,
+but it poses a high risk of crashing your editor,
+so save often if you want to try and use it.
+====
+
+[id="ReadDocumentationActors"]
+=== Reading Documentation Actors
+
+You may discover some floating spinning question mark actors in the level when flying around in the editor.
+These Documentation Actors only appear in the editor are originally intended for opening UE documentation links.
+However, the Example Level repurposes them to leave "comments" about features in the level.
+Clicking their "Open Help Documentation" button will open a 404 page in the UE docs because this is not their purpose.
+
+In order to view the comment, select the actor in the level then look at the Details window.
+Scroll down to the "Help Documentation" section and view the "Document Link" text field to read the comment.
+You can also hover over the field to get a tooltip containing the full comment text.
+
+=== Editing the Level Blueprint
+
+Each game level has a special blueprint called the Level Blueprint.
+This is a good place to run level-specific setup code.
+To view and edit the Level Blueprint, open it with the dedicated button in the top bar's Blueprints button.
+
+image:Development/CustomLevels/OpenLevelBlueprint.png[Open Level Blueprint button]
+
+Since you copied the example level, there is already some code in here.
+Some of it is required to prevent the game from crashing when the player enters
+and some of is from the example level's custom functionality - read the comments to learn more.
+
+Making changes to the level will be covered in later sections.
+
+=== Testing It Out
+
+You should now be able to test your level in the game.
+It should look and behave exactly like the Example Level since we haven't changed anything yet.
+Make sure all assets are saved then package your mod with Alpakit and launch the game.
+Open the New Game tab, and, assuming everything was done correctly, your custom map should appear as an option you can load into.
+
+== Adding Level Content
+
+This section covers additional features you may want to add to your level.
+
+[TIP]
+====
+Learn how to use non-Satisfactory-specific features of the Level Editor in
+https://docs.unrealengine.com/5.0/en-US/level-editor-in-unreal-engine/[Unreal Engine's own documentation]
+and videos online.
 ====
 
 [id="AddStartingLocation"]
-== Adding Starting location
+=== Adding Starting Locations
 
 To add new starting location, Open "Window"->"Level Editor"->"Place Actor". Then Search "Player Start" in search bar.
 
@@ -94,7 +227,7 @@ When you look closer to "Player Start", you will see skyblue arrow. This arrow i
 
 Select placed "Player Start", In Details tab, you will see "Object"->"Player Start Tag". Put the name then go back to xref:Development/Satisfactory/CustomLevels.adoc#SMLGameMapData[SMLGameMapData] and put your "Player Start Tag" name to SMLGameMapData's "Player Start Tag" field.
 
-== Adding Objects To a Custom Level
+=== Adding Objects To a Custom Level
 
 If you have a custom level loading, odds are you want some objects in there, this list details how to do just that.
 
@@ -104,20 +237,12 @@ Or If you want to see actual model, search "ManuallyPlacedIronNode" in Outliner 
 
 After you place the node, you can select it in the viewport (it doesn't have any model, so you might have to use the World Hierarchy instead), then on the side in the details panel you can set all the properties, such as what the node produces, the node purity, or how much it can produce. 
 
-== Level Blueprint
+=== MiniMap Setup
 
-There is a special blueprint tied to Level.
-This is a good place to run level-specific setup code.
-To view and edit the Level Blueprint, open it with the dedicated button in the top bar's Blueprints button.
-
-image:Development/CustomLevels/OpenLevelBlueprint.png[Open Level Blueprint button]
-
-In the blueprint, there are blueprint nodes from Example mod. Those nodes will not work, due to we haven't change reference from Example mod. Highly recommended to unlink node after "BuildEffectsPostProcessVolume" set enabled.
-
-	TODO: check MapManager needs to disable.
-
-
-== MiniMap Setup
+[TIP]
+====
+The Example Level already has the minimap capture actor set up so you won't crash when loading in.
+====
 
 As you try open Minimap(M) in game, game will crash. To avoid this crash, you need to set mMinimapCaptureActor field.
 
@@ -130,13 +255,12 @@ As you open minimap, you will see original map in custom level. To change map te
 Currently, we cannot change Map Coordinate. Player and other icon will be in corner, due to there is no way to tell system to set coordinate. It is confirmed by CSS.
 ====
 
-
 == Troubleshooting
 
 * {blank}
 +
 There are info icon in example map. But How do I get info?::
-  Select info actor then see Details window. There is "Help Documentation" section and there should be help sentence. Hover mouse on field to read them all.
+  See the link:#ReadDocumentationActors[Reading Documentation Actors section].
 * {blank}
 +
 Where is Oil node mesh?::
@@ -173,7 +297,18 @@ Lumen is not on!::
 +
 There is no stars in the night!::
   Yes. You need to add stars somehow.
+* {blank}
++
+The sky is dark and I crash a few seconds after loading into the level!::
+  Make sure your Project Settings have FGWorldSettings as the World Settings Class.
 
 == World Partition System
 
-	TODO: Needs resarch how to use it.
+The World Partition system introduced in Unreal Engine 5 is the suggested method for making large levels.
+The base game uses this for its own level and was a notable factor in Coffee Stain's decision to move to UE5.
+
+Interfacing with the World Partition System is also the ideal way of adding level-like content (such as new ore nodes, terrain, or foliage) to the game.
+
+Unfortunately it is not yet possible to interact with the World Partition system with the current modding toolkit.
+Getting this working requires changes on both the Coffee Stain and SML sides of things.
+Ask on Discord to learn more about the current state of this feature.
