@@ -35,13 +35,11 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            foreach (var file in Directory.EnumerateFiles(LibFolder, "*.lib"))
-                PublicAdditionalLibraries.Add(file);
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.lib"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            foreach (var file in Directory.EnumerateFiles(LibFolder, "*.a"))
-                PublicAdditionalLibraries.Add(file);
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.a"));
         }
     }
 }
@@ -82,13 +80,11 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            foreach (var file in Directory.EnumerateFiles(LibFolder, "*.lib"))
-                PublicAdditionalLibraries.Add(file);
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.lib"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            foreach (var file in Directory.EnumerateFiles(LibFolder, "*.a"))
-                PublicAdditionalLibraries.Add(file);
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.a"));
         }
 
         RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.dll")); // Windows
