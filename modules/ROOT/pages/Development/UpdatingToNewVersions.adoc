@@ -561,10 +561,13 @@ You'll want to do the following things:
      you should increment the Major number and reset the Minor and Patch numbers back to 0.
      (Example: `1.9.3` to `2.0.0`)
    - More info can be found on the xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod] page.
-3. Update the minimum versions of your mod's dependencies.
+3. Update the version range of your mod's dependencies.
    For example, every mod depends on SML, and the version of SML it depends on determines what game versions it is considered compatible with.
    Find the latest SML version number by checking its Alpakit Edit Mod wizard in your editor
    or by checking the https://ficsit.app/sml-versions[SML releases page].
+   You probably want to be using the caret range specifier here (ex. `^3.6.1`)
+   whose functionality is described in the
+   xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Plugins > SemVersion section of the Releasing Your Mod page].
 4. Follow the directions on the
    xref:UploadToSMR.adoc#_uploading_a_version[Uploading your Mod to SMR]
    page to release the update

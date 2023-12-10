@@ -172,7 +172,7 @@ you are listing as a dependency.
 This field is required.
 
 !SemVersion
-! Version number for the mod dependency.
+! Version range specifier for this dependency mod.
 Should follow https://semver.org/[semver] format.
 You can prefix the version number with a comparison operator to allow a range of versions.
 // According to Mircea, this site does not work correctly
@@ -274,7 +274,7 @@ Example Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.4.1",
+			"SemVersion": "^3.6.1",
 			"Enabled": true
 		},
 		{
@@ -318,7 +318,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.4.1",
+			"SemVersion": "^3.6.1",
 			"Enabled": true
 		},
 		{
