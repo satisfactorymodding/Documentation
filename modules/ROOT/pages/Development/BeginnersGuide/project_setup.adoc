@@ -329,6 +329,15 @@ you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step
 Make sure that your project folder is not stored in a folder path that contains unicode characters.
 Review the directions in the link:#_starter_project[Starter Project] section.
 
+===== Entire computer locks up while compiling
+
+The fix for this rare but troublesome issue seems to vary for each person that encounters it.
+Try the following:
+
+- Disable hardware graphics acceleration in your Visual Studio settings
+- Downgrade to Visual Studio 2019
+- Check your system for RAM and GPU issues
+
 ==== Something Else
 
 If you run into a problem that isn't described above,
