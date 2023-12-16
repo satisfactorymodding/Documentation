@@ -13,14 +13,15 @@ If this is the case,
 the game will prevent you from modifying them mid-game
 and explain this in the hover tooltip for the configuration option.
 
-Note that some mods may not have any configuration options at all,
-or may manage them in another mannger.
+Note that some mods may not offer any configuration options,
+or may manage them in another manner.
 If so, it is up to the mod developer to communicate this information to you.
 Try checking the mod's page on ficsit.app for more information.
 
 === Configuration file location
 
 The xref:faq.adoc#Files_ModConfig[FAQ] covers where mod configuration files are stored.
+You should not normally need to edit these files directly.
 
 == Mod Savegame Settings
 

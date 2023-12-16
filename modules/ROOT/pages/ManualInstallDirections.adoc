@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-We highly suggest you follow the directions xref:faq.adoc#_how_do_i_install_mods[on the FAQ] to use mods and SML instead,
+We highly suggest you follow the directions xref:ForUsers/SatisfactoryModManager.adoc[here] to use mods and SML instead,
 since it vastly simplifies the process of installing, testing, and using mods.
 
 If you're a mod developer, you should still strongly consider using the launcher.

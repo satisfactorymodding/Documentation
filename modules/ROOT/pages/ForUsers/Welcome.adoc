@@ -56,7 +56,9 @@ If you'd still like to keep the base-game feel and balance,
 we maintain a list of community-recommended mods that don't alter the game's balance much, if at all.
 Check out this  xref:CommunityModLists/QOL.adoc[here].
 
-If you're looking for new experiences, check out the mod repository 
+If you're looking for new experiences, check out the mod repository!
+There's a lot of options to choose from.
+// TODO tags , and you can filter by tags to find mods that suit your playstyle.
 
 [id="GettingInfoAboutMods"]
 == Getting Info About Mods

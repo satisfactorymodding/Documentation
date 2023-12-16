@@ -1,5 +1,12 @@
 = Installing Mods on Dedicated Servers
 
+[IMPORTANT]
+====
+If you're seeing this message, that means this page is not complete yet!
+This warning will be removed once dedicated server support is actually complete.
+Expect mistakes and inaccuracies until then.
+====
+
 TODO write this page (it's hidden from the sidebar for now)
 
 == Install the Vanilla Server

@@ -3,26 +3,30 @@
 Features introduced in SML3.5.0 and Satisfactory Update 8
 make it much easier to create custom game levels.
 
-Custom levels depend on too many assets and systems to succinctly summarize here,
-so this page will cover the most important topics.
+Custom levels depend on too many assets and systems to succinctly summarize here
+so this page will instead cover the most important topics to getting one started.
 
 [TIP]
 ====
 Be sure to check out the Example Level included in the Starter Project's ExampleMod.
 ====
 
+The link:#CustomLevelData[Custom Level Data section] explains some of the assets involved in creating a custom level.
+
+The link:#LevelCreation[Level Creation section] is a walkthrough on creating a basic custom level.
+
+[id="CustomLevelData"]
 == Custom Level Data
 
 SML provides a framework for registering alternative levels with the game in order to avoid conflicts between mods.
 This section covers the assets involved in registering your custom level.
 
-You don't need to create any of the assets mentioned in this section yet,
-a tutorial on how to do so is provided later on the page.
+
 
 === Unreal Engine Level Asset
 
 Custom levels are backed by Unreal Engine Level assets.
-The Creating a Level section below will cover how to create a level asset.
+The link:#LevelCreation[Creating a Level section] covers how to create a level asset.
 
 [id="SMLGameMapData"]
 === SMLGameMapData
@@ -209,6 +213,8 @@ Open the New Game tab, and, assuming everything was done correctly, your custom 
 == Adding Level Content
 
 This section covers additional features you may want to add to your level.
+It's still a work in progress,
+please contact us on the Discord or use the Edit This Page feature if you have suggestions.
 
 [TIP]
 ====
@@ -248,7 +254,9 @@ As you try open Minimap(M) in game, game will crash. To avoid this crash, you ne
 
 Open "Window"->"World Settings" window. Scroll down to find "Minimap" section. Search "BP_MinimapCaptureActor" in Outliner window then assign it to that field. Now you can open minimap in the game.
 
-As you open minimap, you will see original map in custom level. To change map texture, you need to change /Content/FactoryGame/Interface/UI/Minimap/Widget_Map->mMap->Appearance->Brush->Image material.  figure it by yourself. It is too much to descrive how to implement that in here.
+As you open minimap, you will see original map in custom level. To change map texture, you need to change
+`/Content/FactoryGame/Interface/UI/Minimap/Widget_Map`->mMap->Appearance->Brush->Image material
+using a xref:Development/BeginnersGuide/overwriting.adoc#_use_cdo_manipulation[CDO].
 
 [NOTE]
 ====

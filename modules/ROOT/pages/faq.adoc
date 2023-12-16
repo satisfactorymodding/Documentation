@@ -97,7 +97,7 @@ It's completely unnecessary for normal operation, and not worth it to pay for it
 But rest assured, this community created Satisfactory Mod Manager from scratch.
 We all use it. Provided you only download it from
 https://smm.ficsit.app/
-or its https://github.com/satisfactorymodding/SatisfactoryModManager/releases[github releases page]
+or its https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page]
 we can assure you it is safe.
 You can find the source code for it here: https://github.com/satisfactorymodding/SatisfactoryModManager
 

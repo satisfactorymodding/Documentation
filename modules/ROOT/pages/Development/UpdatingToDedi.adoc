@@ -4,6 +4,7 @@
 ====
 If you're seeing this message, that means this page is not complete yet!
 This warning will be removed once dedicated server support is actually complete.
+Expect mistakes and inaccuracies until then.
 ====
 
 This is a condensed guide for Dedicated Server Support, these instructions, either in exact or similar form, are present in the normal setup documentation.
@@ -18,7 +19,8 @@ TODO turn this into Updating To SML37
 You must modify your Wwise install to include the Linux deployment platform
 and re-integrate Wwise into the project.
 
-The steps for modifying your Wwise install can be found link:https://www.audiokinetic.com/en/library/wwise_launcher/?source=InstallGuide&id=unity_unreal_integrations_plugins[on the Wwise documentation].
+The steps for modifying your Wwise install can be found
+link:https://www.audiokinetic.com/en/library/wwise_launcher/?source=InstallGuide&id=unity_unreal_integrations_plugins[on the Wwise documentation].
 
 == Clang Toolchain for Linux Dedicated Server Support
 
