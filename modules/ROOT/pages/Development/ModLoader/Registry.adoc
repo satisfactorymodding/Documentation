@@ -82,6 +82,9 @@ module instance instead of calling methods on this object directly.
 Note that all `UObject*`s used by Mod Content Registry functions and in `FGameObjectRegistration`s
 are actually `UClass*`s (since UClass is a subclass of UObject),
 so you must cast them to UClass first before they can be used.
+
+In blueprint, use the "Cast to Class" node with the class of `Class`.
+In C++, use `Cast<UClass>(theThing)` or `const_cast` depending on the use case.
 ====
 
 [WARNING]

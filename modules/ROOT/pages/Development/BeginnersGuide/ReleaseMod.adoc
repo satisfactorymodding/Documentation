@@ -351,7 +351,9 @@ Consider asking on the Discord if you get stuck on this step.
 
 Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature to move files to the game's folders for testing.
 
-Using 'Alpakit Dev' or the 'Alpakit!' (just this mod) buttons generate a zip archive for you located at
+Using 'Alpakit Selected!' or the 'Alpakit!' (just this mod) buttons generate a zip archive for you located at
+// dedi-docs
+// Using 'Alpakit Dev' or the 'Alpakit!' (just this mod) buttons generate a zip archive for you located at
 `<starter project folder>/Saved/ArchivedPlugins/Windows/YourModReference/YourModReference-Windows.zip`.
 
 Note that this folder is in the **starter project's Saved folder**,
