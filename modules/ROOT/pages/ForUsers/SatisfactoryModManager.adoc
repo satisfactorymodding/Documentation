@@ -188,4 +188,4 @@ can be found on the xref:faq.adoc[Frequently Asked Questions] page.
 // TODO SMMv3 update the language mentioned here
 The Mod Manager is written in Vue and is open source.
 You can find the source code on
-https://github.com/satisfactorymodding/SatisfactoryModLauncher/releases[GitHub]!
+https://github.com/satisfactorymodding/SatisfactoryModManager[GitHub]!

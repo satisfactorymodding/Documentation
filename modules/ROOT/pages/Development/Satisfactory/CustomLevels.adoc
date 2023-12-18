@@ -243,68 +243,61 @@ Or If you want to see actual model, search "ManuallyPlacedIronNode" in Outliner 
 
 After you place the node, you can select it in the viewport (it doesn't have any model, so you might have to use the World Hierarchy instead), then on the side in the details panel you can set all the properties, such as what the node produces, the node purity, or how much it can produce. 
 
-=== MiniMap Setup
+=== Minimap Setup
 
 [TIP]
 ====
 The Example Level already has the minimap capture actor set up so you won't crash when loading in.
 ====
 
-As you try open Minimap(M) in game, game will crash. To avoid this crash, you need to set mMinimapCaptureActor field.
+As you try open Minimap(M) in game, game will crash.
+To avoid this crash, assign a mMinimapCaptureActor in the World Settings.
 
-Open "Window"->"World Settings" window. Scroll down to find "Minimap" section. Search "BP_MinimapCaptureActor" in Outliner window then assign it to that field. Now you can open minimap in the game.
+Open "Window"->"World Settings" window.
+Scroll down to find "Minimap" section. Search "BP_MinimapCaptureActor" in Outliner window then assign it to that field.
 
-As you open minimap, you will see original map in custom level. To change map texture, you need to change
+The minimap will still display an image of the base game's map by default.
+To change map texture, you need to change
 `/Content/FactoryGame/Interface/UI/Minimap/Widget_Map`->mMap->Appearance->Brush->Image material
 using a xref:Development/BeginnersGuide/overwriting.adoc#_use_cdo_manipulation[CDO].
 
 [NOTE]
 ====
-Currently, we cannot change Map Coordinate. Player and other icon will be in corner, due to there is no way to tell system to set coordinate. It is confirmed by CSS.
+We are not sure how to adjust the map's coordinate system yet.
+As a result, all player, vehicle, etc. icons will appear packed in one corner of the map.
 ====
 
 == Troubleshooting
 
 * {blank}
 +
-There are info icon in example map. But How do I get info?::
-  See the link:#ReadDocumentationActors[Reading Documentation Actors section].
+Where is the Oil node mesh?::
+  Oil nodes use a decal instead of a mesh.
 * {blank}
 +
-Where is Oil node mesh?::
-  Make it by yourself. You need to use decal material, not Static mesh.
+Gas Pillars don't visually emit clouds::
+  This is a known bug that we're not sure how to fix yet.
 * {blank}
 +
-No Green Effect from Gas pillar?::
-  No idea how to setup it. More research needs.
+Crab hatchers don't detect the player::
+  Don't forget to assign a value to the Sphere Radius field in CharacterDetection under Char_CrabHatcher.
 * {blank}
 +
-Crab hatcher doesn't detect player!::
-  Don't forget to change Sphere Radius field in CharacterDetection under Char_CrabHatcher.
+All of the models in the editor appear as white cubes::
+  Follow the directions on the xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit] page to generate a complete starter project.
 * {blank}
 +
-I don't see any actual model in my editor::
-  Check xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit]
+No music is played::
+  We aren't sure how to trigger music in custom levels yet, especially since we don't have access to most Wwise systems.
+  Try using ambient volumes.
 * {blank}
 +
-There is no music!::
-  Yes. we can't play wwise audio.
+Creatures don't spawn or move!::
+  Increase the area of the NavMeshBoundsVolume, or add one if it doesn't exist yet.
 * {blank}
 +
-Creatures don't spawn / move!::
-  Do not forget to increase area of NavMeshBoundsVolume.
-* {blank}
-+
-My map looks so terrible::
-  Learn how to design level from original game.
-* {blank}
-+
-Lumen is not on!::
-  Need resarch how to apply video settings to post process volume.
-* {blank}
-+
-There is no stars in the night!::
-  Yes. You need to add stars somehow.
+Lumen is not working!::
+  We are not sure how to get Lumen working in custom levels yet.
 * {blank}
 +
 The sky is dark and I crash a few seconds after loading into the level!::

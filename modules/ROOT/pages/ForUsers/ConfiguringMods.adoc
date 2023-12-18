@@ -5,7 +5,7 @@ There are two primary ways that mods offer configuration options:
 
 == Mod Configuration Options
 
-Most using the SML Configuration System can have their configuration edited in-game
+Mods using the SML Configuration System can have their configuration edited in-game
 via the "Mods" button on the main menu and pause menu.
 
 Some mod configuration options can only be edited from the main menu.
