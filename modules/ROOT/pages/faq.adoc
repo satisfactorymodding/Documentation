@@ -272,6 +272,26 @@ On Epic:
 
 image:FAQ/EpicVerifyIntegrity.png[Epic screenshot]
 
+== The mod manager can't download any mods
+
+You might see messages like:
+
+// cspell:words ETIMEDOUT
+- `error while downloading file [...] Premature close`
+- `Error 3 attempts to download <ModName> failed`
+- `Error: Unexpected error while downloading file connect ETIMEDOUT`
+- `The server aborted pending request`
+
+Something is causing the download to be cut off early.
+It could sometimes be due to your internet speed or interruptions in the connection.
+Mod files are hosted on Backblaze B2 and SML releases are hosted on GitHub.
+Try disabling the mod manager's timeout as shown below.
+
+If that still doesn't work, try
+link:#_why_is_the_mod_manager_downloading_slowly_or_failing_to_download[this approach instead].
+
+image:FAQ/SmmDisableDownloadTimeout.png[Timeout disable screenshot]
+
 == Why is the mod manager downloading slowly, or failing to download?
 
 You might see error messages like:
@@ -293,26 +313,6 @@ otherwise, place the file into
 `%localappdata%\SatisfactoryModManager\downloadCache\mods`.
 
 You can also try using a proxy or VPN.
-
-== The mod manager can't download any mods
-
-You might see messages like:
-
-// cspell:words ETIMEDOUT
-- `error while downloading file [...] Premature close`
-- `Error 3 attempts to download <ModName> failed`
-- `Error: Unexpected error while downloading file connect ETIMEDOUT`
-- `The server aborted pending request`
-
-Something is causing the download to be cut off early.
-It could sometimes be due to your internet speed or interruptions in the connection.
-Mod files are hosted on Backblaze B2 and SML releases are hosted on GitHub.
-Try disabling the mod manager's timeout as shown below.
-
-If that still doesn't work, try
-link:#_why_is_the_mod_manager_downloading_slowly_or_failing_to_download[this approach instead].
-
-image:FAQ/SmmDisableDownloadTimeout.png[Timeout disable screenshot]
 
 == How can I troubleshoot crash issues?
 
