@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-We highly suggest you follow the directions xref:index.adoc[here] to use mods and SML instead,
+We highly suggest you follow the directions xref:ForUsers/SatisfactoryModManager.adoc[here] to use mods and SML instead,
 since it vastly simplifies the process of installing, testing, and using mods.
 
 If you're a mod developer, you should still strongly consider using the launcher.
@@ -97,3 +97,5 @@ Information for downloading SMM can be found xref:index.adoc[on the docs homepag
 Dedicated servers do not yet support mods.
 Join the https://discord.gg/xkVJ73E[Discord Server] if you want to follow or contribute to development progress.
 This section of the docs will be updated when that changes.
+
+// dedi-docs xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]

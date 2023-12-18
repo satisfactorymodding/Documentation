@@ -2,8 +2,10 @@
 
 [IMPORTANT]
 ====
-If you are updating from SML3.4 to SML3.5, make sure to check out the
-xref:Development/UpdatingFromSml34.adoc[dedicated Updating from SML 3.4.1 guide page] first.
+Make sure to check the docs sidebar to see if there's an Updating guide written for the version you're updating to!
+It will have special directions and information that will save you a lot of time.
+
+They're near the top of the Development section, usually directly above this page's listing.
 ====
 
 When Coffee Stain updates Satisfactory,
@@ -457,9 +459,10 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 - Asking for help on the Discord
 
 3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping
-4. Install the updated version of SML in your copy of the game
-5. Open the Unreal Engine Editor for your project
-6. Run Alpakit on your mod
+4. Open the Unreal Engine Editor for your project
+5. Run Alpakit on SML to install the latest version of SML in your copy of the game, or install it via SMM.
+   Problems in your own project files could prevent packaging from succeeding - if you encounter any, see Step 7.
+6. Run Alpakit on your mod to see what fails (or maybe it works the first time!)
 7. Deal with errors that Alpakit finds. Possible problems include:
 
 - Blueprints that 'just' need to be opened and recompiled
@@ -533,6 +536,41 @@ xref:Development/UnrealEngine/CoreRedirect.adoc#_using_core_redirects_in_the_edi
 in order to tell Unreal about the location of the new parent class,
 which may make make it possible to open the asset in the editor again.
 See the linked page for more details.
+
+== Releasing An Update
+
+Once your mod is updated and you've done sufficient testing,
+it's time to release an update to the Mod Repository.
+
+You'll want to do the following things:
+
+1. Write up patch notes for the update.
+   This should mention any new features, bugfixes, or changes to existing features
+   introduced by this version.
+2. Update the sem version number in your mod's uplugin file.
+   You can do this from the Alpakit Edit Mod wizard.
+   Remember, this number is in the `Major.Minor.Patch` format.
+   In general, follow these rules to decide what your new version number should be:
+   - You should not go "backwards" in total version number. For example, don't release `1.1.0` after releasing `1.2.0`
+   - If this update is only fixing bugs, you should increment only the Patch number.
+     (Example: `1.2.9` to `1.2.10`)
+   - If this update adds new features and is not likely to break compatibility with other mods,
+     you should increment the Minor number and reset the Patch number back to 0.
+     (Example: `1.9.3` to `1.10.0`)
+   - If the update is a significant rewrite or certainly breaks compatibility with other mods,
+     you should increment the Major number and reset the Minor and Patch numbers back to 0.
+     (Example: `1.9.3` to `2.0.0`)
+   - More info can be found on the xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod] page.
+3. Update the version range of your mod's dependencies.
+   For example, every mod depends on SML, and the version of SML it depends on determines what game versions it is considered compatible with.
+   Find the latest SML version number by checking its Alpakit Edit Mod wizard in your editor
+   or by checking the https://ficsit.app/sml-versions[SML releases page].
+   You probably want to be using the caret range specifier here (ex. `^3.6.1`)
+   whose functionality is described in the
+   xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Plugins > SemVersion section of the Releasing Your Mod page].
+4. Follow the directions on the
+   xref:UploadToSMR.adoc#_uploading_a_version[Uploading your Mod to SMR]
+   page to release the update
 
 == You're (Hopefully) Done
 

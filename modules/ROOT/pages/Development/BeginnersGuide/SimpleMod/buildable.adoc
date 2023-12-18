@@ -95,9 +95,13 @@ Check in both the Buildable's mesh component the mesh's own settings that the co
 
 === Building doesn't appear in the build gun
 
-- Make sure the FGBuildingDescriptor has a category and sub-category set
-- Make sure `BP_BuildGun` is in the producers list of the FGRecipe
-- Make sure that you have purchased a schematic that unlocks the recipe you defined for your building
+- Make sure all of your mod files are saved before packaging the mod.
+- Make sure the FGBuildingDescriptor has a category and sub-category set.
+  Without one, the build gun doesn't know where to display it and it will only appear when directly searched for.
+- Check that `BP_BuildGun` is in the producers list of the FGRecipe.
+- Ensure the recipe is in the Unlock array of a schematic you have created.
+- Ensure the schematic unlocking the recipe is listed in your root Game World Module.
+- Check that you have purchased the schematic in-game.
 
 === Crash when selecting the building in the build gun
 

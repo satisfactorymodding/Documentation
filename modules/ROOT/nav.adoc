@@ -1,9 +1,15 @@
 * xref:index.adoc[Introduction]
 * xref:faq.adoc[FAQ - Frequently Asked Questions]
-* xref:SMLConfiguration.adoc[SML Configuration]
 * xref:SMLChatCommands.adoc[SML Commands]
 * xref:ManualInstallDirections.adoc[Manual Installation]
-* xref:UploadToSMR.adoc[Uploading to SMR]
+
+* Playing with Mods
+
+** xref:ForUsers/Welcome.adoc[Welcome to the Community]
+** xref:ForUsers/SatisfactoryModManager.adoc[Installing and Using the Mod Manager]
+** xref:ForUsers/ConfiguringMods.adoc[Configuring Mods]
+// TODO tags ** xref:ForUsers/Tags.adoc[Tags and Tag Search]
+// dedi-docs TODO ** xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
 
 * xref:Development/index.adoc[Development]
 
@@ -31,6 +37,7 @@
 *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 *** xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project]
 
+
 ** xref:Development/Cpp/index.adoc[C++ Modding]
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/debugging.adoc[Debugging]
@@ -51,13 +58,16 @@
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
+*** xref:Development/Satisfactory/ItemCrate.adoc[Item Crates]
 *** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
+*** xref:Development/Satisfactory/CustomLevels.adoc[Custom Levels]
 *** xref:Development/Satisfactory/Schematic.adoc[Schematic]
 *** xref:Development/Satisfactory/EnhancedInputSystem.adoc[Enhanced Input System]
 *** xref:Development/Satisfactory/FactoryTick.adoc[Factory Tick]
 *** xref:Development/Satisfactory/FactoryConnectors.adoc[Factory-Connectors]
 *** xref:Development/Satisfactory/PowerNetwork.adoc[Power-Network]
 *** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
+*** xref:Development/Satisfactory/AbstractInstance.adoc[Abstract Instances]
 *** xref:Development/Satisfactory/Paintable.adoc[Paintable]
 *** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
 *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
@@ -65,6 +75,7 @@
 *** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
 *** xref:Development/Satisfactory/Clipboard.adoc[Clipboard]
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
+*** xref:Development/Satisfactory/ShoppingList.adoc[To-Do/Shopping List]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
@@ -80,6 +91,7 @@
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
+*** xref:SMLConfiguration.adoc[SML Configuration]
 
 *** Legacy
 **** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
@@ -90,6 +102,8 @@
 ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
 ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
 ** xref:Development/OpenSourceExamples.adoc[Learning from Open Source Mods]
+
+** xref:UploadToSMR.adoc[Uploading your Mod to SMR]
 
 * xref:CommunityResources/index.adoc[Community Resources]
 ** xref:CommunityResources/AcronymVault.adoc[Acronym Vault]

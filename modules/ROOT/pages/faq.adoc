@@ -9,76 +9,11 @@ Is there a question you see asked a lot and would like to see it here?
 Feel free to discuss them on the https://discord.gg/xkVJ73E[Discord Server],
 or add them yourself via the 'Edit this Page' button in the top right.
 
+[id="Installation"]
 == How do I install mods?
 
-The first step is to download the Satisfactory Mod Manager.
-You can get it from ficsit.app, or by clicking https://smm.ficsit.app/[here].
-
-To install it, follow the steps below:
-
-=== For Windows 10:
-
-image:FAQ/win10_install_smm_guide.png[Steps to install SMM on Windows 10]
-
-=== For Windows 11:
-
-The installation process should be similar to that of Windows 10, but if you encounter a popup like this:
-
-image:FAQ/win11_subtle_block.png[Windows 11 "Search for app in store?" popup for untrusted installers]
-
-Ignore it because it is not correct. Instead, right-click on the installer in your file manager and go to the properties tab.
-
-image:FAQ/smm_installer_properties_unblock.png[The properties window for the SMM installer]
-
-Click the "Unblock" box and hit OK or Apply. Then try running it again, and it should work. Refer to the above illustration
-for the rest of the steps.
-
-=== Installing Mods
-
-==== Via the Mod Manager
-
-After you've installed the Mod Manager, you can use it to seamlessly browse and install mods.
-It will automatically detect your game installation,
-and if you have multiple, you can pick between them with the "Install" dropdown.
-
-Browse the list of available mods by scrolling, or search for a mod with the search bar.
-Click on a mod to open its mod page in an details panel to the side.
-
-To install a mod, click the download arrow button.
-After the download completes, it will turn into another icon depending on its compatibility status.
-
-To uninstall a mod, use the button that has appeared instead of the download arrow -
-it will turn into a trash can when you hover over it.
-Alternatively, click the Play button to "Pause" the mod,
-preventing it from loading with the game but still keeping the files downloaded on your computer.
-This can be useful for troubleshooting.
-
-You can use the "Show" dropdown to filter what mods are displayed.
-Here is what each option of the dropdown does:
-
-- `Compatible` will only display mods that are compatible with your selected game install's branch (Early Access or Experimental).
-  **This is the suggested mode to keep the Manager in when searching for new mods to use.**
-  Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
-- `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
-- The `Enabled` option will show all mods that will load when you launch the game.
-  These mods are here either because you have manually chosen to install them,
-  or because they were automatically installed as requirements of other mods.
-  You can Pause these mods to keep them from loading when you launch the game.
-- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
-- The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
-- `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
-  A mod being favorited has no relation to whether or not it is installed.
-
-==== Via ficsit.app
-
-If you prefer to browse mods on the ficsit.app website,
-it's easy to install them from there too.
-
-Once you're on the page for a mod, click the 'Versions' button in the top right,
-then click the "Install" button near the version you'd like to download.
-// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
-This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
-and handle installing the mod for you.
+See the directions on xref:ForUsers/SatisfactoryModManager.adoc[here] to install Satisfactory Mod Manager
+and use it to install mods.
 
 == How do I turn off mods?
 
@@ -117,6 +52,7 @@ editing the file to delete the mod listing, then importing it again.
 == The mod manager can't find my game!
 
 You might see error messages like:
+
 - `No Satisfactory Installs Found`
 
 SMM queries the APIs of the Epic and Steam game store apps to determine where your game is.
@@ -159,27 +95,20 @@ The certificate costs hundreds per year.
 It's completely unnecessary for normal operation, and not worth it to pay for it.
 
 But rest assured, this community created Satisfactory Mod Manager from scratch.
-We all use it. Provided you only get it via https://smm.ficsit.app/ we can assure you it is safe.
+We all use it. Provided you only download it from
+https://smm.ficsit.app/
+or its https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page]
+we can assure you it is safe.
 You can find the source code for it here: https://github.com/satisfactorymodding/SatisfactoryModManager
 
 == How do I use <insert mod name here>?
 
-It is up to the mod developer to inform you how to use their mod.
-Check the mod's page on ficsit.app for documentation.
-
-Generally, most mods will require you to unlock something in the HUB or MAM before you can use them.
-Mods can be configured from the 'Mods' tab on the main menu,
-or from in-game via the 'Mod Configs' tab on the pause menu.
-
-Some mods will provide a support link, such a documentation site or a Discord join link.
-You can access this from the in-game mods menu via the "Get Support" button.
-Note that the button will not appear if no link is provided by that mod.
-It is likely that the same link is present on the mod's page on ficsit.app.
+See the xref:ForUsers/Welcome.adoc#GettingInfoAboutMods[welcome guide].
 
 == Do mods work with Experimental?
 
 **If a major update has recently released to Experimental, there's a good chance NO mods will work on the Experimental branch!**
-**Check the Discord's Announcements for more up-to-date status information.**
+**Check the Discord's #announcements channel for more up-to-date status information.**
 
 It is up to the mod developer to support Satisfactory's experimental branch.
 Check the mod's page on ficsit.app, or the mod manager extended details, for support.
@@ -246,7 +175,7 @@ just quit the game without saving and launch the game with your mods, your conte
 == How do I make my own mod?
 
 Check out
-xref:index.adoc#_for_developers[this section of the main page]
+xref:index.adoc#_for_developers[this section of the home page]
 for more information.
 
 == How do I share my mods with my friends for multiplayer?
@@ -284,6 +213,13 @@ Mods are stored in the link:#Files_GameInstall[game install directory] under `Fa
 === Save Files
 
 See link:#_how_do_i_backup_my_save_files[Backing Up Save Files]
+
+[id="Files_Blueprints"]
+=== Blueprint Designer Files
+
+Check out the https://satisfactory.wiki.gg/wiki/Blueprint_Designer#Save_Location[Official Wiki's information on Blueprint Designer files].
+
+Remember that the folder may not exist if you haven't created a blueprint yet.
 
 [id="Files_GameConfig"]
 === Game Configuration Files
@@ -366,8 +302,11 @@ You might see messages like:
 - `error while downloading file [...] Premature close`
 - `Error 3 attempts to download <ModName> failed`
 - `Error: Unexpected error while downloading file connect ETIMEDOUT`
+- `The server aborted pending request`
 
-Your internet speed is likely too slow and the download is being cut off early.
+Something is causing the download to be cut off early.
+It could sometimes be due to your internet speed or interruptions in the connection.
+Mod files are hosted on Backblaze B2 and SML releases are hosted on GitHub.
 Try disabling the mod manager's timeout as shown below.
 
 If that still doesn't work, try

@@ -1,0 +1,51 @@
+= Configuring Mods
+
+There are two primary ways that mods offer configuration options:
+**Mod Configuration Options** and **Mod Savegame Settings**.
+
+== Mod Configuration Options
+
+Mods using the SML Configuration System can have their configuration edited in-game
+via the "Mods" button on the main menu and pause menu.
+
+Some mod configuration options can only be edited from the main menu.
+If this is the case,
+the game will prevent you from modifying them mid-game
+and explain this in the hover tooltip for the configuration option.
+
+Note that some mods may not offer any configuration options,
+or may manage them in another manner.
+If so, it is up to the mod developer to communicate this information to you.
+Try checking the mod's page on ficsit.app for more information.
+
+=== Configuration file location
+
+The xref:faq.adoc#Files_ModConfig[FAQ] covers where mod configuration files are stored.
+You should not normally need to edit these files directly.
+
+== Mod Savegame Settings
+
+xref:Development/ModLoader/SessionSettings.adoc[Mod Savegame Settings]
+are special type of configuration option that only apply to a single game file,
+similar to the base game's https://satisfactory.wiki.gg/wiki/Advanced_Game_Settings[Advanced Game Settings].
+
+You can set Mod Savegame Settings when creating a new save file on the main menu
+or via the "Mod Savegame Settings" entry in the pause menu.
+
+=== Mod Savegame Setting file location
+
+Mod Savegame Settings values are stored inside the save file as part of the Map Travel URL,
+so they can not be edited externally without third party tools.
+
+No third party tools are currently known to support editing Mod Savegame Settings.
+
+== Writing a Patch Mod
+
+If you'd like to change something about a mod that you can't configure,
+you might be able to write a mod of your own to make that change.
+
+For example, it's fairly straightforward to create or change a recipe using
+xref:Development/BeginnersGuide/overwriting.adoc#_use_a_library_mod[various community-created libraries.]
+
+Check out the modding xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
+to learn how to make your own mods.

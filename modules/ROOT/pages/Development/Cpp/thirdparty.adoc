@@ -35,13 +35,11 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.lib"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.a"));
         }
     }
 }
@@ -82,13 +80,11 @@ public class <third_party>Library : ModuleRules
         var LibFolder = Path.Combine(ModuleDirectory, "lib", PlatformName);
         if (Target.Platform == UnrealTargetPlatform.Win64)
         {
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party1>.lib"));
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "<third_party2>.lib")); // If the third party library is composed of multiple .lib files
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.lib"));
         }
         else if (Target.Platform == UnrealTargetPlatform.Linux)
         {
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party1>.a"));
-            PublicAdditionalLibraries.Add(Path.Combine(LibFolder, "lib<third_party2>.a")); // If the third party library is composed of multiple .a files
+            PublicAdditionalLibraries.AddRange(Directory.EnumerateFiles(LibFolder, "*.a"));
         }
 
         RuntimeDependencies.Add("$(BinaryOutputDir)", Path.Combine(LibFolder, "*.dll")); // Windows

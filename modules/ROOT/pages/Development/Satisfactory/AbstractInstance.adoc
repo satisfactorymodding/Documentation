@@ -1,0 +1,44 @@
+= Abstract Instance
+
+Coffee Stain created the Abstract Instance system
+as a way to reduce the amount of UObjects that static buildings take up and improve performance.
+The base game uses this system for walls, foundations, and more,
+with plans to expand it according to Ben.
+
+The abstract instance system can be used for any building component that doesn't require gameplay interaction,
+and Ben states that almost everything that is static can utilize the system, in theory.
+
+[id="WorkWithAbstractInstances"]
+== Working with Abstract Instances
+
+Since Abstract Instances work differently from other actors,
+you may need to adapt your code to respond to and interact with them.
+For example, if you perform a Line Trace for Actors and hit an abstract instance,
+the hit actor will be the Abstract Instance Manager,
+which is a singleton that manages all abstract instances,
+instead of the building itself.
+
+In order to get the actual building from the hit result,
+you must call the Abstract Instance Manager's "Resolve Hit" method,
+supplying the hit structure from the trace (or whatever else you're using).
+
+[id="CreateAbstractInstanceBuildings"]
+== Creating Your Own Abstract Instances
+
+You can make use of the abstract instance system for your own modded buildings to improve performance.
+
+In order to set up your buildable for abstract instances,
+edit the following properties on your buildable:
+
+1. Enable `mCanContainLightweightInstances`
+2. Add an Abstact Instance Data Object to `mInstanceData`
+3. Create a new array element in the data object
+4. Set the Static Mesh accordingly
+5. Set `Num Custom Data Floats` to 20
+
+A building can have multiple abstract instance meshes via multiple array elements.
+You may also find the following properties useful:
+
+* Use Relative Transform to apply a transform this specific mesh relative to the overall building.
+* If the building has no components set `mContainsComponents` on the buildable to false
+* The "apply random offset" properties can be used to mitigate z-fighting issues when multiple copies of the building overlap.

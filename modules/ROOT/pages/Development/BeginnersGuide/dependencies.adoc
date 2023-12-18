@@ -87,7 +87,8 @@ or work on some of the other install steps below.
 ====
 An alternative to Visual Studio which is very popular among {cpp} modders is
 https://www.jetbrains.com/lp/rider-unreal/[Rider for Unreal Engine].
-If you consider using it, make sure you still have the necessary VS-{cpp} packages installed,
+If you consider using it, make sure you still have Visual Studio and the necessary VS-{cpp} packages installed,
+as they are used by Unreal's own compiler systems,
 and make sure to use the `.sln` project model.
 ====
 
@@ -96,14 +97,16 @@ dedi-docs
 == Clang Toolchain for Linux Dedicated Server Support
 
 Satisfactory's dedicated servers typically run on Linux.
-Cross-compiling from Windows to Linux requires the compatible version of Unreal Engine specific CLang Toolchain to be installed prior to building for Linux Dedicated Servers.
+Cross-compiling from Windows to Linux requires
+the compatible version of Unreal Engine specific CLang Toolchain to be installed
+prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for 
-https://docs.unrealengine.com/5.0/en-US/linux-development-requirements-for-unreal-engine/[Cross-Compiling for Linux].
+https://docs.unrealengine.com/5.2/en-US/linux-development-requirements-for-unreal-engine/#versionhistory[Cross-Compiling for Linux].
 
 Currently, Satisfactory uses Unreal Engine 5.2.x with custom changes provided by Coffee Stain Studios.
-Therefore, the toolchain version required is `-v21` or `clang-15.0.1-based`.
+Therefore, the Cross-Compile Toolchain version required is `-v21` or `clang-15.0.1-based`.
 
-Download the toolchain from the link above and run it to install the relevant files.
+Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
 dedi-docs
 ////
@@ -249,13 +252,12 @@ and in order to develop mods,
 you'll need to install and integrate Wwise with your mod project,
 even if you do not plan to modify sounds.
 
-Visit https://www.audiokinetic.com/products/wwise/[Wwise] and click on the
-`+Get Started+` -> `+Download Wwise+` button in the upper right corner.
-Click the download button, which will ask you to sign in.
-Create an account if you don't have one yet, or sign in, to download the launcher.
-After you finished downloading Wwise, open the installer.
+Visit https://www.audiokinetic.com/en/download/[Wwise] and click on the
+`+Download Audiokinetic Launcher+` button.
+Clicking the button will probably redirect you to a sign in page.
+Create an account if you don't have one yet, or sign in, to download and run the installer.
 
-After the installer is complete it should open the Wwise launcher for you.
+After the installer is complete it should open the launcher for you.
 In the launcher, select `WWISE` from the sidebar.
 Click the `Latest` drop-down and change it to `All`.
 Select `2022.1` from the next dropdown.
@@ -333,8 +335,18 @@ This is the *latest* version of the docs.
 
 Early Access and Experimental are currently both the same version - Update 8.
 
-You should download from the *latest release*, which an be found at
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[this link]
+You should download a zip either of the **`dev` branch`**,
+which will have the latest changes and fixes,
+or the **`master` branch** .
+
+Of those two, you probably want whichever branch was pushed to most recently, which you can see
+https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+
+If you choose to download the `dev` branch, click
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
+
+If you choose to download the `master` branch, click
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
 ====
 
 If you're still uncertain which to download, ask us on the Discord.
