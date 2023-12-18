@@ -381,7 +381,9 @@ once you release your mod, you can no longer change its Mod Reference.
 
 If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
 
-== Upload to Satisfactory Mod Repository
+
+[id="PackageForUpload"]
+== Package for Release
 
 Once you're ready to release your mod, you will need to package your mod for uploading. 
 
@@ -404,6 +406,8 @@ This time you'll want to use the 'Alpakit Release' button.
 Using 'Alpakit Release' will generate a different zip for you in the same folder called `YourModReference.zip`
 that contains all of the selected targets in one file ready to be uploaded to SMR.
 ////
+
+== Upload to Satisfactory Mod Repository
 
 Follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
 page to create a modpage and a release.

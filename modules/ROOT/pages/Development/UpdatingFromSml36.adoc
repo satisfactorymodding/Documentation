@@ -1,0 +1,185 @@
+= Upgrading from SML 3.6.x to 3.7.x
+
+[IMPORTANT]
+====
+If you're seeing this message, that means this page is not complete yet!
+This warning will be removed once dedicated server support is actually complete.
+Expect mistakes and inaccuracies until then.
+====
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.7 brings the first round of features required for dedicated server support
+and introduces a few useful utilities.
+
+**Mods compiled for SML3.6 should™ still work when SML3.7 is installed**,
+but **they will only work for the Windows Client target** (the game client and host-and-play multiplayer).
+Mods that wish to support dedicated servers must be updated and recompiled with the new packaging settings described on this page.
+
+First, please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== Have You Updated to Update 8.1 Yet?
+
+If you are updating your mod **directly from Update 7 (SML 3.4.x) to Update 8**,
+there are more steps to follow and more changes you should be aware of.
+Make sure to read the
+xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1] guide
+and xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.5.1] guide
+first!
+
+[IMPORTANT]
+====
+Remember to not install the new engine until you have made a backup copy of the engine files, and Starter Project,
+as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] tutorial!
+====
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Decal_Normal Broken on Modded Parts using Mesh Proxies
+
+Mesh proxies past the first instance may not render correctly.
+This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
+You can work around this for the time being by using a default masked material.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Understanding Alpakit Changes
+
+Alpakit's user interface has been expanded to support the additional requirements of working with dedicated servers.
+Most UI element now have detailed tooltips explaining their purpose and providing example values.
+
+==== New Launch Game Type: Custom
+
+The new 'Custom' Launch Type allows you to
+define a system command for the Unreal Automation Tool to execute after a successful pack.
+This could be used to launch the game with specific command line arguments,
+load directly into a specific save file, launch additional programs,
+or anything else you wish to write into a script.
+
+Check the 'Testing' page on the modding docs for example scripts to call with this feature.
+Example value: `C:\Git\SF_ModProject\RobWorkingDir\Auto_Exp_LoadLatest.bat`
+
+==== Alpakit Dev and Alpakit Release
+
+Alpakit now offers separate buttons for packaging for dev (your own testing) and release (for distribution)
+to avoid wasting your time compiling and packaging targets that you don't plan to use in your testing.
+
+The 'Alpakit Selected' button has been split into two:
+
+- 'Alpakit Dev' - packages only targets you have Enabled in your Dev Packaging Settings.
+- 'Alpakit Release' - packages only the targets you have checked in the Release Targets column.
+
+The 'Alpakit!' (just this mod) button follows the same settings as the Alpakit Dev button.
+
+==== Building Shipping For You
+
+As of SML3.5, Alpakit is capable of building Shipping {cpp} code for you while the editor is open.
+This becomes more relevant with the introduction of more targets for dedicated servers.
+
+You show now only need to build the Development Editor Win64 target from Visual Studio,
+then Alpakit will handle building Shipping targets for you as needed.
+
+=== Dedicated Server Dependencies
+
+You will have to install some additional tooling for dedicated server compilation to work correctly.
+
+==== New Engine Version
+
+Although a new engine version is something you should always be looking out for as per the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide],
+we are drawing special attention to it here.
+
+The latest custom engine version adjusts how {cpp} files are packaged for Linux servers.
+
+You are probably safe to skip making a backup of your past engine version for this update
+because there have been no base-game engine changes since SML 3.6.1.
+
+==== New Wwise Deployment Platform
+
+You must modify your Wwise install to include the `Linux` deployment platform
+and re-integrate Wwise into the project.
+
+The steps for modifying your Wwise install can be found
+link:https://www.audiokinetic.com/en/library/wwise_launcher/?source=InstallGuide&id=unity_unreal_integrations_plugins[in the Wwise documentation].
+You only need to **add the `Linux` platform** -
+note that the Wwise documentation is generalized and does not have it checked in their screenshots.
+
+[IMPORTANT]
+====
+Make sure to not accidentally update your Wwise version
+or install any additional Wwise plugins
+in the process of adding the deployment platform!
+You don't need them and it'll waste disk space.
+====
+
+You will defintely need to re-integrate Wwise into the project after making this modification
+as covered on the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== Clang Toolchain
+
+Cross-compiling from Windows to Linux requires
+the compatible version of Unreal Engine specific Clang Toolchain to be installed.
+
+Installing the Clang toolchain is covered in the
+xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies] guide.
+
+==== Configuring Release Targets
+
+You must tell Alpakit which release targets you wish to compile your mod for.
+
+Configuring these settings is covered in more detail on the
+xref:Development/BeginnersGuide/ReleaseMod.adoc#PackageForUpload[Releasing Your Mod] page.
+
+In most cases, you probably want to check every release target (Windows, Windows Server, Linux Server).
+
+==== Testing your Mod on a Dedicated Server
+
+The xref:Development/TestingResources.adoc#TestingDedicatedServers[Testing/Multiplayer Testing]
+covers how to set up and connect to a dedicated server to test your mods on.
+
+Remember that dedicated servers have no host player.
+Any issues your mod already has with host-and-play multiplayer are probably still present on dedicated servers,
+potentially exacerbated due to the lack of a host player.
+
+==== New Multi-Target Zip
+
+A new multi-target zip file is used to hold uploads to SMR which contains all files for each supported target platform.
+
+Before uploading your mod to SMR you must now use 'Alpakit Release' and upload the multi-target zip file.
+
+This procedure is covered on the xref:Development/BeginnersGuide/ReleaseMod.adoc#PackageForUpload[Releasing Your Mod] page.
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== Content Registry Functionality Changes
+
+==== Include Non Solids flag
+
+=== Tag Provider
+

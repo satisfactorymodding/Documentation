@@ -13,8 +13,7 @@
 
 * xref:Development/index.adoc[Development]
 
-** xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1]
-// dedi-docs ** xref:Development/UpdatingToDedi.adoc[Updating to Dedicated Server Support]
+** xref:Development/UpdatingFromSml36.adoc[Updating from SML 3.6.1]
 ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
 *** xref:Development/BeginnersGuide/dependencies.adoc[Dependencies]
@@ -96,6 +95,7 @@
 *** Legacy
 **** xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
 **** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]
+**** xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1]
 
 ** xref:Development/Localization.adoc[Localizing Mods]
 ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
