@@ -266,8 +266,6 @@ you can edit your default game configuration, found at
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
 
-////
-dedi-docs
 [id="TestingDedicatedServers"]
 == Dedicated Servers
 
@@ -330,9 +328,6 @@ If you choose this route, you should mention on your mod page that your mods hav
 Now that you've decided how you want to set up your server,
 follow the directions on the https://satisfactory.wiki.gg/wiki/Dedicated_servers[Satisfactory Wiki]
 to set up a working dedicated server and verify that you can connect to it with an unmodified client.
-
-dedi-docs
-////
 
 == Modify Online Subsystem Behavior
 

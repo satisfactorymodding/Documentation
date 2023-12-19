@@ -71,8 +71,8 @@ Look for text files in the root folder of the repo that might explain additional
 If the mod you're trying to load has a dependency on another mod,
 you will also need to obtain the source code for the dependency mod and import it into your project.
 
-// dedi-docs SMR frontend now displays dependencies on the mod page and you can click to jump to their pages
-You can find out what other mods a mod depends on by looking at the dependencies section of its `.uplugin` file.
+You can find out what other mods a mod depends on via the "Mod Dependency" table on its SMR page,
+or by downloading a version and looking at the dependencies section of the `.uplugin` file contained inside.
 
 This section lists other mods by their
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].

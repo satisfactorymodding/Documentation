@@ -122,10 +122,9 @@ so that users know how far along in development you consider this version of you
 
 Select the output zip from the link:#_export_your_plugin[Export your Plugin section]
 with the picker the `File` field.
-It should be called `YourModReference-Windows.zip`. 
-// dedi-docs It will be called `YourModReference.zip`
-// and will be larger than all of the other zips in the folder.
-// This larger zip contains the zips for each target platform combined as one file ready for upload.
+It will be called `YourModReference.zip`
+and will be larger than all of the other zips in the folder.
+This larger zip contains the zips for each target platform combined as one file ready for upload.
 
 Finally, write up a list of all of the things you changed or added in this version for the `Changelog` field.
 We also strongly suggest you copy this information into an 'update history' section of your mod's description on the main mod page.

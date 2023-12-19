@@ -92,8 +92,6 @@ as they are used by Unreal's own compiler systems,
 and make sure to use the `.sln` project model.
 ====
 
-////
-dedi-docs
 [id="ClangToolchain"]
 == Clang Toolchain for Linux Dedicated Server Support
 
@@ -109,8 +107,6 @@ Therefore, the Cross-Compile Toolchain version required is `-v21` or `clang-15.0
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
-dedi-docs
-////
 
 [id="CustomEngine"]
 == Custom Unreal Engine Version
@@ -280,7 +276,7 @@ Once presented with options on what to install, select:
 ** Authoring
 ** SDK (C++)
 * _Deployment Platforms_
-// dedi-docs ** Linux
+** Linux
 ** _Microsoft_
 *** _Windows_
 **** Visual Studio 2019
