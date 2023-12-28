@@ -435,6 +435,9 @@ then click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
 It will be something like
 `C:\Program Files\EpicGames\SatisfactoryEarlyAccess\`.
+Follow the directions
+xref:faq.adoc#Files_GameInstall[on the FAQ]
+to easily determine this location.
 
 Choose an item from `Launch Game After Packing` that corresponds to the game install path you provided,
 or leave it unchecked if you don't want the game automatically started for you.
