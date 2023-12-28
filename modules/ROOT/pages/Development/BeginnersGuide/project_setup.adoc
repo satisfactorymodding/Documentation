@@ -476,9 +476,24 @@ as they will be explained later in the guide.
 
 image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
 
-=== (Optional) Packaging SML
+=== Uninstalling your Packaged Mods
 
-Note that if you have not yet installed SML in your game files,
+Alpakit will automatically install the mods it packages for you
+when you have the 'Copy to Game Path' option enabled.
+The xref:ForUsers/SatisfactoryModManager.adoc[Satisfactory Mod Manager]
+will try to avoid interferring with mods that you have packaged with Alpakit
+and will not "see" that you have them installed in its own mods list.
+
+If you ever need to uninstall one of the mods you've packaged,
+simply go to your
+xref:faq.adoc#Files_Mods[installation's Mods folder]
+and delete the folder named with the
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
+of the mod you wish to uninstall.
+
+== (Optional) Packaging SML
+
+Note that if you have not yet installed the Satisfactory Mod Loader (SML) in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
@@ -486,7 +501,7 @@ in which case you should either
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
 
-=== (Optional) Modify Editor Color Scheme
+== (Optional) Modify Editor Color Scheme
 
 The Unreal Engine 5 editor is very dark by default.
 It may be difficult to read depending on your computer settings and eye health.
