@@ -457,7 +457,7 @@ and use the "Alpakit Dev" button.
 This will first package all mods, 
 If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
 
-Upon staring an Alpakit task, a popup will appear informing you that the mod is being packaged
+Upon starting an Alpakit task, a popup will appear informing you that the mod is being packaged
 and the Alpakit Log window will reflect the packaging results.
 
 The Alpakit Release and Release Targets fields can be safely ignored for now
