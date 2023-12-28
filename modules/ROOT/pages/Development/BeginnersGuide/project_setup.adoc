@@ -382,11 +382,19 @@ Once you load into the Editor,
 you might see a popup that says 'New plugins are available.'
 You can safely dismiss this popup.
 
+== Familiarize Yourself with the Editor
+
 Now is a good time to familiarize yourself with
 the Unreal Engine editor through various other tutorials.
 We suggest you take the 'Welcome to the Unreal Editor'
 guided tutorial that the editor should be telling you about
 if you haven't taken or dismissed it yet.
+
+We also suggest the following resources:
+
+- https://docs.unrealengine.com/5.2/en-US/unreal-editor-interface/[Unreal Editor Interface] - Provides a high-level overview of what each of the editor panels do.
+- https://docs.unrealengine.com/5.2/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
+- https://docs.unrealengine.com/5.2/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
 
 == Setting up Alpakit
 
