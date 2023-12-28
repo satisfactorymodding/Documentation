@@ -45,7 +45,7 @@ xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 
 The next step is to download the mod's source code and place it in your own project's Mods directory.
 
-You could their plugin download as a zip and extract it,
+You could download their plugin as a zip and extract it,
 but consider cloning the repository to make it easy to update your copy with future changes to the mod.
 
 Regardless of if you extracted a zip or cloned,
