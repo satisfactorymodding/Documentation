@@ -22,12 +22,6 @@ https://fmodel.app/[FModel] is a tool that can be used to view and extract game 
 Documentation for FModel is available on its https://github.com/4sval/FModel/wiki[Github Wiki].
 This section will cover how to configure FModel to read Satisfactory files.
 
-Unreal Engine 5 introduced changes in how assets are stored in pak files,
-meaning that you will need to provide FModel with extra information so it can read the data correctly.
-The required files can be found in your game install directory at
-`/CommunityResources/FactoryGame.usmap`
-and `/CommunityResources/CustomVersions.json`.
-
 === Add Undetected Game
 
 The first time you open FModel you will be presented with a Directory Selector.
@@ -49,17 +43,35 @@ return to the directory selector and review the above steps.
 
 === Specify Custom Version and Mapping
 
-Before you can view any files you must specify the mapping information.
-Navigate to `Settings` > `General`.
+Unreal Engine 5 introduced changes in how assets are stored in pak files.
+You will need to provide FModel with extra information so that it can read the data correctly.
+
+==== The required files can be found in your game install directory at
+`/CommunityResources/FactoryGame.usmap`
+and `/CommunityResources/CustomVersions.json`. 
+
+To start navigate to `Settings` > `General`.
 In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
 then press the `Custom Versions` button in the "Version Configuration" row.
 
+[WARNING]
+====
+If you are using Windows 10, Notepad loads the .json as UTF-16 LE which will work with FModel.
+
+If you are using Windows 11, you will need to use an application such as https://notepad-plus-plus.org/[Notepad++]. 
+Windows 11 Notepad loads the .json in UTF-8 and FModel will tell you that you broke the .json if you copy the contents over.
+
+image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
+====
+
+
 Delete the text contents of the popup window that appears
-and replace it with the contents of the `CustomVersions.json` file,
+and replace it with the contents of the `CustomVersions.json` file from the location listed above 
+(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`) ,
 then press `OK` to save changes.
 
 Back on the Settings screen, check the box for "Local Mapping File"
-and then enter the full path to your `FactoryGame.usmap` file
+and then enter the full path to your `FactoryGame.usmap` file 
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
 
 Press `OK` to close the settings prompt,
