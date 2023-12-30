@@ -1,6 +1,6 @@
-= Releasing Your Mod
+= Releasing A Mod
 
-Once you consider your mod ready to release,
+Once you consider that one of your mods is ready to be released,
 there's a few extra steps to follow to ensure that it's working correctly,
 and to set up the required information for the Mod Repository to work with the mod.
 
