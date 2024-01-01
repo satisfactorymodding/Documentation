@@ -91,7 +91,8 @@ and that a mesh is assigned to it.
 
 === Building has a gray checkerboard texture
 
-Check in both the Buildable's mesh component the mesh's own settings that the correct Factory Inst texture is selected. 
+Check both the Buildable's mesh component and the mesh's own settings ensure the correct material, 
+`MI_Factory_Base_01`, is selected. 
 
 === Building doesn't appear in the build gun
 
