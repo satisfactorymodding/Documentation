@@ -184,7 +184,8 @@ Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
 Right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
-If this option appears for you, skip down to the link:#_project_compilation[next section].
+If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
+If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
 Otherwise, you'll need to run a tool from the command line to generate the project files.
 
@@ -211,6 +212,22 @@ The above command will not work if you copy paste it
 Make sure you run the above command from Command Prompt and not Powershell.
 It is not correctly formatted for Powershell.
 ====
+
+[id="GenerateVSFiles_Troubleshooting"]
+=== Troubleshooting
+
+If you are prompted to choose an engine version when generating project files,
+or the generation command fails, it's possible that you have a corrupted engine install
+left behind from previous modding or Unreal Engine endeavors.
+
+The correct engine version should appear in the picker as `5.2.1-CSS` and should not be considered a binary build.
+To remove the listing for the corrupted engine install,
+use the https://www.techtarget.com/searchenterprisedesktop/definition/Windows-Registry-Editor[Windows registry editor]
+to edit the registry key `HKEY_CURRENT_USER\SOFTWARE\Epic Games\Unreal Engine\Builds`
+and remove the key pointing to your "Unreal Engine - CSS" install location.
+
+You can add the correct items to this registry key by either reinstalling the engine
+or running the `SetupScripts\Register.bat` script in the engine's install folder.
 
 == Project Compilation
 
