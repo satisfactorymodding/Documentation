@@ -46,7 +46,8 @@ return to the directory selector and review the above steps.
 Unreal Engine 5 introduced changes in how assets are stored in pak files.
 You will need to provide FModel with extra information so that it can read the data correctly.
 
-==== The required files can be found in your game install directory at
+The required files can be found in your
+xref:faq.adoc#Files_GameInstall[game install directory] as
 `/CommunityResources/FactoryGame.usmap`
 and `/CommunityResources/CustomVersions.json`. 
 
@@ -67,11 +68,11 @@ image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
 
 Delete the text contents of the popup window that appears
 and replace it with the contents of the `CustomVersions.json` file from the location listed above 
-(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`) ,
+(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`),
 then press `OK` to save changes.
 
 Back on the Settings screen, check the box for "Local Mapping File"
-and then enter the full path to your `FactoryGame.usmap` file 
+and then enter the full path to your `FactoryGame.usmap` file
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
 
 Press `OK` to close the settings prompt,
