@@ -67,12 +67,12 @@ and FModel will tell you that you broke the .json if you copy the contents over.
 To start loading this additional information, open FModel and navigate to `Settings` > `General`.
 In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
 then press the `Custom Versions` button in the "Version Configuration" row
-to new text editing window.
+which opens a new text editing window.
 
 Delete the text contents of the popup window
-and replace it with the contents of the `CustomVersions.json` file from your Community Resources folder. 
+and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder. 
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`),
-then press `OK` to save changes.
+then press `OK` to save your changes.
 
 [WARNING]
 ====
