@@ -40,8 +40,7 @@ If you prefer to browse mods on the ficsit.app website,
 it's easy to install mods from there too.
 
 Once you're on the page for a mod, click the 'Versions' button in the top right,
-then click the "Install" button near the version you'd like to download.
-// TODO after SMR frontend dedi changes come in: click the Download arrow icon in the "Latest Versions" section to install the mod via the mod manager.
+then click the Download arrow icon in the "Latest Versions" section to install the mod via the Mod Manager.
 This will prompt you to allow the website to communicate with your installed copy of the Mod Manager
 and handle installing the mod for you.
 
@@ -51,14 +50,12 @@ In order to experience Satisfactory as the developers intended it,
 we suggest you play the game for a while without mods, unlocking at least
 https://satisfactory.wiki.gg/wiki/Milestones#Tier_6[Tier 6 of the HUB].
 However, since you're here, you're probably not looking to just play the base game!
-// TODO tags mention tags here, will it replace this list?
 If you'd still like to keep the base-game feel and balance,
-we maintain a list of community-recommended mods that don't alter the game's balance much, if at all.
-Check out this  xref:CommunityModLists/QOL.adoc[here].
+check out xref:ForUsers/Tags.adoc[mods tagged with #qol] to find Quality of Life mods.
 
 If you're looking for new experiences, check out the mod repository!
-There's a lot of options to choose from.
-// TODO tags , and you can filter by tags to find mods that suit your playstyle.
+There's a lot of options to choose from
+and you can xref:ForUsers/Tags.adoc[filter with tags] to find mods that suit your playstyle.
 
 [id="GettingInfoAboutMods"]
 == Getting Info About Mods
