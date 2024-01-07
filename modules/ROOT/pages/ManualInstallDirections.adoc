@@ -94,8 +94,6 @@ Information for downloading SMM can be found xref:index.adoc[on the docs homepag
 
 == Installing Mods on Dedicated Servers
 
-Dedicated servers do not yet support mods.
-Join the https://discord.gg/xkVJ73E[Discord Server] if you want to follow or contribute to development progress.
-This section of the docs will be updated when that changes.
-
-// dedi-docs xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
+Follow the directions on the 
+xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] page
+to set up and configure modded dedicated servers.

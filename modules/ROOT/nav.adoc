@@ -9,7 +9,7 @@
 ** xref:ForUsers/SatisfactoryModManager.adoc[Installing and Using the Mod Manager]
 ** xref:ForUsers/ConfiguringMods.adoc[Configuring Mods]
 ** xref:ForUsers/Tags.adoc[Tags and Tag Search]
-// dedi-docs TODO ** xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
+** xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
 
 * xref:Development/index.adoc[Development]
 
