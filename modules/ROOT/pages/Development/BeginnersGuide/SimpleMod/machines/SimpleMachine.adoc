@@ -10,7 +10,21 @@ Check there if something is unclear or you get stuck.
 
 == Create the Machine
 
-First thing to make our counting machine, you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable] with descriptor and recipe, but this time use link:{attachmentsdir}/BeginnersGuide/simpleMod/SM_SampleMachine.fbx[this] as the mesh and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] as icon so that it looks a bit more like a machine.
+First thing to make our counting machine,
+you'll need to create another xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[buildable]
+with a descriptor and recipe.
+This time use link:{attachmentsdir}/BeginnersGuide/simpleMod/SM_SampleMachine.fbx[this] as the mesh
+and link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SimpleMachine.png[this] as icon
+so that it looks a bit more like a machine and less like a planter box.
+
+Upon opening up the imported mesh you'll notice that
+it has 3 material slots unlike the Plantpot of Knowledge's singular slot.
+Most buildings have 3 or more material slots for reasons explained in the
+xref:Development/Modeling/MainMaterials.adoc[Modeling Guide].
+
+Assign the `MI_Factory_Base_01` material to the first slot,
+the `DecalColor_Masked` material to the second slot,
+and the `Decal_Normal` material to the third slot.
 
 As this is a simple counting machine we're using FGBuildable as our base class; however, if we were making a machine that produces or mines things we should look for a better starting point in the available classes.
 For now, to make sure we're looking at the same thing during the tutorial, stick to FGBuildable.

@@ -349,29 +349,72 @@ Consider asking on the Discord if you get stuck on this step.
 
 == Exporting
 
-Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature to move files to the game's folders for testing.
+Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature
+to stage your mods files in game's folders for testing.
 
-Using 'Alpakit Selected!' or the 'Alpakit!' (just this mod) buttons generate a zip archive for you located at
-// dedi-docs
-// Using 'Alpakit Dev' or the 'Alpakit!' (just this mod) buttons generate a zip archive for you located at
-`<starter project folder>/Saved/ArchivedPlugins/Windows/YourModReference/YourModReference-Windows.zip`.
+Behind the scenes, using the 'Alpakit Dev' or the 'Alpakit!' (just this mod) buttons
+generates a zip archive for you located at
+`<starter project folder>/Saved/ArchivedPlugins/YourModReference/YourModReference-TargetPlatformName.zip`.
 
 Note that this folder is in the **starter project's Saved folder**,
 not the Saved folder of any of your mods.
 
-This zip contains all of your mod's files, although it does not contain any dependency mods -
+This zip contains all of your mod's packaged files, although it does not contain any dependency mods -
 you must specify those via the system described in the link:#_your_mods_uplugin_file[uplugin section].
 
-Consider checking the zip's contents to see if they're what you expected.
+Consider checking the zip's contents to see if they're what you expect.
 If for some reason you need extra files to be packaged into the mod, follow the directions
 xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_setup[here]
 to tell Alpakit to include them when building.
 
 == Sending Your Mod to Testers
 
-You may want to send out an early release of your mod to a few users to test it.
+You may want to send out an early release of your mod to a few users you trust to test it before continuing.
 
-They will have to follow the xref:ManualInstallDirections.adoc[Manual Installation] directions to install it from the zip file.
+They will have to follow the xref:ManualInstallDirections.adoc[Manual Installation]
+directions to install it from the zip file.
+
+[id="PackageForUpload"]
+== Package for Release
+
+Once you're ready to release your mod, you will need to package your mod for uploading.
+It's time to make use of the Release Targets and "Alpakit Release" button that we've been ignoring until now.
+
+=== Release Targets Explained
+
+As you may be aware, there are multiple different versions of Satisfactory you can download.
+
+The distinction between the Early Access (EA, the main branch) and Experimental (EXP, early feature testing) branch
+is relatively well known.
+However, there are also are also different builds of the game for different platforms (targets).
+There are EA and EXP variants of each of these:
+
+- `Windows` - Client version of Satisfactory, the one you launch to play the game. People playing the game on Linux still use this version, they run it through a compatibility/emulation layer.
+- `Windows Server` - Windows Dedicated Server version of Satisfactory. It doesn't have a visual interface and is used to run servers from Windows, which is somewhat uncommon.
+- `Linux Server` - Linux Dedicated Server version of Satisfactory. This is what most dedicated servers will be running, especially those hosted by third party services.
+
+Your mod must be compiled in a slightly different way to be usable on each of these platforms,
+especially to be compatible with Linux Server.
+Thankfully, Alpakit handles compiling your mod for all 3 of these target platforms for you.
+However, while you are testing your mod locally in singleplayer,
+it's a waste of time to compile and package the code for the other platforms you aren't using.
+The "Alpakit Dev" and "Alpakit!" (just this mod) buttons follow your Dev Packaging Settings,
+compiling just the target(s) you care about while testing.
+
+Now that we're ready for release
+we can use the Release Targets checkboxes to define which targets the mod is compatible with.
+If you leave out one of these targets, the mod will not on that platform!
+In most cases, especially for mods with no custom {cpp} code, you should check all 3 targets.
+
+Pressing the Alpakit Release button will package all mods that you have checked in the leftmost column
+in the multi-target zip format that the Mod Repository is expecting.
+In the example image below, clicking Alpakit Release will package the SML and ExampleMod mods for all 3 release targets, skipping the second mod in the list.
+
+image:BeginnersGuide/AlpakitReleaseDemo.png[Alpakit Release with Example Mod and SML selected]
+
+Adjust the left column checkboxes so that only your mod is selected, then use the 'Alpakit Release' button.
+This will generate file in the same ArchivedPlugins folder mentioned earlier called `YourModReference.zip`.
+This zip file contains all of the mods' selected targets in one file ready to be uploaded to SMR.
 
 == Last Chance to Change Your Mod Reference
 
@@ -381,29 +424,8 @@ once you release your mod, you can no longer change its Mod Reference.
 
 If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
 
+
 == Upload to Satisfactory Mod Repository
-
-Once you're ready to release your mod, you will need to package your mod for uploading. 
-
-////
-dedi-docs
-Make sure that you have the Release Targets configured correctly for your mod,
-you most likely want all three (Windows, WindowsServer, and LinuxServer) checked.
-
-`Windows` - `Requires Shipping - x64 / Shipping|Win64` - Client Version of Satisfactory, not specific to the Windows system.
-`Windows Server` - `Requires Shipping_Server - x64 / Shipping_Server|Win64` - Windows Dedicated Server of Satisfactory.
-`Linux Server` - `Requires Linux_Shipping_Server - Win32 / Linux_Shipping_Server|Linux` - Linux Dedicated Server of Satisfactory.
-
-TODO update with this info from Mircea https://discord.com/channels/555424930502541343/601030071221878784/1128762351915630735
-
-image:BeginnersGuide/Alpakit.png[Batch Building, align="center"]
-
-
-This time you'll want to use the 'Alpakit Release' button.
-
-Using 'Alpakit Release' will generate a different zip for you in the same folder called `YourModReference.zip`
-that contains all of the selected targets in one file ready to be uploaded to SMR.
-////
 
 Follow the directions on the xref:UploadToSMR.adoc[Uploading to SMR]
 page to create a modpage and a release.

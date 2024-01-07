@@ -266,27 +266,68 @@ you can edit your default game configuration, found at
 If you choose this option, the game will _always_ launch using this config
 no matter where you launch it from, even when mods are not installed.
 
-////
-dedi-docs
+[id="TestingDedicatedServers"]
 == Dedicated Servers
 
 In order to start testing on dedicated servers, you will first need to set up your own dedicated server.
 
-Follow the directions on the https://satisfactory.wiki.gg/wiki/Dedicated_servers[Satisfactory Wiki]
-to set up a working dedicated server and verify that you can connect to it with an unmodified client.
+=== Setup
+
+You have a few options for setting up the server.
+Consider which of these would work best for you before moving on to the next section.
 
 Note that in order to perform the first time server claiming process
 you will need to use a client of the game that was launched normally (ex. through Steam or Epic).
 After the server claiming process is complete you can return to using a copy launched with the launch scripts described elsewhere on this page.
 
-Since the dedicated server will be sharing your own copy of the game's save folder,
+==== Option 1: Locally Installed Dedicated Server
+
+You can install the dedicated server on your own computer and run it locally.
+This places extra strain on your computer and may not be feasible if you have a lower-end system.
+However, it is usually the easiest option to set up.
+
+In this option, since the dedicated server will be sharing your own personal copy of the game's save folder,
 attempting to upload saves to it will fail, since the save is already present in that folder.
 
-Since the dedicated server you will be testing with does not need to connect to the internet,
+Since the server you will be testing with does not need to connect to the internet,
 following the wiki's directions for correctly authenticating with Steam or Epic servers are not required.
-The minimum suggested launch arguments for a dedicated server is `.\FactoryServer.exe -log -EpicPortal`
-dedi-docs
-////
+The minimum suggested launch arguments for a dedicated server is
+`.\FactoryServer.exe -log -EpicPortal -NoSteamClient`.
+
+You can connect to a locally hosted server either
+through the normal server browser
+or with the `open` console command, for example,
+`open 127.0.0.1`.
+
+==== Option 2: Remote Dedicated Server
+
+You can also set up the dedicated server on another computer on your network.
+This avoids resource strain on your own computer.
+
+It is possible to provide a network location in the `Copy Game to Path` Dev Packaging setting option,
+for example `//192.168.1.42/appdata/satisfactory`,
+meaning that Alpakit will handle copying and replacing the files on the remote server for you.
+
+You'll still need to restart it after every package for the server to reload file changes.
+
+==== Option 3: Ask Nicely on Discord
+
+A community member may have a dedicated server they can give you access to in order to test mods on.
+Ask in the modding help channels and see if anyone speaks up, but you may not get a response.
+
+You will likely have to manually transfer each testing build of the mod to the server. 
+
+==== Option 4: Cross your Fingers
+
+The option of last resort: you can compile your mods for dedicated servers and release them without testing them.
+Do not assume that silence means the mod is bug free - some users will not bother to report errors they encounter.
+If you choose this route, you should mention on your mod page that your mods haven't been tested extensively on dedicated servers.
+
+=== Installing and Claiming the Server
+
+Now that you've decided how you want to set up your server,
+follow the directions on the https://satisfactory.wiki.gg/wiki/Dedicated_servers[Satisfactory Wiki]
+to set up a working dedicated server and verify that you can connect to it with an unmodified client.
 
 == Modify Online Subsystem Behavior
 

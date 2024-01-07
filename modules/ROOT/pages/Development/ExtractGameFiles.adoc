@@ -22,12 +22,6 @@ https://fmodel.app/[FModel] is a tool that can be used to view and extract game 
 Documentation for FModel is available on its https://github.com/4sval/FModel/wiki[Github Wiki].
 This section will cover how to configure FModel to read Satisfactory files.
 
-Unreal Engine 5 introduced changes in how assets are stored in pak files,
-meaning that you will need to provide FModel with extra information so it can read the data correctly.
-The required files can be found in your game install directory at
-`/CommunityResources/FactoryGame.usmap`
-and `/CommunityResources/CustomVersions.json`.
-
 === Add Undetected Game
 
 The first time you open FModel you will be presented with a Directory Selector.
@@ -49,14 +43,44 @@ return to the directory selector and review the above steps.
 
 === Specify Custom Version and Mapping
 
-Before you can view any files you must specify the mapping information.
-Navigate to `Settings` > `General`.
-In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
-then press the `Custom Versions` button in the "Version Configuration" row.
+Unreal Engine 5 introduced changes in how assets are stored in pak files.
+You will need to provide FModel with extra information so that it can read the data correctly.
+Coffee Stain Studios kindly ships this extra information with the game files for us.
 
-Delete the text contents of the popup window that appears
-and replace it with the contents of the `CustomVersions.json` file,
-then press `OK` to save changes.
+First, navigate to your
+xref:faq.adoc#Files_GameInstall[game install directory]
+in a File Explorer window to locate the
+`/CommunityResources/FactoryGame.usmap`
+and `/CommunityResources/CustomVersions.json` files.
+
+We need to open the CustomVersions file and copy its contents into a setting in FModel.
+However, the file is stored in a text encoding (UTF-16 LE) that can confuse some text editing programs.
+
+If you are using Windows 10,
+Windows Notepad can successfully load the `CustomVersions.json` file
+and you can copy its contents to your clipboard normally.
+If you are using Windows 11,
+you will need to use another text editor such as https://notepad-plus-plus.org/[Notepad++]. 
+Windows 11's Notepad incorrectly loads the file with UTF-8 encoding
+and FModel will tell you that you broke the .json if you copy the contents over.
+
+To start loading this additional information, open FModel and navigate to `Settings` > `General`.
+In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
+then press the `Custom Versions` button in the "Version Configuration" row
+which opens a new text editing window.
+
+Delete the text contents of the popup window
+and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder. 
+(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`),
+then press `OK` to save your changes.
+
+[WARNING]
+====
+If the file's contents look like the below image, you will need to use a different text editor to open and copy it as described above.
+Note the egregious extra spacing and the error message from FModel.
+
+image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
+====
 
 Back on the Settings screen, check the box for "Local Mapping File"
 and then enter the full path to your `FactoryGame.usmap` file

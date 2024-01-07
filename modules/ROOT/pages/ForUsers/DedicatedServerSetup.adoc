@@ -2,41 +2,132 @@
 
 [IMPORTANT]
 ====
-If you're seeing this message, that means this page is not complete yet!
-This warning will be removed once dedicated server support is actually complete.
-Expect mistakes and inaccuracies until then.
+Dedicated Server support is still a work in progress,
+which is why we haven't publicly announced it yet!
+
+Expect changes to the setup process as functionality is finalized
+and be patient as mods are updated 
 ====
 
-TODO write this page (it's hidden from the sidebar for now)
+SML3.7.0 enables the compilation of mods for Dedicated Servers.
+Keep in mind that Coffee Stain considers the base game's dedicated servers to be
+an experimental, incomplete feature, so modded dedicated servers are experimental squared!
+Expect bugs and test carefully to determine if bugs are caused by the base game or by mods
+before reporting them on the https://questions.satisfactorygame.com/[QA site] (base-game)
+or the Discord (modded) respectively.
 
-== Install the Vanilla Server
+[id="SelfHostedServer"]
+== Option 1: Self Hosted Server
 
-The first step is to obtain a copy of the vanilla dedicated server.
+Hosting a server yourself is the best way to
+ensure you can work with the files required to get modded a server working.
+First, set up a copy of the vanilla dedicated server if you haven't done so yet.
 The Satisfactory Official Wiki already has a
 https://satisfactory.wiki.gg/wiki/Dedicated_servers[detailed guide covering how to do this].
+Follow that guide, then continue to the link:#GetModManager[next section].
 
-== Install Ficsit-CLI
+[id="ThirdPartyServer"]
+== Option 2: Third Party Hosted Server
 
-https://github.com/satisfactorymodding/ficsit-cli
+[WARNING]
+====
+We can only provided limited support for third-party hosted servers
+as we do not know or control their systems.
+Contact your server host's support lines if you encounter problems.
+====
 
-== Import Profile from SMM
+Third-party server hosts often restrict how you can access and modify files on the system,
+complicating the mod setup process.
 
-Suggest importing a profile you configured locally instead of browsing via the CLI
-since it helps ensure installed versions will match.
+You will have to follow your server host's own documentation about mod setup.
+If your server host provides (s)ftp access to server files
+the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
+
+With this in mind, continue to the link:#GetModManager[next section].
+
+[id="GetModManager"]
+== Install Satisfactory Mod Manager or ficsit-cli
+
+Both Satisfactory Mod Manager (version 3.0.0 and up) and ficsit-cli
+can be used to manage mods on a remote server installation
+as long as you have network filesystem or (s)ftp access to the server.
+You could also install ficsit-cli on the server and interact with its file system directly via its terminal user interface.
+
+[id="GetModManager_SMM"]
+=== Mod Manager
+
+If using the Mod Manage to manage your server:
+
+1. xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
+2. Open the Mod Manager.
+3. In the left panel, under Other, select "Manage Servers".
+4. Enter server connection details in the popup window, for example, select `ftp://` and enter `user:password@host/path`.
+  NOTE: Entering servers by network filesystem path is not currently an option in SMM, use ficsit-cli in the mean time.
+5. The server will now appear in your Game Version dropdown and can be managed like a local install.
+6. Skim the below ficsit-cli section to stay informed, then continue reading.
+
+[id="GetModManager_CLI"]
+=== ficsit-cli
+
+If using ficsit-cli to manage your server:
+
+1. Download https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
+   either to your computer or to the server itself
+   depending on which environment you are more comfortable working with.
+2. Run the application in a terminal window.
+3. Navigate to the "Installations" > "New Installation" screen.
+4. Enter the server connection details, for example `//192.168.1.42/appdata/satisfactory` or `ftp://user:password@host/path`.
+5. The server will now appear as an install you can select and manage as usual.
+6. Read the below, then continue to the next article heading.
+
+Make sure to apply changes after installing mods or loading a profile,
+otherwise all changes will be discarded on exit.
+
+Note that applying changes in ficsit-cli is a global action -
+all installations the program is aware of will have any staged changes they may have applied in parallel.
+This does _not_ mean that all installs must be on the same profile.
+
+[id="ImportProfile"]
+=== Import a Profile Created in SMM
+
+Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one,
+this is not recommended as you could end up with a mismatch between client and server mod versions,
+preventing you from connecting.
+
+The suggested approach is to create a xref:ForUsers/SatisfactoryModManager.adoc[Mod Manager] profile
+on your own computer for your client
+then xref:ForUsers/SatisfactoryModManager.adoc#_sharing_profiles[use the Import/Export Profile functionality]
+to produce a file that can be imported into ficsit-cli (they are the same file format).
+You can then send out this same profile file to the client players so they can configure their own installs accordingly.
 
 == Configuring Mods on Servers
 
-Configure the mod client side and copy the config files over to avoid making syntax mistakes when editing config files.
-Also, some mods could stop working correctly if client and server configs don't match,
-so this is a good way to ensure they match.
+There is not currently an interface for adjusting mod configurations remotely on dedicated servers.
+As a result, you should configure mods client side and copy the config files over to the server.
+
+Note that some mods could stop working correctly or behave unexpectedly if client and server configs don't match.
 
 Check the xref:faq.adoc#Files_ModConfig[FAQ on where game files are located] to see where config files are stored.
 
-ficsit-cli allows FTP locations to be listed as installs (ex. `ftp://user:password@host/path`)
+== (Not supported) Manual Mod Installation
 
-Note that when applying changes in ficsit-cli, changes will be applied to all installations it's aware of in parallel (installations can be on separate profiles) (TODO find a better way to explain this)
+[WARNING]
+====
+We do not provide support on the Discord for dedicated servers that have had mods manually installed.
+====
 
-== Third Party Server Hosts
+[IMPORTANT]
+====
+Do NOT naively copy-paste your client's mods folder to a server - this will not work!
+The compiled files used by the game client will not work on dedicated servers,
+so trying to give them client files will result in vague error messages.
+====
 
-TODO Can we expect them to have ficsit CLI installed?
-Tell people to follow the server provider's instructions for installing mods.
+It is possible to manually install mods on dedicated server installs
+without the help of the Mod Manager of ficsit-cli,
+however the process of doing so will vary based on your server
+and you will have to manually ensure you have downloaded compatible versions and all of their dependencies.
+
+The steps described in the xref:ManualInstallDirections.adoc[Manual Installation]
+directions for clients still generally apply,
+but be sure to download the correct target platform version of the mod for your server.

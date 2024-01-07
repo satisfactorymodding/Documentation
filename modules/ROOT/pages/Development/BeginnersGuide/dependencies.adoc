@@ -92,13 +92,12 @@ as they are used by Unreal's own compiler systems,
 and make sure to use the `.sln` project model.
 ====
 
-////
-dedi-docs
+[id="ClangToolchain"]
 == Clang Toolchain for Linux Dedicated Server Support
 
 Satisfactory's dedicated servers typically run on Linux.
 Cross-compiling from Windows to Linux requires
-the compatible version of Unreal Engine specific CLang Toolchain to be installed
+the compatible version of Unreal Engine specific Clang Toolchain to be installed
 prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for 
 https://docs.unrealengine.com/5.2/en-US/linux-development-requirements-for-unreal-engine/#versionhistory[Cross-Compiling for Linux].
@@ -108,8 +107,6 @@ Therefore, the Cross-Compile Toolchain version required is `-v21` or `clang-15.0
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
-dedi-docs
-////
 
 [id="CustomEngine"]
 == Custom Unreal Engine Version
@@ -279,7 +276,7 @@ Once presented with options on what to install, select:
 ** Authoring
 ** SDK (C++)
 * _Deployment Platforms_
-// dedi-docs ** Linux
+** Linux
 ** _Microsoft_
 *** _Windows_
 **** Visual Studio 2019

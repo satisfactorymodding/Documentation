@@ -32,10 +32,20 @@ You don't need to do anything for SML - SMM will handle updating it for you!
 You've probably already done this!
 
 2. Download the Satisfactory Mod Manager.
-You can get it from ficsit.app
-or by clicking https://smm.ficsit.app/[this link], which points to the latest release on GitHub.
+You can download it from ficsit.app or at https://smm.ficsit.app/,
+which automatically selects the correct download from the latest GitHub release based on your browser info.
+You can manually download for a specific platform from the
+https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page].
 
-3. Go to the heading that matches what operating system you're using and follow the steps below to install it.
+3. Depending on your browser, you may need to take some additional steps to convince it to download the file.
+Check your browser's download queue to see if it claims the mod manager "is not commonly downloaded".
+On Chrome, click the "Keep" button.
+On Edge, click on the three-dots menu, select the "Keep" option,
+click "Show More", then click "Keep anyway".
+Optionally, learn more about why this message appears
+xref:faq.adoc#_are_satisfactory_mods_safe[here].
+
+4. Go to the heading that matches what operating system you're using and follow the steps below to install it.
 
 ** Windows
 *** link:#Install_Win10[Windows 10]

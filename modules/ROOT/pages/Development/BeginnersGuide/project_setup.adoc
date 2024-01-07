@@ -184,7 +184,8 @@ Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
 Right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
-If this option appears for you, skip down to the link:#_project_compilation[next section].
+If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
+If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
 Otherwise, you'll need to run a tool from the command line to generate the project files.
 
@@ -211,6 +212,22 @@ The above command will not work if you copy paste it
 Make sure you run the above command from Command Prompt and not Powershell.
 It is not correctly formatted for Powershell.
 ====
+
+[id="GenerateVSFiles_Troubleshooting"]
+=== Troubleshooting
+
+If you are prompted to choose an engine version when generating project files,
+or the generation command fails, it's possible that you have a corrupted engine install
+left behind from previous modding or Unreal Engine endeavors.
+
+The correct engine version should appear in the picker as `5.2.1-CSS` and should not be considered a binary build.
+To remove the listing for the corrupted engine install,
+use the https://www.techtarget.com/searchenterprisedesktop/definition/Windows-Registry-Editor[Windows registry editor]
+to edit the registry key `HKEY_CURRENT_USER\SOFTWARE\Epic Games\Unreal Engine\Builds`
+and remove the key pointing to your "Unreal Engine - CSS" install location.
+
+You can add the correct items to this registry key by either reinstalling the engine
+or running the `SetupScripts\Register.bat` script in the engine's install folder.
 
 == Project Compilation
 
@@ -241,13 +258,30 @@ at the cost of additional disk space.
 ====
 
 Once Visual Studio loads,
-make sure that you have `Development Editor` Solution Configuration
-and `Win64` Solution Platform selected in the top toolbar.
+you should see a list in the Solution Explorer containing entries for
+UE5, FactoryGame, AccessTransformers, and more.
+It's important to note that these separate solution items exist only for organization purposes.
+When it's time to compile your mods, compiling any one of the items will compile the whole project.
+The only exception to this is the `UE5` entry which will do nothing when you compile it since you already installed that by installing the custom engine version earlier.
+
+An unfortunate consequence of this organization system
+is that Visual Studio does not understand that each of these solution items will compile the whole project.
+
+As such, we do NOT want to use the generic 'Build Solution' operation that Visual Stuido provides.
+Doing so will try to run the build one time for each solution item we have in the project,
+wasting some time, and, if there are any error messages, duplicating them many times over!
+
+In preparation for compiling our project, first select the `Development Editor` Solution Configuration
+and `Win64` Solution Platform in the top toolbar.
+Development Editor is the editor program that you'll be using to make mods.
 It's near the undo/redo buttons and the play button menu items.
 
 image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
 
-Now, from the top toolbar, select `Build` > `Build Solution`.
+To start the actual compile process,
+right click on any of the solution explorer items under the Mods folder,
+for example, `SML`,
+and select `Build`.
 
 image:BeginnersGuide/PressBuild.png[Build Solution]
 
@@ -256,13 +290,6 @@ See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output pane (View > Output) if desired.
-
-////
-dedi-docs
-If you are building for dedicated servers, see
-xref:UpdatingToDedi.adoc#_DedicatedServerProjectCompilation[Project Compilation - Dedicated Server Support (Optional)]
-dedi-docs
-////
 
 After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
 (the same place you selected `Development Editor` earlier)
@@ -281,17 +308,9 @@ or your own {cpp} code that changes Editor functionality,
 you must close the Editor and rebuild `Development Editor`
 from Visual Studio for the changes to take effect.
 
-When you want to test or release your mod, make sure to build the project for  `Shipping|Win64`.
-
-Without doing so, your mod will be missing important files.
+Alpakit (a tool discussed later) will take care of building Shipping for you when required,
+but you can still build it from Visual Studio if you want to.
 ====
-
-////
-dedi-docs
-Block comments don't work inside ==== blocks, this goes inside the IMPORTANT
-
-, `Shipping_Server|Win64`, and/or `Shipping_Server|Linux`, depending on which you are going to test/release your mod for.
-////
 
 [id='Compiling_Troubleshooting']
 === Troubleshooting
@@ -380,17 +399,27 @@ Once you load into the Editor,
 you might see a popup that says 'New plugins are available.'
 You can safely dismiss this popup.
 
+== Familiarize Yourself with the Editor
+
 Now is a good time to familiarize yourself with
 the Unreal Engine editor through various other tutorials.
 We suggest you take the 'Welcome to the Unreal Editor'
 guided tutorial that the editor should be telling you about
 if you haven't taken or dismissed it yet.
 
+We also suggest the following resources:
+
+- https://docs.unrealengine.com/5.2/en-US/unreal-editor-interface/[Unreal Editor Interface] - Provides a high-level overview of what each of the editor panels do.
+- https://docs.unrealengine.com/5.2/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
+- https://docs.unrealengine.com/5.2/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
+
 == Setting up Alpakit
 
 Alpakit is a tool made by the modding community
 to make building and testing your mod more convenient.
-It's one of the mods that comes pre-installed with the starter project.
+It's one of the editor plugins that comes pre-installed with the starter project.
+
+=== Opening Alpakit
 
 Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
@@ -399,14 +428,36 @@ You can also bring it up via `File > Alpakit`.
 You can open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log".
 This information is also present in the UE Output Log, albeit mixed with other editor messages.
 
-Click on the 3 dots near `Satisfactory Game Path`
+Both the Alpakit window and log window can be dragged by their top tabs
+and docked as new tabs or panes in the editor for easy access later.
+
+If you're wondering what something in the Alpakit window does,
+hover over it - most elements have expanatory tooltips.
+
+=== Configuring Dev Packaging Settings
+
+Once you've opened the Alpakit window,
+head over to the Dev Packaging Settings heading.
+For now, the only target we need to modify is Windows (the game client),
+but you can use the other options later to build for dedicated servers.
+
+In order to get started building mods,
+you'll have to tell Alpakit where your game install directory is located
+so it can copy mod files there for you.
+
+In the Windows subheading,
+check the Enabled box to enable packaging for that target,
+check the 'Copy to Game Path' box,
+then click on the 3 dots near `Satisfactory Game Path`
 and select your root Satisfactory game installation folder.
 It will be something like
 `C:\Program Files\EpicGames\SatisfactoryEarlyAccess\`.
-Choose an item from `Launch Game After Packing`
-if you'd like the game to be launched after you pack your mod files,
-or leave it on 'Do not launch' if desired.
-Check `Copy Mods to Game` so that you don't have to move files manually to test your mod.
+Follow the directions
+xref:faq.adoc#Files_GameInstall[on the FAQ]
+to easily determine this location.
+
+Choose an item from `Launch Game After Packing` that corresponds to the game install path you provided,
+or leave it unchecked if you don't want the game automatically started for you.
 
 [TIP]
 ====
@@ -422,47 +473,44 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
-// dedi-docs must switch out this section once dedi is ready
 === Packaging Mods with Alpakit
 
-In order to package a mod, press the "Alpakit!" button next to it in the list.
+In order to package a single mod for testing press the "Alpakit!" button next to its name in the list.
+Alpakit will compile and package your mod for you,
+then take actions based off of the options you selected in the Dev Packaging Settings.
 
-Alternatively, you can package multiple mods at once by marking the checkboxes and using "Alpakit Selected".
+If you want to package multiple mods at a time,
+check the boxes to the left of their Alpakit! buttons
+and use the "Alpakit Dev" button.
+This will first package all mods, 
 If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
 
-A popup will appear informing you that the mod is being packaged
+Upon starting an Alpakit task, a popup will appear informing you that the mod is being packaged
 and the Alpakit Log window will reflect the packaging results.
 
-////
-dedi-docs
-=== Packaging Mods with Alpakit
-For the following to be packaged, the requisite build (see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]) must be completed and successful.
-** Windows Client - `Shipping - x64 / Shipping|Win64`
-** Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
-** Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
-
-You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and copy your mod to your Satisfactory installation(s).
-
-Note that for the following types of targets to be packaged, the requisite build
-(see xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation])
-must be completed and successful.
-
-* Windows - `Shipping - x64 / Shipping|Win64`
-* Windows Server - `Shipping_Server - x64 / Shipping_Server|Win64`
-* Linux Server - `Linux_Shipping_Server - Win32 / Shipping_Server|Linux`
-
-For our local testing, we will only need Windows (the client) checked.
-
-// TODO retake this screenshot with just the example items and just the fields we want them to have checked
-
-You can press the 'Alpakit Dev' button next to a mod to have Alpakit build and deploy your mod to your Satisfactory installation(s).
+The Alpakit Release and Release Targets fields can be safely ignored for now
+as they will be explained later in the guide.
 
 image:BeginnersGuide/Alpakit.png[Alpakit, align="center"]
-dedi-docs
-////
-=== (Optional) Packaging SML
 
-Note that if you have not yet installed SML in your game files,
+=== Uninstalling your Packaged Mods
+
+Alpakit will automatically install the mods it packages for you
+when you have the 'Copy to Game Path' option enabled.
+The xref:ForUsers/SatisfactoryModManager.adoc[Satisfactory Mod Manager]
+will try to avoid interferring with mods that you have packaged with Alpakit
+and will not "see" that you have them installed in its own mods list.
+
+If you ever need to uninstall one of the mods you've packaged,
+simply go to your
+xref:faq.adoc#Files_Mods[installation's Mods folder]
+and delete the folder named with the
+xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
+of the mod you wish to uninstall.
+
+== (Optional) Packaging SML
+
+Note that if you have not yet installed the Satisfactory Mod Loader (SML) in your game files,
 you can use Alpakit to build SML for you and put it in the right folder.
 This could cause problems if your copy of the Starter Project
 is not up to date with the latest SML changes,
@@ -470,7 +518,7 @@ in which case you should either
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager's `development` profile to install SML for you instead.
 
-=== (Optional) Modify Editor Color Scheme
+== (Optional) Modify Editor Color Scheme
 
 The Unreal Engine 5 editor is very dark by default.
 It may be difficult to read depending on your computer settings and eye health.
