@@ -48,7 +48,7 @@ With this in mind, continue to the link:#GetModManager[next section].
 [id="GetModManager"]
 == Install Satisfactory Mod Manager or ficsit-cli
 
-Both Satisfactory Mod Manager and ficsit-cli
+Both Satisfactory Mod Manager (version 3.0.0 and up) and ficsit-cli
 can be used to manage mods on a remote server installation
 as long as you have network filesystem or (s)ftp access to the server.
 You could also install ficsit-cli on the server and interact with its file system directly via its terminal user interface.
