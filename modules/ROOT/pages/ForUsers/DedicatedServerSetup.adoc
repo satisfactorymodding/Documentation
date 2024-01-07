@@ -105,7 +105,7 @@ You can then send out this same profile file to the client players so they can c
 There is not currently an interface for adjusting mod configurations remotely on dedicated servers.
 As a result, you should configure mods client side and copy the config files over to the server.
 
-Note that some mods could stop working correctly if client and server configs don't match.
+Note that some mods could stop working correctly or behave unexpectedly if client and server configs don't match.
 
 Check the xref:faq.adoc#Files_ModConfig[FAQ on where game files are located] to see where config files are stored.
 
@@ -119,15 +119,15 @@ We do not provide support on the Discord for dedicated servers that have had mod
 [IMPORTANT]
 ====
 Do NOT naively copy-paste your client's mods folder to a server - this will not work!
-The compiled files used by the game client will not work on Linux dedicated servers,
-so trying to give them Windows files will result in errors about missing binaries.
+The compiled files used by the game client will not work on dedicated servers,
+so trying to give them client files will result in vague error messages.
 ====
 
 It is possible to manually install mods on dedicated server installs
 without the help of the Mod Manager of ficsit-cli,
 however the process of doing so will vary based on your server
-and you will have to ensure you have downloaded compatible versions manually.
+and you will have to manually ensure you have downloaded compatible versions and all of their dependencies.
 
 The steps described in the xref:ManualInstallDirections.adoc[Manual Installation]
 directions for clients still generally apply,
-but be sure to download the correct architecture of the mod for your server.
+but be sure to download the correct target platform version of the mod for your server.

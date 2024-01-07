@@ -2,13 +2,6 @@
 
 [IMPORTANT]
 ====
-If you're seeing this message, that means this page is not complete yet!
-This warning will be removed once dedicated server support is actually complete.
-Expect mistakes and inaccuracies until then.
-====
-
-[IMPORTANT]
-====
 The contents of this page will change frequently!
 Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
 ====
@@ -47,6 +40,11 @@ as described in the xref:Development/UpdatingToNewVersions.adoc[Updating your Mo
 
 The following features are not quite ready to use yet.
 This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
+
+See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
+This should not affect the vast majority of mods.
 
 === Decal_Normal Broken on Modded Parts using Mesh Proxies
 
@@ -181,5 +179,4 @@ but we'd like to draw extra attention to them.
 
 ==== Include Non Solids flag
 
-=== Tag Provider
-
+The Include Non Solids flag should now be functioning as described in its doc comment - it previously did nothing.
