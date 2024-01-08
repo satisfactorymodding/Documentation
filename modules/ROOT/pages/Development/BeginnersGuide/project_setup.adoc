@@ -62,15 +62,14 @@ It's imperative that you download the correct Starter Project version of the gam
 or you will have to repeat some of the setup process again.
 
 ====
-This is the *latest* version of the docs.
+This is the *archived 3.6.1* version of the docs.
 
-If you want to develop mods for Update 8,
-you should clone either the **`dev` branch**,
-which will have the latest changes and fixes,
-or the **`master` branch** .
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-Of those two, you probably want whichever branch was pushed to most recently, which you can see
-https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+To develop for 3.6.1, use this zip:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/tags/v3.6.1.zip
 ====
 
 If you're still uncertain which to download, ask us on the Discord.

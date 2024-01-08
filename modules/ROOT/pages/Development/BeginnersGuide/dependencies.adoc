@@ -176,13 +176,14 @@ It's imperative that you download the correct engine for the version of the game
 or you will have to repeat a large amount of the setup process again.
 
 ====
-This is the *latest* version of the docs.
+This is the *archived 3.6.1* version of the docs.
 
-Early Access and Experimental are currently both the same version - Update 8.
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-You should download from the *latest release*,
-which an be found at the top of this page:
-https://github.com/satisfactorymodding/UnrealEngine/releases
+To develop for 3.6.1, use this engine version:
+https://github.com/satisfactorymodding/UnrealEngine/releases/tag/5.1.1-css-59
 ====
 
 Download the following files from the release linked above:
