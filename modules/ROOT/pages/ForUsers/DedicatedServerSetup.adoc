@@ -56,13 +56,18 @@ You could also install ficsit-cli on the server and interact with its file syste
 [id="GetModManager_SMM"]
 === Mod Manager
 
+[NOTE]
+====
+Entering servers by filesystem path (including SMB/CIFS or network mounts) is not currently an option in SMM, use ficsit-cli in the mean time.
+====
+
 If using the Mod Manage to manage your server:
 
 1. xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
 2. Open the Mod Manager.
 3. In the left panel, under Other, select "Manage Servers".
-4. Enter server connection details in the popup window, for example, select `ftp://` and enter `user:password@host/path`.
-  NOTE: Entering servers by network filesystem path is not currently an option in SMM, use ficsit-cli in the mean time.
+4. Enter server connection details in the popup window.
+  a. The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP configurations.
 5. The server will now appear in your Game Version dropdown and can be managed like a local install.
 6. Skim the below ficsit-cli section to stay informed, then continue reading.
 
@@ -76,7 +81,10 @@ If using ficsit-cli to manage your server:
    depending on which environment you are more comfortable working with.
 2. Run the application in a terminal window.
 3. Navigate to the "Installations" > "New Installation" screen.
-4. Enter the server connection details, for example `//192.168.1.42/appdata/satisfactory` or `ftp://user:password@host/path`.
+4. Enter server connection details in the popup window.
+  a. If the server is not hosted locally to ficsit-cli, enter the server connection details. 
+   - The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP/SMB configurations.
+  b. Otherwise, use the file system path necessary, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
 5. The server will now appear as an install you can select and manage as usual.
 6. Read the below, then continue to the next article heading.
 
@@ -87,8 +95,62 @@ Note that applying changes in ficsit-cli is a global action -
 all installations the program is aware of will have any staged changes they may have applied in parallel.
 This does _not_ mean that all installs must be on the same profile.
 
+[id="FileTransferMethods"]
+== File Transfer Methods
+
+=== FTP - File Transfer Protocol
+
+File transfer protocol (FTP) is a common, but outdated method to transfer files over the Internet/Network. 
+The commonly used port number is TCP/21.
+The examples provided are for a self-hosted dedicated server.
+
+The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+
+The path required for FTP to be used is the following:
+`ftp://username:password@ServerNameOrIP:Port/path/`
+
+.Satisfactory Mod Manager FTP Example
+image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
+.Ficsit-CLI FTP Example
+image::DedicatedServers/CLI_FTP.png[Ficsit-CLI Example]
+
+=== SFTP - Secure File Transfer Protocol
+
+Secure File transfer protocol (SFTP) is a common method to transfer files over the Internet/Network. 
+The commonly used port number is TCP/22. 
+The examples provided are for a self-hosted dedicated server.
+
+The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+
+The path required for SFTP to be used is the following:
+`sftp://username:password@ServerNameOrIP:Port/path/`
+
+.Satisfactory Mod Manager SFTP Example
+image::DedicatedServers/SMM_SFTP.png[Satisfactory Mod Manager Example]
+.Ficsit-CLI SFTP Example
+image::DedicatedServers/CLI_SFTP.png[Ficsit-CLI Example]
+
+=== SMB/CIFS - Server Message Block/Common Internet File System _(i.e. Windows Network Share)_ 
+
+[WARNING]
+====
+This feature is currently only supported on ficsit-cli. A future release (soon(TM)) of Satisfactory Mod Manager shall support SMB/CIFS.
+====
+
+Server Message Block (SMB) is also commonly known as Windows File Shares or CIFS (Common Internet File System) is a common method to transfer files over a Network, commonly on Windows Systems, but may be used on Linux/Unix Systems. 
+The commonly used port number is TCP/445.
+The examples provided are for a self-hosted dedicated server.
+
+The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+
+The path required for SMB/CIFS to be used is the following:
+`\\ServerNameOrIP\ShareName\Path`
+
+.Ficsit-CLI Example
+image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
+
 [id="ImportProfile"]
-=== Import a Profile Created in SMM
+== Import a Profile Created in SMM
 
 Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one,
 this is not recommended as you could end up with a mismatch between client and server mod versions,
