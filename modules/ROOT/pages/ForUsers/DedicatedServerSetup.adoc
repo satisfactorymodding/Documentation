@@ -143,8 +143,11 @@ The examples provided are for a self-hosted dedicated server.
 
 The authenticating user requires Read/Write/Delete or Read/Modify permissions.
 
-The path required for SMB/CIFS to be used is the following:
-`\\ServerNameOrIP\ShareName\Path`
+The path required for SMB/CIFS to be used is the following: +
+Windows Ficsit-CLI: `\\ServerNameOrIP\ShareName\Path` or
+`//ServerNameOrIP/ShareName/Path`
+
+Linux Ficsit-CLI: _There is currently a bug that is being worked on. Solution to be soon(tm)._
 
 .Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
@@ -159,7 +162,7 @@ preventing you from connecting.
 The suggested approach is to create a xref:ForUsers/SatisfactoryModManager.adoc[Mod Manager] profile
 on your own computer for your client
 then xref:ForUsers/SatisfactoryModManager.adoc#_sharing_profiles[use the Import/Export Profile functionality]
-to produce a file that can be imported into ficsit-cli (they are the same file format).
+to produce a file that can be imported into the Mod Manager.
 You can then send out this same profile file to the client players so they can configure their own installs accordingly.
 
 == Configuring Mods on Servers
