@@ -67,7 +67,7 @@ If using the Mod Manage to manage your server:
 2. Open the Mod Manager.
 3. In the left panel, under Other, select "Manage Servers".
 4. Enter server connection details in the popup window.
-  a. link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP configurations.
+  a. The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP configurations.
 5. The server will now appear in your Game Version dropdown and can be managed like a local install.
 6. Skim the below ficsit-cli section to stay informed, then continue reading.
 
