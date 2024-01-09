@@ -83,7 +83,7 @@ If using ficsit-cli to manage your server:
 3. Navigate to the "Installations" > "New Installation" screen.
 4. Enter server connection details in the popup window.
   a. If the server is not hosted locally to ficsit-cli, enter the server connection details. 
-   - link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP/SMB configurations.
+   - The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP/SMB configurations.
   b. Otherwise, use the file system path necessary, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
 5. The server will now appear as an install you can select and manage as usual.
 6. Read the below, then continue to the next article heading.
