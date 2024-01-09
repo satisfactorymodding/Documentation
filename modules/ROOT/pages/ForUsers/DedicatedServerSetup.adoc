@@ -147,7 +147,7 @@ The path required for SMB/CIFS to be used is the following: +
 Windows Ficsit-CLI: `\\ServerNameOrIP\ShareName\Path` or
 `//ServerNameOrIP/ShareName/Path`
 
-Linux Ficsit-CLI: _There is currently a bug that is being worked on. Solution to be soon(tm)._
+Linux Ficsit-CLI: _There is currently a bug that is being worked on. Solution to be soon(TM)._
 
 .Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
