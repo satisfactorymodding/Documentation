@@ -1,0 +1,71 @@
+= Creating ADA and Ingame Inbox Messages
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is a work in progress.
+
+Currently, it's just a rough write up that I (Robb) made while implementing ADA messages in my own mod.
+
+It's quite out of date but will Eventually(TM) be updated.
+====
+
+Look at either
+https://github.com/budak7273/ArmorModules[PowerSuit Modules]
+or
+https://github.com/CoderDE/FicsIt-Networks/tree/master/Content/FicsItNetworks/Tutorial[Ficsit Networks]
+for examples.
+
+Messages are two parts - the voice line and the file that shows up in the inbox
+
+You can just download the content folder and add it as a separate content folder
+within your modding project to be able to poke around in the UAssets and see how things are set up.
+
+Strongly suggested you try and keep with the writing style of the game for ADA messages
+Speaking mannerisms, patterns in what she says across voice lines
+link:{attachmentsdir}/Development/All_Vanilla_ADA_Voicelines.txt[reference file]
+For more examples check PowerSuit modules
+
+the sound wave goes in the Dialogue Sounds array of an FGAudioMessage, there are lots of other settings there as well
+
+Need custom BP code inside of InitGameWorld to register them since SML doesn't by default
+
+Need to add a new variable to your InitGameWorld for the the schematic-Message mapping.
+
+Don't need to create a new sender unless you want. Can reuse ADA without issue.
+
+You can reuse the same Audiokinetic event for all of your messages.
+
+You can record ADA voicelines using either pacas01's github project (need google api key thingy + billing set up) or you can use audacity loopback to record them from your own computer audio. waveset C pitch -1.2 (a bit hard to select on the slider, try dragging it far away then guesstimating where it needs to be). if using audacity loopback use the best quality sound device you have and keep it set to a consistent volume when recording. DON'T use laptop speakers for example, they suck miserably
+- https://github.com/pacas00/Simple-ADA-Like-Voice-Generator[pacas01's tool]
+- https://cloud.google.com/text-to-speech[the demo website]
+
+You may need to change the text of what the TTS is saying to not match what the captions are when saying certain words.
+For example, to have it pronounce FICSIT correctly, use the word 'fixit'
+
+It is strongly suggested that you keep the text you fed to the TTS on hand so you can re-record lines later if needed or figure out how you got it to say a specific word in the past.
+
+Since this can be different from the text you want to display to the user in the inbox (ex. 'fixit' case) you should still keep a separate copy of this.
+
+
+You can use the advanced format of telling the tts what to do to insert custom emphasis and pauses;
+look at google's docs and example of this in the demo widget
+
+Can't have newlines in messages - have to do separate AudioMessage AudioEvents
+
+You can change the speaking rate if the boxes of multiple messages aren't really lining up with what is being said in the recording.
+Usual is 0.065, I find 0.07 works well for these types
+
+If you want to send more than one message event per schematic, for example one in Inbox and one in Tutorial, you will either have to modify the BP code, or set the schematic to grant a hidden schematic that is mapped to the other message, and grant the other one as an unlock reward
+	if you do this
+		the messages will queue up
+		the other (granted as a reward) schematic will play first
+		you must have a sound file associated with it still (see below section)
+		you can make a schematic hidden by giving it an impossible dependency - for example, make it depend on the schematic `FGSchematic`
+			this means that even if you grant the schematic as a reward this way it will still never actually show up in the terminal because the condition for showing up can't be fulfilled
+		Look at powersuit modules' `SchematicClass_HiddenSchematic` and `Schematic_Hidden_ModuleKeybindsTutorial` for an example
+
+If you have a message incoming that does not have a Dialogue Sounds file set, none of the messages in that 'queued batch' will play, it will cancel them all!
+	to fix this, give it a sound file of just silence to play. Example of this in Powersuit Modules
+

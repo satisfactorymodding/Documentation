@@ -1,0 +1,551 @@
+Messages collected from game version 137444 with all schematics unlocked via PAK Utility Mod.
+Each message is separated with a pipe | character.
+Note that I have another header further down on the page where the Inbox messages end and the Tutorial messages start.
+I have left some notes in parentheses on some messages.
+Originally created by Robb#6731.
+If you're looking to get these yourself, you should probably get them from the Crowdin translation project instead.
+Ask for help with that on the main Satisfactory discord.
+================================================Inbox Messages================================================
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Nuclear Waste
+Attached Files:
+Nuclear Waste.flac
+FICSIT Inc. does not waste. As a reward for your 'creative input' I have been given permission to grant you a gift. You can find it in the AWESOME store. I hope you like it. It was my first solo project.
+(The name is Nuclear Waste but this is actually the 'shred a ticket' message)
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Freighter re-entry
+Attached Files:
+Freighter re-entry.flac
+ADA: Milestone exchange concluded. FICSIT Freighter re-entry complete.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Map
+Attached Files:
+MAM: Map.flac
+The Map has been unlocked.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Overclocking
+Attached Files:
+MAM: Overclocking.flac
+Buildings can now be Overclocked with the use of Power Shards.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Building
+Attached Files:
+MAM: Building.flac
+New Building unlocked.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Resource
+Attached Files:
+MAM: Resource.flac
+New Resource added to the Resource Scanner
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Pocket
+Attached Files:
+MAM: Pocket.flac
+Pocket-dimension has been inflated.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Object
+Attached Files:
+MAM: Object.flac
+New Object added to the Object Scanner.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Toolbelt
+Attached Files:
+MAM: Toolbelt.flac
+Toolbelt has been expanded.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Equipment
+Attached Files:
+MAM: Equipment.flac
+New Equipment unlocked.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Research
+Attached Files:
+MAM: Research.flac
+New research available in the MAM.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: MAM: Recipe
+Attached Files:
+MAM: Recipe.flac
+New Recipe unlocked.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 7-4: Nuclear Power
+Attached Files:
+Milestone 7-4: Nuclear Power.flac
+Milestone reached. With the provided buildings and parts you can now set up nuclear power generation, which balances an increase of fuel production complexity with improved power output. uranium scanning unlocked.
+Note: this method of power generation creates nuclear waste.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 7-3: Hazmat Suit
+Attached Files:
+Milestone 7-3: Hazmat Suit.flac
+Milestone reached. With the new Hazmat suit and Iodine Infused Filters you will be protected against uranium-based radiation.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 7-2: Advanced Aluminum Production
+Attached Files:
+Milestone 7-2: Advanced Aluminum Production.flac
+Milestone reached. Advanced aluminum parts can now be produced, which are necessary to build the Miner Mk.3. Batteries can be used as a fuel source for vehicles.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 7-1: Bauxite Refinement
+Attached Files:
+Milestone 7-1: Bauxite Refinement.flac
+Milestone reached. Quartz and Bauxite scanning unlocked. A new generation of basic aluminum parts is now available, which can be constructed from bauxite after a complex process of refinement. Additionally, improved conveyor belts and lifts can now be constructed.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 6-4: Pipeline Engineering Mk. 2
+Attached Files:
+Milestone 6-4: Pipeline Engineering Mk. 2.flac
+Milestone reached. Improved pipelines and pumps can now be constructed, capable of handling increased throughput of any fluid, as well as providing increased pressure-handling for better vertical transport, respectively.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 6-3: Monorail Train Technology
+Attached Files:
+Milestone 6-3: Monorail Train Technology.flac
+Milestone reached. A new set of buildings and vehicles needed for long-range transportation has been made available. In addition to built-in power conduction, rails-based transit ensures increased efficiency and reliability for both the transport of pioneers and cargo.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 6-2: Jetpack
+Attached Files:
+Milestone 6-2: Jetpack.flac
+R&D inflated your pocket-dimension and has provided a Jetpack, which operates on oil-based fuel, for increased navigational capabilities as well as odds of survival.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 6-1: Expanded Power Infrastructure
+Attached Files:
+Milestone 6-1: Expanded Power Infrastructure.flac
+Milestone reached. The fuel generator will match power generation to the increased consumption of recently acquired technologies and buildings. Additionally,
+improved conveyor belts and lifts can now be constructed. Caterium scanning unlocked.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 5-4: Alternative Fluid Transportation
+Attached Files:
+Milestone 5-4: Alternative Fluid Transportation.flac
+Milestone reached. Fluids can now be packaged to allow for transportation via vehicle and conveyor belts. Additionally, highly improved Biofuel can now be
+produced.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 5-3: Gas Mask
+Attached Files:
+Milestone 5-3: Gas Mask.flac
+Milestone reached. Gas masks and filter parts will ensure increased odds of survival in gas-based hazardous environments. FICSIT Inc. would like to extend the friendly advice to not forget to change filters regularly.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 5-2: Industrial Manufacturing
+Attached Files:
+Milestone 5-2: Industrial Manufacturing.flac
+Milestone reached. The manufacturer increases production complexity, a critical look at production line logistics and efficiency is recommended during
+integration.
+The truck allows for increased efficiency in transportation, automated or otherwise. New Project Parts enable progress to the next phase.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 5-1: Oil Processing
+Attached Files:
+Milestone 5-1: Oil Processing.flac
+Milestone reached. Oil acquisition and refining unlocked. Oil-based products can now be made. By-products of oil-refinement can be used after further
+processing, as seen in the refinery.
+Caution: this is a reminder to minimize the chance of expiration during out-of-base activities.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 4-4: Hypertubes
+Attached Files:
+Milestone 4-4: Hypertubes.flac
+Milestone reached. FICSIT Inc. has processed and incorporated frequent pioneer requests for pipe-based personal transport.
+Introducing: Hypertubes. Safe, aesthetic, adaptable, fun. Enjoy a view of your hard work as you soar through incredibly tight turns. Build them today.
+Note: FICSIT Inc. is not responsible for any harm caused by irresponsible use of this product.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 4-3: Logistics Mk.3
+Attached Files:
+Milestone 4-3: Logistics Mk.3.flac
+Milestone reached. Logistics can be improved with a larger storage container and enhanced conveyor belt efficiency.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 4-2: Improved Melee Combat
+Attached Files:
+Milestone 4-2: Improved Melee Combat.flac
+Milestone reached. inflated your pocket-dimension, added an additional hand-equipment slot, and have provided an improved xeno-zapper with
+increased strength and range.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 4-1: Advanced Steel Production
+Attached Files:
+Milestone 4-1 : Advanced Steel Production.flac
+Milestone reached. Improved miner included to double extraction rates and improve efficiency of new pipelines. A collection of new, more complex parts is now
+available for crafting.
+An additional Project Part can now be constructed, further progress to the next Phase is now possible.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 3-3: Basic Steel Production
+Attached Files:
+Milestone 3-3: Basic Steel Production.flac
+Milestone reached. Steel production unlocked. Foundry grants access to new, simple steel parts. An additional Project Part can now be constructed, progress
+to the next Phase is now possible.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 3-2: Vehicular Transport
+Attached Files:
+Milestone 3-2: Vehicular Transport.flac
+Milestone reached. Long-range transportation, as well as the construction of outposts, is now encouraged. Vehicle stations have built-in functionality to refuel, and re-stock or collect parts.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 3-1: Coal Power
+Attached Files:
+Milestone 3-1: Coal Power.flac
+Milestone reached. Coal is an improved alternative power source to biomass and can be fully automated, if provided water with the new pipeline buildings, and power throughout the initial set-up. Coal has been added to the resource scanner.
+Note: Ensure the close proximity of water to the coal production line. Note: Pumps will aid in vertical transport of fluids through pipes. Note: Throughput and volume indicators are added to each pipe-section automatically.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 2-5: Logistics Mk.2
+Attached Files:
+Milestone 2-5: Logistics Mk.2.flac
+Milestone reached. Improved versions of conveyor belts and conveyor lifts are now accessible. To encourage additional verticality conveyor poles now have a stackable variant.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 2-4: Jump Pads
+Attached Files:
+Milestone 2-4: Jump Pads.flac
+Milestone reached. Several buildings aimed at factory traversal can now be accessed in the build menu. Caution is recommended during use of these products.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 2-3: Biofuel
+Attached Files:
+Milestone 2-3: Biofuel.flac
+Milestone reached. Biofuel will ensure maximum efficiency of biomass burners. To aid in Biofuel production, you are now capable of removing foliage that consists primarily of wood. Additionally, inflated your pocket-dimension.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 2-2: Part Assembly
+Attached Files:
+Milestone 2-2: Part Assembly.flac
+Milestone reached. More complex assembly of parts can now be automated. Project Assembly Parts can now be constructed and sent up via the Space Elevator. Note: Project Parts are too complex to produce by hand.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 2-1: Resource Sink Bonus Program
+Attached Files:
+Milestone 2-1: Resource Sink Bonus Program.flac
+Milestone Reached. You have been given Early Access to the Anti-waste Effort for Stress-testing of Materials on Exoplanets Bonus Prograrn
+Funneling parts into the AWESOME Resource Sink, depending on their amount and complexity, will grant you Coupons in the AWESOME store, which can be exchanged for bonus rewards.
+Examples of bonus content are: parts, walls, factory attachments, and cosmetics. FICSIT is working hard to develop additional options which will be added to the AWESOME store in the future.
+Go that extra kilometer, go AWESOME.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 1-3: Field Research
+Attached Files:
+Milestone 1-3: Field Research.flac
+Milestone reached. The Molecular Analysis Machine, referred to as the MAM, will allow to provide new technologies, items, and buildings based on samples collected in the field.
+To ensure a greater chance of success during exploration, an upgraded toolbelt has been provided, as well as an Object Scanner and Beacons.
+Note: The Object Scanner requires calibration via the MAM to enable detection of specific objects.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 1-2: Logistics
+Attached Files:
+Milestone 1-2: Logistics.flac
+Milestone reached. Conveyor belts can now merge, split, and lift to increase the complexity and efficiency of your factory. We encourage you to consider more verticality when it comes to factory logistics to streamline short-range transportation.
+The productivity display will help you measure and improve the productivity of individual buildings to aid with optimization.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Milestone 1-1: Base Building
+Attached Files:
+Milestone 1-1: Base Building.flac
+Milestone reached. You have unlocked several structures needed to build the basic factory infrastructure and provide improved factory overview. Building these will provide a grid for more advanced organization and sectioning of your factory.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Project Assembly: Systems
+Attached Files:
+Project Assembly: Systems.flac
+ADA: New Project Assembly phase: Systems
+(Broken audio)
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Project Assembly: Framework
+Attached Files:
+Project Assembly: Framework.flac
+ADA: New Project Assembly phase: Framework
+(Broken audio)
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Project Assembly: Construction Platform
+Attached Files:
+Project Assembly: Construction Platform.flac
+ADA: New Project Assembly phase: Construction Platform
+(Broken audio)
+|
+From:
+Caterina Parks - CEO@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject:
+Attached Files:
+.flac
+(Broken audio) (No subject) (No message)
+|
+================================================Tutorial Messages================================================
+NOTE: If you choose to skip Onboarding, these will not be present in your Codex
+|
+From:
+To:
+Subject:
+Map
+Insert Map Description Here.
+Checkit, out!
+(No attached audio)
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Welcome
+Attached Files:
+Onboarding: Welcome.flac
+Welcome to planet Massage-2(AB)b, your designated sector in the binary star-system of Akycha.
+I am ADA, also known as Artificial Directory and Assistant, tasked to support pioneers, such as you, in their mission. You are the third of your sector to survive planetfall. Congratulations.
+Note: Objective-based introduction initialized. Welcome to: Onboarding.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Dismantle the Drop-Pod
+Attached Files:
+Onboarding: Dismantle the Drop-Pod.flac
+First objective: Please dismantle the Drop-pod. The resulting materials will be repurposed to construct a Habitat and utility Base, from now on referred to as: the HUB.
+Note: FICSIT Incorporated is cost-effective and efficient. We do not waste.
+Hints:
+• Press F to enter Dismantle mode.
+• Hold LMB to dismantle while in Dismantle mode.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Open the Codex
+Attached Files:
+Onboarding: Open the Codex.flac
+All important FICSIT data and communication is recorded and stored in the Codex, including these steps.
+Hints:
+• All tutorials, messages, and emails will be saved to the Codex.
+• Press X to open the Codex.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Equip the Xeno-Zapper
+Attached Files:
+Onboarding: Equip the Xeno-Zapper.flac
+Second Objective: Please ensure you have your FICSIT Incorporated 'Xeno-Zapper' equipped before leaving the drop-zone.
+Note: According to FICSIT regulations every pioneer should have access to a means of defence against extraterrestrial threats.
+Dismantle Hints:
+• Press Tab to open the Inventory.
+• Drag and drop Equipment to the Hands slot to equip it.
+• Further instructions on how to use the Inventory are listed below the menu.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Find and Collect Iron Ore
+Attached Files:
+Onboarding: Find and Collect Iron Ore.flac
+Third Objective: Please familiarize yourself with the Resource Scanner to find Iron.
+Note: The acquisition of Iron is considered essential in preparation for all future objectives.
+Hints:
+• Press V to scan for Iron Nodes.
+• The location of scanned Resource Nodes will appear on the HUD compass.
+• Hold E to gather resources from Resource Nodes and Deposits.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Build the HUB
+Attached Files:
+Onboarding: Build the HUB.flac
+Fourth Objective: Build the HUB
+Note: To complete this objective the resources salvaged from the Drop-Pod will be consumed.
+Caution: Ensure the HUB is built on spacious, open terrain, close to the presence of iron sources. Failure to do so will likely result in non-optimal progress.
+Hints:
+• To improve efficiency the HUB is best build near Iron Nodes.
+• The HUB can be found in the Build Menu by pressing Q
+• Further instructions on how to use the Build Menu are listed below the menu.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Complete HUB Upgrade 1
+Attached Files:
+Onboarding: Complete HUB Upgrade 1 .flac
+Congratulations! You have unlocked: HUB Feature: Manual Craft Bench. HUB Feature: HUB Terminal.
+Fifth Objective: Complete HUB upgrade 1 Note: The Craft Bench and HUB Terminal are essential for progression to the next objective.
+Hints:
+• HUB upgrades and their costs can be found and activated in the HUB Terminal.
+• Parts, like Iron Rods, can be crafted at the Craft Bench in the HUB.
+|
+From:
+Subject:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Onboarding: Complete HUB Upgrade 2
+Attached Files: Onboarding: Complete HUB Upgrade 2.flac
+Congratulations! You have unlocked: Building: Workshop. Equipment: Portable Miner. Inventory: Additional Slots. HUB Feature: Personal Storage.
+Sixth Objective: Complete HUB upgrade 2. Note: Portable miners require no power and will mine a node until their inventory is full. Note: Multiple portable miners can be used on a single node.
+Hints:
+• The Equipment Workshop is used to craft Equipment, like the Portable Miner.
+• A Portable Miner can be placed on a nearby Resource Node by pressing LMB while it is equipped.
+• Reminder: Press Qto open the Build Menu.
+• Reminder: Buildings can be Dismantled without any loss of resources. To enter Dismantle mode press F.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Complete HUB Upgrade 3
+Attached Files:
+Onboarding: Complete HUB Upgrade 3.flac
+Congratulations! You have unlocked: HUB Feature: Biomass Burner. Scanner Feature: Copper. New buildings and recipes, which can be found in the build menu and craft bench respectively.
+Seventh Objective: Complete HUB upgrade 3. Note: Connect buildings to a Biomass Burner for power. Note: Buildings such as the smelter require a Recipe to be
+Advice: Automate the smelting process and use portable miners for optimal results.
+Hints:
+• Hold V to select which resource to scan for with the Resource Scanner.
+• Buildings like the Smelter require a recipe to be selected, and power to function.
+• The Biomass Burner located in the HUB generates power by consuming biomass, like Wood and Leaves.
+• Power Generators and most Buildings only have a single Power Line connection.
+|
+From:!
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Complete HUB Upgrade 4
+Attached Files:
+Onboarding: Complete HUB Upgrade 4.flac
+Congratulations! You have unlocked: Scanner Feature: Limestone. New buildings and recipes, which can be found in the build menu and craft bench respectively.
+Eighth Objective: Complete HUB upgrade 4. Note: use power poles to expand the power network for optimal results.
+Hints:
+• Power Poles can be used to connect multiple buildings to the same power grid.
+• Buildings like the Constructor require a Recipe to be selected, and power to function.
+• Reminder: Data on Recipes and Buildings can always be accessed in the Codex, which is opened by pressing X.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Complete HUB Upgrade 5
+Attached Files:
+Onboarding: Complete HUB Upgrade 5.flac
+Congratulations! You have unlocked: Building: Conveyor belts and poles. Inventory: Additional slots.
+Ninth Objective: Complete HUB upgrade 5. Note: Portable Miners cannot be connected to conveyor belts. Advice: when planning the construction of buildings, note the placement of conveyor belts.
+Hints:
+• Conveyor Belts are used to fully automate resource transportation between buildings.
+• Buildings have specific inputs and outputs to connect Conveyor Belts.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Complete HUB Upgrade 6
+Attached Files:
+Onboarding: Complete HUB Upgrade 6.flac
+Congratulations! You have unlocked: Building: Miner Mk.l Building: Storage container. HUB Feature: Additional Biomass Burner.
+Tenth objective: Complete HUB upgrade 6. Note: There are no notes.
+Hints:
+• Ensure a Resource Node is clear of clutter before placinga Miner Mk.l
+• Multiple Biomass Burners can be connected to the same power grid for increased capacity.
+• Some Buildings, like the Storage Container, don't need power to function.
+|
+From:
+ADA - ada@ficsit.biz
+Employee - employee.05192.83.3845.710.8.192b@ficsit.biz
+Subject: Onboarding: Completed
+Attached Files:
+Onboarding: Completed.flac
+Congratulations! You have unlocked: Building: Space Elevator. Building: Biomass Burner. Part: Biomass.
+Motivational message: Congratulations, you succeeded in every provided task. On behalf of FICSIT Incorporated I thank you for your current, and future, service.
+Additional knowledge: The HUB terminal has been converted to give access to Milestones, there to ensure you progress along FICSlT-approved protocols.
+Note: Future developments should be aimed at constructing the Space Elevator and, as such, initiating Project Assembly.
+|
