@@ -39,12 +39,11 @@ https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub re
 
 3. Depending on your browser, you may need to take some additional steps to convince it to download the file.
 Check your browser's download queue to see if it claims the mod manager "is not commonly downloaded".
-On Chrome, click the "Keep" button.
-On Edge, click on the three-dots menu, select the "Keep" option,
-click "Show More", then click "Keep anyway".
 Optionally, learn more about why this message appears
 xref:faq.adoc#_are_satisfactory_mods_safe[here].
-
+  - On Chrome, click the "Keep" button.
+  - On Edge, click on the three-dots menu, select the "Keep" option,
+    click "Show More", then click "Keep anyway".
 4. Go to the heading that matches what operating system you're using and follow the steps below to install it.
 
 ** Windows
