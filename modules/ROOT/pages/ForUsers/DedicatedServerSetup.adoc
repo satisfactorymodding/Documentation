@@ -79,7 +79,7 @@ If using the Mod Manager to manage your server:
    * Decide what method to select and what to enter by reading the link:#FileTransferMethods[File Transfer Methods] section,
      then return here.
 . The server will now appear in your Game Version dropdown and can be managed like a local install.
-. Skim the below ficsit-cli section to stay informed, then continue reading the link:#ImportProfile[next setup step].
+. Skim the below ficsit-cli section to stay informed, then continue reading the link:#ServerClientConsistency[next setup step].
 
 [id="GetModManager_CLI"]
 === ficsit-cli
@@ -99,7 +99,7 @@ If using ficsit-cli to manage your server:
   b. If ficsit-cli is installed on the server,
      enter the file system path, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
 . The server will now appear as an install you can select and manage as usual.
-. Read the below, then continue reading the link:#ImportProfile[next setup step].
+. Read the below, then continue reading the link:#ServerClientConsistency[next setup step].
 
 Make sure to apply changes after installing mods or loading a profile,
 otherwise all changes will be discarded on exit.
@@ -177,20 +177,25 @@ link:https://github.com/satisfactorymodding/ficsit-cli/issues/57[(A bug is curre
 .Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
 
-[id="ImportProfile"]
-== Import a Profile Created in SMM
+[id="ServerClientConsistency"]
+== Server-Client Consistency
 
-Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one,
+Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one on the server,
 this is not recommended as you could easily end up with a mismatch between client and server mod versions,
 preventing you from connecting.
 
-The suggested approach is
-to create a xref:ForUsers/SatisfactoryModManager.adoc[Mod Manager] profile
-on your own computer for your game client
-then either using that same profile when configuring a server via SMM
-or xref:ForUsers/SatisfactoryModManager.adoc#_sharing_profiles[exporting the profile]
-and importing it in ficsit-cli (they are the same file format).
-You can then send the exported profile file to your server members so they can configure their own installs accordingly.
+It is not feasible to export a profile created in SMM for a client to be used on a server
+because there are some mods that only exist client or server side.
+In the future, the ability to create and share "modpacks" will resolve this problem,
+as modpacks will be able to keep track of mods that may not apply for a game target.
+
+In the mean time, we suggest using an installation of SMM or ficsit-cli on your client computer
+so that you can use the same profile to manage both your client and remote server install.
+You can then export the SMM or ficsit-cli profile
+and send file to your server members so they can configure their own installs accordingly.
+
+If you encounter any one-side-only mods
+you will have to switch to using a separate profile for the time being until the Modpacks feature is released.
 
 == Configuring Mods on Servers
 
