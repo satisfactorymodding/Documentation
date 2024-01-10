@@ -16,8 +16,13 @@ Expect bugs and test carefully to determine if bugs are caused by the base game 
 before reporting them on the https://questions.satisfactorygame.com/[QA site] (base-game)
 or the Discord (modded) respectively.
 
+== Obtain a Server
+
+You need access to a dedicated server before you can start installing mods on it.
+Pick one of the options below to set one up.
+
 [id="SelfHostedServer"]
-== Option 1: Self Hosted Server
+=== Option 1: Self Hosted Server
 
 Hosting a server yourself is the best way to
 ensure you can work with the files required to get modded a server working.
@@ -27,7 +32,7 @@ https://satisfactory.wiki.gg/wiki/Dedicated_servers[detailed guide covering how 
 Follow that guide, then continue to the link:#GetModManager[next section].
 
 [id="ThirdPartyServer"]
-== Option 2: Third Party Hosted Server
+=== Option 2: Third Party Hosted Server
 
 [WARNING]
 ====
@@ -46,7 +51,7 @@ the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 With this in mind, continue to the link:#GetModManager[next section].
 
 [id="GetModManager"]
-== Install Satisfactory Mod Manager or ficsit-cli
+== Install a Mod Manager
 
 Both Satisfactory Mod Manager (version 3.0.0 and up) and ficsit-cli
 can be used to manage mods on a remote server installation
@@ -54,39 +59,47 @@ as long as you have network filesystem or (s)ftp access to the server.
 You could also install ficsit-cli on the server and interact with its file system directly via its terminal user interface.
 
 [id="GetModManager_SMM"]
-=== Mod Manager
+=== Satisfactory Mod Manager
 
+// cspell:ignore CIFS
 [NOTE]
 ====
-Entering servers by filesystem path (including SMB/CIFS or network mounts) is not currently an option in SMM, use ficsit-cli in the mean time.
+SMM cannot currently connect to servers by filesystem path, including SMB/CIFS or network mounts.
+Use ficsit-cli for this in the mean time.
 ====
 
-If using the Mod Manage to manage your server:
+If using the Mod Manager to manage your server:
 
-1. xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
-2. Open the Mod Manager.
-3. In the left panel, under Other, select "Manage Servers".
-4. Enter server connection details in the popup window.
-  a. The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP configurations.
-5. The server will now appear in your Game Version dropdown and can be managed like a local install.
-6. Skim the below ficsit-cli section to stay informed, then continue reading.
+. xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
+. Open the Mod Manager.
+. In the left panel, under Other, select "Manage Servers".
+   * If you don't see this option, ensure that you have installed the latest version of the Mod Manager,
+     as only versions 3.0.0 and up support this feature.
+. Enter server connection details in the popup window.
+   * Decide what method to select and what to enter by reading the link:#FileTransferMethods[File Transfer Methods] section,
+     then return here.
+. The server will now appear in your Game Version dropdown and can be managed like a local install.
+. Skim the below ficsit-cli section to stay informed, then continue reading the link:#ImportProfile[next setup step].
 
 [id="GetModManager_CLI"]
 === ficsit-cli
 
 If using ficsit-cli to manage your server:
 
-1. Download https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
+. Download https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
    either to your computer or to the server itself
    depending on which environment you are more comfortable working with.
-2. Run the application in a terminal window.
-3. Navigate to the "Installations" > "New Installation" screen.
-4. Enter server connection details in the popup window.
-  a. If the server is not hosted locally to ficsit-cli, enter the server connection details. 
-   - The link:#FileTransferMethods[File Transfer Methods] section has more information regarding FTP/SFTP/SMB configurations.
-  b. Otherwise, use the file system path necessary, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
-5. The server will now appear as an install you can select and manage as usual.
-6. Read the below, then continue to the next article heading.
+. Run the application in a terminal window.
+. Navigate to the "Installations" > "New Installation" screen.
+. Enter server connection details in the popup window.
+  a. If you are running ficsit-cli from your computer (not the server),
+     enter the server connection details. 
+   * Decide what to enter here by reading the link:#FileTransferMethods[File Transfer Methods] section,
+     then return here.
+  b. If ficsit-cli is installed on the server,
+     enter the file system path, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
+. The server will now appear as an install you can select and manage as usual.
+. Read the below, then continue reading the link:#ImportProfile[next setup step].
 
 Make sure to apply changes after installing mods or loading a profile,
 otherwise all changes will be discarded on exit.
@@ -98,31 +111,20 @@ This does _not_ mean that all installs must be on the same profile.
 [id="FileTransferMethods"]
 == File Transfer Methods
 
-=== FTP - File Transfer Protocol
+The Mod Manager and ficsit-cli support multiple methods of connecting to servers remotely to manage mod files.
+Select a method below based on what your server (or 3rd party server host) provides.
 
-File transfer protocol (FTP) is a common, but outdated method to transfer files over the Internet/Network. 
-The commonly used port number is TCP/21.
-The examples provided are for a self-hosted dedicated server.
+[id="FileTransferMethods_SFTP"]
+=== SFTP
 
-The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+Secure File Transfer Protocol (SFTP) is a common method to transfer files over the Internet/Network.
+It's more modern and secure than FTP as you may have guessed from its name.
+SFTP typically uses TCP port 22, but your server may differ.
+The examples below are for a self-hosted dedicated server.
 
-The path required for FTP to be used is the following:
-`ftp://username:password@ServerNameOrIP:Port/path/`
-
-.Satisfactory Mod Manager FTP Example
-image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
-.Ficsit-CLI FTP Example
-image::DedicatedServers/CLI_FTP.png[Ficsit-CLI Example]
-
-=== SFTP - Secure File Transfer Protocol
-
-Secure File transfer protocol (SFTP) is a common method to transfer files over the Internet/Network. 
-The commonly used port number is TCP/22. 
-The examples provided are for a self-hosted dedicated server.
-
-The authenticating user requires Read/Write/Delete or Read/Modify permissions.
-
-The path required for SFTP to be used is the following:
+* The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+* The path should follow this format:
++
 `sftp://username:password@ServerNameOrIP:Port/path/`
 
 .Satisfactory Mod Manager SFTP Example
@@ -130,21 +132,47 @@ image::DedicatedServers/SMM_SFTP.png[Satisfactory Mod Manager Example]
 .Ficsit-CLI SFTP Example
 image::DedicatedServers/CLI_SFTP.png[Ficsit-CLI Example]
 
-=== SMB/CIFS - Server Message Block/Common Internet File System _(i.e. Windows Network Share)_ 
+[id="FileTransferMethods_FTP"]
+=== FTP
 
 [WARNING]
 ====
-This feature is currently only supported on ficsit-cli. A future release (soon(TM)) of Satisfactory Mod Manager shall support SMB/CIFS.
+You should use link:#FileTransferMethods_SFTP[SFTP] instead if it is available.
 ====
 
-Server Message Block (SMB) is also commonly known as Windows File Shares or CIFS (Common Internet File System) is a common method to transfer files over a Network, commonly on Windows Systems, but may be used on Linux/Unix Systems. 
-The commonly used port number is TCP/445.
-The examples provided are for a self-hosted dedicated server.
+File transfer protocol (FTP) is a common but outdated method to transfer files over the Internet/Network.
+FTP typically uses TCP port 21, but your server may differ.
+The examples below are for a self-hosted dedicated server.
 
-The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+* The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+* The path should follow this format:
++
+`ftp://username:password@ServerNameOrIP:Port/path/`
 
-The path required for SMB/CIFS to be used is the following:
-`\\ServerNameOrIP\ShareName\Path`
+.Satisfactory Mod Manager FTP Example
+image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
+.Ficsit-CLI FTP Example
+image::DedicatedServers/CLI_FTP.png[Ficsit-CLI Example]
+
+[id="FileTransferMethods_SMB"]
+=== SMB/CIFS
+
+Server Message Block (SMB), also known as CIFS (Common Internet File System) or Windows File Shares,
+is a network file transfer method commonly used on Windows Systems and occasionally Linux/Unix systems.
+SMB typically uses TCP port 445, but your server may differ.
+The examples below are for a self-hosted dedicated server.
+
+* The authenticating user requires Read/Write/Delete or Read/Modify permissions.
+* The path should follow this format:
+** If using a Windows ficsit-cli install:
++
+`\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
+** If using a Linux ficsit-cli install:
++
+link:https://github.com/satisfactorymodding/ficsit-cli/issues/57[(A bug is currently preventing this from working)]
+
+** Satisfactory Mod Manager does not currently support SMB connections.
+   A future release (soon(TM)) will add support for this.
 
 .Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
@@ -153,18 +181,24 @@ image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
 == Import a Profile Created in SMM
 
 Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one,
-this is not recommended as you could end up with a mismatch between client and server mod versions,
+this is not recommended as you could easily end up with a mismatch between client and server mod versions,
 preventing you from connecting.
 
-The suggested approach is to create a xref:ForUsers/SatisfactoryModManager.adoc[Mod Manager] profile
-on your own computer for your client
-then xref:ForUsers/SatisfactoryModManager.adoc#_sharing_profiles[use the Import/Export Profile functionality]
-to produce a file that can be imported into ficsit-cli (they are the same file format).
-You can then send out this same profile file to the client players so they can configure their own installs accordingly.
+The suggested approach is
+to create a xref:ForUsers/SatisfactoryModManager.adoc[Mod Manager] profile
+on your own computer for your game client
+then either using that same profile when configuring a server via SMM
+or xref:ForUsers/SatisfactoryModManager.adoc#_sharing_profiles[exporting the profile]
+and importing it in ficsit-cli (they are the same file format).
+You can then send the exported profile file to your server members so they can configure their own installs accordingly.
 
 == Configuring Mods on Servers
 
-There is not currently an interface for adjusting mod configurations remotely on dedicated servers.
+Although xref:ForUsers/ConfiguringMods.adoc#_mod_savegame_settings[Mod Savegame Settings]
+can be configured using their usual interface,
+there is not currently an interface for adjusting
+xref:ForUsers/ConfiguringMods.adoc#_mod_configuration_options[Mod Configurations]
+remotely on dedicated servers.
 As a result, you should configure mods client side and copy the config files over to the server.
 
 Note that some mods could stop working correctly or behave unexpectedly if client and server configs don't match.
