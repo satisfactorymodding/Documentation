@@ -195,7 +195,7 @@ You can then export the SMM or ficsit-cli profile
 and send file to your server members so they can configure their own installs accordingly.
 
 If you encounter any one-side-only mods
-you will have to switch to using a separate profile for the time being until the Modpacks feature is released.
+you will have to switch to using separate profiles for the server and client until the Modpacks feature is released.
 
 == Configuring Mods on Servers
 
