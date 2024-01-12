@@ -14,7 +14,7 @@ It's quite out of date but will Eventually(TM) be updated.
 Look at either
 https://github.com/budak7273/ArmorModules[PowerSuit Modules]
 or
-https://github.com/CoderDE/FicsIt-Networks/tree/master/Content/FicsItNetworks/Tutorial[Ficsit Networks]
+~~Ficsit Networks~~ (FIN no longer has ADA messages)
 for examples.
 
 Messages are two parts - the voice line and the file that shows up in the inbox
