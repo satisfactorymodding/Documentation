@@ -13,7 +13,7 @@ SML3.7.0 enables the compilation of mods for Dedicated Servers.
 Keep in mind that Coffee Stain considers the base game's dedicated servers to be
 an experimental, incomplete feature, so modded dedicated servers are experimental squared!
 Expect bugs and test carefully to determine if bugs are caused by the base game or by mods
-before reporting them on the http://questions.satisfactorygame.com/[QA site] (base-game)
+before reporting them on the https://questions.satisfactorygame.com/[QA site] (base-game)
 or the Discord (modded) respectively.
 
 == Obtain a Server
