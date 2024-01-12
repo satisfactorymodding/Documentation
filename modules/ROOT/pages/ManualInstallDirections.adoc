@@ -90,7 +90,7 @@ or send a PR via 'Edit This Page' in the top right.
 ====
 
 You should use Satisfactory Mod Manager to install mods on Linux, where it works out of the box.
-Information for downloading SMM can be found xref:index.adoc[on the docs homepage].
+Information for downloading SMM can be found xref:ForUsers/SatisfactoryModManager.adoc[on the respective page].
 
 == Installing Mods on Dedicated Servers
 
