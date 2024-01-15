@@ -216,7 +216,7 @@ The short description of this property that is shown to the user when he hovers 
 === `SubclassOf<UConfigValue> GetValueClass()`
 Allows to retrieve the type of the configuration value the property is based on.
 
-=== `ApplayDefaultPropertyValue(UConfigValue Value)`
+=== `ApplyDefaultPropertyValue(UConfigValue Value)`
 Fills the given config value object with the default value of this property.
 
 === `UConfigValue CreateNewValue(UObject Outer)`
