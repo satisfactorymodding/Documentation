@@ -264,8 +264,11 @@ Click `Install`.
 [WARNING]
 ====
 Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
+Newer versions of Wwise __might__ work,
+but they are likely to have other incompatible changes that will break the setup process.
 
-If you don't see this exact Wwise version,
+**Try to download the exact Wwise version mentioned above**.
+If you don't see it,
 try any other version starting with `2022.1.5`, preferring newer versions,
 or asking for help on the Discord.
 ====
