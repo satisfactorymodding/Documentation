@@ -51,17 +51,41 @@ contains some examples of correctly adding multiplayer functionality to mods.
 
 The examples are not exhaustive, but they should help you get started.
 
-== Remote Call Objects
+[id="RPCs"]
+== Remote Procedure Calls (RPCs)
+
+The video explains what a Remote Procedure Call (RPC) is.
+Satisfactory mods generally have their RPCs defined in one of two places depending on the use case.
+The table below contains information about when to use each.
+Be sure to read the sections below that explain each system in more detail.
+
+.Remote Call Object or Replicated Mod Subsystem
+|===
+| Use a link:#RCOs[Remote Call Object (RCO)] when... | Use a link:#ReplicatedSubsystems[Replicated Mod Subsystem] when...
+
+| Your RPC is sending info from one client to the server.
+
+| Your RPC is sending info from the server to one or more clients.
+
+| When the RPC is being called because of some action the client took.
+
+| When the RPC is being called automatically or without client action.
+
+|
+// Intentionally blank
+
+| When your RPC is Multicast
+
+|===
+
+
+[id="RCOs"]
+== Remote Call Objects (RCOs)
 
 A Remote Call Object (RCOs) is a convenient place for modded Remote Procedure Calls (RPCs) to be defined.
-The video explains what a Remote Procedure Call is, but RCOs are Satisfactory-specific.
 Coffee Stain Studios has written custom code to make it easier for mods to register their own RCOs.
 The inner details of this system are described in the link:#HowRCOsImplemented[appendix] if you want to learn more.
 
-RCOs are a useful place to communicate _from_ the client _to_ the server.
-If your use case doesn't care about the executing player,
-or involves sending data _to_ the client _from_ the server without the client initiating the action,
-consider using a link:#ReplicatedSubsystems[Replicated Subsystem] instead.
 
 RCOs are spawned by the server for each player controller,
 but importantly, that player controller is given network ownership of the RCO.
@@ -89,12 +113,14 @@ If you want to use Multicast, do it from an link:#ReplicatedSubsystems[Replicate
 
 An example why you should not do this is demonstrated in the ExampleMod.
 
+[id="RCO_Blueprint"]
 === Blueprint Example
 
 Your remote call objects should inherit from `BP Remote Call Object`.
 
 The ExampleMod demonstrates blueprint remote call object registration and usage from a building.
 
+[id="RCO_Cpp"]
 === {cpp} Example
 
 Your remote call objects should inherit from `FGRemoteCallObject`.
@@ -166,10 +192,12 @@ Configure if a subsystem is replicated via its `Replication Policy` field.
 
 Replicated subsystems are a good place to implement multicast RPCs since they will be present on all connections.
 
+[id="ReplicatedSubsystem_Blueprint"]
 === Blueprint Example
 
 The ExampleMod uses a replicated property on the Multiplayer Demo Building.
 
+[id="ReplicatedSubsystem_Cpp"]
 === {cpp} Example
 
 No example is currently provided.
