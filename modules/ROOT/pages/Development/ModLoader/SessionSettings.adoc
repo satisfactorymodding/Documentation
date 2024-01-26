@@ -113,13 +113,6 @@ which is available at both world creation and in the pause menu.
 You can read the value of a session setting via the "Get <something> Option Value" method of the Session Settings Manager.
 You can also subscribe to changes via "Subscribe to Dynamic Option Update".
 
-[WARNING]
-====
-Using the wrong typed method to access a Session Setting
-(for example, using Get Bool to access an Int)
-is a silent error case due to how the FGOption system is implemented.
-====
-
 If you want to programatically modify the value of a session setting,
 use the "Set <something> Option Value" method of the Session Settings Manager.
 
