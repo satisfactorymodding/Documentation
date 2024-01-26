@@ -288,6 +288,8 @@ However, it is usually the easiest option to set up.
 
 In this option, since the dedicated server will be sharing your own personal copy of the game's save folder,
 attempting to upload saves to it will fail, since the save is already present in that folder.
+Selecting a save to use will require editing the server's session name;
+follow the https://satisfactory.wiki.gg/wiki/Dedicated_servers#Loading_a_save_file[directions on the Satisfactory wiki] to do this.
 
 Since the server you will be testing with does not need to connect to the internet,
 following the wiki's directions for correctly authenticating with Steam or Epic servers are not required.
@@ -328,6 +330,11 @@ If you choose this route, you should mention on your mod page that your mods hav
 Now that you've decided how you want to set up your server,
 follow the directions on the https://satisfactory.wiki.gg/wiki/Dedicated_servers[Satisfactory Wiki]
 to set up a working dedicated server and verify that you can connect to it with an unmodified client.
+
+Once you've verified that you can connect to the vanilla server
+you can start adding mods to it.
+Either install them xref:ForUsers/DedicatedServerSetup.adoc[the same way an end user would]
+or follow the process outlined in the Option section you selected above.
 
 == Modify Online Subsystem Behavior
 
