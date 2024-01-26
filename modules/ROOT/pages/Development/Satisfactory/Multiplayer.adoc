@@ -53,20 +53,29 @@ The examples are not exhaustive, but they should help you get started.
 
 == Remote Call Objects
 
-Remote Call Objects are an Unreal concept described in the video.
-Note that dedicated servers have no player controller they can't make use of Remote Call Objects.
-In that case, consider using a link:#ReplicatedSubsystems[Replicated Subsystem] instead.
+A Remote Call Object (RCOs) is a convenient place for modded Remote Procedure Calls (RPCs) to be defined.
+The video explains what a Remote Procedure Call is, but RCOs are Satisfactory-specific.
+Coffee Stain Studios has written custom code to make it easier for mods to register their own RCOs.
+The inner details of this system are described in the link:#HowRCOsImplemented[appendix] if you want to learn more.
 
-Coffee Stain Studios has written custom code to make it easier for mods to register their own Remote Call Objects.
-The inner details of this system are described in the link:#HowRCOsImplemented[appendix].
+RCOs are a useful place to communicate _from_ the client _to_ the server.
+If your use case doesn't care about the executing player,
+or involves sending data _to_ the client _from_ the server without the client initiating the action,
+consider using a link:#ReplicatedSubsystems[Replicated Subsystem] instead.
 
-Remote call objects can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
+RCOs are spawned by the server for each player controller,
+but importantly, that player controller is given network ownership of the RCO.
+This gives RCOs the ability to call RPCs -
+RPCs only work on objects that are (transitively) owned by the connection
+(i.e. the player controller, which is owned by the connection).
+Without this network ownership, RPCs would fail to execute.
 
-Remote call objects can be retrieved from a player controller instance via 
+RCOs can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
+Registered RCOs can be retrieved at runtime from a player controller instance via 
 `FGPlayerController::GetRemoteCallObjectOfClass`
 which is accessible in both blueprints and {cpp}.
 
-If for some reason you need to manually register a remote call object it can be done via
+If for some reason you need to manually register an RCO it can be done via
 `FGPlayerController::RegisterRemoteCallObjectOfClass` or
 `FGGameMode::RegisterRemoteCallObjectClass`.
 
