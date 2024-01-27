@@ -78,7 +78,8 @@ $Args1 = "$CommonArgs", "-Username=`"$Username1`""#, "-WinX=0", "-WinY=32", "Res
 
 if ($loadLatestSave) {
 	# https://stackoverflow.com/questions/9675658/powershell-get-childitem-most-recent-file-in-directory
-	$latestSaveFile = (Get-ChildItem $SaveFolder | sort LastWriteTime | select -last 1)
+	# Steam keeps a steam_autocloud.vdf file in here that isn't a savegame
+	$latestSaveFile = (Get-ChildItem $SaveFolder -Attributes !Directory -Filter *.sav | sort LastWriteTime | select -last 1)
 	$latestSaveFileName = $latestSaveFile.Basename
 
 	$AutolaunchFilePath = "$GameDir\$AutolaunchTempFileName"
