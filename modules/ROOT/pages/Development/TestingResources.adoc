@@ -82,8 +82,9 @@ if ($loadLatestSave) {
 	$latestSaveFile = (Get-ChildItem $SaveFolder -Attributes !Directory -Filter *.sav | sort LastWriteTime | select -last 1)
 	$latestSaveFileName = $latestSaveFile.Basename
 
-	$AutolaunchFilePath = "$GameDir\$AutolaunchTempFileName"
-	New-Item $AutolaunchFilePath -ItemType File -Force -Value "[/Script/EngineSettings.GameMapsSettings]`n"
+	$AutolaunchFilePath = "$($env:LOCALAPPDATA)\FactoryGame\$AutolaunchTempFileName"
+	New-Item $AutolaunchFilePath -ItemType File -Force
+	Add-Content $AutolaunchFilePath "[/Script/EngineSettings.GameMapsSettings]"
 	Add-Content $AutolaunchFilePath "LocalMapOptions=??skipOnboarding?loadgame=$latestSaveFileName"
 	Add-Content $AutolaunchFilePath "GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level`nGameInstanceClass=/Script/FactoryGame.FGGameInstance"
 
@@ -125,6 +126,13 @@ Note that the `-multiplayer` flag is currently incompatible with the `-loadLates
 and that the `-loadLatestSave` flag requires
 link:#LoadCustomLevel[extra configuration] to work with saves made in custom levels
 and doesn't guarantee that you'll be put into the same player pawn.
+
+[NOTE]
+====
+When using the `-loadLatestSave` flag, if the game can't load the save for some reason
+(for example, trying to load a newer save in an older version of the game)
+the game will create and load into a new save file instead.
+====
 
 === Launch Script Enhancements
 

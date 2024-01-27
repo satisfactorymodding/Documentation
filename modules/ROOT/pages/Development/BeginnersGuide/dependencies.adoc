@@ -342,6 +342,8 @@ or the **`master` branch** .
 Of those two, you probably want whichever branch was pushed to most recently, which you can see
 https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 
+If you're still uncertain which to download, **ask us on the Discord**.
+
 If you choose to download the `dev` branch, click
 https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
 
@@ -349,7 +351,6 @@ If you choose to download the `master` branch, click
 https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
 ====
 
-If you're still uncertain which to download, ask us on the Discord.
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
 
