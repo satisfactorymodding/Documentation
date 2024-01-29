@@ -16,32 +16,74 @@ making them available exceedingly early in the loading process.
 This may change in the future.
 
 It's possible to make a session setting specific to only a certain level,
-making them particularly useful for configuring options for custom levels.
+making them particularly useful for providing config options for custom levels
+since they can be edited before the save is created.
 
-== Creation
+== Defining New Session Settings
 
 Session Settings are defined by Data Assets.
 To create a Session Setting in Blueprint, in a content browser right click and select
 `Create Advanced Asset` > `Miscellaneous` > `Data Asset` and search for `SMLSessionSetting`.
 
-== Registration
-
-To register a Session Setting, list it the relevant array in your mod's
-xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
-
-As soon as the Session Setting is registered it will be available to be set in the SML Session Settings menu,
-which is available at both world creation and in the pause menu.
-
-== Configuration
+=== Selecting a Str Id
 
 Session Settings inherit from `UFGUserSetting`, the class the game uses to define the configuration options in the settings menu.
+
+The "Str Id" field is a unique identifier for the session setting
+and is used for retriving the value of the session setting later.
+See the table below for some examples of Str Ids and things to keep in mind when selecting one.
+
+.Example Session Setting Str Ids
+|===
+|✔️ Good Example |❌ Bad Practice
+
+|✔️ `YourModReference.EnableFizzBuzz`
+
+Prefix the id with your Mod Reference to ensure it is unique across mods.
+
+| ❌ `EnableFizzBuzz`
+
+Another mod could implement a session setting by this name,
+leading to a conflict.
+
+|✔️ `YourModReference.WhizzbangStrengthMult`
+
+Since session settings are referenced by their string id,
+giving them a verbose, unique name makes it easy to find all usages of the setting in code
+via a find operation.
+
+| ❌ `YourModReference.Multiplier`
+
+Multiplier for what? It's easy to forget what this setting controls,
+and if you ever decide to add other "multipliers" in the future,
+they could easily be mentally confused with this one.
+
+|✔️ `YourModReference.PowerCostMultFloat`
+
+Since you must use a type-specific method to read/write a Session Setting,
+consider including the setting's type as part of its id as a reminder of what type it is.
+Unfortunately using the wrong getter method is currently a silent error due to how the FG Options system is implemented,
+making this problem particularly annoying to track down.
+
+|
+// intentionally blank
+
+|✔️ `YourModRef.MinerMk1.PowerCostMultFloat`
+
+Consider indicating which building/feature a setting applies to
+if you offer multiple settings with similar names or functionality.
+
+|
+// intentionally blank
+
+
+|===
+
+=== Selecting Session Setting Behaviors
 
 Not all of the properties of `UFGUserSetting` are relevant to Session Settings.
 You will have to experiment to see which ones have an effect.
 Please update this documentation page via "Edit This Page" in the top right with your findings.
-
-The "Str Id" field is a unique identifier for the session setting.
-It should include your Mod Reference and is used for retriving the value of the session setting later.
 
 Checking the "Use CVar" field is only required
 if you wish to allow modifying the value of the session setting via the game console.
@@ -50,25 +92,40 @@ SML automatically forces the following property values on Session Settings.
 If you change any of these properties they will be automatically reset to these values
 next time the asset is loaded.
 
-- ShowInBuilds: `Public Builds` to ensure that session settings are visible to the user
-- ManagerAvailability: `USM MAX`, which is an invalid value, ensuring that the setting never displays in base-game options menus.
-- IsSettingSessionWide: `true` to ensure that multiplayer clients are able to modify session settings and have their changes stored with the save file.
+* ShowInBuilds: `Public Builds` to ensure that session settings are visible to the user
+* ManagerAvailability: `USM MAX`, which is an invalid value, ensuring that the setting never displays in base-game options menus.
+* IsSettingSessionWide: `true` to ensure that multiplayer clients are able to modify session settings and have their changes stored with the save file.
 
 In order to have a session setting only editable at save creation, use the "Don't show in game" Visibility Disqualifier.
+
+=== Registration
+
+A Session Setting must be registered to be usable by the player.
+
+To register a Session Setting, list it in the relevant array of your mod's
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance Module].
+
+Registering a Session Setting makes it available to be configured in the SML Session Settings menu
+which is available at both world creation and in the pause menu.
 
 == Reading and Writing Session Settings
 
 You can read the value of a session setting via the "Get <something> Option Value" method of the Session Settings Manager.
 You can also subscribe to changes via "Subscribe to Dynamic Option Update".
 
-Check ExampleMod for some example session settings and how to read their values.
-There is an example in the ExampleMod Level Blueprint and in the Game World Module.
-
 If you want to programatically modify the value of a session setting,
 use the "Set <something> Option Value" method of the Session Settings Manager.
 
+Check ExampleMod for some example session settings and how to read their values.
+There is an example in the ExampleMod Level Blueprint and in the Game World Module.
 
-// TODO are they currently synced from clients to host? SML forces them all to be "for all players" so it can be saved with the savegame.
+An example of reading a integer Session Setting value from {cpp}:
+
+```cpp
+// self->GetWorld() can be substituted with any other method of obtaining world context
+USessionSettingsManager* SessionSettings = self->GetWorld()->GetSubsystem<USessionSettingsManager>();
+auto optionValue = SessionSettings->GetIntOptionValue("YourModReference.IntSessionSetting");
+```
 
 // TODO verify
 // Session settings are stored in the session settings subsystem https://discord.com/channels/555424930502541343/562722670974599227/1126996669481889903
@@ -82,6 +139,8 @@ TODO
 Mod Config is better for user interface or visual stuff since it is saved with the user's game and carries over between saves.
 
 Session Settings are good for things you want to be a choice per save file, such as options for a custom level.
+
+Session Setting values are xref:Development/Satisfactory/Multiplayer.adoc[replicated in multiplayer].
 
 == Advanced Game Settings
 

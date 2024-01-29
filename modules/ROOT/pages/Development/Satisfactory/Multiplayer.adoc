@@ -51,22 +51,62 @@ contains some examples of correctly adding multiplayer functionality to mods.
 
 The examples are not exhaustive, but they should help you get started.
 
-== Remote Call Objects
+[id="RPCs"]
+== Remote Procedure Calls (RPCs)
 
-Remote Call Objects are an Unreal concept described in the video.
-Note that dedicated servers have no player controller they can't make use of Remote Call Objects.
-In that case, consider using a link:#ReplicatedSubsystems[Replicated Subsystem] instead.
+The video explains what a Remote Procedure Call (RPC) is.
+You can find more detailed information in the
+https://docs.unrealengine.com/5.2/en-US/rpcs-in-unreal-engine/[Unreal Engine documentation].
 
-Coffee Stain Studios has written custom code to make it easier for mods to register their own Remote Call Objects.
-The inner details of this system are described in the link:#HowRCOsImplemented[appendix].
+Satisfactory mods generally have their RPCs defined in one of two places depending on the use case.
+The table below contains information about when to use each.
+Be sure to read the sections below that explain each system in more detail.
 
-Remote call objects can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
+.Remote Call Object or Replicated Mod Subsystem
+|===
+| Use a link:#RCOs[Remote Call Object (RCO)] when... | Use a link:#ReplicatedSubsystems[Replicated Mod Subsystem] when...
 
-Remote call objects can be retrieved from a player controller instance via 
+| Your RPC is sending info from one client to the server.
+
+| Your RPC is sending info from the server to one or more clients.
+
+| When the RPC is being called because of some action the client took.
+
+| When the RPC is being called automatically or without client action.
+
+|
+// Intentionally blank
+
+| When your RPC is Multicast
+
+|===
+
+=== RPC Execution
+
+The outcome of calling an RPC depends on the RPC's type and the network ownership of the calling actor.
+The https://docs.unrealengine.com/5.2/en-US/rpcs-in-unreal-engine/#requirementsandcaveats[Unreal Documentation]
+has an excellent table summarizing the different possible execution results.
+
+[id="RCOs"]
+== Remote Call Objects (RCOs)
+
+A Remote Call Object (RCO) is a convenient place for modded RPCs to be defined.
+Coffee Stain Studios has written custom code to make it easier for mods to register their own RCOs.
+The inner details of this system are described in the link:#HowRCOsImplemented[appendix] if you want to learn more.
+
+RCOs are spawned by the server for each player controller,
+but importantly, that player controller is given network ownership of the RCO.
+This gives RCOs the ability to call RPCs -
+RPCs only work on objects that are (transitively) owned by the connection
+(i.e. the player controller, which is owned by the connection).
+Without this network ownership, RPCs would fail to execute.
+
+RCOs can be registered via listing their classes in your Game Instance Module's `Remote Call Objects` array.
+Registered RCOs can be retrieved at runtime from a player controller instance via 
 `FGPlayerController::GetRemoteCallObjectOfClass`
 which is accessible in both blueprints and {cpp}.
 
-If for some reason you need to manually register a remote call object it can be done via
+If for some reason you need to manually register an RCO it can be done via
 `FGPlayerController::RegisterRemoteCallObjectOfClass` or
 `FGGameMode::RegisterRemoteCallObjectClass`.
 
@@ -78,14 +118,16 @@ they do not exist on every connection.
 As such, you should not use them for any multicast RPCs - triggering one will softlock and crash client players!
 If you want to use Multicast, do it from an link:#ReplicatedSubsystems[Replicated Subsystem] instead.
 
-An example why you should not do this is demonstrated in the ExampleMod.
+An example why you should not do this is demonstrated in the ExampleMod's `CC_ExampleReplication` chat command.
 
+[id="RCO_Blueprint"]
 === Blueprint Example
 
 Your remote call objects should inherit from `BP Remote Call Object`.
 
-The ExampleMod demonstrates blueprint remote call object registration and usage from a building.
+The ExampleMod demonstrates blueprint remote call object usage in `Widget_MultiplayerDemoBuilding`.
 
+[id="RCO_Cpp"]
 === {cpp} Example
 
 Your remote call objects should inherit from `FGRemoteCallObject`.
@@ -157,10 +199,13 @@ Configure if a subsystem is replicated via its `Replication Policy` field.
 
 Replicated subsystems are a good place to implement multicast RPCs since they will be present on all connections.
 
+[id="ReplicatedSubsystem_Blueprint"]
 === Blueprint Example
 
-The ExampleMod uses a replicated property on the Multiplayer Demo Building.
+The ExampleMod uses a Multicast RPC
+on the `ReplicationExampleSubsystem` to implement the `CC_ExampleReplication` chat command.
 
+[id="ReplicatedSubsystem_Cpp"]
 === {cpp} Example
 
 No example is currently provided.
@@ -174,7 +219,7 @@ See the video or Unreal documentation for more info on their purpose.
 
 Variables can be configured to replicate by specifying their `Replication` option in the details panel.
 
-The ExampleMod uses a replicated property on the Multiplayer Demo Building.
+The ExampleMod uses a replicated property with RepNotify in `Build_MultiplayerDemoBuilding`.
 
 === {cpp} Example
 

@@ -64,7 +64,8 @@ You could also install ficsit-cli on the server and interact with its file syste
 // cspell:ignore CIFS
 [NOTE]
 ====
-SMM cannot currently connect to servers by filesystem path, including SMB/CIFS or network mounts.
+SMM cannot currently connect to servers by filesystem path.
+This includes **local servers** (on your computer) and SMB/CIFS or network mounts.
 Use ficsit-cli for this in the mean time.
 ====
 
@@ -76,7 +77,8 @@ If using the Mod Manager to manage your server:
    * If you don't see this option, ensure that you have installed the latest version of the Mod Manager,
      as only versions 3.0.0 and up support this feature.
 . Enter server connection details in the popup window.
-   * Decide what method to select and what to enter by reading the link:#FileTransferMethods[File Transfer Methods] section,
+   * Decide what method to select and what to enter
+     by reading the link:#FileTransferMethods[File Transfer Methods] section,
      then return here.
 . The server will now appear in your Game Version dropdown and can be managed like a local install.
 . Skim the below ficsit-cli section to stay informed, then continue reading the link:#ServerClientConsistency[next setup step].
@@ -101,6 +103,8 @@ If using ficsit-cli to manage your server:
 . The server will now appear as an install you can select and manage as usual.
 . Read the below, then continue reading the link:#ServerClientConsistency[next setup step].
 
+ficsit-cli will probably see your local Satisfactory Mod Manager profiles and may have one selected by default.
+Consider creating a new profile to use for your server.
 Make sure to apply changes after installing mods or loading a profile,
 otherwise all changes will be discarded on exit.
 
@@ -155,18 +159,19 @@ image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
 image::DedicatedServers/CLI_FTP.png[Ficsit-CLI Example]
 
 [id="FileTransferMethods_SMB"]
-=== SMB/CIFS
+=== Filepath or SMB/CIFS
 
 Server Message Block (SMB), also known as CIFS (Common Internet File System) or Windows File Shares,
 is a network file transfer method commonly used on Windows Systems and occasionally Linux/Unix systems.
+Think of it like Windows file paths but expanded to supports network locations.
 SMB typically uses TCP port 445, but your server may differ.
 The examples below are for a self-hosted dedicated server.
 
 * The authenticating user requires Read/Write/Delete or Read/Modify permissions.
 * The path should follow this format:
 ** If using a Windows ficsit-cli install:
-+
-`\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
+*** If the server is installed on your local computer, use the file path, for example `C:\EpicGamesGames\SatisfactoryDSExperiment`
+*** If the server is on a network location: `\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
 ** If using a Linux ficsit-cli install:
 +
 link:https://github.com/satisfactorymodding/ficsit-cli/issues/57[(A bug is currently preventing this from working)]
