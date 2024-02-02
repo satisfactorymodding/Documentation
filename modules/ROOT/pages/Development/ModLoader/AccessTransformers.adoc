@@ -49,15 +49,14 @@ Creates the public methods `FORCEINLINE PropertyType GetSomeProperty() { return 
 
 This is beneficial when you are trying to access a field and you are not in a class to use Friend for. Below is an example from PowerSuit for the FEquipmentStats struct.
 
+// cspell:ignore Getm
 [source,cpp]
 ----
 // Instead of this ...
 SuitCostToUse = Parent->EquipmentParent->mCostToUse;
 // ... use this
-SuitCostToUse = Parent->EquipmentParent.GetCostToUse();
+SuitCostToUse = Parent->EquipmentParent.GetmCostToUse();
 ----
-
-Note that the generated methods lack the `m` from the original property name.
 
 === BlueprintReadWrite
 
