@@ -335,7 +335,7 @@ This is the *latest* version of the docs.
 
 Early Access and Experimental are currently both the same version - Update 8.
 
-You should download a zip either of the **`dev` branch`**,
+You should download a zip either of the **`dev` branch**,
 which will have the latest changes and fixes,
 or the **`master` branch** .
 
