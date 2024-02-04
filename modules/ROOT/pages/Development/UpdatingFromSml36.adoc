@@ -27,7 +27,7 @@ If you are updating your mod **directly from Update 7 (SML 3.4.x) to Update 8**,
 there are more steps to follow and more changes you should be aware of.
 Make sure to read the
 xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1] guide
-and xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.5.1] guide
+and xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1] guide
 first!
 
 [IMPORTANT]
