@@ -61,7 +61,8 @@ https://ficsit.app/mod/NogsCheats[Nog's Cheats].
 This list consists of some of the most useful ones, but there are more.
 
 A full list Satisfactory-specific cheats can be found
-https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/sml-dev/Source/FactoryGame/Public/FGCheatManager.h[here].
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Source/FactoryGame/Public/FGCheatManager.h[here].
+
 
 The native Unreal cheats
 https://github.com/satisfactorymodding/UnrealEngine/blob/5.2.1-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
