@@ -34,12 +34,14 @@ Later on, you can write your own to allow upgrading buildings or to have snappin
 You can learn more about how holograms work on the xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms] page.
 ====
 
-As you can see in the `Components` pane in the top left, the actor already contains a few components. But not any visuals, so, now add a new static mesh component in the center of the viewport. The build gun uses the origin when targeting the mesh to be built or snapped.
+As you can see in the `Components` pane in the top left, the actor already contains a few components.
+But not any visuals, so, now add a new instanced static mesh component in the center of the viewport.
+The build gun uses the origin when targeting the mesh to be built or snapped.
 You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh], the Plantpot of Knowledge, for your buildable.
 
 This Actor is also where you can define the snapping area and the clearance area, but we won't do that for now. Look to other machines and examples for inspiration as there are several relevant settings to make those behaviors work correctly.
 
-== Make it paintable
+== Make it Paintable
 
 We want to make our buildable xref:Development/Satisfactory/Paintable.adoc[paintable], meaning, able to be painted it with the paint gun. Because the `FGBuildable`-class already provides a basic implementation for that, we just need our buildable's mesh to use the `MI_Factory_Base_01` material. The provided example mesh already provides a proper UV map for said material, so you will not need to edit the UVs of the provided mesh. You will need to do so for your own models. More info on the materials already in the game can be found at xref:Development/Modeling/MainMaterials.adoc[Main Materials] documentation page. 
 
@@ -75,6 +77,8 @@ Create a new FGRecipe asset and set ProducedIn to `FGBuildGun`,
 then add Ingredients entries to define the cost of constructing the building.
 The Product field should contain exactly one entry -
 the FGBuildingDescriptor asset you just created for your buildable.
+
+Don't forget to list your newly created recipe in the unlocks of a Schematic otherwise it won't be registered.
 
 That's it! You don't need to register anything else. When the recipe gets loaded, everything else also gets loaded and the buildable in the save file has soft references to the classes, and if they get loaded also the classes like our newly created buildable get loaded.
 
