@@ -60,7 +60,7 @@ To resolve the hit, we have two options:
 - Hit result `bool ResolveHit( const FHitResult& Result, FInstanceHandle& OutHandle )`
 - Overlap Result `bool ResolveOverlap( const FOverlapResult& Result, FInstanceHandle& OutHandle )`
 
-```cp
+```cpp
 ASMLActor::ResolveHitResult(const FHitResult& Hit) {
     AAbstractInstanceManager* Manager = AAbstractInstanceManager::Get(GetWorld());
     fgcheck(Manager);
