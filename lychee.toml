@@ -23,7 +23,9 @@ exclude = [
     # This is a valid page but still 404s for some reason
     "https://www.audiokinetic.com/en/download/",
     # unable to get local issuer certificate
-    "https://questions.satisfactorygame.com/"
+    "https://questions.satisfactorygame.com/",
+    # 403s despite being valid pages
+    "https://stackoverflow.com/questions/"
 ]
 
 # Exclude these filesystem paths from getting checked.
