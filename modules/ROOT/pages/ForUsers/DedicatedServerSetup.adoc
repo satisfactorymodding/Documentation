@@ -118,6 +118,12 @@ This does _not_ mean that all installs must be on the same profile.
 The Mod Manager and ficsit-cli support multiple methods of connecting to servers remotely to manage mod files.
 Select a method below based on what your server (or 3rd party server host) provides.
 
+For 3rd-party server hosts, refer to their documentation on how to connect to the server using a (S)FTP client.
+The mod manager uses the same username, password, IP and port. The path depends on how the server host has set
+things up (check their documentation), but it's relatively easy to figure it out: in the server's files, find a
+folder that contains a file named `FactoryServer.sh` or `FactoryServer.exe`. The mod manager will make sure the
+path points to an installation, so it will show an error if the path is not correct (no installations found).
+
 [id="FileTransferMethods_SFTP"]
 === SFTP
 
