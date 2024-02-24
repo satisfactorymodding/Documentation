@@ -261,13 +261,17 @@ This section assumes that you already know about the repository creating, commit
 
 Use the git tool you are comfortable with.
 
-It is suggested that you not enable Unreal's version control integration because it works at the project level and not the plugin level.
+Be mindful of merge conflicts and branches in the context of Unreal Engine.
+Most Unreal Engine asset files are raw binary files, which means git diffing them must be done inside the editor.
+The editor has a pretty decent built-in merge resolver,
+but you must be able to open the editor to use it.
+You'll have to resolve conflicts and compile errors on the {cpp} side first
+to build a working Development Editor copy to open,
+and the editor could get confused if information from {cpp} parent classes change.
 
-Be extra careful with merge conflicts and branches in the context of Unreal Engine.
-Most Unreal Engine asset files are raw binary files, which means git diffing them is difficult.
-Panakotta has directions on using UE as diff tool
+Panakotta has directions on using UE as diff tool separate from a project(?)
 https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
-but it's best to totally avoid merge conflicts wherever possible.
+but it's best to avoid merge conflicts where possible.
 
 ## UE4GitDiff
 
