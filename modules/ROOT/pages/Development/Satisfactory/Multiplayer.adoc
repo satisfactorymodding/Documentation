@@ -252,6 +252,25 @@ which Arch has informed us is planned to be phased out soon.
 If you have questions about this system, please ask about it on the discord,
 as it's not worth documenting something that will be removed so soon.
 
+== Replicated Maps
+
+For unknown reasons, Unreal does not provide systems that allow TMaps to be replicated.
+There are multiple approaches you can implement yourself to work around this:
+
+* Replicating an array of custom structs which have properties for key and value.
+  The host can use a regular map, updating this array in response to map changes.
+  On the client, implement the OnRep callback and construct a map from the array.
+* If your keys can be computed from your values, such as a map containing FGBuildables by name,
+  replicate just an array of values and construct a map from them in the OnRep callback.
+* A more performant approach would involve creating a custom (replicating) struct to hold the map,
+  then writing custom NetSerialize and NetDeltaSerialize overrides to efficiently handle replication of partial updates.
+  Such an approach is most certainly not for the faint of heart, though.
+  If your map is updating so often that the overhead of converting it to/from an array is important,
+  reconsider if you really need to replicate all that data, and if you would encounter network problems first.
+
+Note that replicating one array of keys and one array of values is not suggested
+because changes to each array are not guaranteed to arrive at the same time.
+
 == Appendix
 
 Additional information on various topics.
