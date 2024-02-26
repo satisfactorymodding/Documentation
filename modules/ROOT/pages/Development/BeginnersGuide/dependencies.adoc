@@ -138,14 +138,6 @@ as well as making sure you're logged into your linked GitHub account when you fo
 [id="UnrealLinker"]
 === Link Your GitHub Account to Our Repository
 
-[WARNING]
-====
-**Update 8/SML3.5 Special Note**:
-If you have trouble getting the linker to work,
-please contact us on the Discord.
-It's a very recent addition to the setup process and we're still ironing out the bugs.
-====
-
 In addition to the changes Coffee Stain has made to Unreal Engine,
 the modding community has also applied some engine changes of our own.
 
