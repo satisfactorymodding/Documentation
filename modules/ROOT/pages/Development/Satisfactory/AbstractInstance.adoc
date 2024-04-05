@@ -101,7 +101,7 @@ AMyModActor::CreateInstanceFromMesh(UStaticMesh* Mesh) {
 }
 ```
 
-=== Destory Abstract Instances at Runtime
+=== Destroy Abstract Instances at Runtime
 
 ```cpp
 static void RemoveInstances( UObject* WorldContext, TArray<FInstanceHandle*>& Handles, bool bEmptyHandleArray = true );
