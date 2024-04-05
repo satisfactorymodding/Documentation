@@ -42,3 +42,66 @@ You may also find the following properties useful:
 * Use Relative Transform to apply a transform this specific mesh relative to the overall building.
 * If the building has no components set `mContainsComponents` on the buildable to false
 * The "apply random offset" properties can be used to mitigate z-fighting issues when multiple copies of the building overlap.
+
+[id="Examples"]
+== Examples for Custom Implementations
+
+`TArray< struct FInstanceHandle* > mInstanceHandles` All instance handlers (provided from `AFGBuildable` If you create a new actor, you should define something like that).
+
+=== Resolve Hit on Abstract Instances
+
+[NOTE]
+====
+Hits in Holograms are already resolved and don't need this implementation.
+====
+
+To resolve the hit, we have two options:
+
+- Hit result `bool ResolveHit( const FHitResult& Result, FInstanceHandle& OutHandle )`
+- Overlap Result `bool ResolveOverlap( const FOverlapResult& Result, FInstanceHandle& OutHandle )`
+
+```cpp
+ASMLActor::ResolveHitResult(const FHitResult& Hit) {
+    AAbstractInstanceManager* Manager = AAbstractInstanceManager::Get(GetWorld());
+    fgcheck(Manager);
+
+    FInstanceHandle OutHandle;
+    if(Manager->ResolveHit(Hit, OutHandle)) {
+        // We hit a abstract instance to we can get informations like the owner from that
+        OutHandle.GetOwner() // AActor* who owns the Instance
+    }
+    // We don't hit a abstract instance so we can continue with the Hit
+}
+```
+
+=== Create Abstract Instances at Runtime
+
+```cpp
+static void SetInstanceFromDataStatic( AActor* OwnerActor, const FTransform& ActorTransform, const FInstanceData& InstanceData, FInstanceHandle* &OutHandle, bool bInitializeHidden = false );
+
+ASMLActor::CreateInstanceFromMesh(UStaticMesh* Mesh) {
+    // Prepare the InstanceData with a given Mesh at the relative Transform 0.
+    FInstanceData InstanceData;
+    InstanceData.StaticMesh = Mesh;
+    InstanceData.Mobility = EComponentMobility::Static;
+    InstanceData.RelativeTransform = FTransform();
+    InstanceData.NumCustomDataFloats= 20;
+
+    FInstanceHandle* Handle;
+    AAbstractInstanceManager::SetInstanceFromDataStatic(this, GetActorTransform(), InstanceData, Handle);
+
+    // You should add this Handle to the array so we can destroy them if the actor is destroyed (for example, dismantled).
+    mInstanceHandles.Add(Handle);
+}
+```
+
+=== Destory Abstract Instances at runtime
+
+```cpp
+static void RemoveInstances( UObject* WorldContext, TArray<FInstanceHandle*>& Handles, bool bEmptyHandleArray = true );
+
+ASMLActor::ClearInstances(UStaticMesh* Mesh) {
+    // Will remove/destroy all instances and empty mInstanceHandles.
+    AAbstractInstanceManager::RemoveInstances( GetWorld( ), mInstanceHandles );
+}
+```
