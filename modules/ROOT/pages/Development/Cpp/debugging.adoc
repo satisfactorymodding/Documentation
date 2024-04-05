@@ -80,9 +80,11 @@ When used correctly, they can help catch bugs early and make debugging easier
 by pinpointing the exact location where an assumption was violated.
 
 You can read more about these utilities (and see usage examples) on the relevant
-https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assertions/[Unreal Engine documentation page].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/asserts-in-unreal-engine?application_version=5.2[Unreal Engine documentation page].
 
 Note that Assert and Check statements will crash the game if their conditions are not met, however, Ensure statements will allow the game to keep running.
+
+You should generally use `fgcheck()`, a custom assert implemented by Coffee Stain, instead of Unreal's standard `check()` because fgcheck is enabled in Shipping builds.
 
 When SML is installed and a debugger is attached, Checks and Ensures will be caught by the debugger.
 This is not normally the case in Shipping builds of Unreal Engine games; this behavior is enabled by SML.
