@@ -1,0 +1,117 @@
+= Working with Assets and Blueprint-Defined Data from {cpp}
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+When working with {cpp} code and hybrid mods, you may encounter situations where you need to reference and operate on assets.
+This poses a complication, as assets and their fields don't 'exist' yet when writing {cpp} code, only in the blueprint code.
+
+Generally, if you need to access a class/field in {cpp},
+have the parent class defined on the {cpp} side that define the fields you want to work with in {cpp},
+then populate them in a blueprint child version of the class.
+TODO example, TODO move this to a section?
+
+There are many solutions to this problem, each with their own tradeoffs.
+We have listed them in order of what we suggest below:
+
+[id="HybridMod"]
+== Approach 0: Hybrid Mod
+
+Does the operation you're performing need to happen on the {cpp} side?
+If you can work with the data on the blueprint code side instead,
+you can avoid this problem.
+
+Consider if the performance gains from doing the operation in {cpp} are worth the added complexity of this problem.
+
+TODO example
+
+[id="DataAsset"]
+== Approach 1: Data Asset
+
+Create a subclass of `UDataAsset` on the cpp side
+
+Define fields for values you want to pass across to the {cpp} side.
+Add `UPROPERTY(EditAnywhere, BlueprintReadWrite)` or BlueprintReadOnly to the properties you want to access
+
+Create a field on your Game Instance Module that holds a reference to your Data Asset
+Create the data asset on the BP side + populate its fields there + populate the field in your game instance module with it
+
+To access the data, get your instance module, get data class, get field.
+
+TODO mircea mentioned static getter?
+
+TODO example
+
+[source,h]
+----
+#pragma once
+#include "CoreMinimal.h"
+#include "Resources/FGItemDescriptor.h"
+#include "Buildables/FGBuildablePowerStorage.h"
+#include "ApBlueprintDataBridge.generated.h"
+
+/**
+ * Data asset definition to allow passing assets from blueprint to the C++ side without having to LoadObject hard code them
+ */
+UCLASS(NotBlueprintable, BlueprintType)
+class UApBlueprintDataBridge : public UDataAsset {
+	GENERATED_BODY()
+public:
+
+	// Power Storage building asset for UI modifications
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<AFGBuildablePowerStorage> PowerStorageBuilding;
+
+	// Item to use as the Archipelago Blocker
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<UFGItemDescriptor> BlockerItem;
+
+	// Item to use as the replacement for Somersloops
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<UFGItemDescriptor> ExplorationPickupItem_Somersloop;
+
+	// Item to use as the replacement for Mercer Spheres
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<UFGItemDescriptor> ExplorationPickupItem_Mercer;
+};
+----
+
+[id="GameInstanceField"]
+== Approach 2: Field on Game Instance Module
+
+Similar to Approach 1, putting
+
+This can get messy pretty fast because you're adding a lot of fields to your game instance module.
+
+It also causes stuff to preload sooner than it probably needs to -> hitches?
+
+TODO example
+
+[id="FindObject"]
+== Approach 3: Find Object and Load Object
+
+Generally don't use this with hardcoded strings because it's very brittle,
+if you move the asset it will no longer point to something and Unreal can't notice to auto-fix it up for you.
+
+The only approach that can find assets with a location determined at runtime.
+
+Okayish for base-game stuff that Should™ never move.
+
+Example from ContentLib:
+
+[source,h]
+----
+UClass* Class = FindObject<UClass>(FindPackage(nullptr, TEXT("/Game/")), TEXT("BP_UnlockInfoOnly_C"), false);
+if (!Class) {
+	Class = LoadObject<UClass>(nullptr, TEXT("/Game/FactoryGame/Unlocks/BP_UnlockInfoOnly.BP_UnlockInfoOnly_C"));
+	if (!Class) {
+		UE_LOG(LogContentLib, Fatal, TEXT("CL: Couldn't find BP_UnlockInfoOnly_C wanting to Add to %s"), *Schematic->GetName())
+	}
+}
+----
