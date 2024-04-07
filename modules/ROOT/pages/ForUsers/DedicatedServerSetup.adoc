@@ -51,22 +51,40 @@ the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 With this in mind, continue to the link:#GetModManager[next section].
 
 [id="GetModManager"]
-== Install a Mod Manager
+== Use a Mod Manager to Connect to the Server
 
 Both Satisfactory Mod Manager (version 3.0.0 and up) and ficsit-cli
 can be used to manage mods on a remote server installation
 as long as you have network filesystem or (s)ftp access to the server.
+
 You could also install ficsit-cli on the server and interact with its file system directly via its terminal user interface.
 
 [id="GetModManager_SMM"]
 === Satisfactory Mod Manager
 
 // cspell:ignore CIFS
-[NOTE]
+[IMPORTANT]
 ====
 SMM cannot currently connect to servers by filesystem path.
-This includes **local servers** (on your computer) and SMB/CIFS or network mounts.
-Use ficsit-cli for this in the mean time.
+This includes local servers (on your computer) and SMB/CIFS or network mounts.
+
+If you want to manage a server whose files **live on your own computer**
+or **you access to the server's files with Windows network file share**,
+you must use ficsit-cli instead of SMM until this feature is implemented.
+====
+
+[IMPORTANT]
+====
+Since dedicated Server support is still a work in progress,
+there are TWO different versions of Satisfactory Mod Manager available!
+
+- SMM2 is the one automatically downloaded when you visit https://smm.ficsit.app/. It doesn't support dedicated servers.
+- SMM3 is a pre-release you must manually download from https://github.com/satisfactorymodding/SatisfactoryModManager/releases.
+
+You must download SMM3 to manage dedicated servers via SMM.
+If you don't want to use SMM3 yet, use ficsit-cli instead.
+
+image:DedicatedServers/SMM2_vs_SMM3.png[Satisfactory Mod Manager 2 vs 3 comparison]
 ====
 
 If using the Mod Manager to manage your server:
@@ -74,8 +92,7 @@ If using the Mod Manager to manage your server:
 . xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
 . Open the Mod Manager.
 . In the left panel, under Other, select "Manage Servers".
-   * If you don't see this option, ensure that you have installed the latest version of the Mod Manager,
-     as only versions 3.0.0 and up support this feature.
+   * Don't see this option? Follow the steps in the "Important" box above to get the right version of Satisfactory Mod Manager.
 . Enter server connection details in the popup window.
    * Decide what method to select and what to enter
      by reading the link:#FileTransferMethods[File Transfer Methods] section,
@@ -101,16 +118,7 @@ If using ficsit-cli to manage your server:
   b. If ficsit-cli is installed on the server,
      enter the file system path, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
 . The server will now appear as an install you can select and manage as usual.
-. Read the below, then continue reading the link:#ServerClientConsistency[next setup step].
-
-ficsit-cli will probably see your local Satisfactory Mod Manager profiles and may have one selected by default.
-Consider creating a new profile to use for your server.
-Make sure to apply changes after installing mods or loading a profile,
-otherwise all changes will be discarded on exit.
-
-Note that applying changes in ficsit-cli is a global action -
-all installations the program is aware of will have any staged changes they may have applied in parallel.
-This does _not_ mean that all installs must be on the same profile.
+. Continue to the link:#ServerClientConsistency[next setup step].
 
 [id="FileTransferMethods"]
 == File Transfer Methods
@@ -188,8 +196,36 @@ link:https://github.com/satisfactorymodding/ficsit-cli/issues/57[(A bug is curre
 .Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
 
+[id="Troubleshooting"]
+== Troubleshooting
+
+Remember, we can only provided limited support for third-party hosted servers
+as we do not know or control their systems.
+Contact your server host's support lines if you encounter problems.
+
+Contact us on the https://discord.gg/xkVJ73E[Discord Server] if something is confusing or goes wrong.
+
+[id="InstallingMods"]
+== Installing Mods
+
+Once you have set up the mod manager of choice you can start installing mods on the server.
+Read the below warning, then check out the set of directions specific to the mod manager you chose.
+
+[NOTE]
+====
+As dedicated server support is still a work in progress,
+there is not currently a conveneint way to filter mods for dedicated server support on the ficsit.app website.
+When viewing the webpage for a mod, check the "Latest Version" section -
+if you see a table with a "Server" column, and a checkmark is present on your server type,
+the mod is compatible with dedicated servers.
+If you see an X or the table is absent, the mod does not yet support dedicated servers.
+
+Satisfactory Mod Manager and ficsit-cli offer a "compatible" filtering mode which,
+while managing a server install, causes only server-compatible mods to be displayed.
+====
+
 [id="ServerClientConsistency"]
-== Server-Client Consistency
+=== Important: Server-Client Mod Consistency
 
 Although it is possible to use ficsit-cli or the Mod Manager to install mods one-by-one on the server,
 this is not recommended as you could easily end up with a mismatch between client and server mod versions,
@@ -208,18 +244,42 @@ and send file to your server members so they can configure their own installs ac
 If you encounter any one-side-only mods
 you will have to switch to using separate profiles for the server and client until the Modpacks feature is released.
 
+[id="InstallingMods_SMM"]
+=== Using Satisfactory Mod Manager
+
+The process of using Satisfactory Mod Manager from this point on is the same as managing a local install.
+If you need a refresher, check out the xref:ForUsers/SatisfactoryModManager.adoc[Installing and Using the Mod Manager] guide.
+
+[id="InstallingMods_CLI"]
+=== Using ficsit-cli
+
+There is not currently documentation for using ficsit-cli to install mods,
+but as long as you heed the below advice, it will be pretty straightforward.
+As always, ask on the Discord if you get stuck.
+
+ficsit-cli will probably see your local Satisfactory Mod Manager profiles and may have one selected by default.
+Consider creating a new profile to use for your server.
+Make sure to apply changes after installing mods or loading a profile,
+otherwise all changes will be discarded on exit.
+
+Note that applying changes in ficsit-cli is a global action -
+all installations the program is aware of will have any staged changes they may have applied in parallel.
+This does _not_ mean that all installs must be on the same profile.
+
 == Configuring Mods on Servers
 
-Although xref:ForUsers/ConfiguringMods.adoc#_mod_savegame_settings[Mod Savegame Settings]
-can be configured using their usual interface,
-there is not currently an interface for adjusting
+There is not currently an interface for adjusting
 xref:ForUsers/ConfiguringMods.adoc#_mod_configuration_options[Mod Configurations]
 remotely on dedicated servers.
-As a result, you should configure mods client side and copy the config files over to the server.
-
-Note that some mods could stop working correctly or behave unexpectedly if client and server configs don't match.
-
+As such, you should configure mods client side and copy the config files over to the server.
+Note that some mods could stop working correctly or behave unexpectedly if client and server configs don't match!
 Check the xref:faq.adoc#Files_ModConfig[FAQ on where game files are located] to see where config files are stored.
+
+Although xref:ForUsers/ConfiguringMods.adoc#_mod_savegame_settings[Mod Savegame Settings]
+can be configured mid-game using their usual interface,
+the Server Manager's save creation screen does not support setting Mod Savegame Settings that must be decided at save file creation.
+To work around this, create your save file with the desired settings on your client,
+then upload the save to the server using the normal save file upload process.
 
 == (Not supported) Manual Mod Installation
 
