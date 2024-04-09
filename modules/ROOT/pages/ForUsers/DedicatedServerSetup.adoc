@@ -186,10 +186,8 @@ a good starting point is to check `linux mount cifs to path` on your favorite se
 * Note that locally installed dedicated servers set up through Steam or Epic
 will likely be automatically detected by Satisfactory Mod Manager and appear with the "DS" note in the dropdown.
 
-// TODO get screenshot
-// .Windows Satisfactory Mod Manager Example
-// image::DedicatedServers/SMM_SMB.png[Satisfactory Mod Manager Example]
-There is not currently an example screenshot for using this approach on the Mod Manager.
+.Windows Satisfactory Mod Manager Example
+image::DedicatedServers/SMM_SMB.png[Satisfactory Mod Manager Example]
 
 .Windows Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
