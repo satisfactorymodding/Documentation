@@ -269,9 +269,8 @@ You'll have to resolve conflicts and compile errors on the {cpp} side first
 to build a working Development Editor copy to open,
 and the editor could get confused if information from {cpp} parent classes change.
 
-Panakotta has directions on using UE as diff tool separate from a project(?)
-https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here],
-but it's best to avoid merge conflicts where possible.
+Panakotta has directions on setting up UE to launch in diff mode as a git diff/merge tool
+https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here].
 
 ## UE4GitDiff
 

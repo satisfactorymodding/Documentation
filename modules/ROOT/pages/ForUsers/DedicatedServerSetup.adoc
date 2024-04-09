@@ -62,17 +62,6 @@ You could also install ficsit-cli on the server and interact with its file syste
 [id="GetModManager_SMM"]
 === Satisfactory Mod Manager
 
-// cspell:ignore CIFS
-[IMPORTANT]
-====
-SMM cannot currently connect to servers by filesystem path.
-This includes local servers (on your computer) and SMB/CIFS or network mounts.
-
-If you want to manage a server whose files **live on your own computer**
-or **you access to the server's files with Windows network file share**,
-you must use ficsit-cli instead of SMM until this feature is implemented.
-====
-
 [IMPORTANT]
 ====
 Since dedicated Server support is still a work in progress,
@@ -93,6 +82,7 @@ If using the Mod Manager to manage your server:
 . Open the Mod Manager.
 . In the left panel, under Other, select "Manage Servers".
    * Don't see this option? Follow the steps in the "Important" box above to get the right version of Satisfactory Mod Manager.
+   * Note that if your server is locally installed through Steam or Epic, the mod manager may automatically detect it, allowing you to skip the below step of manually adding it.
 . Enter server connection details in the popup window.
    * Decide what method to select and what to enter
      by reading the link:#FileTransferMethods[File Transfer Methods] section,
@@ -172,6 +162,7 @@ image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
 .Ficsit-CLI FTP Example
 image::DedicatedServers/CLI_FTP.png[Ficsit-CLI Example]
 
+//cspell:ignore CIFS
 [id="FileTransferMethods_SMB"]
 === Filepath or SMB/CIFS
 
@@ -183,17 +174,24 @@ The examples below are for a self-hosted dedicated server.
 
 * The authenticating user requires Read/Write/Delete or Read/Modify permissions.
 * The path should follow this format:
-** If using a Windows ficsit-cli install:
+** If running your chosen mod management tool on a Windows computer:
 *** If the server is installed on your local computer, use the file path, for example `C:\EpicGamesGames\SatisfactoryDSExperiment`
 *** If the server is on a network location: `\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
-** If using a Linux ficsit-cli install:
-+
-link:https://github.com/satisfactorymodding/ficsit-cli/issues/57[(A bug is currently preventing this from working)]
+** If running your chosen mod management tool on a Linux computer:
+*** Neither SMM nor ficsit-cli can connect to SMB/CIFS paths directly,
+since they are not a real path that Linux can read.
+Instead, they need to be mounted to a local path.
+How this is done will vary significantly depending on your setup.
+A good starting point is to search `mount cifs to path linux` on your favorite search engine.
+* Note that locally installed dedicated servers set up through Steam or Epic
+will likely be automatically detected by Satisfactory Mod Manager and appear with the "DS" note in the dropdown.
 
-** Satisfactory Mod Manager does not currently support SMB connections.
-   A future release (soon(TM)) will add support for this.
+// TODO get screenshot
+// .Windows Satisfactory Mod Manager Example
+// image::DedicatedServers/SMM_SMB.png[Satisfactory Mod Manager Example]
+There is not currently an example screenshot for using this approach on the Mod Manager.
 
-.Ficsit-CLI Example
+.Windows Ficsit-CLI Example
 image::DedicatedServers/CLI_SMB.png[Ficsit-CLI Example]
 
 [id="Troubleshooting"]
@@ -220,8 +218,10 @@ if you see a table with a "Server" column, and a checkmark is present on your se
 the mod is compatible with dedicated servers.
 If you see an X or the table is absent, the mod does not yet support dedicated servers.
 
-Satisfactory Mod Manager and ficsit-cli offer a "compatible" filtering mode which,
+Satisfactory Mod Manager offers a "compatible" filtering mode which,
 while managing a server install, causes only server-compatible mods to be displayed.
+
+Ficsit-cli does not currently have a way to filter mods for dedicated server support.
 ====
 
 [id="ServerClientConsistency"]
