@@ -175,14 +175,14 @@ The examples below are for a self-hosted dedicated server.
 * The authenticating user requires Read/Write/Delete or Read/Modify permissions.
 * The path should follow this format:
 ** If running your chosen mod management tool on a Windows computer:
-*** If the server is installed on your local computer, use the file path, for example `C:\EpicGamesGames\SatisfactoryDSExperiment`
+*** If the server is installed on the same computer, use the file path, for example `C:\EpicGamesGames\SatisfactoryDSExperiment`
 *** If the server is on a network location: `\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
 ** If running your chosen mod management tool on a Linux computer:
-*** Neither SMM nor ficsit-cli can connect to SMB/CIFS paths directly,
-since they are not a real path that Linux can read.
-Instead, they need to be mounted to a local path.
-How this is done will vary significantly depending on your setup.
-A good starting point is to search `mount cifs to path linux` on your favorite search engine.
+*** If the server is installed on the same computer: use the file path.
+*** If the server is on a network location, you first need to mount it to a local path,
+then you can treat it as a local installation.
+Mounting varies significantly depending on your setup;
+a good starting point is to check `linux mount cifs to path` on your favorite search engine.
 * Note that locally installed dedicated servers set up through Steam or Epic
 will likely be automatically detected by Satisfactory Mod Manager and appear with the "DS" note in the dropdown.
 
