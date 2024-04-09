@@ -57,8 +57,7 @@ The video explains the concept of network authority.
 
 To check if your code has authority, use Actor 'Has Authority'.
 If you don't have an actor to check against,
-consider using the return of GameplayStatics 'Get Game Mode' as the actor.
-Note that this function returns null on clients.
+consider using the return of GameplayStatics 'Get Game State' as the actor.
 
 === Avoid Using Player Controller Index 0
 
@@ -67,7 +66,8 @@ so you should generally avoid using GameplayStatics 'Get Player Controller' with
 For example, don't use its returned controller as an input for Has Authority,
 and don't get its pawn to check Is Locally Human Controlled.
 
-It's fine to use player controller index 0 for user interface related tasks.
+It's fine to use player controller index 0 for user interface related tasks
+since that code should only be running on sides that have a valid player controller index 0.
 
 [id="RPCs"]
 == Remote Procedure Calls (RPCs)
