@@ -51,6 +51,24 @@ contains some examples of correctly adding multiplayer functionality to mods.
 
 The examples are not exhaustive, but they should help you get started.
 
+== Checking for Authority
+
+The video explains the concept of network authority.
+
+To check if your code has authority, use Actor 'Has Authority'.
+If you don't have an actor to check against,
+consider using the return of GameplayStatics 'Get Game State' as the actor.
+
+=== Avoid Using Player Controller Index 0
+
+Keep in mind that dedicated servers have no player controller,
+so you should generally avoid using GameplayStatics 'Get Player Controller' with index 0 in your code.
+For example, don't use its returned controller as an input for Has Authority,
+and don't get its pawn to check Is Locally Human Controlled.
+
+It's fine to use player controller index 0 for user interface related tasks
+since that code should only be running on sides that have a valid player controller index 0.
+
 [id="RPCs"]
 == Remote Procedure Calls (RPCs)
 
@@ -233,6 +251,25 @@ As of Update 8, this system has been replaced with a new system involving struct
 which Arch has informed us is planned to be phased out soon.
 If you have questions about this system, please ask about it on the discord,
 as it's not worth documenting something that will be removed so soon.
+
+== Replicated Maps
+
+For unknown reasons, Unreal does not provide systems that allow TMaps to be replicated.
+There are multiple approaches you can implement yourself to work around this:
+
+* Replicating an array of custom structs which have properties for key and value.
+  The host can use a regular map, updating this array in response to map changes.
+  On the client, implement the OnRep callback and construct a map from the array.
+* If your keys can be computed from your values, such as a map containing FGBuildables by name,
+  replicate just an array of values and construct a map from them in the OnRep callback.
+* A more performant approach would involve creating a custom (replicating) struct to hold the map,
+  then writing custom NetSerialize and NetDeltaSerialize overrides to efficiently handle replication of partial updates.
+  Such an approach is most certainly not for the faint of heart, though.
+  If your map is updating so often that the overhead of converting it to/from an array is important,
+  reconsider if you really need to replicate all that data, and if you would encounter network problems first.
+
+Note that replicating one array of keys and one array of values is not suggested
+because changes to each array are not guaranteed to arrive at the same time.
 
 == Appendix
 

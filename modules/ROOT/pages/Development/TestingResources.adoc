@@ -166,6 +166,8 @@ You must load with the `-offline` flag and use a Map Travel URL with the `?liste
 For example, `open Persistent_Level?loadgame=NameOfYourSaveGame?listen`.
 Remember that Session Settings are stored in the Map Travel URL as well
 so the defaults will be used if you don't specify them directly in the travel URL here.
+
+Consider locally hosting your own dedicated server for multiplayer testing instead.
 ====
 
 Locally testing multiplayer functionality requires running two copies of the game at once.
@@ -191,29 +193,19 @@ The link:#LaunchScript[launch script] demonstrates how to make the game to autom
 as opposed to the main menu, cutting down on load time and clicks when testing your mod.
 However, you will need to tweak it slightly if the level you want to load is a custom level.
 
-To do this, you'll need to either need to modify the powershell script,
-create a file with some configuration settings
-or add them to the default game configuration.
+Notice that the powershell script's loadLatestSave option creates an ini file on the fly
+containing instructions to load into a specific save file and GameDefaultMap.
+You'll either need to modify the powershell script to point to your custom level
+or create your own ini file for it to use instead.
 
-To get started, create a `.ini` file in a convenient location
-(such as your Satisfactory game install directory)
-that contains the following:
+First, you'll need to find the path to use for your custom level.
+It's based on the level's asset path.
+For example, https://github.com/Nogg-aholic/NogsLevel/blob/master/Content/NogsLevel.umap[Nog's Level's level asset is at the content root],
+so its path is `/NogsLevel/NogsLevel.NogsLevel`.
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/ExampleMod/Content/Maps/ExampleLevel/ExampleLevel.umap[Example Level's is a few layers of folder deep],
+it's path is `/ExampleMod/Maps/ExampleLevel/ExampleLevel.ExampleLevel`.
 
-```
-[/Script/EngineSettings.GameMapsSettings]
-LocalMapOptions=??skipOnboarding?loadgame=LastLight_autosave_0
-GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level
-GameInstanceClass=/Script/FactoryGame.FGGameInstance
-```
-
-In place of `LastLight_autosave_0` you should put the name of your desired save file.
-Note that loading last autosaves of a map works as well if you format it correctly.
-The example will load the latest autosave of a save called `LastLight`.
-
-Note that doing this will prevent you from returning to the main menu in that game session -
-when you try to do so, you will instead re-load your selected game save.
-
-There are a few other flags you can use as well:
+While you're at it, there are a few other flags you can use to customize the loading process:
 
 +++ <details><summary> +++
 FG Map Options Switches from Archengius:
@@ -246,13 +238,18 @@ Apparently it disables EOS sockets and makes the game fall back to normal IPv4 s
 ....
 +++ </div></details> +++
 
-You can launch the game with these settings in one of two ways.
+=== Option 1: Modify Powershell Script's Automatic ini Generation
 
-=== Option 1 - Custom Configuration with Startup Script
+Alter the `Add-Content` instruction that adds a `GameDefaultMap` to point to the asset path of your custom level.
+Note that this requires you to use the loadLatestSave flag (since that's what causes the script to generate the ini file)
+or modify the script to use the ini file under other conditions.
 
-You can launch the game from command line
-with the path to your configuration file
-specified in the `EngineINI` command flag.
+=== Option 2: Use Your Own ini File
+
+Note how the powershell script uses the EngineINI option to point to an Engine.ini file to use when launching the game.
+
+You can manually write an ini file and modify the powershell script to always launch the game with it,
+or, launch separate from the powershell script by writing your own command.
 
 For example, if your file was called `LoadMapEngineConfiguration.ini`,
 your launch command could look like this:
@@ -261,12 +258,12 @@ your launch command could look like this:
 "D:\SatisfactoryExperimental\FactoryGame\Binaries\Win64\FactoryGame-Win64-Shipping.exe" -EpicPortal -NoMultiplayer -Username=Player1 EngineINI="D:\SatisfactoryExperimental\LoadMapEngineConfiguration.ini"
 ```
 
-Note that you will have to modify this example command
+Note that you will have to modify this example command 
 so that it points to where you have the game installed.
 
 You might want to save it in a batch file or powershell script for easy execution later.
 
-=== Option 2 - Add to Default Game Configuration
+=== Option 3 - Add to Default Game Configuration
 
 Instead of creating a new file for your configuration,
 you can edit your default game configuration, found at

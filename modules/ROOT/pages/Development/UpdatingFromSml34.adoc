@@ -295,7 +295,7 @@ If your project contains any Wwise stubs or assets,
 you may be greeted with a popup upon opening the project
 or opening an asset that references the Wwise asset.
 
-image:https://media.discordapp.net/attachments/1036634533077979146/1131263355089322054/image.png[Drejn screenshot of Wwise popup]
+image:Development/UpdatingGuides/WwiseMigrationPopupScreenshot.png[Screenshot of Wwise popup]
 
 You can safely cancel or close the prompt to take no action.
 However, you may need to delete any Wwise assets you have in your mod,

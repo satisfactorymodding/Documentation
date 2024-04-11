@@ -98,7 +98,7 @@ M Overridden Category::
   Categories control what subsection a recipe appears under in the recipe list.
   By default, recipes take on the category of their first product item.
   {blank} +
-  We'll leave this at `None` so that it sticks with the default category of the Leaves item.
+  We'll leave this at `None` so that it sticks with the default category of the Wood item.
 * {blank}
 +
 M Manufacturing Menu Priority::

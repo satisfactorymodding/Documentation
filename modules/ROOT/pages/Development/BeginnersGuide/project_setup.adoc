@@ -64,20 +64,18 @@ or you will have to repeat some of the setup process again.
 ====
 This is the *latest* version of the docs.
 
-If you want to develop mods for Update 8,
-you should clone either the **`dev` branch**,
-which will have the latest changes and fixes,
-or the **`master` branch** .
+Early Access and Experimental are currently both the same version - Update 8.
 
+You should clone either the **`dev` branch** or the **`master` branch**.
 Of those two, you probably want whichever branch was pushed to most recently, which you can see
 https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
-====
 
-If you're still uncertain which to download, ask us on the Discord.
+If you're still uncertain which to clone, ask us on the Discord.
+====
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
 Again, make sure to clone the correct branch - it will probably start you on the `master` branch by default
-and you may have to switch branches to the correct one.
+and you may have to switch branches to the branch you actually intend to clone.
 
 The directory is ready for use as soon as the clone is complete.
 Move on to the link:#_setting_up_wwise[next heading].
@@ -348,7 +346,7 @@ you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step
 Make sure that your project folder is not stored in a folder path that contains unicode characters.
 Review the directions in the link:#_starter_project[Starter Project] section.
 
-===== Entire computer locks up while compiling
+==== Entire computer locks up while compiling
 
 The fix for this rare but troublesome issue seems to vary for each person that encounters it.
 Try the following:

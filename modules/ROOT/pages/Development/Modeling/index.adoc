@@ -28,7 +28,7 @@ PBR Materials::
 +
 Texture Atlases::
   Helps understand the painting system (which allows you to change factory colours) and allows you to use decals on your models.
-  https://blog.immersed.team/texture-atlasing-an-inside-look-at-optimizing-3d-worlds-8a07145856d7[Tutorial Article]
+  https://web.archive.org/web/20200101133356/https://blog.immersed.team/texture-atlasing-an-inside-look-at-optimizing-3d-worlds-8a07145856d7?gi=9b479f256ecc[Tutorial Article]
 * {blank}
 +
 Normal Map Decals::

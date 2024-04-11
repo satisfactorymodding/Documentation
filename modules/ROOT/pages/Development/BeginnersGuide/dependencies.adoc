@@ -138,14 +138,6 @@ as well as making sure you're logged into your linked GitHub account when you fo
 [id="UnrealLinker"]
 === Link Your GitHub Account to Our Repository
 
-[WARNING]
-====
-**Update 8/SML3.5 Special Note**:
-If you have trouble getting the linker to work,
-please contact us on the Discord.
-It's a very recent addition to the setup process and we're still ironing out the bugs.
-====
-
 In addition to the changes Coffee Stain has made to Unreal Engine,
 the modding community has also applied some engine changes of our own.
 
@@ -335,10 +327,7 @@ This is the *latest* version of the docs.
 
 Early Access and Experimental are currently both the same version - Update 8.
 
-You should download a zip either of the **`dev` branch`**,
-which will have the latest changes and fixes,
-or the **`master` branch** .
-
+You should download a zip either of the **`dev` branch** or the **`master` branch**.
 Of those two, you probably want whichever branch was pushed to most recently, which you can see
 https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 

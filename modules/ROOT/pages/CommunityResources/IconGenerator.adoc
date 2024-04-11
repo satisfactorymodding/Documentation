@@ -17,7 +17,7 @@ https://github.com/DavidHGillen/Satisfactory_IconCapture[GitHub page].
 
 Kyrium's tool captures images using a render target, allowing capture of materials with opacity.
 
-You can learn more about how to download and use the plugin on its https://git.kyrium.space/sf-modding/publictools/kiconmaker[Gitlab page].
+You can learn more about how to download and use the plugin on its https://github.com/Satisfactory-KMods/KIconMaker[GitHub page].
 
 == Nog's Icon Generator
 

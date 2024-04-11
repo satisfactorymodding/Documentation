@@ -41,6 +41,7 @@
 *** xref:Development/Cpp/setup.adoc[Setup]
 *** xref:Development/Cpp/debugging.adoc[Debugging]
 *** xref:Development/Cpp/hooking.adoc[Hooking]
+// TODO *** xref:Development/Cpp/GettingBpData.adoc[Working with Assets and Blueprint-Defined Data from {cpp}]
 *** xref:Development/Cpp/thirdparty.adoc[Third Party Libraries]
 
 ** xref:Development/Modeling/index.adoc[3D Modeling]
