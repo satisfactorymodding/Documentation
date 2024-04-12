@@ -143,6 +143,13 @@ If you find a mod that is missing its stickers or ones that seem to be incorrect
 please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
+== Do mods work with dedicated servers?
+
+In general, yes, but exact support will vary depending on the mod.
+See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
+The xref:ForUsers/DedicatedServerSetup.adoc#InstallingMods[Installing Mods section]
+describes how to tell if an individual mod supports Dedicated Servers.
+
 == Satisfactory Mod Manager is open, but I can't see it's window!
 
 The program's window somehow got offscreen.
