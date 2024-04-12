@@ -206,6 +206,11 @@ On Epic: (Note that the Early Access and Experimental branches are separate entr
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
 
+Dedicated Server, Linux, and Mac install locations vary significantly depending on how you set them up.
+
+In a Crossover (Mac) install, assuming your bottle is named "Steam", files will be at
+`~/Library/Application\ Support/CrossOver/Bottles/Steam/drive_c/Program\ Files\ \(x86\)/Steam/steamapps/common/Satisfactory`
+
 [id="Files_Mods"]
 === Mods
 
