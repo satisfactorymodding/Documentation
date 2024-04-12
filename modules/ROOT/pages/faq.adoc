@@ -196,15 +196,27 @@ image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 [id="Files_GameInstall"]
 === Game Install
 
-The answer to this question depends on if you installed the game via Steam or Epic.
+The location of your game files depends on how you installed the game.
 
-On Steam: 
+[id="Files_GameInstall_Steam"]
+==== Steam
+
+The default path is
+`C:\Program Files (x86)\Steam\steamapps\common\Satisfactory`.
+
+You can use the below approach to find your exact install location:
 
 image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 
-On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
+[id="Files_GameInstall_Epic"]
+==== Epic
+
+Note that the Early Access and Experimental branches are separate library entries with separate install directories!
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_GameInstall_Other"]
+==== Other
 
 Dedicated Server, Linux, and Mac install locations vary significantly depending on how you set them up.
 
