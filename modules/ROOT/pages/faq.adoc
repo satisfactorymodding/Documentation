@@ -143,6 +143,13 @@ If you find a mod that is missing its stickers or ones that seem to be incorrect
 please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
+== Do mods work with dedicated servers?
+
+In general, yes, but exact support will vary depending on the mod.
+See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
+The xref:ForUsers/DedicatedServerSetup.adoc#InstallingMods[Installing Mods section]
+describes how to tell if an individual mod supports Dedicated Servers.
+
 == Satisfactory Mod Manager is open, but I can't see it's window!
 
 The program's window somehow got offscreen.
@@ -189,15 +196,32 @@ image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 [id="Files_GameInstall"]
 === Game Install
 
-The answer to this question depends on if you installed the game via Steam or Epic.
+The location of your game files depends on how you installed the game.
 
-On Steam: 
+[id="Files_GameInstall_Steam"]
+==== Steam
+
+The default path is
+`C:\Program Files (x86)\Steam\steamapps\common\Satisfactory`.
+
+You can use the below approach to find your exact install location:
 
 image:FAQ/LocalFiles_Steam.png[Browse Local Files on Steam]
 
-On Epic: (Note that the Early Access and Experimental branches are separate entries with separate install directories!)
+[id="Files_GameInstall_Epic"]
+==== Epic
+
+Note that the Early Access and Experimental branches are separate library entries with separate install directories!
 
 image:FAQ/LocalFiles_Epic.png[Browse Local Files on Epic]
+
+[id="Files_GameInstall_Other"]
+==== Other
+
+Dedicated Server, Linux, and Mac install locations vary significantly depending on how you set them up.
+
+In a Crossover (Mac) install, assuming your bottle is named "Steam", files will be at
+`"${HOME}/Library/Application Support/CrossOver/Bottles/Steam/drive_c/Program Files (x86)/Steam/steamapps/common/Satisfactory"`
 
 [id="Files_Mods"]
 === Mods

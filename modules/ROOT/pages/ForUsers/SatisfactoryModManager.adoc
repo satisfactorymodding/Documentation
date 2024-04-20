@@ -51,6 +51,7 @@ xref:faq.adoc#_are_satisfactory_mods_safe[here].
 *** link:#Install_Win11[Windows 11]
 *** link:#Install_Winget[Automatic via Winget]
 ** link:#Install_Linux[Linux]
+** link:#Install_Mac[Mac]
 
 [id="Install_Win10"]
 === For Windows 10:
@@ -88,6 +89,17 @@ https://learn.microsoft.com/en-us/windows/package-manager/winget/[winget]
 installed you can install the mod manager by running this command in a command prompt:
 
 `winget install SatisfactoryModding.SatisfactoryModManager`.
+
+[id="Install_Mac"]
+=== Mac
+
+Satisfactory does not officially support Mac,
+but you can use various technologies outside the scope of this guide,
+such as CrossOver, to get it running.
+
+Satisfactory Mod Manager does not currently support Mac,
+but you can use https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
+to both install mods and manage remote servers from a Mac.
 
 == Detecting your Game Installation Directory
 

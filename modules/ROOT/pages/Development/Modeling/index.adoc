@@ -43,7 +43,7 @@ Lightmap UVs::
 +
 Ambient Occlusion Bake::
   Help the lighting engine do a better job by making a texture to describe where the nooks, crannies, and edges of meshes are.
-  https://www.katsbits.com/tutorials/blender/baking-ambient-occlusion.php[Tutorial Article]
+  https://web.archive.org/web/20231202113004/https://www.katsbits.com/tutorials/blender/baking-ambient-occlusion.php[Tutorial Article]
 
 == Help
 Keep in mind these are common techniques and many more resources are available to learn from. Feel free to ask for help in the `+#help-making-mods+` channel on the https://discord.gg/xkVJ73E[Discord server] or in the https://forums.ficsit.app/[SMR Forums]

@@ -98,6 +98,8 @@ If using ficsit-cli to manage your server:
 . Download https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
    either to your computer or to the server itself
    depending on which environment you are more comfortable working with.
+   - Visit https://cli.ficsit.app/ to automatically download the latest stable release for your detected platform.
+   - Specific (pre-)releases can be manually download from the https://github.com/satisfactorymodding/ficsit-cli/releases[GitHub releases page].
 . Run the application in a terminal window.
 . Navigate to the "Installations" > "New Installation" screen.
 . Enter server connection details in the popup window.
