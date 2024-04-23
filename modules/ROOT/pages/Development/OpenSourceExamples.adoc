@@ -95,3 +95,29 @@ _Notable Mod Loader Features Used:_
 ** Tracking if the user has modified the config from the defaults
    to know if future mod updates should automatically overwrite them with updated default data
 ** Programatically modifying config values and saving the changes
+
+== Screw It
+
+Meme mod, changes most things to be named and/or look like Screws.
+
+_Source Code_: Linked on the https://ficsit.app/mod/ScrewIt[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Using the Asset Registry to quickly discover subclasses (both vanilla and modded)
+* Asynchronous asset loading to avoid stalling the game while waiting for disk I/O
+* CDO edits in bulk (on the aforementioned loaded classes), implemented in {cpp}
+* Hybrid Blueprint/{cpp} game instance module
+** Root instance's final implementations is in Blueprint,
+   but it is backed by a custom {cpp} parent class to be
+   able to easily reference Blueprint-only assets
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* Access Transformers, to be able to change otherwise inaccessible member variables.
