@@ -209,20 +209,33 @@ Contact us on the https://discord.gg/xkVJ73E[Discord Server] if something is con
 Once you have set up the mod manager of choice you can start installing mods on the server.
 Read the below warning, then check out the set of directions specific to the mod manager you chose.
 
-[NOTE]
-====
+[id="CheckModDedicatedServerSupport"]
+=== Checking if a Mod Supports Dedicated Servers
+
+Not all mods are compatible with dedicated servers.
+They must be specially compiled and packaged for the alternative format.
+A greater percentage of mods will support servers once Satisfactory 1.0 launches since
+all developers will be forced to recompile their mods for that anyways.
+
 As dedicated server support is still a work in progress,
-there is not currently a conveneint way to filter mods for dedicated server support on the ficsit.app website.
+there is not currently a convenient way to filter mods for dedicated server support on the ficsit.app website.
+
 When viewing the webpage for a mod, check the "Latest Version" section -
 if you see a table with a "Server" column, and a checkmark is present on your server type,
 the mod is compatible with dedicated servers.
-If you see an X or the table is absent, the mod does not yet support dedicated servers.
+If you see an X, or the table is absent, the mod does not yet support dedicated servers.
+
+.Example Mod that Supports Dedicated Servers
+image::DedicatedServers/ExampleSupportsDedicatedServers.png[Supported Example]
+.Example Mod that Does NOT Support Dedicated Servers
+image::DedicatedServers/ExampleDoesNotSupportDedicatedServers.png[No Support Example]
+
+This example supports dedicated servers:
 
 Satisfactory Mod Manager offers a "compatible" filtering mode which,
 while managing a server install, causes only server-compatible mods to be displayed.
 
 Ficsit-cli does not currently have a way to filter mods for dedicated server support.
-====
 
 [id="ServerClientConsistency"]
 === Important: Server-Client Mod Consistency
@@ -233,7 +246,7 @@ preventing you from connecting.
 
 It is not feasible to export a profile created in SMM for a client to be used on a server
 because there are some mods that only exist client or server side.
-In the future, the ability to create and share "modpacks" will resolve this problem,
+In the future, the ability to create and share "modpacks" will be introduced to resolve this problem,
 as modpacks will be able to keep track of mods that may not apply for a game target.
 
 In the mean time, we suggest using an installation of SMM or ficsit-cli on your client computer
