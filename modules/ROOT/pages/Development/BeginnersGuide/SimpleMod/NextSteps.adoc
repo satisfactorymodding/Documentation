@@ -9,7 +9,7 @@ Once you have a mod you're ready to upload, follow the
 xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
 directions to export and upload it for other people to use.
 
-You can also ask questions on the https://discord.gg/xkVJ73E[Discord Server].
+You can also ask questions on the https://discord.ficsit.app[Discord Server].
 
 You may also be interested in {cpp} modding,
 which allows modifying and creating much more advanced game behaviors.

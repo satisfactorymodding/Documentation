@@ -116,7 +116,7 @@ You forgot to assign a hologram class in the FGBuildable - the default is `None`
 
 === Something Else
 
-If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+If something went wrong, feel free to contact us on the https://discord.ficsit.app[Discord] for help.
 
 == Next Steps
 

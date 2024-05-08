@@ -50,6 +50,19 @@ the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 
 With this in mind, continue to the link:#GetModManager[next section].
 
+[id="UnsupportedHosting"]
+==== Unsupported Hosts
+
+We do not currently maintain a list of server hosts that support modded servers.
+
+The following 3rd party hosting services are known to **NOT support mods**,
+regardless of what their websites and marketing pages claim:
+
+- low.ms
+
+If you believe a site is listed here in error,
+contact us about it on the https://discord.ficsit.app[Discord].
+
 [id="GetModManager"]
 == Use a Mod Manager to Connect to the Server
 
@@ -64,7 +77,7 @@ You could also install ficsit-cli on the server and interact with its file syste
 
 [IMPORTANT]
 ====
-Since dedicated Server support is still a work in progress,
+Since dedicated server support is still a work in progress,
 there are TWO different versions of Satisfactory Mod Manager available!
 
 - SMM2 is the one automatically downloaded when you visit https://smm.ficsit.app/. It doesn't support dedicated servers.
@@ -201,7 +214,7 @@ Remember, we can only provided limited support for third-party hosted servers
 as we do not know or control their systems.
 Contact your server host's support lines if you encounter problems.
 
-Contact us on the https://discord.gg/xkVJ73E[Discord Server] if something is confusing or goes wrong.
+Contact us on the https://discord.ficsit.app[Discord Server] if something is confusing or goes wrong.
 
 [id="InstallingMods"]
 == Installing Mods
@@ -209,20 +222,31 @@ Contact us on the https://discord.gg/xkVJ73E[Discord Server] if something is con
 Once you have set up the mod manager of choice you can start installing mods on the server.
 Read the below warning, then check out the set of directions specific to the mod manager you chose.
 
-[NOTE]
-====
+[id="CheckModDedicatedServerSupport"]
+=== Checking if a Mod Supports Dedicated Servers
+
+Not all mods are compatible with dedicated servers.
+They must be specially compiled and packaged for the alternative format.
+A greater percentage of mods will support servers once Satisfactory 1.0 launches since
+all developers will be forced to recompile their mods for that anyways.
+
 As dedicated server support is still a work in progress,
-there is not currently a conveneint way to filter mods for dedicated server support on the ficsit.app website.
+there is not currently a convenient way to filter mods for dedicated server support on the ficsit.app website.
+
 When viewing the webpage for a mod, check the "Latest Version" section -
 if you see a table with a "Server" column, and a checkmark is present on your server type,
 the mod is compatible with dedicated servers.
-If you see an X or the table is absent, the mod does not yet support dedicated servers.
+If you see an X, or the table is absent, the mod does not yet support dedicated servers.
+
+.Example Mod that Supports Dedicated Servers
+image::DedicatedServers/ExampleSupportsDedicatedServers.png[Supported Example]
+.Example Mod that Does NOT Support Dedicated Servers
+image::DedicatedServers/ExampleDoesNotSupportDedicatedServers.png[No Support Example]
 
 Satisfactory Mod Manager offers a "compatible" filtering mode which,
 while managing a server install, causes only server-compatible mods to be displayed.
 
 Ficsit-cli does not currently have a way to filter mods for dedicated server support.
-====
 
 [id="ServerClientConsistency"]
 === Important: Server-Client Mod Consistency
@@ -233,7 +257,7 @@ preventing you from connecting.
 
 It is not feasible to export a profile created in SMM for a client to be used on a server
 because there are some mods that only exist client or server side.
-In the future, the ability to create and share "modpacks" will resolve this problem,
+In the future, the ability to create and share "modpacks" will be introduced to resolve this problem,
 as modpacks will be able to keep track of mods that may not apply for a game target.
 
 In the mean time, we suggest using an installation of SMM or ficsit-cli on your client computer
@@ -266,6 +290,25 @@ Note that applying changes in ficsit-cli is a global action -
 all installations the program is aware of will have any staged changes they may have applied in parallel.
 This does _not_ mean that all installs must be on the same profile.
 
+[id="JoiningModdedDedicatedServer"]
+== Joining a Modded Dedicated Server
+
+As described in the link:#ServerClientConsistency[Server-Client Mod Consistency] section,
+client players must have the same mods installed as the server to be able to join.
+In the case of a failed join due to a mod mismatch,
+SML will attempt to provide a meaningful disconnect message, but this is not always possible.
+
+If you're having trouble joining your server,
+first verify that it is possible to connect to the server in its unmodified state
+by removing all mods from the server and client.
+Most connection issues people encounter also affect the unmodified server.
+If that works, try adding mods back in small groups to see which one is causing the problem.
+
+If you're still encountering problems,
+join the https://discord.ficsit.app[Discord]
+and upload logs from both your client and server in the `#help-using-mods` channel.
+
+[id="ModdedServerConfiguration"]
 == Configuring Mods on Servers
 
 There is not currently an interface for adjusting

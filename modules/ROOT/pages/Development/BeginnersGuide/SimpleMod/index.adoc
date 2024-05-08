@@ -33,7 +33,7 @@ types of items that pass through it
 Knowledge about 3D modeling is very helpful if you want to add new items, buildings, enemies, etc. to the game.
 If you have an idea for such a mod but aren't experienced with modeling,
 consider posting it in the `#ideas-discussion` channel on the
-https://discord.gg/xkVJ73E[Discord server].
+https://discord.ficsit.app[Discord server].
 You may find an artist willing to work with you on a project.
 You could also learn how to model in a program like Blender, Meshmixer, Maya, etc.
 ====

@@ -65,7 +65,7 @@ Use this to keep track of how far though a page you are or jump between sections
 == Join the Discord
 
 Making mods for Satisfaction can get complex and confusing at times, but we're here to help.
-Please consider joining our community https://discord.gg/xkVJ73E[Discord Server]
+Please consider joining our community https://discord.ficsit.app[Discord Server]
 and pick up the `Aspiring Modder` role in the `#rules` channel to get access to dedicated help channels for mod makers.
 
 == Contributing to the Docs
@@ -74,7 +74,7 @@ These documentation pages are all written by community members, and are publicly
 You can see the source code by clicking 'Edit this Page' in the top right corner of any page.
 
 Please do not hesitate to contact us with corrections, suggestions, or questions.
-The best way to reach the team is our https://discord.gg/xkVJ73E[Discord Server].
+The best way to reach the team is our https://discord.ficsit.app[Discord Server].
 
 You can find more info on contributing to the docs
 https://github.com/satisfactorymodding/Documentation#readme[here].
