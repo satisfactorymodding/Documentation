@@ -50,6 +50,19 @@ the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 
 With this in mind, continue to the link:#GetModManager[next section].
 
+[id="UnsupportedHosting"]
+==== Unsupported Hosts
+
+We do not currently maintain a list of server hosts that support modded servers.
+
+The following 3rd party hosting services are known to **NOT support mods**,
+regardless of what their websites and marketing pages claim:
+
+- low.ms
+
+If you believe a site is listed here in error,
+contact us about it on the https://discord.gg/xkVJ73E[Discord].
+
 [id="GetModManager"]
 == Use a Mod Manager to Connect to the Server
 
