@@ -77,7 +77,7 @@ You could also install ficsit-cli on the server and interact with its file syste
 
 [IMPORTANT]
 ====
-Since dedicated Server support is still a work in progress,
+Since dedicated server support is still a work in progress,
 there are TWO different versions of Satisfactory Mod Manager available!
 
 - SMM2 is the one automatically downloaded when you visit https://smm.ficsit.app/. It doesn't support dedicated servers.
@@ -243,8 +243,6 @@ image::DedicatedServers/ExampleSupportsDedicatedServers.png[Supported Example]
 .Example Mod that Does NOT Support Dedicated Servers
 image::DedicatedServers/ExampleDoesNotSupportDedicatedServers.png[No Support Example]
 
-This example supports dedicated servers:
-
 Satisfactory Mod Manager offers a "compatible" filtering mode which,
 while managing a server install, causes only server-compatible mods to be displayed.
 
@@ -292,6 +290,25 @@ Note that applying changes in ficsit-cli is a global action -
 all installations the program is aware of will have any staged changes they may have applied in parallel.
 This does _not_ mean that all installs must be on the same profile.
 
+[id="JoiningModdedDedicatedServer"]
+== Joining a Modded Dedicated Server
+
+As described in the link:#ServerClientConsistency[Server-Client Mod Consistency] section,
+client players must have the same mods installed as the server to be able to join.
+In the case of a failed join due to a mod mismatch,
+SML will attempt to provide a meaningful disconnect message, but this is not always possible.
+
+If you're having trouble joining your server,
+first verify that it is possible to connect to the server in its unmodified state
+by removing all mods from the server and client.
+Most connection issues people encounter also affect the unmodified server.
+If that works, try adding mods back in small groups to see which one is causing the problem.
+
+If you're still encountering problems,
+join the https://discord.gg/xkVJ73E[Discord]
+and upload logs from both your client and server in the `#help-using-mods` channel.
+
+[id="ModdedServerConfiguration"]
 == Configuring Mods on Servers
 
 There is not currently an interface for adjusting
