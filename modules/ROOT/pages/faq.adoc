@@ -6,7 +6,7 @@ Consider using your browser's Find on Page functionality (usually `Ctrl+F`)
 to quickly search this page for key words in your question.
 
 Is there a question you see asked a lot and would like to see it here?
-Feel free to discuss them on the https://discord.gg/xkVJ73E[Discord Server],
+Feel free to discuss them on the https://discord.ficsit.app[Discord Server],
 or add them yourself via the 'Edit this Page' button in the top right.
 
 [id="Installation"]

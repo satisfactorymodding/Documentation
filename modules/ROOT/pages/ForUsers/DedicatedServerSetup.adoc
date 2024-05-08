@@ -61,7 +61,7 @@ regardless of what their websites and marketing pages claim:
 - low.ms
 
 If you believe a site is listed here in error,
-contact us about it on the https://discord.gg/xkVJ73E[Discord].
+contact us about it on the https://discord.ficsit.app[Discord].
 
 [id="GetModManager"]
 == Use a Mod Manager to Connect to the Server
@@ -214,7 +214,7 @@ Remember, we can only provided limited support for third-party hosted servers
 as we do not know or control their systems.
 Contact your server host's support lines if you encounter problems.
 
-Contact us on the https://discord.gg/xkVJ73E[Discord Server] if something is confusing or goes wrong.
+Contact us on the https://discord.ficsit.app[Discord Server] if something is confusing or goes wrong.
 
 [id="InstallingMods"]
 == Installing Mods
@@ -305,7 +305,7 @@ Most connection issues people encounter also affect the unmodified server.
 If that works, try adding mods back in small groups to see which one is causing the problem.
 
 If you're still encountering problems,
-join the https://discord.gg/xkVJ73E[Discord]
+join the https://discord.ficsit.app[Discord]
 and upload logs from both your client and server in the `#help-using-mods` channel.
 
 [id="ModdedServerConfiguration"]

@@ -3,7 +3,7 @@
 Documentation for Satisfactory Mod Loader (SML) and Satisfactory modding.
 Master branch is live on <https://docs.ficsit.app/>.
 Please contact us on the
-[Satisfactory Modding Discord Server](https://discord.gg/xkVJ73E)
+[Satisfactory Modding Discord Server](https://discord.ficsit.app)
 with questions and suggestions, or contribute via PRs (see below).
 
 We attempt to use [Semantic Line Break format](https://sembr.org/) in the source files,

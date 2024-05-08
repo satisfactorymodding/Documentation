@@ -8,7 +8,7 @@ Use the Mod Tags system to xref:ForUsers/Tags.adoc[filter for mods tagged with #
 
 Mods in this list are generally considered by the community to add convenient, quality-of-life-improving features to Satisfactory without significantly affecting the game's balance or progression.
 
-If you have any suggestions for this list, feel free to discuss them on the https://discord.gg/xkVJ73E[Discord Server], or add them yourself via the 'Edit this Page' button in the top right.
+If you have any suggestions for this list, feel free to discuss them on the https://discord.ficsit.app[Discord Server], or add them yourself via the 'Edit this Page' button in the top right.
 
 == Mod List
 

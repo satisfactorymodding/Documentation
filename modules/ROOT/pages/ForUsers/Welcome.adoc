@@ -10,7 +10,7 @@ If you have a question, there's a pretty good chance it has been answered on our
 xref:faq.adoc[FAQ - Frequently Asked Questions] page.
 
 If it's not answered there, or something is unclear, feel free to ask in our
-https://discord.gg/xkVJ73E[Discord server].
+https://discord.ficsit.app[Discord server].
 
 == Installing the Mod Manager
 

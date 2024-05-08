@@ -353,7 +353,7 @@ And you're done! Go ahead and Alpakit your plugin, then check out your fancy new
 You can find info on how to use Alpakit back on the
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[Project Setup] page.
 
-If something went wrong, feel free to contact us on the https://discord.gg/xkVJ73E[Discord] for help.
+If something went wrong, feel free to contact us on the https://discord.ficsit.app[Discord] for help.
 
 == Next Steps
 
