@@ -10,6 +10,7 @@
 ** xref:ForUsers/ConfiguringMods.adoc[Configuring Mods]
 ** xref:ForUsers/Tags.adoc[Tags and Tag Search]
 ** xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
+** xref:ForUsers/CoreRedirectMigration.adoc[Migrating Modded Content with Core Redirects]
 
 * xref:Development/index.adoc[Development]
 
