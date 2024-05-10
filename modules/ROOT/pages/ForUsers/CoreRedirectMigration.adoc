@@ -140,7 +140,11 @@ you can add more `+ClassRedirects` lines and repeat steps 2 and 3 to find paths 
 [id="VerifySuccess"]
 == Step 5: Making Sure it Worked
 
-Once your `Engine.ini` file is set up and saved, launch the game and load your save file.
+Once your `Engine.ini` file is set up and saved:
+
+. Uninstall the mod providing the old content, if you still have it installed
+. Launch the game
+. Load your save file. SML will warn you about a mod missing before you load - this is to be expected.
 
 Go around your save and look around to see if the core redirect succeeded.
 Core redirects are all-or-nothing, so if you see one place where it didn't work,
