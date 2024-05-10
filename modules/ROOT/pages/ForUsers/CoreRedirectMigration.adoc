@@ -104,7 +104,8 @@ See the link:#ContentInspectorMethod_InSaveFile[directions above] for more infor
 
 ==== Use External Software
 
-If you have a copy of the mod, but the game can't launch, you can use the external software xref:Development/ExtractGameFiles.adoc#FModel[FModel]
+If you have a copy of the mod, but can't launch the game for some reason,
+you can use the external software xref:Development/ExtractGameFiles.adoc#FModel[FModel]
 to browse the mod's package files with the game closed and find the asset path that way.
 
 You may also be able to use save editors that display class information about your save file.
@@ -186,7 +187,9 @@ Note that they may render incorrectly due to the different placement restriction
 
 === Migrating Mk++ to Industrial Evolution
 
-https://ficsit.app/guide/Mg9t1BzVdaGhz[This guide by Acdx]
+// cspell:ignore Acxd
+
+https://ficsit.app/guide/Mg9t1BzVdaGhz[This guide by Acxd]
 walks you through migrating buildings from the
 https://ficsit.app/mod/MK22k20[Mk++] mod to similar ones from the
 https://ficsit.app/mod/MkPlus[Industrial Evolution] mod.
