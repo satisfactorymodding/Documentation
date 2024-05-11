@@ -151,8 +151,20 @@ Core redirects are all-or-nothing, so if you see one place where it didn't work,
 you don't need to check anywhere else in the save, just quit out and check your core redirect file syntax.
 
 If it didn't work,
-make sure your class paths end in `_C`, don't contain `Default__`,
+make sure your asset paths end in `_C`, don't contain `Default__`,
 and are correctly encased in quotes and parentheses like in the examples below.
+
+Your xref:faq.adoc#Files_Logs[log files] will contain messages near the `========= [] Load error summary =========` heading
+about any classes that couldn't be found on load.
+You may want to set up redirects for these classes as well.
+
+Keep in mind that you generally don't need to redirect recipes, schematics,
+and any content that doesn't seem to be a building/item/etc
+either because there is no good equivalent to redirect to (recipes/schematics)
+or because the game will construct it on its own (redirecting an already-unlocked schematic will unlock its recipes).
+
+Note that classes you have core redirected will not appear in this list
+because they "have" been found - by pointing to the new content instead.
 
 [id="CleanUp"]
 == Step 6: Clean Up
