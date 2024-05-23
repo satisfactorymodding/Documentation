@@ -51,7 +51,7 @@ On the Epic Games Launcher, go to your library and right-click on Satisfactory.
 image:TestingResources/EGS-Library.png[image]
 
 Choose "Manage" from the menu, and then in the modal that appears, scroll down to "Launch Options".
-Add `-Log - NewConsole` to your list of options.
+Add `-Log -NewConsole` to your list of options.
 
 image:TestingResources/EGS-Options.png[image]
 
