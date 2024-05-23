@@ -227,7 +227,7 @@ Contact us on the https://discord.ficsit.app[Discord Server] if something is con
 == Installing Mods
 
 Once you have set up the mod manager of choice you can start installing mods on the server.
-Read the below warning, then check out the set of directions specific to the mod manager you chose.
+Read the below warnings, then check out the set of directions specific to the mod manager you chose.
 
 [id="CheckModDedicatedServerSupport"]
 === Checking if a Mod Supports Dedicated Servers
@@ -274,6 +274,13 @@ and send file to your server members so they can configure their own installs ac
 
 If you encounter any one-side-only mods
 you will have to switch to using separate profiles for the server and client until the Modpacks feature is released.
+
+[id="ShutDownServer"]
+=== Shut Down the Server
+
+Before you start installing mods, make sure the server is not currently running.
+A running server will keep mod files locked in use, preventing updating or uninstalling them.
+You'll have to reboot the server anyways for mod changes to take effect, so you might as well turn it off before you start.
 
 [id="InstallingMods_SMM"]
 === Using Satisfactory Mod Manager
