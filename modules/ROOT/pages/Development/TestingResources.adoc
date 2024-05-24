@@ -32,30 +32,11 @@ for another method of controlling where the window will appear.
 
 The Unreal Console is a useful tool for debugging your mods.
 It allows you to view the game's log in real-time, and input console commands.
-In order to open the console, you will need to add some command line arguments to the game within your launcher.
+In order to open the console, you will need to add this to your game's command-line options:
 
-=== Steam
+`-Log -NewConsole`
 
-On Steam, go to your library and right-click on Satisfactory in the left panel, then choose "Properties" from the menu.
-
-image:TestingResources/Steam-Library.png[image]
-
-Then, in the new window that appears, under "Launch Options", add `-Log -NewConsole`.
-
-image:TestingResources/Steam-Options.png[image]
-
-=== Epic Games
-
-On the Epic Games Launcher, go to your library and right-click on Satisfactory.
-
-image:TestingResources/EGS-Library.png[image]
-
-Choose "Manage" from the menu, and then in the modal that appears, scroll down to "Launch Options".
-Add `-Log -NewConsole` to your list of options.
-
-image:TestingResources/EGS-Options.png[image]
-
----
+If you don't know how to do that, you can refer to xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[this guide].
 
 Now, when you launch the game, you should see the Unreal Console appear as a separate window.
 Here, you can view the game logs, enter commands, and see the game's current status.
