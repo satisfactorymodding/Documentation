@@ -63,7 +63,7 @@ The https://ficsit.app/mod/ContentInspector[Content Inspector] mod
 allows you to browse a mod's content in-game in a file-explorer-like interface.
 Read its mod page for examples and usage instructions.
 
-Look at a building and use the the `/inspect this` chat command to attempt to open Content Inspector on what your character is looking at.
+Look at a building and use the `/inspect this` chat command to attempt to open Content Inspector on what your character is looking at.
 
 Content Inspector displays the path to the class default object (not quite what we want, but close) in the `JS_LibOuter` field near the top of the text box.
 
