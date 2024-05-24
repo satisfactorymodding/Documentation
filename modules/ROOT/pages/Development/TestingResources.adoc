@@ -28,6 +28,21 @@ will affect every instance of Command Prompt on your system.
 See the link:#_launch_script_enhancements[Launch Script Enhancements] section below
 for another method of controlling where the window will appear.
 
+== Unreal Console
+
+The Unreal Console is a useful tool for debugging your mods.
+It allows you to view the game's log in real-time, and input console commands.
+In order to open the console, you will need to add this to your game's command-line options:
+
+`-Log -NewConsole`
+
+If you don't know how to do that, you can refer to xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[this guide].
+
+Now, when you launch the game, you should see the Unreal Console appear as a separate window.
+Here, you can view the game logs, enter commands, and see the game's current status.
+
+image:TestingResources/Unreal-Console.png[image]
+
 [id="LaunchScript"]
 == Quick Launch Script
 
