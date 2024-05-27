@@ -1,0 +1,211 @@
+= Migrating Modded Content with Core Redirects
+
+Unreal Engine's **Core Redirects** feature can be used to force
+the game to replace modded content with alternative content, under certain conditions.
+
+The following use cases are particularly relevant for users of mods:
+
+* Uninstalling a mod, but replacing its buildings with the closest base-game equivalent
+* Migrating from one mod to another mod that offers similar buildings
+
+Core Redirects are the system that modders can use to ensure saved content is not lost when they move it internally inside their mods.
+Mod developers can read more about this on the xref:Development/UnrealEngine/CoreRedirect.adoc[mod-developer-focused page about Core Redirects].
+
+== Restrictions
+
+Using core redirects may not work for your use case. Carefully consider the following:
+
+* Core Redirects can only be used to replace _every_ instance of content with another. You can't replace just the constructors in one building, the operation applies to your entire save file
+* For the redirect to take effect, the old content must become undefined or unloaded
+** You can cause this manually by uninstalling the mod that contains the old content
+** It's not possible to replace _part_ of a mod's buildings, you must replace everything from that mod, or accept that you will lose the content that was not migrated
+* You must find out the Asset Path of the new and old content
+** This requires some non-trivial work on your end
+** Finding asset paths will be covered in another section
+* The new content must be similar enough in internal structure to the old content
+** As a user, it's not always clear if this is possible, even if it seems like it "should" be. You will have to try it and see.
+** Keep in mind that **if this process doesn't work, there is not really anything you can change to make it work**. The restrictions on what can be replaced with what stem from what the content is and how it was implemented in the mod.
+** For example, you can sometimes replace a modded belt with another modded belt, or a modded power pole with a vanilla power pole, but replacing a constructor with a foundation won't work
+
+[id="BackUpSaves"]
+== Step 1: Back Up Your Saves!
+
+Before you start messing with core redirects, back up your saves.
+If you make a mistake, you could lose content or even corrupt your save file.
+Both of these risks are entirely avoided by simply making a backup of your save files first.
+
+[id="FindAssetPathOld"]
+== Step 2: Find the Asset Path of the Content to Replace
+
+In order to write a core redirect,
+you must obtain the Unreal Asset Paths for the content you want to replace
+and what you want to replace it with.
+
+An asset path is a string that represents where the content is stored in the mod's packaged files.
+Although it may look similar to a traditional file path, you can't simply browse to it in your file explorer.
+Read the sections below to learn how to find asset paths.
+
+They generally look like this:
+`/Game/FactoryGame/Buildable/Building/Foundation/Build_Foundation_8x1_01.Build_Foundation_8x1_01_C`
+
+Finding the asset paths is the most difficult part of the process, so don't be discouraged if it takes a while to figure out.
+
+=== You Can Load Into the Save File
+
+If you can still load into a save that contains the old content,
+finding the asset path is relatively straightforward.
+Two different approaches are described below.
+
+[id="ContentInspectorMethod_InSaveFile"]
+==== Content Inspector Method
+
+The https://ficsit.app/mod/ContentInspector[Content Inspector] mod
+allows you to browse a mod's content in-game in a file-explorer-like interface.
+Read its mod page for examples and usage instructions.
+
+Look at a building and use the `/inspect this` chat command to attempt to open Content Inspector on what your character is looking at.
+
+Content Inspector displays the path to the class default object (not quite what we want, but close) in the `JS_LibOuter` field near the top of the text box.
+
+image:ForUsers/CoreRedirectMigration/ContentInspector.png[Content Inspector showing the asset path of a building]
+
+For example, the 8m x 1m Foundation displays this in ContentInspector:
+
+`/Game/FactoryGame/Buildable/Building/Foundation/Build_Foundation_8x1_01.Default__Build_Foundation_8x1_01_C`
+
+...which you can edit to get the asset path of:
+
+`/Game/FactoryGame/Buildable/Building/Foundation/Build_Foundation_8x1_01.Build_Foundation_8x1_01_C`
+
+[id="TFITMethod_InSaveFile"]
+==== TFIT Method
+
+Debugging features in the https://ficsit.app/mod/TFIT[TFIT] mod can display asset paths for you.
+
+For buildings, enable the "Overlay: Debug Mode" and "Overlay: Logging" mod config options
+and the asset path will be printed in your xref:faq.adoc#Files_Logs[log files].
+
+image:ForUsers/CoreRedirectMigration/TFIT.png[TFIT showing the asset path of a building in the log files]
+
+Remember to turn these options off after you're done because they produce a lot of log spam.
+
+Other debugging features in the mod can reveal item and recipe paths.
+See the bottom of the mod page for more details.
+
+=== You Can't Load Into the Save File
+
+If you can't load into the save file, finding the asset path is more difficult, and your options are limited.
+
+[id="ContentInspectorMethod_FromMenu"]
+==== Content Inspector Method (from the main menu)
+
+If you still have the mod offering the content installed, Content Inspector can also be used to browse mod assets from the main menu.
+See the link:#ContentInspectorMethod_InSaveFile[directions above] for more information about this tool.
+
+==== Use External Software
+
+If you have a copy of the mod, but can't launch the game for some reason,
+you can use the external software xref:Development/ExtractGameFiles.adoc#FModel[FModel]
+to browse the mod's package files with the game closed and find the asset path that way.
+
+You may also be able to use save editors that display class information about your save file.
+
+[id="FindAssetPathNew"]
+== Step 3: Find the Asset Path of the New Content to Replace With
+
+Do Step 2 again, but this time you're looking for the asset path of the 'new' content.
+
+[id="CreateCoreRedirectIni"]
+== Step 4: Create the Core Redirect File
+
+. Close the game, if you currently have it open
+. Create a new text file `Engine.ini` in the following location: `[GameInstallFolder]\FactoryGame\Mods\SML\Config`
+* Note that any mod's config folder will work, SML's is just a convenient place to put it
+. Ensure that the file extension is `.ini` and not `.ini.txt`
+. Edit the file to add the following content as a template:
+
+```ini
+[CoreRedirects]
++ClassRedirects=(OldName="YOUR_OLD_PATH_HERE",NewName="YOUR_NEW_PATH_HERE")
+```
+
+Now, put the asset path for the content you want to replace in place of `YOUR_OLD_PATH_HERE`
+and the new content's asset path in place of `YOUR_NEW_PATH_HERE`.
+
+Compare against the link:#Examples[examples below] to ensure you've formatted it correctly.
+
+If you want to replace more than one type of content at once,
+you can add more `+ClassRedirects` lines and repeat steps 2 and 3 to find paths to use.
+
+[id="VerifySuccess"]
+== Step 5: Making Sure it Worked
+
+Once your `Engine.ini` file is set up and saved:
+
+. Uninstall the mod providing the old content, if you still have it installed
+. Launch the game
+. Load your save file. SML will warn you about a mod missing before you load - this is to be expected.
+
+Go around your save and look around to see if the core redirect succeeded.
+Core redirects are all-or-nothing, so if you see one place where it didn't work,
+you don't need to check anywhere else in the save, just quit out and check your core redirect file syntax.
+
+If it didn't work,
+make sure your asset paths end in `_C`, don't contain `Default__`,
+and are correctly encased in quotes and parentheses like in the examples below.
+
+Your xref:faq.adoc#Files_Logs[log files] will contain messages near the `========= [] Load error summary =========` heading
+about any classes that couldn't be found on load.
+You may want to set up redirects for these classes as well.
+
+Keep in mind that you generally don't need to redirect recipes, schematics,
+and any content that doesn't seem to be a building/item/etc
+either because there is no good equivalent to redirect to (recipes/schematics)
+or because the game will construct it on its own (redirecting an already-unlocked schematic will unlock its recipes).
+
+Note that classes you have core redirected will not appear in this list
+because they "have" been found - by pointing to the new content instead.
+
+[id="CleanUp"]
+== Step 6: Clean Up
+
+Hooray! You've successfully migrated your content.
+
+Once you save your game and exit, the redirect will have permanently replaced the old content with the new content in that save file.
+
+As such, you don't need the redirectors any more, so go back to `[GameInstallFolder]\FactoryGame\Mods\SML\Config` and remove the `Engine.ini` file you created.
+
+[id="Examples"]
+== Examples
+
+Here are some examples of known-to-work core redirects.
+
+[id="Example_BeltReplace"]
+=== Replacing Modded Belt with Vanilla Belt
+
+Replaces all Conveyor Belts and Lifts from the https://ficsit.app/mod/BeltMk6[Conveyor Belt Mk6*] mod with Mk5 versions from the base game.
+
+```ini
+[CoreRedirects]
++ClassRedirects=(OldName="/BeltMk6/Buildable/ConveyorLiftMk6/Build_ConveyorLiftMk6.Build_ConveyorLiftMk6_C",NewName="/Game/FactoryGame/Buildable/Factory/ConveyorLiftMk5/Build_ConveyorLiftMk5.Build_ConveyorLiftMk5_C")
++ClassRedirects=(OldName="/BeltMk6/Buildable/ConveyorBeltMk6/Build_ConveyorBeltMk6.Build_ConveyorBeltMk6_C",NewName="/Game/FactoryGame/Buildable/Factory/ConveyorBeltMk5/Build_ConveyorBeltMk5.Build_ConveyorBeltMk5_C")
+```
+
+=== Replacing Flex Power Lines with Vanilla Power Lines
+
+Replace all Flex Power Lines from the https://ficsit.app/mod/FlexSplines[Flex Splines] mod with the base game's Power Lines.
+Note that they may render incorrectly due to the different placement restrictions.
+
+```ini
+[CoreRedirects]
++ClassRedirects=(OldName="/FlexSplines/PowerLine/Build_FlexPowerline.Build_FlexPowerline_C",NewName="/Game/FactoryGame/Buildable/Factory/PowerLine/Build_PowerLine.Build_PowerLine_C")
+```
+
+=== Migrating Mk++ to Industrial Evolution
+
+// cspell:ignore Acxd
+
+https://ficsit.app/guide/Mg9t1BzVdaGhz[This guide by Acxd]
+walks you through migrating buildings from the
+https://ficsit.app/mod/MK22k20[Mk++] mod to similar ones from the
+https://ficsit.app/mod/MkPlus[Industrial Evolution] mod.

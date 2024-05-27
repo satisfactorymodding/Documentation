@@ -5,11 +5,6 @@ UE-CSS 4.25.3 build 42 adds a new feature: the ability to make accessors for fie
 This ability, called the **Access Transformer** system, is beneficial because it allows you to essentially make header accessor edits without the cost of having to deal with merge conflicts when bringing in updated SML and game headers later down the line. It also makes it easier to collaborate with other developers, because normal header edits are made in files outside of the plugin directory, meaning they would not be included in plugin (mod) source code repositories. Access transformers are defined in a file within the plugin directory, so they can easily be included in repositories.
 
 As of UE-CSS 4.26.2 build 30, BlueprintCallable is also supported.
-Additionally, access transformers that are not written correctly,
-or refer to fields that are no longer present,
-will result in an error message at compile time:
-`Unused <transformer type> for class <ClassName>, <extra details>. Requested by <ModReference>`.
-If you see this error message, it means you probably made a typo in your access transformer, or you are not using that access transformer type correctly.
 
 [NOTE]
 ====
@@ -37,6 +32,23 @@ BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="SomeFuncti
 You can have multiple (or none) of each of the access transformer types in one file,
 but they should all be under the same `[AccessTransformers]` section header.
 
+== Target Class
+
+All access transformers require a target class (or struct) to be specified in the Class field.
+This is the class being modified by the transformer.
+It should be specified in the format `"/Script/CppModuleName.ClassName"`.
+
+Remove any Unreal type prefixes (like `U`, `F`, or `A`) from the class name when specifying it in the Class field.
+For example, the `FFootstepEffectSurface` struct should use `FootstepEffectSurface` in the class name field.
+
+== Troubleshooting
+
+Access transformers that are not written correctly,
+or refer to fields that are no longer present,
+will result in an error message at compile time and in the Output Log:
+`Unused <transformer type> for class <ClassName>, <extra details>. Requested by <ModReference>`.
+If you see this error message, it means you probably made a typo in your access transformer, or you are not using that access transformer type correctly.
+
 == Definitions
 
 === Friend
@@ -47,7 +59,8 @@ Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to
 
 Creates the public methods `FORCEINLINE PropertyType GetSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }`.
 
-This is beneficial when you are trying to access a field and you are not in a class to use Friend for. Below is an example from PowerSuit for the FEquipmentStats struct.
+This is beneficial when you are trying to access a field and you are not in a class to use Friend for.
+Below is a usage example from PowerSuit for the FEquipmentStats struct.
 
 // cspell:ignore Getm
 [source,cpp]
@@ -60,11 +73,15 @@ SuitCostToUse = Parent->EquipmentParent.GetmCostToUse();
 
 === BlueprintReadWrite
 
-Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints (it cannot be added to a non-UPROPERTY field). It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game), so that no changes to the game headers are required.
+Adds `BlueprintReadWrite` to the specified UPROPERTY, allowing you to access that property from blueprints.
+It cannot be added to a non-`UPROPERTY` field.
+It also bypasses the private BPRW conflict check (which is compile time only, it does not affect the editor, or the game),
+so that no changes to the game headers are required.
 
 === BlueprintCallable
 
-Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints (it cannot be added to a non-UFUNCTION function).
+Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints.
+It cannot be added to a non-`UFUNCTION` function.
 
 == Loading
 
@@ -92,7 +109,9 @@ so the generator will mistakenly decide not to build the transformers in that fi
 
 [WARNING]
 ====
-Access Transformers can't modify engine classes, since the UHT will not generate `.generated.h` files for the engine classes when using a prebuilt engine. It has not been tested if they would work on a source built engine.
+Access Transformers can't modify engine classes,
+since the UHT will not generate `.generated.h` files for the engine classes when using a prebuilt engine.
+It has not been tested if they would work on a source built engine.
 ====
 
 [WARNING]

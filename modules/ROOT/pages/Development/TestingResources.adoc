@@ -11,8 +11,9 @@ This page lists some helpful resources and information regarding testing your mo
 
 SML Logging is a valuable troubleshooting and testing tool, especially for blueprint mods.
 
-You can find more information on how to use and configure it on the
-xref:Development/ModLoader/Logging.adoc[Logging page].
+You can find more information on how to use and configure it,
+as well as how to launch a live log viewer when you launch the game,
+on the xref:Development/ModLoader/Logging.adoc[Logging page].
 
 If you select text in the log terminal window,
 it will freeze the game until you press 'enter' to deselect it.
@@ -27,6 +28,29 @@ Be aware that the values you set here
 will affect every instance of Command Prompt on your system. 
 See the link:#_launch_script_enhancements[Launch Script Enhancements] section below
 for another method of controlling where the window will appear.
+
+== Unreal Console
+
+The Unreal Console is a useful tool for debugging your mods.
+It extends the original log terminal mentioned in the previous section with some new features:
+
+- Options to filter (include/exclude) displayed log messages
+- Clearing the displayed log
+- Creating numbered "checkpoint" log markers
+- Running console commands from outside the game window (especially useful for dedicated servers)
+- See the game's current status regardless of log position
+- Selecting displayed log messages no longer freezes the game, which you may consider a benefit or a drawback.
+
+In order to use the new console, add the following to your game's command-line launch arguments:
+
+`-Log -NewConsole`
+
+If you don't know how to configure launch arguments,
+refer to xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[this guide].
+
+Now, when you launch the game, you should now see the Unreal Console appear as a separate window.
+
+image:TestingResources/Unreal-Console.png[image]
 
 [id="LaunchScript"]
 == Quick Launch Script

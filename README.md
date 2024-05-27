@@ -131,6 +131,10 @@ Contact us for more details if you'd like to set this up. The general steps are 
 - If you want the deployed copy to automatically update when you push changes to your repo, you should set up an Actions file similar to [this one](.github/workflows/SubModPush.yml.example) and contact us on the Discord to get a token to [add to your secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) so the Actions file can function.
 - PR the `Dev` branch with your changes to the playbook files.
 
+Sub-mod documentation sites are currently still subject to the Lychee link checker run by our CI,
+so if you have broken links in your docs, the build will fail and your site will not be updated.
+You can check the [Actions](https://github.com/satisfactorymodding/Documentation/actions) for this repo to see if/why they failed. Mod docs updates are started by the SatisfactoryModdingBot github user under the action name `mod-docs-update`.
+
 ## Adding new version branches
 
 We typically create new version branches once a new major or minor version of SML has released.
