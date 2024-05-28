@@ -65,6 +65,7 @@ regardless of what their websites and marketing pages claim:
 - Shockbyte - Doesn't show the root executable
 - gportal - Doesn't show the proper game file tree, just the Saved folder
 - 4netplayers - Doesn't show the root executable, as well as other game files
+- GTXGaming - Doesn't show the proper game file tree, just the Saved folder
 
 It is also worth noting that AMP causes SFTP to throw weird errors, but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
 
