@@ -135,6 +135,11 @@ try turning off any ad-blockers or content filters you may have enabled and refr
 You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
 
+Verify this step has worked by visiting this repository link:
+https://github.com/EpicGames/UnrealEngine/
+If it worked, you will see a private GitHub repository
+Close that browser tab - we don't need any files this repository.
+
 [id="UnrealLinker"]
 === Link Your GitHub Account to Our Repository
 
