@@ -32,10 +32,11 @@ which will be automatically created if it doesn't exist yet.
 
 == Logging from {cpp}
 
-Logging from {cpp} is usually accomplished via the `UE_LOG` macro.
+Logging from {cpp} is usually accomplished via the `UE_LOG` macro,
+or the new `UE_LOGFMT` macro introduced in Unreal Engine 5.2.
 
 https://unrealcommunity.wiki/logging-lgpidy6i[This Unreal Engine community wiki page]
-does a good job of explaining how to use the macro,
+does a good job of explaining how to use the macros,
 set up your own custom logging categories,
 and the macro's formatting capabilities.
 
