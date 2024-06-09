@@ -33,7 +33,7 @@ The call scope object allows you to:
 +
 [source,cpp]
 ----
-void hook(TCallScope<...>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<...>& Scope, class* exampleClass, int exampleArg) {
  scope.Cancel();
 }
 ----
@@ -42,7 +42,7 @@ Calling the scope need to have all the same parameters as the func hook signatur
 +
 [source,cpp]
 ----
-void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 	// stuff before final function call
 	int result = scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
@@ -52,7 +52,7 @@ void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
 +
 [source,cpp]
 ----
-void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg)
+void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 	// final function might get called
 	scope.Override(customReturnValue);
 	// final function wont get called anymore
@@ -82,28 +82,43 @@ Each attachment method works differently under the hood, and it's important to p
 Be aware that type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
 Note that the Hook function is a std::function, which means that it can be any type a std::function can accept, such as function pointers, function pointers with bound placeholders, or even lambdas.
 
-[WARNING]
+[IMPORTANT]
 ====
-If your mod is not {cpp} only, meaning it is Blueprint **and** {cpp}, you should surround your hook functions with `#if !WITH_EDITOR`, remembering to place `#endif` after the end of your hook function. Failure to do so may prevent the Unreal Editor from opening.
+The behavior of hooks at editor time is highly unpredictable and can cause crashes.
+As such, you should ensure that your hooks are not applied at editor time,
+else you could potentially be unable to open the Unreal Editor until you edit the hook code externally.
+
+The most convenient way is to put the `SUBSCRIBE_` macros in your code inside an `if (!WITH_EDITOR) { ... }` block:
+
+[source,cpp]
+----
+if (!WITH_EDITOR) {
+	SUBSCRIBE_METHOD(SomeClass::SomeMethod, &Hook_SomeMethod);
+}
+----
+
+Using `#if !WITH_EDITOR` and `#endif` directives is also an option, but it is not recommended: it hides errors until building shipping and confuses IDEs, making development and debugging slightly more annoying with no benefit.
 ====
 
 === Type: SUBSCRIBE_METHOD
 
-The `SUBSCRIBE_METHOD`-Macro attaches a hook to the given function passed by pointer.
-SML will take that function pointer and find the symbol name so bootstrapper can then redirect
-the function calls for that symbol to SML's hook framework.
+The `SUBSCRIBE_METHOD`-Macro attaches a hook
+such that the code you pass will be called before the function executes.
+
+If multiple mods have subscribed to the same function,
+the hooks will be called in the order they were registered.
 
 Usage goes as following:
 
 [source,cpp]
 ----
-#include "Patching/NativeHookManager.h"
-
-class SomeClass {
+// in target class SomeClass
 public:
 	int MemberFunction(int arg1);
 	static void StaticFunction();
-}
+
+// in your code
+#include "Patching/NativeHookManager.h"
 
 void registerHooks() {
 	SUBSCRIBE_METHOD(SomeClass::MemberFunction, [](auto& scope, SomeClass* self, int arg1) {
@@ -125,30 +140,29 @@ to explicitly set the symbol you want to hook.
 
 === Type: SUBSCRIBE_METHOD_VIRTUAL
 
-The `SUBSCRIBE_METHOD_VIRTUAL`-Macro attaches the given hook to the given function passed
-by pointer in the virtual table of the given class.
-This happens by SML reading the function symbol and class name so bootstrapper can then
-change the the virtual table entry to the proper function of the SML hooking framework.
+The `SUBSCRIBE_METHOD_VIRTUAL` macro attaches the given hook to the function passed by pointer for the given class.
 
-That also means, you change the virtual table of only the given table,
-if you allow want to change the virtual table entry of other classes you need to hook them
-separately.
+This hook only modifies the function that the virtual table for the given class points to.
+Functions in subclasses overriding the virtual function of the given class won't be modified,
+but the hook will still run if the hooked function is called by the overriding implementation (i.e. "calls super").
+If the overriding implementation of a subclass does not "call super", you have to hook said subclass separately.
+Because pure virtual functions do not have a proper function body, they cannot possibly be hooked.
 
 Usage goes as following:
 
 [source,cpp]
 ----
-#include "Patching/NativeHookManager.h"
-
-class SomeClass {
+// in target parent class SomeClass
 public:
 	virtual int MemberFunction(int arg1);
-}
 
-class SomeChild : public SomeClass {
+// in child class SomeChild that we don't want to hook
+// class SomeChild : public SomeClass
 public:
 	virtual int MemberFunction(int arg1) override;
-}
+
+// in your code
+#include "Patching/NativeHookManager.h"
 
 void registerHooks() {
 	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, SomeClass, [](auto& scope, SomeClass* self, int arg1) {
@@ -180,8 +194,8 @@ For "after" hooks, add the `_AFTER` postfix to the macro names.
 
 Be aware that the hook function signature changes accordingly and will no longer need the "scope":
 [horizontal]
-*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self)`
-*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, [](SomeClass* self)`
+*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self))`
+*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, [](SomeClass* self))`
 
 ==== FORCEINLINE Functions
 
@@ -279,4 +293,5 @@ public:
 	friend MyMod::MyWatcher;
 
 ...
+}
 ----
