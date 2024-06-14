@@ -73,12 +73,74 @@ Moving or reinstalling will not affect your save files.
 It varies depending on the mod, but in general, yes, this is totally fine.
 The mod should say on its mod page on ficsit.app if it can't be added to an in-progress game.
 
+[id="MultiplayerSupport"]
 == Do mods work with multiplayer?
 
-It is up to the mod developer to support multiplayer.
-Check the mod's page on ficsit.app for information about multiplayer support.
+[id="MultiplayerSupport_ShortAnswer"]
+=== Short Answer
 
-If the mod page doesn't say, try it out yourself and see!
+Not all mods work with multiplayer, but most of them do.
+It is up to the mod developer to communicate to you if their mod works in multiplayer.
+Usually there will be text or an image on the mod's page on ficsit.app with information about multiplayer support.
+If the mod page doesn't say yet, try it out yourself and see!
+
+All players in multiplayer generally require the exact same mods installed to play together.
+To share your mods with other players,
+see link:#_how_do_i_share_my_mods_with_my_friends_for_multiplayer[this section].
+
+As a general rule of thumb,
+if the mod only adds recipes, items, or buildings that have no custom logic
+(behave exactly like base-game ones with a new model, or for recipes that the mod adds)
+then it usually works.
+
+Sometimes a mod that is not coded correctly for multiplayer will still work just for the host player.
+It's up to you to decide if that's good enough for your group.
+
+[id="MultiplayerSupport_LongAnswer"]
+=== Long Answer
+
+There are two kinds of multiplayer in Satisfactory.
+A mod may be compatible with both, one, or neither of them.
+
+* **Host-and-Play**
+** One game client runs the game for the host player and allows other players to connect
+** Requires the mod to be coded with multiplayer functionality in mind, else _it will only work for the host player_
+** The mod developer should have written something on the mod page telling you if the mod is multiplayer compatible or not
+* **Dedicated Server**
+** One server executable hosts allows others to connect
+** Requires the mod to be coded with multiplayer functionality in mind, else _it will work for no one_ (since there is no longer a host player)
+** The Mod Repository can tell you if a mod works for dedicated servers, see link:#DoModsWorkOnDedicatedServers[this section] for more info.
+** If a mod works for dedicated servers, it usually also works for host-and-play
+
+There are also three kinds of mods with respect to multiplayer:
+
+* Both-sided mods
+** The most common varaint
+** This mod must be present on both the host and the clients to work
+* Server-side mods
+** This mod only needs to be present on the host side to work - clients do not need to have it installed
+** Sometimes these mods only support dedicated servers - they will not function in host-and-play
+* Client-side mods
+** This mod only needs to be present on the client side to work - the host does not need to have it installed. However, the host having it installed may enable additional functionality for clients.
+
+Assume that mods are both-sided unless explicitly stated otherwise by the mod page or dedicated server compatibility grid.
+
+== How do I share my mods with my friends for multiplayer?
+
+You can use the Mod Manager's profile import/export functionality.
+
+image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
+
+[id="DoModsWorkOnDedicatedServers"]
+== Do mods work with dedicated servers?
+
+_Or: How do I tell if a mod works on Dedicated Servers?_
+
+In general, mods do work on dedicated servers, but exact support will vary depending on the mod.
+See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
+The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[Installing Mods section]
+describes how to tell if an individual mod supports Dedicated Servers.
+
 
 == Are Satisfactory mods safe?
 
@@ -143,15 +205,6 @@ If you find a mod that is missing its stickers or ones that seem to be incorrect
 please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
-== Do mods work with dedicated servers?
-
-_Or: How do I tell if a mod works on Dedicated Servers?_
-
-In general, mods do work on dedicated servers, but exact support will vary depending on the mod.
-See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
-The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[Installing Mods section]
-describes how to tell if an individual mod supports Dedicated Servers.
-
 == Satisfactory Mod Manager is open, but I can't see it's window!
 
 The program's window somehow got offscreen.
@@ -186,12 +239,6 @@ just quit the game without saving and launch the game with your mods, your conte
 Check out
 xref:index.adoc#_for_developers[this section of the home page]
 for more information.
-
-== How do I share my mods with my friends for multiplayer?
-
-You can use the Mod Manager's profile import/export functionality.
-
-image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 
 == Where are my game files located?
 

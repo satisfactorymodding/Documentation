@@ -78,8 +78,12 @@ for the rest of the steps.
 [id="Install_Linux"]
 === Linux
 
-The latest Linux build of the mod manager can be downloaded from the
-https://github.com/satisfactorymodding/SatisfactoryModManager/releases/latest/download/Satisfactory-Mod-Manager.AppImage[github releases page].
+Linux builds of the mod manager can be found on the
+https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page].
+You can directly download the latest release by clicking
+https://github.com/satisfactorymodding/SatisfactoryModManager/releases/latest/download/Satisfactory-Mod-Manager.AppImage[this link].
+
+`+webkit2gtk-4.0+` is required - if you don't have it yet, obtain it through your package manager of choice.
 
 [id="Install_Winget"]
 === With Winget

@@ -4,11 +4,9 @@
 # Exclude URLs and mail addresses from checking (supports regex).
 # Please explain the inclusion of each one.
 exclude = [
-    # This will always be a 404 unless you're authed
+    # These will always be 404s unless you're authed
     "https://github.com/satisfactorymodding/UnrealEngine/",
-    # This will always be a 404 unless you're authed
     "https://github.com/EpicGames/UnrealEngine/",
-    # This will always be a 404 unless you're authed
     "https://github.com/SatisfactoryModdingUE/UnrealEngine/",
     # Site seems to disallow robots
     "https://cable.ayra.ch/satisfactory/editor.php",
@@ -24,10 +22,12 @@ exclude = [
     "https://www.audiokinetic.com/en/download/",
     # unable to get local issuer certificate
     "https://questions.satisfactorygame.com/",
-    # 403s despite being valid page
+    # 403s despite being valid pages
     "https://stackoverflow.com/questions/",
-    # 403s despite being valid page
-    "https://www.unrealengine.com/en-US/ue-on-github"
+    "https://www.unrealengine.com/en-US/ue-on-github",
+    # 403s despite being valid page, we should try to get this working somehow, since these links can change without warning
+    "https://docs.unrealengine.com/",
+    "https://dev.epicgames.com/"
 ]
 
 # Exclude these filesystem paths from getting checked.
