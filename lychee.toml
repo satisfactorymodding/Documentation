@@ -27,7 +27,9 @@ exclude = [
     # 403s despite being valid page
     "https://stackoverflow.com/questions/",
     # 403s despite being valid page
-    "https://www.unrealengine.com/en-US/ue-on-github"
+    "https://www.unrealengine.com/en-US/ue-on-github",
+    # 403s despite being valid pages, we should try to get this working somehow, since these links can change without warning
+    "https://docs.unrealengine.com/"
 ]
 
 # Exclude these filesystem paths from getting checked.
