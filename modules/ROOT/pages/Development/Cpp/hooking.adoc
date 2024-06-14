@@ -34,7 +34,7 @@ The call scope object allows you to:
 [source,cpp]
 ----
 void hook(TCallScope<...>& Scope, class* exampleClass, int exampleArg) {
- scope.Cancel();
+ Scope.Cancel();
 }
 ----
 - Call the next hooks and the final function within your body.
@@ -44,7 +44,7 @@ Calling the scope need to have all the same parameters as the func hook signatur
 ----
 void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 	// stuff before final function call
-	int result = scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
+	int result = Scope(exampleClass, exampleArg); // call following hooks (final function might get called as long as following hooks don't cancel/overwrite it)
 	// stuff after final function call
 }
 ----
@@ -54,7 +54,7 @@ void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 ----
 void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 	// final function might get called
-	scope.Override(customReturnValue);
+	Scope.Override(customReturnValue);
 	// final function wont get called anymore
 }
 ----
