@@ -189,14 +189,14 @@ Otherwise, you'll need to run a tool from the command line to generate the proje
 
 The command will follow the form below:
 
-```
-"<path to your Unreal build batch file here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
+```ps1
+& "<path to your Unreal build batch file here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
 
 Here is an example of a completed command:
 
-```
-"C:\Program Files\Unreal Engine - CSS\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
+```ps1
+& "C:\Program Files\Unreal Engine - CSS\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
 
 [WARNING]
@@ -207,8 +207,8 @@ The above command will not work if you copy paste it
 
 [WARNING]
 ====
-Make sure you run the above command from Command Prompt and not Powershell.
-It is not correctly formatted for Powershell.
+The above command is formatted for Powershell.
+To run it from Command Prompt instead, remove the `&` at the start.
 ====
 
 [id="GenerateVSFiles_Troubleshooting"]
