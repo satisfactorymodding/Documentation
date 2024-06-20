@@ -1,5 +1,14 @@
 = Extended Attribute Provider
 
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
 Introduced in SML3.8, ISMLExtendedAttributeProvider is an interface that allows any modded asset to offer
 https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.2[Gameplay Tags]
 to be utilized by mod systems.
