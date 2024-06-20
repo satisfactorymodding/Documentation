@@ -1,0 +1,121 @@
+= Upgrading from SML 3.7.0 to 3.8.x
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+TODO SML3.8 feature summary.
+
+First, please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+TODO compare below with 3.8 feature set
+
+=== Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
+
+See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
+This should not affect the vast majority of mods.
+
+=== Decal_Normal Broken on Modded Parts using Mesh Proxies
+
+Mesh proxies past the first instance may not render correctly.
+This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
+You can work around this for the time being by using a default masked material.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+== The Winds of Change are Blowing
+
+=== Preparing for 1.0
+
+TODO
+
+Now is the time to make a backup of your current copy of the game
+xref:faq.adoc#PlayOlderVersion[as described in the FAQ]
+so you can test mod functionality and extract assets if something you previously referenced is no longer available in 1.0.
+
+=== Mods No Longer Require a Dependency on SML
+
+In Update 8 (TODO fact check) Coffee Stain switched Satisfactory to being built in the Modular Build mode.
+This meant that mods no longer technically needed SML to be loaded,
+and SML switched over to serving as a utility library and coordinator for mods.
+
+Although most mods will want to depend on SML anyways for its feature set,
+we are making changes to allow mods to be uploaded to Ficsit.app without an SML dependency.
+
+As explained link:#Alpakit_GameVersionDependency[later on this page], Alpakit will assist you with this process.
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Alpakit Changes
+
+Understanding the changes to Alpakit, and the new features added in this update, will help you work efficiently.
+
+==== Alpakit Dev and Alpakit Release Split into Separate Windows
+
+The Alpakit Release functionality (for creating release builds) has been brought into its own window to help with UI readability
+and understanding which Alpakit settings are relevant to development time.
+
+You can open the new Alpakit windows via these buttons in Unreal Editor's toolbar or the File dropdown menu.
+
+image:Development/UpdatingGuides/AlpakitButtons38.png[Screenshot of new Alpakit buttons]
+
+==== Launch Game Type: Custom Split into Path and Arguments
+
+If you were previously using
+`powershell.exe C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
+you should now use:
+
+* Custom Path: `powershell`
+* Custom Launch Args: `C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
+
+==== New Alpakit Log Feature: Time Since Last Pack
+
+The Alpakit Log now displays the time a last successful pack was completed.
+Great for if you started packing something, went to do something else, and came back but can't remember what exactly you started!
+
+[id="Alpakit_GameVersionDependency"]
+== Game Version Dependency
+
+As part of enabling mods to be uploaded to the platform without an SML dependency,
+you must now specify a minimum game version for your mod.
+
+Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version,
+and clicking on this warning will automatically update it for you.
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== TODO Additional Changes
