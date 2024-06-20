@@ -118,4 +118,6 @@ and clicking on this warning will automatically update it for you.
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
-=== TODO Additional Changes
+=== Gameplay Tags and ISMLExtendedAttributeProvider
+
+TODO xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]

@@ -80,6 +80,7 @@
 *** xref:Development/Satisfactory/ShoppingList.adoc[To-Do/Shopping List]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
 // TODO ADA *** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
+
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
 *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 *** xref:Development/ModLoader/Logging.adoc[Logging]
@@ -93,6 +94,7 @@
 *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
 *** xref:Development/ModLoader/Registry.adoc[Registry]
 *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
+// TODO *** xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
 *** xref:SMLConfiguration.adoc[SML Configuration]
 
 *** Legacy
