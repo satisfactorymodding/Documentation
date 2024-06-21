@@ -38,11 +38,13 @@
 				"DavidAnson.vscode-markdownlint",
 				"medo64.render-crlf",
 				"andrejunges.Handlebars",
-				"bierner.markdown-preview-github-styles"
+				"bierner.markdown-preview-github-styles",
+				"tamasfe.even-better-toml"
 			],
 			// cSpell:enable
 			"settings": {
-				"npm.packageManager": "pnpm"
+				"npm.packageManager": "pnpm",
+				"asciidoc.antora.enableAntoraSupport": true
 			}
 		}
 	}
