@@ -7,6 +7,7 @@ exclude = [
     # These will always be 404s unless you're authed
     "https://github.com/satisfactorymodding/UnrealEngine/",
     "https://github.com/EpicGames/UnrealEngine/",
+    "https://github.com/EpicGames-Mirror-A/UnrealEngine/",
     "https://github.com/SatisfactoryModdingUE/UnrealEngine/",
     # Site seems to disallow robots
     "https://cable.ayra.ch/satisfactory/editor.php",
