@@ -1,0 +1,38 @@
+= Modding Without Satisfactory Mod Loader
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+== History
+
+History from the Updating37 page
+
+== Are You Really Sure You Want to Do This?
+
+Benefits of still depending on SML
+
+- Significant wheel reinvention required for blueprint mods (C++ mods can use StartupModule)
+- Mod dependency version checking at launch
+- Client-server version consistency checking when playing in multiplayer
+- Other mods being able to detect your mod's presence
+- Mod Content Registry access
+- Nearly every player will still have it installed anyways
+
+
+Refine the mircea paragraph:
+
+pak-only mods need SML to act as an entrypoint to their blueprint code (or some other mod that checks for that content), while c++ has StartupModule, so it can work without any dependency. And with dedi support, client or server only mods that don't need SML may become a thing (though there's still that issue with having SML on just one side). But we still recommend listing SML as a dependency, as it checks for mod dependencies at runtime (including the game version), and client-server version consistency (when the mod is not one sided).
+(This needs some rephrasing)
+
+== Systems You Will Have to Care About
+
+TODO
+
+Alpakit game version dependency field
+

@@ -9,6 +9,13 @@ This page is still a work in progress.
 If you have any feedback, please let us know in the Discord.
 ====
 
+TODO
+
+- update the regular modding guides to use the new Alpakit UI and mention game version stuff
+- Update generic updating guide to have a step for bumping game and SML version
+- update uplugin fields page with GameVersion dep
+
+
 
 [IMPORTANT]
 ====
@@ -34,22 +41,30 @@ Now is the time to make a backup of your current copy of the game
 xref:faq.adoc#PlayOlderVersion[as described in the FAQ]
 so you can test mod functionality and extract assets if something you previously referenced is no longer available in 1.0.
 
+[id="SMLNoLongerHardRequired"]
 === Mods No Longer Require a Dependency on SML
 
-In Update 8 (TODO fact check) Coffee Stain switched Satisfactory to being built in the Modular Build mode.
+Back in https://satisfactory.wiki.gg/wiki/Patch_0.3.8.9[Update 3],
+Coffee Stain switched Satisfactory to being built in the Modular Build mode.
 This meant that mods no longer technically needed SML to be "loaded",
 so SML switched over to serving as a utility library and coordinator.
 
-Although most mods will want to depend on SML anyways for its feature set,
-we are making changes to allow mods to be uploaded to Ficsit.app without an SML dependency.
+We still required all mods uploaded to Ficsit.app to depend on SML
+because it acted as a way to check which game and engine versions a mod was compatible with.
 
-As explained link:#Alpakit_GameVersionDependency[later on this page], Alpakit will assist you with this process.
+Although 99% should still depend on SML anyways for its feature set,
+we are making changes to allow mods to be uploaded to Ficsit.app without an SML dependency.
+If you think your mod is part of the 1%,
+read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
 
 == New Features
 
 === Session Setting Replication
 
 TODO
+
+SML correctly handles Session Setting replication to multiplayer clients for you now.
+Thanks SirDigby and Mircea (TODO who else to credit?) for implementing this.
 
 === Gameplay Tags and the SML Extended Attribute Provider
 
@@ -117,11 +132,13 @@ Great for if you started packing something, went to do something else, and came 
 [id="Alpakit_GameVersionDependency"]
 == Game Version Dependency
 
-As part of enabling mods to be uploaded to the platform without an SML dependency,
-you must now specify a minimum game version for your mod.
+Ficsit.app now requires uploaded mods to specify a minimum game version with which the mod is compatible.
+The reasoning behind this is explained in link:#SMLNoLongerHardRequired[this section].
 
-Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version,
-and clicking on this warning will automatically update it for you.
+TODO does SML enforce/warn this at runtime or is it just an ficsit-cli checked thing?
+
+Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version.
+Clicking on this warning will automatically update the field for you.
 
 == Additional Changes
 

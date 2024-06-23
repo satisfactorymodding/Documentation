@@ -79,6 +79,7 @@
 *** xref:Development/Satisfactory/OreScanner.adoc[Ore Scanner]
 *** xref:Development/Satisfactory/ShoppingList.adoc[To-Do/Shopping List]
 *** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
+*** xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML]
 // TODO ADA *** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
 
 ** xref:Development/ModLoader/index.adoc[Mod Loader]
