@@ -91,6 +91,9 @@ If you're testing out core redirects, you don't need to repackage the mod every 
 You can simply edit the `Engine.ini` in the plugin folder for the mod in the game install directory and relaunch the game.
 Remember that packaging the mod again will overwrite any changes you made to this file!
 
+If it doesn't seem to be working, make sure your syntax is correct.
+For example, Class Redirects usually have a `_C` suffix in the OldName and newName fields.
+
 == Using Core Redirects in the Editor
 
 It's possible that, after an update, the parent class of one of your assets has changed due to Coffee Stain or another mod developer moving the location of the class on their end.
