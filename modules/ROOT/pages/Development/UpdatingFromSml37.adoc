@@ -26,6 +26,37 @@ follow the directions on the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
 
+== The Winds of Change are Blowing
+
+=== Preparing for 1.0
+
+Now is the time to make a backup of your current copy of the game
+xref:faq.adoc#PlayOlderVersion[as described in the FAQ]
+so you can test mod functionality and extract assets if something you previously referenced is no longer available in 1.0.
+
+=== Mods No Longer Require a Dependency on SML
+
+In Update 8 (TODO fact check) Coffee Stain switched Satisfactory to being built in the Modular Build mode.
+This meant that mods no longer technically needed SML to be "loaded",
+so SML switched over to serving as a utility library and coordinator.
+
+Although most mods will want to depend on SML anyways for its feature set,
+we are making changes to allow mods to be uploaded to Ficsit.app without an SML dependency.
+
+As explained link:#Alpakit_GameVersionDependency[later on this page], Alpakit will assist you with this process.
+
+== New Features
+
+=== Session Setting Replication
+
+TODO
+
+=== Gameplay Tags and the SML Extended Attribute Provider
+
+TODO
+
+xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
+
 == Not Done Yet
 
 The following features are not quite ready to use yet.
@@ -50,27 +81,6 @@ The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
 explains how you can create your own Advanced Game Settings.
 However, their values are not currently saved with the save file.
 Session Settings still function correctly - their values are saved.
-
-== The Winds of Change are Blowing
-
-=== Preparing for 1.0
-
-TODO
-
-Now is the time to make a backup of your current copy of the game
-xref:faq.adoc#PlayOlderVersion[as described in the FAQ]
-so you can test mod functionality and extract assets if something you previously referenced is no longer available in 1.0.
-
-=== Mods No Longer Require a Dependency on SML
-
-In Update 8 (TODO fact check) Coffee Stain switched Satisfactory to being built in the Modular Build mode.
-This meant that mods no longer technically needed SML to be loaded,
-and SML switched over to serving as a utility library and coordinator for mods.
-
-Although most mods will want to depend on SML anyways for its feature set,
-we are making changes to allow mods to be uploaded to Ficsit.app without an SML dependency.
-
-As explained link:#Alpakit_GameVersionDependency[later on this page], Alpakit will assist you with this process.
 
 == Required Changes
 
@@ -118,6 +128,13 @@ and clicking on this warning will automatically update it for you.
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
-=== Gameplay Tags and ISMLExtendedAttributeProvider
+== Add Special Item Tag to Relevant Items in your Mod
 
-TODO xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
+If your mod adds any item descriptors that serves a special non-crafting purpose,
+like the Any Undefined, Wildcard, Overflow, and None sorting rule in the base game,
+use the xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
+to add the `SML.Registry.Item.SpecialItemDescriptor` tag to it.
+See that page for more information.
+
+== TODO
+
