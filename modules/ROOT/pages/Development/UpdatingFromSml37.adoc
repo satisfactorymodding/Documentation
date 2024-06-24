@@ -135,10 +135,11 @@ Great for if you started packing something, went to do something else, and came 
 Ficsit.app now requires uploaded mods to specify a minimum game version with which the mod is compatible.
 The reasoning behind this is explained in link:#SMLNoLongerHardRequired[this section].
 
-TODO does SML enforce/warn this at runtime or is it just an ficsit-cli checked thing?
-
 Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version.
 Clicking on this warning will automatically update the field for you.
+
+SML will check this game version at runtime,
+requiring that the player's game version is greater than or equal to the listed required version.
 
 == Additional Changes
 
