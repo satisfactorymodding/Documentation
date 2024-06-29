@@ -2,8 +2,6 @@
 
 [NOTE]
 ====
-You have found a hidden docs page!
-
 This page is still a work in progress.
 
 If you have any feedback, please let us know in the Discord.
@@ -11,9 +9,13 @@ If you have any feedback, please let us know in the Discord.
 
 == History
 
-TODO
+Back in https://satisfactory.wiki.gg/wiki/Patch_0.3.8.9[Update 3],
+Coffee Stain switched Satisfactory to being built in the Modular Build mode.
+This meant that mods no longer technically needed SML to be "loaded",
+so SML switched over to serving as a utility library and coordinator.
 
-History from the Updating37 page
+Up until the release of SML 3.8, we still required all mods uploaded to Ficsit.app to depend on SML
+because it acted as a way to check which game and engine versions a mod was compatible with.
 
 == Are You Really Sure You Want to Do This?
 
