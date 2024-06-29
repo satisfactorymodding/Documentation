@@ -150,13 +150,15 @@ This field is required, and should exactly match the `VersionName` field.
 The editor will prevent you from packaging your mod if an invalid value is specified.
 
 |GameVersion
-| Game build version number, used as the (inclusive) minimum version the mod is compatible with.
-For example, 273254 is the build number of https://satisfactory.wiki.gg/wiki/Patch_0.8.3.3[Patch 0.8.3.3].
-Stored as a string to allow compatibility with potential future numbering format changes.
+| Version range specifier for the game build version number this mod was developed for/tested on.
+Since we don't know what future game build numbers will be, only minimum ranges (ex. `>=something`) are useful for now.
+For example, `>=273254` allows https://satisfactory.wiki.gg/wiki/Patch_0.8.3.3[Patch 0.8.3.3] and any build more recent than.
+{blank} +
 {blank} +
 Alpakit will produce a warning if this field is out of date; clicking the warning will update it for you.
 {blank} +
-SML checks this field at runtime and will prevent the game from launching (TODO verify) if the game version is below a mod's minimum.
+{blank} +
+SML checks this field at runtime and will prevent the game from launching if the game version does not match this range.
 
 |Plugins
 | Additional functionality has been added to the regular uplugin Plugins array. 
