@@ -168,7 +168,9 @@ If you add a plugin with a Mod Reference,
 this basically makes the listed mod a dependency for your mod.
 {blank} +
 {blank} +
-**The SML plugin should also always be listed here,**
+
+Unless you are creating a xref:Development/Satisfactory/ModsWithoutSML.adoc[mod separate from SML],
+**the SML plugin should basically always be listed here,**
 allowing you specify what SML versions your mod supports.
 Each plugin should be listed as an object with the following properties:
 
