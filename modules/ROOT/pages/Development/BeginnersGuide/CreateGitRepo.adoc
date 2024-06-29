@@ -241,19 +241,6 @@ This is the end of the currently written content for this guide.
 If you have suggestions for how to improve the guide, or if you found part of it confusing, please contact us on the discord.
 Below are a series of additional notes intended to be used in future updates to this guide that do not yet have a home.
 
-## Unsorted Notes
-
-Unreal Engine may offer to turn on version control integration,
-but you probably don't want this because it happens at the project level,
-whereas each of your mods is its own separate plugin repo.
-
-[id="ModpageMarkdownFile"]
-## Repository readme
-
-Both your repository's readme and your ficsit.app mod page are formatted with Markdown.
-It is suggested that the contents of your mod page be stored in README.md,
-or alternatively in a separate MODPAGE.md file if you have something else you want to put in your README.md.
-
 [id="ExperiencedGitUsers"]
 ## Experienced Git Users
 
@@ -272,7 +259,16 @@ and the editor could get confused if information from {cpp} parent classes chang
 Panakotta has directions on setting up UE to launch in diff mode as a git diff/merge tool
 https://gist.github.com/Panakotta00/c90d1017b89b4853e8b97d13501b2e62[here].
 
-## UE4GitDiff
+## Unsorted Notes
+
+[id="ModpageMarkdownFile"]
+### Repository readme
+
+Both your repository's readme and your ficsit.app mod page are formatted with Markdown.
+It is suggested that the contents of your mod page be stored in README.md,
+or alternatively in a separate MODPAGE.md file if you have something else you want to put in your README.md.
+
+### UE4GitDiff
 
 A tool that runs the UE diff interface from git command line.
 
@@ -284,7 +280,7 @@ rather than the plugin path inside the SML project.
 The workaround for this is to either run it from command prompt or powershell,
 or to open git bash directly in the plugin folder and not cd from there.
 
-## Nested Mod Folders
+### Nested Mod Folders
 
 It's possible to keep the files for multiple mods in one git repository
 by having a parent folder as the git repository with a subfolder for each mod.
