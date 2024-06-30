@@ -136,9 +136,14 @@ You will probably have to check your email and confirm from there,
 as well as making sure you're logged into your linked GitHub account when you follow the upcoming link.
 
 Verify this step has worked by visiting this repository link:
-https://github.com/EpicGames/UnrealEngine/ (or https://github.com/EpicGames-Mirror-A/UnrealEngine/ since June 2024)
-If it worked, you will see a private GitHub repository
-Close that browser tab - we don't need any files from this repository.
+https://github.com/EpicGames/UnrealEngine/
+(or https://github.com/EpicGames-Mirror-A/UnrealEngine/ since June 2024)
+If it worked, you will see a private GitHub repository.
+If it didn't work, you'll get a 404 page, so try the other link.
+If neither link works, try again in a few minutes and make sure you didn't miss any steps in Unreal's instructions.
+
+Once you're sure it works, close that browser tab - we don't need any files from this repository.
+Visiting there was just to verify that you have access.
 
 [id="UnrealLinker"]
 === Link Your GitHub Account to Our Repository
@@ -289,6 +294,22 @@ You don't need to add any plugins,
 so press `Select None` then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
+== Satisfactory Mod Manager
+
+xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
+offers a convenient developer mode that
+automatically installs the correct version of SML and helps manage mod files for you.
+To enable it, change your selected profile to `development`.
+If you're using Satisfactory Mod Manager,
+you can skip the below steps and move on to the next page of the tutorial. 
+
+If you're not using the mod manager, you can follow the
+xref:ManualInstallDirections.adoc[manual install directions]
+to get the relevant files set up.
+Alternatively, once your modding environment is set up,
+you can use Alpakit to automatically build and install SML.
+This process is covered on the next page.
+
 == Starter Project
 
 The SML development team has an Unreal project prepared
@@ -319,8 +340,9 @@ from the Satisfactory Modding GitHub.
 
 [TIP]
 ====
-If you're planning to clone the project,
-skip to the link:#_satisfactory_mod_manager[next heading].
+If you're planning to use Git to clone the project,
+skip this section and move to the xref:Development/BeginnersGuide/project_setup.adoc[next page]
+which covers how (and where) to clone the project.
 ====
 
 The below box will contain a link to the specific zip that you should download.
@@ -347,22 +369,6 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/
 
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
-
-== Satisfactory Mod Manager
-
-xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
-offers a convenient developer mode that
-automatically installs the correct version of SML and helps manage mod files for you.
-To enable it, change your selected profile to `development`.
-If you're using Satisfactory Mod Manager,
-you can skip the below steps and move on to the next page of the tutorial. 
-
-If you're not using the mod manager, you can follow the
-xref:ManualInstallDirections.adoc[manual install directions]
-to get the relevant files set up.
-Alternatively, once your modding environment is set up,
-you can use Alpakit to automatically build and install SML.
-This process is covered on the next page.
 
 == Next Steps
 
