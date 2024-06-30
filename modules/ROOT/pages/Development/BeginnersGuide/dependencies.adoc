@@ -294,6 +294,22 @@ You don't need to add any plugins,
 so press `Select None` then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
+== Satisfactory Mod Manager
+
+xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
+offers a convenient developer mode that
+automatically installs the correct version of SML and helps manage mod files for you.
+To enable it, change your selected profile to `development`.
+If you're using Satisfactory Mod Manager,
+you can skip the below steps and move on to the next page of the tutorial. 
+
+If you're not using the mod manager, you can follow the
+xref:ManualInstallDirections.adoc[manual install directions]
+to get the relevant files set up.
+Alternatively, once your modding environment is set up,
+you can use Alpakit to automatically build and install SML.
+This process is covered on the next page.
+
 == Starter Project
 
 The SML development team has an Unreal project prepared
@@ -324,8 +340,9 @@ from the Satisfactory Modding GitHub.
 
 [TIP]
 ====
-If you're planning to clone the project,
-skip to the link:#_satisfactory_mod_manager[next heading].
+If you're planning to use Git to clone the project,
+skip this section and move to the xref:Development/BeginnersGuide/project_setup.adoc[next page]
+which covers how (and where) to clone the project.
 ====
 
 The below box will contain a link to the specific zip that you should download.
@@ -352,22 +369,6 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/
 
 
 Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
-
-== Satisfactory Mod Manager
-
-xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
-offers a convenient developer mode that
-automatically installs the correct version of SML and helps manage mod files for you.
-To enable it, change your selected profile to `development`.
-If you're using Satisfactory Mod Manager,
-you can skip the below steps and move on to the next page of the tutorial. 
-
-If you're not using the mod manager, you can follow the
-xref:ManualInstallDirections.adoc[manual install directions]
-to get the relevant files set up.
-Alternatively, once your modding environment is set up,
-you can use Alpakit to automatically build and install SML.
-This process is covered on the next page.
 
 == Next Steps
 
