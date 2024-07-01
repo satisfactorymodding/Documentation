@@ -35,7 +35,7 @@ You can learn more about how holograms work on the xref:Development/Satisfactory
 ====
 
 As you can see in the `Components` pane in the top left, the actor already contains a few components.
-But not any visuals, so, now add a new instanced static mesh component in the center of the viewport.
+But not any visuals, so, now add a new FGColoredInstancedMeshProxy component in the center of the viewport.
 The build gun uses the origin when targeting the mesh to be built or snapped.
 You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Mesh_DocBuild.fbx[this example Mesh], the Plantpot of Knowledge, for your buildable.
 
@@ -90,7 +90,7 @@ If you load up the game now, you should be able to build the Doc Build in game, 
 
 === Placing the building creates nothing in the world
 
-Make sure that your building has an instanced static mesh component
+Make sure that your building has an FGColoredInstancedMeshProxy component
 and that a mesh is assigned to it.
 
 === Building has a gray checkerboard texture
