@@ -1,0 +1,31 @@
+= Boombox Tapes
+
+Adding Boombox Tapes can be confusing, but it doesn't have to be. Here we go!
+
+== Preparing The Audio (Wwise) [.title-ref]#(WwiseAudioImport)#
+
+To create Boombox Tapes, you'll need to use Wwise, the game's audio subsystem. This is made possible thanks to a mod by Th3Fanbus, Th3Tunes.
+For the first part, you'll have to use Wwise itself. The interface can be a bit unintuative at first, though is pretty simple to navigate once you know what you're doing. Note that the audio files should always be in .wav, as that is what it seems has the best results.
+
+Once you're in Wwise, you will simply do the following.
+
+1. In the Project Explorer, on the left side of the screen, open the "Audio" tab. Then, right click on the Default Work Unit under the "Actor-Mixer Hierarchy", and click Import Audio Files. Then, in File Explorer, drag all your audio files into the box, the click Import.
+
+[NOTE]
+====
+When naming the Soundbank, you must name it Mod_$YourModReference
+====
+
+2. Open the Soundbanks tab, and righ tlick on the Default Work Unit, then, in the new menu, go to Child > Soundbank. Now, double click on the new soundbank. Once it's opened, go back to the audio tab, and select all the audio element you added. Now drag them into the Soundbank in the middle tab that was opened.
+
+[NOTE]
+====
+You can use Ctrl+Click to select multiple audio files
+====
+
+TO-DO: Finish the Wwise Instructions
+
+
+== Importing Wwise Soundbanks To Unreal Engine [.title-ref]#(WwiseToUEImport)#
+
+Now that you've exported your soundbank, it's time to bring it in Engine.
