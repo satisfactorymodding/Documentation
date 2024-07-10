@@ -16,7 +16,7 @@ Once you're in Wwise, you will simply do the following.
 When naming the Soundbank, you must name it Mod_$YourModReference
 ====
 
-2. Open the Soundbanks tab, and righ tlick on the Default Work Unit, then, in the new menu, go to Child > Soundbank. Now, double click on the new soundbank. Once it's opened, go back to the audio tab, and select all the audio element you added. Now drag them into the Soundbank in the middle tab that was opened.
+2. Open the Soundbanks tab, and right click on the Default Work Unit. Then in the new menu go to Child>Soundbank. Now, double click on the new soundbank. Once it's opened, go back to the audio tab, and select all the audio elements that you've added. Now drag them into the Soundbank in the middle tab that was opened.
 
 [NOTE]
 ====
