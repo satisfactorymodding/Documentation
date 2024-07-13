@@ -121,3 +121,109 @@ _Notable Satisfactory Features Used:_
 _Notable Mod Loader Features Used:_
 
 * Access Transformers, to be able to change otherwise inaccessible member variables.
+
+[id="CableChoicesPlus"]
+== Cable Choices {plus}
+
+Adds a number of new variants of existing buildings (power cables and poles) as well as some buildings with custom functionality.
+
+_Source Code_: Linked on the https://ficsit.app/mod/AB_CableMod[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Custom models that follow the Satisfactory style
+* Building icons generated with xref:CommunityResources/IconGenerator.adoc#_beavers_icon_generator[Beaver's Icon Generator]
+* GitHub repository that contains additional files (the source models) in a clean structure
+* Custom UI/UX
+** Settings panel to reorganize build menu
+* Base game content modifications
+** Adds an additional recipe for the existing FICSMAS powerline lights
+** Injects some unlocks into existing milestones
+
+_Notable Satisfactory Features Used:_
+
+* Customizer
+** Skins (Power Cables)
+** Building Materials (Power Cables)
+* xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms] with custom logic
+** Snapping a power connector to spline based rail tracks
+** Snapping power towers to each other with simple rules
+** Behaviors for well aligned wall/foundation snapping (Delay Switch)
+* Building interaction UIs
+** Completely new UIs with source (Delay Switch)
+** Retrofitted vanilla UIs to function elsewhere (Rail Power Box)
+
+_Notable Mod Loader Features Used:_
+
+* Mod Configuration
+** Settings panel to reorganize build menu
+
+[id="FluidExtras"]
+== Fluid Extras
+
+Adds a number of new variants of existing fluid junctions as well as several buildings with custom functionality.
+
+_Source Code_: Linked on the https://ficsit.app/mod/AB_FluidExtras[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Custom models that follow the Satisfactory style
+* Building icons generated with xref:CommunityResources/IconGenerator.adoc#_beavers_icon_generator[Beaver's Icon Generator]
+* GitHub repository that contains additional files (the source models) in a clean structure
+* Custom Building Logic
+** Custom fluid building that deletes input and animates based upon it (Exhaust)
+** Custom building that detects input and selects recipes based on it (AI Packager)
+* Custom UI/UX
+** Settings panel to reorganize build menu
+
+_Notable Satisfactory Features Used:_
+
+* xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms] with custom logic
+** New and expanded behaviors for Junctions (in development)
+** Modified Water Extractor that can snap to foundations (in development)
+** Building that can snap to pipes and walls (Exhaust: Unreleased but pushed)
+** Complex placement tolerance rules (Exhaust: in development)
+* Building interaction UIs
+** Completely new UIs with source (Exhaust)
+
+_Notable Mod Loader Features Used:_
+
+* Mod Configuration
+** Settings panel to reorganize build menu
+
+[id="Beavers Ficsmas Booster"]
+== Beaver's Ficsmas Booster
+
+Adds a number of new customizer building material and complex decorative parts. Uses seasonal toggles and several new from scratch materials.
+
+_Source Code_: Linked on the https://ficsit.app/mod/AB_XMASBooster[Mod Page]
+
+_Mod Type_: Hybrid Blueprint/{cpp}
+
+_Notable Techniques Used:_
+
+* Seasonal development each year
+* Custom models that follow the Satisfactory style
+* Building icons generated with xref:CommunityResources/IconGenerator.adoc#_beavers_icon_generator[Beaver's Icon Generator]
+* GitHub repository that contains additional files (the source models) in a clean structure
+* New Content
+** Complex shader/mesh combo to create seamless gingerbread pieces when built
+** Freeform spline buildings unlike other decorative parts (Icing)
+
+_Notable Satisfactory Features Used:_
+
+* Seasonal Events
+** Many schematics and recipes are hidden behind the event check
+* Customizer
+** Building Materials (Gingerbread)
+** Custom render material that still respects foundation decals (Gingerbread)
+* xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms] with custom logic
+** Multi stage, Multi mode; Spline drawing hologram (Icing)
+
+_Notable Mod Loader Features Used:_
+
+* None
