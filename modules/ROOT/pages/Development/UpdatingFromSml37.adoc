@@ -159,5 +159,10 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/235[rare inc
 If your mod makes use of hooking (and especially unhooking), watch for any bugs that may arise related to this
 and let us know on the discord if you encounter any issues.
 
+== Starter Project Structure page
+
+The new xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure]
+documentation page explains important Starter Project folders and the Placeholder System in more detail.
+
 == TODO
 

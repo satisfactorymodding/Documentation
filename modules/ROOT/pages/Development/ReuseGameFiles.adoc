@@ -1,6 +1,6 @@
 = Reusing Base Game Files
 
-Sometimes you may want want to reuse the game's
+Sometimes you may want want to directly reuse the game's
 icons, meshes, gui, etc. for content in your own mod.
 Doing this is a fairly straightforward process,
 and you do not need to extract any files from the game to do so.
@@ -15,37 +15,18 @@ since this process does not actually include the game's files in your own.
 
 [TIP]
 ====
-If you're looking to make some changes to the
-base game files before using them for your mod,
-you should check out the
-xref:Development/ExtractGameFiles.adoc[Extracting Game Files page] instead.
+If you're looking to make variations of base game's models and textures,
+you may have to extract and edit them externally, making this approach irrelevant.
+Check out the
+xref:Development/ExtractGameFiles.adoc[Extracting Game Files page] instead for more information.
 ====
 
-== The Placeholder System
+== Understanding Placeholders
 
-The Starter Project provided on the SML releases page excludes
-game models, textures, etc. for copyright and download size reasons.
-In their place, the Starter Project includes empty "placeholder" assets
-that, at runtime, will be resolved into the correct assets if you were to reference them,
-or simply excludes the asset from the project (which is the case for many textures).
-These placeholder assets have the exact same name and Blueprint Path
-as the real asset, but contain the bare minimum information (usually just the name)
-required to identify the content within the editor, and nothing more.
-
-The placeholder system is what allows you to list base game items in
-xref:Development/Satisfactory/Crafting.adoc#_recipes_fgrecipe[Recipes] of your own creation.
-The Starter Project includes `FGItemDescriptor` placeholders for most base game items.
-
-If the game has updated since you downloaded your copy of the Starter Project,
-or you are looking for some less commonly used assets,
-you may be missing some of these placeholders.
-In this case, you can create the placeholder yourself by finding the correct path to the asset,
-then creating an asset of the same type with the same name at that path in your Starter Project.
-This process is described below.
-
-If you are missing an `FGItemDescriptor` placeholder,
-you can also create it using the same process.
-You'll be creating a placeholder for the descriptor instead of a mesh or texture, though.
+As described on the xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure] page,
+all of the supposed base-game assets in the Starter Project are actually placeholders.
+If the starter project doesn't already have a placeholder for the base-game asset you wish to reference,
+you'll have to create it yourself
 
 == Example Static Mesh and Icon Reuse
 

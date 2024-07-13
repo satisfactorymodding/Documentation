@@ -525,14 +525,7 @@ and provides an alterative grey theme you can use out of the box.
 
 == Ready to Rumble
 
-That should be it. Your starter project should now be set up and ready to go!
-In the xref:Development/BeginnersGuide/SimpleMod/index.adoc[next section],
-we'll walk through creating the base Plugin for your mod,
-then run through a couple common modding examples
-to demonstrate how to get started making your own mods.
-
-The Starter Project also includes and ExampleMod that you can look at,
-which includes examples like those described in this documentation,
-as well as a few things that don't have docs pages yet.
-It also has some examples of {cpp} mod functionality.
-Consider looking around in there after completing some of these tutorials.
+That should be it - your starter project should now be set up and ready to go!
+In the xref:Development/BeginnersGuide/StarterProjectStructure.adoc[next section],
+a brief overview of the files included in the Starter Project will help you get situated in the project
+before working on your first mod.

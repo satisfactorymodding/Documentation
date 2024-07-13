@@ -107,8 +107,8 @@ If you need to add new behavior to existing content, it may be easier to extend 
 then define the new behaviors in your subclass.
 
 This works well in tandem with the 
-xref:Development/ReuseGameFiles.adoc#_the_placeholder_system[Placeholder System] -
-even though we don't have the implementation details of the real version,
+xref:Development/BeginnersGuide/StarterProjectStructure.adoc#PlaceholderSystem[Placeholder System]
+- even though we don't have the implementation details of the real version,
 by extending its placeholder, we will still be able to use those features at runtime.
 
 == Hooking
