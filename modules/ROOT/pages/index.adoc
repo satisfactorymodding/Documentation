@@ -62,7 +62,7 @@ or Lua xref:Development/BeginnersGuide/overwriting.adoc#_tweakit[(TweakIt)].
 If you're looking to write your own mods, we suggest you start with
 making blueprint mods first rather than C++ mods.
 Check out the xref:Development/BeginnersGuide/index.adoc[Getting Started Guide]
-and consider picking up the `Aspiring Modder` role in our https://discord.ficsit.app[Discord]'s `#rules` channel.
+and consider picking up the `Aspiring Modder` role in the "Channels & Roles" section of our https://discord.ficsit.app[Discord].
 
 If you're looking to make models, it's best to learn how to put a mod together first.
 Once you've completed the `Buildable` step in `Beginners Guide`, then check out our xref:Development/Modeling/index.adoc[Modeling Guide].
