@@ -21,12 +21,16 @@ because it acted as a way to check which game and engine versions a mod was comp
 
 Benefits of still depending on SML
 
+Consider the following SML features that you'll be losing by not depending on it:
+
 - Significant wheel reinvention required for blueprint mods (C++ mods can use StartupModule)
 - Mod dependency version checking at launch
 - Client-server version consistency checking when playing in multiplayer
 - Other mods being able to detect your mod's presence
 - Mod Content Registry access
-- Nearly every player will still have it installed anyways
+
+Also, consider that nearly every player will still have SML installed anyways so they can play with other mods.
+It's already possible to run SML on just the client 
 
 
 Refine the mircea paragraph:
