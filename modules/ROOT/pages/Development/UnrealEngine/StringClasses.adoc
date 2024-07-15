@@ -60,6 +60,6 @@ meaning you can't go "back" to the same FText you started with, even if you neve
 To perform "typical" string operations on FText and FName you may need to convert them to FStrings first
 - just remember that going back is either unsafe or impossible.
 
-Ff you're trying to make a hardcoded value in one of these types,
+If you're trying to make a hardcoded value in one of these types,
 make sure to use the "Literal" syntax for creating it rather than one of the conversion functions.
 For example, use the `Make Literal Name` blueprint node instead of the `String to Name` conversion function.
