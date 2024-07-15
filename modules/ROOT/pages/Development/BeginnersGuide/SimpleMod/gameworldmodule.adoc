@@ -26,7 +26,7 @@ For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
 
-You can fill out the "Descriptor Data", or leave it blank, as we can edit that later.
+Optionally, fill out the "Descriptor Data" section, or leave it blank since it can be edited later.
 
 [WARNING]
 ====

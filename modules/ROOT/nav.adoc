@@ -56,6 +56,7 @@
 *** xref:Development/UnrealEngine/Editor/index.adoc[Unreal Editor]
 **** xref:Development/UnrealEngine/Editor/MainWindow.adoc[Main Window]
 *** xref:Development/UnrealEngine/CoreRedirect.adoc[Core Redirects]
+*** xref:Development/UnrealEngine/StringClasses.adoc[String Classes]
 
 ** xref:Development/Satisfactory/index.adoc[Satisfactory]
 *** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]

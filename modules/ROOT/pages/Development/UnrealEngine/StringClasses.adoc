@@ -1,0 +1,65 @@
+# Unreal String Classes
+
+Unreal offers different storage types for strings, each with its own use case.
+
+This page serves as a brief overview of the 3 main string classes available in Unreal Engine 5
+and how they relate to modding.
+
+For more detailed information about these classes, check out the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling-in-unreal-engine?application_version=5.2[Unreal Engine documentation].
+
+## String Classes
+
+### FText
+
+If you are displaying a string to the end user, 99% of the time you want to be using this string type.
+It is mutable, provides nice formatter methods, and has built in engine localization support.
+In memory, FTexts store localization keys that point to external data providing the string's contents.
+
+Special edits have been made to the modding engine to enable mods to take advantage of Unreal's localization system at the per-plugin level.
+Read more about how to use it on the xref:Development/Localization.adoc[Localizing Mods] page.
+
+Read more on the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.2[UE docs page for FText].
+
+In modding, FText should be used for any string you plan to display to the user.
+For example, schematic names, item descriptions, UI text, predefined chat messages, etc.
+
+### FName
+
+FNames are designed to be more efficient in cases where you are using a string as an identifier.
+They are case-insensitive and immutable.
+The actual string contents of an FName are stored once in a global data table.
+In memory, they are a 4 byte identifier that can be used with this table to retrieve the related string.
+
+FNames are useful as keys in maps because checking their equality is fast regardless of the length of the string.
+
+Read more on the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.2[UE docs page for FName].
+
+In modding, FNames should be used in identifier, keys, or any other string you deem its optimizations beneficial.
+
+### FString
+
+FStrings are generic mutable strings with no additional context.
+They take up as much memory as they have characters and offer the "typical" string operations like find and replace, substring, concatenation, comparison, etc.
+
+Read more on the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/fstring-in-unreal-engine?application_version=5.2[UE docs page for FString].
+
+In modding, FString is generally used for log messages, strings that change contents often, or strings that doesn't benefit from the features of FText or FName.
+
+## Conversion
+
+Although **it is possible to convert between all of the string types**,
+doing so usually results in **missing out on features or optimizations** offered by that type,
+and you lose the information about the original type of the string.
+For example, going from an FText to an FString loses you the context of its localization key,
+meaning you can't go "back" to the same FText you started with, even if you never changed the underlying string.
+
+To perform "typical" string operations on FText and FName you may need to convert them to FStrings first
+- just remember that going back is either unsafe or impossible.
+
+If you're trying to make a hardcoded value in one of these types,
+make sure to use the "Literal" syntax for creating it rather than one of the conversion functions.
+For example, use the `Make Literal Name` blueprint node instead of the `String to Name` conversion function.
