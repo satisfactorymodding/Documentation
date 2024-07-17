@@ -58,19 +58,45 @@ Similar to how we created a descriptor for our item, we now need to create one f
 
 Simply add a new Blueprint of type `FGBuildingDescriptor` to the same folder as the buildable itself and call it f.e. "Desc_DocBuild".
 
-The building descriptor is very similar to the item descriptor - it even derives from it. It comes with a few extra fields, such as a `FGBuildable`-Class reference (set this to your `Build_DocBuild` actor) and some Build-Category stuff that you can set up as you see fit.
-
-Just like our item, it requires an icon file. You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example] as the icon.
-
-You should also add an appropriate subcategory in the `m Sub Categories` field for your building.
 [IMPORTANT]
 ====
-Make sure to use "SC_" instead of "SC_RSS_" in the subcategory as the game will not show your item.
+Make sure you use `FGBuildingDescriptor` (for buildings) as the parent class
+and _not_ `FGBuildDescriptor` (generic parent class for anything the build gun can place).
 ====
+
+Building descriptors are very similar to item descriptors.
+This is because `FGBuildingDescriptor` extends the item descriptor class,
+meaning it inherits all of its fields and adds a few more.
+
+Note that not every item descriptor field is useful to a building descriptor.
+For example, the stack size and conveyor mesh of a building are irrelevant to its functionality despite being editable.
+
+Make sure to set the `M Buildable Class` field to your `Build_DocBuild` actor.
+This field determines what building actor will be placed when the player uses the build gun.
+The building's final display name and description are also pulled from this asset;
+the descriptor's fields for this purpose are not used, which is part of why they are greyed out in the editor.
+
+The descriptor category, subcategory, and icon also determine how the building will appear in the Build Gun.
+You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example image] as the icon.
+
+Building Descriptors use categories to determine where they appear in the build gun.
+It's possible to create your own categories,
+but for now, use `BC_TradingPost` in the `M Category` field and `SC_Progression` as the only array entry in the `M Sub Categories` field.
+This will sort your building near the HUB in the build menu.
 
 [IMPORTANT]
 ====
-Make sure you use `FGBuildingDescriptor` and _not_ `FGBuildDescriptor`.
+Make sure to select valid Categories and Sub Categories for your buildings!
+Without this data selected, your building will either not appear in the build gun unless searched for by name,
+or crash the game when the build gun is opened.
+
+Since the category field is multi-purpose,
+the editor's picker unfortunately includes category options that aren't relevant to buildings.
+Building categories (for the `M Category` field) are usually prefixed with `BC_`
+and sub-categories (for the `M Sub Categories` field) are usually prefixed with `SC_`.
+Note that `SC_RSS_` categories are for AWESOME Sink Shop schematics and should not be used for buildings.
+
+You can find out what categories and sub categories the base game's buildings use by opening their placeholders in the editor.
 ====
 
 == Define the Recipe
