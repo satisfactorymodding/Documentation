@@ -151,6 +151,22 @@ Here is what each option of the dropdown does:
 - `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
   A mod being favorited has no relation to whether or not it is installed.
 
+== Profiles
+
+Profiles are a convenient way to manage a collection of mods.
+Use them to switch between different sets of mods for different playthroughs or multiplayer sessions.
+
+The default selected profile is called `modded`.
+You can create more via the gear button next to the profile dropdown.
+
+image:FAQ/CreateProfile.png[Creating a new profile]
+
+Use the dropdown to pick which profile you have selected.
+Selecting a profile will immediately unload the mods from the previous profile
+and set up the mods in the new profile.
+
+Add or remove mods from a profile by using the mod manager as normal with that profile selected.
+
 == Sharing Profiles
 
 The mod manager allows you to export your profile as a file others can import to install the same mods.
