@@ -86,9 +86,9 @@ xref:Development/ExtractGameFiles.adoc#_generating_a_complete_starter_project[Ex
 
 == Source Folder
 
-There are a lot of C++ header and source files included in your project.
+There are a lot of {cpp} header and source files included in your project.
 On disk, they can be found in the `Source/` folder.
-These don't appear in the Content Browser unless you have "Show C++ Classes" enabled in your content browser settings.
+These don't appear in the Content Browser unless you have "Show {cpp} Classes" enabled in your content browser settings.
 
 These are **auto-generated {cpp} stubs**.
 Similar to the Content placeholders, they are automatically generated skeleton versions of the files in the correct locations.
