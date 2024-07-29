@@ -449,7 +449,7 @@ In order to change the location where SMM caches the downloaded mod files you ne
 == Why are my game's textures blurry or low resolution?
 
 No particular mod causes your textures to be low resolution -
-it's a base/engine game bug that can be exacerbated by mods.
+it's a base-game/engine bug that can be exacerbated by mods.
 Unreal engine "streams" in low resolution textures at first and then gradually loads better versions.
 This process is getting stuck and thus some textures stay low resolution.
 In terms of fixing it there's three different things you can try.
