@@ -384,16 +384,19 @@ You might see error messages like:
 - `Unexpected error while downloading file: self signed certificate in certificate chain`
 
 Internet restrictions, and sometimes VPNs and proxies, mess with our services.
-To work around this, download the mod files mentioned in the error message from SMR manually.
-If they are named `[ModName].zip` rename them to `[ModName].smod`
+You can work around this by downloading the mod files mentioned in the error message from ficsit.app manually.
+You can also try using a different proxy, VPN, or hotspot to download the mod instead.
 
-If the mod you downloaded is SML,
-then place the file into 
-`%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version you need]`,
-otherwise, place the file into
-`%localappdata%\SatisfactoryModManager\downloadCache\mods`.
+Once you have downloaded the mod file(s) from ficsit.app,
+rename the file to `[ModName].smod` if it was named `[ModName].zip`.
 
-You can also try using a proxy or VPN.
+Then, put the file into SMM's download cache.
+For SMM2, this is `%localappdata%\SatisfactoryModManager\downloadCache\mods`,
+unless the mod you downloaded is SML,
+in which case place the file into `%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version number]`.
+
+If you are using SMM3, the folder is instead `%localappdata%\ficsit\downloadCache`,
+there is no special destination for SML, and you must keep the file as a zip and rename it to include the version number.
 
 == How can I troubleshoot crash issues?
 
