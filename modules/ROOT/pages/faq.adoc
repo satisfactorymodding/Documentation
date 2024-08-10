@@ -384,16 +384,28 @@ You might see error messages like:
 - `Unexpected error while downloading file: self signed certificate in certificate chain`
 
 Internet restrictions, and sometimes VPNs and proxies, mess with our services.
-To work around this, download the mod files mentioned in the error message from SMR manually.
-If they are named `[ModName].zip` rename them to `[ModName].smod`
+You can work around this by downloading the mod files mentioned in the error message from ficsit.app manually.
+The process for doing this changes if you're using SMM2 or SMM3 and is described below.
+You can also try using a different proxy, VPN, or hotspot to download the mod instead.
 
-If the mod you downloaded is SML,
-then place the file into 
-`%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version you need]`,
-otherwise, place the file into
-`%localappdata%\SatisfactoryModManager\downloadCache\mods`.
+[id="ManualDownloadForCache_SMM2"]
+=== If using SMM2
 
-You can also try using a proxy or VPN.
+Once you have downloaded the mod file(s) from ficsit.app,
+rename the file to `[ModName].smod` if it was named `[ModName].zip`.
+
+Then, put the file into SMM's download cache.
+For SMM2, this is `%localappdata%\SatisfactoryModManager\downloadCache\mods`,
+unless the mod you downloaded is SML,
+in which case place the file into `%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version number]`.
+
+[id="ManualDownloadForCache_SMM3"]
+=== If using SMM3
+
+Once you have downloaded the mod file(s) from ficsit.app,
+place the zips into `%localappdata%\ficsit\downloadCache`.
+Make sure to rename them to the `ModReference_version_target.zip` format, for example,
+`SML_3.7.0_Windows.zip`
 
 == How can I troubleshoot crash issues?
 

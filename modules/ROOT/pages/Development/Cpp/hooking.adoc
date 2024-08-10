@@ -219,7 +219,7 @@ in order to unsubscribe from the function.
 == Blueprint-Hooking
 
 Blueprint function hooking works by changing the instructions of a Blueprint UFunction
-so that first your hook gets called.
+so that your hook gets called before the original function.
 
 The hook function signature is `void(FBlueprintHookHelper&)`.
 This helper structure provides a couple of functions allowing you to read and write data
@@ -233,6 +233,7 @@ Usage goes as following:
 [source,cpp]
 ----
 #include "Patching/BlueprintHookManager.h"
+#include "Patching/BlueprintHookHelper.h"
 
 void registerHooks() {
 	UClass* SomeClass = ...;
