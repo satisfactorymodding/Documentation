@@ -110,55 +110,15 @@ image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
 Any other changes made are at user discretion, and dependent on level of knowledge.
 ====
 
-=== Searching for Files
+=== Loading Archives
 
-In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
-You can also search within a specific package by navigating to it in the Folders tab
-then using the search bar built into the Packages tab.
+Now that your settings have been configured correctly,
+navigate to the Archives tab in the FModel interface.
+This tab displays pak files located in subfolders of the directory you selected earlier.
+The base game's pak, `FactoryGame-Windows.pak`, should be present, as well as paks for any mods you have installed.
 
-FModel's search supports multiple terms, returning results that match all terms.
-For example, the search query `Cave Play` would find the assets
-// cspell:ignore Syntholm
-`Play_M_SmallCave_Parameter`, `Play_Boombox_JoelSyntholm_CaveFlowers` and more.
-
-Regular expression searches can be enabling via a button at the right side of the search bar.
-
-== UModel
-
-UModel is another tool that can be used to view and extract game assets.
-
-However, at the time of writing, **it does not currently have support for Unreal Engine 5 (Update 8 and beyond)**.
-As such, FModel should be used instead.
-The following instructions are left here for reference when working with past versions.
-
-+++ <details><summary> +++
-Outdated directions for using UModel:
-+++ </summary><div> +++
-
-The tool https://www.gildor.org/en/projects/umodel[UModel]
-can be used to view game pak file content,
-and offers options for exporting meshes, skeletons, textures, etc. for use in other programs.
-Tutorials for using UModel are plentiful online,
-and a quick search can help you export for the modeling software of your choice.
-
-Make sure to select Unreal Engine version 4.26 when opening Satisfactory pak files.
-
-If you don't see 4.26 as an option, you are running an older version of UModel
-and you should download it again from the link above.
-
-You can find a brief tutorial on how to track down an asset for export on the
-xref:Development/ReuseGameFiles.adoc#_example_static_mesh_reuse[Reusing Game Files page].
-
-Once you have found the asset you want to export, open it in UModel's UE Viewer
-and use `Tools` -> `Export Current Object` and you will be presented with
-some options for export.
-We suggest exporting as Static Meshes as `glTF 2.0`
-so that software such as Blender can open them easily.
-
-Note that not all of the content you can extract in this manner is directly useful.
-For example, directly exporting an `FGItemDescriptor` is not really helpful.
-
-+++ </div></details> +++
+To load a pak, select it and press the `Load` button.
+This enables browsing its contents in the Folders and Packages tab.
 
 == Extracting Specific Models or Textures
 
@@ -195,6 +155,19 @@ You can click on the text `TX_AiLimiter_BC.png` in the log to open your system f
 Opening a mesh asset, such as
 `FactoryGame/Content/FactoryGame/Equipment/JetPack/Mesh/SK_Jetpack_01.uasset`,
 will cause a 3D Viewer window to appear.
+
+=== Searching for Files
+
+In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
+You can also search within a specific package by navigating to it in the Folders tab
+then using the search bar built into the Packages tab.
+
+FModel's search supports multiple terms, returning results that match all terms.
+For example, the search query `Cave Play` would find the assets
+// cspell:ignore Syntholm
+`Play_M_SmallCave_Parameter`, `Play_Boombox_JoelSyntholm_CaveFlowers` and more.
+
+Regular expression searches can be enabling via a button at the right side of the search bar.
 
 == Extracting Sounds/Music
 
@@ -312,3 +285,40 @@ instead of their placeholder versions, allowing you to view them in-editor.
 Generating this special project file takes a significant amount of time and additional disk space.
 If you'd like to do this, check out the page on the
 xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit].
+
+== UModel
+
+UModel is another tool that can be used to view and extract game assets.
+
+However, at the time of writing, **it does not currently have support for Unreal Engine 5 (Update 8 and beyond)**.
+As such, FModel should be used instead.
+The following instructions are left here for reference when working with past versions.
+
++++ <details><summary> +++
+Outdated directions for using UModel:
++++ </summary><div> +++
+
+The tool https://www.gildor.org/en/projects/umodel[UModel]
+can be used to view game pak file content,
+and offers options for exporting meshes, skeletons, textures, etc. for use in other programs.
+Tutorials for using UModel are plentiful online,
+and a quick search can help you export for the modeling software of your choice.
+
+Make sure to select Unreal Engine version 4.26 when opening Satisfactory pak files.
+
+If you don't see 4.26 as an option, you are running an older version of UModel
+and you should download it again from the link above.
+
+You can find a brief tutorial on how to track down an asset for export on the
+xref:Development/ReuseGameFiles.adoc#_example_static_mesh_reuse[Reusing Game Files page].
+
+Once you have found the asset you want to export, open it in UModel's UE Viewer
+and use `Tools` -> `Export Current Object` and you will be presented with
+some options for export.
+We suggest exporting as Static Meshes as `glTF 2.0`
+so that software such as Blender can open them easily.
+
+Note that not all of the content you can extract in this manner is directly useful.
+For example, directly exporting an `FGItemDescriptor` is not really helpful.
+
++++ </div></details> +++
