@@ -55,7 +55,7 @@ Depending on if you plan to clone the project or downloaded the zip, go to the r
 [id="CloneStarterProject"]
 === You're Cloning the Starter Project
 
-Make sure to read the notes in the above Starter Project heading about where to clone the files.
+Make sure to read the notes in the above link:#_starter_project[Starter Project heading] about where to clone the files.
 
 The below box will contain directions on which branch to clone.
 It's imperative that you download the correct Starter Project version of the game you're modding
@@ -86,10 +86,10 @@ Move on to the link:#_setting_up_wwise[next heading].
 ====
 By default, Windows marks files downloaded from the internet as "blocked".
 You will run into problems later on because of this.
-To get around this issues, right-click the zip and "unblock" it before unzipping it.
+To get around this issue, right-click the zip file and "unblock" it from the Properties menu before unzipping it.
 ====
 
-Make sure to read the notes in the above Starter Project heading about where to unzip the files.
+Make sure to read the notes in the above link:#_starter_project[Starter Project heading] about where to unzip the files.
 
 If you downloaded the Starter Project as a zip,
 unzip `SatisfactoryModLoader-master.zip` (or the `-dev.zip`) to get the Starter Project files.
