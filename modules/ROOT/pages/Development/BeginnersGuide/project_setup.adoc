@@ -124,13 +124,16 @@ come back to here and make sure you followed these steps correctly.
 Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
+
 Next, open the `Unreal Engine` tab in the sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
+
 Click on the `Open Other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
 and select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
+
 Click on the `Integrate Wwise into Project...` button.
 
 Change the left hand drop-down to `All`.
@@ -165,7 +168,7 @@ That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
 You can close the Wwise launcher.
 
-_Note: the below gif may select a version that does not match what is written above._
+_Note: the below video demo may select a version that does not match what is written above._
 _Please use the version mentioned in the text above._
 
 image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
@@ -219,7 +222,7 @@ or the generation command fails, it's possible that you have a corrupted engine 
 left behind from previous modding or Unreal Engine endeavors.
 
 The correct engine version should appear in the picker as `5.2.1-CSS` and should not be considered a binary build.
-To remove the listing for the corrupted engine install,
+To remove a listing for a corrupted engine install,
 use the https://www.techtarget.com/searchenterprisedesktop/definition/Windows-Registry-Editor[Windows registry editor]
 to edit the registry key `HKEY_CURRENT_USER\SOFTWARE\Epic Games\Unreal Engine\Builds`
 and remove the key pointing to your "Unreal Engine - CSS" install location.
@@ -259,7 +262,7 @@ Once Visual Studio loads,
 you should see a list in the Solution Explorer containing entries for
 UE5, FactoryGame, AccessTransformers, and more.
 It's important to note that these separate solution items exist only for organization purposes.
-When it's time to compile your mods, compiling any one of the items will compile the whole project.
+When it's time to compile your mods, _compiling any one of the items will compile the whole project_.
 The only exception to this is the `UE5` entry which will do nothing when you compile it since you already installed that by installing the custom engine version earlier.
 
 An unfortunate consequence of this organization system
