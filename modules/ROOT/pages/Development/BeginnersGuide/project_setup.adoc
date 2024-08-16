@@ -34,7 +34,7 @@ As such, you should extract the folder somewhere convenient so that you can find
     ** When packing Unreal projects, some filenames can get long,
        so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
 * ❌ In a folder path with unusual/international characters in any folder name
-    ** Unreal and Windows are easily be confused by unicode characters in file and folder names.
+    ** Unreal and Windows are easily confused by unicode characters in file and folder names.
 
 **DO** consider putting your project folder in one of these locations:
 
