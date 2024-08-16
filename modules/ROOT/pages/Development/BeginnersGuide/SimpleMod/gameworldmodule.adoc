@@ -1,6 +1,6 @@
 = Plugin Setup and Game World Module
 
-To get started with our mod, we'll need to make a new Unreal plugin.
+To get started with our mod, we'll need to make a new Unreal plugin using Alpakit's wizard.
 Every mod you make should be a separate Unreal plugin.
 
 == Unreal Plugin Creation
@@ -8,16 +8,14 @@ Every mod you make should be a separate Unreal plugin.
 Since SML3.0, mods are now Unreal plugins,
 and their loading is handled by Unreal itself.
 
-First off, we'll need to create the Unreal Plugin for our mod.
-
 Alpakit contains a wizard that helps with creating the plugin files for Satisfactory mods.
-If you haven't already opened the Alpakit panel, you can follow the directions
+If you haven't already opened the Alpakit Dev panel, follow the directions
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[here] to do so.
 
-To open the wizard, click the `Create Mod` button in the Alpakit panel.
+To open the mod creation wizard, click the `Create Mod` button in the Alpakit Dev panel.
 
 Mod templates that the community has created will appear here.
-Select the `Blueprint Only` template for now.
+Select the `Blueprint Only` template.
 
 The wizard will also prompt you for a Plugin Name.
 The name of your plugin _must_ be your mod's
@@ -40,9 +38,10 @@ Leave "Show Content Directory" checked and press `Create Plugin`.
 
 image:BeginnersGuide/simpleMod/AlpakitCreateMod.png[Create Mod screenshot]
 
-Your new plugin should now appear in Alpakit's list of mods.
+=== Edit Mod Properties
 
-Next, click the `Edit` button next to the listing to modify some more of your mod's settings.
+Your new plugin should now appear in Alpakit's list of mods.
+Click the `Edit` button next to its listing to open the Alpakit mod properties wizard
 
 Here, you can fill out some additional details for your mod.
 Hover over the labels on the left to get a tooltip that explains their purpose.
@@ -62,16 +61,17 @@ The Dependencies list should already be pre-populated with a dependency on the c
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
 
+=== Your Mod's Files
+
 You can find your mod's files within the editor in the Plugins subfolder of any Content Browser.
 On disk, the folder can be found inside your modding project folder at
 `<project>/Mods/<Mod Reference>`.
+This folder is where all of the assets
+(code, models, blueprints, textures, etc.) that your mod uses will live.
 
 All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
 which you can optionally read more about 
 xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[here].
-
-This folder is where you will be putting most of the assets
-(models, blueprints, textures, etc.) that your mod uses.
 
 Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
 subfolder of the Content Browser root folder.
@@ -89,12 +89,10 @@ meaning Unreal Engine will not be able to tell the directory represents a plugin
 This is helpful when xref:Development/UpdatingToNewVersions.adoc[updating your mods] later.
 
 If your uplugin file was previously `ExampleMod.uplugin`,
-change it to `ExampleMod.uplugin.disabled`
+change it to `ExampleMod.uplugin.disabled`.
 ====
 
 === Optional: Create a Git Repository for your Mod
-
-It is worth considering using Git, a version control system, for managing your mod files.
 
 Using version control is essential for collaborating on a mod with others,
 it helps write patch notes when you release an update,
