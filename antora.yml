@@ -3,3 +3,10 @@ title: Satisfactory Modding Documentation
 version: latest
 nav:
   - modules/ROOT/nav.adoc
+
+asciidoc:
+  # Custom text replacements. Built-in ones can be found here:
+  # https://github.com/asciidoctor/asciidoctor/blob/917d3800a08a8f283a8d05beb08bb75af1673de5/lib/asciidoctor.rb#L391
+  attributes:
+    # Uses zero-width joiner (U+200D) to avoid being split across lines
+    cpp: C‍+‍+
