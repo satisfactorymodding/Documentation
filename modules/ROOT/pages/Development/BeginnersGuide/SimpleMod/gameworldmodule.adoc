@@ -174,6 +174,7 @@ xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 == Compile and Save
 
 Now that we've created our first mod asset, we need to 'compile' and save it.
+In Unreal Engine blueprints, 'compiling' is a data validation step that will check for errors and prepare the files to be packaged later.
 
 The editor lets you know that your assets are unsaved through a variety of indicators:
 
@@ -199,20 +200,21 @@ We suggest that you enable "Save on Compile: On Success Only" to skip having to 
 image:BeginnersGuide/simpleMod/SaveOnCompileSuccess.gif[Enabling Save on Compile Success]
 ====
 
-In Unreal Engine, compiling does not mean to package your mod for trying out in the game.
-Compiling is a data validation step that will check for errors before preparing the files to be packaged later.
-
 ====
-Whenever you create any asset for your mod, or change existing ones, _*remember to compile and save it*_!
+Whenever you create or edit mod assets, _remember to compile and save them_!
 ====
 
-If you don't compile and save the file, next time you package and try out the mod, _*the changes you made will not be included with your mod*_ - this can be very confusing to troubleshoot!
+If you don't compile and save the file,
+next time you package and try out the mod,
+_the changes you made will not be included with your mod_
+- this can be very confusing to troubleshoot!
 
 Additionally, if the editor happens to crash before you save, you will lose all of your changes.
 A phrase you will hear often when working with computers is: "Save early, save often".
 
 There is one exception to this rule -
-if you are inspecting some of the base game's asset placeholders in the editor,
+if you are inspecting some of the
+xref:Development/BeginnersGuide/StarterProjectStructure.adoc#PlaceholderSystem[base game's asset placeholders] in the editor,
 opening the assets may cause them to be marked as unsaved due to other placeholders being detected missing.
 As an example, opening `BP_Explorer` from the FactoryGame assets will cause it to be marked as unsaved even if you don't change anything.
 There is no point in saving changes to those placeholder files because your mod doesn't make use of them.
@@ -243,11 +245,12 @@ After starting the package process
 you can click the "Show Alpakit Log" text to bring up the Alpakit-specific log window if you'd like.
 This information is also present in the UE Output Log, albeit mixed with other editor messages.
 
-Once Alpakit has completed, you can launch the game to try it out.
+Once Alpakit has completed, launch the game,
+assuming you haven't already set Alpakit to launch it for you.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
 Even if this worked correctly,
-you should still read the Troubleshooting section below
+you should still *read the Troubleshooting section below*
 to see how to deal with errors you may encounter later.
 
 image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
@@ -261,13 +264,11 @@ or later in mod development.
 
 Alpakit will display this message in the editor when something has prevented the mod from packaging.
 
-This message alone tells you nothing about the error - you'll have to look at the Output Log.
+This message alone tells you nothing about the error
+- you'll have to look at the Alpakit Log (`File > Alpakit Log`) or Output Log (`Window > Output Log`).
 
-The Output Log is a tab in the editor that may already be open,
-but in case it isn't, you can bring it up via `Window > (Log subheading) Output Log`.
-
-Once in the output log, look for red-colored Error messages, as it will likely contain the reason the task failed.
-If you'd like, you can use the Filters dropdown to show only errors.
+Once in the logs, look for red-colored Error messages, as it will likely contain the reason the task failed.
+If you're using the Output Log you can use the Filters dropdown to show only errors.
 
 Note that there will be probably be tens or hundreds of Warning messages -
 this is to be expected, and is usually not a problem.
@@ -317,6 +318,7 @@ because we created a plugin from the `Blueprint Only` template, not the `Bluepri
 However, if you used the other template, that is not a problem.
 
 You need to build the Shipping profile whenever {cpp} code changes and you want to test in-game.
+Under normal circumstances, Alpakit will build Shipping for you if it's out of date.
 
 Similarly, you need to build for Development Editor
 when {cpp} code changes and you want it to update in the editor.
