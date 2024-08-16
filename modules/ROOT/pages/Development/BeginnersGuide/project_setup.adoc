@@ -414,6 +414,13 @@ We also suggest the following resources:
 - https://docs.unrealengine.com/5.2/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
 - https://docs.unrealengine.com/5.2/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
 
+== (Optional) Modify Editor Color Scheme
+
+The Unreal Engine 5 editor is very dark by default.
+It may be difficult to read depending on your computer settings and eye health.
+https://youtu.be/xb4kmfIy2kw[This video] shows how to change the editor's color scheme
+and provides an alterative grey theme you can use out of the box.
+
 == Setting up Alpakit
 
 Alpakit is a tool made by the modding community
@@ -422,25 +429,32 @@ It's one of the editor plugins that comes pre-installed with the starter project
 
 === Opening Alpakit
 
-Click on the Alpakit button in the Tool-Bar of the Unreal viewport to open its panel.
+Click on the Alpakit Dev button in the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.2#maintoolbar[Main Toolbar]
+of the Unreal editor to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
-You can also bring it up via `File > Alpakit`.
 
-You can open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log".
-This information is also present in the UE Output Log, albeit mixed with other editor messages.
+You can also bring it up via `File > Alpakit Dev` from the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.2#menubar[Menu Bar].
 
-Both the Alpakit window and log window can be dragged by their top tabs
+Next, open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log",
+or using `File > Alpakit Log`.
+This information is also present in the UE Output Log (`Window > Output Log`), albeit mixed with other editor messages.
+
+Both the Alpakit Dev window and Log window can be dragged by their top tabs
 and docked as new tabs or panes in the editor for easy access later.
+We suggest docking the Alpakit Log in the same panel as the Viewport
+and Alpakit Dev in the same panel as Details.
 
-If you're wondering what something in the Alpakit window does,
+If you're wondering what something in an Alpakit window does,
 hover over it - most elements have expanatory tooltips.
 
 === Configuring Dev Packaging Settings
 
-Once you've opened the Alpakit window,
-head over to the Dev Packaging Settings heading.
+Once you've opened the Alpakit Dev window,
+head over to the "Dev Packaging Settings" heading.
 For now, the only target we need to modify is Windows (the game client),
-but you can use the other options later to build for dedicated servers.
+but later you can use the other options to build for dedicated servers.
 
 In order to get started building mods,
 you'll have to tell Alpakit where your game install directory is located
@@ -448,23 +462,27 @@ so it can copy mod files there for you.
 
 In the Windows subheading,
 check the Enabled box to enable packaging for that target,
-check the 'Copy to Game Path' box,
-then click on the 3 dots near `Satisfactory Game Path`
-and select your root Satisfactory game installation folder.
+check the box next to `Copy to Game Path` to enable copying built mods,
+then click on the 3 dots to the right to open a directory picker.
+Select your root Satisfactory game installation folder.
 It will be something like
 `C:\Program Files\EpicGames\SatisfactoryEarlyAccess\`.
 Follow the directions
 xref:faq.adoc#Files_GameInstall[on the FAQ]
 to easily determine this location.
 
-Choose an item from `Launch Game After Packing` that corresponds to the game install path you provided,
-or leave it unchecked if you don't want the game automatically started for you.
+Finally, check the box next to `Launch Game Type` and choose the entry that corresponds to the game install path you provided.
+This will automatically start the game for you after all packaging and copying tasks are complete.
 
 [TIP]
 ====
 Find out more about how to launch the game quickly for testing on the
 xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
 ====
+
+=== Packaging Mods with Alpakit
+
+Below the "Dev Packaging Settings" heading are the mod list and packaging controls.
 
 Right now you should see two items in a searchable list -
 `Example Mod (ExampleMod)` and `Satisfactory Mod Loader (SML)`.
@@ -474,17 +492,16 @@ xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
-=== Packaging Mods with Alpakit
-
-In order to package a single mod for testing press the "Alpakit!" button next to its name in the list.
+To package a single mod for testing,
+simply press the "Alpakit!" button next to its name in the list.
 Alpakit will compile and package your mod for you,
 then take actions based off of the options you selected in the Dev Packaging Settings.
 
 If you want to package multiple mods at a time,
-check the boxes to the left of their Alpakit! buttons
-and use the "Alpakit Dev" button.
-This will first package all mods, 
-If you selected a Launch Game After Packing option it will wait for all tasks to complete before launching.
+check the boxes to the left of their "Alpakit!" buttons
+and use the "Alpakit Selected (Development)" button.
+This will first package all mods, wait for all packaging tasks for complete,
+then execute any Launch Game tasks you have enabled.
 
 Upon starting an Alpakit task, a popup will appear informing you that the mod is being packaged
 and the Alpakit Log window will reflect the packaging results.
@@ -511,24 +528,19 @@ of the mod you wish to uninstall.
 
 == (Optional) Packaging SML
 
-Note that if you have not yet installed the Satisfactory Mod Loader (SML) in your game files,
+Note that if you have not yet installed the Satisfactory Mod Loader (SML) in your game client,
 you can use Alpakit to build SML for you and put it in the right folder.
-This could cause problems if your copy of the Starter Project
-is not up to date with the latest SML changes,
-in which case you should either
+Simply press the `Alpakit!` button next to `Satisfactory Mod Loader (SML)` in the list.
+
+In the future, using a locally build copy of SML could cause problems
+if your copy of the Starter Project is older than the latest SML release,
+in which case you should
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
-or use the Mod Manager's `development` profile to install SML for you instead.
-
-== (Optional) Modify Editor Color Scheme
-
-The Unreal Engine 5 editor is very dark by default.
-It may be difficult to read depending on your computer settings and eye health.
-https://youtu.be/xb4kmfIy2kw[This video] shows how to change the editor's color scheme
-and provides an alterative grey theme you can use out of the box.
+or use the Mod Manager to install SML instead.
 
 == Ready to Rumble
 
 That should be it - your starter project should now be set up and ready to go!
-In the xref:Development/BeginnersGuide/StarterProjectStructure.adoc[next section],
-a brief overview of the files included in the Starter Project will help you get situated in the project
-before working on your first mod.
+The xref:Development/BeginnersGuide/StarterProjectStructure.adoc[next section]
+provides an overview of the files included in the Starter Project
+to help you get situated before working on your first mod.
