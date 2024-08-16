@@ -538,7 +538,7 @@ in which case you should
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
 or use the Mod Manager to install SML instead.
 
-== Ready to Rumble
+== Next Steps
 
 That should be it - your starter project should now be set up and ready to go!
 The xref:Development/BeginnersGuide/StarterProjectStructure.adoc[next section]

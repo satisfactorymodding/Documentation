@@ -53,7 +53,7 @@ image::BeginnersGuide/StarterProjectStructure/IronRodPlaceholder.png[Iron Rod pl
 
 [NOTE]
 ====
-Only placeholders for the more certain assets types are included in the Starter Project.
+Only placeholders for the more common assets types are included in the Starter Project.
 You may need to manually create placeholders for less common assets
 like particle systems, animations, and such if you wish to reference them.
 ====
@@ -90,7 +90,7 @@ There are a lot of {cpp} header and source files included in your project.
 On disk, they can be found in the `Source/` folder.
 These don't appear in the Content Browser unless you have "Show {cpp} Classes" enabled in your content browser settings.
 
-These are **auto-generated {cpp} stubs**.
+These are **header files** (.h) and **auto-generated {cpp} stubs** (.cpp).
 Similar to the Content placeholders, they are automatically generated skeleton versions of the files in the correct locations.
 
 These files are required for the editor to offer the correct game assets and classes for you to reference in your mods.
@@ -110,9 +110,12 @@ Later on, your own mods' folders will appear in this section as well.
 * xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
 ** Editor-only mod to enable other mods to access extra information without modifying the auto-generated C++ stubs.
 * Alpakit
-** Editor-only mod that assists with packaging mods for testing and distribution. Its usage will be described later.
+** Editor-only mod that assists with packaging mods for testing and distribution.
 * ExampleMod
-** Mod containing example implementations of various modding features. You can build it and try them out yourself (the process for doing so is explained later). Some of the examples present in this mod are not explained on this site yet.
+** Mod containing example implementations of various modding features.
+   You can build it and try them out yourself!
+   Keep an eye out for comments that explain what things do or why certain choices were made.
+   Some of the examples present in this mod are not explained on this site yet.
 * SML
 ** The full implementation of the Satisfactory Mod Loader mod.
 * SMLEditor
@@ -131,12 +134,12 @@ You should not need to edit these files under normal circumstances.
 == Config Folder
 
 This folder contains engine configuration files.
-Its contents are automatically generated from the base game's configuration and project files
+Its contents are automatically generated from the base game's configuration and project files.
 On rare occasions the SML team will manually edit these files to silence irrelevant warnings or prevent editor-time crashes.
 
 You should not need to edit these files under normal circumstances.
 
-== Next Steps
+== Ready to Rumble
 
 [IMPORTANT]
 ====
