@@ -249,7 +249,8 @@ M Time to Complete::
 M Schematic Icon::
   The icon displayed on a HUB milestone, MAM Research, or AWESOME Shop page and preview.
   {blank} +
-  Go ahead and use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
+// Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
+  Go ahead and use https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
   Consider making another folder to hold your schematic icons.
 * {blank}
 +

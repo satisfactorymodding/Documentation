@@ -147,7 +147,9 @@ M Small Icon::
   An image texture to be used in the inventory, machine slots, and more.
   The recommend size is 64px for regular items, and 256px for Build Gun items.
   {blank} +
-  We have an image ready for use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
+// Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
+  We have an image ready for use
+  link:https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
   You can import it in the Content Browser pane via `Add/Import > Import to...`.
 * {blank}
 +
