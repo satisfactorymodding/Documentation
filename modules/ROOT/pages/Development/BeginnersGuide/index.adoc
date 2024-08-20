@@ -66,7 +66,7 @@ Use this to keep track of how far though a page you are or jump between sections
 
 Making mods for Satisfaction can get complex and confusing at times, but we're here to help.
 Please consider joining our community https://discord.ficsit.app[Discord Server]
-and pick up the `Aspiring Modder` role in the `#rules` channel to get access to dedicated help channels for mod makers.
+and pick up the `Aspiring Modder` role in the "Channels & Roles" section to get access to dedicated help channels for mod makers.
 
 == Contributing to the Docs
 
