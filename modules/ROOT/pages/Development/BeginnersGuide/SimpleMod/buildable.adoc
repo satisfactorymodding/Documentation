@@ -77,7 +77,9 @@ The building's final display name and description are also pulled from this asse
 the descriptor's fields for this purpose are not used, which is part of why they are greyed out in the editor.
 
 The descriptor category, subcategory, and icon also determine how the building will appear in the Build Gun.
-You can use link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example image] as the icon.
+You can use
+// Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
+link:https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_DocBuild.png[this example image] as the icon.
 
 Building Descriptors use categories to determine where they appear in the build gun.
 It's possible to create your own categories,
