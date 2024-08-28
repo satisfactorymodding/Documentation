@@ -14,7 +14,7 @@ so that it gets automatically registered in the player.
 
 == Subsystem Holder Registry
 
-The `Subsystem Holder Registry` ia a 
+The `Subsystem Holder Registry` is a 
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
 xref:Development/ModLoader/Subsystems.adoc[Subsystem]
 that automatically registers all listed subsystem holders to the mod loader lifecycle.
@@ -60,6 +60,14 @@ Both axis mappings should have equal action names, too.
 Satisfactory requires all axis binds to have 2 keys with opposite directions, and they will be displayed as 2 keys in the control options too.
 You can only register two axis binding pairs.
 One of them should be a keyboard axis and the other a gamepad axis (optional).
+
+== Content Tag Registry
+
+See the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
+
+== Game Map Registry
+
+See the xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry] page for more information.
 
 == Mod Content Registry
 
