@@ -100,7 +100,8 @@ xref:Development/BeginnersGuide/SimpleMod/buildable.adoc[Buildable tutorial],
 which you can copy in from the ExampleMod in your project, or download it again from the above link.
 
 For the icon texture, we can reuse the 
-link:{attachmentsdir}/BeginnersGuide/simpleMod/Icon_SchemDoc.png[Soon™ Icon]
+// Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
+link:https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_SchemDoc.png[Soon™ Icon]
 from the
 xref:Development/BeginnersGuide/SimpleMod/recipe.adoc[Recipe/Schematic tutorial],
 which you can copy in from the ExampleMod in your project or download it again from the above link.
