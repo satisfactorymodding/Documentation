@@ -9,11 +9,9 @@ If you have any feedback, please let us know in the Discord.
 
 TODO
 
-- update the regular modding guides to use the new Alpakit UI and mention game version stuff
+- update the regular modding guides to use the new Alpakit UI and mention game version stuff (partially done)
 - Update generic updating guide to have a step for bumping game and SML version
 - update uplugin fields page with GameVersion dep
-
-
 
 [IMPORTANT]
 ====
@@ -32,6 +30,8 @@ xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
 
 == The Winds of Change are Blowing
+
+TODO if no pre-1.0 release this is irrelevant
 
 === Preparing for 1.0
 
@@ -64,11 +64,14 @@ An example of a mod that implements this functionality is https://ficsit.app/mod
 
 Of course, a number of certain things will not be possible without the server also having SML installed.
 
-=== Gameplay Tags and the SML Extended Attribute Provider
+=== Content Tag Registry
 
-TODO
+SML now offers a registry to assist mods with using
+https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Unreal Gameplay Tags].
 
-xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
+Gameplay Tags are a useful way to introduce some cross-mod compatibility without hard dependencies on other mods.
+
+Read the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
 
 == Not Done Yet
 
@@ -115,7 +118,7 @@ image:Development/UpdatingGuides/AlpakitButtons38.png[Screenshot of new Alpakit 
 
 ==== Launch Game Type: Custom Split into Path and Arguments
 
-If you were previously using
+If you were previously using, for example,
 `powershell.exe C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
 you should now use:
 
@@ -148,7 +151,7 @@ but we'd like to draw extra attention to them.
 
 If your mod adds any item descriptors that serves a special non-crafting purpose,
 like the Any Undefined, Wildcard, Overflow, and None sorting rule in the base game,
-use the xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
+use the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
 to add the `SML.Registry.Item.SpecialItemDescriptor` tag to it.
 See that page for more information.
 

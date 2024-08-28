@@ -89,6 +89,7 @@
         *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
         *** xref:Development/ModLoader/Registry.adoc[Registry]
         *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
+        *** xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
         *** xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
         *** Legacy
         *** xref:SMLConfiguration.adoc[SML Configuration]

@@ -1,0 +1,196 @@
+= Content Tag Registry
+
+[NOTE]
+====
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+Introduced in SML3.8, the Content Tag Registry is an
+xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
+xref:Development/ModLoader/Subsystems.adoc[Subsystem]
+that manages
+https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Gameplay Tag Containers]
+at a per-class level to be utilized by mod systems.
+
+Gameplay Tags are essentially a structured hierarchical system of FName tags that Unreal has built further libraries and optimizations around.
+Since the tags are text-based, using this system makes implementing cross-mod interactions with no hard dependencies easier.
+
+Tags do not inherently do anything by themselves, but other systems can use them to control behavior.
+
+== Tag Usage Examples
+
+Learn more about practical use cases for Gameplay Tags in 
+https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this blog post].
+
+=== SML Special Item Descriptor Tag
+
+By adding the `SML.Registry.Item.SpecialItemDescriptor` tag to an item descriptor, the 
+`GetObtainableItemDescriptors` and `IsDescriptorFilteredOut` utilities in `UModContentRegistry` will consider it a Special item descriptor,
+meaning it will be filtered according to usage of the `EGetObtainableItemDescriptorsFlags::IncludeSpecial` flag.
+
+== Limitations
+
+=== Registry Freeze
+
+The tag registry is frozen at the same time as the Content Registry.
+It's not possible to add more tags to a class after the registry is frozen.
+
+=== Lookup
+
+Unlike other tags systems you may be familiar with, neither Unreal nor SML provide a system for looking up what content has a specific tag.
+For example, you can't ask the system to give you a list of every FGItemDescriptor class with the "ReallyCool" tag.
+
+If this behavior is desired it must be implemented separately.
+An example implementation could build these records by iterating over all registered item descriptor classes and checking them for the "ReallyCool" tag.
+Caching the results is highly recommended because they should never change after the registry is frozen.
+
+=== Not Replicated
+
+Since the Content Registry state is not replicated, neither is the Content Tag Registry.
+Tags must be set up on both server and client for the data to be consistent.
+
+=== Class-level Tagging
+
+Unreal Engine makes few assumptions about how Content Tags are used to allow for implementation flexibility.
+Tag containers are structs that can be returned by anything or used by anything.
+
+SML's Content Tag Registry implementation only assists with managing tags at the UClass level.
+Tagging arbitrary UObjects, for example, must be implemented separately.
+
+== Defining Tags
+
+Satisfactory Mod Loader adds mod config folders to Unreal Engine's search path as a gameplay tag source,
+allowing each mod to define Gameplay Tags via config files even though they are typically a project-level setting.
+
+Use the in-editor gameplay tag editor to define new tags and tag sources.
+You can find this manager in any editor field that uses gameplay tags, or by going to
+`Edit` > `Project Settings...` > (Project heading) `GameplayTags` > `Gameplay Tag List`.
+
+To define new tags, you must first create a tag source for your mod.
+To do this, open the "Add New Tag Source" section of the manager.
+Make sure your mod reference is included in the "Name" so it can be distinguished later.
+For example, `YourModReferenceGameplayTags.ini`.
+Select your mod in the "Config Path" dropdown, then press `Add New Source`.
+
+Once you have a tag source, open the "Add New Gameplay Tag" section to define new tags.
+Make sure to follow the link:#TagNameConventions[Tag Naming Conventions] when defining new tags.
+Leave a comment explaining the purpose of the tag, which will appear in editor hover tooltips.
+Finally, pick your mod's ini as the Source and press `Add New Tag`.
+
+Tag comments can be edited later in the tag source ini file.
+
+[id="TagNameConventions"]
+=== Tag Naming Conventions
+
+UE Tags are hierarchical with each "level" separated by periods.
+For an example, see https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this blog post]
+and https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[the UE documentation].
+
+Tag names should be written with this behavior in mind.
+
+If your tag is intended to apply to a specific asset type, consider using that as a prefix.
+
+If your tag pertains to something specific to your mod, consider prefixing the tag with your mod reference.
+
+Example general tag names:
+
+* ✔️ `Item.Organic`
+    ** Organic, compostable material
+    ** SML defines this tag and has already applied it to multiple vanilla items
+* ✔️ `Recipe.Package`
+    ** Combines resources and packages into a Packaged item
+    ** SML defines this tag and has already applied it to multiple vanilla recipes
+
+Example mod-specific tag names
+
+* ✔️ `MyCoolMod.Item.SpecialGeneratorFuel`
+    ** This tag could be used to allow other mods to enable their fuels to be burned in your mod's custom generator building.
+
+Poor tag names:
+
+* ❌ `Item.Radioactive`
+    ** Items already have the `mRadioactiveDecay` field to indicate radioactivity.
+* ❌ `Item.Liquid` / `Item.Gas` / `Item.Solid`
+    ** Items already have the `mForm` field to indicate resource state.
+* ❌ `Item.RawResource` / `Item.Biomass` / `Item.NuclearFuel`
+    ** The base game already uses specific classes to differentiate these. Consider using those instead.
+* ❌ `Thing`
+    ** Not specific enough to be useful.
+
+== Applying Tags to Assets
+
+SML provides multiple approaches for applying tags in the registry.
+
+=== Extended Attribute Provider Interface
+
+If your mod owns the asset you wish to tag, you can implement the `ISMLExtendedAttributeProvider` interface on it to offer tags.
+It's convenient for defining an item's tags on the item itself, keeping all the details in one place.
+
+Epic's existing `IGameplayTagAssetInterface` is not useful for modding purposes because it must be implemented in {cpp}
+and we often want to apply tags to assets we don't have control over the parent class structure of, like FGItemDescriptors.
+
+=== Tag Table
+
+The Tag Table approach is ideal when the content you wish to tag is accessible in the editor, but not necessarily owned by your mod.
+For example, applying tags to vanilla assets or assets from other mods.
+It's also useful for bringing in tag data from an external source like a spreadsheet.
+
+To get started, go to a Content Browser window in the editor and create a new Data Table asset (it's an Advanced Asset in the Miscellaneous category).
+You'll be prompted to select a Row Structure, pick `ContentTagRegistryAddition` from the dropdown.
+
+- Row names must be unique but are ignored by code.
+- Use the `Class` column to specify the asset you want to tag.
+- Use the `Tag Container` column to supply the tags to apply to the asset.
+
+Register the data table by adding it 
+
+=== Script Calls
+
+If you need to apply tags based programatically based on some kind of condition,
+or need want to tag assets that might not exist at editor time,
+use the methods offered by the Content Tag Registry.
+
+Use `UContentTagRegistry:AddGameplayTagsTo` to register tags directly or `UContentTagRegistry:RegisterTagAdditionTable` to register a Data Table.
+
+== Removing Tags from Assets
+
+=== Script Calls
+
+Use `UContentTagRegistry:RemoveGameplayTagsFrom` to remove a tag.
+This will only work before the registry is frozen.
+
+There is no "removal record" left behind, so something else could theoretically add the tag back later.
+You probably want to call this late in the loading process to avoid that.
+
+== Checking Assets for Tags
+
+You can query the Content Tag Registry to get the "final" tag container for a class,
+which is an unmodifiable copy of the aggregated tags the class has from all sources.
+
+From there, standard UE methods can be used to operate on the tag container.
+
+[id="CheckTags_Blueprint"]
+=== In Blueprint
+
+Use either available "GetContentTagRegistry" node to get a reference to the registry,
+then use `Get Gameplay Tag Container For` to get the tag container for a class.
+
+From there, use tag container methods like "Has Tag" and "Has All" to make decisions based on what tags are present.
+
+"GetDebugStringFromGameplayTagContainer" can be useful for debugging.
+
+[id="CheckTags_Cpp"]
+=== In C++
+
+Use `UContentTagRegistry:GetGameplayTagContainerFor` to get the tag container for a class.
+
+From there, use
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.3[tag container methods].
+
+== Using Tags from Other Mods
+
+Since tags are defined by string names,
+if you want to use a tag name from another mod without that mod's source in your editor,
+simply create a new tag source in your own mod for the other source with the exact same hierarchical tag name.

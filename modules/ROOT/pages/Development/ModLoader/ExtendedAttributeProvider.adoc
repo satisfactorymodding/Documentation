@@ -1,95 +1,20 @@
 = Extended Attribute Provider
 
-[NOTE]
-====
-This page is still a work in progress.
+Introduced in SML3.8, `ISMLExtendedAttributeProvider` is an interface
+that allows any modded asset to offer additional data to other mod systems without involving a specific class in the hierarchy.
 
-If you have any feedback, please let us know in the Discord.
-====
+Consider the base game's `FGItemDescriptorNuclearFuel` and `FGItemDescriptorBiomass` classes.
+Nuclear Fuel adds new 2 properties to the standard item descriptor, while Biomass adds none.
+However, because they are implemented as full classes, it's impossible to have an item which is both nuclear fuel and biomass.
 
-Introduced in SML3.8, ISMLExtendedAttributeProvider is an interface that allows any modded asset to offer
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.2[Gameplay Tags]
-to be utilized by mod systems.
+As an interface, the Extended Attribute Provider can be used without locking you out of using another class as the parent.
 
-Gameplay Tags are essentially a structured hierarchical system of FName tags that Unreal has built further libraries and optimizations around.
-Since the tags are text-based, using this system makes implementing cross-mod interactions with no hard dependencies easier.
+== Usage
 
-Learn more about practical use cases for Gameplay Tags in 
-https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this blog post].
+To use the interface, implement it on your asset.
 
-TODO verify:
-Epic's existing `IGameplayTagAssetInterface` is not useful for modding because it must be implemented in {cpp}
-and we often want to apply tags to assets we don't have control over the parent class structure of, like FGItemDescriptors.
+For blueprints, this is done in `Class Settings` > (Interfaces subheading) `Implemented Interfaces` > `Add`.
 
-Satisfactory Mod Loader adds mod config folders to Unreal Engine's search path as a gameplay tag source,
-allowing each mod to define its own set of tags.
+== Features
 
-== Usage Example: SML Special Item Descriptor Tag
-
-By adding the `SML.Registry.Item.SpecialItemDescriptor` tag to an item descriptor, the 
-GetObtainableItemDescriptors and IsDescriptorFilteredOut utilities in UModContentRegistry will consider it a Special item descriptor,
-meaning it will be filtered according to usage of the `EGetObtainableItemDescriptorsFlags::IncludeSpecial` flag.
-
-[id="TagNameConventions"]
-== Tag Naming Conventions
-
-TODO ue docs talking about the hierarchical nature of tags
-
-Tags should always start with your mod reference for clarity of who created them
-
-== Using Tags
-
-[id="CheckTags_Blueprint"]
-=== In Blueprint
-
-TODO UE docs
-
-[id="CheckTags_Cpp"]
-=== In C++
-
-TODO Check implementation of `UModContentRegistry::IsDescriptorFilteredOut` in SML source code and UE docs 
-
-=== Using Tags from Other Mods
-
-TODO pretty sure you can just create a tag with the exact same name in your mod and it will Just Work even in the case of 2 mods offering the same tag
-
-
-== Defining New Tags
-
-[id="DefineTags_Editor"]
-=== In the Editor
-
-Use the in-editor gameplay tag editor to define new tags and tag sources.
-
-You can find this manager in any editor field that uses gameplay tags, or by going to
-Edit > Project Settings... > (Project heading) GameplayTags > Gameplay Tag List.
-
-TODO screenshot
-
-To define new tags, you must first add a tag file to your mod.
-To do this, open the `Add New Tag Source` section of the manager.
-Use `YourModReferenceGameplayTags.ini` as the Name, select your mod in the Config Path dropdown, then press `Add New Source`.
-
-It's possible to have more than one source in a mod
-
-Once you have a tag source, open the `Add New Gameplay Tag` section to define new tags.
-
-Make sure to follow the link:#TagNameConventions[Tag Naming Conventions] when defining new tags.
-Leave a comment explaining the purpose of the tag, which will appear in editor hover tooltips.
-Finally, pick your mod's ini as the Source and press `Add New Tag`.
-
-[id="DefineTags_Blueprint"]
-=== From Blueprint
-
-TODO do we even want to mention runtime created tags in BP as an option?
-
-Would the data table route even be supported since we are using the config approach?
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.2
-
-
-[id="DefineTags_Cpp"]
-=== From C++
-
-TODO
-
-Mircea says you can just use regular c++ calls so probably link people to UE docs
+As of SML3.8, the only system that uses this interface is the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry].
