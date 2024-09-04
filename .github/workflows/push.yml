@@ -33,11 +33,21 @@ jobs:
       - name: Build
         run: npm run build:ci
 
-      - id: lychee
+      - id: lychee-main
+        name: Check for Broken Links (Main Docs)
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/**/*.html'
+          args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
           fail: true
+
+      - id: lychee-submods
+        name: Check for Broken Links (Subsites)
+        uses: lycheeverse/lychee-action@v1
+        with:
+          # TODO there surely must be a better way to do this
+          # exclude the main docs dir from this check to avoid doing work twice
+          args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
+          fail: false
 
   image:
     name: Image
