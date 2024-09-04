@@ -19,7 +19,7 @@ To open the wizard, click the `Create Mod` button in the Alpakit panel.
 Mod templates that the community has created will appear here.
 Select the `Blueprint Only` template for now.
 
-The wizard will also prompt you for a Plugin Name.
+The wizard will also prompt you for a Mod Name.
 The name of your plugin _must_ be your mod's
 xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
 For this documentation example, you can use `DocMod` as the mod reference.
@@ -36,7 +36,7 @@ if you have not yet done so.
 It is critical that your mod reference follows these formatting rules.
 ====
 
-Leave "Show Content Directory" checked and press `Create Plugin`.
+Leave "Show Content Directory" checked and press `Create Mod`.
 
 image:BeginnersGuide/simpleMod/AlpakitCreateMod.png[Create Mod screenshot]
 
