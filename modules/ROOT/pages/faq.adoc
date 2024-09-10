@@ -486,6 +486,7 @@ The process for specifying them depends on how you are launching the game:
 
 - For https://help.steampowered.com/en/faqs/view/7d01-d2dd-d75e-2955[Steam] 
 - For https://www.pcgamingwiki.com/wiki/Glossary:Command_line_arguments#Epic_Games_Store[Epic]
+- For a https://superuser.com/questions/29569/how-to-add-command-line-options-to-shortcut[Windows shortcut]
 - For xref:Development/TestingResources.adoc[Testing Scripts]
 - For other launch methods, use your search engine of choice.
 
@@ -519,15 +520,23 @@ so instead, chose the option that makes it so it only updates when you launch it
 (instead of automatically in the background).
 This gives you a chance to copy the files elsewhere before the platform automatically updates them on you.
 
-Steam explains how to disable automatic updates in
+- Steam explains how to disable automatic updates in
 https://help.steampowered.com/en/faqs/view/71AB-698D-57EB-178C#disable[their FAQ].
+- Epic automatic updates can be disabled on the game's "Manage" menu.
+  Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
 
-On Epic, this can be done on the game's "Manage" menu.
-Remember to disable updates for each Satisfactory library entry, since the branches are separate games on Epic.
+Once automatic updates are disabled, take a backup by copying the entire game install directory to another location.
 
-Once an update releases, follow the directions
-xref:Development/UpdatingToNewVersions.adoc#_back_up_your_game[here]
-to make a copy of your files and learn how to launch the game from that copy.
+==== Launching the Backup Copy
+
+In order to launch this separate copy, you'll need to launch it outside of the usual platform launcher.
+
+- For Steam, navigate to the `\Engine\Binaries\Win64` subfolder of your backup copy and create a text file named `steam_appid.txt` with the file contents `526870`.
+  To launch the game, run the `FactoryGameSteam.exe` file in the root folder of your backup copy.
+  If you have Steam open, it will still say you are playing, but your backup will still be separate and not require Steam.
+- For Epic, you will need to run the game executable with launch arguments to prevent it from talking to the Epic Games launcher.
+  Create a Windows shortcut pointing to the game executable and add the `-EpicPortal` and `-NoSteamClient` arguments.
+  https://superuser.com/questions/29569/how-to-add-command-line-options-to-shortcut[This article] explains how to add launch arguments to a shortcut.
 
 [id="PlayOlderVersion_SteamCMD"]
 === Use SteamCMD
