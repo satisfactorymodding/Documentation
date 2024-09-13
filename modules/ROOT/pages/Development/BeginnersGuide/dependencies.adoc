@@ -278,20 +278,20 @@ or asking for help on the Discord.
 Once presented with options on what to install, select:
 
 * _Packages_
-** Authoring
-** SDK (C++)
+** ✔ Authoring
+** ✔ SDK (C++)
 * _Deployment Platforms_
-** Linux
+** ✔ Linux
 ** _Microsoft_
 *** _Windows_
-**** Visual Studio 2019
-**** Visual Studio 2022
+**** ✔ Visual Studio 2019
+**** ✔ Visual Studio 2022
 
 If anything is selected by default, do not uncheck them. They are required for Visual Studio to work.
 
 Click `Next` (you may need to scroll down to see the button).
 You don't need to add any plugins,
-so press `Select None` then `Install` in the bottom left to begin the installation process.
+so press `Deselect All` in the top right then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
 == Satisfactory Mod Manager
