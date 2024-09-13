@@ -334,6 +334,13 @@ Mod manager profiles are stored at:
 
 `%appdata%\SatisfactoryModManager\profiles`
 
+[id="Files_Screenshots"]
+=== Game Screenshots
+
+Game screenshots are stored in:
+
+`%UserProfile%\Documents\My Games\FactoryGame\Screenshots`
+
 == Where can I find the game's log files?
 
 The easiest way to gather logs is the Mod Manager's "generate debug info" feature,
