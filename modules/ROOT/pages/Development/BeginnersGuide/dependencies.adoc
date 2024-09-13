@@ -260,7 +260,7 @@ After the installer is complete it should open the launcher for you.
 In the launcher, select `WWISE` from the sidebar.
 Click the `Latest` drop-down and change it to `All`.
 Select `2022.1` from the next dropdown.
-Select version `2022.1.5.8242.2714` from the final dropdown.
+Select version `2022.1.10.8393` from the final dropdown.
 Click `Install`.
 
 [WARNING]
@@ -271,7 +271,7 @@ but they are likely to have other incompatible changes that will break the setup
 
 **Try to download the exact Wwise version mentioned above**.
 If you don't see it,
-try any other version starting with `2022.1.5`, preferring newer versions,
+try any other version starting with `2022.1.10`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
