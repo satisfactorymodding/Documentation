@@ -29,24 +29,6 @@ follow the directions on the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
 
-== The Winds of Change are Blowing
-
-TODO if no pre-1.0 release this is irrelevant
-
-=== Preparing for 1.0
-
-Now is the time to make a backup of your current copy of the game
-xref:faq.adoc#PlayOlderVersion[as described in the FAQ]
-so you can test mod functionality and extract assets if something you previously referenced is no longer available in 1.0.
-
-[id="SMLNoLongerHardRequired"]
-=== Mods No Longer Require a Dependency on SML
-
-Although 99% of mods should still depend on SML for its feature set,
-Ficsit.app now supports uploading mods without an SML dependency.
-If you think your mod is part of the 1%,
-read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
-
 == New Features
 
 === Session Setting Replication
@@ -64,6 +46,8 @@ An example of a mod that implements this functionality is https://ficsit.app/mod
 
 Of course, a number of certain things will not be possible without the server also having SML installed.
 
+TODO do the 1.0 custom networking changes Arch mentioned affect this?
+
 === Content Tag Registry
 
 SML now offers a registry to assist mods with using
@@ -72,6 +56,14 @@ https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-
 Gameplay Tags are a useful way to introduce some cross-mod compatibility without hard dependencies on other mods.
 
 Read the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
+
+[id="SMLNoLongerHardRequired"]
+=== Mods No Longer Require a Dependency on SML
+
+Although 99% of mods should still depend on SML for its feature set,
+Ficsit.app now supports uploading mods without an SML dependency.
+If you think your mod is part of the 1%,
+read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
 
 == Not Done Yet
 
@@ -86,6 +78,8 @@ See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this
 This should not affect the vast majority of mods.
 
 === Decal_Normal Broken on Modded Parts using Mesh Proxies
+
+TODO did 1.0 fix?
 
 Mesh proxies past the first instance may not render correctly.
 This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
@@ -102,6 +96,34 @@ Session Settings still function correctly - their values are saved.
 
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
+
+=== Dependency Updates
+
+The following project dependencies have updated.
+Install the updated versions as you follow the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] guide.
+
+==== Engine Update
+
+Satisfactory 1.0 brings the game to Unreal Engine 5.3.
+Download and set up our custom release while following the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== Wwise Update
+
+With a new Unreal Engine version comes a new required Wwise update for your project.
+The xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page Wwise instructions]
+lists the new Wwise version and guides you through integrating it into your project as you follow the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== CLang Toolchain Update
+
+Working with the updated Unreal Engine version requires an updated CLang toolchain.
+Insalling it is covered in the
+xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies page CLang Toolchain instructions].
+
+=== Understanding New Game Targets
+
+TODO how does the `FactoryGameSteam`/`FactoryGameEGS` split affect modders and the packaging process?
 
 === Alpakit Changes
 

@@ -107,7 +107,7 @@ but it's better to play it safe than regret not making a useful, time-saving bac
 
 Storage space is cheap, your time is not.
 
-== Back Up Your Game
+=== Back Up Your Game
 
 As described in the 'Keep an Old Game Version On Hand' bullet,
 by keeping an old install of the game on hand,
@@ -134,7 +134,7 @@ page to launch this separate copy of the game
 while still having the new copy set up (even running at the same time)
 on Steam/Epic.
 
-== Back Up Your Old Engine
+=== Back Up Your Old Engine
 
 When Coffee Stain updates to a newer version of Unreal Engine,
 or in the occasion that the SML team patches the engine for various reasons,
@@ -173,9 +173,24 @@ This should not be required for the new editor version.
 You may have to edit a registry key entry to fix this - ask on the Discord for help with this.
 ====
 
+== Updating Dependencies
+
+You may need to install updated project dependencies depending on what has changed in the update.
+The version-specific upgrading guide page (check the sidebar)
+will tell you where in the docs to find the new version numbers.
+
+- Engine version
+  - Updated by Coffee Stain, although sometimes the modding team will release custom engine edits.
+- Wwise version
+  - Updated by Coffee Stain.
+- CLang toolchain version
+  - Updated by Coffee Stain, usually when engine versions are updated.
+- Starter Project contents
+  - This always changes with every SML version, since the Starter Project contains the SML source code.
+
 == Install the New Engine
 
-The new editor version can probably be downloaded from
+New editor versions are usually be downloaded from
 https://github.com/satisfactorymodding/UnrealEngine/releases[the GitHub releases page],
 but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
