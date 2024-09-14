@@ -100,10 +100,10 @@ Cross-compiling from Windows to Linux requires
 the compatible version of Unreal Engine specific Clang Toolchain to be installed
 prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for 
-https://docs.unrealengine.com/5.2/en-US/linux-development-requirements-for-unreal-engine/#versionhistory[Cross-Compiling for Linux].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#nativetoolchain[Cross-Compiling for Linux].
 
-Currently, Satisfactory uses Unreal Engine 5.2.x with custom changes provided by Coffee Stain Studios.
-Therefore, the Cross-Compile Toolchain version required is `-v21` or `clang-15.0.1-based`.
+Currently, Satisfactory uses Unreal Engine 5.3.2 with custom changes provided by Coffee Stain Studios.
+Therefore, the Cross-Compile Toolchain version required is `-v22` or `clang-16.0.6-based`.
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
