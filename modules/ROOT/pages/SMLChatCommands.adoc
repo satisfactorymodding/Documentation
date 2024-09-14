@@ -65,6 +65,7 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Source/
 
 
 The native Unreal cheats
+// TODO update this link to the new CSS branch
 https://github.com/satisfactorymodding/UnrealEngine/blob/5.2.1-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
 can also be used. Note that to view this link,
 you must be signed into a GitHub account registered with Epic Games,

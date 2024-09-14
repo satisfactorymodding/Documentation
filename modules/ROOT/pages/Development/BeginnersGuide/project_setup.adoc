@@ -143,7 +143,7 @@ The version number may have additional numbers on the end of it e.g.
 
 If version `2022.1.10.8393` does not appear even after you have selected `All`,
 edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `5.2.1-CSS`.
+is set to `5.3.2-CSS`.
 
 If this version still doesn't show up, try any other version starting with `2022.1.10`.
 
@@ -221,7 +221,7 @@ If you are prompted to choose an engine version when generating project files,
 or the generation command fails, it's possible that you have a corrupted engine install
 left behind from previous modding or Unreal Engine endeavors.
 
-The correct engine version should appear in the picker as `5.2.1-CSS` and should not be considered a binary build.
+The correct engine version should appear in the picker as `5.3.2-CSS` and should not be considered a binary build.
 To remove a listing for a corrupted engine install,
 use the https://www.techtarget.com/searchenterprisedesktop/definition/Windows-Registry-Editor[Windows registry editor]
 to edit the registry key `HKEY_CURRENT_USER\SOFTWARE\Epic Games\Unreal Engine\Builds`
@@ -410,9 +410,9 @@ if you haven't taken or dismissed it yet.
 
 We also suggest the following resources:
 
-- https://docs.unrealengine.com/5.2/en-US/unreal-editor-interface/[Unreal Editor Interface] - Provides a high-level overview of what each of the editor panels do.
-- https://docs.unrealengine.com/5.2/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
-- https://docs.unrealengine.com/5.2/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
+- https://docs.unrealengine.com/5.3/en-US/unreal-editor-interface/[Unreal Editor Interface] - Provides a high-level overview of what each of the editor panels do.
+- https://docs.unrealengine.com/5.3/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
+- https://docs.unrealengine.com/5.3/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
 
 == (Optional) Modify Editor Color Scheme
 
@@ -430,12 +430,12 @@ It's one of the editor plugins that comes pre-installed with the starter project
 === Opening Alpakit
 
 Click on the Alpakit Dev button in the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.2#maintoolbar[Main Toolbar]
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#maintoolbar[Main Toolbar]
 of the Unreal editor to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
 
 You can also bring it up via `File > Alpakit Dev` from the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.2#menubar[Menu Bar].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#menubar[Menu Bar].
 
 Next, open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log",
 or using `File > Alpakit Log`.

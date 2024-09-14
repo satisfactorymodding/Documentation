@@ -80,7 +80,7 @@ When used correctly, they can help catch bugs early and make debugging easier
 by pinpointing the exact location where an assumption was violated.
 
 You can read more about these utilities (and see usage examples) on the relevant
-https://dev.epicgames.com/documentation/en-us/unreal-engine/asserts-in-unreal-engine?application_version=5.2[Unreal Engine documentation page].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/asserts-in-unreal-engine?application_version=5.3[Unreal Engine documentation page].
 
 Note that Assert and Check statements will crash the game if their conditions are not met, however, Ensure statements will allow the game to keep running.
 
