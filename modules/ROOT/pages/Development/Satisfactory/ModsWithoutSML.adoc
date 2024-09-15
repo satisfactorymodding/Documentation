@@ -16,31 +16,28 @@ so SML switched over to serving as a utility library and coordinator.
 
 Up until the release of SML 3.8, we still required all mods uploaded to Ficsit.app to depend on SML
 because it acted as a way to check which game and engine versions a mod was compatible with.
+With the release of SML 3.8 we also updated Ficsit.app internals to allow mods to be uploaded without SML as a dependency,
+instead using the "GameVersion" uplugin field.
 
+[id="AreYouSure"]
 == Are You Really Sure You Want to Do This?
-
-Benefits of still depending on SML
 
 Consider the following SML features that you'll be losing by not depending on it:
 
-- Significant wheel reinvention required for blueprint mods (C++ mods can use StartupModule)
+- Significant wheel reinvention required for blueprint (pak-only) mods ({cpp} mods can use StartupModule)
 - Mod dependency version checking at launch
 - Client-server version consistency checking when playing in multiplayer
 - Other mods being able to detect your mod's presence
 - Mod Content Registry access
 
-Also, consider that nearly every player will still have SML installed anyways so they can play with other mods.
-It's already possible to run SML on just the client 
-
-
-Refine the mircea paragraph:
-
-pak-only mods need SML to act as an entrypoint to their blueprint code (or some other mod that checks for that content), while c++ has StartupModule, so it can work without any dependency. And with dedi support, client or server only mods that don't need SML may become a thing (though there's still that issue with having SML on just one side). But we still recommend listing SML as a dependency, as it checks for mod dependencies at runtime (including the game version), and client-server version consistency (when the mod is not one sided).
-(This needs some rephrasing)
+Also, consider that nearly every player will still have SML installed anyways so they can use other mods.
+It's already possible to run SML on just the client.
 
 == Systems You Will Have to Care About
 
-TODO
+No one has tried this process out and documented it yet, so we don't have a comprehensive list of things you'll need to do.
+If you decide to go down this path, please let us know what you find out so we can update this page.
 
-Alpakit game version dependency field
-
+- Your mod breaking on game updates. {cpp} code, especially hooks, are very prone to breaking on game updates as offsets change.
+- Entry point for your code. {cpp} mods can use `StartupModule`, blueprint mods will need something else to help them load.
+- Alpakit GameVersion dependency field explained on the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Releasing Your Mod page].

@@ -102,7 +102,7 @@ Be sure to read the sections below that explain each system in more detail.
 === RPC Execution
 
 The outcome of calling an RPC depends on the RPC's type and the network ownership of the calling actor.
-The https://docs.unrealengine.com/5.2/en-US/rpcs-in-unreal-engine/#requirementsandcaveats[Unreal Documentation]
+The https://docs.unrealengine.com/5.3/en-US/rpcs-in-unreal-engine/#requirementsandcaveats[Unreal Documentation]
 has an excellent table summarizing the different possible execution results.
 
 [id="RCOs"]

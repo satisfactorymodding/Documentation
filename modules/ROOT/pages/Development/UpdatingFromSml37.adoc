@@ -1,35 +1,34 @@
 = Upgrading from SML 3.7.0 to 3.8.x
 
-[NOTE]
-====
-This page is still a work in progress.
-
-If you have any feedback, please let us know in the Discord.
-====
-
-TODO
-
-- update the regular modding guides to use the new Alpakit UI and mention game version stuff (partially done)
-- Update generic updating guide to have a step for bumping game and SML version
-- update uplugin fields page with GameVersion dep
-
 [IMPORTANT]
 ====
 The contents of this page will change frequently!
 Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
 ====
 
+====
+TODO
+
+- update the regular modding guides to use the new Alpakit UI and mention game version stuff (partially done)
+- Update generic updating guide to have a step for bumping game and SML version
+- update uplugin fields page with GameVersion dep (done?)
+====
+
 SML3.8 brings support for the game's 1.0 release, as well as a few new toys and fixes to long-running bugs.
+Mods compiled for SML3.7 will not work with SML3.8 due to the game's engine update.
 
-Because of the game's engine update, mods compiled for SML3.7 will not work with SML3.8.
-
-First, please _read this entire page before you begin updating your mod_.
+Please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
-
 After you have finished reading this page,
 follow the directions on the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
 guide to install the updated engine, starter project, and update your mod.
+
+[IMPORTANT]
+====
+The 1.0 release contains a particularly large number of changes to the base game's files.
+Don't skip making backups this time - your blueprints might become unopenable in the latest release!
+====
 
 == New Features
 
@@ -59,7 +58,7 @@ Gameplay Tags are a useful way to introduce some cross-mod compatibility without
 Read the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
 
 [id="SMLNoLongerHardRequired"]
-=== Mods No Longer Require a Dependency on SML
+=== Modding Without SML
 
 Although 99% of mods should still depend on SML for its feature set,
 Ficsit.app now supports uploading mods without an SML dependency.
@@ -129,6 +128,19 @@ Working with the updated Unreal Engine version requires an updated CLang toolcha
 Insalling it is covered in the
 xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies page CLang Toolchain instructions].
 
+
+[id="Alpakit_GameVersionDependency"]
+=== Game Version Dependency
+
+Ficsit.app now requires uploaded mods to specify a minimum game version with which the mod is compatible.
+The reasoning behind this is explained in link:#SMLNoLongerHardRequired[this section].
+
+Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version.
+Clicking on this warning banner will automatically update the field for you.
+
+SML checks this game version at runtime,
+requiring that the player's game version is greater than or equal to the listed required version.
+
 === Understanding New Game Targets
 
 The 1.0 release has introduced new Windows build targets -
@@ -170,18 +182,6 @@ you should now use:
 
 The Alpakit Log now displays the time a last successful pack was completed.
 Great for if you started packing something, went to do something else, and came back but can't remember what exactly you started!
-
-[id="Alpakit_GameVersionDependency"]
-== Game Version Dependency
-
-Ficsit.app now requires uploaded mods to specify a minimum game version with which the mod is compatible.
-The reasoning behind this is explained in link:#SMLNoLongerHardRequired[this section].
-
-Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version.
-Clicking on this warning will automatically update the field for you.
-
-SML will check this game version at runtime,
-requiring that the player's game version is greater than or equal to the listed required version.
 
 == Additional Changes
 

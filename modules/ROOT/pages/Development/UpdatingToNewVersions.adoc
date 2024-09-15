@@ -179,14 +179,16 @@ You may need to install updated project dependencies depending on what has chang
 The version-specific upgrading guide page (check the sidebar)
 will tell you where in the docs to find the new version numbers.
 
-- Engine version
-  - Updated by Coffee Stain, although sometimes the modding team will release custom engine edits.
-- Wwise version
-  - Updated by Coffee Stain.
-- CLang toolchain version
-  - Updated by Coffee Stain, usually when engine versions are updated.
-- Starter Project contents
-  - This always changes with every SML version, since the Starter Project contains the SML source code.
+* Engine version
+  ** Updated by Coffee Stain.
+  The modding team has custom engine edits to apply on top of the files they provide,
+  which will sometimes be updated even when Coffee Stain has not published a new version.
+* Wwise version
+  ** Updated by Coffee Stain, usually when engine versions are updated.
+* CLang toolchain version
+  ** Updated by Coffee Stain, usually when engine versions are updated.
+* Starter Project contents
+  ** Always changes with every SML version, since the Starter Project contains the SML source code.
 
 == Install the New Engine
 
@@ -207,7 +209,7 @@ xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
 If you typically launch the editor via the Windows Start Menu
 you will likely have to repair the shortcuts there after moving engine folders around.
 You can open the folder containing the shortcuts by searching for "Unreal Engine - CSS" in the start menu,
-right clicking on the shortcut, then choosing "Open File Location".
+right clicking on the shortcut, then choosing `Open File Location`.
 From there you can edit the shortcut's properties to configure its target, name, and launch location.
 
 You may also want to assign custom icons to each shortcut.
@@ -216,7 +218,7 @@ making it easier to distinguish between multiple versions of the editor running 
 You can create your own icons or use 
 https://discord.com/channels/555424930502541343/689188183048585244/1043643638577631263[these ones from on the Discord].
 You may have to restart your computer for the icon changes to take effect,
-as windows aggressively caches icon images.
+as Windows aggressively caches icons.
 
 == Preparing to Update your Starter Project
 
@@ -437,7 +439,6 @@ odds are that one of them will not work after an update.
 
 Even if the mods are totally separate from each other,
 Unreal could prevent you from packaging any mods at all while a non-working mod is also present.
-
 You may need to temporarily move out some of the troublesome mods to allow building others.
 
 One way to do this is to rename the uplugin file to `<ModReference>.uplugin.disabled`
@@ -451,18 +452,18 @@ this approach lets you turn off mods without causing a torrent of Git file chang
 
 == Preparing to Update a Mod
 
-If your mod has dependencies, you should update them first,
-ideally without your dependent mod present in the project.
+If your mod has dependencies, update them first.
 Consider disabling the dependent mod via the approach described above
-until the dependency is ready.
+until the dependency is ready to prevent its errors from blocking packaging of the dependency.
 
 If you keep your mods in separate plugin repos,
 consider creating a branch or tag on each named after the game version the code supported
-(ex. Update5) so that you (and others) can refer back to it later if needed.
+(ex. Update8) so that you (and others) can refer back to it later if needed.
 
 == The Cycle of Updating
 
-Your updating process will cycle through the following steps:
+Now that you have everything installed and backups taken,
+your updating process will cycle through the following steps:
 
 1. Attempt to 
 xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile the Visual Studio project]
@@ -476,9 +477,11 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping
 4. Open the Unreal Engine Editor for your project
 5. Run Alpakit on SML to install the latest version of SML in your copy of the game, or install it via SMM.
-   Problems in your own project files could prevent packaging from succeeding - if you encounter any, see Step 7.
-6. Run Alpakit on your mod to see what fails (or maybe it works the first time!)
-7. Deal with errors that Alpakit finds. Possible problems include:
+   Problems in your own project files could prevent packaging from succeeding - if you encounter any, see Step 8.
+6. Use the Alpakit Edit Mod wizard, or warning buttons in the Alpakit Release tab,
+   to update your mod's GameVersion field and SML dependency version.
+7. Run Alpakit on your mod to see what fails (or maybe it works the first time!)
+8. Deal with errors that Alpakit encounters. Possible problems include:
 
 - Blueprints that 'just' need to be opened and recompiled
   (see link:#_beware_of_changed_files[Beware of Changed Files] section)
@@ -487,17 +490,17 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
   try to find their new locations,
   and replace them or extract the files from your old game copy if needed.
 - No-longer-available function calls.
-  To-Do comment them out or try to replace them.
+  To-Do comment them out for later you, or try to replace them.
 - Something else entirely. Consider asking for help on the Discord.
 
-8. Repeat steps 6-7 until Alpakit builds your mod successfully
-9. Launch the game with your mod installed
-10. Resolve crashes that occur when you try to launch the game
-11. Restore the functionality you had to comment out or unhook in steps 2 and 7
-12. Test functionality in your mod to ensure nothing has broken
-13. Resolve any problems you find by testing your mod further
+9. Repeat steps 7-8 until Alpakit builds your mod successfully
+10. Launch the game with your mod installed
+11. Resolve crashes that occur when you try to launch the game
+12. Restore the functionality you had to comment out or unhook in steps 3 and 8
+13. Test functionality in your mod to ensure nothing has broken
+14. Resolve any problems you find by testing your mod further
 
-Below are some notes on a few things to watch out for.
+Below are notes on situations to watch out for.
 
 === Seemingly Ignored Access Transformers
 
@@ -566,7 +569,8 @@ You'll want to do the following things:
    You can do this from the Alpakit Edit Mod wizard.
    Remember, this number is in the `Major.Minor.Patch` format.
    In general, follow these rules to decide what your new version number should be:
-   - You should not go "backwards" in total version number. For example, don't release `1.1.0` after releasing `1.2.0`
+   - Don't go "backwards" in total version number. For example, don't release `1.1.0` after releasing `1.2.0`.
+     The mod manager will always try to install the "largest" compatible version of your mod for players.
    - If this update is only fixing bugs, you should increment only the Patch number.
      (Example: `1.2.9` to `1.2.10`)
    - If this update adds new features and is not likely to break compatibility with other mods,
@@ -595,7 +599,7 @@ you should have completed the process of updating your mod and starter project.
 Or, if you were reading through, you're better prepared to update in the future.
 
 If you think this guide skipped over something,
-you found a mistake,
+you've found a mistake,
 or you'd like to contribute more to this guide,
 please speak up on the Discord or open a PR.
 

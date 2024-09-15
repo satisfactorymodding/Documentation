@@ -95,20 +95,32 @@ and any {cpp} modules you write must be in a Source folder with the mod referenc
 Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
 However, they can contain underscores (`_`).
 
+End users of your mod see your mod's Display Name (which can contain spaces and special characters) instead of the Mod Reference,
+with the notable exception of mod folders on disk, log messages, and filepaths.
+
 We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
 that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
 
 Here are a few possible examples of mod names and suggested mod references.
 
-*Mod Name:* `Example Mod`
+.Example Mod Display Names and Corresponding Mod References
+|===
+|Mod Display Name |Mod Reference
 
-*Mod Reference:* `ExampleMod`
+|Example Mod
+|`ExampleMod`
 
-*Mod Name:* `Rob's very cool mod`
-
-*Mod Reference:* `RobsVeryCoolMod`
+|Rob's very cool mod
+|`RobsVeryCoolMod`
 
 Note the exclusion of the apostrophe, because it's a special character.
+
+|Satisfactory Mod Loader
+|`SML`
+
+Note that a mod's reference doesn't need to exactly match its display name's text.
+
+|===
 
 == Next Steps
 
