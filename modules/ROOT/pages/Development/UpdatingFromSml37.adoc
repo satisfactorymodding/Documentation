@@ -19,7 +19,9 @@ The contents of this page will change frequently!
 Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
 ====
 
-TODO SML3.8 feature summary.
+SML3.8 brings support for the game's 1.0 release, as well as a few new toys and fixes to long-running bugs.
+
+Because of the game's engine update, mods compiled for SML3.7 will not work with SML3.8.
 
 First, please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
@@ -33,10 +35,8 @@ guide to install the updated engine, starter project, and update your mod.
 
 === Session Setting Replication
 
-TODO
-
-SML correctly handles Session Setting replication to multiplayer clients for you now.
-Thanks SirDigby and Mircea (TODO who else to credit?) for implementing this.
+SML correctly handles Session Setting replication to multiplayer clients now.
+Thanks SirDigby and Mircea for implementing this.
 
 === SML Capable of Running Client-Side Only
 
@@ -44,9 +44,10 @@ It is now possible have SML installed on your client even when the server does n
 This means you can create client-side mods that work when connected to vanilla servers.
 An example of a mod that implements this functionality is https://ficsit.app/mod/InfiniteNudge[Infinite Nudge].
 
-Of course, a number of certain things will not be possible without the server also having SML installed.
+Of course, a mod installed only on the client will be incapable of many things that normal dual-sided mods can accomplish
+due to game implementation details.
 
-TODO do the 1.0 custom networking changes Arch mentioned affect this?
+Note that the inverse (joining a server with SML from a vanilla client) is not yet possible.
 
 === Content Tag Registry
 
@@ -70,20 +71,27 @@ read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Witho
 The following features are not quite ready to use yet.
 This section will change often, so be sure to come back here and check as you update your mods!
 
-TODO compare below with 3.8 feature set
+=== 'New Game' Menu Customizations
+
+SML's changes to the New Game menu were broken by its 1.0 rework.
+This affects any mod that introduced new Levels
+and the ability to configure xref:Development/ModLoader/SessionSettings.adoc[Session Settings] before world creation.
+This will be fixed before SML 3.8's public release.
+
+=== Can't Join Dedicated Servers
+
+Trying to join a dedicated server with SML installed will currently always crash the client
+with an error related to null RCO when calling RequestAllSessionSettings from ASessionSettingsSubsystem::Init.
+This will be fixed before SML 3.8's public release.
 
 === Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
 
 See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
 This should not affect the vast majority of mods.
 
-=== Decal_Normal Broken on Modded Parts using Mesh Proxies
+=== Modded AWESOME Shop Schematics Do Not Load on Clients
 
-TODO did 1.0 fix?
-
-Mesh proxies past the first instance may not render correctly.
-This is a UE5 issue that Coffee Stain is working with Epic Games to resolve.
-You can work around this for the time being by using a default masked material.
+See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/277[this github issue for more info].
 
 === Advanced Game Settings values not saved
 
@@ -123,7 +131,18 @@ xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies pa
 
 === Understanding New Game Targets
 
-TODO how does the `FactoryGameSteam`/`FactoryGameEGS` split affect modders and the packaging process?
+The 1.0 release has introduced new Windows build targets -
+`FactoryGameSteam` and `FactoryGameEGS` -
+to allow Coffee Stain to ship different versions of the game for Steam and Epic Games.
+This enables them to provide the Epic Games overlay connection on the Steam version, for example.
+There should be very few game code differences between these two targets.
+
+Alpakit has been updated to support these new targets without you having to worry about it.
+
+- When building {cpp} for the editor, use `Development Editor - FactoryGame`
+- When building {cpp} for shipping outside of the editor, use either `FactoryGameSteam` or `FactoryGameEGS` depending on what you are testing with.
+- ❌ Don't try to build `Shipping - FactoryGame` or `FactoryShared` - they aren't released targets; trying to build them will always error.
+- When running Alpakit Development or Alpakit Release, Alpakit will build both targets as one for you; the pre-1.0 workflow is unaffected.
 
 === Alpakit Changes
 
@@ -169,7 +188,7 @@ requiring that the player's game version is greater than or equal to the listed 
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
-== Add Special Item Tag to Relevant Items in your Mod
+=== Add Tags to Relevant Content in your Mod
 
 If your mod adds any item descriptors that serves a special non-crafting purpose,
 like the Any Undefined, Wildcard, Overflow, and None sorting rule in the base game,
@@ -177,17 +196,22 @@ use the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
 to add the `SML.Registry.Item.SpecialItemDescriptor` tag to it.
 See that page for more information.
 
-== Funchook Improvements
+You may also wish to tag your mod's content with the generic tags that SML implements.
+
+=== Funchook Improvements
 
 We have switched to our own custom build of Funchook to (hopefully) avoid the
 https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/235[rare inconsistent hooking crash issue].
 If your mod makes use of hooking (and especially unhooking), watch for any bugs that may arise related to this
 and let us know on the discord if you encounter any issues.
 
-== Starter Project Structure page
+=== Starter Project Structure page
 
 The new xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure]
 documentation page explains important Starter Project folders and the Placeholder System in more detail.
 
-== TODO
+=== Decal_Normal FIXED on Modded Parts using Mesh Proxies
 
+Previous versions of the game had issues with mesh proxies past the first instance not rendering correctly.
+Ben says 1.0 has a fix for this issue, but no modders have tested it yet.
+This section will be updated when we have confirmation.
