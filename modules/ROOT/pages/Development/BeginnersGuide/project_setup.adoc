@@ -133,13 +133,16 @@ and updating can prevent your mod from working correctly.
 Click on the `Open Other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
 and select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
+In case you have multiple projects listed,
+click the triangle button to expand the details
+and ensure the "Unreal Engine project path" matches the path to your project.
 
 Click on the `Integrate Wwise into Project...` button.
 
-Change the left hand drop-down to `All`.
+Change the "Integration Version" drop-down to `All`.
 Then select the same version you installed earlier (likely `2022.1.10.8393`). 
 The version number may have additional numbers on the end of it e.g.
-`2022.1.10.8393.1234` but as long as it starts with `2022.1.10.8393` it should work.
+`2022.1.10.8393.2898` but as long as it starts with `2022.1.10.8393` it should work.
 
 If version `2022.1.10.8393` does not appear even after you have selected `All`,
 edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
