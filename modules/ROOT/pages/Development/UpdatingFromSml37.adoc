@@ -77,6 +77,11 @@ This affects any mod that introduced new Levels
 and the ability to configure xref:Development/ModLoader/SessionSettings.adoc[Session Settings] before world creation.
 This will be fixed before SML 3.8's public release.
 
+=== Widget Hooks Not Working
+
+No widget hooks are currently working.
+We suspect this is due to optimizations related to not cooking widgets for dedicated servers.
+
 === Can't Join Dedicated Servers
 
 Trying to join a dedicated server with SML installed will currently always crash the client
@@ -187,6 +192,13 @@ Great for if you started packing something, went to do something else, and came 
 
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
+
+// cspell:ignore CSSUHT
+=== Remove Old CSSUHTPlugin files
+
+If you're updating a pre-existing starter project,
+you'll likely have files from the CSSUHTPlugin lingering in your folders.
+This is no longer included in 1.0 and can be safely deleted.
 
 === Add Tags to Relevant Content in your Mod
 
