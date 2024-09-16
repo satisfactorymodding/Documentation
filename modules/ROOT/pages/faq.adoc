@@ -316,16 +316,16 @@ Note that some mods may have custom implementations or extra files that are not 
 
 You can find various log files at different locations:
 
-- `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
-  - The game client this file is stored in `%LOCALAPPDATA%/FactoryGame/Saved/logs`
-  - Dedicated servers could have this file in `InstallDirectoryHere/FactoryGame/Saved/logs`
+* `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
+  ** The game client this file is stored in `%LOCALAPPDATA%/FactoryGame/Saved/logs`
+  ** Dedicated servers could have this file in `InstallDirectoryHere/FactoryGame/Saved/logs`
     or potentially another location depending on how the server is hosted
-- Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
-- (For mod developers) The Unreal Editor's crash logs can be found in one of the following locations
+* (For mod developers) The Unreal Editor's crash logs can be found in one of the following locations
   depending on when/how it crashed:
-  - `%appdata%\Unreal Engine\AutomationTool\Logs\`
-  - `%LOCALAPPDATA%\UnrealEngine\<the engine version here>\Saved\Logs`
-  - `<your modding project folder>\Saved\Logs`
+  ** `%appdata%\Unreal Engine\AutomationTool\Logs\`
+  ** `%LOCALAPPDATA%\UnrealEngine\<the engine version here>\Saved\Logs`
+  ** `<your modding project folder>\Saved\Logs`
+* Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
 
 [id="Files_SMMProfiles"]
 === Mod Manager Profiles
