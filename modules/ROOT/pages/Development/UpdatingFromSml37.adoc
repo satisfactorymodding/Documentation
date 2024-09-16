@@ -155,7 +155,7 @@ There should be very few game code differences between these two targets.
 
 Alpakit has been updated to support these new targets without you having to worry about it.
 
-- When building {cpp} for the editor, use `Development Editor - FactoryGame`
+- When building {cpp} for the editor, use `Development Editor` (offered by FactoryGame)
 - When building {cpp} for shipping outside of the editor, use either `FactoryGameSteam` or `FactoryGameEGS` depending on what you are testing with.
 - ❌ Don't try to build `Shipping - FactoryGame` or `FactoryShared` - they aren't released targets; trying to build them will always error.
 - When running Alpakit Development or Alpakit Release, Alpakit will build both targets as one for you; the pre-1.0 workflow is unaffected.
