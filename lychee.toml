@@ -26,6 +26,7 @@ exclude = [
     # 403s despite being valid pages
     "https://stackoverflow.com/questions/",
     "https://www.unrealengine.com/en-US/ue-on-github",
+    "https://store.epicgames.com/en-US/p/satisfactory",
     # 403s despite being valid page, we should try to get this working somehow, since these links can change without warning
     "https://docs.unrealengine.com/",
     "https://dev.epicgames.com/"
