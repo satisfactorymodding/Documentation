@@ -200,6 +200,17 @@ If you're updating a pre-existing starter project,
 you'll likely have files from the CSSUHTPlugin lingering in your folders.
 This is no longer included in 1.0 and can be safely deleted.
 
+=== Replication Detail Actor Removal
+
+A dedicated docs page will be made for the new system later™.
+
+Info from Arch on the new implementation on the Discord:
+https://discord.com/channels/555424930502541343/862002356626128907/1285174321463033948
+
+=== Equipment Attachment Actor Removal
+
+https://discord.com/channels/555424930502541343/862002356626128907/1285196874688626758
+
 === Add Tags to Relevant Content in your Mod
 
 If your mod adds any item descriptors that serves a special non-crafting purpose,
