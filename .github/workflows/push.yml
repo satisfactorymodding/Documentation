@@ -9,87 +9,110 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
-    name: Build
+  # build:
+  #   name: Build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup pnpm
+  #       uses: pnpm/action-setup@v3
+  #       with:
+  #         version: 9
+
+  #     - name: Setup NodeJS
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '20'
+  #         cache: 'pnpm'
+
+  #     - name: Install Dependencies
+  #       run: pnpm install
+
+  #     - name: Build
+  #       run: npm run build:ci
+
+  #     - id: lychee-main
+  #       name: Check for Broken Links (Main Docs)
+  #       uses: lycheeverse/lychee-action@v1
+  #       with:
+  #         args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
+  #         fail: true
+
+  #     - id: lychee-submods
+  #       name: Check for Broken Links (Subsites)
+  #       uses: lycheeverse/lychee-action@v1
+  #       with:
+  #         # TODO there surely must be a better way to do this
+  #         # exclude the main docs dir from this check to avoid doing work twice
+  #         args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
+  #         fail: false
+
+  # image:
+  #   name: Image
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - build
+  #   permissions:
+  #     contents: read
+  #     packages: write
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+
+  #     - name: Log in to the Container registry
+  #       uses: docker/login-action@v3
+  #       with:
+  #         registry: ${{ env.REGISTRY }}
+  #         username: ${{ github.actor }}
+  #         password: ${{ secrets.GITHUB_TOKEN }}
+
+  #     - name: Extract metadata (tags, labels) for Docker
+  #       id: meta
+  #       uses: docker/metadata-action@v5
+  #       with:
+  #         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+  #     - name: Build and push Docker image
+  #       uses: docker/build-push-action@v5
+  #       if: github.ref != 'refs/heads/Dev'
+  #       with:
+  #         context: .
+  #         push: true
+  #         tags: ${{ steps.meta.outputs.tags }}
+  #         labels: ${{ steps.meta.outputs.labels }}
+
+  #     - name: Build and push Docker image
+  #       uses: docker/build-push-action@v5
+  #       if: github.ref == 'refs/heads/Dev'
+  #       with:
+  #         context: .
+  #         push: true
+  #         tags: ${{ steps.meta.outputs.tags }}
+  #         labels: ${{ steps.meta.outputs.labels }}
+  #         build-args: |
+  #           BUILD=build:ci
+
+  always-fails:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Fail
+        run: exit 1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: Setup NodeJS
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install Dependencies
-        run: pnpm install
-
-      - name: Build
-        run: npm run build:ci
-
-      - id: lychee-main
-        name: Check for Broken Links (Main Docs)
-        uses: lycheeverse/lychee-action@v1
-        with:
-          args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
-          fail: true
-
-      - id: lychee-submods
-        name: Check for Broken Links (Subsites)
-        uses: lycheeverse/lychee-action@v1
-        with:
-          # TODO there surely must be a better way to do this
-          # exclude the main docs dir from this check to avoid doing work twice
-          args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
-          fail: false
-
-  image:
-    name: Image
+  notify:
+    name: Notify
     runs-on: ubuntu-latest
     needs:
-      - build
-    permissions:
-      contents: read
-      packages: write
+      # - build
+      # - image
+      - always-fails
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
+      - name: Notify Discord
+        uses: sarisia/actions-status-discord@v1
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        if: github.ref != 'refs/heads/Dev'
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        if: github.ref == 'refs/heads/Dev'
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            BUILD=build:ci
+          title: "deploy"
+          description: "The docs failed to build"
+          color: 0xA50000
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
