@@ -112,7 +112,8 @@ jobs:
       - name: Notify Discord
         uses: sarisia/actions-status-discord@v1
         with:
-          title: "deploy"
-          description: "The docs failed to build"
+          title: "The docs failed to build :("
+          noprefix: true
+          description: "Place your bets on what random link broke this time."
           color: 0xA50000
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
