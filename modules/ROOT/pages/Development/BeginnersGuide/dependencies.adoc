@@ -179,11 +179,11 @@ It's imperative that you download the correct engine for the version of the game
 or you will have to repeat a large amount of the setup process again.
 
 ====
-This is the *latest* version of the docs.
+This is the *development* version of the docs.
 
-Early Access and Experimental are currently both the same version - Update 8.
+Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
-You should download from the *latest release*,
+You should download from the *latest engine release*,
 which an be found at the top of this page:
 https://github.com/satisfactorymodding/UnrealEngine/releases
 ====
@@ -351,21 +351,26 @@ It's imperative that you download the correct Starter Project version of the gam
 or you will have to repeat some of the setup process again.
 
 ====
-This is the *latest* version of the docs.
+This is the *development* version of the docs.
 
-Early Access and Experimental are currently both the same version - Update 8.
+Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
-You should download a zip either of the **`dev` branch** or the **`master` branch**.
-Of those two, you probably want whichever branch was pushed to most recently, which you can see
-https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+// You should download a zip either of the **`dev` branch** or the **`master` branch**.
+// Of those two, you probably want whichever branch was pushed to most recently, which you can see
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 
-If you're still uncertain which to download, **ask us on the Discord**.
+// If you're still uncertain which to download, **ask us on the Discord**.
 
-If you choose to download the `dev` branch, click
+// If you choose to download the `dev` branch, click
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
+
+// If you choose to download the `master` branch, click
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
+
+You should download a zip of the **`dev` branch** because SML 3.8 is not released yet.
+
+To download a zip of the dev branch, click
 https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
-
-If you choose to download the `master` branch, click
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
 ====
 
 
