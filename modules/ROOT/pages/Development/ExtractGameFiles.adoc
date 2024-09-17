@@ -34,16 +34,18 @@ and enter your game install directory as the "Directory"
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental`).
 Next, press the blue Plus button (NOT the OK button!) to add the game to the Detected Game dropdown,
 which should automatically select it.
+Back in the upper section, select `GAME_UE5_3 (536870960)` for the "UE Versions" selector.
+If this item doesn't appear in the list, ensure "Enable custom UE versions" is unchecked.
 After confirming that the game is selected, press the `OK` button.
 
-The program should launch and display `FactoryGame-Windows.pak` in the Archives tab list,
-along with the paks of any other mods you may have installed.
+The program should launch and display `FactoryGame-Windows.utoc` in the Archives tab list,
+along with the paks and utocs of any other mods you may have installed.
 If it opens another game instead,
 return to the directory selector and review the above steps.
 
 === Specify Custom Version and Mapping
 
-Unreal Engine 5 introduced changes in how assets are stored in pak files.
+Unreal Engine 5 changed how assets are stored in packaged files.
 You will need to provide FModel with extra information so that it can read the data correctly.
 Coffee Stain Studios kindly ships this extra information with the game files for us.
 
@@ -64,14 +66,12 @@ you will need to use another text editor such as https://notepad-plus-plus.org/[
 Windows 11's Notepad incorrectly loads the file with UTF-8 encoding
 and FModel will tell you that you broke the .json if you copy the contents over.
 
-To start loading this additional information, open FModel and navigate to `Settings` > `General`.
-In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
+To start loading this additional information, open FModel and navigate to `Settings` > `General`,
 then press the `Custom Versions` button in the "Version Configuration" row
 which opens a new text editing window.
 
 Delete the text contents of the popup window
-and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder. 
-(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`),
+and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder,
 then press `OK` to save your changes.
 
 [WARNING]
@@ -83,7 +83,7 @@ image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
 ====
 
 Back on the Settings screen, check the box for "Local Mapping File"
-and then enter the full path to your `FactoryGame.usmap` file
+and then enter the full path to your `FactoryGame.usmap` file, which is also in the Community Resources folder,
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
 
 Press `OK` to close the settings prompt,
@@ -99,10 +99,13 @@ To do so, return to the Settings menu and select `Models` on the left side.
 From here there are several fields to modify in order to properly export models for use with modeling software such as Blender:
 
 * `Model Export Directory` - This can be the same or different from the output directory you chose in the previous steps.
-* `Mesh Format` - Similarly to UModel, you will want to select `glTF 2.0` as your format
-* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export. 
-* `Texture Format` - Set to PNG so textures will be exported to a lossless format that supports transparency.
- 
+* `Mesh Format` - Select `glTF 2.0`
+* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export.
+  You usually want `First Level Only`, but you can always remove the other LODs in your modeling software later.
+* `Texture Format` - Set to `PNG` so textures will be exported to a lossless format that supports transparency.
+
+Press `OK` to save your changes.
+
 image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
 
 [WARNING] 
@@ -114,10 +117,10 @@ Any other changes made are at user discretion, and dependent on level of knowled
 
 Now that your settings have been configured correctly,
 navigate to the Archives tab in the FModel interface.
-This tab displays pak files located in subfolders of the directory you selected earlier.
-The base game's pak, `FactoryGame-Windows.pak`, should be present, as well as paks for any mods you have installed.
+This tab displays pak and utoc files located in subfolders of the directory you selected earlier.
+The base game's utoc, `FactoryGame-Windows.utoc`, should be present, as well as utocs for any mods you have installed.
 
-To load a pak, select it and press the `Load` button.
+To load a utoc, select it and press the `Load` button.
 This enables browsing its contents in the Folders and Packages tab.
 
 == Extracting Specific Models or Textures
@@ -135,14 +138,14 @@ Make sure you have set up FModel using the link:#FModel[directions above] before
 The https://github.com/4sval/FModel/wiki[FModel Documentation]
 explains its various UI elements and how to navigate through the pak file.
 
-To test your settings, select the FactoryGame pak in the Archives tab,
+To test your settings, double-click the FactoryGame utoc in the Archives tab,
 which will take you to the Folders tab,
 then navigate to
-`FactoryGame/Content/FactoryGame/Resource/Parts/AIlimiter/Textures`
-and attempt to open the `TX_AiLimiter_BC.uasset` file.
+`FactoryGame/Content/FactoryGame/Resource/Parts/AIlimiter/Textures`.
+Double click on the `Textures` folder to be taken to the Packages tab,
+then open the `TX_AiLimiter_BC.uasset` file.
 
-This will take you to the Packages tab,
-and will open a two-pane display with text on the left and an image on the right.
+This will open a two-pane display with text on the left and an image on the right.
 
 To export a file, such as this texture, right click it in the Packages tab's list
 and select the relevant option, in this case `Save Texture`.
@@ -261,7 +264,7 @@ Now that we have sourceIDs we can use FModel to locate and extract their corresp
 
 First, locate the sound file in FModel via its sourceID, which will be its package file name.
 Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
-All game audio can be found in subfolders of the pak's `FactoryGame/Content/WwiseAudio/Media/` folder.
+All game audio can be found in subfolders of the pak's (note - NOT the utoc!) `FactoryGame/Content/WwiseAudio/Media/` folder.
 
 To extract a sound file, first open its Package from the main window,
 which will cause an Audio Player window to appear.

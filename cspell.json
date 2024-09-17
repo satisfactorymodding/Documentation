@@ -119,6 +119,8 @@
         "UPROPERTY",
         "usmap",
         "USTRUCT",
+        "utoc",
+        "utocs",
         "VRAM",
         "Vulkan",
         "webp",
