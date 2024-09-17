@@ -93,3 +93,20 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             BUILD=build:ci
+
+  notify:
+    name: Notify
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - image
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    steps:
+      - name: Notify Discord
+        uses: sarisia/actions-status-discord@v1
+        with:
+          title: "The docs failed to build :("
+          noprefix: true
+          description: "Place your bets on what random link broke this time."
+          color: 0xA50000
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
