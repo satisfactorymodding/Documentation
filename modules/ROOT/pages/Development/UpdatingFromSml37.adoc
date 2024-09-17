@@ -246,3 +246,9 @@ documentation page explains important Starter Project folders and the Placeholde
 Previous versions of the game had issues with mesh proxies past the first instance not rendering correctly.
 Ben says 1.0 has a fix for this issue, but no modders have tested it yet.
 This section will be updated when we have confirmation.
+
+=== SMR Stability Removal
+
+The 'stability' (alpha, beta, release) field on ficsit.app is being removed.
+If you want to release unstable builds, use the prerelease semver syntax (for example 1.0.0-pre1)
+which will not be downloaded by SMM unless the user specifically selects the version.

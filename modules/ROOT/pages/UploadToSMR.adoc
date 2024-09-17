@@ -117,9 +117,6 @@ then select 'New Version' in the top right corner.
 This will take you to a page where you can upload a version file,
 as well as provide some additional info about the version.
 
-Put "Alpha", "Beta", "Release", etc. in the stability field
-so that users know how far along in development you consider this version of your mod to be.
-
 Select the output zip from the link:#_export_your_plugin[Export your Plugin section]
 with the picker the `File` field.
 It will be called `YourModReference.zip`
