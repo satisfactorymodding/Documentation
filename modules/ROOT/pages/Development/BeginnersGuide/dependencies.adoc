@@ -194,6 +194,8 @@ Download the following files from the release linked above:
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
 - `UnrealEngine-CSS-Editor-Win64.exe`
 
+Save all 3 files in the same folder.
+
 [WARNING]
 ====
 If you see a "404 This is not the web page you are looking for" error,
@@ -225,7 +227,7 @@ guide before following these directions.
 
 [WARNING]
 ====
-If the installer asks you to select the folder with the next medium files,
+If the installer asks you to select the folder with the next medium files or insert the next disc,
 select the folder that contains the `.bin` files you downloaded.
 
 Additionally, make sure to name the downloaded files exactly as stated above,
