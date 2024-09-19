@@ -14,7 +14,7 @@ Community member Archengius has created a set of two plugins
 useful for dumping content from a compiled Unreal Engine game and importing it into the Unreal Engine Editor.
 
 Since most Satisfactory game files can't be distributed with the
-xref:Development/BeginnersGuide/dependencies.adoc#_starter_project[Starter Project]
+xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter Project]
 for download size and copyright reasons, the project instead contains empty "placeholder" assets.
 While this allows you to compile your mods and reference base-game content for use in them,
 previewing content (especially widgets) in the editor is inconvenient.

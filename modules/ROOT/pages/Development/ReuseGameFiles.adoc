@@ -129,4 +129,4 @@ This version of the project would include models, textures, and other resources
 instead of their placeholder versions, allowing you to view them in-editor.
 
 You can read more about this in its section on the 
-xref:Development/ExtractGameFiles.adoc#_generating_a_complete_starter_project[Extracting Game Files page].
+xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Extracting Game Files page].

@@ -266,7 +266,7 @@ you need to go back and re-do the link:#_setting_up_wwise[Wwise integration step
 ==== Something.pch : No such file or directory
 
 Make sure that your project folder is not stored in a folder path that contains unicode characters.
-Review the directions in the link:#_starter_project[Starter Project] section.
+Review the directions in the xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter Project] section.
 
 ==== Entire computer locks up while compiling
 

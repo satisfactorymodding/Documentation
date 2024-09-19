@@ -316,5 +316,5 @@ This process will be explained on the next page.
 == Next Steps
 
 The last dependency to obtain is a copy of the modding Starter Project.
-Check out the xref:xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[next section]
+Check out the xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[next section]
 for directions on how to obtain it.
