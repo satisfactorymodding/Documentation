@@ -587,24 +587,20 @@ Once it's done, an extra line will appear in the Steam console announcing the co
 
 8. Open up your **game installation folder** - not the depot this time.
 You can find your folder by following link:#Files_GameInstall[these directions].
-Back up the folder's contents to another folder by copying or moving them out.
 
-9. Delete all of the files from your game installation folder and move in the files produced by the download depot command you ran earlier.
-Don't skip out on making that backup - you'll need some of those files in the next step.
-
-10. Next, go back to your backup to obtain some files.
-You'll be replacing some of the files you just brought in from the depot with ones from the backup.
+9. Delete all of the files from your game installation folder except for these
+*`Manifest_DebugFiles_Win64.txt`
+* `Manifest_NonUFSFiles_Win64.txt`
+* `Manifest_UFSFiles_Win64.txt`
+* `/FactoryGame/Configs/`(this folder contains your mod configuration files)
+* `/FactoryGame/Mods/` (this folder contains your existing mods. If you want to keep them, dont delete the folder)
+* Keep in mind that other mods may also produce folders and files you want to hold on to.
 This tricks Steam into thinking that the contents of the folder are that of the latest depot,
 when in reality they are the past version you just downloaded,
 meaning Steam won't try to update the files before you launch.
-This means you can play without putting Steam in offline mode.
-Copy the following files:
+This means you can play without putting Steam in offline mode
 
-* `Manifest_DebugFiles_Win64.txt`
-* `Manifest_NonUFSFiles_Win64.txt`
-* `Manifest_UFSFiles_Win64.txt`
-* `/FactoryGame/Configs/` (this folder contains your mod configuration files)
-* Keep in mind that other mods may also produce folders and files you want to hold on to.
+10. Move in the files produced by the download depot command you ran earlier.
 
 11. Download the mods you want to play with into this new copy of the game.
 You may be able to reuse some of them from your backup copy (`/FactoryGame/Mods`).
@@ -619,6 +615,28 @@ Once you are certain all data has been transferred, feel free to remove your bac
 
 In order to revert this process and return to the latest version of the game,
 link:#_how_do_i_verify_my_game_files[use Steam to verify your game files].
+
+== What if I want to switch between playing a older modded version and the latest update?
+
+Following on from the steps from the last section, simply:
+
+1. Use SMM to add the mods you want. You WILL NOT be able to use SMM to manage mods once this is done, so make sure that you have all the mods you want and that the game runs at a level of stability you're happy with. You may need to switch to an older version of SMM or install mods manualy.
+
+2. Pick a folder or make one in a hard drive that has enough room  for a full copy of the game (around 30 gigabytes). Copy ALL the contents of the satisfactory folder to this folder. 
+
+3. Right click on FactoryGame.exe (or FactoryGameSteam.exe) and select create shortcut. Move that shortcut to your desktop.
+
+4. Right click on that shortcut and select properties. Under the shortcut tab, add '-noSteamClient' after the file path
+
+5. You now have a standalone version of the game that will not update or talk to Steam. This means you wont be able to play online with anyone through this version.
+
+6. Navigate to `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames`. You will need to open the folder named a long stream of numbers (this is your Steam id) and copy any save files you wish to access in the modded version into `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\common`. This is because this copied version isn't linked to Steam anymore and thus wont be able to see the save games in your personal folder. 
+
+7. Then, just go back into Steam and link:#_how_do_i_verify_my_game_files[use Steam to verify your game files] to restore your steam install to the latest update.
+
+8. You can now play the modded game by clicking on the desktop shortcut you made, while still being able to play the latest version via steam as normal. 
+
+SMM won't let you manage the copied version, since it cant verify if you pirated it or not. This isnt a pirated copy, since you can't do a depot download if you dont own the game, but if you distribute this copy it is piracy and therefore ILEGAL. 
 
 == How do I backup my save files?
 
