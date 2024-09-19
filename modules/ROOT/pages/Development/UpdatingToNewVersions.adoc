@@ -192,7 +192,7 @@ will tell you where in the docs to find the new version numbers.
 
 == Install the New Engine
 
-New editor versions are usually be downloaded from
+New editor versions are usually downloaded from
 https://github.com/satisfactorymodding/UnrealEngine/releases[the GitHub releases page],
 but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
