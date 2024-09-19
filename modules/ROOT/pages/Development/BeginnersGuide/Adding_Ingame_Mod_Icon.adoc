@@ -36,7 +36,7 @@ or if you want to add another custom directory to be included, see the steps bel
 
 Let's navigate to our SML project (where the FactoryGame.uproject file is located)
 and from there go to `/Mods/<mod_reference>`
-(read more on mod references xref:Development/BeginnersGuide/index.adoc#_mod_reference[here]).
+(read more on mod references xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[here]).
 We should now be in the folder where our mod's .uplugin file is located.
 
 Next, let's create 2 folders within our mod plugin folder:

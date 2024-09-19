@@ -133,11 +133,11 @@ Note that the LoadConfig function does this automatically.
 The `Blueprint Mod Loading Library` provides functions to interact with the modloading process.
 
 === `bool IsModLoaded(String ModReference)`
-This function takes a xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+This function takes a xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference]
 as input and checks if any kind of mod with that reference got loaded or not.
 
 === `Array<String> GetLoadedMods()`
-This function returns the xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod references] of all currently loaded mods in an array.
+This function returns the xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod references] of all currently loaded mods in an array.
 
 === `ModInfo GetLoadedModInfo(String ModReference)`
 This function allows you to access additional information about the mod with the given reference.
@@ -215,7 +215,7 @@ Mainly contents of the data.json of the mod.
 
 - String ModId (read only)
 +
-The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference]
+The xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference]
 - String Name (read only)
 +
 The display name of the mod

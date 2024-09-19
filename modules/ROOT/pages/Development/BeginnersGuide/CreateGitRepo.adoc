@@ -34,7 +34,7 @@ Here are some notes about what decisions to make while following the GitHub docu
 
 - When prompted, you don't want to create your repository from a template.
 - (Step 2) Your repository name should be your
-  xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference].
+  xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference].
   It is possible to use a different name,
   but doing so will require more work later.
 - (Step 4) We suggest you leave your repository as 'Public' so others can learn from your mod,

@@ -48,7 +48,7 @@ don't worry, you can come back and edit these fields later.
 
 One of the most important fields on this screen is the 'Mod Reference' field.
 Explained in more detail on the
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference section of the Getting Started guide],
 your mod reference is your mod's unique name.
 As a reminder, your mod's plugin folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
 Your mod reference cannot contain special characters or spaces.
@@ -58,7 +58,7 @@ Your mod reference cannot contain special characters or spaces.
 **You can't change your mod reference after you have added your mod to SMR!**
 
 So make sure it is correct! At least five times!
-And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section]
+And read up on the xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference section]
 again to make sure you understand what other parts of your mod need to use this same value.
 ====
 

@@ -87,49 +87,6 @@ The best way to reach the team is our https://discord.ficsit.app[Discord Server]
 You can find more info on contributing to the docs
 https://github.com/satisfactorymodding/Documentation#readme[here].
 
-== Mod Reference
-
-We need to talk about the concept of a "mod reference" before we continue
-because it will be referenced quite often.
-
-A mod reference is essentially a mod's unique name.
-This mod reference will then be used in class names, file names, folder names, and many other places.
-When you upload your mod to the Satisfactory Mod Repository for other people to use,
-you'll need to provide your mod reference there as well.
-
-Your Unreal plugin (also known as your mod) will need to use the mod reference as its name,
-and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
-
-Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
-However, they can contain underscores (`_`).
-
-End users of your mod see your mod's Display Name (which can contain spaces and special characters) instead of the Mod Reference,
-with the notable exception of mod folders on disk, log messages, and filepaths.
-
-We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
-that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
-
-Here are a few possible examples of mod names and suggested mod references.
-
-.Example Mod Display Names and Corresponding Mod References
-|===
-|Mod Display Name |Mod Reference
-
-|Example Mod
-|`ExampleMod`
-
-|Rob's very cool mod
-|`RobsVeryCoolMod`
-
-Note the exclusion of the apostrophe, because it's a special character.
-
-|Satisfactory Mod Loader
-|`SML`
-
-Note that a mod's reference doesn't need to exactly match its display name's text.
-
-|===
-
 == Next Steps
 
 Next up is setting up your modding development environment.

@@ -179,7 +179,7 @@ Each plugin should be listed as an object with the following properties:
 !Parameter !Description of Function
 
 !Name
-! The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference of the plugin]
+! The xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference of the plugin]
 you are listing as a dependency.
 {blank} +
 {blank} +
@@ -433,7 +433,7 @@ This zip file contains all of the mods' selected targets in one file ready to be
 == Last Chance to Change Your Mod Reference
 
 As mentioned on the
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference section of the Getting Started guide],
 once you release your mod, you can no longer change its Mod Reference.
 
 If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
