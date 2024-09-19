@@ -1,0 +1,74 @@
+= Starter Project
+
+The SML development team provides an Unreal project
+that comes pre-installed with Satisfactory Mod Loader,
+placeholder assets for base game content,
+and some useful developer plugins.
+
+Within this 'Starter Project,' you can develop as many mods as you like
+while still keeping their files separate,
+a process that will be covered later in the docs.
+
+First, let's decide where on your computer to store the Starter Project files.
+
+== Selecting a Storage Location
+
+The Starter Project folder will be your modding workspace,
+and could grow to a considerable file size depending on what kinds of mods you make.
+As such, you should extract the folder somewhere convenient so that you can find it later.
+
+**DO NOT** put the project in any of the following locations:
+
+* ❌ Downloads folder
+    ** Windows sometimes automatically cleans up this folder depending on your system settings, deleting your files.
+* ❌ Cloud-synced folder
+    ** Cloud sync services like Dropbox, Google Drive, and OneDrive can corrupt your project files.
+* ❌ Documents folder
+    ** Some cloud sync services will automatically sync your Documents folder without telling you about it.
+* ❌ Nested within many folders
+    ** When packing Unreal projects, some filenames can get long,
+       so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
+* ❌ In a folder path with unusual/international characters in any folder name
+    ** Unreal and Windows are easily confused by unicode characters in file and folder names.
+
+**DO** consider putting your project folder in one of these locations:
+
+* ✔️ Near the root of your drive (for example, `C:\Modding\Satisfactory\`)
+    ** This avoids long path issues and avoids including your computer user's name in files distributed with your mod.
+* ✔️ On your SSD
+    ** Most modding operations will run significantly faster if you keep the project on an SSD, assuming you have one.
+* ✔️ On a secondary drive
+    ** This will help keep your primary drive from filling up with modding files.
+
+Once you have decided where to put the project, move on to the next heading.
+
+== Obtaining the Starter Project
+
+There are 2 ways to obtain the Starter Project.
+Select one based on the details below and what you are comfortable with.
+
+=== Option 1: Git Clone
+
+If you are familiar with version control software (ex. Git),
+we suggest that you clone the repository,
+which drastically simplifies the process of updating the files later when the game updates.
+
+If you're not familiar with version control,
+xref:Development/BeginnersGuide/LearnGit.adoc[now is a great time to learn]!
+Using Version Control Software (VCS) is a great skill to have for developers
+and will greatly help with updating your project in the future,
+as well as protect you from losing your mod sources if you upload them to a hosting website like GitHub.
+
+====
+xref:Development/BeginnersGuide/StarterProject/StarterProjectViaClone.adoc[Follow the Git Clone path ➡]
+====
+
+=== Option 2: Download Zip
+
+If you aren't familiar with version control and would just like to get started modding,
+you can download a zip of the Starter Project
+from the Satisfactory Modding GitHub.
+
+====
+xref:Development/BeginnersGuide/StarterProject/StarterProjectViaZip.adoc[Follow the Download Zip path ➡]
+====

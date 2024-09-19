@@ -1,90 +1,18 @@
 # Creating a Git Repo for your Mod
 
-Once you have started working on a mod of your own, you should set up a git repository for your mod.
+Once you have started working on a mod of your own, you should set up a repository to store your mod's files.
 
-This page will begin by explaining why you should use git,
-provide links to resources that explain basic git concepts,
-then provide a tutorial on how to use git in the context of Satisfactory Modding.
-
-This tutorial assumes you have already followed the
+This page walks through creating a Git repository for a mod
+and enabling the engine's Git integration.
+It assumes you have already followed the
 xref:Development/BeginnersGuide/index.adoc[Getting Started] guides for creating a simple mod
-and that you want to take your existing mod and place it into a git repository.
+and that you want to take an existing mod and place it into a git repository.
 
-If you're already an experienced Git user you can skip to link:#ExperiencedGitUsers[this section].
+====
+If you're new to git, check out the xref:Development/BeginnersGuide/LearnGit.adoc[Learn Git] page first.
 
-## Why Use a Git Repo
-
-Advantages:
-
-- Easily return to a past version of the code to test functionality
-- Keep track of changes to write patch notes for a release
-- Easily share your source code with others
-- Backs up your files in case they get corrupted or you lose access to your computer
-- Makes it harder to misplace your files if returning to modding after an extended break
-- Version control usage is an important skill that can benefit any coder
-
-Disadvantages:
-
-- One more tool to learn
-
-## Understanding Git
-
-It is important to understand the distinction between "Git" and platforms like "GitHub" and "GitLab".
-
-**Git** is open-source software created to manage files, usually text-based,
-by keeping track of what changes between distinct 'revisions' of the files.
-You can learn more about it https://git-scm.com/about[here].
-
-Git is traditionally accessed via the command line, but there are many different tools that offer a more approachable and convenient interface to the same functionality.
-
-**GitHub** are **GitLab** are web platforms that allow you to store a git "repository" online, called a "remote",
-making it easy to collaborate with others, and providing a backup.
-
-You should have already created an account on GitHub in order to obtain a copy of the custom engine version.
-
-Git tools are used on your local computer to manage files.
-The files are then "pushed" (uploaded) to a git remote hosted by a platform like GitHub.
-
-## Git Tutorial on Gitkraken
-
-Check out the first 4 tutorials at
-https://www.gitkraken.com/learn/git/tutorials[this link], namely:
-
-- https://www.gitkraken.com/learn/git/tutorials/what-is-a-git-repository[What is a Git repository?]
-- https://www.gitkraken.com/learn/git/tutorials/what-is-git-commit[What is a Git commit?]
-- https://www.gitkraken.com/learn/git/tutorials/how-to-git-commit[How to Git Commit]
-- https://www.gitkraken.com/learn/git/tutorials/what-is-git-remote[What is a Git remote?]
-
-This guide will walk through what you have to do for Satisfactory mods in specific,
-building off of this knowledge.
-We suggest you do not try to start putting your mod into a repo as part of watching these tutorials,
-but feel free to experiment with other folders on your computer.
-
-You are, of course, free to check out other tutorials, but they cover topics less relevant to Satisfactory modding.
-
-## Beginner Git Users
-
-You are free to use git from the command line, but it is recommended to use a GUI tool, as they are generally more approachable.
-
-Consider the following software:
-
-- https://desktop.github.com/[Github Desktop], free and great for beginners
-- https://www.sourcetreeapp.com/[Sourcetree], free but a bit more complicated than GitHub Desktop
-- https://www.gitkraken.com/[GitKraken], free for non-commercial use as long as your code is public to the internet
-- https://git-fork.com/[Fork], free evaluation copy
-
-This tutorial will use GitHub Desktop, but all are valid choices.
-There are additional directions below for GitHub Desktop setup.
-If you're using another client, proceed to link:#CreateRepo[this section] after completing its setup.
-
-### GitHub Desktop Setup
-
-Follow the link above to download the GitHub Desktop installer.
-Once the file has downloaded, run it and sign in with your existing GitHub account.
-
-Once sign in is complete, you will be presented with a "Let's get started!" screen.
-If you'd like, you can create a tutorial repository,
-but for now, you should leave this program alone and continue with the steps below.
+Experienced Git users, skip to link:#ExperiencedGitUsers[this section].
+====
 
 [id="CreateRepo"]
 ## Creating a Repository and Adding your Files

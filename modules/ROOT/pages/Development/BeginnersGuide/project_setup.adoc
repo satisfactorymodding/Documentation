@@ -1,9 +1,8 @@
 = Project Setup
 
-A key aspect of fast and efficient development is a proper Workspace and
-project setup. With a misconfigured or suboptimal setup, you'll lose
-valuable time. That's why we will guide you now through making a good
-project setup for Satisfactory.
+Now that you've installed all of the prerequisite software
+and got a copy of the starter project,
+it's time to start setting the project up.
 
 [IMPORTANT]
 ====
@@ -12,100 +11,6 @@ Make sure to follow the
 xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 guide before following these directions.
 ====
-
-== Starter Project
-
-You should either be preparing to clone the Starter Project,
-or you downloaded a zip of it in the previous steps of the tutorial.
-
-The Starter Project folder will be your modding workspace,
-and could grow to a considerable file size depending on what kinds of mods you make.
-As such, you should extract the folder somewhere convenient so that you can find it later.
-
-**DO NOT** put the project in any of the following locations:
-
-* ❌ Downloads folder
-    ** Windows sometimes automatically cleans up this folder depending on your system settings, deleting your files.
-* ❌ Cloud-synced folder
-    ** Cloud sync services like Dropbox, Google Drive, and OneDrive can corrupt your project files.
-* ❌ Documents folder
-    ** Some cloud sync services will automatically sync your Documents folder without telling you about it.
-* ❌ Nested within many folders
-    ** When packing Unreal projects, some filenames can get long,
-       so a deeply nested location may cause bizarre issues because Windows handles long paths poorly.
-* ❌ In a folder path with unusual/international characters in any folder name
-    ** Unreal and Windows are easily confused by unicode characters in file and folder names.
-
-**DO** consider putting your project folder in one of these locations:
-
-* ✔️ Near the root of your drive (for example, `C:\Modding\Satisfactory\`)
-    ** This avoids long path issues and avoids including your computer user's name in files distributed with your mod.
-* ✔️ On your SSD
-    ** Most modding operations will run significantly faster if you keep the project on an SSD, assuming you have one.
-* ✔️ On a secondary drive
-    ** This will help keep your primary drive from filling up with modding files.
-
-You can use this Starter Project for developing multiple mods at once,
-since each mod will be its own separate plugin folder within the project.
-
-Feel free to rename the Starter Project folder to whatever you like.
-
-Depending on if you plan to clone the project or downloaded the zip, go to the relevant heading immediately below.
-
-[id="CloneStarterProject"]
-=== You're Cloning the Starter Project
-
-Make sure to read the notes in the above link:#_starter_project[Starter Project heading] about where to clone the files.
-
-The below box will contain directions on which branch to clone.
-It's imperative that you download the correct Starter Project version of the game you're modding
-or you will have to repeat some of the setup process again.
-
-====
-This is the *development* version of the docs.
-
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
-
-// You should clone either the **`dev` branch** or the **`master` branch**.
-// Of those two, you probably want whichever branch was pushed to most recently, which you can see
-// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
-
-// If you're still uncertain which to clone, ask us on the Discord.
-
-You should clone the **`dev` branch** because SML 3.8 is not released yet.
-====
-
-https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
-Again, make sure to clone the correct branch - it will probably start you on the `master` branch by default
-and you may have to switch branches to the branch you actually intend to clone.
-
-The directory is ready for use as soon as the clone is complete.
-Move on to the link:#_setting_up_wwise[next heading].
-
-=== You Downloaded a Zip
-
-[WARNING]
-====
-By default, Windows marks files downloaded from the internet as "blocked".
-You will run into problems later on because of this.
-To get around this issue, right-click the zip file and "unblock" it from the Properties menu before unzipping it.
-====
-
-Make sure to read the notes in the above link:#_starter_project[Starter Project heading] about where to unzip the files.
-
-If you downloaded the Starter Project as a zip,
-unzip `SatisfactoryModLoader-master.zip` (or the `-dev.zip`) to get the Starter Project files.
-If you're encountering issues extracting the zip,
-try using another zip extracting software
-such as https://www.7-zip.org/[7zip]
-or https://www.win-rar.com/start.html[WinRAR].
-
-You should strongly consider using version control software,
-such as Git, to manage your mod's files.
-If you'd like to do this, you can learn more about that process
-xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
-As mentioned earlier, you probably want to clone the Starter Project repo
-instead of downloading a zip file of it.
 
 == Setting up Wwise
 
@@ -189,7 +94,7 @@ installing another Wwise version similar in version number should fix the proble
 Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-Right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+In windows explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
 If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
 If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
@@ -242,7 +147,7 @@ It is possible for Unreal to compile the project as well on launch,
 but if there are any errors,
 Unreal will give a very vague report as to what went wrong
 and you'll have to rebuild from Visual Studio anyways to get more details.
-As such, it's best just to always compile from Visual Studio
+As such, it's best just to always compile the editor from Visual Studio
 so you don't have to build a second time to see the error report.
 
 [TIP]
@@ -264,44 +169,53 @@ at the cost of additional disk space.
 ====
 
 Once Visual Studio loads,
-you should see a list in the Solution Explorer containing entries for
-UE5, FactoryGame, AccessTransformers, and more.
-It's important to note that these separate solution items exist only for organization purposes.
-When it's time to compile your mods, _compiling any one of the items will compile the whole project_.
-The only exception to this is the `UE5` entry which will do nothing when you compile it since you already installed that by installing the custom engine version earlier.
+you should see a folder tree in the Solution Explorer containing entries for
+`UE5`, `AccessTransformers`, `FactoryGame`, and more.
 
-An unfortunate consequence of this organization system
-is that Visual Studio does not understand that each of these solution items will compile the whole project.
+Some of these projects are "real" and some of them exist only for structure purposes.
+When it's time to compile your mods, you only need to compile the `FactoryGame` project.
+As such, **we do NOT want to use the generic 'Build Solution' operation** that Visual Stuido provides.
+Doing so will try to run the build one time for each project item in the solution,
+wasting some time trying to build targets that won't succeed,
+and, if there are any error messages, duplicating them many times over!
 
-As such, we do NOT want to use the generic 'Build Solution' operation that Visual Stuido provides.
-Doing so will try to run the build one time for each solution item we have in the project,
-wasting some time, and, if there are any error messages, duplicating them many times over!
+image:BeginnersGuide/DoNotBuildSolution.png[Select Development Editor build target]
 
-In preparation for compiling our project, first select the `Development Editor` Solution Configuration
-and `Win64` Solution Platform in the top toolbar.
-Development Editor is the editor program that you'll be using to make mods.
+In preparation for compiling our project, first select
+the `Development Editor` Solution Configuration,
+and `Win64` Solution Platform
+in the top bar.
 It's near the undo/redo buttons and the play button menu items.
 
-image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
+Selecting "Development Editor" means compiling the Unreal Editor program that you'll be using to make mods.
 
-To start the actual compile process,
-right click on any of the solution explorer items under the Mods folder,
-for example, `SML`,
-and select `Build`.
+image:BeginnersGuide/BuildTargetSelection.png[Selecting build target]
 
-image:BeginnersGuide/PressBuild.png[Build Solution]
+To start the actual compile process
+find the FactoryGame project item in the `Games/FactoryGame` solution explorer tree,
+right click on it, and select `Build`.
 
-This will take some time; go pet some lizard doggos as you wait.
+image:BeginnersGuide/BuildTargetSelection.png[Build FactoryGame]
+
+While you're there, also click on "Set as Startup Project"
+which will make the {cpp} debugger easier to use later, if you need it.
+You only have to do this once, unless you change the Startup Project.
+
+Compilation will take some time; go pet some lizard doggos as you wait.
 See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output pane (View > Output) if desired.
 
-After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
-(the same place you selected `Development Editor` earlier)
-and start another build.
-Building both of these is required for the editor to function correctly
-and for you to be able to distribute your mod.
+// TODO 1.0 Release - which Shipping configuration should be built? Or delay it until later and let Alpakit handle it?
+
+// Shipping - FactoryGame will not work, maybe Shipping - FactoryGameSteam/EGS depending on what people have?
+
+// After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
+// (the same place you selected `Development Editor` earlier)
+// and start another build.
+// Building both of these is required for the editor to function correctly
+// and for you to be able to distribute your mod.
 
 Now that you've built the binaries, your Unreal Editor should open without any issues.
 
@@ -415,9 +329,12 @@ if you haven't taken or dismissed it yet.
 
 We also suggest the following resources:
 
-- https://docs.unrealengine.com/5.3/en-US/unreal-editor-interface/[Unreal Editor Interface] - Provides a high-level overview of what each of the editor panels do.
-- https://docs.unrealengine.com/5.3/en-US/content-browser-in-unreal-engine/[Content Browser] - How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
-- https://docs.unrealengine.com/5.3/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] - How to use the various features offered by the Content Browser.
+- https://docs.unrealengine.com/5.3/en-US/unreal-editor-interface/[Unreal Editor Interface] -
+Provides a high-level overview of what each of the editor panels do.
+- https://docs.unrealengine.com/5.3/en-US/content-browser-in-unreal-engine/[Content Browser] -
+How to access the Content Browser, including adding multiple Content Browser panels to your viewport.
+- https://docs.unrealengine.com/5.3/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] -
+How to use the various features offered by the Content Browser.
 
 == (Optional) Modify Editor Color Scheme
 
@@ -438,6 +355,8 @@ Click on the Alpakit Dev button in the
 https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#maintoolbar[Main Toolbar]
 of the Unreal editor to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
+
+image:BeginnersGuide/OpenAlpakitDev.png[Alpakit Dev icon]
 
 You can also bring it up via `File > Alpakit Dev` from the
 https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#menubar[Menu Bar].
@@ -486,6 +405,8 @@ xref:Development/TestingResources.adoc[Testing/Multiplayer Testing] page.
 ====
 
 === Packaging Mods with Alpakit
+
+// TODO 1.0 Release - split into Dev and Release Alpakit and retake screenshots
 
 Below the "Dev Packaging Settings" heading are the mod list and packaging controls.
 

@@ -1,0 +1,44 @@
+= You're Cloning the Starter Project
+
+You've chosen to clone the Starter Project repository.
+Good choice! This will make it easy to update the project with changes to SML later.
+
+The below box will help you decide which repository branch to clone.
+It's imperative that you download the correct Starter Project version of the game you're modding
+or you will have to repeat some of the setup process again.
+
+== What Branch to Clone
+
+====
+This is the *development* version of the docs.
+
+Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+
+// You should clone either the **`dev` branch** or the **`master` branch**.
+// Of those two, you probably want whichever branch was pushed to most recently, which you can see
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+
+// If you're still uncertain which to clone, ask us on the Discord.
+
+You should clone the **`dev` branch** because SML 3.8 is not released yet.
+====
+
+https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
+Get the clone URL via the **`<> Code`** dropdown button on the GitHub page.
+Again, please make sure to clone the correct branch -
+your client will probably start you on the `master` branch by default
+and you may have to switch branches to the branch you actually intended to clone.
+
+You can move the cloned repository folder later, and you can name it whatever you'd like.
+
+Make sure to read the notes on the
+xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter Project page]
+about good long-term homes for your starter project files.
+
+The directory is ready for use as soon as the clone is complete.
+
+== Next Steps
+
+Now that all the dependencies are installed, you can move onto
+xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].
+
