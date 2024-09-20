@@ -25,6 +25,7 @@ instead using the "GameVersion" uplugin field.
 Consider the following SML features that you'll be losing by not depending on it:
 
 - Significant wheel reinvention required for blueprint (pak-only) mods ({cpp} mods can use StartupModule)
+- xref:Development/Cpp/hooking.adoc[{cpp} hooking helpers] - SML bundles a modified version of funchook
 - Mod dependency version checking at launch
 - Client-server version consistency checking when playing in multiplayer
 - Other mods being able to detect your mod's presence
