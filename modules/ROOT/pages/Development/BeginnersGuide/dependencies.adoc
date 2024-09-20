@@ -194,7 +194,9 @@ Download the following files from the release linked above:
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
 - `UnrealEngine-CSS-Editor-Win64.exe`
 
-Save all 3 files in the same folder.
+Save all 3 files in the same folder,
+and make sure that their names are _exactly the same as listed above_
+otherwise the installer will not work.
 
 [WARNING]
 ====
