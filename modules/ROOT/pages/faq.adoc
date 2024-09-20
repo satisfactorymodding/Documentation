@@ -656,7 +656,7 @@ Under the "Shortcut" settings tab, modify the "Target" line to end in ` -NoSteam
 Make sure you have a space between the file path and this launch argument.
 
 5. You now have a standalone version of the game that will not update or talk to Steam.
-This means you wont be able to play online with anyone through this version.
+This means you won't be able to play online with anyone through this version.
 
 6. Navigate to `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames`.
 Open the folder named a long stream of numbers (this is your launcher user id)
