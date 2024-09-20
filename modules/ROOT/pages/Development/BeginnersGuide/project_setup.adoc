@@ -95,6 +95,7 @@ Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
 In windows explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+Windows 11 might have buried it within the "more options" submenu.
 If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
 If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
