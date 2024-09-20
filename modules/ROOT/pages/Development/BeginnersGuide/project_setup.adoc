@@ -195,7 +195,7 @@ To start the actual compile process
 find the FactoryGame project item in the `Games/FactoryGame` solution explorer tree,
 right click on it, and select `Build`.
 
-image:BeginnersGuide/BuildTargetSelection.png[Build FactoryGame]
+image:BeginnersGuide/BuildFromMenu.png[Build FactoryGame from Solution Tree menu]
 
 While you're there, also click on "Set as Startup Project"
 which will make the {cpp} debugger easier to use later, if you need it.
