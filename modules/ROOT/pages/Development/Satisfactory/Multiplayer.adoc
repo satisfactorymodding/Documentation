@@ -247,10 +247,10 @@ See the video or Unreal documentation for more info.
 
 Replication Detail Components were previously critical in handling replication of inventories to multiplayer clients.
 
-As of Update 8, this system has been replaced with a new system involving structs,
-which Arch has informed us is planned to be phased out soon.
-If you have questions about this system, please ask about it on the discord,
-as it's not worth documenting something that will be removed so soon.
+The 1.0 release replaced them with
+xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication],
+a system custom written by Coffee Stain to reduce the amount of unnecessary data sent to clients.
+See the linked page for more information on how to replicate inventory components.
 
 == Replicated Maps
 

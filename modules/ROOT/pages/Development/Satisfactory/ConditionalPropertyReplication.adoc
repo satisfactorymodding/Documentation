@@ -1,0 +1,91 @@
+= Conditional Property Replication
+
+[NOTE]
+====
+This page assumes you already have working knowledge of Unreal Engine's replication system.
+
+Read the xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
+page for information about Unreal's replication system and special cases for Satisfactory.
+====
+
+Conditional Property Replication was introduced in the 1.0 release
+and is a Coffee Stain custom extension of Unreal's normal conditional _actor_ replication system.
+It replaced the Replication Detail Actor system used in previous versions.
+
+The purpose of the system is to reduce the amount of data being sent to multiplayer clients.
+Example use cases are for replicating the inventories or state of a building only when clients have the building's interface open.
+
+== Replicating Inventories
+
+To use the system to replicate an inventory component, follow these steps from Arch.
+The steps assume you are replicating an FGBuildable's inventory component.
+
+1. Create UFGInventoryComponent as a class default object in your class:
++
+```cpp
+AFGBuildableManufacturer::AFGBuildableManufacturer()
+{
+    mInputInventory = CreateDefaultSubobject<UFGInventoryComponent>(TEXT("InputInventory"));
+}
+```
++
+2. Make sure your property (in this case `mInputInventory`) is NOT marked as `Replicated` OR `SaveGame`.
+Both flags do not do anything useful and only create additional overhead in runtime:
++
+```cpp
+UPROPERTY()
+UFGInventoryComponent* mInputInventory;
+```
++
+3. In BeginPlay, if HasAuthority, call `UFGInventoryComponent::SetReplicationRelevancyOwner` and pass the buildable as argument:
++
+```cpp
+void AFGBuildableManufacturer::BeginPlay()
+{
+    Super::BeginPlay();
+    if (HasAuthority())
+    {
+        mInputInventory->SetReplicationRelevancyOwner(this);
+    }
+}
+```
++
+    * If you skip this step, your inventory will ALWAYS be replicated if the owner building is replicated.
+      However, if you follow it, the inventory will ONLY be replicated to the client if it has the buildable UI open.
++
+4. Now just use the same inventory on both server and client.
+   No need for any kind of hacks with inventory object swapping or waiting for inventories.
+   The inventory is always available now on the client as an object, but the contents are only replicated when needed.
+
+== Replicating Additional Data for UIs
+
+To replicate additional (non-inventory) data for UIs, follow these steps from Arch.
+The steps assume you are replicating data for an FGBuildable with an interact UI.
+
+1. Make a UPROPERTY marked with `meta = (FGReplicated)` or `meta = (FGReplicatedUsing = OnRep_XXX)` (in case you need a RepNotify function for your property):
++
+```cpp
+UPROPERTY(meta = (FGReplicated))
+float mCurrentManufacturingProgress;
+
+UPROPERTY(meta = (FGReplicatedUsing = OnRep_ArbitrarySlotSizes))
+TArray<int32> mArbitrarySlotSizes;
+```
++
+2. Override GetConditionalReplicatedProps, and add your property there using macros (depending on whenever it was marked as FGReplicated or FGReplicatedUsing):
++
+```cpp
+void AFGBuildableManufacturer::GetConditionalReplicatedProps(TArray<FFGCondReplicatedProperty>& outProps) const
+{
+    Super::GetConditionalReplicatedProps(outProps);
+    FG_DOREPCONDITIONAL(ThisClass, mCurrentManufacturingProgress);
+}
+
+void UFGInventoryComponent::GetConditionalReplicatedProps(TArray<FFGCondReplicatedProperty>& outProps) const
+{
+  Super::GetConditionalReplicatedProps(outProps);
+  FG_DOREPCONDITIONAL_WITH_NOTIFY(ThisClass, mArbitrarySlotSizes, OnRep_ArbitrarySlotSizes);
+}
+```
++
+3. That's it! Now your property will only be replicated when the buildable UI is open.
