@@ -208,6 +208,12 @@ If you're updating a pre-existing starter project,
 you'll likely have files from the CSSUHTPlugin lingering in your folders.
 This is no longer included in 1.0 and can be safely deleted.
 
+=== Building Clearance Overhaul
+
+`FGClearance` has been removed and replaced with a `Clearance Data` property.
+The new approach allows creating complex hulls for clearance checks via defining multiple boxes and
+and specifying the type of each clearance box individually.
+
 === Item State Actor Removal
 
 This change affects most modded equipment,
@@ -263,3 +269,7 @@ This section will be updated when we have confirmation.
 The 'stability' (alpha, beta, release) field on ficsit.app is being removed.
 If you want to release unstable builds, use the prerelease semver syntax (for example 1.0.0-pre1)
 which will not be downloaded by SMM unless the user specifically selects the version.
+
+=== Vanilla Dedicated Server API
+
+See the xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API] page for more information.

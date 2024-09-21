@@ -1,0 +1,15 @@
+= Vanilla Dedicated Server API
+
+The 1.0 release introduced two API endpoints to the base game's dedicated servers.
+
+* **Dedicated Server Lightweight Query API**:
+  a simple UDP protocol designed for polling the server state through UDP continuously with minimal overhead.
+* **Dedicated Server HTTPS API**:
+  a HTTPS server serving the requests to retrieve the more detailed state of the server, and control it's behavior.
+
+The documentation for these APIs is provided in the
+`DedicatedServerAPIDocs.md` markdown file
+in the `CommunityResources` folder of your
+xref:faq.adoc#Files_GameInstall[game install directory].
+In the interest of keeping this documentation up-to-date
+we will not be duplicating the API documentation here.

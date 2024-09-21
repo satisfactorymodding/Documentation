@@ -80,6 +80,7 @@
             **** xref:Development/Satisfactory/AbstractInstance.adoc[Abstract Instances]
             **** xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication]
             **** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
+            **** xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API]
         *** xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML]
         *** Legacy
             **** xref:Development/Satisfactory/ConveyorRendering.adoc[Conveyor Rendering (Outdated)]
