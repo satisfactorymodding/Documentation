@@ -208,6 +208,15 @@ If you're updating a pre-existing starter project,
 you'll likely have files from the CSSUHTPlugin lingering in your folders.
 This is no longer included in 1.0 and can be safely deleted.
 
+=== HUB Milestone Icons Always Monochrome
+
+The base game now adjusts HUB milestone icons to ensure they are always monochrome.
+This may force you to create new icons for your mod's HUB milestones.
+It is probably possible to work around this, but no one has tried and reported back yet.
+
+.ExampleMod Milestone in the HUB Screenshot
+image::Development/UpdatingGuides/HubMilestones.jpg[Satisfactory Mod Manager Example]
+
 === Building Clearance Overhaul
 
 `FGClearance` has been removed and replaced with a `Clearance Data` property.
