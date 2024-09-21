@@ -183,7 +183,7 @@ Installing wwiser will be covered below.
 Because Satisfactory uses the Wwise sound system,
 game sound files are stored in a manner different from standard Unreal Engine sounds.
 
-Although all sound files are accessible and playable via FModel,
+Although all sound files are accessible via FModel,
 usage of Wwise means the files are not sensibly organized and do not have "nice" names,
 making finding the exact sounds you care about troublesome.
 Furthermore, the sound files are stored in their unmixed forms,
@@ -200,7 +200,7 @@ The first step in extracting a sound is to locate the Wwise audio event bnk it's
 Wwise bnk files contain information about what sound files are used by the game when a sound event is triggered.
 We can extract this file and use it in wwiser to locate the raw sound files we care about.
 
-Wwise audio event names are human-readable and can be found in subfolders of the pak's
+Wwise audio event names are human-readable and can be found in subfolders of the pak's (not utoc's!)
 `FactoryGame/Content/WwiseAudio/Event/` folder.
 Note that bnk files are _not_ in the `Events` (plural) folder,
 which instead contains their identically-named uasset counterparts not required for this process.
@@ -214,12 +214,16 @@ so you can search for `Play something bnk` to find a list of valid sound bnk fil
 
 Once you have found the bnk you want to extract
 (for example, `FactoryGame/Content/WwiseAudio/Event/19/Play_EQ_JetPack_Activate.bnk`)
-right click on it in FModel's package list and select `Export Raw Data (.uasset)`,
+right click on it in FModel's "Packages" tab list and select `Export Raw Data (.uasset)`,
 which will export the bnk file despite the tooltip option claiming it will be a uasset.
+
+Alternatively, you can extract the entire `Event` folder at once
+by right clicking on it in the "Folders" tab and selecting `Export Folder's Packages Raw Data (.uasset)`.
 
 Click on the text
 (ex. `Play_EQ_JetPack_Activate.bnk`)
-in the FModel log to open your system's file browser to the folder that contains the exported bnk.
+in the FModel log to open your system's file browser to the folder that contains the exported bnk,
+or the top-level export folder if you exported the entire `Event` folder.
 
 === Extracting sourceIDs with wwiser
 
@@ -271,6 +275,26 @@ which will cause an Audio Player window to appear.
 After optionally previewing the sound file in the player,
 right click on it in the player's playlist and select Save,
 prompting a system dialog to select a save location.
+
+=== Bulk Audio Renamer
+
+// TODO unclear why MrCheese said that FModel can't play sound files since release.
+// Resolve before merge because it might change the above directions further.
+// https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439924
+// https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320
+
+Community member MrCheese has created a python script that enables mass renaming of exported wem files to their associated named bnk files.
+If you decide to extract a large number of sounds, this script can save you a lot of time.
+
+To use it:
+
+1. Create a folder somewhere named `SatisfactoryAudioRenamer`.
+2. Create a subfolder named `out`
+3. Create a subfolder named `txtp`
+4. link:{attachmentsdir}/Development/SatisfactoryAudioRenamer/convert.py[Download this python file (convert.py)]
+   and place it in the SatisfactoryAudioRenamer folder
+5. Move all the txtp files that wwiser generated earlier to the txtp subfolder
+   and run `python .\convert.py` from a terminal in that SatisfactoryAudioRenamer folder.
 
 == Generating a Complete Starter Project
 
