@@ -208,12 +208,23 @@ If you're updating a pre-existing starter project,
 you'll likely have files from the CSSUHTPlugin lingering in your folders.
 This is no longer included in 1.0 and can be safely deleted.
 
+=== Item State Actor Removal
+
+This change affects most modded equipment,
+especially those that need to store custom data.
+
+Items now store an instance of FFGDynamicStruct as a state instead.
+
+=== Equipment Attachment Removal
+
+Equipment attachments have been replaced with systems built into the equipment actor.
+
 === Replication Detail Actor Removal
 
-A dedicated docs page will be made for the new system later™.
+The Replication Detail Actor system has been removed and replaced with the
+xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication] system.
 
-Info from Arch on the new implementation on the Discord:
-https://discord.com/channels/555424930502541343/862002356626128907/1285174321463033948
+See that page for some info from Arch on the usage of the new system.
 
 === Equipment Attachment Actor Removal
 
