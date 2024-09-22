@@ -36,9 +36,11 @@ It's already possible to run SML on just the client.
 
 == Systems You Will Have to Care About
 
-No one has tried this process out and documented it yet, so we don't have a comprehensive list of things you'll need to do.
-If you decide to go down this path, please let us know what you find out so we can update this page.
+Here's a list of special considerations you'll have to make if you decide to go down this path.
+Every mod is different, so this will never be a comprehensive list.
+Please let us know what you find out so we can update this page.
 
 - Your mod breaking on game updates. {cpp} code, especially hooks, are very prone to breaking on game updates as offsets change.
 - Entry point for your code. {cpp} mods can use `StartupModule`, blueprint mods will need something else to help them load.
 - Alpakit GameVersion dependency field explained on the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Releasing Your Mod page].
+- Not conflicting with any systems that SML uses, because there is a very high chance that end users will already have SML installed.
