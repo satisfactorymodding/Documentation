@@ -57,6 +57,16 @@ Gameplay Tags are a useful way to introduce some cross-mod compatibility without
 
 Read the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
 
+=== Content Registration Happens Locally
+
+As part of the changes to support the 1.0 release,
+content registration now happens on both sides locally,
+as opposed to the previous behavior where registration only happened on the server
+and the Available Schematics array was replicated to clients.
+
+This also fixes a
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/277[long-standing bug related to modded AWESOME shop schematics].
+
 [id="SMLNoLongerHardRequired"]
 === Modding Without SML
 
@@ -77,11 +87,6 @@ This affects any mod that introduced new Levels
 and the ability to configure xref:Development/ModLoader/SessionSettings.adoc[Session Settings] before world creation.
 This will be fixed before SML 3.8's public release.
 
-=== Widget Hooks Not Working
-
-No widget hooks are currently working.
-We suspect this is due to optimizations related to not cooking widgets for dedicated servers.
-
 === Can't Join Dedicated Servers
 
 Trying to join a dedicated server with SML installed will currently always crash the client
@@ -92,10 +97,6 @@ This will be fixed before SML 3.8's public release.
 
 See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
 This should not affect the vast majority of mods.
-
-=== Modded AWESOME Shop Schematics Do Not Load on Clients
-
-See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/277[this github issue for more info].
 
 === Advanced Game Settings values not saved
 
@@ -216,10 +217,19 @@ To fix this, reopen the item blueprint in the editor,
 change the stack size to anything else,
 then change it back and re-save.
 
+=== HUB Milestone Icons Required
+
+1.0's overhauled HUB interface has a bug related to milestone icons.
+If your milestone is missing an icon, the game will not show its details or cost correctly
+in the preview when the player selects it in the HUB.
+All milestones should have HUB icons to avoid this problem.
+If you need an icon to use, SML's assets folder has a generic icon in the style of the default mod icon you can use.
+Find it at `/SML/Interface/UI/Assets/Textures/robb/StockSchematicIcon_512`.
+
 === HUB Milestone Icons Always Monochrome
 
 The base game now adjusts HUB milestone icons to ensure they are always monochrome.
-This may force you to create new icons for your mod's HUB milestones.
+This may require you to create new icons for your mod's HUB milestones for them to still be visually distinct.
 It is probably possible to work around this, but no one has tried and reported back yet.
 
 .ExampleMod Milestone in the HUB Screenshot
@@ -279,6 +289,17 @@ and let us know on the discord if you encounter any issues.
 
 The new xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure]
 documentation page explains important Starter Project folders and the Placeholder System in more detail.
+
+=== AcceptsAnyRemoteVersion removal
+
+SML's system for specifying multiplayer mod sidedness has been adjusted in preparation for future one-sided mod support.
+The `AcceptsAnyRemoteVersion` field has been removed
+and the `RequiredOnRemote` field has been introduced with a default value of `true`.
+
+When a client connects, the host analyzes what mods the client is connecting with.
+If a mod has `RequiredOnRemote` set to true,
+`RemoteVersionRange` will be checked to ensure the version is compatible.
+The reverse (client checking server) is not currently implemented but may be in the future.
 
 === Decal_Normal FIXED on Modded Parts using Mesh Proxies
 
