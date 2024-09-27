@@ -265,7 +265,8 @@ Clicking the button will probably redirect you to a sign in page.
 Create an account if you don't have one yet, or sign in, to download and run the installer.
 
 After the installer is complete it should open the launcher for you.
-In the launcher, select `WWISE` from the sidebar.
+In the launcher, select the topmost `Wwise` section from the sidebar
+(note: not the Wwise Audio Lab section).
 Click the `Latest` drop-down and change it to `All`.
 Select `2022.1` from the next dropdown.
 Select version `2022.1.10.8393` from the final dropdown.
