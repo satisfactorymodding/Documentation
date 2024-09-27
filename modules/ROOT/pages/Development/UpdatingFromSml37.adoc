@@ -296,10 +296,10 @@ SML's system for specifying multiplayer mod sidedness has been adjusted in prepa
 The `AcceptsAnyRemoteVersion` field has been removed
 and the `RequiredOnRemote` field has been introduced with a default value of `true`.
 
-When a client connects, the host analyzes what mods the client is connecting with.
-If a mod has `RequiredOnRemote` set to true,
-`RemoteVersionRange` will be checked to ensure the version is compatible.
-The reverse (client checking server) is not currently implemented but may be in the future.
+When a client connects, the host checks its own mod list against what the client is connecting with.
+If the host's mod has `RequiredOnRemote` set to true,
+`RemoteVersionRange` is used to check the client's reported version to ensure it's compatible.
+The reverse (client checking host) is not currently implemented but may be in the future.
 
 === Decal_Normal FIXED on Modded Parts using Mesh Proxies
 
