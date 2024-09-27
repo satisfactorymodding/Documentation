@@ -208,6 +208,14 @@ If you're updating a pre-existing starter project,
 you'll likely have files from the CSSUHTPlugin lingering in your folders.
 This is no longer included in 1.0 and can be safely deleted.
 
+=== Item Stack Size Bug
+
+If you're unable to craft or give yourself your modded item,
+a bug due to changes in the game's code may have caused it to have an invalid State or stack size.
+To fix this, reopen the item blueprint in the editor,
+change the stack size to anything else,
+then change it back and re-save.
+
 === HUB Milestone Icons Always Monochrome
 
 The base game now adjusts HUB milestone icons to ensure they are always monochrome.
