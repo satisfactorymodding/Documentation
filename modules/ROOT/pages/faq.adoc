@@ -291,7 +291,7 @@ See link:#_how_do_i_backup_my_save_files[Backing Up Save Files]
 [id="Files_Blueprints"]
 === Blueprint Designer Files
 
-Check out the https://satisfactory.wiki.gg/wiki/Blueprint_Designer#Save_Location[Official Wiki's information on Blueprint Designer files].
+Check out the https://satisfactory.wiki.gg/wiki/Blueprint#Save_Location[Official Wiki's information on Blueprint Designer files].
 
 Remember that the folder may not exist if you haven't created a blueprint yet.
 
