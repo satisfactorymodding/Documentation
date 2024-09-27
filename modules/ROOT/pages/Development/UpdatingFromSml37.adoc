@@ -242,16 +242,21 @@ Items now store an instance of FFGDynamicStruct as a state instead.
 
 Equipment attachments have been replaced with systems built into the equipment actor.
 
+=== Unequipped Equipment Actor Removal
+
+Equipment items that are not either directly equipped on the player
+or are in their currently selected hand slot
+no longer have actor representations in the world.
+They get spawned when equipped and despawned when unequipped,
+saving data in a struct instead.
+This may require significant changes to mods that introduced new equipment items.
+
 === Replication Detail Actor Removal
 
 The Replication Detail Actor system has been removed and replaced with the
 xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication] system.
 
 See that page for some info from Arch on the usage of the new system.
-
-=== Equipment Attachment Actor Removal
-
-https://discord.com/channels/555424930502541343/862002356626128907/1285196874688626758
 
 === Add Tags to Relevant Content in your Mod
 
