@@ -32,10 +32,19 @@ Don't skip making backups this time - your blueprints might become unopenable in
 
 == New Features
 
+This section talks about the new features that SML 3.8 brings to the table.
+Note that the game itself has also brought many new features to the table as well,
+which won't be covered here.
+
 === Session Setting Replication
 
 SML correctly handles Session Setting replication to multiplayer clients now.
 Thanks SirDigby and Mircea for implementing this.
+
+=== Access Transformers on Structs
+
+TODO More info and examples needed
+https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439224
 
 === SML Capable of Running Client-Side Only
 
