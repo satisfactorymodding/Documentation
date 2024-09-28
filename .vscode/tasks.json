@@ -31,6 +31,17 @@
 			}
 		},
 		{
+			"label": "Open in browser",
+			"type": "shell",
+			"windows": {
+				"command": "Start-Process http://127.0.0.1:8000/"
+			},
+			"presentation": {
+				"reveal": "silent"
+			},
+			"problemMatcher": []
+		},
+		{
 			"type": "shell",
 			"label": "Launch hot rebuilding development server",
 			"group": {
@@ -39,7 +50,8 @@
 			},
 			"dependsOn": [
 				"Hot Rebuild",
-				"Webserver"
+				"Webserver",
+				"Open in browser"
 			],
 			"command": "echo 'Development server and watch started'",
 			"problemMatcher": []
