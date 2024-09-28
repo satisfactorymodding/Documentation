@@ -587,24 +587,27 @@ Once it's done, an extra line will appear in the Steam console announcing the co
 
 8. Open up your **game installation folder** - not the depot this time.
 You can find your folder by following link:#Files_GameInstall[these directions].
-Back up the folder's contents to another folder by copying or moving them out.
+Make a backup up the folder's contents by copying them to another location
+since we will be deleting files.
 
-9. Delete all of the files from your game installation folder and move in the files produced by the download depot command you ran earlier.
-Don't skip out on making that backup - you'll need some of those files in the next step.
-
-10. Next, go back to your backup to obtain some files.
-You'll be replacing some of the files you just brought in from the depot with ones from the backup.
-This tricks Steam into thinking that the contents of the folder are that of the latest depot,
-when in reality they are the past version you just downloaded,
-meaning Steam won't try to update the files before you launch.
-This means you can play without putting Steam in offline mode.
-Copy the following files:
-
+9. Delete all of the files from your game installation folder EXCEPT for these:
 * `Manifest_DebugFiles_Win64.txt`
 * `Manifest_NonUFSFiles_Win64.txt`
 * `Manifest_UFSFiles_Win64.txt`
-* `/FactoryGame/Configs/` (this folder contains your mod configuration files)
-* Keep in mind that other mods may also produce folders and files you want to hold on to.
+* `/FactoryGame/Configs/`(this folder contains your mod configuration files)
+* `/FactoryGame/Mods/` (this folder contains the mods you have already installed. If you want to keep them, don't delete the folder)
+* Other mods may also produce folders and files you want to keep.
+  This is why you took a backup earlier -
+  you can get those files from the backup if you need to.
+// Don't break list but keep this in a new paragraph 
++
+Reusing these manifest files tricks Steam into thinking that the contents of the folder are that of the latest depot,
+when in reality they are the past version you just downloaded,
+meaning Steam won't try to update the files before you launch.
+This means you can play without putting Steam in offline mode.
+
+10. Move in the files produced by the download depot command you ran earlier.
+If prompted to replace files, keep the already existing files.
 
 11. Download the mods you want to play with into this new copy of the game.
 You may be able to reuse some of them from your backup copy (`/FactoryGame/Mods`).
@@ -617,8 +620,58 @@ In order to launch the game, simply launch it through Steam or the mod manager a
 If you've followed these steps correctly, Steam will not try to update the game when you launch it.
 Once you are certain all data has been transferred, feel free to remove your backup of the previous folder contents.
 
-In order to revert this process and return to the latest version of the game,
-link:#_how_do_i_verify_my_game_files[use Steam to verify your game files].
+
+* In order to revert this process and return to the latest version of the game,
+  link:#_how_do_i_verify_my_game_files[use Steam to verify your game files].
+* To play both this old version and a current version, follow the directions link:#HaveTwoVersions[here].
+
+[id="HaveTwoVersions"]
+== How do I play both an older modded version and the latest update?
+
+[WARNING]
+====
+We do not provide support for using older versions of the game.
+By following this process, you are volunteering to fix any issues that may arise yourself,
+and you are accepting the risk of possible data loss.
+====
+
+First, you'll need a copy of the old version of the game.
+Follow the steps link:#PlayOlderVersion[here] to set one up.
+
+1. While the old version is still in your Steam/Epic folders, use SMM to add the mods you want.
+You WILL NOT be able to use SMM to manage mods for copies outside of your launcher's folder,
+so make sure that you have all the mods you want
+and that the game runs at a level of stability you're happy with.
+You may need to switch to an older version of SMM or install mods manually.
+Remember, we offer no support for this process - you're on your own here.
+
+2. Copy your entire game install directory to another location on your computer.
+Expect it to take up about 30 gigabytes.
+
+3. Create a shortcut for the `.exe` file in the game's root directory, usually `FactoryGameSteam.exe`.
+One way to do this is to right click on it and select create shortcut.
+
+4. Open the shortcut's properties from the right click menu.
+Under the "Shortcut" settings tab, modify the "Target" line to end in ` -NoSteamClient -EpicPortal`.
+Make sure you have a space between the file path and this launch argument.
+
+5. You now have a standalone version of the game that will not update or talk to Steam.
+This means you won't be able to play online with anyone through this version.
+
+6. Navigate to `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames`.
+Open the folder named a long stream of numbers (this is your launcher user id)
+and copy any save files you wish to access from the standalone version into `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\common`.
+The standalone copy isn't linked to your launcher
+and thus wont be able to see the save games in the launcher-user-specific folder.
+
+7. Test launching the standalone copy of the game with your shortcut.
+
+8. Once you are certain the standalone copy is working, go back into your launcher and 
+link:#_how_do_i_verify_my_game_files[verify your game files]
+to restore your launcher's copy to the latest update.
+
+9. You can now play the old copy of the game by using your shortcut
+while still being able to play the latest version via your launcher. 
 
 == How do I backup my save files?
 
