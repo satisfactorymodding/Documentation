@@ -1,4 +1,101 @@
-= Creating ADA and Ingame Inbox Messages
+= Creating ADA and In-game Inbox Messages
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Ada messages can add an immersive feel to your mods fitting in with every in game milestone unlock.
+
+[NOTE]
+====
+When the game loads it will look for all data assets with the class of FGMessage and load these automatically.
+There is no requirement to manually register these data assets.
+====
+
+== What to Say
+
+TODO info on what speaking patterns ADA and Aliens have
+
+Use the SMLEditor/Content/AdaMessages/AdaMessageExtractor editor utility widget to quickly view all messages as text 
+
+== Defining Messages
+
+=== Creating the Data Asset:
+
+First right click on the content browser and go to Miscellaneous -> Data Asset
+Then Select the class of `FGMessage`
+
+image:Satisfactory/AdaMessages/AdaMessage_1.png[AdaMessage_1, 350]
+
+image:Satisfactory/AdaMessages/AdaMessage_2.png[AdaMessage_2, 450]
+
+The name of the new data asset can be anything you would like, but recommend sticking to a normalized naming convention:
+```
+Asset_<ModName>_ADA_Message_Tier_<TierNumber>_<MilestoneNumber>
+```
+
+For Example:
+
+```
+Asset_ExampleMod_ADA_Message_Tier_1_1
+```
+
+This will refer to the example mods schematic for tier 1 and the first schematic.
+This is optional but will help you distinguish each milestone if you have lots of ADA messages. 
+
+=== Setting up the Email Message
+
+As part of the new message data asset this will also create a new email that can be viewed in the `Inbox` window in game.
+
+This is the first stage of setting up the Data Asset by setting the `Title` and `Message` variables:
+
+image:Satisfactory/AdaMessages/AdaMessage_3.png[AdaMessage_3]
+
+=== Setting Up Subtitles
+
+If your ADA speak is quite long then you will need to split this into multiple subtiles. This is because the text will not fit in the ADA popup widget.
+
+This can be done by adding a new Array element to the `mSubtitles` variable.
+
+Each element in the array should have `Subtitle` `Sender Class` and `Time Stamp`
+
+* Subtitle - This is the text you want to show in the ADA popup message
+* Sender Class - This is the class of the Sender aka ADA or Alien Message
+* Time Stamp - This is the Time Stamp when the message should be sent. Correlates to the audio message timestamp if there is pauses.
+
+image:Satisfactory/AdaMessages/AdaMessage_4.png[AdaMessage_4]
+
+Setting the voice over requires a Wwise Audio Event and can be set in the data asset.
+
+image:Satisfactory/AdaMessages/AdaMessage_5.png[AdaMessage_5]
+
+=== Setting up the Trigger
+
+The trigger is automatically registered when the game is loaded you just need to populate the trigger settings in the data asset
+
+image:Satisfactory/AdaMessages/AdaMessage_6.png[AdaMessage_6]
+
+First set the Trigger Dependency this will be the `BP Schematic Purchased Dependency` and select the dependencies you would like this message to show for. 
+
+Trigger Settings:
+
+* Can Be Queued - This setting is for if another ada message is being played then it will wait for it complete.
+* Can Be Repeated - This setting is for if the ada message can be repeated.
+* Can Interupt - Setting for if another lower priority message is playing then interupt it.
+* Play Interupt Message - This setting will first play the default interupt message then play our message.
+* Blocked By Cooldown - Message will not play if in the message cooldown - Recommended not to check this.
+* Priority - The priority of this message - Recommended setting this to 1
+
+
+== Generating Audio
+
+All voice lines spoken by ADA (and the Aliens) are generated using Google's Text-to-Speech API.
+
+
+
+
+== BELOW IS OLD VERSION
 
 [NOTE]
 ====
@@ -24,7 +121,7 @@ within your modding project to be able to poke around in the UAssets and see how
 
 Strongly suggested you try and keep with the writing style of the game for ADA messages
 Speaking mannerisms, patterns in what she says across voice lines
-link:{attachmentsdir}/Development/All_Vanilla_ADA_Voicelines.txt[reference file]
+link:{attachmentsdir}/Development/Satisfactory/AdaMessages/All_Vanilla_ADA_Voicelines.txt[reference file]
 For more examples check PowerSuit modules
 
 the sound wave goes in the Dialogue Sounds array of an FGAudioMessage, there are lots of other settings there as well
