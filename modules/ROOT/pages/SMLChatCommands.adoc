@@ -1,55 +1,75 @@
-= SML Commands
+= Commands
 
-[TIP]
-====
-If you're looking to create your own chat commands, check out
-xref:Development/ModLoader/ChatCommands.adoc[this page].
-====
+There are two types of "commands" in Satisfactory:
+link:#ChatCommands[*Chat Commands*]
+and link:#ConsoleCommands[*Unreal Console Commands*].
+They differ in how they work and from where you invoke the command.
 
-SML adds two kinds of commands to the game by default,
-link:#_chat_commands[*Chat Commands*]
-and link:#ConsoleCommands[*Console Commands*].
-
+[id="ChatCommands"]
 == Chat Commands
 
-These commands can be run *from the in-game chat window* prefixed with a `/`.
+Chat commands are run *from the in-game chat window* prefixed with a `/`.
 For example, to run the 'help' command, you'd enter `/help` into chat.
 
-Note that only the player who runs the command will see the command output.
+If you see a user or mod page talking about a "command",
+~90% of the time they are referring to chat commands.
 
-Chat commands added by mods will also show up when you run `/help`.
+Command response messages are usually only seen by the player executing the command
+but this differs depending on the command's implementation.
+
+These 3 commands are provided by Satisfactory Mod Loader.
+All other chat commands are implemented by mods.
 
 [cols="1,4a"]
 |===
 |Command |Description
 
+|help
+|Lists each available chat command and a short mod-developer-provided description of their functionality.
+
 |info
 |Prints information about the SML version.
 Also lists all currently loaded mods.
-
-|help
-|Lists all available commands and gives a short description of their function.
 
 |list
 |Provides a list of currently connected players.
 |===
 
-[id="ConsoleCommands"]
-== Console Commands
+[TIP]
+====
+Developers, if you're looking to create your own chat commands, check out
+xref:Development/ModLoader/ChatCommands.adoc[this page].
+====
 
-These commands can be run *from the in-game developer console*
-which is opened when you press the grave/tilde key (``` or `~`).
+[id="ConsoleCommands"]
+== Unreal Console Commands
+
+Unreal console commands are run *from the in-game developer console*
+which opens when you press the grave/tilde key (``` or `~`).
+They can also be executed from the interactive console of a dedicated server.
 If the console does not open upon keypress, check out the
 https://satisfactory.wiki.gg/wiki/Console#Accessing[Satisfactory Wiki's page on the Console]
 to try alternate approaches.
 
-[IMPORTANT]
-====
-In order to use these commands the "Enable Cheats" Session Setting must be enabled for the save.
-Furthermore, you must run the `EnableCheats` console command once in the game session before any of the other console commands will work.
-Because of how the command is implemented, the game will claim that the command is not recognized when you run it,
-but assuming you enabled the session setting correctly, other cheat console commands will then begin to function.
-====
+Some console commands are built into Unreal Engine,
+some are implemented by Coffee Stain,
+and in rare cases mods may implement their own.
+Some of they may not function due to code removed from the distributed version of the game.
+
+[id="EnableCheats"]
+=== Enabling Cheats
+
+Cheats must be enabled in the game save for a majority of console commands to function.
+To enable cheats:
+
+1. Use SML's "Enable Cheats" Mod Savegame Setting.
+.. Option 1: Enable the setting from the xref:ForUsers/ConfiguringMods.adoc#_mod_savegame_settings[in-game menu].
+.. Option 2: Run the `SML.ForceAllowCheats 1` to directly adjust the session setting value directly from the console.
+2. Run the `EnableCheats` console command to activate SML's hook on the cheats system.
+Because of how the command is implemented, the game will claim that the command is not recognized when you run it.
+This is expected behavior.
+3. Cheats should now be enabled for this game session.
+You will have to enable them again later if you load a save.
 
 [TIP]
 ====
@@ -58,16 +78,17 @@ consider installing a mod that will automatically enable cheats for you such as
 https://ficsit.app/mod/NogsCheats[Nog's Cheats].
 ====
 
+=== List of Useful Unreal Console Commands
+
 This list consists of some of the most useful ones, but there are more.
 
 A full list Satisfactory-specific cheats can be found
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Source/FactoryGame/Public/FGCheatManager.h[here].
 
-
 The native Unreal cheats
-// TODO update this link to the new CSS branch
-https://github.com/satisfactorymodding/UnrealEngine/blob/5.2.1-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
-can also be used. Note that to view this link,
+https://github.com/satisfactorymodding/UnrealEngine/blob/5.2.3-CSS/Engine/Source/Runtime/Engine/Classes/GameFramework/CheatManager.h[listed here]
+can also be used.
+Note that to view this link,
 you must be signed into a GitHub account registered with Epic Games,
 otherwise it will display as a 404 page.
 The process to register your account can be found
@@ -76,6 +97,11 @@ xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
 [cols="2,4a,1"]
 |===
 |Command |Description |Category
+
+|Cheats
+| Open the Coffee Stain Studios cheats user interface.
+| Mod developers can add cheats here by following xref:Development/Satisfactory/CheatBoard.adoc[these directions].
+| (Unspecified)
 
 // From UE CheatManager
 

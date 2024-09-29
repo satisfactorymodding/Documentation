@@ -325,3 +325,12 @@ which will not be downloaded by SMM unless the user specifically selects the ver
 === Vanilla Dedicated Server API
 
 See the xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API] page for more information.
+
+=== Cheat Board Accessible
+
+Beginning with the 1.0 release, Coffee Stain now distributes their Unreal Cheat Board with the game.
+It can be accessed by
+xref:SMLChatCommands.adoc#EnableCheats[enabling cheats]
+then running the `Cheats` console command.
+
+Mods can extend the Cheat Board via the approach described xref:Development/Satisfactory/CheatBoard.adoc[here].
