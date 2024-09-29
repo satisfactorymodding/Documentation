@@ -561,7 +561,7 @@ The easiest way to do this is on the https://steamdb.info/app/526870/[SteamDB pa
    Click on the "ID" number for that row.
 .. Click the `Manifests` section.
    You can optionally use the "Filter branch" option
-   to show just Stable (public) or Experimental (experimental)
+   to show just Stable ("public") or Experimental ("experimental").
 .. Find the row that corresponds to when the update you want was released,
    for example, Update 8.3 is `12 December 2023 – 16:28:20 UTC`.
    Copy the manifest ID from this row for usage later.
@@ -592,8 +592,8 @@ Continuing the previous examples, the folder would be
 This will take a while (the whole game is being downloaded again from scratch), and **there's no progress bar.**
 Once it's done, an extra line will appear in the Steam console announcing the command's completion.
 If you get an "access denied" error, make sure you have formatted the command correctly and try again.
-Even if the command is formatted correctly,
-sometimes you will have to run it multiple times before it succeeds.
+The command can still fail with no formatting issues;
+if this occurs, you will have to run the command again until it succeeds.
 
 8. Open up your **game installation folder** - not the depot this time.
 You can find your folder by following link:#Files_GameInstall[these directions].
