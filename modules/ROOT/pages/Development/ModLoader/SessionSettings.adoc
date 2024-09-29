@@ -132,6 +132,12 @@ auto optionValue = SessionSettings->GetIntOptionValue("YourModReference.IntSessi
 
 // Session Settings can optionally be marked as TODO, meaning that they will be stored (uncompressed) in the Unreal session URL as part of the save header. This means their values will be loaded as soon as the game mode is initialized and before world actors are initialized.
 
+=== Unreal Console Commands
+
+If your session setting is configured to use a CVar its value can be set using
+xref:SMLChatCommands.adoc#ConsoleCommands[Unreal console commands].
+For example `SML.ForceAllowCheats 1` will set the SML session setting `ForceAllowCheats` to 1.
+
 == Session Settings vs. Mod Config
 
 TODO
