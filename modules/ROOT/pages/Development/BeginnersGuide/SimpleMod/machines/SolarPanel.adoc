@@ -109,6 +109,12 @@ More info xref:SMLChatCommands.adoc[here].
 If you're having trouble getting your generator to work, check out the completed one in Example Mod,
 or ask for help on the Discord.
 
+== Troubleshooting
+
+=== Crashes on building (de)construct
+
+Ensure that the materials on both the building asset and its mesh asset are configured correctly.
+
 == Next Steps
 
 You may wish to add functionality to make the solar panel require direct access to the sky to function,
