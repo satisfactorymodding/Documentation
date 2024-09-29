@@ -52,6 +52,19 @@ Now, when you launch the game, you should now see the Unreal Console appear as a
 
 image:TestingResources/Unreal-Console.png[image]
 
+== Cheats
+
+Functionality build into the game's
+xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
+and xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
+can expedite mod testing.
+
+== Developer Utility Mods
+
+A number of mods have been created that assist with mod development, debugging, and testing.
+Find them on ficsit.app by using the xref:ForUsers/Tags.adoc[Tag Filter] feature
+to view mods tagged `#developer-utility`.
+
 [id="LaunchScript"]
 == Quick Launch Script
 
