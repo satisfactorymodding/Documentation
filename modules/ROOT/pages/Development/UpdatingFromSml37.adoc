@@ -276,6 +276,14 @@ They get spawned when equipped and despawned when unequipped,
 saving data in a struct instead.
 This may require significant changes to mods that introduced new equipment items.
 
+=== Lightweight Buildable System
+
+Many static buildings like walls and foundations
+now use the Lightweight Buildable System instead of the abstract instance system for further optimization.
+These buildings do not actually exist as buildings unless the player is using the build gun near them.
+This may interfere with traces collision checks that expected them to be abstract instances in the past.
+The system is not currently very modder friendly and you will likely have to wait for future game updates to improve it.
+
 === Replication Detail Actor Removal
 
 The Replication Detail Actor system has been removed and replaced with the
