@@ -114,6 +114,12 @@ explains how you can create your own Advanced Game Settings.
 However, their values are not currently saved with the save file.
 Session Settings still function correctly - their values are saved.
 
+=== Buildables with Empty Cost Never Finish their Build Animation
+
+This is a bug with the base game.
+The only known workaround is to have at least 1 item in the Cost.
+https://www.answeroverflow.com/m/1290190197501460521[Source].
+
 == Required Changes
 
 In addition to any specific-to-your-mod issues you may encounter,
