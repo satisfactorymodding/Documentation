@@ -554,16 +554,23 @@ Don't worry, a later step will ensure that Steam doesn't try to update the game 
 
 2. Find the manifest ID for the version you want to download.
 The easiest way to do this is on the https://steamdb.info/app/526870/[SteamDB page for Satisfactory].
-Go to the Depots section and select the branch you're looking for,
-then click on the ID for the depot that contains
-the game files and target platform you want (probably `526871` or `526872`).
-Next, go to the Manifests section and find the entry that corresponds to when the update you want was released,
-for example, Update 8.1 is `5 September 2023 – 17:36:47 UTC`.
-Copy the manifest ID from this row for usage later.
-For example, Update 8.1's manifest ID is `3616459586959574031`.
 
-3. Open the Windows Run dialog. You can find it in "Start programs" or by using Win+R shortcut.
-Enter this command in the dialog while Steam the client window is open: `steam://open/console`
+.. Go to the `Depots` section and find the Depot row for the game files.
+   The game client is `526871`
+   and the dedicated server is `526872`.
+   Click on the "ID" number for that row.
+.. Click the `Manifests` section.
+   You can optionally use the "Filter branch" option
+   to show just Stable ("public") or Experimental ("experimental").
+.. Find the row that corresponds to when the update you want was released,
+   for example, Update 8.3 is `12 December 2023 – 16:28:20 UTC`.
+   Copy the manifest ID from this row for usage later.
+   For example, Update 8.3's manifest ID is `3783838377491884235`.
+
+3. Open the Windows Run dialog.
+You can find it in "Start programs" or by using Win+R shortcut.
+Enter this command in the dialog while Steam the client window is open:
+`steam://open/console`
 
 4. Navigate to the newly-revealed extra tab in your Steam app called 'Console'.
 It may take a few seconds to load after you run the command.
@@ -571,7 +578,7 @@ It may take a few seconds to load after you run the command.
 5. Prepare a download_depot command for the version you wish to download in the text box.
 The format is: `download_depot appId depotId targetManifestId`.
 Satisfactory's appId is `526870`.
-For example, the command to download Update 8.1 would be `download_depot 526870 526871 3616459586959574031`
+For example, the command to download Update 8.3 would be `download_depot 526870 526871 3783838377491884235`
 
 6. Make sure you have enough space (~30GB) in **the drive that you installed Steam on**.
 **Important note - this is NOT your game installation folder!**
@@ -584,6 +591,9 @@ Continuing the previous examples, the folder would be
 `C:\Program Files (x86)\Steam\steamapps\content\app_526870\depot_526871`.
 This will take a while (the whole game is being downloaded again from scratch), and **there's no progress bar.**
 Once it's done, an extra line will appear in the Steam console announcing the command's completion.
+If you get an "access denied" error, make sure you have formatted the command correctly and try again.
+The command can still fail with no formatting issues;
+if this occurs, you will have to run the command again until it succeeds.
 
 8. Open up your **game installation folder** - not the depot this time.
 You can find your folder by following link:#Files_GameInstall[these directions].
