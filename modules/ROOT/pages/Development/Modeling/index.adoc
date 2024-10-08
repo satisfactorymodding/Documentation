@@ -23,7 +23,7 @@ Weighted Vertex Normals::
 PBR Materials::
   Use a collection of textures together to better represent metal vs plastic vs rock etc.
   There's many tools to help create PBR textures like Substance or Quixel.
-  https://academy.substance3d.com/courses/the-pbr-guide-part-1[Indepth Article]
+  https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1[Indepth Article]
 * {blank}
 +
 Texture Atlases::
