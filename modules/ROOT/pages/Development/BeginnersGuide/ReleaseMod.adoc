@@ -107,13 +107,13 @@ The `http://` / `https://` prefix is optional.
 === Special Fields
 
 Note that SML and SMR require you to include additional fields in your plugin descriptor file.
-
-The most important of these is a mod dependency list and a SemVersion for the mod.
+The most important of these are the SemVersion, GameVersion, and mod dependency list.
 
 [WARNING]
 ====
-Make sure that you have SML listed as an item in the Plugins field,
-as explained below.
+Make sure that you have SML listed
+in the Plugins field as explained below,
+unless your mod is xref:Development/Satisfactory/ModsWithoutSML.adoc[specifically designed to work without SML].
 ====
 
 Below is a description of all extra fields SML and SMR require:
@@ -243,13 +243,15 @@ See the Plugins SemVersion item above for the format for this field.
 {blank} +
 This field is optional, and defaults to your SemVersion if unspecified. If you aren't using this behavior, you should exclude the field.
 
-|AcceptsAnyRemoteVersion
-| When `true`, when a multiplayer client joins,
-the check for if both host and client have the mod is installed is skipped.
-You can use this to create client-side or server-side only mods.
+|RequiredOnRemote
+| Controls if the mod is required to be on both sides in multiplayer.
+When a client connects, the host checks its own mod list against what the client is connecting with.
+If the host's mod has `RequiredOnRemote` set to true,
+`RemoteVersionRange` is used to check the client's reported version to ensure it's compatible.
+The reverse (client checking host) is not currently implemented but may be in the future.
 {blank} +
 {blank} +
-This field is optional, and defaults to `false` if unspecified. If you aren't using this behavior, you should exclude the field.
+This field is optional, and defaults to `true`. If you aren't using this behavior, you should exclude the field.
 
 |===
 
@@ -261,6 +263,8 @@ UBT Module in the Modules plugin descriptor section.
 The examples below will demonstrate this.
 
 === Examples
+
+// TODO update these for 1.0
 
 Some example `.uplugin` s are presented here in their JSON format.
 
@@ -392,16 +396,17 @@ directions to install it from the zip file.
 == Package for Release
 
 Once you're ready to release your mod, you will need to package your mod for uploading.
-It's time to make use of the Release Targets and "Alpakit Release" button that we've been ignoring until now.
+It's time to make use of the Release Targets and "Alpakit Release" tab that we've been ignoring until now.
 
 === Release Targets Explained
 
 As you may be aware, there are multiple different versions of Satisfactory you can download.
 
-The distinction between the Early Access (EA, the main branch) and Experimental (EXP, early feature testing) branch
+The distinction between the Stable (the main branch)
+and Experimental (EXP, early feature testing) branch
 is relatively well known.
 However, there are also are also different builds of the game for different platforms (targets).
-There are EA and EXP variants of each of these:
+There are Stable and EXP variants of each of these:
 
 - `Windows` - Client version of Satisfactory, the one you launch to play the game. People playing the game on Linux still use this version, they run it through a compatibility/emulation layer.
 - `Windows Server` - Windows Dedicated Server version of Satisfactory. It doesn't have a visual interface and is used to run servers from Windows, which is somewhat uncommon.
