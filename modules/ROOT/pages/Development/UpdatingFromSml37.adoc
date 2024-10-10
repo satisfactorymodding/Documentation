@@ -89,19 +89,6 @@ read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Witho
 The following features are not quite ready to use yet.
 This section will change often, so be sure to come back here and check as you update your mods!
 
-=== 'New Game' Menu Customizations
-
-SML's changes to the New Game menu were broken by its 1.0 rework.
-This affects any mod that introduced new Levels
-and the ability to configure xref:Development/ModLoader/SessionSettings.adoc[Session Settings] before world creation.
-This will be fixed before SML 3.8's public release.
-
-=== Can't Join Dedicated Servers
-
-Trying to join a dedicated server with SML installed will currently always crash the client
-with an error related to null RCO when calling RequestAllSessionSettings from ASessionSettingsSubsystem::Init.
-This will be fixed before SML 3.8's public release.
-
 === Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
 
 See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
@@ -119,6 +106,14 @@ Session Settings still function correctly - their values are saved.
 This is a bug with the base game.
 The only known workaround is to have at least 1 item in the Cost.
 https://www.answeroverflow.com/m/1290190197501460521[Source].
+
+=== Content Bundle Cooking
+
+The optimal way to add modded content to the game world (like ore nodes, deposits, etc.)
+is to use the Content Bundle system,
+but Unreal currently refuses to cook content bundles unless the world is also cooked.
+This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
+and will be fixed in a future SML release.
 
 == Required Changes
 
@@ -216,6 +211,18 @@ Great for if you started packing something, went to do something else, and came 
 
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
+
+=== CppStandard 
+
+1.0 does not specify a CppStandard version in the `.Target.cs` file
+which changes the supported {cpp} language features back to {cpp} 17,
+causing some code that built properly in Update 8 to no longer build.
+
+This can be fixed by replacing unsupported features with supported ones
+or by adding `CppStandard = CppStandardVersion.Cpp20;` to your mods' `.Build.cs` file.
+
+This change was made because some UE modules do not build under Cpp20,
+making it unsafe to compile the whole game under that version.
 
 // cspell:ignore CSSUHT
 === Remove Old CSSUHTPlugin files
