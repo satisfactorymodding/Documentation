@@ -179,7 +179,7 @@ Each plugin should be listed as an object with the following properties:
 !Parameter !Description of Function
 
 !Name
-! The xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference of the plugin]
+! The xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference of the plugin]
 you are listing as a dependency.
 {blank} +
 {blank} +

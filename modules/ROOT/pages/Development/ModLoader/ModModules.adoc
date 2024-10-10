@@ -84,7 +84,7 @@ and then do your custom initialization logic.
 == Types of Modules
 
 It's highly suggested that you give your mod modules names that include their owning mod's
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference].
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference].
 This helps with telling what module belongs to what mod when you have multiple mods loaded in the editor,
 and it makes them easier to identify in crash logs.
 

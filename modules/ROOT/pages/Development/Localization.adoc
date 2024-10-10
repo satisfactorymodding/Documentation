@@ -108,7 +108,7 @@ To view your target, click on its name in the table row.
 image:L10n/ViewTarget.png[Target row hovered]
 
 If the target's name is not already your
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference],
 rename it to match.
 
 image:L10n/RenameTarget.png[Rename your target]

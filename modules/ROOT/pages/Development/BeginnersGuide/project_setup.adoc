@@ -417,7 +417,7 @@ Right now you should see two items in a searchable list -
 `Example Mod (ExampleMod)` and `Satisfactory Mod Loader (SML)`.
 This is the list of all mods present in your project.
 They are listed first by friendly name and then by
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference]
 in parentheses.
 Once you have created a mod, it will appear in the list automatically.
 
@@ -452,7 +452,7 @@ If you ever need to uninstall one of the mods you've packaged,
 simply go to your
 xref:faq.adoc#Files_Mods[installation's Mods folder]
 and delete the folder named with the
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference]
 of the mod you wish to uninstall.
 
 == (Optional) Packaging SML

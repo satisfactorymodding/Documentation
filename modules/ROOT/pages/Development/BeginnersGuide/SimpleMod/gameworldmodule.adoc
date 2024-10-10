@@ -3,6 +3,7 @@
 To get started with our mod, we'll need to make a new Unreal plugin using Alpakit's wizard.
 Every mod you make should be a separate Unreal plugin.
 
+[id="ModReference"]
 == Mod Reference
 
 We need to talk about the concept of a "mod reference" before we continue
@@ -63,7 +64,7 @@ Select the `Blueprint Only` template.
 
 The wizard will also prompt you for a Mod Name.
 The name of your plugin _must_ be your mod's
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference].
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference].
 For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
@@ -73,7 +74,7 @@ Optionally, fill out the "Descriptor Data" section, or leave it blank since it c
 [WARNING]
 ====
 Be sure to read the notes on
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod References]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod References]
 if you have not yet done so.
 It is critical that your mod reference follows these formatting rules.
 ====

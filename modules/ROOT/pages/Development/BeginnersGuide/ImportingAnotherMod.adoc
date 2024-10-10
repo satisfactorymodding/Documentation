@@ -51,7 +51,7 @@ but consider cloning the repository to make it easy to update your copy with fut
 Regardless of if you extracted a zip or cloned,
 make sure that the name of folder containing the mod's `.uplugin` file
 exactly matches the mod's
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference]
  - the filename of the mod's `.uplugin` file.
 Otherwise the editor will not properly identify the plugin.
 
@@ -75,7 +75,7 @@ You can find out what other mods a mod depends on via the "Mod Dependency" table
 or by downloading a version and looking at the dependencies section of the `.uplugin` file contained inside.
 
 This section lists other mods by their
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[mod reference].
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference].
 You can learn more about this section on the
 xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[Releasing Your Mod page].
 
