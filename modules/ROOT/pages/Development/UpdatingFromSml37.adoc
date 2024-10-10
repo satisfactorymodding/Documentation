@@ -86,7 +86,7 @@ https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/277[long-sta
 === Modding Without SML
 
 Although 99% of mods should still depend on SML for its feature set,
-Ficsit.app now supports uploading mods without an SML dependency.
+Ficsit.app now supports uploading mods without an SML as a runtime dependency.
 If you think your mod is part of the 1%,
 read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
 
@@ -94,6 +94,12 @@ read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Witho
 
 TODO More info and examples are needed.
 https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439224
+
+=== Original Copies of Materials
+
+Coffee Stain has shared the source code for many of the game's material assets with us.
+This enables us to get better content previews in the editor.
+They are now distributed with the Starter Project instead of AngryBeaver's recreations.
 
 == Not Done Yet
 
@@ -125,6 +131,10 @@ is to use the Content Bundle system,
 but Unreal currently refuses to cook content bundles unless the world is also cooked.
 This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
 and will be fixed in a future SML release.
+
+The next best way is to use sublevel spawning. Here is an example from Kyrium of how to do that:
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67
 
 == Required Changes
 
