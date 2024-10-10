@@ -40,7 +40,7 @@ As such, the "norm" going forward is for **all mods to be compatible with dedica
 unless they have a really good reason not to be,
 in which case that reason should probably be explained on the mod page so people bug you about it less.
 
-Don't worry, changes to Alpakit make this process as seamless as possible.
+Don't worry, changes to Alpakit described later on this page make this process as seamless as possible.
 
 [IMPORTANT]
 ====

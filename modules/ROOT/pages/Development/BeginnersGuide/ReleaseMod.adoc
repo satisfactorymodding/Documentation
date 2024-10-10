@@ -264,8 +264,6 @@ The examples below will demonstrate this.
 
 === Examples
 
-// TODO update these for 1.0
-
 Some example `.uplugin` s are presented here in their JSON format.
 
 +++ <details><summary> +++
