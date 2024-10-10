@@ -1,20 +1,7 @@
 = Installing Mods on Dedicated Servers
 
-[IMPORTANT]
-====
-Dedicated Server support is still a work in progress,
-which is why we haven't publicly announced it yet!
-
-Expect changes to the setup process as functionality is finalized
-and be patient as mods are updated 
-====
-
-SML3.7.0 enables the compilation of mods for Dedicated Servers.
-Keep in mind that Coffee Stain considers the base game's dedicated servers to be
-an experimental, incomplete feature, so modded dedicated servers are experimental squared!
-Expect bugs and test carefully to determine if bugs are caused by the base game or by mods
-before reporting them on the https://questions.satisfactorygame.com/[QA site] (base-game)
-or the Discord (modded) respectively.
+SML3.7.0 enabled the compilation of mods for Dedicated Servers
+and SMM3 makes it easy to manage mods on a server, be it a local server or hosted remotely.
 
 == Obtain a Server
 
@@ -84,26 +71,11 @@ You could also install ficsit-cli on the server and interact with its file syste
 [id="GetModManager_SMM"]
 === Satisfactory Mod Manager
 
-[IMPORTANT]
-====
-Since dedicated server support is still a work in progress,
-there are TWO different versions of Satisfactory Mod Manager available!
-
-- SMM2 is the one automatically downloaded when you visit https://smm.ficsit.app/. It doesn't support dedicated servers.
-- SMM3 is a pre-release you must manually download from https://github.com/satisfactorymodding/SatisfactoryModManager/releases.
-
-You must download SMM3 to manage dedicated servers via SMM.
-If you don't want to use SMM3 yet, use ficsit-cli instead.
-
-image:DedicatedServers/SMM2_vs_SMM3.png[Satisfactory Mod Manager 2 vs 3 comparison]
-====
-
 If using the Mod Manager to manage your server:
 
 . xref:ForUsers/SatisfactoryModManager.adoc[Download and install the Satisfactory Mod Manager].
 . Open the Mod Manager.
 . In the left panel, under Other, select "Manage Servers".
-   * Don't see this option? Follow the steps in the "Important" box above to get the right version of Satisfactory Mod Manager.
    * Note that if your server is locally installed through Steam or Epic, the mod manager may automatically detect it, allowing you to skip the below step of manually adding it.
 . Enter server connection details in the popup window.
    * Decide what method to select and what to enter
