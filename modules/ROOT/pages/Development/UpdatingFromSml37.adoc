@@ -202,6 +202,9 @@ you should now use:
 * Custom Path: `powershell`
 * Custom Launch Args: `C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
 
+The Quick Launch Script has also been updated to support 1.0 game targets and had its feature set expanded.
+Get the new script xref:Development/TestingResources.adoc#LaunchScript[here].
+
 ==== New Alpakit Log Feature: Time Since Last Pack
 
 The Alpakit Log now displays the time a last successful pack was completed.
@@ -355,3 +358,8 @@ xref:SMLChatCommands.adoc#EnableCheats[enabling cheats]
 then running the `Cheats` console command.
 
 Mods can extend the Cheat Board via the approach described xref:Development/Satisfactory/CheatBoard.adoc[here].
+
+=== ADA Message Format Changed
+
+The system through which ADA messages are played has been totally reworked for 1.0.
+Find info on the new structure on the xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages] page.

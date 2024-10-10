@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-The new plugin localization system is not ready for use.
+The new plugin localization system is not fully ready for use.
 You may encounter issues with translation data not saving,
 and the system for importing and exporting translations to the community translation portal is not yet complete.
 

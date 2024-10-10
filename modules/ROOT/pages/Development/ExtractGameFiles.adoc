@@ -276,6 +276,15 @@ After optionally previewing the sound file in the player,
 right click on it in the player's playlist and select Save,
 prompting a system dialog to select a save location.
 
+[WARNING]
+====
+Some users have reported issues with FModel's audio player, causing it to display sounds as `.wem.wem` files and not play them.
+We haven't found a cause for this issue.
+See https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320[this Discord conversation] for more information (required mod developer discord role to view).
+
+If you are affected by this issue, try using the Bulk Audio Renamer approach below.
+====
+
 === Bulk Audio Renamer
 
 // TODO unclear why MrCheese said that FModel can't play sound files since release.

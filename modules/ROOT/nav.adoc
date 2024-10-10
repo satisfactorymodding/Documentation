@@ -69,7 +69,7 @@
             **** xref:Development/Satisfactory/Inventory.adoc[Inventories and Items]
             **** xref:Development/Satisfactory/Schematic.adoc[Schematic]
             **** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
-// TODO ADA **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
+            **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
             **** xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
         *** Game Systems
             **** xref:Development/Satisfactory/PowerNetwork.adoc[Power Network]
