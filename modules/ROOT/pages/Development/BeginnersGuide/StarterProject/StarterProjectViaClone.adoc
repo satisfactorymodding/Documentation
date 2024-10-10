@@ -9,18 +9,21 @@ or you will have to repeat some of the setup process again.
 
 == What Branch to Clone
 
+// When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *development* version of the docs.
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
 
 Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+
+Clone the **`master` branch** to develop a mod for SML 3.8.0.
+// You should clone the **`dev` branch** because SML 3.8.? is not released yet.
 
 // You should clone either the **`dev` branch** or the **`master` branch**.
 // Of those two, you probably want whichever branch was pushed to most recently, which you can see
 // https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 
-// If you're still uncertain which to clone, ask us on the Discord.
-
-You should clone the **`dev` branch** because SML 3.8 is not released yet.
+If you're uncertain about which branch to clone, **ask us on the Discord**.
 ====
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
@@ -36,6 +39,12 @@ xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter
 about good long-term homes for your starter project files.
 
 The directory is ready for use as soon as the clone is complete.
+
+[IMPORTANT]
+====
+Many Git clients will automatically clone the repository's default branch.
+Make sure it has actually cloned the branch you intended to before proceeding.
+====
 
 == Next Steps
 

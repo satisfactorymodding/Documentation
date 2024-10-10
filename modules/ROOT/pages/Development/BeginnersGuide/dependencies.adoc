@@ -178,8 +178,10 @@ The below box will contain a link to the specific release that you should downlo
 It's imperative that you download the correct engine for the version of the game you're modding
 or you will have to repeat a large amount of the setup process again.
 
+// When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *development* version of the docs.
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
 
 Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
