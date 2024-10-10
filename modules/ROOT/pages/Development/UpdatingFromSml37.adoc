@@ -28,15 +28,29 @@ This section talks about the new features that SML 3.8 brings to the table.
 Note that the game itself has also brought many new features to the table as well,
 which won't be covered here.
 
+=== Modded Dedicated Server Support Public Release
+
+Modded dedicated server support has been in the oven for ... a long time.
+End users that wanted to mod dedicated servers have had to manually download SMM3 betas to do so.
+
+With the official release of SMM v3.0.0, all end users can now easily manage mods on local and remote dedicated servers.
+Plus, changes in Satisfactory 1.0 are forcing all mods to be recompiled.
+
+As such, the "norm" going forward is for **all mods to be compatible with dedicated servers**
+unless they have a really good reason not to be,
+in which case that reason should probably be explained on the mod page so people bug you about it less.
+
+Don't worry, changes to Alpakit make this process as seamless as possible.
+
+[IMPORTANT]
+====
+Make sure to enable all Release Targets that your mod is compatible with so it gets built for Windows and Linux servers!
+====
+
 === Session Setting Replication
 
 SML correctly handles Session Setting replication to multiplayer clients now.
 Thanks SirDigby and Mircea for implementing this.
-
-=== Access Transformers on Structs
-
-TODO More info and examples needed
-https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439224
 
 === SML Capable of Running Client-Side Only
 
@@ -75,6 +89,11 @@ Although 99% of mods should still depend on SML for its feature set,
 Ficsit.app now supports uploading mods without an SML dependency.
 If you think your mod is part of the 1%,
 read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
+
+=== Access Transformers on Structs
+
+TODO More info and examples are needed.
+https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439224
 
 == Not Done Yet
 
@@ -185,6 +204,11 @@ You can open the new Alpakit windows via these buttons in Unreal Editor's toolba
 
 image:Development/UpdatingGuides/AlpakitButtons38.png[Screenshot of new Alpakit buttons]
 
+[IMPORTANT]
+====
+Make sure to enable all Release Targets that your mod is compatible with so it gets built for Windows and Linux servers!
+====
+
 ==== Launch Game Type: Custom Split into Path and Arguments
 
 If you were previously using, for example,
@@ -192,7 +216,7 @@ If you were previously using, for example,
 you should now use:
 
 * Custom Path: `powershell`
-* Custom Launch Args: `C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
+* Custom Launch Args: `C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch experimental -loadLatestSave`
 
 The Quick Launch Script has also been updated to support 1.0 game targets and had its feature set expanded.
 Get the new script xref:Development/TestingResources.adoc#LaunchScript[here].

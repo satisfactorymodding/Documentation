@@ -123,7 +123,8 @@ There are also three kinds of mods with respect to multiplayer:
 * Client-side mods
 ** This mod only needs to be present on the client side to work - the host does not need to have it installed. However, the host having it installed may enable additional functionality for clients.
 
-Assume that mods are both-sided unless explicitly stated otherwise by the mod page or dedicated server compatibility grid.
+Assume that mods are both-sided unless explicitly stated otherwise by the mod page or the
+xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[dedicated server compatibility grid].
 
 == How do I share my mods with my friends for multiplayer?
 
@@ -138,9 +139,8 @@ _Or: How do I tell if a mod works on Dedicated Servers?_
 
 In general, mods do work on dedicated servers, but exact support will vary depending on the mod.
 See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
-The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[Installing Mods section]
+The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport['Checking if a Mod Supports Dedicated Servers' section]
 describes how to tell if an individual mod supports Dedicated Servers.
-
 
 == Are Satisfactory mods safe?
 
