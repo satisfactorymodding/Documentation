@@ -269,53 +269,58 @@ The examples below will demonstrate this.
 Some example `.uplugin` s are presented here in their JSON format.
 
 +++ <details><summary> +++
-Example Blueprint mod .uplugin:
+Example Blueprint only mod .uplugin:
 +++ </summary><div> +++
-....
+
+```json
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "6.2.1",
 	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random Blueprint mod.",
+	"VersionName": "6.2.1",
+	"FriendlyName": "Example Blueprint Only Mod",
+	"Description": "An example of a .uplugin for a mod that contains only Blueprint content",
 	"Category": "Modding",
 	"CreatedBy": "Satisfactory Modding Team",
-	"CreatedByURL": "https://ficsit.app/",
-	"DocsURL": "https://docs.ficsit.app/",
+	"CreatedByURL": "https://github.com/satisfactorymodding/SatisfactoryModLoader",
+	"DocsURL": "https://docs.ficsit.app",
 	"MarketplaceURL": "",
 	"SupportURL": "",
 	"CanContainContent": true,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"LocalizationTargets": [
+		{
+			"Name": "ExampleMod",
+			"LoadingPolicy": "Always"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.6.1",
-			"Enabled": true
-		},
-		{
-			"Name": "DependencyMod",
-			"SemVersion": "^1.3.0",
-			"Enabled": true
+			"Enabled": true,
+			"SemVersion": "^3.8.0"
 		}
-	]
+	],
+	"GameVersion": ">=365306"
 }
-....
+```
+
 +++ </div></details> +++
 
 +++ <details><summary> +++
 Example {cpp} and Blueprint mod .uplugin:
 +++ </summary><div> +++
-....
+
+```json
 {
 	"FileVersion": 3,
 	"Version": 6,
 	"VersionName": "6.2.1",
 	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random example C++ and Blueprint mod.",
+	"FriendlyName": "Example Hybrid Mod",
+	"Description": "An example of a .uplugin for a mod that contains both Blueprint content and a C++ module",
 	"Category": "Modding",
 	"CreatedBy": "Satisfactory Modding Team",
 	"CreatedByURL": "https://ficsit.app/",
@@ -328,7 +333,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "ExampleMod",
+			"Name": "ExampleHybridMod",
 			"Type": "Runtime",
 			"LoadingPhase": "PostDefault"
 		}
@@ -336,7 +341,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.6.1",
+			"SemVersion": "^3.8.9",
 			"Enabled": true
 		},
 		{
@@ -344,9 +349,11 @@ Example {cpp} and Blueprint mod .uplugin:
 			"SemVersion": "^1.3.0",
 			"Enabled": true
 		}
-	]
+	],
+	"GameVersion": ">=365306"
 }
-....
+```
+
 +++ </div></details> +++
 
 === SMR UPlugin Validator
@@ -438,7 +445,7 @@ This zip file contains all of the mods' selected targets in one file ready to be
 == Last Chance to Change Your Mod Reference
 
 As mentioned on the
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Mod Reference section of the Getting Started guide],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference section of the Getting Started guide],
 once you release your mod, you can no longer change its Mod Reference.
 
 If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
