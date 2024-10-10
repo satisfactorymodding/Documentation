@@ -40,6 +40,7 @@ jobs:
         with:
           # TODO there surely must be a better way to do this
           # exclude the main docs dir from this check to avoid doing work twice
+          # maybe use separate lychee configs to use their exclude_path option?
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
           fail: false
 

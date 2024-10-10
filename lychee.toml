@@ -33,13 +33,8 @@ exclude = [
     # Times out despite being valid
     "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1",
     # Pages often time out and Shouldn't™ ever get deleted anyways
-    "https://web.archive.org/web/"
+    "https://web.archive.org/web/",
 ]
 
 # Exclude these filesystem paths from getting checked.
-# TODO find a better way to handle sub-mods, as they currently must be ignored here
-# else they'll fail the the whole build if they have broken links.
-exclude_path = [
-    "./build/site/ficsit-networks/",
-    "./build/site/ficsitremotemonitoring/"
-]
+exclude_path = []
