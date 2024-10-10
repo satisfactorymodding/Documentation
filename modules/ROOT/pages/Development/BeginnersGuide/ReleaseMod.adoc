@@ -107,13 +107,13 @@ The `http://` / `https://` prefix is optional.
 === Special Fields
 
 Note that SML and SMR require you to include additional fields in your plugin descriptor file.
-
-The most important of these is a mod dependency list and a SemVersion for the mod.
+The most important of these are the SemVersion, GameVersion, and mod dependency list.
 
 [WARNING]
 ====
-Make sure that you have SML listed as an item in the Plugins field,
-as explained below.
+Make sure that you have SML listed
+in the Plugins field as explained below,
+unless your mod is xref:Development/Satisfactory/ModsWithoutSML.adoc[specifically designed to work without SML].
 ====
 
 Below is a description of all extra fields SML and SMR require:
@@ -146,7 +146,19 @@ Note that `1.10.0` is a valid semver version,
 `2.0.0` does not necessarily have to come after `1.9.0`.
 {blank} +
 {blank} +
-This field is required, and should exactly match the `VersionName` field. The editor will prevent you from packaging your mod if an invalid value is specified.
+This field is required, and should exactly match the `VersionName` field.
+The editor will prevent you from packaging your mod if an invalid value is specified.
+
+|GameVersion
+| Version range specifier for the game build version number this mod was developed for/tested on.
+Since we don't know what future game build numbers will be, only minimum ranges (ex. `>=something`) are useful for now.
+For example, `>=273254` allows https://satisfactory.wiki.gg/wiki/Patch_0.8.3.3[Patch 0.8.3.3] and any build more recent than.
+{blank} +
+{blank} +
+Alpakit will produce a warning if this field is out of date; clicking the warning will update it for you.
+{blank} +
+{blank} +
+SML checks this field at runtime and will prevent the game from launching if the game version does not match this range.
 
 |Plugins
 | Additional functionality has been added to the regular uplugin Plugins array. 
@@ -156,7 +168,9 @@ If you add a plugin with a Mod Reference,
 this basically makes the listed mod a dependency for your mod.
 {blank} +
 {blank} +
-**The SML plugin should also always be listed here,**
+
+Unless you are creating a xref:Development/Satisfactory/ModsWithoutSML.adoc[mod separate from SML],
+**the SML plugin should basically always be listed here,**
 allowing you specify what SML versions your mod supports.
 Each plugin should be listed as an object with the following properties:
 
@@ -165,7 +179,7 @@ Each plugin should be listed as an object with the following properties:
 !Parameter !Description of Function
 
 !Name
-! The xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference of the plugin]
+! The xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference of the plugin]
 you are listing as a dependency.
 {blank} +
 {blank} +
@@ -229,13 +243,15 @@ See the Plugins SemVersion item above for the format for this field.
 {blank} +
 This field is optional, and defaults to your SemVersion if unspecified. If you aren't using this behavior, you should exclude the field.
 
-|AcceptsAnyRemoteVersion
-| When `true`, when a multiplayer client joins,
-the check for if both host and client have the mod is installed is skipped.
-You can use this to create client-side or server-side only mods.
+|RequiredOnRemote
+| Controls if the mod is required to be on both sides in multiplayer.
+When a client connects, the host checks its own mod list against what the client is connecting with.
+If the host's mod has `RequiredOnRemote` set to true,
+`RemoteVersionRange` is used to check the client's reported version to ensure it's compatible.
+The reverse (client checking host) is not currently implemented but may be in the future.
 {blank} +
 {blank} +
-This field is optional, and defaults to `false` if unspecified. If you aren't using this behavior, you should exclude the field.
+This field is optional, and defaults to `true`. If you aren't using this behavior, you should exclude the field.
 
 |===
 
@@ -251,53 +267,58 @@ The examples below will demonstrate this.
 Some example `.uplugin` s are presented here in their JSON format.
 
 +++ <details><summary> +++
-Example Blueprint mod .uplugin:
+Example Blueprint only mod .uplugin:
 +++ </summary><div> +++
-....
+
+```json
 {
 	"FileVersion": 3,
 	"Version": 6,
-	"VersionName": "6.2.1",
 	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random Blueprint mod.",
+	"VersionName": "6.2.1",
+	"FriendlyName": "Example Blueprint Only Mod",
+	"Description": "An example of a .uplugin for a mod that contains only Blueprint content",
 	"Category": "Modding",
 	"CreatedBy": "Satisfactory Modding Team",
-	"CreatedByURL": "https://ficsit.app/",
-	"DocsURL": "https://docs.ficsit.app/",
+	"CreatedByURL": "https://github.com/satisfactorymodding/SatisfactoryModLoader",
+	"DocsURL": "https://docs.ficsit.app",
 	"MarketplaceURL": "",
 	"SupportURL": "",
 	"CanContainContent": true,
 	"IsBetaVersion": false,
 	"IsExperimentalVersion": false,
 	"Installed": false,
+	"LocalizationTargets": [
+		{
+			"Name": "ExampleMod",
+			"LoadingPolicy": "Always"
+		}
+	],
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.6.1",
-			"Enabled": true
-		},
-		{
-			"Name": "DependencyMod",
-			"SemVersion": "^1.3.0",
-			"Enabled": true
+			"Enabled": true,
+			"SemVersion": "^3.8.0"
 		}
-	]
+	],
+	"GameVersion": ">=365306"
 }
-....
+```
+
 +++ </div></details> +++
 
 +++ <details><summary> +++
 Example {cpp} and Blueprint mod .uplugin:
 +++ </summary><div> +++
-....
+
+```json
 {
 	"FileVersion": 3,
 	"Version": 6,
 	"VersionName": "6.2.1",
 	"SemVersion": "6.2.1",
-	"FriendlyName": "Example Mod",
-	"Description": "This is a random example C++ and Blueprint mod.",
+	"FriendlyName": "Example Hybrid Mod",
+	"Description": "An example of a .uplugin for a mod that contains both Blueprint content and a C++ module",
 	"Category": "Modding",
 	"CreatedBy": "Satisfactory Modding Team",
 	"CreatedByURL": "https://ficsit.app/",
@@ -310,7 +331,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "ExampleMod",
+			"Name": "ExampleHybridMod",
 			"Type": "Runtime",
 			"LoadingPhase": "PostDefault"
 		}
@@ -318,7 +339,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.6.1",
+			"SemVersion": "^3.8.9",
 			"Enabled": true
 		},
 		{
@@ -326,9 +347,11 @@ Example {cpp} and Blueprint mod .uplugin:
 			"SemVersion": "^1.3.0",
 			"Enabled": true
 		}
-	]
+	],
+	"GameVersion": ">=365306"
 }
-....
+```
+
 +++ </div></details> +++
 
 === SMR UPlugin Validator
@@ -339,7 +362,6 @@ You can paste in your uplugin file into the box on the right
 and it will display any error messages below the box.
 
 The validator isn't perfect, but it can help troubleshoot many errors that could occur during upload.
-
 If it fails validation, keep your eyes out for things like missing commas
 and mismatched braces and brackets.
 
@@ -347,83 +369,90 @@ Remember, you can totally avoid formatting concerns by using the Alpakit widget 
 
 Consider asking on the Discord if you get stuck on this step.
 
-== Exporting
+[id="ArchivedPluginsDirectory"]
+== How Mod File Exporting Works
 
-Up until this point, you have likely been using the Alpakit 'copy to mods directory' feature
+Up until this point, you have likely been using the Alpakit Dev 'copy to mods directory' feature
 to stage your mods files in game's folders for testing.
 
-Behind the scenes, using the 'Alpakit Dev' or the 'Alpakit!' (just this mod) buttons
+Behind the scenes, using the 'Alpakit Selected (Development)' or the 'Alpakit!' (just this mod) buttons
 generates a zip archive for you located at
 `<starter project folder>/Saved/ArchivedPlugins/YourModReference/YourModReference-TargetPlatformName.zip`.
 
 Note that this folder is in the **starter project's Saved folder**,
 not the Saved folder of any of your mods.
 
-This zip contains all of your mod's packaged files, although it does not contain any dependency mods -
-you must specify those via the system described in the link:#_your_mods_uplugin_file[uplugin section].
-
 Consider checking the zip's contents to see if they're what you expect.
 If for some reason you need extra files to be packaged into the mod, follow the directions
 xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_setup[here]
 to tell Alpakit to include them when building.
 
-== Sending Your Mod to Testers
-
-You may want to send out an early release of your mod to a few users you trust to test it before continuing.
-
-They will have to follow the xref:ManualInstallDirections.adoc[Manual Installation]
-directions to install it from the zip file.
-
 [id="PackageForUpload"]
 == Package for Release
 
 Once you're ready to release your mod, you will need to package your mod for uploading.
-It's time to make use of the Release Targets and "Alpakit Release" button that we've been ignoring until now.
+It's time to make use of the "Alpakit Release" tab that we've been ignoring until now.
+Open it by clicking the alpaca rocket button, or `File` > `Alpakit Release`.
 
 === Release Targets Explained
 
 As you may be aware, there are multiple different versions of Satisfactory you can download.
 
-The distinction between the Early Access (EA, the main branch) and Experimental (EXP, early feature testing) branch
+The distinction between the Stable (the main branch)
+and Experimental (EXP, early feature testing) branch
 is relatively well known.
 However, there are also are also different builds of the game for different platforms (targets).
-There are EA and EXP variants of each of these:
+There are Stable and EXP variants of each of these:
 
 - `Windows` - Client version of Satisfactory, the one you launch to play the game. People playing the game on Linux still use this version, they run it through a compatibility/emulation layer.
 - `Windows Server` - Windows Dedicated Server version of Satisfactory. It doesn't have a visual interface and is used to run servers from Windows, which is somewhat uncommon.
 - `Linux Server` - Linux Dedicated Server version of Satisfactory. This is what most dedicated servers will be running, especially those hosted by third party services.
 
+There are also slightly different versions of the Windows client for Steam and Epic.
 Your mod must be compiled in a slightly different way to be usable on each of these platforms,
 especially to be compatible with Linux Server.
-Thankfully, Alpakit handles compiling your mod for all 3 of these target platforms for you.
-However, while you are testing your mod locally in singleplayer,
+
+Thankfully, Alpakit handles compiling your mod for all 3 of these target platforms and 2 launcher variants for you!
+
+[NOTE]
+====
+While you are testing your mod locally in singleplayer,
 it's a waste of time to compile and package the code for the other platforms you aren't using.
-The "Alpakit Dev" and "Alpakit!" (just this mod) buttons follow your Dev Packaging Settings,
+That's why the 'Alpakit Selected (Development)' and development 'Alpakit!' (just this mod) buttons follow your Dev Packaging Settings,
 compiling just the target(s) you care about while testing.
+It also only compiles the Epic/Steam variant of the client when it can be detected from your "Copy to Game Path" value.
+====
 
-Now that we're ready for release
-we can use the Release Targets checkboxes to define which targets the mod is compatible with.
-If you leave out one of these targets, the mod will not on that platform!
-In most cases, especially for mods with no custom {cpp} code, you should check all 3 targets.
+=== Configuring Release Targets
 
-Pressing the Alpakit Release button will package all mods that you have checked in the leftmost column
-in the multi-target zip format that the Mod Repository is expecting.
-In the example image below, clicking Alpakit Release will package the SML and ExampleMod mods for all 3 release targets, skipping the second mod in the list.
+Before the mod can be released, use the Release Targets checkboxes to define which targets the mod is compatible with.
+If you leave out one of these targets, the mod will not work on that platform!
+
+[IMPORTANT]
+====
+In most cases, especially for mods with no custom {cpp} code, *_you should check all 3 Release Target checkboxes_*.
+This means your mod will run on game clients and dedicated servers.
+====
+
+=== Alpakit Release
+
+The 'Alpakit Selected (Release)' and release 'Alpakit!' (just this mod) buttons
+will compile and package mods for all targets into one multi-target zip file.
+In the example image below, clicking `Alpakit!` for ExampleMod builds it for all 3 targets.
 
 image:BeginnersGuide/AlpakitReleaseDemo.png[Alpakit Release with Example Mod and SML selected]
 
-Adjust the left column checkboxes so that only your mod is selected, then use the 'Alpakit Release' button.
-This will generate file in the same ArchivedPlugins folder mentioned earlier called `YourModReference.zip`.
-This zip file contains all of the mods' selected targets in one file ready to be uploaded to SMR.
+Once complete, find the completed package in the same link:#ArchivedPluginsDirectory[ArchivedPlugins folder mentioned earlier]
+called `YourModReference.zip`.
+This is the file you'll upload to the Mod Repository later.
 
 == Last Chance to Change Your Mod Reference
 
 As mentioned on the
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference section of the Getting Started guide],
 once you release your mod, you can no longer change its Mod Reference.
 
 If you decide to change it, you'll have to edit a number of files, most of which are described on that page.
-
 
 == Upload to Satisfactory Mod Repository
 

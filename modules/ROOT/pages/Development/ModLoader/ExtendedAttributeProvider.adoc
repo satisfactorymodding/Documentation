@@ -1,0 +1,20 @@
+= Extended Attribute Provider
+
+Introduced in SML3.8, `ISMLExtendedAttributeProvider` is an interface
+that allows any modded asset to offer additional data to other mod systems without involving a specific class in the hierarchy.
+
+Consider the base game's `FGItemDescriptorNuclearFuel` and `FGItemDescriptorBiomass` classes.
+Nuclear Fuel adds new 2 properties to the standard item descriptor, while Biomass adds none.
+However, because they are implemented as full classes, it's impossible to have an item which is both nuclear fuel and biomass.
+
+As an interface, the Extended Attribute Provider can be used without locking you out of using another class as the parent.
+
+== Usage
+
+To use the interface, implement it on your asset.
+
+For blueprints, this is done in `Class Settings` > (Interfaces subheading) `Implemented Interfaces` > `Add`.
+
+== Features
+
+As of SML3.8, the only system that uses this interface is the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry].

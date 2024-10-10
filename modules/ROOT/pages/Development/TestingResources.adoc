@@ -52,6 +52,19 @@ Now, when you launch the game, you should now see the Unreal Console appear as a
 
 image:TestingResources/Unreal-Console.png[image]
 
+== Cheats
+
+Functionality build into the game's
+xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
+and xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
+can expedite mod testing.
+
+== Developer Utility Mods
+
+A number of mods have been created that assist with mod development, debugging, and testing.
+Find them on ficsit.app by using the xref:ForUsers/Tags.adoc[Tag Filter] feature
+to view mods tagged `#developer-utility`.
+
 [id="LaunchScript"]
 == Quick Launch Script
 
@@ -70,58 +83,227 @@ https://pureinfotech.com/change-execution-policy-run-scripts-powershell/[modify 
 [source,ps1]
 ----
 param (
-	[string]$branch = "EA",
-	[switch]$multiplayer = $false,
-	[switch]$loadLatestSave = $false
+	[string]$launcher = "steam", # Default launcher, level 1 of GameDirs config option
+	[string]$side = "client", # Default client/server side, level 2 of GameDirs config option
+	[string]$branch = "stable", # Default branch, level 3 of GameDirs config option
+	[switch]$multiplayer = $false, # When true, enables WIP largely broken multiplayer feature and launches 2 copies of the game instead of 1
+	[switch]$loadLatestSave = $false, # When true, the game will automatically load into the last save file you played. This breaks some multiplayer functionality.
+	[switch]$waitForDebugger = $false, # Launch the game with the -WaitForDebugger flag, telling SML to hold the game's loading process to allow attaching a C++ debugger
+	[switch]$noExceptionHandler = $false, # Launch the game with the -NoExceptionHandler flag, enabling JIT debugging and disabling the UE crash reporter
+	[switch]$info = $false, # When true, print info about what copy of the game is being launched
+	[switch]$test = $false # When true, the game will not actually be launched. Required files still may be created based on other params
 )
 
-# Configure these to match your system and preferences
-$GameDir_EA = "C:\EpicGamesGames\SatisfactoryEarlyAccess"
-$GameDir_EXP = "C:\EpicGamesGames\SatisfactoryExperimental"
-$SaveFolder = "C:\Users\YourUserName\AppData\Local\FactoryGame\Saved\SaveGames\YourID"
-$Username1 = "Host" # Note - Unreal Engine 5 has broken the Username functionality, so this is currently ignored
+# ========================================================================================================================
+# Configure this section to match your system and preferences
+# ========================================================================================================================
+
+# Arguments to launch the game with
+$CommonArgs = "-EpicPortal", "-bUseIpSockets", "-Offline", "-log", "-NewConsole", "-nosplash"
+
+# Edit the below "path"s to contain your game paths for these possible install locations
+$GameDirs = @{
+	steam = @{
+		# Note: Steam only allows installing either client or server at a time
+		# The script doesn't know which branch you have selected in Steam's own UI
+		client = @{
+			steam = @{
+				# Example: "C:\Steam\steamapps\common\Satisfactory"
+				path = "UNSET"
+				exeName = "FactoryGameSteam"
+				appid = "526870"
+				# Example: 12345678910111213
+				savegameSubfolderName = "UNSET"
+			}
+		}
+		server = @{
+			steam = @{
+				# Example: "C:\Steam\steamapps\common\SatisfactoryDedicatedServer"
+				path = "UNSET"
+				exeName = "FactoryServer"
+				savegameSubfolderName = "UNSET"
+			}
+		}
+	}
+	epic = @{
+		client = @{
+			stable = @{
+				path = "UNSET"
+				exeName = "FactoryGameEGS"
+				# Example: 1234letters0and0numbers0longer12
+				savegameSubfolderName = "UNSET"
+			}
+			experimental = @{
+				path = "UNSET"
+				exeName = "FactoryGameEGS"
+				savegameSubfolderName = "UNSET"
+			}
+		}
+		server = @{
+			stable = @{
+				path = "UNSET"
+				exeName = "FactoryServer"
+				savegameSubfolderName = "UNSET"
+			}
+			experimental = @{
+				path = "UNSET"
+				exeName = "FactoryServer"
+				savegameSubfolderName = "UNSET"
+			}
+		}
+	}
+	# Optionally define additional -launcher options here. Hierarchy is -launcher > -side > -branch
+}
+
+# Multiplayer options (no longer work as of U8, kept here for future development)
+$Username1 = "Host"
 $Username2 = "Client"
-$CommonArgs = "-EpicPortal", "-NoSteamClient", "-NoMultiplayer", "-log"
+
+# Optionally configure the window size and position on the screen (2 sets for 2 copies when using -multiplayer)
+$Game1 = "$CommonArgs", "-Username=`"$Username1`""#, "-windowed", "-WinX=0", "-WinY=32", "ResX=960", "ResY=1040"
+$Game2 = "$CommonArgs", "-Username=`"$Username2`""#, "-windowed", "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
+
+# Location of your savegame root folder for usage with -loadLatestSave
+# The default should be fine but you can change it if desired
+# It gets combined with the savegameSubfolderName in the GameDirs data to make the full path
+$SaveFolder = "$($env:LOCALAPPDATA)\FactoryGame\Saved\SaveGames\"
+
+# ========================================================================================================================
 # End configuration section
+# ========================================================================================================================
 
 $AutolaunchTempFileName = "AutolaunchScript_Temp.ini"
 
-if ($branch -eq "EA") {
-	$GameDir = $GameDir_EA
-} elseif ($branch -eq "EXP") {
-	$GameDir = $GameDir_EXP
-} else {
-	Write-Error "Unknown branch type: '$branch'"
-	return
+function CreateSteamAppidFile([string]$filepath, [string]$appid) {
+	# Required to launch steam copies
+	$SteamAppidFilePath = "$filepath\Engine\Binaries\Win64\steam_appid.txt"
+	try {
+		# cast to void suppresses output
+		[void](New-Item $SteamAppidFilePath -ItemType File -Force)
+		Add-Content $SteamAppidFilePath $appid
+	} catch {
+		Write-Error "Failed to create/modify steam appid file ($SteamAppidFilePath), try running script as admin"
+		Write-Error $_
+		exit 1
+	}
 }
 
-# You can optionally configure the window size and position on the screen per instance
-$Args1 = "$CommonArgs", "-Username=`"$Username1`""#, "-WinX=0", "-WinY=32", "ResX=960", "ResY=1040"
-
-# TODO multiplayer and loadLatestSave arguments incompatible. direct loading into a save does not allow joining via `open 127.0.0.1` in the client, the host must manually load another save file for that to be set up
-
-if ($loadLatestSave) {
-	# https://stackoverflow.com/questions/9675658/powershell-get-childitem-most-recent-file-in-directory
-	# Steam keeps a steam_autocloud.vdf file in here that isn't a savegame
-	$latestSaveFile = (Get-ChildItem $SaveFolder -Attributes !Directory -Filter *.sav | sort LastWriteTime | select -last 1)
-	$latestSaveFileName = $latestSaveFile.Basename
-
-	$AutolaunchFilePath = "$($env:LOCALAPPDATA)\FactoryGame\$AutolaunchTempFileName"
-	New-Item $AutolaunchFilePath -ItemType File -Force
-	Add-Content $AutolaunchFilePath "[/Script/EngineSettings.GameMapsSettings]"
-	Add-Content $AutolaunchFilePath "LocalMapOptions=??skipOnboarding?loadgame=$latestSaveFileName"
-	Add-Content $AutolaunchFilePath "GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level`nGameInstanceClass=/Script/FactoryGame.FGGameInstance"
-
-	$Args1 = "$Args1", "EngineINI=`"$AutolaunchFilePath`""
+function ResolveGamePathFromParams() {
+	$selectedLauncher = $GameDirs[$launcher]
+	if ($selectedLauncher -eq $null) {
+		Write-Error "Requested launcher '$launcher' was not defined in your script config options"
+		exit 1
+	}
+	$selectedSide = $selectedLauncher[$side]
+	if ($selectedSide -eq $null) {
+		Write-Error "Requested side '$side' was not defined in launcher '$launcher' in your script config options"
+		exit 1
+	}
+	$actualBranch = $branch
+	if ($launcher -eq "steam") {
+		Write-Debug "Script does not support multiple branches for steam, ignoring the -branch option of '$branch'"
+		$actualBranch = "steam"
+	}
+	$gamePathInfo = $selectedSide[$actualBranch]
+	if (($gamePathInfo -eq $null) -or ($gamePathInfo -eq "UNSET")) {
+		Write-Error "Requested branch '$actualBranch' for side '$side' was not defined in launcher '$launcher' in your script config options"
+		exit 1
+	}
+	$gameDir = $gamePathInfo["path"]
+	if ($gameDir -eq $null) {
+		Write-Error "Selected game install '$selectedLauncher > $selectedSide > $actualBranch' is missing 'path' data, it should be the root directory of the install"
+		exit 1
+	}
+	$gameEXE = $gamePathInfo["exeName"]
+	if ($gameEXE -eq $null) {
+		Write-Error "Selected game install '$selectedLauncher > $selectedSide > $actualBranch' is missing 'exeName' data, it should be the name of the executable file that launches the game"
+		exit 1
+	}
+	if (-not ($gamePathInfo["appid"] -eq $null)) {
+		CreateSteamAppidFile -filepath $gameDir -appid $gamePathInfo["appid"]
+	}
+	return $gamePathInfo
 }
 
-$Args2 = "$CommonArgs", "-Username=`"$Username2`""#, "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
+$gamePathInfo = ResolveGamePathFromParams
+
+if ($info) {
+	Write-Output "Using game install:"
+	Write-Output $gamePathInfo
+}
+
+
+function PrepareArgs([string]$baseArgs, [switch]$applySpecial, [System.Collections.Hashtable]$pathInfo) {
+	$buildArgs = "$baseArgs"
+	
+	if ($applySpecial) {
+		if ($waitForDebugger) {
+			$buildArgs = "$buildArgs", "-WaitForDebugger"
+		}
+
+		if ($noExceptionHandler) {
+			$buildArgs = "$buildArgs", "-NoExceptionHandler"
+		}
+		
+		if ($loadLatestSave) {
+			$saveFolderUserId = $gamePathInfo["savegameSubfolderName"]
+			if (($saveFolderUserId -eq $null) -or ($saveFolderUserId -eq "UNSET")) {
+				Write-Error "Selected game install is missing 'savegameSubfolderName' data in your script config options. It should be the name of the subfolder within your save directory containing the save files you want to use with -loadLatestSave. Your same file directory was entered as: $SaveFolder"
+				exit 1
+			}
+			
+			$fullSaveFolder = "$SaveFolder\$saveFolderUserId"
+			
+			# https://stackoverflow.com/questions/9675658/powershell-get-childitem-most-recent-file-in-directory
+			# Steam keeps a steam_autocloud.vdf file in here that isn't a savegame
+			$latestSaveFile = (Get-ChildItem $fullSaveFolder -Attributes !Directory -Filter *.sav | sort LastWriteTime | select -last 1)
+			$latestSaveFileName = $latestSaveFile.Basename
+
+			$AutolaunchFilePath = "$($env:LOCALAPPDATA)\FactoryGame\$AutolaunchTempFileName"
+			
+			try {
+				# cast to void suppresses output
+				[void](New-Item $AutolaunchFilePath -ItemType File -Force)
+				Add-Content $AutolaunchFilePath "[/Script/EngineSettings.GameMapsSettings]"
+				Add-Content $AutolaunchFilePath "LocalMapOptions=??skipOnboarding?loadgame=$latestSaveFileName"
+				Add-Content $AutolaunchFilePath "GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level`nGameInstanceClass=/Script/FactoryGame.FGGameInstance"
+			} catch {
+				Write-Error "Failed to create/modify autolaunch file ($AutolaunchFilePath)"
+				Write-Error $_
+				exit 1
+			}
+
+			$buildArgs = "$buildArgs", "EngineINI=`"$AutolaunchFilePath`""
+			# $buildArgs = "$buildArgs", "EngineINI=`"C:\Git\SF_ModProject\RobWorkingDir\TestWorldAutoLaunch.ini`""
+		}
+	}
+	
+	return $buildArgs
+}
+
+$gameDir = $gamePathInfo["path"]
+$gameEXE = $gamePathInfo["exeName"]
+$GameString = "$($gameDir)\$($gameEXE).exe"
+
+$Game1 = PrepareArgs $Game1 -applySpecial
+$Game2 = PrepareArgs $Game2
 
 function BGProcess(){
-    Start-Process -NoNewWindow @args
+	if ($test) {
+		Write-Output "Test switch used, not actually launching the game"
+		Write-Output "Arguments for this game instance: "
+		Write-Output @args
+		return
+	} else {
+		Start-Process -NoNewWindow @args
+	}
 }
 
-BGProcess "$($GameDir)\FactoryGame.exe" $Args1
+BGProcess $GameString $Game1
+
+# TODO Multiplayer launch option is not working well right now
+# - As of Update 8, the username option no longer works
+# - Direct loading into a save does not properly set up a multiplayer session, meaning joining via `open 127.0.0.1` in the client won't work. the host must manually load another save file for that to be set up
 
 if ($multiplayer) {
 	sleep -m 5000
@@ -129,7 +311,7 @@ if ($multiplayer) {
 	return
 }
 
-BGProcess "$($GameDir)\FactoryGame.exe" $Args2
+BGProcess $GameString $Game2
 
 ----
 
@@ -140,11 +322,11 @@ Note that in order to use the branch feature you must have separate copies of th
 
 Assuming your powershell file is named `SFLaunch_Advanced`:
 
-- `.\SFLaunch_Advanced.ps1` will launch the Early Access version of the game
+- `.\SFLaunch_Advanced.ps1` will launch the Steam Client version of the game - whichever branch you have installed with Steam, since that's what the default arguments are set to.
 - `.\SFLaunch_Advanced.ps1 -loadLatestSave` will automatically load you into the last save file you made.
-- `.\SFLaunch_Advanced.ps1 -branch EXP` will launch the Experimental copy of the game
-- `.\SFLaunch_Advanced.ps1 -multiplayer` will launch two copies of the game
-- `.\SFLaunch_Advanced.ps1 -branch EXP -multiplayer` will launch two copies of the Experimental game
+- `.\SFLaunch_Advanced.ps1 -launcher epic -side server -branch experimental` will launch the Epic Games Experimental Dedicated Server
+- `.\SFLaunch_Advanced.ps1 -multiplayer` will launch two copies of the Steam game client
+- `.\SFLaunch_Advanced.ps1 -launcher epic -branch experimental -multiplayer` will launch two copies of the Epic Experimental game client
 
 Note that the `-multiplayer` flag is currently incompatible with the `-loadLatestSave` flag
 and that the `-loadLatestSave` flag requires
@@ -162,7 +344,7 @@ the game will create and load into a new save file instead.
 
 Unreal supports https://docs.unrealengine.com/4.26/en-US/ProductionPipelines/CommandLineArguments/[many]
 other command-line arguments, some of which may prove to be useful with MP testing.
-For example, `-WinX=0 -WinY=0` will open the game in the top left corner of the screen.
+For example, `-windowed -WinX=0 -WinY=0` will open the game in the top left corner of the screen.
 Similar arguments also exist for the console window (`ConsoleX` and `ConsoleY`).
 You can also specify what resolution you want the game to run at: `-WinX=1280 -WinY=720`.
 

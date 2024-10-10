@@ -39,13 +39,16 @@ If the folder doesn't exist yet, create it.
 
 [TIP]
 ====
-Note that this folder is within the FactoryGame folder and _not_ your game root folder -
+Note that this folder is within the FactoryGame folder and _not_ your game root folder,
 where it was in previous SML versions.
 ====
 
 When you're done, you should have this folder structure:
 
 image:ManualInstall/sml_folder_example.png[SML Folder]
+
+Make sure the name of the folder containing SML's mod files is named exactly `SML`.
+Folder names and levels of folder nesting matter, so make sure you have the correct structure.
 
 === Installing Your Mod of Choice
 
@@ -67,13 +70,16 @@ When you're done, you should have roughly the following folder structure:
 
 image:ManualInstall/mod_in_folder_example.png[A mod in the folder]
 
+Make sure the name of the folder containing the mod's files is named EXACTLY the same thing as the mod's uplugin file.
+Folder names and levels of folder nesting matter, so make sure you have the correct structure and names.
+
 [WARNING]
 ====
 SML will not fetch mod dependencies for you!
 
-That means if your mod has other mods as dependencies,
-you must track down all dependency mods yourself.
-This is another reason to use the mod manager instead,
+That means if the mod you're installing has other mods as dependencies,
+you must track down and manually install them all yourself.
+This is yet another reason to use the Mod Manager instead,
 as it will handle that for you.
 ====
 

@@ -34,16 +34,18 @@ and enter your game install directory as the "Directory"
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental`).
 Next, press the blue Plus button (NOT the OK button!) to add the game to the Detected Game dropdown,
 which should automatically select it.
+Back in the upper section, select `GAME_UE5_3 (536870960)` for the "UE Versions" selector.
+If this item doesn't appear in the list, ensure "Enable custom UE versions" is unchecked.
 After confirming that the game is selected, press the `OK` button.
 
-The program should launch and display `FactoryGame-Windows.pak` in the Archives tab list,
-along with the paks of any other mods you may have installed.
+The program should launch and display `FactoryGame-Windows.utoc` in the Archives tab list,
+along with the paks and utocs of any other mods you may have installed.
 If it opens another game instead,
 return to the directory selector and review the above steps.
 
 === Specify Custom Version and Mapping
 
-Unreal Engine 5 introduced changes in how assets are stored in pak files.
+Unreal Engine 5 changed how assets are stored in packaged files.
 You will need to provide FModel with extra information so that it can read the data correctly.
 Coffee Stain Studios kindly ships this extra information with the game files for us.
 
@@ -64,14 +66,12 @@ you will need to use another text editor such as https://notepad-plus-plus.org/[
 Windows 11's Notepad incorrectly loads the file with UTF-8 encoding
 and FModel will tell you that you broke the .json if you copy the contents over.
 
-To start loading this additional information, open FModel and navigate to `Settings` > `General`.
-In the "UE Versions" dropdown, select `GAME_UE5_2 (536870944)`,
+To start loading this additional information, open FModel and navigate to `Settings` > `General`,
 then press the `Custom Versions` button in the "Version Configuration" row
 which opens a new text editing window.
 
 Delete the text contents of the popup window
-and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder. 
-(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\CustomVersions.json`),
+and replace it with the copied contents of the `CustomVersions.json` file from your Community Resources folder,
 then press `OK` to save your changes.
 
 [WARNING]
@@ -83,7 +83,7 @@ image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
 ====
 
 Back on the Settings screen, check the box for "Local Mapping File"
-and then enter the full path to your `FactoryGame.usmap` file
+and then enter the full path to your `FactoryGame.usmap` file, which is also in the Community Resources folder,
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
 
 Press `OK` to close the settings prompt,
@@ -99,10 +99,13 @@ To do so, return to the Settings menu and select `Models` on the left side.
 From here there are several fields to modify in order to properly export models for use with modeling software such as Blender:
 
 * `Model Export Directory` - This can be the same or different from the output directory you chose in the previous steps.
-* `Mesh Format` - Similarly to UModel, you will want to select `glTF 2.0` as your format
-* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export. 
-* `Texture Format` - Set to PNG so textures will be exported to a lossless format that supports transparency.
- 
+* `Mesh Format` - Select `glTF 2.0`
+* `Level of Detail Format` - Allows you to select how many LODs (Level of Distance meshes) of the model to export.
+  You usually want `First Level Only`, but you can always remove the other LODs in your modeling software later.
+* `Texture Format` - Set to `PNG` so textures will be exported to a lossless format that supports transparency.
+
+Press `OK` to save your changes.
+
 image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
 
 [WARNING] 
@@ -110,11 +113,214 @@ image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
 Any other changes made are at user discretion, and dependent on level of knowledge.
 ====
 
+=== Loading Archives
+
+Now that your settings have been configured correctly,
+navigate to the Archives tab in the FModel interface.
+This tab displays pak and utoc files located in subfolders of the directory you selected earlier.
+The base game's utoc, `FactoryGame-Windows.utoc`, should be present, as well as utocs for any mods you have installed.
+
+To load a utoc, select it and press the `Load` button.
+This enables browsing its contents in the Folders and Packages tab.
+
+== Extracting Specific Models or Textures
+
+[TIP]
+====
+If you're looking to use parts of base game machines such as item
+and fluid ports, power connectors, or more, consider taking a look at
+xref:CommunityResources/ModelingTools.adoc[AngryBeaver's ModelingTools].
+====
+
+This section explains how to use FModel to extract specific static meshes, skeletal meshes, and textures.
+Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
+
+The https://github.com/4sval/FModel/wiki[FModel Documentation]
+explains its various UI elements and how to navigate through the pak file.
+
+To test your settings, double-click the FactoryGame utoc in the Archives tab,
+which will take you to the Folders tab,
+then navigate to
+`FactoryGame/Content/FactoryGame/Resource/Parts/AIlimiter/Textures`.
+Double click on the `Textures` folder to be taken to the Packages tab,
+then open the `TX_AiLimiter_BC.uasset` file.
+
+This will open a two-pane display with text on the left and an image on the right.
+
+To export a file, such as this texture, right click it in the Packages tab's list
+and select the relevant option, in this case `Save Texture`.
+A message "[INF] Successfully saved TX_AiLimiter_BC.png" should appear in the log at the bottom of the window.
+This will export the file to your Output directory, which is configured in the `Settings` > `General` menu.
+You can control what file format assets will be exported in via the `Settings` > `Models` menu.
+
+You can click on the text `TX_AiLimiter_BC.png` in the log to open your system file browser to the containing folder.
+
+Opening a mesh asset, such as
+`FactoryGame/Content/FactoryGame/Equipment/JetPack/Mesh/SK_Jetpack_01.uasset`,
+will cause a 3D Viewer window to appear.
+
 === Searching for Files
 
 In order to perform a pak-wide search, navigate to `Packages` > `Search` or press the keybind (Ctrl+Shift+F).
 You can also search within a specific package by navigating to it in the Folders tab
 then using the search bar built into the Packages tab.
+
+FModel's search supports multiple terms, returning results that match all terms.
+For example, the search query `Cave Play` would find the assets
+// cspell:ignore Syntholm
+`Play_M_SmallCave_Parameter`, `Play_Boombox_JoelSyntholm_CaveFlowers` and more.
+
+Regular expression searches can be enabling via a button at the right side of the search bar.
+
+== Extracting Sounds/Music
+
+This section explains how to use FModel and wwiser to identify and extract sound files.
+Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
+Installing wwiser will be covered below.
+
+=== Context
+
+Because Satisfactory uses the Wwise sound system,
+game sound files are stored in a manner different from standard Unreal Engine sounds.
+
+Although all sound files are accessible via FModel,
+usage of Wwise means the files are not sensibly organized and do not have "nice" names,
+making finding the exact sounds you care about troublesome.
+Furthermore, the sound files are stored in their unmixed forms,
+meaning that the sound is lacking additional audio effects that are applied real-time in-game.
+
+Thankfully, another tool exists to mitigate this problem.
+**wwiser** is capable of viewing data in Wwise bnk files,
+allowing you to connect a Wwise sound event (which has a human-readable-name) to the sound files it references.
+
+=== Locating the Sound Event Bnk File
+
+The first step in extracting a sound is to locate the Wwise audio event bnk it's triggered by.
+
+Wwise bnk files contain information about what sound files are used by the game when a sound event is triggered.
+We can extract this file and use it in wwiser to locate the raw sound files we care about.
+
+Wwise audio event names are human-readable and can be found in subfolders of the pak's (not utoc's!)
+`FactoryGame/Content/WwiseAudio/Event/` folder.
+Note that bnk files are _not_ in the `Events` (plural) folder,
+which instead contains their identically-named uasset counterparts not required for this process.
+You may still find the `Events` folder useful for leaning the context of sound events.
+For example, `/Events/World_Events_FilatovD/Environment/Caves/` presumably contains
+environmental sounds that would play while in caves.
+
+FModel's link:#_searching_for_files[Package Search functionality] is beneficial for finding specific sounds.
+Events that begin sound playback follow the naming scheme `Play_something.bnk`,
+so you can search for `Play something bnk` to find a list of valid sound bnk files containing `something`.
+
+Once you have found the bnk you want to extract
+(for example, `FactoryGame/Content/WwiseAudio/Event/19/Play_EQ_JetPack_Activate.bnk`)
+right click on it in FModel's "Packages" tab list and select `Export Raw Data (.uasset)`,
+which will export the bnk file despite the tooltip option claiming it will be a uasset.
+
+Alternatively, you can extract the entire `Event` folder at once
+by right clicking on it in the "Folders" tab and selecting `Export Folder's Packages Raw Data (.uasset)`.
+
+Click on the text
+(ex. `Play_EQ_JetPack_Activate.bnk`)
+in the FModel log to open your system's file browser to the folder that contains the exported bnk,
+or the top-level export folder if you exported the entire `Event` folder.
+
+=== Extracting sourceIDs with wwiser
+
+You will need Python installed to utilize wwiser.
+Python 3.8.10 is known to work,
+and https://github.com/pyenv-win/pyenv-win[pyenv] is the suggested method of install.
+Installing python is out of the scope of this guide.
+
+Download the latest copy of wwiser from its https://github.com/bnnm/wwiser/releases[releases page].
+// cspell:ignore wwnames
+You'll want both the `wwiser.pyz` and `wwnames.db3` files from the release.
+
+Use a zip extracting program of your choice to extract the files from `wwiser.pyz`
+and place the `wwnames.db3` file in the same directory as the extracted files.
+
+To open the wwiser interface, run `python .\wwiser.py` in a terminal in that folder.
+Next, select `Load banks...` and select the bnk file you extracted earlier.
+
+Check wwiser's log panel before continuing.
+If it contains the message `names: couldn't find .\wwnames.db3 name file`,
+go back to grab the `wwnames.db3` from the GitHub release and put it in the same folder as the bnk file you opened.
+
+// cspell:ignore txtp
+Next, select `Generate TXTP` which will create a folder in the same directory as the bnk file
+containing a txtp file for the event.
+// Need the + symbols to make sure Asciidoc doesn't see them as attributes 
+(ex. `+Play_EQ_JetPack_Activate {s} {m}.txtp+`)
+
+Open the txtp file in a text editor of your choice.
+If the bnk is linked to any sound files
+their sourceID numbers will be displayed at the top of the file
+(ex. `wem/633850317.wem` has the sourceID number `633850317`)
+along with additional audio information.
+
+Sound events typically consistent of multiple sounds played at different volumes.
+Take note of all the sourceIDs of the event
+as you will likely need to review a few raw sounds to find the exact one you're looking for.
+
+=== Extracting Sound Files
+
+Now that we have sourceIDs we can use FModel to locate and extract their corresponding sound files.
+
+First, locate the sound file in FModel via its sourceID, which will be its package file name.
+Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
+All game audio can be found in subfolders of the pak's (note - NOT the utoc!) `FactoryGame/Content/WwiseAudio/Media/` folder.
+
+To extract a sound file, first open its Package from the main window,
+which will cause an Audio Player window to appear.
+After optionally previewing the sound file in the player,
+right click on it in the player's playlist and select Save,
+prompting a system dialog to select a save location.
+
+[WARNING]
+====
+Some users have reported issues with FModel's audio player, causing it to display sounds as `.wem.wem` files and not play them.
+We haven't found a cause for this issue.
+See https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320[this Discord conversation] for more information (required mod developer discord role to view).
+
+If you are affected by this issue, try using the Bulk Audio Renamer approach below.
+====
+
+=== Bulk Audio Renamer
+
+// TODO unclear why MrCheese said that FModel can't play sound files since release.
+// Resolve before merge because it might change the above directions further.
+// https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439924
+// https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320
+
+Community member MrCheese has created a python script that enables mass renaming of exported wem files to their associated named bnk files.
+If you decide to extract a large number of sounds, this script can save you a lot of time.
+
+To use it:
+
+1. Create a folder somewhere named `SatisfactoryAudioRenamer`.
+2. Create a subfolder named `out`
+3. Create a subfolder named `txtp`
+4. link:{attachmentsdir}/Development/SatisfactoryAudioRenamer/convert.py[Download this python file (convert.py)]
+   and place it in the SatisfactoryAudioRenamer folder
+5. Move all the txtp files that wwiser generated earlier to the txtp subfolder
+   and run `python .\convert.py` from a terminal in that SatisfactoryAudioRenamer folder.
+
+== Generating a Complete Starter Project
+
+The Starter Project provided on the SML releases page excludes
+game models, textures, etc. for copyright and download size reasons.
+In their place, the Starter Project includes empty "placeholder" assets
+that, at runtime, will be resolved into the correct assets if you were to reference them,
+or simply excludes the asset from the project (which is the case for many textures).
+
+It is possible to create a personal version of the Starter Project
+that includes most of these base game files accessible from within the editor.
+This version of the project would include models, textures, and other resources
+instead of their placeholder versions, allowing you to view them in-editor.
+
+Generating this special project file takes a significant amount of time and additional disk space.
+If you'd like to do this, check out the page on the
+xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit].
 
 == UModel
 
@@ -152,137 +358,3 @@ Note that not all of the content you can extract in this manner is directly usef
 For example, directly exporting an `FGItemDescriptor` is not really helpful.
 
 +++ </div></details> +++
-
-== Extracting Specific Models or Textures
-
-[TIP]
-====
-If you're looking to use parts of base game machines such as item
-and fluid ports, power connectors, or more, consider taking a look at
-xref:CommunityResources/ModelingTools.adoc[AngryBeaver's ModelingTools].
-====
-
-This section explains how to use FModel to extract specific static meshes, skeletal meshes, and textures.
-Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
-
-The https://github.com/4sval/FModel/wiki[FModel Documentation]
-explains its various UI elements and how to navigate through the pak file.
-
-To test your settings, select the FactoryGame pak in the Archives tab,
-which will take you to the Folders tab,
-then navigate to
-`FactoryGame/Content/FactoryGame/Resource/Parts/AIlimiter/Textures`
-and attempt to open the `TX_AiLimiter_BC.uasset` file.
-
-This will take you to the Packages tab,
-and will open a two-pane display with text on the left and an image on the right.
-
-To export a file, such as this texture, right click it in the Packages tab's list
-and select the relevant option, in this case `Save Texture`.
-A message "[INF] Successfully saved TX_AiLimiter_BC.png" should appear in the log at the bottom of the window.
-This will export the file to your Output directory, which is configured in the `Settings` > `General` menu.
-You can control what file format assets will be exported in via the `Settings` > `Models` menu.
-
-You can click on the text `TX_AiLimiter_BC.png` in the log to open your system file browser to the containing folder.
-
-Opening a mesh asset, such as
-`FactoryGame/Content/FactoryGame/Equipment/JetPack/Mesh/SK_Jetpack_01.uasset`,
-will cause a 3D Viewer window to appear.
-
-== Extracting Sounds/Music
-
-This section explains how to use FModel to extract sound files.
-Make sure you have set up FModel using the link:#FModel[directions above] before continuing.
-
-Because Satisfactory uses the Wwise sound system,
-game sound files are stored in a manner different from many other Unreal Engine games.
-
-FModel can be used to extract sound files to the WAV format via its Audio Player.
-
-Unfortunately, Wwise sound files viewed in this manner
-are not logically organized and do not have "nice" names,
-meaning that finding the sound you want through this system involves digging around through hundreds of files.
-Furthermore, the sound files are stored in their unmixed forms,
-meaning that the sound is lacking additional audio effects that are applied real-time in-game.
-
-Thankfully, another tool exists to help with this problem.
-https://github.com/bnnm/wwiser[wwiser] is capable of viewing data in Wwise bnk files,
-allowing you to connect a Wwise sound event with a human-readable-name to the sound files it references.
-
-=== Locating the Bnk File
-
-Bnk files contain information about what sound files are used by the game when a sound event is triggered.
-We can extract this file and use it in wwiser to find the sound files we care about.
-
-Wwise audio event names are human-readable and can be found in subfolders of the pak's
-`FactoryGame/Content/WwiseAudio/Event/` folder.
-Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
-
-Once you have found the bnk you want to extract
-(for example, `FactoryGame/Content/WwiseAudio/Event/19/Play_EQ_JetPack_Activate.bnk`)
-right click on it and select `Export Raw Data (.uasset)`,
-which will export the bnk file despite the tooltip option claiming it will be a uasset.
-
-You can click on the text
-(ex. `Play_EQ_JetPack_Activate.bnk`)
-in the log to open your system file browser to the containing folder.
-
-=== Extracting sourceIDs with wwiser
-
-You will need Python installed to utilize wwiser.
-Python 3.8.10 is known to work,
-and https://github.com/pyenv-win/pyenv-win[pyenv] is the suggested method of install.
-
-Download the latest copy of wwiser from its https://github.com/bnnm/wwiser/releases[releases page].
-// cspell:ignore wwnames
-You'll want both `wwiser.pyz` and `wwnames.db3`
-
-Use a zip extracting program of your choice to extract the files from `wwiser.pyz`
-and place the `wwnames.db3` file in the same directory as the extracted files.
-
-To open the wwiser interface, run `python .\wwiser.py` in a terminal in that folder.
-Next, select `Load banks...` and select the bnk file you extracted earlier.
-// cspell:ignore txtp
-After the file loads, select `Generate TXTP` which will create a folder in the same directory as the bnk file
-containing a txtp file which can be opened with a text editor.
-// Need the + symbols to make sure Asciidoc doesn't see them as attributes 
-(ex. `+Play_EQ_JetPack_Activate {s} {m}.txtp+`)
-
-If the bnk is linked to any sound files,
-their sourceID numbers will be displayed at the top of the file
-(ex. `wem/633850317.wem` has the sourceID number `633850317`)
-along with additional audio information.
-
-Take note of the sourceIDs of the sound file you want to extract,
-as you will likely need to review a few sounds to find the exact one you're looking for.
-
-=== Extracting Sound Files
-
-Now that we have a sourceID, we can use FModel to extract the sound file.
-All game audio can be found in subfolders of the pak's `FactoryGame/Content/WwiseAudio/Media/` folder.
-
-First, locate the sound file via its sourceID, which will be its package file name.
-Using FModel's link:#_searching_for_files[Package Search functionality] is beneficial here.
-
-To extract a sound file, first open its Package in the main window,
-which will cause an Audio Player window to appear.
-After optionally previewing the sound file in the player,
-right click on it in the playlist and select Save,
-prompting a system dialog to select a save location.
-
-== Generating a Complete Starter Project
-
-The Starter Project provided on the SML releases page excludes
-game models, textures, etc. for copyright and download size reasons.
-In their place, the Starter Project includes empty "placeholder" assets
-that, at runtime, will be resolved into the correct assets if you were to reference them,
-or simply excludes the asset from the project (which is the case for many textures).
-
-It is possible to create a personal version of the Starter Project
-that includes most of these base game files accessible from within the editor.
-This version of the project would include models, textures, and other resources
-instead of their placeholder versions, allowing you to view them in-editor.
-
-Generating this special project file takes a significant amount of time and additional disk space.
-If you'd like to do this, check out the page on the
-xref:CommunityResources/AssetToolkit.adoc[Asset Toolkit].

@@ -1,4 +1,4 @@
-= Dependencies
+= Required Software
 
 To get started with modding Satisfactory,
 you'll need multiple other pieces of software installed first.
@@ -6,8 +6,8 @@ Don't worry, we'll guide you through each step
 of downloading and installing these dependencies.
 
 This can be a very lengthy process,
-so if you have to work on something else,
-make a note of where you left off so it's easier to resume.
+so if you take a break,
+make a note of where you left off so it's easier to resume later.
 
 Beware that the modding environment can take up a lot of space
 once everything is installed and built - 30+ GB is possible.
@@ -31,7 +31,9 @@ guide before following these directions.
 == Satisfactory
 
 This one should be pretty straightforward, and odds are, you've already done it.
-Simply buy, download, and install Satisfactory from the Epic Games Launcher or Steam.
+Simply buy, download, and install Satisfactory from the
+https://store.epicgames.com/en-US/p/satisfactory[Epic Games Store]
+or https://store.steampowered.com/app/526870/Satisfactory/[Steam].
 Launch the game at least once to ensure all files get set up correctly.
 
 == Visual Studio
@@ -40,7 +42,7 @@ Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio 
 and select the button for Visual Studio 2022 Community, which is free of charge.
 
 If you already have Visual Studio installed,
-you can run the installer again and still follow the steps below to modify your existing installation.
+you'll need to run installer again and follow the steps below to modify your existing installation.
 
 After the installer has downloaded, run it and agree to any authorization prompts you receive along the way.
 Once you are prompted to install Visual Studio 2022
@@ -65,9 +67,11 @@ Next, press `Review details` and continue with the installation.
 [id="ManuallySelectComponents"]
 === Option 2: Manually Select Components
 
-From the "Workloads" tab select
-"Desktop & Mobile > Desktop development with {cpp}"
-and "Gaming > Game development with {cpp}".
+From the "Workloads" tab, select:
+`
+- `Desktop & Mobile` > `Desktop development with {cpp}`
+- `Gaming` > `Game development with {cpp}`.
+
 You might have to scroll a bit to find them.
 
 Next, from the "Individual Components" tab,
@@ -97,13 +101,13 @@ and make sure to use the `.sln` project model.
 
 Satisfactory's dedicated servers typically run on Linux.
 Cross-compiling from Windows to Linux requires
-the compatible version of Unreal Engine specific Clang Toolchain to be installed
+the compatible version of Unreal Engine specific CLang Toolchain to be installed
 prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for 
-https://docs.unrealengine.com/5.2/en-US/linux-development-requirements-for-unreal-engine/#versionhistory[Cross-Compiling for Linux].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#nativetoolchain[Cross-Compiling for Linux].
 
-Currently, Satisfactory uses Unreal Engine 5.2.x with custom changes provided by Coffee Stain Studios.
-Therefore, the Cross-Compile Toolchain version required is `-v21` or `clang-15.0.1-based`.
+Currently, Satisfactory uses Unreal Engine 5.3.2 with custom changes provided by Coffee Stain Studios.
+Therefore, the Cross-Compile Toolchain version required is `-v22` or `clang-16.0.6-based`.
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
@@ -174,12 +178,14 @@ The below box will contain a link to the specific release that you should downlo
 It's imperative that you download the correct engine for the version of the game you're modding
 or you will have to repeat a large amount of the setup process again.
 
+// When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *latest* version of the docs.
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
 
-Early Access and Experimental are currently both the same version - Update 8.
+Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
-You should download from the *latest release*,
+You should download from the *latest engine release*,
 which an be found at the top of this page:
 https://github.com/satisfactorymodding/UnrealEngine/releases
 ====
@@ -189,6 +195,10 @@ Download the following files from the release linked above:
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
 - `UnrealEngine-CSS-Editor-Win64.exe`
+
+Save all 3 files in the same folder,
+and make sure that their names are _exactly the same as listed above_
+otherwise the installer will not work.
 
 [WARNING]
 ====
@@ -221,7 +231,7 @@ guide before following these directions.
 
 [WARNING]
 ====
-If the installer asks you to select the folder with the next medium files,
+If the installer asks you to select the folder with the next medium files or insert the next disc,
 select the folder that contains the `.bin` files you downloaded.
 
 Additionally, make sure to name the downloaded files exactly as stated above,
@@ -257,10 +267,11 @@ Clicking the button will probably redirect you to a sign in page.
 Create an account if you don't have one yet, or sign in, to download and run the installer.
 
 After the installer is complete it should open the launcher for you.
-In the launcher, select `WWISE` from the sidebar.
+In the launcher, select the topmost `Wwise` section from the sidebar
+(note: not the Wwise Audio Lab section).
 Click the `Latest` drop-down and change it to `All`.
 Select `2022.1` from the next dropdown.
-Select version `2022.1.5.8242.2714` from the final dropdown.
+Select version `2022.1.10.8393` from the final dropdown.
 Click `Install`.
 
 [WARNING]
@@ -271,106 +282,44 @@ but they are likely to have other incompatible changes that will break the setup
 
 **Try to download the exact Wwise version mentioned above**.
 If you don't see it,
-try any other version starting with `2022.1.5`, preferring newer versions,
+try any other version starting with `2022.1.10`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
 Once presented with options on what to install, select:
 
 * _Packages_
-** Authoring
-** SDK (C++)
+** ✔ Authoring
+** ✔ SDK (C++)
 * _Deployment Platforms_
-** Linux
+** ✔ Linux
 ** _Microsoft_
 *** _Windows_
-**** Visual Studio 2019
-**** Visual Studio 2022
+**** ✔ Visual Studio 2019
+**** ✔ Visual Studio 2022
 
 If anything is selected by default, do not uncheck them. They are required for Visual Studio to work.
 
 Click `Next` (you may need to scroll down to see the button).
 You don't need to add any plugins,
-so press `Select None` then `Install` in the bottom left to begin the installation process.
+so press `Deselect All` in the top right then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
 == Satisfactory Mod Manager
 
 xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
-offers a convenient developer mode that
-automatically installs the correct version of SML and helps manage mod files for you.
-To enable it, change your selected profile to `development`.
-If you're using Satisfactory Mod Manager,
-you can skip the below steps and move on to the next page of the tutorial. 
+is a powerful tool that automatically install the correct versions of mod dependencies for you.
+Basically all end users will be using this tool to install your mods.
 
-If you're not using the mod manager, you can follow the
-xref:ManualInstallDirections.adoc[manual install directions]
-to get the relevant files set up.
+As a developer, you can use it to install the https://ficsit.app/mod/SML[Satisfactory Mod Loader (SML)] mod
+and install other mods to test with.
+
 Alternatively, once your modding environment is set up,
 you can use Alpakit to automatically build and install SML.
-This process is covered on the next page.
-
-== Starter Project
-
-The SML development team has an Unreal project prepared
-that comes pre-installed with Satisfactory Mod Loader,
-placeholder assets for base game content,
-and some useful developer plugins.
-
-Within this 'Starter Project,' you can develop as many mods as you like
-while still keeping their files separate,
-which will be covered later in the docs.
-
-If you are familiar with version control software (ex. Git),
-we suggest that you clone the repository,
-which drastically simplifies the process of updating the files later when the game updates.
-The Project Setup page (up next) will tell you how and where to clone it.
-
-If you're not familiar with version control,
-xref:Development/BeginnersGuide/CreateGitRepo.adoc[now is a great time to learn]!
-Using Version Control Software (VCS) is a great skill to have for developers
-and will greatly help with updating your project in the future,
-as well as protect you from losing your mod sources if you upload them to a hosting website like GitHub.
-
-However, if you'd just like to get started modding,
-you can download a zip of the Starter Project
-from the Satisfactory Modding GitHub.
-
-=== Downloading a Zip
-
-[TIP]
-====
-If you're planning to use Git to clone the project,
-skip this section and move to the xref:Development/BeginnersGuide/project_setup.adoc[next page]
-which covers how (and where) to clone the project.
-====
-
-The below box will contain a link to the specific zip that you should download.
-It's imperative that you download the correct Starter Project version of the game you're modding
-or you will have to repeat some of the setup process again.
-
-====
-This is the *latest* version of the docs.
-
-Early Access and Experimental are currently both the same version - Update 8.
-
-You should download a zip either of the **`dev` branch** or the **`master` branch**.
-Of those two, you probably want whichever branch was pushed to most recently, which you can see
-https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
-
-If you're still uncertain which to download, **ask us on the Discord**.
-
-If you choose to download the `dev` branch, click
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
-
-If you choose to download the `master` branch, click
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
-====
-
-
-Don't do anything with the downloaded files yet - this will be covered on the next page, Project Setup.
+This process will be explained on the next page.
 
 == Next Steps
 
-Now that all the dependencies are installed, you can move onto
-xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].
+The last dependency to obtain is a copy of the modding Starter Project.
+Check out the xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[next section]
+for directions on how to obtain it.

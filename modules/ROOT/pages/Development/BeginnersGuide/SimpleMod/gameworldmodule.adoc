@@ -1,27 +1,70 @@
 = Plugin Setup and Game World Module
 
-To get started with our mod, we'll need to make a new Unreal plugin.
+To get started with our mod, we'll need to make a new Unreal plugin using Alpakit's wizard.
 Every mod you make should be a separate Unreal plugin.
+
+[id="ModReference"]
+== Mod Reference
+
+We need to talk about the concept of a "mod reference" before we continue
+because it will be referenced quite often.
+
+A mod reference is essentially a mod's unique name.
+This mod reference will then be used in class names, file names, folder names, and many other places.
+When you upload your mod to the Satisfactory Mod Repository for other people to use,
+you'll need to provide your mod reference there as well.
+
+Your Unreal plugin (also known as your mod) will need to use the mod reference as its name,
+and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
+
+Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
+However, they can contain underscores (`_`).
+
+End users of your mod see your mod's Display Name (which can contain spaces and special characters) instead of the Mod Reference,
+with the notable exception of mod folders on disk, log messages, and filepaths.
+
+We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
+that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
+
+Here are a few possible examples of mod names and suggested mod references.
+
+.Example Mod Display Names and Corresponding Mod References
+|===
+|Mod Display Name |Mod Reference
+
+|Example Mod
+|`ExampleMod`
+
+|Rob's very cool mod
+|`RobsVeryCoolMod`
+
+Note the exclusion of the apostrophe, because it's a special character.
+
+|Satisfactory Mod Loader
+|`SML`
+
+Note that a mod's reference doesn't need to exactly match its display name's text.
+
+|===
+
 
 == Unreal Plugin Creation
 
 Since SML3.0, mods are now Unreal plugins,
 and their loading is handled by Unreal itself.
 
-First off, we'll need to create the Unreal Plugin for our mod.
-
 Alpakit contains a wizard that helps with creating the plugin files for Satisfactory mods.
-If you haven't already opened the Alpakit panel, you can follow the directions
+If you haven't already opened the Alpakit Dev panel, follow the directions
 xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_alpakit[here] to do so.
 
-To open the wizard, click the `Create Mod` button in the Alpakit panel.
+To open the mod creation wizard, click the `Create Mod` button in the Alpakit Dev panel.
 
 Mod templates that the community has created will appear here.
-Select the `Blueprint Only` template for now.
+Select the `Blueprint Only` template.
 
 The wizard will also prompt you for a Mod Name.
 The name of your plugin _must_ be your mod's
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference].
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference].
 For this documentation example, you can use `DocMod` as the mod reference.
 When you start on your own mod, you will have to create a new plugin
 with a mod reference other than this.
@@ -31,7 +74,7 @@ Optionally, fill out the "Descriptor Data" section, or leave it blank since it c
 [WARNING]
 ====
 Be sure to read the notes on
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod References]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod References]
 if you have not yet done so.
 It is critical that your mod reference follows these formatting rules.
 ====
@@ -40,9 +83,10 @@ Leave "Show Content Directory" checked and press `Create Mod`.
 
 image:BeginnersGuide/simpleMod/AlpakitCreateMod.png[Create Mod screenshot]
 
-Your new plugin should now appear in Alpakit's list of mods.
+=== Edit Mod Properties
 
-Next, click the `Edit` button next to the listing to modify some more of your mod's settings.
+Your new plugin should now appear in Alpakit's list of mods.
+Click the `Edit` button next to its listing to open the Alpakit mod properties wizard
 
 Here, you can fill out some additional details for your mod.
 Hover over the labels on the left to get a tooltip that explains their purpose.
@@ -62,16 +106,17 @@ The Dependencies list should already be pre-populated with a dependency on the c
 
 image:BeginnersGuide/simpleMod/EditPlugin.png[Edit your Plugin screenshot]
 
+=== Your Mod's Files
+
 You can find your mod's files within the editor in the Plugins subfolder of any Content Browser.
 On disk, the folder can be found inside your modding project folder at
 `<project>/Mods/<Mod Reference>`.
+This folder is where all of the assets
+(code, models, blueprints, textures, etc.) that your mod uses will live.
 
 All of the settings you selected in the wizard are stored in your mod's `.uplugin` file,
 which you can optionally read more about 
 xref:Development/BeginnersGuide/ReleaseMod.adoc#_your_mods_uplugin_file[here].
-
-This folder is where you will be putting most of the assets
-(models, blueprints, textures, etc.) that your mod uses.
 
 Inside the editor, you can find your mod in the `<Your Mod Reference> Content`
 subfolder of the Content Browser root folder.
@@ -89,12 +134,10 @@ meaning Unreal Engine will not be able to tell the directory represents a plugin
 This is helpful when xref:Development/UpdatingToNewVersions.adoc[updating your mods] later.
 
 If your uplugin file was previously `ExampleMod.uplugin`,
-change it to `ExampleMod.uplugin.disabled`
+change it to `ExampleMod.uplugin.disabled`.
 ====
 
 === Optional: Create a Git Repository for your Mod
-
-It is worth considering using Git, a version control system, for managing your mod files.
 
 Using version control is essential for collaborating on a mod with others,
 it helps write patch notes when you release an update,
@@ -176,6 +219,7 @@ xref:Development/ModLoader/ModModules.adoc[Mod Modules] system page.
 == Compile and Save
 
 Now that we've created our first mod asset, we need to 'compile' and save it.
+In Unreal Engine blueprints, 'compiling' is a data validation step that will check for errors and prepare the files to be packaged later.
 
 The editor lets you know that your assets are unsaved through a variety of indicators:
 
@@ -201,20 +245,21 @@ We suggest that you enable "Save on Compile: On Success Only" to skip having to 
 image:BeginnersGuide/simpleMod/SaveOnCompileSuccess.gif[Enabling Save on Compile Success]
 ====
 
-In Unreal Engine, compiling does not mean to package your mod for trying out in the game.
-Compiling is a data validation step that will check for errors before preparing the files to be packaged later.
-
 ====
-Whenever you create any asset for your mod, or change existing ones, _*remember to compile and save it*_!
+Whenever you create or edit mod assets, _remember to compile and save them_!
 ====
 
-If you don't compile and save the file, next time you package and try out the mod, _*the changes you made will not be included with your mod*_ - this can be very confusing to troubleshoot!
+If you don't compile and save the file,
+next time you package and try out the mod,
+_the changes you made will not be included with your mod_
+- this can be very confusing to troubleshoot!
 
 Additionally, if the editor happens to crash before you save, you will lose all of your changes.
 A phrase you will hear often when working with computers is: "Save early, save often".
 
 There is one exception to this rule -
-if you are inspecting some of the base game's asset placeholders in the editor,
+if you are inspecting some of the
+xref:Development/BeginnersGuide/StarterProjectStructure.adoc#PlaceholderSystem[base game's asset placeholders] in the editor,
 opening the assets may cause them to be marked as unsaved due to other placeholders being detected missing.
 As an example, opening `BP_Explorer` from the FactoryGame assets will cause it to be marked as unsaved even if you don't change anything.
 There is no point in saving changes to those placeholder files because your mod doesn't make use of them.
@@ -245,11 +290,12 @@ After starting the package process
 you can click the "Show Alpakit Log" text to bring up the Alpakit-specific log window if you'd like.
 This information is also present in the UE Output Log, albeit mixed with other editor messages.
 
-Once Alpakit has completed, you can launch the game to try it out.
+Once Alpakit has completed, launch the game,
+assuming you haven't already set Alpakit to launch it for you.
 Your mod should appear in the main menu mods list shown in the screenshot below.
 
 Even if this worked correctly,
-you should still read the Troubleshooting section below
+you should still *read the Troubleshooting section below*
 to see how to deal with errors you may encounter later.
 
 image:BeginnersGuide/simpleMod/ModInModsMenu.jpg[The mod displaying in the mods menu]
@@ -263,13 +309,11 @@ or later in mod development.
 
 Alpakit will display this message in the editor when something has prevented the mod from packaging.
 
-This message alone tells you nothing about the error - you'll have to look at the Output Log.
+This message alone tells you nothing about the error
+- you'll have to look at the Alpakit Log (`File > Alpakit Log`) or Output Log (`Window > Output Log`).
 
-The Output Log is a tab in the editor that may already be open,
-but in case it isn't, you can bring it up via `Window > (Log subheading) Output Log`.
-
-Once in the output log, look for red-colored Error messages, as it will likely contain the reason the task failed.
-If you'd like, you can use the Filters dropdown to show only errors.
+Once in the logs, look for red-colored Error messages, as it will likely contain the reason the task failed.
+If you're using the Output Log you can use the Filters dropdown to show only errors.
 
 Note that there will be probably be tens or hundreds of Warning messages -
 this is to be expected, and is usually not a problem.
@@ -319,6 +363,7 @@ because we created a plugin from the `Blueprint Only` template, not the `Bluepri
 However, if you used the other template, that is not a problem.
 
 You need to build the Shipping profile whenever {cpp} code changes and you want to test in-game.
+Under normal circumstances, Alpakit will build Shipping for you if it's out of date.
 
 Similarly, you need to build for Development Editor
 when {cpp} code changes and you want it to update in the editor.

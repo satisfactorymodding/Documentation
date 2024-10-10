@@ -1,0 +1,391 @@
+= Upgrading from SML 3.7.0 to 3.8.x
+
+[IMPORTANT]
+====
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` discord channel to be notified when updates are made.
+====
+
+SML3.8 brings support for the game's 1.0 release, as well as a few new toys and fixes to long-running bugs.
+Mods compiled for SML3.7 will not work with 1.0 and SML3.8 due to the game's engine update and compilation target overhaul.
+
+Please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+[IMPORTANT]
+====
+The 1.0 release contains a particularly large number of changes to the base game's files.
+Don't skip making backups this time - your blueprints might become unopenable in the latest release!
+====
+
+== New Features
+
+This section talks about the new features that SML 3.8 brings to the table.
+Note that the game itself has also brought many new features to the table as well,
+which won't be covered here.
+
+=== Modded Dedicated Server Support Public Release
+
+Modded dedicated server support has been in the oven for ... a long time.
+End users that wanted to mod dedicated servers have had to manually download SMM3 betas to do so.
+
+With the official release of SMM v3.0.0, all end users can now easily manage mods on local and remote dedicated servers.
+Plus, changes in Satisfactory 1.0 are forcing all mods to be recompiled.
+
+As such, the "norm" going forward is for **all mods to be compatible with dedicated servers**
+unless they have a really good reason not to be,
+in which case that reason should probably be explained on the mod page so people bug you about it less.
+
+Don't worry, changes to Alpakit described later on this page make this process as seamless as possible.
+
+[IMPORTANT]
+====
+Make sure to enable all Release Targets that your mod is compatible with so it gets built for Windows and Linux servers!
+====
+
+=== Session Setting Replication
+
+SML correctly handles Session Setting replication to multiplayer clients now.
+Thanks SirDigby and Mircea for implementing this.
+
+=== SML Capable of Running Client-Side Only
+
+It is now possible have SML installed on your client even when the server does not have SML installed.
+This means you can create client-side mods that work when connected to vanilla servers.
+An example of a mod that implements this functionality is https://ficsit.app/mod/InfiniteNudge[Infinite Nudge].
+
+Of course, a mod installed only on the client will be incapable of many things that normal dual-sided mods can accomplish
+due to game implementation details.
+
+Note that the inverse (joining a server with SML from a vanilla client) is not yet possible.
+
+=== Content Tag Registry
+
+SML now offers a registry to assist mods with using
+https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Unreal Gameplay Tags].
+
+Gameplay Tags are a useful way to introduce some cross-mod compatibility without hard dependencies on other mods.
+
+Read the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry] page for more information.
+
+=== Content Registration Happens Locally
+
+As part of the changes to support the 1.0 release,
+content registration now happens on both sides locally,
+as opposed to the previous behavior where registration only happened on the server
+and the Available Schematics array was replicated to clients.
+
+This also fixes a
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/277[long-standing bug related to modded AWESOME shop schematics].
+
+[id="SMLNoLongerHardRequired"]
+=== Modding Without SML
+
+Although 99% of mods should still depend on SML for its feature set,
+Ficsit.app now supports uploading mods without an SML as a runtime dependency.
+If you think your mod is part of the 1%,
+read more on the xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML] page.
+
+=== Access Transformers on Structs
+
+TODO More info and examples are needed.
+https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439224
+
+=== Original Copies of Materials
+
+Coffee Stain has shared the source code for many of the game's material assets with us.
+This enables us to get better content previews in the editor.
+They are now distributed with the Starter Project instead of AngryBeaver's recreations.
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+This section will change often, so be sure to come back here and check as you update your mods!
+
+=== Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
+
+See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
+This should not affect the vast majority of mods.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+=== Buildables with Empty Cost Never Finish their Build Animation
+
+This is a bug with the base game.
+The only known workaround is to have at least 1 item in the Cost.
+https://www.answeroverflow.com/m/1290190197501460521[Source].
+
+=== Content Bundle Cooking
+
+The optimal way to add modded content to the game world (like ore nodes, deposits, etc.)
+is to use the Content Bundle system,
+but Unreal currently refuses to cook content bundles unless the world is also cooked.
+This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
+and will be fixed in a future SML release.
+
+The next best way is to use sublevel spawning. Here is an example from Kyrium of how to do that:
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Dependency Updates
+
+The following project dependencies have updated.
+Install the updated versions as you follow the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] guide.
+
+==== Engine Update
+
+Satisfactory 1.0 brings the game to Unreal Engine 5.3.
+Download and set up our custom release while following the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== Wwise Update
+
+With a new Unreal Engine version comes a new required Wwise update for your project.
+The xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page Wwise instructions]
+lists the new Wwise version and guides you through integrating it into your project as you follow the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== CLang Toolchain Update
+
+Working with the updated Unreal Engine version requires an updated CLang toolchain.
+Insalling it is covered in the
+xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies page CLang Toolchain instructions].
+
+[id="Alpakit_GameVersionDependency"]
+=== Game Version Dependency
+
+Ficsit.app now requires uploaded mods to specify a minimum game version with which the mod is compatible.
+The reasoning behind this is explained in link:#SMLNoLongerHardRequired[this section].
+
+Alpakit will warn you in the Alpakit Release window if your mod's game version is older than the project's game version.
+Clicking on this warning banner will automatically update the field for you.
+
+SML checks this game version at runtime,
+requiring that the player's game version is greater than or equal to the listed required version.
+
+=== Understanding New Game Targets
+
+The 1.0 release has introduced new Windows build targets -
+`FactoryGameSteam` and `FactoryGameEGS` -
+to allow Coffee Stain to ship different versions of the game for Steam and Epic Games.
+This enables them to provide the Epic Games overlay connection on the Steam version, for example.
+There should be very few game code differences between these two targets.
+
+Alpakit has been updated to support these new targets without you having to worry about it.
+
+- When building {cpp} for the editor, use `Development Editor` (offered by FactoryGame)
+- When building {cpp} for shipping outside of the editor, use either `FactoryGameSteam` or `FactoryGameEGS` depending on what you are testing with.
+- ❌ Don't try to build `Shipping - FactoryGame` or `FactoryShared` - they aren't released targets; trying to build them will always error.
+- When running Alpakit Development or Alpakit Release, Alpakit will build both targets as one for you; the pre-1.0 workflow is unaffected.
+
+=== Visual Studio Project {cpp} Restructure
+
+As part of the introduction of the new game targets,
+the Visual Studio project displays source files in a different structure.
+Instead of mod source code files being displayed in `(Solution) > Mods > (ModReference) > Source`
+they are now displayed in `(Solution) > Games > FactoryGame > FactoryGame > Mods > (ModReference) > Source`.
+
+You do not need to take any action due to this move, simply be aware of the new display format.
+
+=== Alpakit Changes
+
+Understanding the changes to Alpakit, and the new features added in this update, will help you work efficiently.
+
+==== Alpakit Dev and Alpakit Release Split into Separate Windows
+
+The Alpakit Release functionality (for creating release builds) has been brought into its own window to help with UI readability
+and understanding which Alpakit settings are relevant to development time.
+
+You can open the new Alpakit windows via these buttons in Unreal Editor's toolbar or the File dropdown menu.
+
+image:Development/UpdatingGuides/AlpakitButtons38.png[Screenshot of new Alpakit buttons]
+
+[IMPORTANT]
+====
+Make sure to enable all Release Targets that your mod is compatible with so it gets built for Windows and Linux servers!
+====
+
+==== Launch Game Type: Custom Split into Path and Arguments
+
+If you were previously using, for example,
+`powershell.exe C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch EXP -loadLatestSave`
+you should now use:
+
+* Custom Path: `powershell`
+* Custom Launch Args: `C:/Git/SF_ModProject/RobWorkingDir/SFLaunch_Advanced.ps1 -branch experimental -loadLatestSave`
+
+The Quick Launch Script has also been updated to support 1.0 game targets and had its feature set expanded.
+Get the new script xref:Development/TestingResources.adoc#LaunchScript[here].
+
+==== New Alpakit Log Feature: Time Since Last Pack
+
+The Alpakit Log now displays the time a last successful pack was completed.
+Great for if you started packing something, went to do something else, and came back but can't remember what exactly you started!
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== CppStandard 
+
+1.0 does not specify a CppStandard version in the `.Target.cs` file
+which changes the supported {cpp} language features back to {cpp} 17,
+causing some code that built properly in Update 8 to no longer build.
+
+This can be fixed by replacing unsupported features with supported ones
+or by adding `CppStandard = CppStandardVersion.Cpp20;` to your mods' `.Build.cs` file.
+
+This change was made because some UE modules do not build under Cpp20,
+making it unsafe to compile the whole game under that version.
+
+// cspell:ignore CSSUHT
+=== Remove Old CSSUHTPlugin files
+
+If you're updating a pre-existing starter project,
+you'll likely have files from the CSSUHTPlugin lingering in your folders.
+This is no longer included in 1.0 and can be safely deleted.
+
+=== Item Stack Size Bug
+
+If you're unable to craft or give yourself your modded item,
+a bug due to changes in the game's code may have caused it to have an invalid State or stack size.
+To fix this, reopen the item blueprint in the editor,
+change the stack size to anything else,
+then change it back and re-save.
+
+=== HUB Milestone Icons Required
+
+1.0's overhauled HUB interface has a bug related to milestone icons.
+If your milestone is missing an icon, the game will not show its details or cost correctly
+in the preview when the player selects it in the HUB.
+All milestones should have HUB icons to avoid this problem.
+If you need an icon to use, SML's assets folder has a generic icon in the style of the default mod icon you can use.
+Find it at `/SML/Interface/UI/Assets/Textures/robb/StockSchematicIcon_512`.
+
+=== HUB Milestone Icons Always Monochrome
+
+The base game now adjusts HUB milestone icons to ensure they are always monochrome.
+This may require you to create new icons for your mod's HUB milestones for them to still be visually distinct.
+It is probably possible to work around this, but no one has tried and reported back yet.
+
+.ExampleMod Milestone in the HUB Screenshot
+image::Development/UpdatingGuides/HubMilestones.jpg[Satisfactory Mod Manager Example]
+
+=== Building Clearance Overhaul
+
+`FGClearance` has been removed and replaced with a `Clearance Data` property.
+The new approach allows creating complex hulls for clearance checks via defining multiple boxes and
+and specifying the type of each clearance box individually.
+
+=== Item State Actor Removal
+
+This change affects most modded equipment,
+especially those that need to store custom data.
+
+Items now store an instance of FFGDynamicStruct as a state instead.
+
+=== Equipment Attachment Removal
+
+Equipment attachments have been replaced with systems built into the equipment actor.
+
+=== Unequipped Equipment Actor Removal
+
+Equipment items that are not either directly equipped on the player
+or are in their currently selected hand slot
+no longer have actor representations in the world.
+They get spawned when equipped and despawned when unequipped,
+saving data in a struct instead.
+This may require significant changes to mods that introduced new equipment items.
+
+=== Lightweight Buildable System
+
+Many static buildings like walls and foundations
+now use the Lightweight Buildable System instead of the abstract instance system for further optimization.
+These buildings do not actually exist as buildings unless the player is using the build gun near them.
+This may interfere with traces collision checks that expected them to be abstract instances in the past.
+The system is not currently very modder friendly and you will likely have to wait for future game updates to improve it.
+
+=== Replication Detail Actor Removal
+
+The Replication Detail Actor system has been removed and replaced with the
+xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication] system.
+
+See that page for some info from Arch on the usage of the new system.
+
+=== Add Tags to Relevant Content in your Mod
+
+If your mod adds any item descriptors that serves a special non-crafting purpose,
+like the Any Undefined, Wildcard, Overflow, and None sorting rule in the base game,
+use the xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
+to add the `SML.Registry.Item.SpecialItemDescriptor` tag to it.
+See that page for more information.
+
+You may also wish to tag your mod's content with the generic tags that SML implements.
+
+=== Funchook Improvements
+
+We have switched to our own custom build of Funchook to (hopefully) avoid the
+https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/235[rare inconsistent hooking crash issue].
+If your mod makes use of hooking (and especially unhooking), watch for any bugs that may arise related to this
+and let us know on the discord if you encounter any issues.
+
+=== Starter Project Structure page
+
+The new xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure]
+documentation page explains important Starter Project folders and the Placeholder System in more detail.
+
+=== AcceptsAnyRemoteVersion removal
+
+SML's system for specifying multiplayer mod sidedness has been adjusted in preparation for future one-sided mod support.
+The `AcceptsAnyRemoteVersion` field has been removed
+and the `RequiredOnRemote` field has been introduced with a default value of `true`.
+
+When a client connects, the host checks its own mod list against what the client is connecting with.
+If the host's mod has `RequiredOnRemote` set to true,
+`RemoteVersionRange` is used to check the client's reported version to ensure it's compatible.
+The reverse (client checking host) is not currently implemented but may be in the future.
+
+=== Decal_Normal FIXED on Modded Parts using Mesh Proxies
+
+Previous versions of the game had issues with mesh proxies past the first instance not rendering correctly.
+Ben says 1.0 has a fix for this issue, but no modders have tested it yet.
+This section will be updated when we have confirmation.
+
+=== SMR Stability Removal
+
+The 'stability' (alpha, beta, release) field on ficsit.app is being removed.
+If you want to release unstable builds, use the prerelease semver syntax (for example 1.0.0-pre1)
+which will not be downloaded by SMM unless the user specifically selects the version.
+
+=== Vanilla Dedicated Server API
+
+See the xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API] page for more information.
+
+=== Cheat Board Accessible
+
+Beginning with the 1.0 release, Coffee Stain now distributes their Unreal Cheat Board with the game.
+It can be accessed by
+xref:SMLChatCommands.adoc#EnableCheats[enabling cheats]
+then running the `Cheats` console command.
+
+Mods can extend the Cheat Board via the approach described xref:Development/Satisfactory/CheatBoard.adoc[here].
+
+=== ADA Message Format Changed
+
+The system through which ADA messages are played has been totally reworked for 1.0.
+Find info on the new structure on the xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages] page.

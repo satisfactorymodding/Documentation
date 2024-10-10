@@ -65,7 +65,7 @@ To begin adding {cpp} code to your mod you'll have to create a Module build conf
 
 Navigate to your mod's folder, `Mods/YourModReference/`, where your 'YourModReference.uplugin' file is located.
 Create a new folder named `Source` and within it a subfolder named `YourModReference`.
-As a reminder, the concept of a mod reference is explained xref:Development/BeginnersGuide/index.adoc#_mod_reference[here].
+As a reminder, the concept of a mod reference is explained xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[here].
 Within this folder, you should create a new file called `YourModReference.Build.cs`.
 You can do this by creating a new text file and then changing the extension to a `.cs` file, for example.
 If you chose to create the file in this manner, we suggest you turn on

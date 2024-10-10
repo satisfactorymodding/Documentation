@@ -1,0 +1,56 @@
+= Downloading a Zip
+
+You've chosen to download a zip of the Starter Project repository.
+
+The below box will help you decide which repository branch to download a zip of.
+It's imperative that you download the correct Starter Project version
+or you will have to repeat some of the setup process again.
+
+== What Version to Download
+
+// When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
+====
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
+
+Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+
+Download a zip of the **`master` branch** to develop a mod for SML 3.8.0
+by clicking https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
+
+// Download a zip of the **`dev` branch** (because SML 3.8.? is not released yet)
+// by clicking https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
+
+// You should download a zip either of the **`dev` branch** or the **`master` branch**.
+// Of those two, you probably want whichever branch was pushed to most recently, which you can see
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+
+If you're uncertain about which branch to download, **ask us on the Discord**.
+====
+
+== Unzipping the Files
+
+[WARNING]
+====
+By default, Windows marks files downloaded from the internet as "blocked".
+You will run into problems later on because of this.
+To get around this issue, right-click the zip file and "unblock" it from the Properties menu before unzipping it.
+====
+
+Unzip `SatisfactoryModLoader-master.zip` (or the `-dev.zip`) to get the Starter Project files.
+If you're encountering issues extracting the zip,
+try using another zip extracting software
+such as https://www.7-zip.org/[7zip]
+or https://www.win-rar.com/start.html[WinRAR].
+
+You can move the directory later, and you can name the outermost folder whatever you'd like.
+
+Make sure to read the notes on the
+xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter Project page]
+about good long-term homes for your starter project files.
+
+== Next Steps
+
+Now that all the dependencies are installed, you can move onto
+xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].
+

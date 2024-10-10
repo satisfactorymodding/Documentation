@@ -2,7 +2,7 @@
 
 [NOTE]
 ====
-The new plugin localization system is not ready for use.
+The new plugin localization system is not fully ready for use.
 You may encounter issues with translation data not saving,
 and the system for importing and exporting translations to the community translation portal is not yet complete.
 
@@ -108,7 +108,7 @@ To view your target, click on its name in the table row.
 image:L10n/ViewTarget.png[Target row hovered]
 
 If the target's name is not already your
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[mod reference],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference],
 rename it to match.
 
 image:L10n/RenameTarget.png[Rename your target]

@@ -48,7 +48,7 @@ don't worry, you can come back and edit these fields later.
 
 One of the most important fields on this screen is the 'Mod Reference' field.
 Explained in more detail on the
-xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section of the Getting Started guide],
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference section of the Getting Started guide],
 your mod reference is your mod's unique name.
 As a reminder, your mod's plugin folder and C++ source folder (if using {cpp}) must have the same name as your mod reference.
 Your mod reference cannot contain special characters or spaces.
@@ -58,7 +58,7 @@ Your mod reference cannot contain special characters or spaces.
 **You can't change your mod reference after you have added your mod to SMR!**
 
 So make sure it is correct! At least five times!
-And read up on the xref:Development/BeginnersGuide/index.adoc#_mod_reference[Mod Reference section]
+And read up on the xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference section]
 again to make sure you understand what other parts of your mod need to use this same value.
 ====
 
@@ -98,7 +98,7 @@ You still need to upload a version for your mod to be usable by players.
 Until then, your mod will be marked as 'Outdated' since there are no compatible versions.
 This version submission process will be covered in the following sections.
 
-== Export your Plugin
+== Package your Mod
 
 Before you can upload a version,
 there are a few fields you need to edit in your mod's uplugin file,
@@ -117,17 +117,14 @@ then select 'New Version' in the top right corner.
 This will take you to a page where you can upload a version file,
 as well as provide some additional info about the version.
 
-Put "Alpha", "Beta", "Release", etc. in the stability field
-so that users know how far along in development you consider this version of your mod to be.
-
-Select the output zip from the link:#_export_your_plugin[Export your Plugin section]
+Select the output zip produced when
+xref:Development/BeginnersGuide/ReleaseMod.adoc#ArchivedPluginsDirectory[packaging your mod with Alpakit Release]
 with the picker the `File` field.
 It will be called `YourModReference.zip`
-and will be larger than all of the other zips in the folder.
-This larger zip contains the zips for each target platform combined as one file ready for upload.
+and should be larger than all of the other zips in the folder.
+This zip contains the files for each target platform combined into one ready-for-upload package.
 
 Finally, write up a list of all of the things you changed or added in this version for the `Changelog` field.
-We also strongly suggest you copy this information into an 'update history' section of your mod's description on the main mod page.
 
 [TIP]
 ====
@@ -138,13 +135,14 @@ Otherwise, no notification will be sent on the Discord about your mod's release,
 and nobody will be able (easily) to find your mod on the site.
 ====
 
+[WARNING]
+====
+Make sure to read the https://ficsit.app/content-policy[ficsit.app Content Policy] before uploading
+and ensure your mod follows the rules.
+====
+
 You should be all set now - once you press `Create`, the upload process will begin,
 and your mod will be ready for use once it completes.
-
-[TIP]
-====
-Make sure to read the https://ficsit.app/content-policy[Content Policy] before uploading!
-====
 
 If any errors occur during the upload, they will be displayed on this screen.
 The xref:Development/BeginnersGuide/ReleaseMod.adoc#_smr_uplugin_validator[uplugin validator] may be of use.
@@ -194,10 +192,11 @@ We suggest taking the following steps to encourage users to try out your mod:
 == Uploading an Update
 
 When you upload a new version of your mod,
-make sure to change the `Version`, `VersionName`, and `SemVersion` fields
-in your `<mod reference>.uplugin`.
-You should also change the version specified in the mod's dependency on SML to the latest release of SML.
-You can find the latest SML version release number https://ficsit.app/sml-versions[here].
+make sure to increase the `Version`, `VersionName`, and `SemVersion` fields
+in your `<mod reference>.uplugin` accordingly.
+You should also change the version specified in the mod's dependency on SML to the latest release of SML
+and the GameVersion to be the latest version of the game that your mod supports.
+Alpakit Release's warning buttons will assist with this.
 
 These edits can be performed in the editor via the Alpakit helper
 or by directly editing the `.uplugin` file in a text editor.

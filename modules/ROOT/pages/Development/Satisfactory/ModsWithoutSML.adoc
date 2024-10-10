@@ -1,0 +1,46 @@
+= Modding Without Satisfactory Mod Loader
+
+[NOTE]
+====
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+== History
+
+Back in https://satisfactory.wiki.gg/wiki/Patch_0.3.8.9[Update 3],
+Coffee Stain switched Satisfactory to being built in the Modular Build mode.
+This meant that mods no longer technically needed SML to be "loaded",
+so SML switched over to serving as a utility library and coordinator.
+
+Up until the release of SML 3.8, we still required all mods uploaded to Ficsit.app to depend on SML
+because it acted as a way to check which game and engine versions a mod was compatible with.
+With the release of SML 3.8 we also updated Ficsit.app internals to allow mods to be uploaded without SML as a dependency,
+instead using the "GameVersion" uplugin field.
+
+[id="AreYouSure"]
+== Are You Really Sure You Want to Do This?
+
+Consider the following SML features that you'll be losing by not depending on it:
+
+- Significant wheel reinvention required for blueprint (pak-only) mods ({cpp} mods can use StartupModule)
+- xref:Development/Cpp/hooking.adoc[{cpp} hooking helpers] - SML bundles a modified version of funchook
+- Mod dependency version checking at launch
+- Client-server version consistency checking when playing in multiplayer
+- Other mods being able to detect your mod's presence
+- Mod Content Registry access
+
+Also, consider that nearly every player will still have SML installed anyways so they can use other mods.
+It's already possible to run SML on just the client.
+
+== Systems You Will Have to Care About
+
+Here's a list of special considerations you'll have to make if you decide to go down this path.
+Every mod is different, so this will never be a comprehensive list.
+Please let us know what you find out so we can update this page.
+
+- Your mod breaking on game updates. {cpp} code, especially hooks, are very prone to breaking on game updates as offsets change.
+- Entry point for your code. {cpp} mods can use `StartupModule`, blueprint mods will need something else to help them load.
+- Alpakit GameVersion dependency field explained on the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Releasing Your Mod page].
+- Not conflicting with any systems that SML uses, because there is a very high chance that end users will already have SML installed.

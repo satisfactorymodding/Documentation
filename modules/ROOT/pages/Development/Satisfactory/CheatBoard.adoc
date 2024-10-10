@@ -1,0 +1,40 @@
+= Cheat Board
+
+Beginning with the 1.0 release, Coffee Stain now distributes their Unreal Cheat Board with the game.
+It can be accessed by
+xref:SMLChatCommands.adoc#EnableCheats[enabling cheats]
+then running the `Cheats` console command.
+
+== Adding New Cheats
+
+Mods can add additional cheats to the existing Cheat Board.
+
+1. Implement a cheat UFunction as `CheatBoard` in a class derived from `UCheatManagerExtension`.
+2. Register the cheat manager extension class via `UCheatManager::OnCheatManagerCreatedDelegate`.
+
+See the code example below from Archengius:
+
+Header file:
+
+```h
+UCLASS(MinimalAPI)
+class UMyCoolCheatManagerExtension : public UCheatManagerExtension  
+{
+    GENERATED_BODY()
+public:
+    UFUNCTION(Exec, CheatBoard)
+    void MyCoolCustomCheat();
+}
+```
+
+Registering the class in StartupModule:
+
+```cpp
+void FMyCoolModModule::StartupModule()
+{
+    UCheatManager::OnCheatManagerCreatedDelegate.AddLambda([](UCheatManager* CheatManager)
+    {
+      CheatManager->AddCheatManagerExtension(NewObject<UMyCoolCheatManagerExtension>(CheatManager));
+    });
+}
+```

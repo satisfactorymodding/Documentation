@@ -37,24 +37,32 @@ Every documentation page has a corresponding link in the sidebar.
 On desktop, this sidebar is on the left side of the screen.
 On mobile (and narrow windows), you must press the 'table of contents' button in the top left to expand it.
 This sidebar can be thought of as a folder system.
-You can use the triangles to expand or collapse subsections of the sidebar.
+
+Use the triangle icons to expand or collapse subsections of the sidebar.
 Some, but not all, of these subsections have 'title pages',
 which are the entries listed in-line with the triangle in the sidebar.
 For example, you are currently on the title page of the 'Getting Started' section.
+If a page doesn't have a title section,
+clicking its section name will simply expand/collapse the section as if you clicked the triangle.
 
-This getting started section should be followed in top to bottom order.
-The next page you should read after this one is titled 'Dependencies.'
+This getting started section should generally be followed in top to bottom order.
+For example, the next section you should read after this one is titled 'Installing Dependencies.'
+Each page typically has a 'Next Steps' section at the bottom to guide you to the next page.
 
-This site hosts the documentation for the Satisfactory modding community,
+=== Sub-Sites
+
+This site (docs.ficsit.app) hosts the documentation for the Satisfactory modding community,
 as well as a few specific mods.
 You can navigate to other mods' documentation with the switcher at the bottom of the sidebar.
 You can also use the switcher to visit older versions of the docs,
 which are preserved for historical purposes.
 Watch out for the 'Outdated Version' banner at the top of the screen to tell when you're on an old page.
 
-The docs also have a search functionality accessible in the top right,
+=== Using Search
+
+Easily search the documentation via the search bar in the top right,
 or by pressing `Ctrl+K` on your keyboard. 
-The search only works on the latest version of the docs, and searches the sub-site you're currently on.
+The search only indexes the latest version of the docs, and searches the sub-site you're currently on.
 
 === Using the Table of Contents
 
@@ -66,7 +74,7 @@ Use this to keep track of how far though a page you are or jump between sections
 
 Making mods for Satisfaction can get complex and confusing at times, but we're here to help.
 Please consider joining our community https://discord.ficsit.app[Discord Server]
-and pick up the `Aspiring Modder` role in the `#rules` channel to get access to dedicated help channels for mod makers.
+and pick up the `Aspiring Modder` role in the "Channels & Roles" section to get access to dedicated help channels for mod makers.
 
 == Contributing to the Docs
 
@@ -79,40 +87,9 @@ The best way to reach the team is our https://discord.ficsit.app[Discord Server]
 You can find more info on contributing to the docs
 https://github.com/satisfactorymodding/Documentation#readme[here].
 
-== Mod Reference
-
-We need to talk about the concept of a "mod reference" before we continue
-because it will be referenced quite often.
-
-A mod reference is essentially a mod's unique name.
-This mod reference will then be used in class names, file names, folder names, and many other places.
-When you upload your mod to the Satisfactory Mod Repository for other people to use,
-you'll need to provide your mod reference there as well.
-
-Your Unreal plugin (also known as your mod) will need to use the mod reference as its name,
-and any {cpp} modules you write must be in a Source folder with the mod reference as the name.
-
-Mod references can't contain special characters (ex. `+`, `#`, `.`, `ß`, ...) *nor can they contain spaces*.
-However, they can contain underscores (`_`).
-
-We strongly suggest that you follow https://techterms.com/definition/pascalcase[Pascal Case] naming conventions,
-that is, each 'word' in the mod reference starts with a capital letter and the rest are lowercase.
-
-Here are a few possible examples of mod names and suggested mod references.
-
-*Mod Name:* `Example Mod`
-
-*Mod Reference:* `ExampleMod`
-
-*Mod Name:* `Rob's very cool mod`
-
-*Mod Reference:* `RobsVeryCoolMod`
-
-Note the exclusion of the apostrophe, because it's a special character.
-
 == Next Steps
 
 Next up is setting up your modding development environment.
 // Future editors - this spot is purposefully missing a link to the Dependencies so people get practice using the sidebar.
-Use the site's sidebar to navigate to the 'Dependencies' page.
+Use the site's sidebar to navigate to the 'Installing Dependencies' section's 'Required Software' page.
 You can read more about using the sidebar in the link:#_navigating_the_docs[Navigating the Docs] section.

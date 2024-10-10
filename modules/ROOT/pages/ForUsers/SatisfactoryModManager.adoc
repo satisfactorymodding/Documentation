@@ -80,10 +80,11 @@ for the rest of the steps.
 
 Linux builds of the mod manager can be found on the
 https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page].
-You can directly download the latest release by clicking
+You can directly download the latest release appimage by clicking
 https://github.com/satisfactorymodding/SatisfactoryModManager/releases/latest/download/Satisfactory-Mod-Manager.AppImage[this link].
 
-`+webkit2gtk-4.0+` is required - if you don't have it yet, obtain it through your package manager of choice.
+The GitHub page also offers a standalone version
+but you must have `+webkit2gtk-4.1+` installed to use it.
 
 [id="Install_Winget"]
 === With Winget
@@ -101,27 +102,29 @@ Satisfactory does not officially support Mac,
 but you can use various technologies outside the scope of this guide,
 such as CrossOver, to get it running.
 
-Satisfactory Mod Manager does not currently support Mac,
-but you can use https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli]
-to both install mods and manage remote servers from a Mac.
+Satisfactory Mod Manager itself can run natively on Macs without any additional software.
 
-== Detecting your Game Installation Directory
+== Managing Game Installations
+
+=== Detecting your Game Installation Directory
 
 After you've installed the Mod Manager it will automatically detect your game installation,
 and if you have multiple, you can pick between them with the "Install" dropdown.
+
+image:FAQ/SmmSelectInstall.png[Screenshot of open dropdown picker showing multiple game installs listings]
 
 If your game install is not automatically detected,
 try xref:faq.adoc#_the_mod_manager_cant_find_my_game[following the steps linked here].
 
 We do not provide support for pirated copies of the game.
 
-== Installing Mods
+=== Dedicated Servers
 
-[TIP]
-====
-If you'd prefer a visual version of the below information,
-check out this **slightly outdated** https://ficsit.app/guide/NG4DD9UhWjMUK[guide].
-====
+Satisfactory Mod Manager can also manage mods on local or remote dedicated servers.
+They appear in the Game Installation dropdown once added.
+You can read more on the xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] page.
+
+== Installing Mods
 
 To install a mod, simply click the download arrow button next to its listing in the Mod Manager.
 After the download completes, it will turn into another icon depending on its compatibility status.
@@ -135,36 +138,54 @@ check the xref:faq.adoc[Frequently Asked Questions] page for common fixes.
 
 == Managing Mods
 
-You can use the "Show" dropdown to filter what mods are displayed.
+You can use the funnel dropdown to filter what mods are displayed in the search panel.
 Here is what each option of the dropdown does:
 
-- `Compatible` will only display mods that are compatible with your selected game install's branch (Early Access or Experimental).
+- `All Mods` shows every mod on Ficsit.app, regardless of if they work with your game version.
+- `Compatible` only displays mods that are compatible with your currently selected game install.
   **This is the suggested mode to keep the Manager in when searching for new mods to use.**
-  Learn more about compatibility statuses link:#_do_mods_work_with_experimental[here].
-- `All Mods` will show every mod on Ficsit.app, regardless of if they work with your game version.
-- The `Enabled` option will show all mods that will load when you launch the game.
-  These mods are here either because you have manually chosen to install them,
-  or because they were automatically installed as requirements of other mods.
-  You can Pause these mods to keep them from loading when you launch the game.
-- The `Disabled` option shows mods you have downloaded but "paused" which means they will not be loaded.
-- The `Installed` option shows all mods that you have downloaded, regardless of if they have been paused or not.
-- `Favorite` will show mods you have clicked the "star" button on to mark as a favorite.
+  Learn more about compatibility statuses xref:faq.adoc#_do_mods_work_with_experimental[here].
+- `Favorite` shows mods you have clicked the "star" button on to mark as a favorite.
   A mod being favorited has no relation to whether or not it is installed.
+- `Queued` shows mods that have a pending operation to perform, such as downloading, uninstalling, or updating.
+- The `Installed` option shows all mods that you have directly chosen to download, regardless of if they have been paused or not.
+- The `Dependency` option shows all mods that have been downloaded because they are required by another mod you Installed to function.
+- The `Not Installed` is the opposite of Installed, only showing mods that you have not directly chosen to download.
+  This still includes mods that are dependencies of other mods you have installed.
+- `Enabled` shows all mods that will load when you launch the game.
+  It's a combination of the Installed and Dependency options.
+- `Disabled` is the opposite of Enabled, only showing mods you have downloaded but have "paused," which means they will not be loaded.
+  Dependency mods will never show up here because they are removed when no other enabled mods require them.
 
-== Sharing Profiles
+== Profiles
+
+Profiles are a convenient way to manage a collection of mods.
+Use them to switch between different sets of mods for different playthroughs or multiplayer sessions.
+
+You can create, rename, and delete profiles using the buttons near the dropdown.
+
+image:FAQ/CreateProfile.png[Creating a new profile]
+
+Use the dropdown to pick which profile you have selected.
+Selecting a profile will immediately unload the mods from the previous profile
+and set up the mods in the new profile.
+
+Add or remove mods from a profile by using the mod manager as normal with that profile selected.
+
+=== Sharing Profiles
 
 The mod manager allows you to export your profile as a file others can import to install the same mods.
 
 image:FAQ/SmmImportExport.png[SMM Import/Export screenshot]
 
 If you're looking to share your mods list in a more human-readable format,
-use the "Copy Mods List" option in the settings menu.
+use the "Copy mods list" option in the "Mod Manager Settings" menu.
 
 == Uninstalling Mods
 
 If you want to turn off mods, you must disable them **from the mod manager** so the files get removed.
 
-To remove a mod from your system, use the button that has taken the place of the download arrow -
+To remove a mod from your system, use the box-check button that has taken the place of the download arrow -
 it will turn into a trash can when you hover over it.
 
 Alternatively, click the Play button to "Pause" the mod,
@@ -179,18 +200,12 @@ editing the file to delete the mod listing, then importing it again.
 
 == Turning Off All Mods
 
-To turn off mods entirely, flip the "Mods" switch in the top left corner of the mod manager.
+To turn off mods entirely, click "Mods off" in the top left corner of the mod manager.
 
 image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
 
-If this fails for some reason, go to `%appdata%\SatisfactoryModManager\profiles` and delete the vanilla folder,
-then restart SMM and turn mods on and back off.
-
-If for some reason this still doesn't work, delete the "Mods" folder from your
-xref:faq.adoc#_where_are_my_game_files_located[game's install directory].
-
-Do note **uninstalling the mod manager will not uninstall mods from your game**.
-If you did that, you should reinstall the mod manager and turn the mods off using the above approach.
+If this fails for some reason, delete the "Mods" folder from your
+xref:faq.adoc#_where_are_my_game_files_located[game's install directory] manually.
 
 [id="InstallSpecificModVersion"]
 == Installing a Specific Version of a Mod
@@ -199,9 +214,12 @@ By default, the Mod Manager will install the latest version of a mod that it thi
 However, it will avoid versions that end in a prerelease tag (ex. `1.0.0-PrereleaseTagHere`).
 
 If you want to install a specific version of a mod, such as a prerelease version,
-first install the mod normally.
-Afterwards, a "Mod Version Options" dropdown will appear in the mod description panel.
-Use this dropdown to select the version you want to install.
+click the mod's listing to expand the description panel
+then click the "Change version" dropdown.
+Click the left side of an entry to lock to exactly that version.
+Click the right side of an entry to lock to that version or newer.
+
+image:FAQ/InstallSpecificModVersion.png[Annotated screenshot of selecting a specific mod version to install]
 
 == Troubleshooting
 
@@ -210,7 +228,6 @@ can be found on the xref:faq.adoc[Frequently Asked Questions] page.
 
 == Source Code
 
-// TODO SMMv3 update the language mentioned here
-The Mod Manager is written in Vue and is open source.
+The Mod Manager is written with Wails (Go and Typescript), Svelte, and Skeleton, and is open source.
 You can find the source code on
 https://github.com/satisfactorymodding/SatisfactoryModManager[GitHub]!

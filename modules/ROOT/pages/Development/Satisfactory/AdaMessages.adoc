@@ -1,4 +1,122 @@
-= Creating ADA and Ingame Inbox Messages
+= Creating ADA and In-game Inbox Messages
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+Ada messages can add an immersive feel to your mods fitting in with every in game milestone unlock.
+
+== What to Say
+
+TODO info on what speaking patterns ADA and Aliens have
+
+Use the SMLEditor/Content/AdaMessages/AdaMessageExtractor editor utility widget to quickly view all messages as text 
+
+== Defining Messages
+
+=== Creating the Data Asset:
+
+First right click in a content browser and go to Miscellaneous -> Data Asset
+Then Select the class of `FGMessage`
+
+image:Satisfactory/AdaMessages/AdaMessage_1.png[AdaMessage_1, 350]
+
+image:Satisfactory/AdaMessages/AdaMessage_2.png[AdaMessage_2, 450]
+
+The name of the new data asset can be anything, but the following naming convention is strongly suggested:
+
+```
+MSG_<ModName>_Tier<TierNumber>-<MilestoneName>
+```
+
+For example:
+
+```
+MSG_ExampleMod_Tier1-ExampleMilestone
+```
+
+This will refer to the example mods schematic for tier 1 and the first schematic.
+This is optional but will help you distinguish each milestone if you have lots of ADA messages. 
+
+[NOTE]
+====
+When the game loads it will look for all data assets with the class of FGMessage and load these automatically.
+There is no requirement to manually register these data assets.
+====
+
+=== Setting up the Email Message
+
+As part of the new message data asset this will also create a new email that can be viewed in the `Inbox` window in game.
+
+This is the first stage of setting up the Data Asset by setting the `Title` and `Message` variables:
+
+image:Satisfactory/AdaMessages/AdaMessage_3.png[AdaMessage_3]
+
+=== Setting Up Subtitles
+
+If your ADA speak is quite long then you will need to split this into multiple subtiles.
+This is because the text will not fit in the ADA popup widget.
+
+This can be done by adding a new Array element to the `mSubtitles` variable.
+
+Each element in the array should have `Subtitle` `Sender Class` and `Time Stamp`
+
+* Subtitle - This is the text you want to show in the ADA popup message
+* Sender Class - This is the class of the Sender aka ADA or Alien Message
+* Time Stamp - This is the Time Stamp when the message should be sent. Correlates to the audio message timestamp if there is pauses.
+
+image:Satisfactory/AdaMessages/AdaMessage_4.png[AdaMessage_4]
+
+Setting the voice over requires a Wwise Audio Event and can be set in the data asset.
+
+image:Satisfactory/AdaMessages/AdaMessage_5.png[AdaMessage_5]
+
+=== Setting up the Trigger
+
+The trigger is automatically registered when the game is loaded, you just need to populate the trigger settings in the data asset.
+
+image:Satisfactory/AdaMessages/AdaMessage_6.png[AdaMessage_6]
+
+For messages triggered by schematics,
+set the Trigger Dependency to `BP Schematic Purchased Dependency`
+and configure the dependencies according to what schematic should trigger the message.
+
+Additional trigger settings:
+
+* Can Be Queued - This setting is for if another ada message is being played then it will wait for it complete.
+* Can Be Repeated - This setting is for if the ada message can be repeated.
+* Can Interupt - Setting for if another lower priority message is playing then interupt it.
+* Play Interupt Message - This setting will first play the default interupt message then play our message.
+* Blocked By Cooldown - Message will not play if in the message cooldown. Generally don't check this.
+* Priority - The priority of this message - suggested baseline value of 1.
+
+
+== Generating Audio
+
+All voice lines spoken by ADA (and the ????) are generated using Google's Text-to-Speech API.
+You can try it out on https://cloud.google.com/text-to-speech[the demo website] using the following settings:
+
+* Voice type: `WaveNet`
+* Voice name: `en-US-Wavenet-C`
+* Pitch: `-1.2`
+** The demo's slider makes it difficult to enter precise values. Click the slider to focus it, then use the left and right arrow keys to adjust the value.
+
+You may need to change the text of what the TTS is saying to not match what the captions are when saying certain words.
+// cspell:ignore fixit
+For example, to have it pronounce FICSIT correctly, use the word 'fixit'
+
+It is strongly suggested that you keep the text you fed to the TTS on hand so you can re-record lines later if needed or figure out how you got it to say a specific word in the past.
+
+== Importing Audio to the Editor
+
+The SML team is working on patches to enable Wwise to function properly in the editor.
+Until this system is implemented it is not possible to play message audio in game through normal means -
+you will have to come up with your own workaround.
+
+////
+
+== BELOW IS OLD VERSION
 
 [NOTE]
 ====
@@ -24,7 +142,7 @@ within your modding project to be able to poke around in the UAssets and see how
 
 Strongly suggested you try and keep with the writing style of the game for ADA messages
 Speaking mannerisms, patterns in what she says across voice lines
-link:{attachmentsdir}/Development/All_Vanilla_ADA_Voicelines.txt[reference file]
+link:{attachmentsdir}/Development/Satisfactory/AdaMessages/All_Vanilla_ADA_Voicelines.txt[reference file]
 For more examples check PowerSuit modules
 
 the sound wave goes in the Dialogue Sounds array of an FGAudioMessage, there are lots of other settings there as well
@@ -69,3 +187,5 @@ If you want to send more than one message event per schematic, for example one i
 If you have a message incoming that does not have a Dialogue Sounds file set, none of the messages in that 'queued batch' will play, it will cancel them all!
 	to fix this, give it a sound file of just silence to play. Example of this in Powersuit Modules
 
+
+////

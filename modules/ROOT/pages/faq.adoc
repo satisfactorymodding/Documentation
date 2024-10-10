@@ -123,7 +123,8 @@ There are also three kinds of mods with respect to multiplayer:
 * Client-side mods
 ** This mod only needs to be present on the client side to work - the host does not need to have it installed. However, the host having it installed may enable additional functionality for clients.
 
-Assume that mods are both-sided unless explicitly stated otherwise by the mod page or dedicated server compatibility grid.
+Assume that mods are both-sided unless explicitly stated otherwise by the mod page or the
+xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[dedicated server compatibility grid].
 
 == How do I share my mods with my friends for multiplayer?
 
@@ -138,9 +139,8 @@ _Or: How do I tell if a mod works on Dedicated Servers?_
 
 In general, mods do work on dedicated servers, but exact support will vary depending on the mod.
 See xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers] for more details.
-The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport[Installing Mods section]
+The xref:ForUsers/DedicatedServerSetup.adoc#CheckModDedicatedServerSupport['Checking if a Mod Supports Dedicated Servers' section]
 describes how to tell if an individual mod supports Dedicated Servers.
-
 
 == Are Satisfactory mods safe?
 
@@ -291,7 +291,7 @@ See link:#_how_do_i_backup_my_save_files[Backing Up Save Files]
 [id="Files_Blueprints"]
 === Blueprint Designer Files
 
-Check out the https://satisfactory.wiki.gg/wiki/Blueprint_Designer#Save_Location[Official Wiki's information on Blueprint Designer files].
+Check out the https://satisfactory.wiki.gg/wiki/Blueprint#Save_Location[Official Wiki's information on Blueprint Designer files].
 
 Remember that the folder may not exist if you haven't created a blueprint yet.
 
@@ -316,16 +316,16 @@ Note that some mods may have custom implementations or extra files that are not 
 
 You can find various log files at different locations:
 
-- `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
-  - The game client this file is stored in `%LOCALAPPDATA%/FactoryGame/Saved/logs`
-  - Dedicated servers could have this file in `InstallDirectoryHere/FactoryGame/Saved/logs`
+* `FactoryGame.log` is produced by running the game and includes both base-game and mod log messages.
+  ** The game client this file is stored in `%LOCALAPPDATA%/FactoryGame/Saved/logs`
+  ** Dedicated servers could have this file in `InstallDirectoryHere/FactoryGame/Saved/logs`
     or potentially another location depending on how the server is hosted
-- Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
-- (For mod developers) The Unreal Editor's crash logs can be found in one of the following locations
+* (For mod developers) The Unreal Editor's crash logs can be found in one of the following locations
   depending on when/how it crashed:
-  - `%appdata%\Unreal Engine\AutomationTool\Logs\`
-  - `%LOCALAPPDATA%\UnrealEngine\<the engine version here>\Saved\Logs`
-  - `<your modding project folder>\Saved\Logs`
+  ** `%appdata%\Unreal Engine\AutomationTool\Logs\`
+  ** `%LOCALAPPDATA%\UnrealEngine\<the engine version here>\Saved\Logs`
+  ** `<your modding project folder>\Saved\Logs`
+* Satisfactory Mod Manager's internal log files can be found at `%LOCALAPPDATA%\SatisfactoryModManager\logs`
 
 [id="Files_SMMProfiles"]
 === Mod Manager Profiles
@@ -333,6 +333,13 @@ You can find various log files at different locations:
 Mod manager profiles are stored at:
 
 `%appdata%\SatisfactoryModManager\profiles`
+
+[id="Files_Screenshots"]
+=== Game Screenshots
+
+Game screenshots are stored in:
+
+`%UserProfile%\Documents\My Games\FactoryGame\Screenshots`
 
 == Where can I find the game's log files?
 
@@ -450,7 +457,10 @@ https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-
 
 == Can I put the Mod Manager on a drive other than my C drive?
 
-In order to change the location where SMM caches the downloaded mod files you need to create a symlink for the SMM cache folder.
+[id="MoveCache_SMM2"]
+=== If using SMM2
+
+In order to change the location where SMM2 caches the downloaded mod files you need to create a symlink for the SMM cache folder.
 
 // cspell:ignore mklink
 1. Close SMM
@@ -458,10 +468,15 @@ In order to change the location where SMM caches the downloaded mod files you ne
 3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
 4. Open SMM and download a mod to test and make sure the change has taken effect.
 
+[id="MoveCache_SMM3"]
+=== If using SMM3
+
+SMM3's cache location can be changed via `Mod Manager Settings` > `Change cache location`.
+
 == Why are my game's textures blurry or low resolution?
 
 No particular mod causes your textures to be low resolution -
-it's a base/engine game bug that can be exacerbated by mods.
+it's a base-game/engine bug that can be exacerbated by mods.
 Unreal engine "streams" in low resolution textures at first and then gradually loads better versions.
 This process is getting stuck and thus some textures stay low resolution.
 In terms of fixing it there's three different things you can try.

@@ -6,6 +6,8 @@ This ability, called the **Access Transformer** system, is beneficial because it
 
 As of UE-CSS 4.26.2 build 30, BlueprintCallable is also supported.
 
+As of SML 3.8, UStructs can be modified by access transformers.
+
 [NOTE]
 ====
 Remember, Access Transformers only work for {cpp} classes.

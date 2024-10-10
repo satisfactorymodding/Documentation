@@ -6,7 +6,7 @@ This page serves as a brief overview of the 3 main string classes available in U
 and how they relate to modding.
 
 For more detailed information about these classes, check out the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling-in-unreal-engine?application_version=5.2[Unreal Engine documentation].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/string-handling-in-unreal-engine?application_version=5.3[Unreal Engine documentation].
 
 ## String Classes
 
@@ -20,7 +20,7 @@ Special edits have been made to the modding engine to enable mods to take advant
 Read more about how to use it on the xref:Development/Localization.adoc[Localizing Mods] page.
 
 Read more on the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.2[UE docs page for FText].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.3[UE docs page for FText].
 
 In modding, FText should be used for any string you plan to display to the user.
 For example, schematic names, item descriptions, UI text, predefined chat messages, etc.
@@ -35,7 +35,7 @@ In memory, they are a 4 byte identifier that can be used with this table to retr
 FNames are useful as keys in maps because checking their equality is fast regardless of the length of the string.
 
 Read more on the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.2[UE docs page for FName].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/ftext-in-unreal-engine?application_version=5.3[UE docs page for FName].
 
 In modding, FNames should be used in identifier, keys, or any other string you deem its optimizations beneficial.
 
@@ -45,7 +45,7 @@ FStrings are generic mutable strings with no additional context.
 They take up as much memory as they have characters and offer the "typical" string operations like find and replace, substring, concatenation, comparison, etc.
 
 Read more on the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/fstring-in-unreal-engine?application_version=5.2[UE docs page for FString].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/fstring-in-unreal-engine?application_version=5.3[UE docs page for FString].
 
 In modding, FString is generally used for log messages, strings that change contents often, or strings that doesn't benefit from the features of FText or FName.
 

@@ -9,8 +9,52 @@
 				"isDefault": true
 			},
 			"problemMatcher": [],
-			"label": "yarn: build:dev",
+			"label": "pnpm: build:dev",
 			"detail": "antora antora-playbook-dev.yml"
+		},
+		{
+			"type": "shell",
+			"label": "Hot Rebuild",
+			"command": "pnpm serve",
+			"hide": true,
+			"presentation": {
+				"group": "hot-rebuild-server"
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Webserver",
+			"command": "pnpm watch:dev",
+			"hide": true,
+			"presentation": {
+				"group": "hot-rebuild-server"
+			}
+		},
+		{
+			"label": "Open in browser",
+			"type": "shell",
+			"windows": {
+				"command": "Start-Process http://127.0.0.1:8000/"
+			},
+			"presentation": {
+				"reveal": "silent"
+			},
+			"problemMatcher": []
+		},
+		{
+			"type": "shell",
+			"label": "Launch hot rebuilding development server",
+			"group": {
+				"kind": "none",
+				"isDefault": true
+			},
+			"dependsOn": [
+				"Hot Rebuild",
+				"Webserver",
+				"Open in browser"
+			],
+			"command": "echo 'Development server and watch started'",
+			"problemMatcher": []
 		}
 	]
 }
