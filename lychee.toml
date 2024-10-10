@@ -31,7 +31,9 @@ exclude = [
     "https://docs.unrealengine.com/",
     "https://dev.epicgames.com/",
     # Times out despite being valid
-    "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1"
+    "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1",
+    # Pages often time out and Shouldn't™ ever get deleted anyways
+    "https://web.archive.org/web/"
 ]
 
 # Exclude these filesystem paths from getting checked.
