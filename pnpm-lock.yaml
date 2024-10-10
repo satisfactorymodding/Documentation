@@ -26,8 +26,8 @@ importers:
 
 packages:
 
-  '@75lb/deep-merge@1.1.1':
-    resolution: {integrity: sha512-xvgv6pkMGBA6GwdyJbNAnDmfAIR/DfWhrj9jgWh3TY7gRm3KO46x/GPjRg6wJ0nOepwqrNxFfojebh0Df4h4Tw==}
+  '@75lb/deep-merge@1.1.2':
+    resolution: {integrity: sha512-08K9ou5VNbheZFxM5tDWoqjA3ImC50DiuuJ2tj1yEPRfkp8lLLg6XAaJ4On+a0yAXor/8ay5gHnAIshRM44Kpw==}
     engines: {node: '>=12.17'}
 
   '@antora/asciidoc-loader@3.1.4':
@@ -1208,9 +1208,6 @@ packages:
     resolution: {integrity: sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  lodash.assignwith@4.2.0:
-    resolution: {integrity: sha512-ZznplvbvtjK2gMvnQ1BR/zqPFZmS6jbK4p+6Up4xcRYA7yMIwxHCfbTcrYxXKzzqLsQ05eJPVznEW3tuwV7k1g==}
-
   lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
 
@@ -1222,6 +1219,9 @@ packages:
 
   lodash.throttle@4.1.1:
     resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
@@ -1975,9 +1975,9 @@ packages:
 
 snapshots:
 
-  '@75lb/deep-merge@1.1.1':
+  '@75lb/deep-merge@1.1.2':
     dependencies:
-      lodash.assignwith: 4.2.0
+      lodash: 4.17.21
       typical: 7.1.1
 
   '@antora/asciidoc-loader@3.1.4':
@@ -3287,8 +3287,6 @@ snapshots:
     dependencies:
       p-locate: 6.0.0
 
-  lodash.assignwith@4.2.0: {}
-
   lodash.camelcase@4.3.0: {}
 
   lodash.clonedeep@4.5.0: {}
@@ -3296,6 +3294,8 @@ snapshots:
   lodash.debounce@4.0.8: {}
 
   lodash.throttle@4.1.1: {}
+
+  lodash@4.17.21: {}
 
   lru-cache@6.0.0:
     dependencies:
@@ -3378,7 +3378,7 @@ snapshots:
 
   lws@4.1.2:
     dependencies:
-      '@75lb/deep-merge': 1.1.1
+      '@75lb/deep-merge': 1.1.2
       ansi-escape-sequences: 6.2.2
       array-back: 6.2.2
       byte-size: 8.1.1
