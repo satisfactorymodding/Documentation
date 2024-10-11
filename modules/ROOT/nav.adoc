@@ -72,6 +72,7 @@
             **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
             **** xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
         *** Game Systems
+            **** xref:Development/Satisfactory/Audio.adoc[Audio]
             **** xref:Development/Satisfactory/PowerNetwork.adoc[Power Network]
             **** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
             **** xref:Development/Satisfactory/CustomLevels.adoc[Custom Levels]

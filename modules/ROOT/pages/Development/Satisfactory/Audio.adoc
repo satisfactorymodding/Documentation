@@ -1,0 +1,52 @@
+= Audio
+
+[NOTE]
+====
+This page is a work in progress.
+====
+
+== Wwise
+
+TODO
+
+Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
+
+At the time of writing it is very difficult for modders to interface with Wwise systems,
+so you should use Unreal's built in sound system instead.
+
+The SML team is working on enabling modders to interface with Wwise.
+
+== ADA
+
+See the xref:Development/Satisfactory/AdaMessages.adoc[dedicated page on ADA Messages] for more information.
+
+== Volume Options
+
+To retrieve the user's volume options, use "Get FGGame User Settings" and "Get Float Option Value".
+
+To find out what CVARs to use in,
+adjusting your own user setting for the value then checking your
+xref:faq.adoc#Files_GameConfig[GameUserSettings.ini file] to see what they are saved as.
+
+As of the 1.0 release update, these are the CVARs for the main volume categories:
+
+// cspell:ignore Menu_Volume_Vehicules
+```
+RTPC.Menu_Volume_Master
+RTPC.Menu_Volume_Dialogue
+RTPC.Menu_Volume_SoundEffects
+RTPC.Menu_Volume_UI
+RTPC.Music_Bus_Volume
+RTPC.Menu_Volume_Ambience
+RTPC.Consumables_Bus_Volume
+RTPC.Menu_Volume_Creatures
+RTPC.Menu_Volume_Equipment
+RTPC.Menu_Volume_Factory
+RTPC.Menu_Volume_Foley
+RTPC.Menu_Volume_Vehicules
+RTPC.Menu_Volume_Weapons
+```
+
+These values are on a scale of `0.0` (off) to `1.0` (full volume).
+If multiple categories apply, multiply them together to reach the final volume value.
+For example, the Chainsaw's volume is probably Master multiplied with Equipment multiplied with the chainsaw's specific category.
