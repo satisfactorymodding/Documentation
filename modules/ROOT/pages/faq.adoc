@@ -724,12 +724,12 @@ If you cannot find your steam save folder (probably because you have owned the g
 
 === Linux
 
-Using Steam Play:
+Using Steam (Native):
 
 // cspell:ignore steamapps compatdata steamuser valvesoftware
 `~/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/Local Settings/Application Data/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
-Using Steam:
+Using Steam (Flatpak):
 
 `~/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/526870/pfx/drive_c/users/steamuser/AppData/Local/FactoryGame/Saved/SaveGames/{YOUR STEAM ID}`
 
