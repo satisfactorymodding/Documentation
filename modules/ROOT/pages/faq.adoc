@@ -395,20 +395,6 @@ You can work around this by downloading the mod files mentioned in the error mes
 The process for doing this changes if you're using SMM2 or SMM3 and is described below.
 You can also try using a different proxy, VPN, or hotspot to download the mod instead.
 
-[id="ManualDownloadForCache_SMM2"]
-=== If using SMM2
-
-Once you have downloaded the mod file(s) from ficsit.app,
-rename the file to `[ModName].smod` if it was named `[ModName].zip`.
-
-Then, put the file into SMM's download cache.
-For SMM2, this is `%localappdata%\SatisfactoryModManager\downloadCache\mods`,
-unless the mod you downloaded is SML,
-in which case place the file into `%localappdata%\SatisfactoryModManager\downloadCache\smlVersions\[the SML version number]`.
-
-[id="ManualDownloadForCache_SMM3"]
-=== If using SMM3
-
 Once you have downloaded the mod file(s) from ficsit.app,
 place the zips into `%localappdata%\ficsit\downloadCache`.
 Make sure to rename them to the `ModReference_version_target.zip` format, for example,
@@ -456,20 +442,6 @@ These may cause unforeseen glitches and issues so be careful with them.
 https://forums.unrealengine.com/t/can-you-change-graphics-settings-with-console-commands/308720
 
 == Can I put the Mod Manager on a drive other than my C drive?
-
-[id="MoveCache_SMM2"]
-=== If using SMM2
-
-In order to change the location where SMM2 caches the downloaded mod files you need to create a symlink for the SMM cache folder.
-
-// cspell:ignore mklink
-1. Close SMM
-2. Move the folder `%localappdata%\SatisfactoryModManager` to a drive that has enough space. You can rename the folder to something like SMMCache if you want to make it easier to remember what that folder is.
-3. Open Command Prompt as admin and run this command `mklink /D "%localappdata%\SatisfactoryModManager" "The\New\Location"`, replacing `The\New\Location` with the path of the new folder location (for example `D:\SMMCache`).
-4. Open SMM and download a mod to test and make sure the change has taken effect.
-
-[id="MoveCache_SMM3"]
-=== If using SMM3
 
 SMM3's cache location can be changed via `Mod Manager Settings` > `Change cache location`.
 
