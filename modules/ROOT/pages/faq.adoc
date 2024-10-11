@@ -205,7 +205,7 @@ If you find a mod that is missing its stickers or ones that seem to be incorrect
 please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
-== Satisfactory Mod Manager is open, but I can't see it's window!
+== Satisfactory Mod Manager is open, but I can't see its window!
 
 The program's window somehow got offscreen.
 We're still not sure what causes this.
