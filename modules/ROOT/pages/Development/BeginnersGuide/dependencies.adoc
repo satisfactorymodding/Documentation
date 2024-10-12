@@ -68,7 +68,7 @@ Next, press `Review details` and continue with the installation.
 === Option 2: Manually Select Components
 
 From the "Workloads" tab, select:
-`
+
 - `Desktop & Mobile` > `Desktop development with {cpp}`
 - `Gaming` > `Game development with {cpp}`.
 
