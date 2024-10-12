@@ -107,6 +107,10 @@ either as code examples for you to look at, or because they are required to get 
 They appear in the `All` > `Plugins` section of the Content Browser (for those that contain assets) and are located in the `Mods/` folder on disk.
 Later on, your own mods' folders will appear in this section as well.
 
+You might need to click on `View Options` -> `Show Plugin Content`
+in a Content Browser to see the `Plugins` section in the Unreal Editor.
+image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content in Viewer]
+
 * xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
 ** Editor-only mod to enable other mods to access extra information without modifying the auto-generated C++ stubs.
 * Alpakit
