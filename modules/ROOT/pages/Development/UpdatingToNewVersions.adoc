@@ -583,7 +583,7 @@ You'll want to do the following things:
 3. Update the version range of your mod's dependencies.
    For example, every mod depends on SML, and the version of SML it depends on determines what game versions it is considered compatible with.
    Find the latest SML version number by checking its Alpakit Edit Mod wizard in your editor
-   or by checking the https://ficsit.app/sml-versions[SML releases page].
+   or by checking the https://ficsit.app/mod/SML[SML releases page].
    You probably want to be using the caret range specifier here (ex. `^3.6.1`)
    whose functionality is described in the
    xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Plugins > SemVersion section of the Releasing Your Mod page].
