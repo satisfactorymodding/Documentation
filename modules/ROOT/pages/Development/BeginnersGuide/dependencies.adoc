@@ -288,15 +288,21 @@ or asking for help on the Discord.
 
 Once presented with options on what to install, select:
 
+// Inline HTML to make checkmarks green
+// https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
+// https://docs.asciidoctor.org/asciidoc/latest/pass/pass-macro/
+[pass]
+<style type="text/css"> .green-check { color: greenyellow; } </style>
+
 * _Packages_
-** ✔ Authoring
-** ✔ SDK (C++)
+** pass:[<span class="green-check">✔</span>] Authoring
+** pass:[<span class="green-check">✔</span>] SDK (C++)
 * _Deployment Platforms_
-** ✔ Linux
+** pass:[<span class="green-check">✔</span>] Linux
 ** _Microsoft_
 *** _Windows_
-**** ✔ Visual Studio 2019
-**** ✔ Visual Studio 2022
+**** pass:[<span class="green-check">✔</span>] Visual Studio 2019
+**** pass:[<span class="green-check">✔</span>] Visual Studio 2022
 
 If anything is selected by default, do not uncheck them. They are required for Visual Studio to work.
 
