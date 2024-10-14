@@ -50,7 +50,7 @@ regardless of what their websites and marketing pages claim:
 - low.ms - Does not allow executables
 - nitroserv.games - Allows creating but not deleting dot files, which bricks the server
 - Shockbyte - Doesn't show the root executable
-- gportal - Doesn't show the proper game file tree, just the Saved folder
+- gportal - Doesn't show the proper game file tree. You may have success with manual mod installation, but we offer no support for that process.
 - 4netplayers - Doesn't show the root executable, as well as other game files
 - GTXGaming - Doesn't show the proper game file tree, just the Saved folder
 - Supercraft - Doesn't show the game files, only save files
