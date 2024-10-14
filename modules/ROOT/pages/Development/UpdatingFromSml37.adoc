@@ -320,12 +320,34 @@ These buildings do not actually exist as buildings unless the player is using th
 This may interfere with traces collision checks that expected them to be abstract instances in the past.
 The system is not currently very modder friendly and you will likely have to wait for future game updates to improve it.
 
+Here is some more information about the various types of performance-optimized buildables over the game's updates:
+
+* Abstract Instances = Static Meshes managed by Abstract Instance Manager. They do not have to be lightweights, normal buildings use them too, non-buildings can use them as well.
+* Lightweight Buildables (1.0) = buildings managed by Lightweight Buildable Subsystem. They are abstract instances belonging to the AFGLightweightBuildableSubsystem, there are no individual actors for these buildings, as they are simple enough to just be represented as one or multiple abstract instances grouped together.
+* Lightweight Buildables (Update 8 and earlier) - AFGBuildables that do not have a root component. Traces against them would resolve to Abstract Instance Manager, but if you resolve the trace through the manager you would get the actual buildable actor. THESE ARE GONE NOW.
+
+Spawning lightweight buildables from script requires a bit of extra work.
+
+- Construct an FGBuildableSpawnStrategy
+- Set its `Built with Recipe` and `Play Build Effect` properties to the desired values
+- Call its "Spawn Buildable from Class" method providing the class and transform
+
+image:Development/UpdatingGuides/SpawnLightweightBuildable.png[Screenshot of blueprint code to spawn lightweight buildables]
+
 === Replication Detail Actor Removal
 
 The Replication Detail Actor system has been removed and replaced with the
 xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication] system.
 
 See that page for some info from Arch on the usage of the new system.
+
+=== UFGLocalPlayer::GetPlayerId Removal
+
+`UFGLocalPlayer::GetPlayerId` has been removed but is still accidentally present in the headers.
+This header mismatch will be fixed in a future update.
+
+Use ULocalUserInfo instead.
+See Online Integration overall for more info.
 
 === Add Tags to Relevant Content in your Mod
 
