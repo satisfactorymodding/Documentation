@@ -1,7 +1,6 @@
 * xref:index.adoc[Introduction]
 * xref:faq.adoc[FAQ - Frequently Asked Questions]
 * xref:SMLChatCommands.adoc[Commands]
-* xref:ManualInstallDirections.adoc[Manual Installation]
 
 * Playing with Mods
     ** xref:ForUsers/Welcome.adoc[Welcome to the Community]
@@ -10,6 +9,7 @@
     ** xref:ForUsers/Tags.adoc[Tags and Tag Search]
     ** xref:ForUsers/DedicatedServerSetup.adoc[Installing Mods on Dedicated Servers]
     ** xref:ForUsers/CoreRedirectMigration.adoc[Migrating Modded Content with Core Redirects]
+    ** xref:ManualInstallDirections.adoc[Manual Installation]
 
 * xref:Development/index.adoc[Development]
     ** xref:Development/UpdatingFromSml37.adoc[Updating from SML 3.7.0]
