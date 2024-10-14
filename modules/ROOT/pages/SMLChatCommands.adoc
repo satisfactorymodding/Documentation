@@ -62,13 +62,14 @@ Some of they may not function due to code removed from the distributed version o
 Cheats must be enabled in the game save for a majority of console commands to function.
 To enable cheats:
 
-1. Use SML's "Enable Cheats" Mod Savegame Setting.
+1. Install the link:https://ficsit.app/mod/SML[SML] mod if you haven't already.
+2. Use SML's "Enable Cheats" Mod Savegame Setting.
 .. Option 1: Enable the setting from the xref:ForUsers/ConfiguringMods.adoc#_mod_savegame_settings[in-game menu].
 .. Option 2: Run the `SML.ForceAllowCheats 1` to directly adjust the session setting value directly from the console.
-2. Run the `EnableCheats` console command to activate SML's hook on the cheats system.
+3. Run the `EnableCheats` console command to activate SML's hook on the cheats system.
 Because of how the command is implemented, the game will claim that the command is not recognized when you run it.
 This is expected behavior.
-3. Cheats should now be enabled for this game session.
+4. Cheats should now be enabled for this game session.
 You will have to enable them again later if you load a save.
 
 [TIP]
