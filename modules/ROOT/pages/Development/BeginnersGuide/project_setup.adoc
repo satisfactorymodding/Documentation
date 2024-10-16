@@ -339,6 +339,15 @@ How to access the Content Browser, including adding multiple Content Browser pan
 - https://docs.unrealengine.com/5.3/en-US/content-browser-interface-in-unreal-engine/[Content Browser Interface] -
 How to use the various features offered by the Content Browser.
 
+[NOTE]
+====
+You may see error messages in the editor's Level `Viewport 1` tab such as
+"LANDSCAPE: 64 ACTORS WITH PHYSICAL MATERIALS NEED TO BE REBUILT".
+
+It is usually safe to ignore errors in the Level Viewport tab
+because errors displayed there are unrelated to typical mod content.
+====
+
 == (Optional) Modify Editor Color Scheme
 
 The Unreal Engine 5 editor is very dark by default.
