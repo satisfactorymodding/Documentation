@@ -25,7 +25,7 @@ in which case you should either update your Starter Project
 or follow the steps below instead.
 ====
 
-First, you need to download a version of SML compatible with your game from https://ficsit.app/sml-versions[SMR].
+First, you need to download a version of SML compatible with your game from https://ficsit.app/mod/SML[SMR].
 
 If you want to download the latest development version of SML,
 you can build them yourself with the Unreal editor, or get them from the CI artifacts

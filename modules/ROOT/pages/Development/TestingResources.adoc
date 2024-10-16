@@ -364,33 +364,48 @@ $Args2 = "-EpicPortal", "-NoSteamClient", '-Username="'+$Username2+'"', "-WinX=9
 
 == Multiplayer Testing
 
-[WARNING]
+Locally testing multiplayer functionality requires one of the following approaches:
+
+[id="MultiplayerTesting_Launch2Copies"]
+=== Approach A: Launch 2 game clients
+
+You can run two copies of the game client at once and join one from the other
+using the game's host and play multiplayer system.
+Normally the Steam and Epic Games launchers don't allow you to do this,
+but the link:#LaunchScript[launch script] in the previous section can detach your game from the launcher so you can run two copies.
+Note that doing so breaks "normal" multiplayer functionality and only allows using IP multiplayer sessions.
+
+[NOTE]
 ====
-Update 8 has recently changed how local multiplayer testing works.
-This page has not yet been updated to reflect these changes.
-You must load with the `-offline` flag and use a Map Travel URL with the `?listen` argument to be able to connect.
-For example, `open Persistent_Level?loadgame=NameOfYourSaveGame?listen`.
-Remember that Session Settings are stored in the Map Travel URL as well
-so the defaults will be used if you don't specify them directly in the travel URL here.
-
-Consider locally hosting your own dedicated server for multiplayer testing instead.
+If you own the game on both Epic and Steam you can join one client "normally" from the other.
+Note that this requires you to compile your mod for both the Epic and Steam targets which can slow down development.
 ====
 
-Locally testing multiplayer functionality requires running two copies of the game at once.
-Normally the Steam and Epic Games client don't allow you to do this,
-but the link:#LaunchScript[launch script] in the previous section will allow you to do so.
+To do this:
 
-=== Instructions
+1. Run the link:#LaunchScript[launch script] to open 2 copies of the game client.
+2. On the copy you designate as the host, select a save file to load.
+Before loading it, click the "Load Settings" button and change the "Session Type" to `IP`.
+3. On the copy you designate as the client, open the "Join Game" menu and enter the ip `127.0.0.1`.
+Alternatively, use the `open 127.0.0.1` xref:SMLChatCommands.adoc#ConsoleCommands[console command] from anywhere.
 
-1. First, run the launch script with the `-multiplayer` flag to open two copies of the game.
+[IMPORTANT]
+====
+There is currently a bug in Satisfactory itself causing the host to crash when a client joins in this manner.
+Until this is resolved, either use an Epic and Steam copy or Approach B.
+====
 
-2. Open up your save file in either copy of the game - this one will be the host, the other copy is the client.
+[id="MultiplayerTesting_LocalDedicatedServer"]
+=== Approach B: Launch Client and a Dedicated Server
 
-3. Once you've loaded in, go to the client game instance and open the in-game console.
-Learn how to do this
-xref:SMLChatCommands.adoc#ConsoleCommands[here].
-Then type in `open 127.0.0.1` and hit enter.
-The second instance will now connect to the game hosted by the first instance.
+You can run a dedicated server locally and connect to it with a game client.
+This has the downside of needing to compile your mod for both the client and server targets every time you want to test,
+which will slow down development.
+
+Dedicated servers will automatically load a save file on launch,
+which may or may not speed up your testing process depending on what behaviors you are testing.
+
+To use this approach, check out the link:#TestingDedicatedServers[dedicated server section of this page].
 
 [id="LoadCustomLevel"]
 == Load a Custom Level on Launch
@@ -417,6 +432,8 @@ While you're at it, there are a few other flags you can use to customize the loa
 FG Map Options Switches from Archengius:
 +++ </summary><div> +++
 ....
+NOTE: These are from 2021 and may be outdated.
+
 Switches found in AFGGameMode::InitGame:
 
 ?skipOnboarding (skip landing animation)
@@ -492,6 +509,7 @@ Note that in order to perform the first time server claiming process
 you will need to use a client of the game that was launched normally (ex. through Steam or Epic).
 After the server claiming process is complete you can return to using a copy launched with the launch scripts described elsewhere on this page.
 
+[id="TestingDedicatedServers_LocalServer"]
 ==== Option 1: Locally Installed Dedicated Server
 
 You can install the dedicated server on your own computer and run it locally.
@@ -513,6 +531,7 @@ through the normal server browser
 or with the `open` console command, for example,
 `open 127.0.0.1`.
 
+[id="TestingDedicatedServers_RemoteServer"]
 ==== Option 2: Remote Dedicated Server
 
 You can also set up the dedicated server on another computer on your network.
@@ -524,6 +543,7 @@ meaning that Alpakit will handle copying and replacing the files on the remote s
 
 You'll still need to restart it after every package for the server to reload file changes.
 
+[id="TestingDedicatedServers_AskNicely"]
 ==== Option 3: Ask Nicely on Discord
 
 A community member may have a dedicated server they can give you access to in order to test mods on.
@@ -531,6 +551,7 @@ Ask in the modding help channels and see if anyone speaks up, but you may not ge
 
 You will likely have to manually transfer each testing build of the mod to the server. 
 
+[id="TestingDedicatedServers_CrossFingers"]
 ==== Option 4: Cross your Fingers
 
 The option of last resort: you can compile your mods for dedicated servers and release them without testing them.
@@ -553,6 +574,7 @@ or follow the process outlined in the Option section you selected above.
 // From https://discord.com/channels/555424930502541343/562722670974599227/1044575456659259472
 
 Additional information about the Online Subsystem.
+This info is from 2023 and may be out of date.
 
 +++ <details><summary> +++
 True offline mode information from Archengius:

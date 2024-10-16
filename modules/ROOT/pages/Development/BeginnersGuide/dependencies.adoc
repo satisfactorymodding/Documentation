@@ -68,7 +68,7 @@ Next, press `Review details` and continue with the installation.
 === Option 2: Manually Select Components
 
 From the "Workloads" tab, select:
-`
+
 - `Desktop & Mobile` > `Desktop development with {cpp}`
 - `Gaming` > `Game development with {cpp}`.
 
@@ -288,21 +288,27 @@ or asking for help on the Discord.
 
 Once presented with options on what to install, select:
 
+// Inline HTML to make checkmarks green
+// https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
+// https://docs.asciidoctor.org/asciidoc/latest/pass/pass-macro/
+[pass]
+<style type="text/css"> .green-check { color: greenyellow; } </style>
+
 * _Packages_
-** ✔ Authoring
-** ✔ SDK (C++)
+** pass:[<span class="green-check">✔</span>] Authoring
+** pass:[<span class="green-check">✔</span>] SDK (C++)
 * _Deployment Platforms_
-** ✔ Linux
+** pass:[<span class="green-check">✔</span>] Linux
 ** _Microsoft_
 *** _Windows_
-**** ✔ Visual Studio 2019
-**** ✔ Visual Studio 2022
+**** pass:[<span class="green-check">✔</span>] Visual Studio 2019
+**** pass:[<span class="green-check">✔</span>] Visual Studio 2022
 
 If anything is selected by default, do not uncheck them. They are required for Visual Studio to work.
 
 Click `Next` (you may need to scroll down to see the button).
 You don't need to add any plugins,
-so press `Deselect All` in the top right then `Install` in the bottom left to begin the installation process.
+so press `Select None` in the top right then `Install` in the bottom left to begin the installation process.
 Accept the terms and conditions prompts that appear along the way.
 
 == Satisfactory Mod Manager

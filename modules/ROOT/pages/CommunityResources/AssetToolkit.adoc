@@ -2,7 +2,7 @@
 
 [WARNING]
 ====
-The Asset Toolkit has not yet been fully tested on UE5.
+The Asset Toolkit has not yet been fully tested on UE5 or the 1.0 release.
 ====
 
 [NOTE]
@@ -52,7 +52,7 @@ Regardless, make sure the copy you obtain is of the `dev` branch.
 [NOTE]
 ====
 Note that the link above points to the *dev branch of Mircea's fork* of the https://github.com/Archengius/UEAssetToolkit[original project].
-Said fork is the one that the https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L178[CI scripts]
+Said fork is the one that the https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/.github/workflows/updateSML.yml#L178[CI scripts]
 use to semi-automatically generate the starter project, and as such is usually kept more up to date.
 ====
 
@@ -67,7 +67,7 @@ UE will still be able to discover them.
 
 After the plugins have been moved into your modding project,
 re-xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
-and build for Development Editor and Shipping.
+and build for Development Editor.
 
 While you wait for it to compile, here's some info about the roles of each plugin.
 
@@ -97,6 +97,8 @@ It takes files produced by the dumper and generates the uasset files your editor
 To install the Asset Dumper in your copy of the game,
 build it with Alpakit like you would any other mod.
 Be sure you have "Copy Mods to Game" enabled and the "Game Path" set correctly.
+
+Make sure to not have any server targets enabled; the asset toolkit does not work on dedicated servers.
 
 == Dumping Game Assets
 
@@ -151,7 +153,7 @@ inside your game install directory.
 ====
 Asset dumping is also used to create the stater project stubs when the game updates.
 If you're interested in how this works, check out the
-https://github.com/mircearoata/satisfactory-modding-actions/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
+https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
 or contact us on the discord for more info.
 ====
 
@@ -232,10 +234,10 @@ function CleanupTempFiles {
 # Clean up the temp files, in case the script was exited or crashed earlier for some reason
 CleanupTempFiles
 
-# Force generated package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/ForceGeneratePackages.txt
+# Force generated package names from https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/ForceGeneratePackages.txt
 Write-Output "/Game/FactoryGame/Buildable/-Shared/Widgets/Widget_Output_Slot" >> $ForceGenerateFile
 
-# Skip save package names from https://github.com/mircearoata/satisfactory-modding-actions/blob/master/SkipSavePackages.txt
+# Skip save package names from https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/SkipSavePackages.txt
 Write-Output "/Game/FactoryGame/Interface/UI/BPI_ShoppingList" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> $SkipSaveFile
@@ -312,7 +314,7 @@ you'll need to grab multiple files from your backup copy of the starter project'
 and bring some in to replace the ones in your current copy.
 
 The list of files to move is
-https://github.com/mircearoata/satisfactory-modding-actions/blob/master/CustomAssets.txt[here],
+https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[here],
 except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
 because the generator's copy of textures is more accurate.
 
