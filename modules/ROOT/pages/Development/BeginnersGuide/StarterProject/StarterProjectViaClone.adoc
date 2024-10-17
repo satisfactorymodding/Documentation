@@ -7,6 +7,11 @@ The below box will help you decide which repository branch to clone.
 It's imperative that you download the correct Starter Project version of the game you're modding
 or you will have to repeat some of the setup process again.
 
+== What is Cloning?
+
+If you aren't familiar with version control software (VCS) like Git,
+check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that will cover the basics.
+
 == What Branch to Clone
 
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
@@ -31,6 +36,12 @@ Get the clone URL via the **`<> Code`** dropdown button on the GitHub page.
 Again, please make sure to clone the correct branch -
 your client will probably start you on the `master` branch by default
 and you may have to switch branches to the branch you actually intended to clone.
+
+If you just followed the xref:Development/BeginnersGuide/LearnGit.adoc[mini git tutorial],
+we suggest following the steps
+https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop[here]
+to use GitHub Desktop to clone the repository.
+Otherwise, use the git clone method of your choice.
 
 You can move the cloned repository folder later, and you can name it whatever you'd like.
 
