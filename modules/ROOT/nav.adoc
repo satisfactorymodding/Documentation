@@ -107,7 +107,7 @@
             **** xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1]
             **** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]
             ****  xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
-    ** xref:Development/Localization.adoc[Localizing Mods]
+    ** xref:Development/Localization.adoc[Localizing Mods] // TODO hide me once Translating section is ready
     ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
     ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
     ** xref:Development/TestingResources.adoc[Testing/Multiplayer Testing]
@@ -122,6 +122,14 @@
     ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
     ** xref:CommunityResources/incredibuild.adoc[Incredibuild]
     ** xref:CommunityResources/TrainSignalGuide.adoc[Train Signaling Guide]
+
+// TODO unhide once translating section is ready
+// * Translating Mods
+//     ** xref:Translation/GetStartedTranslating.adoc[Get Started Translating]
+//     ** xref:Translation/UsingTolgee.adoc[Using Tolgee]
+//     ** For Mod Developers
+//         *** xref:Translation/Developers/RequestTolgeeProject.adoc[Using Tolgee]
+//         *** xref:Development/Localization.adoc[Localizing Mods]
 
 * Community Mod Lists
     ** xref:CommunityModLists/QOL.adoc[Quality of Life Mods]
