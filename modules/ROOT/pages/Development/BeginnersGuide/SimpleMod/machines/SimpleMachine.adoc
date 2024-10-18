@@ -73,14 +73,23 @@ It wont know how to respond to a request by default - to control how our machine
 
 image:BeginnersGuide/simpleMod/machines/SimpleMachine_Override.jpg[image]
 
-Because we want to store the count of items transferred and the count of different item-types, we will need to add a new global integer variable.
-Let's call it "itemAmount".
-We'll also need an array of `+FGItem Descriptor+`-Classes, which we'll call "itemTypes".
-image:BeginnersGuide/simpleMod/machines/SimpleMachine_Variables.jpg[image]
+Because we want to store the count of items transferred,
+we will need to add a new integer variable to the actor.
+Let's call it `ItemAmount`.
+
+We'll also need something to keep track of what unique `FGItemDescriptor` classes have entered the machine.
+Let's create a Set called `ItemTypes`.
+First, create the variable, then change it to be a set from the Details panel.
+
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_CreateVariable.png[Creating the variable]
+
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_CreateItemTypesSet_Part1.png[Setting the type]
+
+image:BeginnersGuide/simpleMod/machines/SimpleMachine_CreateItemTypesSet_Part2.png[Change type to Set]
 
 Now, in the grab logic, first we check if the machine has power. We do this by using the "HasPower"-node of the `FGPowerInfoComponent`. If it responds false, we return nothing and set the output to false. But if it's true, we use the grab function of the input connector to request a new item.
 
-If the input grab boolean is true, we increase the "itemAmount" integer by one and add the item unique to the "itemTypes". After that we return the item we got from the grab and set the output boolean to true.
+If the input grab boolean is true, we increase the `ItemAmount` integer by one and add the item unique to the `ItemTypes`. After that we return the item we got from the grab and set the output boolean to true.
 
 If the input grab boolean is false, we just return nothing and the output boolean is set to false.
 
@@ -88,7 +97,8 @@ Overall the logic becomes: checks if we have power. If we do, try and get a item
 
 We also add a `Log Display` node near the end for debugging purposes. Details on getting a Live view of the game log can be found xref:Development/TestingResources.adoc#logging[here].
 
-image:BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.png[image]
+.Open this image full size to get a better look
+image::BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.png[image]
 
 That should be it, try out your newly created machine!
 
