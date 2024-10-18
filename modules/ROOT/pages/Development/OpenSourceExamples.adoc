@@ -195,7 +195,7 @@ _Notable Mod Loader Features Used:_
 * Mod Configuration
 ** Settings panel to reorganize build menu
 
-[id="Beavers Ficsmas Booster"]
+[id="BeaversFicsmasBooster"]
 == Beaver's Ficsmas Booster
 
 Adds a number of new customizer building material and complex decorative parts. Uses seasonal toggles and several new from scratch materials.
@@ -227,3 +227,28 @@ _Notable Satisfactory Features Used:_
 _Notable Mod Loader Features Used:_
 
 * None
+
+[id="BetterTrainCollision"]
+== Better Train Collision
+
+Replaces base game locomotive collision mesh.
+
+_Source Code_: Linked on the https://ficsit.app/mod/BetterTrainCollision[Mod Page]
+
+_Mod Type_: Pure Blueprint
+
+_Notable Techniques Used:_
+
+* Runtime actor modification
+** Replaces locomotive collisions with custom collision mesh
+** Makes sure only the base game train's mesh collisions are replaced,
+   avoiding accidentally modifying other mods' trains
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* Simple Construction Script (SCS) Hooks
+** Used to detect instances of locomotives and trigger the code to replace their collision mesh
