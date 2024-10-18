@@ -31,11 +31,9 @@ Clone the **`master` branch** to develop a mod for SML 3.8.0.
 If you're uncertain about which branch to clone, **ask us on the Discord**.
 ====
 
-https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here] is a link to the repository to clone.
+https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here]
+is a link to the GitHub page of repository to clone.
 Get the clone URL via the **`<> Code`** dropdown button on the GitHub page.
-Again, please make sure to clone the correct branch -
-your client will probably start you on the `master` branch by default
-and you may have to switch branches to the branch you actually intended to clone.
 
 If you just followed the xref:Development/BeginnersGuide/LearnGit.adoc[mini git tutorial],
 we suggest following the steps
@@ -43,13 +41,16 @@ https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-rep
 to use GitHub Desktop to clone the repository.
 Otherwise, use the git clone method of your choice.
 
-You can move the cloned repository folder later, and you can name it whatever you'd like.
+Your Git client will probably start you on the `master` branch by default,
+so you may have to switch branches to the branch you actually intended to clone.
 
+You can move the cloned repository folder later, and you can name it whatever you'd like.
 Make sure to read the notes on the
 xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter Project page]
 about good long-term homes for your starter project files.
 
-The directory is ready for use as soon as the clone is complete.
+The directory is ready for use as soon as the clone is complete
+and you have switched to the branch you intend to sue.
 
 [IMPORTANT]
 ====
