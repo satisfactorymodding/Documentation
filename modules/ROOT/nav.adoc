@@ -90,7 +90,7 @@
         *** xref:Development/ModLoader/ModModules.adoc[Mod Modules]
         *** xref:Development/ModLoader/Logging.adoc[Logging]
         *** xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers]
-        *** xref:Development/ModLoader/Subsystems.adoc[Subsystems]
+        *** xref:Development/ModLoader/Subsystems.adoc[Mod Subsystems]
         *** xref:Development/ModLoader/Configuration.adoc[Configuration]
         *** xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks]
         *** xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
