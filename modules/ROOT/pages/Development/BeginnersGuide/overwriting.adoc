@@ -71,6 +71,12 @@ Afterwards, you can use the class' existing setters to modify fields. +
 You might need to use an xref:Development/ModLoader/AccessTransformers.adoc[Access Transformer]
 to make the field that you intend to change accessible from blueprints.
 
+[TIP]
+====
+By default Unreal Engine will open data only Blueprints in a simplified Editor.
+It may be necessary to click "Open Full Blueprint Editor" at the top of the newly opened window.
+====
+
 To keep a reference to the CDO, create a property of type Object in the blueprint where you also change the CDO. Set the property's value to be the CDO before manipulating the object. +
 If you are modifying multiple CDOs, you can make the property an array of objects instead, and add each CDO to the array.
 
