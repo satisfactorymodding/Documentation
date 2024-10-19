@@ -4,6 +4,9 @@
 # Exclude URLs and mail addresses from checking (supports regex).
 # Please explain the inclusion of each one.
 exclude = [
+    # Don't check the SMM or ficsit-cli auto download link
+    "https://smm.ficsit.app/",
+    "https://cli.ficsit.app/",
     # These will always be 404s unless you're authed
     "https://github.com/satisfactorymodding/UnrealEngine/",
     "https://github.com/EpicGames/UnrealEngine/",
