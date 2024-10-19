@@ -54,7 +54,7 @@ DEFINE_LOG_CATEGORY(LogYourModReference);
 
 In a cpp file where you want to log something:
 ```cpp
-#include "LogYourModReference.h"
+#include "YourModReference.h"
 // [...]
 UE_LOG(LogYourModReference, Verbose, TEXT("Hello World!"));
 
