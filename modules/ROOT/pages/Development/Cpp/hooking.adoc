@@ -165,7 +165,8 @@ public:
 #include "Patching/NativeHookManager.h"
 
 void registerHooks() {
-	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, SomeClass, [](auto& scope, SomeClass* self, int arg1) {
+	auto someClassPtr = GetMutableDefault<SomeClass>();
+	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, someClassPtr, [](auto& scope, SomeClass* self, int arg1) {
 		// do some nice stuff there
 	});
 
