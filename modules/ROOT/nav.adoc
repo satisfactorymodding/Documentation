@@ -107,6 +107,10 @@
             **** xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1]
             **** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]
             ****  xref:Development/UpdatingFromSml2.adoc[Updating from SML 2.2.1]
+    ** Editor Tools
+        *** xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Editor Utilities]
+            **** xref:Development/EditorTools/SMLEditor/ResearchTreeEditor.adoc[Research Tree Editor]
+        *** xref:Development/EditorTools/SMLFeatureTests/SMLFeatureTests.adoc[SML Feature Tests]
     ** xref:Development/Localization.adoc[Localizing Mods] // TODO hide me once Translating section is ready
     ** xref:Development/ReuseGameFiles.adoc[Reusing Base Game Files]
     ** xref:Development/ExtractGameFiles.adoc[Extracting Game Files]
