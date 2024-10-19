@@ -165,8 +165,8 @@ public:
 #include "Patching/NativeHookManager.h"
 
 void registerHooks() {
-	SomeClass* someClassPtr = GetMutableDefault<SomeClass>();
-	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, someClassPtr, [](auto& scope, SomeClass* self, int arg1) {
+	SomeClass* SampleObject = new SomeClass(); // For UObject derived classes, use SUBSCRIBE_UOBJECT_METHOD instead
+	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, SampleObject, [](auto& scope, SomeClass* self, int arg1) {
 		// do some nice stuff there
 	});
 
