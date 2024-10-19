@@ -420,6 +420,10 @@ The easiest way to gather logs is the Mod Manager's "generate debug info" featur
 
 image:FAQ/SmmGenerateDebugInfo.png[SMM Generate Debug Info screenshot]
 
+If someone helping you asks you to, you can copy your the list of mods you currently have installed to your clipboard with this button.
+
+image:FAQ/SmmCopyModList.png[Screenshot of the "Copy Mod List" button in the "Mod Manager Settings" menu]
+
 You can also follow this process to track down which mod(s) you have installed are leading to a crash (or other undesired behavior):
 
 image:FAQ/DebugModsFlowchart.png[Troubleshooting flowchart]
