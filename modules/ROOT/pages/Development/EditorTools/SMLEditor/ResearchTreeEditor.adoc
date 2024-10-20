@@ -1,0 +1,22 @@
+= Research Tree Editor
+
+[NOTE]
+====
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+Have you been holding off on implementing a MAM research tree in your mod because of how tedious it is?
+Wait no more!
+
+The new Research Tree Editor allows you to create and edit research trees in a visual interface
+and provides basic error checking functionality.
+
+To launch the tool, navigate to the `SMLEditor Content/ResearchTree/` folder in the Content Browser,
+right click on the `ResearchTreeHelper` asset, then select `Run Editor Utility Widget`.
+Hover over elements in the tool to see tooltips explaining what they do.
+
+The Example Mod has been updated with a complex research tree (created by the tool)
+to demonstrate and explain some important research tree concepts.
+Explore this tree, and the base game's trees, to learn more about how research trees work.

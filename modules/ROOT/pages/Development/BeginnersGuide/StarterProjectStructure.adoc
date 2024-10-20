@@ -122,7 +122,7 @@ image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content
    Some of the examples present in this mod are not explained on this site yet.
 * SML
 ** The full implementation of the Satisfactory Mod Loader mod.
-* SMLEditor
+* xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SMLEditor]
 ** Editor-only mod that provides helpful utilities to mod creators, such as a mod configuration screen preview and a Research Tree Editor.
 
 You should not need to edit any of the provided mod files under normal circumstances.
