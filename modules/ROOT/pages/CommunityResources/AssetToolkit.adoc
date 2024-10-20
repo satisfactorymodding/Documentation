@@ -265,6 +265,7 @@ Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> $SkipSaveFil
 Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Schematics/Research/BPD_ResearchTreeNode" >> $SkipSaveFile
 
 # Skip a few assets that cause annoying problems in the editor (ex. missing animation data spam errors)
 # TODO this functionality does not seem to be working?
