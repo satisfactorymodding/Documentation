@@ -180,12 +180,15 @@ If you're still encountering issues, ask for help on the discord.
 
 == Importing Dumped Assets to the Editor
 
-You can expect a Content folder with all assets imported to take up about 7 GB.
+You can expect a Content folder with all assets imported to take up about 6 GB.
 For comparison, a Content folder with placeholders takes up 366 MB.
 
-=== Create a Backup
+Close the editor if you still have it open.
 
-Before using the Asset Generator, you should move your existing modding project's Content folder to another location.
+=== Move Out the Existing Content Folder
+
+Before using the Asset Generator, move your existing modding project's Content folder to another location,
+for example, by renaming it to `Content_PreGenerate`.
 This serves two purposes - one, giving you a copy of the files to return to in case the asset generation does not succeed.
 Two, moving the folder therefore leaves an empty directory behind where the assets used to be,
 meaning that the asset generator is sure to re-generate every asset,
@@ -193,8 +196,15 @@ ensuring any possible asset generator crashes aren't caused by it trying to upda
 
 === Run the Generator Commandlet
 
+[IMPORTANT]
+====
+It is critical that you move your pre-existing Content folder to another destination before running the generator.
+The generator behaves differently when assets already exist, and can mess up things when they do,
+for example, material slot assignments.
+====
+
 The next step is using the Asset Generator's
-https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Commandlets/UCommandlet?application_version=5.3[commandlet]
 features to turn the dumped files into usable assets for your editor.
 
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
@@ -271,10 +281,10 @@ CleanupTempFiles
 
 This script will take a considerable amount of time.
 Experts advise locating and petting a lizard doggo while you wait.
-
+There are a lot of things that could go wrong in this process, so be prepared to troubleshoot using the steps below.
 You'll know it's finished when your powershell window closes or you are prompted to enter another command.
 
-After you're done, your modding project's content folder should be around 7 GB.
+After you're done, your modding project's content folder should be around 6 GB.
 
 === Troubleshooting Asset Generation Crashes
 
