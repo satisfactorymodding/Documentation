@@ -11,8 +11,23 @@ Check there if something is unclear or you get stuck.
 
 == The Widget
 
-The very first thing we do is to create the GUI itself. You do this by creating a new BP-Class of type `Widget_UseableBase`.
-This works like every other regular UMG widget, so be sure you're familiar with how they work.
+First, create the asset that defines the GUI itself.
+Create a new Blueprint Class asset of type `Widget_UseableBase`.
+
+Once you open the widget asset you'll be greeted with the Designer tab,
+a visual interface for designing the visual appearance of widgets.
+You can switch between the "Designer" and "Graph" tabs via the buttons in the top right.
+The Graph tab enables editing the blueprint scripting code for your widget.
+
+Widgets are Unreal Engine's primary system for creating user interfaces.
+Learning how to create them is essential for creating mods with custom interfaces,
+but is too expansive of a topic for this guide to sufficiently explain.
+This guide focuses on the Satisfactory Modding specific portions of creating a widget.
+
+Check out the following documentation from Unreal as a starting point for learning how to design widgets.
+
+* https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-ui-designer-quick-start-guide-in-unreal-engine#2-displayinghealth,energy&ammo[UMG UI Designer Quick Start Guide: 2 - Displaying Health, Energy & Ammo]
+* https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-editor-reference-for-unreal-engine?application_version=5.3[UMG Editor Reference]
 
 == Retrieving Information from our Machine
 
@@ -40,6 +55,8 @@ You can use a VerticalBox to arrange them in a column.
 
 Bindings are a convenient way to live update our display with information from the machine.
 In the Designer tab, bind the Text content of each of your TextBlocks to their own functions (Bind > Create Binding).
+
+image:BeginnersGuide/simpleMod/machines/CreateBinding.png[Create text element function binding editor screenshot]
 
 The "Format Text" node is a clean way to prepate text for display to the user.
 Use curly brackets `{}` in its format input to indicate where you want to insert a variable.

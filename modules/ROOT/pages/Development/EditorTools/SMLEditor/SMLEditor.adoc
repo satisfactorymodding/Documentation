@@ -1,0 +1,76 @@
+= SMLEditor
+
+**SML Editor** is an editor-only 'mod' distributed with the Starter Project.
+It contains a number of helpful utilities for mod developers.
+As it is not intended to ever be packaged into a mod, it is purposefully excluded from Alpakit menus.
+
+This section of the docs briefly describes each of the tools contained within the mod.
+
+== Research Tree Editor
+
+Located at: `/SMLEditor/ResearchTree/AssetAction_ResearchTreeHelper`
+
+A utility for viewing and creating MAM Research Trees via a visual interface.
+Read more on its xref:Development/EditorTools/SMLEditor/ResearchTreeEditor.adoc[dedicated documentation page].
+
+To use it, either launch the utility widget from the Content Browser
+or right click on any Research Tree and run
+`Scripted Asset Actions` > `SMLEditor: Open Research Tree Editor`.
+
+== Mod Configuration Previewer
+
+Located at: `/SMLEditor/MenuPreview/SML_MenuPreviewWidget`
+
+Enables previewing of xref:Development/ModLoader/Configuration.adoc[mod configurations] in the editor.
+To use it, right click on any Mod Configuration asset and run
+`Scripted Asset Actions` > `SMLEditor: Preview Mod Configuration in Editor`.
+
+You can also launch it from the right click menu of the editor widget or asset action utility.
+
+// cspell:ignore Reparent Reparenter
+
+== Mass Asset Reparenter
+
+Located at: `/SMLEditor/Utils/AssetAction_MassReparent`
+
+Easily change the parent class of multiple assets at once.
+
+To use it, first make sure you have everything saved in case the editor crashes.
+Then select one or more assets, then right click on one, and run
+`Scripted Asset Actions` > `SMLEditor: Reparent Selected Assets`.
+Select the new parent class in the popup, confirm you have saved, and click "OK".
+
+== In Editor Testing Example
+
+Located at: `/SMLEditor/InEditorTestingExample/`
+
+This custom level and widget demonstrate how you can test basic actor and widget functionality directly in the editor.
+Testing in the editor can save you a lot of time relaunching the game
+as long as the functionality you are testing doesn't rely on the game's systems.
+Most game systems don't function properly in the editor and could crash the editor when called
+because xref:Development/BeginnersGuide/StarterProjectStructure.adoc#PlaceholderSystem[most of the project's game code is stubs].
+
+To open it, open the `SMLEditor_Testing` level asset and click the "play" button in the editor toobar.
+To look at the level's blueprint code,
+click the 3-boxes button to the left of the play button ("List of world Blueprints")
+and select "Open Level Blueprint".
+
+== ADA Message Extractor
+
+Located at: `/SMLEditor/AdaMessages/AdaMessageExtractor`
+
+This utility loads all FGMessage assets in the project and compiles data about them into one string.
+It can be useful for viewing what speaking patterns ADA and the Aliens use when speaking
+without having to hunt through lots of separate message assets.
+
+To use it, right click on the editor utility widget and select "Run Editor Utility Widget".
+
+////
+
+== Smart Recipe Viewer
+
+Located at: `/SMLEditor/RecipeEditor/`
+
+Read more on its xref:Development/EditorTools/SMLEditor/RecipeEditor.adoc[dedicated page].
+
+////

@@ -1,4 +1,4 @@
-= Subsystems
+= Mod Subsystems
 
 [TIP]
 ====
@@ -11,6 +11,7 @@ Subsystems are actors that exist only once in the world
 (similar to https://en.wikipedia.org/wiki/Singleton_pattern[Singletons], but not quite)
 as an instance general manager. These subsystems are accessible from anywhere you
 have a world context available (f.e. actors).
+
 Subsystems allow you to implement custom game state information,
 for example, that you want to have saved to the save file, or when you
 want to manage multiple actors or some system from one central point.
@@ -22,24 +23,67 @@ without storing that data again in each lamp instance.
 Subsystems can exist on host, client, or both sides of a multiplayer game,
 possibly replicated, depending on their Replication Policy setting.
 
+== Defining a Mod Subsystem
+
+To define a new Mod Subsystem, create a new class that inherits from `AModSubsystem`.
+
 [WARNING]
 ====
 If you're implementing a subsystem in {cpp} and you override BeginPlay or EndPlay,
-be sure to call the super functions, or the subsystem will not be handled correctly.
+be sure to call the super functions, or the subsystem will not be handled correctly!
 ====
+
+== Replication Policy
+
+A subsystem's replication policy determines which side(s) the subsystem will exist on in multiplayer
+and if data will be shared between the server and clients' instances of the subsystem.
+
+Subsystems have the `SpawnOnServer` replication policy by default,
+meaninging clients do not have an instance of the subsystem.
+If this is not the desired behavior,
+review the table below to find the replication policy that best suits your needs,
+then change it in the Class Defaults (blueprint) or constructor (C++).
+
+.Replication Policy Quick Reference: Sidedness
+|===
+| |Exists in Singleplayer|Exists on Host-and-play hosts|Exists on Dedicated Servers|Exists on Multiplayer Clients
+
+| `SpawnOnServer` (Spawn on Server, Do Not Replicate)
+| ✔ | ✔ | ✔ | ✘
+
+| `SpawnOnServer_Replicate` (Spawn on Server, Replicate)
+| ✔ | ✔ | ✔ | ✔
+
+| `SpawnOnClient` (Spawn on Client Only)
+| ✔ | ✔ | ✘ | ✔
+
+| `SpawnLocal` (Spawn on Client and Server, Never Replicate)
+| ✔ | ✔ | ✔ | ✔
+|===
+
+.Replication Policy Quick Reference: Data Sharing 
+|===
+| | Shares data between host and client instance?
+
+| `SpawnOnServer` (Spawn on Server, Do Not Replicate)
+| ✘ - There is no client side to share data with
+
+| `SpawnOnServer_Replicate` (Spawn on Server, Replicate)
+| ✔ - The server has network ownership of the actor and replicates it to clients
+
+| `SpawnOnClient` (Spawn on Client Only)
+| ✘ - Either there is no server side to share data with (dedicated servers) or the server and client sides do not communicate (host and play)
+
+| `SpawnLocal` (Spawn on Client and Server, Never Replicate)
+| ✘ - The server and client sides do not communicate
+|===
 
 == Registering a Subsystem
 
-If you want to have a subsystem you will need at least one class that inherits the `ModSubsystem` class. 
-
-To register a subsystem, you should add it to the `Mod Subsystems` array of the
+To register a subsystem, add it to the `Mod Subsystems` array of a
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game World Module].
 
 image:Satisfactory/Subsystems/Subsystems_gwm.PNG[GameWorldModule]
-
-The subsystems are held by the `SubsystemActorManager`, that can be obtained using the `GetSubsystemActorManager` function.
-
-image:Satisfactory/Subsystems/Subsystems_sam_node.PNG[GameWorldModule]
 
 == Spawning a Subsystem
 
@@ -58,11 +102,12 @@ make sure that you have correctly configured its Replication Policy.
 A subsystem itself is an actor inheriting from `ModSubsystem`.
 You can also use subsystems to store data to save states.
 
-You should use the `GetSubsystemActor` function to reference your desired subsystem.
+Subsystems are held by the `SubsystemActorManager` that can be obtained using the `GetSubsystemActorManager` function.
+Use the `GetSubsystemActor` function on the manager to get a reference to a subsystem.
 
 image:Satisfactory/Subsystems/Subsystems_sam.PNG[GameWorldModule]
 
-* The first parameter of the function is a reference to your `SubsystemActorManager` acquired using the `GetSubsystemActorManager` function.
-* The second parameter is just a name for the actor in this example `ExampleSubsystem`.
+* The first parameter of the function is a reference to a `SubsystemActorManager` acquired using the `GetSubsystemActorManager` function.
+* The second parameter is the class of the subsystem actor to retrieve.
 
 Consider checking if the retrieved subsystem is valid before trying to do anything with it.
