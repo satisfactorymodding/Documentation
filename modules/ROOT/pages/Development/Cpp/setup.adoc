@@ -74,10 +74,10 @@ to assist with this.
 
 Within this new file you will need to add the following configuration text.
 
-Make sure to replace all instances of `PLUGIN_NAME` with your actual mod reference.
-
 The latest version of this template can be found in the
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/Alpakit/Templates/CPPAndBlueprintBlank/Source/PLUGIN_NAME/PLUGIN_NAME.Build.cs[Starter Project Repository as an Alpakit template].
+
+Make sure to replace all instances of `PLUGIN_NAME` with your actual mod reference.
 
 [WARNING]
 ====
