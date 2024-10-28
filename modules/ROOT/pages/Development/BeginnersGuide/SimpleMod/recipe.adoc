@@ -219,39 +219,39 @@ M Schematic Category::
 +
 M Sub Category::
   Defines in which sub groups the schematic should get categorized.
+  Again, only AWESOME Shop schematics actually use this field.
   {blank} +
   We leave this array empty.
 * {blank}
 +
 M Menu Priority::
   Controls the order that schematics appear within their category.
-  This has not been tested with the HUB, but is used in AWESOME Shop schematics.
+  Relevant for HUB milestones and AWESOME Shop schematics.
   {blank} +
-  Stick with the default value of `0.0`.
+  Stick with values above `10.0` to ensure your modded milestone appears after the vanilla ones in the list.
 * {blank}
 +
 M Tech Tier::
-  Determines which Tier the schematic will appear under in the HUB.
+  Determines which Tier milestones appear as in the HUB.
   {blank} +
   We'll set it to `1` so that our content is available as soon as you finish the tutorial.
 * {blank}
 +
 M Time to Complete::
-  Remember that annoying time when you purchased a milestone and the space ship leaves,
-  blocking you from buying other milestones, or waiting for research to complete?
-  This controls that timer.
-  For milestones, if this value is shorter than the time it takes for the pod animation to launch, it will visually bug out, but you will still be able to submit milestones without issue.
-  For HUB schematics, it will supposedly cause problems if less than 3 seconds, but this has not been tested.
+  The amount of time the schematic takes to "process" in seconds,
+  if relevant to that schematic type.
+  For HUB milestones, it's the time it takes the ship to return.
+  For MAM nodes, it's the time it takes for the research to complete.
   {blank} +
-  We will set it to 60 seconds. 
+  We will set it to `60` seconds. 
 * {blank}
 +
 M Schematic Icon::
   The icon displayed on a HUB milestone, MAM Research, or AWESOME Shop page and preview.
   {blank} +
 // Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
-  Go ahead and use https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image]. 
-  Consider making another folder to hold your schematic icons.
+  Set both this field and `M Small Schematic Icon` to
+  https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image].
 * {blank}
 +
 M Cost::
