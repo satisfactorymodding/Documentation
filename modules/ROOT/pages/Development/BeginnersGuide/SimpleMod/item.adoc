@@ -277,18 +277,18 @@ image:BeginnersGuide/simpleMod/sRGB_Off.png[image]
 Next, we need to assign these textures to the parameters of the material instance.
 
 Open up our `MI_DocItem` asset again.
-In the Details pane, find the `Global Texture Parameter Values` section,
-and check all three of the checkboxes to allow us to override their values.
+In the Details pane, find the "Parameter Groups" heading's "Textures" subsection
+and check all three of these checkboxes to allow us to override their values:
 
-- For the Normal field, select `Tex_Doc-Item_N`.
 - For the Albedo field, select `Tex_Doc-Item_AB`.
+- For the Normal field, select `Tex_Doc-Item_N`.
 - For the Reflection Map field, select `Tex_Doc-Item_MREO`.
 
 Next, find the Ambient Occlusion section, and check the `UseAO` box.
 
 In the Emissive section, check the `UseEmissive` box.
 
-In the Painting section, check the `bUseLegacyPaintTextures` box.
+In the "Global Static Switch Parameter Values" section, check the `bUseLegacyPaintTextures` box.
 
 In the bottom right corner of the preview viewport,
 click on the flat panel icon to preview the material on a plane instead of a sphere.
