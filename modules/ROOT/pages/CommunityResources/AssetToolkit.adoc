@@ -336,6 +336,9 @@ The list of files to move is
 https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[here],
 except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
 because the generator's copy of textures is more accurate.
+You should also bring over the `Content/Localization/StringTables` folder
+because the complete asset toolkit does not seem to generate it correctly.
+It is purposefully not included in the list because the stubs generator seems to handle it correctly.
 
 Make sure your editor is closed before you move the files in!
 
