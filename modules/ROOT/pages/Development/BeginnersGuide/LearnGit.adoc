@@ -33,11 +33,11 @@ and is what you interact with when working on your local files.
 Git is traditionally accessed via the command line,
 but there are many different tools that offer a more approachable and convenient interface to the same functionality.
 
-**GitHub** are **GitLab** are web platforms that allow you to store a git "repository" online, called a "remote",
+**GitHub** are **GitLab** are web platforms that allow you to store a Git "repository" online, called a "remote",
 making it easy to collaborate with others, and providing a backup.
 
 Git tools are used on your local computer to manage files.
-The files are then "pushed" (uploaded) to a git remote hosted by a platform like GitHub.
+The files are then "pushed" (uploaded) to a Git remote hosted by a platform like GitHub.
 
 == Git Tutorial on Gitkraken
 
@@ -56,10 +56,19 @@ but feel free to experiment with other folders on your computer.
 
 You are, of course, free to check out other tutorials, but they cover topics less relevant to Satisfactory modding.
 
-== Installing a Git Client
+== Installing Git
 
-You are free to use git https://git-scm.com/downloads[from the command line],
+The core Git software is a command line tool.
+You are welcome to use Git from the command line,
 but it is recommended to use a GUI tool, as they are generally more approachable.
+
+=== Install the Git CLI First
+
+The Unreal Editor's Git integration relies on having the Git CLI installed to function properly.
+Download its installer https://git-scm.com/downloads[here].
+The default settings offered by the installer should be fine for most users.
+
+=== Install a Git GUI Client
 
 Consider the following software:
 
@@ -67,7 +76,7 @@ Consider the following software:
 - https://www.sourcetreeapp.com/[Sourcetree], free but a bit more complicated than GitHub Desktop
 - https://www.gitkraken.com/[GitKraken], free for non-commercial use as long as your code is public to the internet
 - https://git-fork.com/[Fork], free evaluation copy
-- Additional git GUI clients can be found on https://git-scm.com/downloads/guis[Git's website]
+- Additional Git GUI clients can be found on https://git-scm.com/downloads/guis[Git's website]
 
 Tutorials on the docs will use GitHub Desktop, but all are valid choices.
 There are additional directions below for GitHub Desktop setup.
@@ -78,7 +87,7 @@ If you're using another client, feel free to skip to the link:#_next_steps[Next 
 You probably already created an account on GitHub in order to obtain a copy of the custom engine version.
 If not, create one now.
 
-Follow the link above to download the GitHub Desktop installer.
+Get the GitHub Desktop installer 
 Once the file has downloaded, run it and sign in with your GitHub account.
 
 Once sign in is complete, you will be presented with a "Let's get started!" screen.
