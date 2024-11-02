@@ -109,6 +109,9 @@ bringing the code for another mod into your copy of the project -
 its files' change date could be far in the past from the last time you built,
 so the generator will mistakenly decide not to build the transformers in that file.
 
+The Access Transformers system does not currently support fields using forward declarations.
+An example field using a forward declaration is the `mTargetList` property on `AFGSavedWheeledVehiclePath`.
+
 [WARNING]
 ====
 Access Transformers can't modify engine classes,
