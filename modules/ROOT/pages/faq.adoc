@@ -205,6 +205,12 @@ If you find a mod that is missing its stickers or ones that seem to be incorrect
 please let us know in the Discord (including a SMM debug zip if it does not work is useful as well!)
 and we will investigate and update the info if necessary.
 
+[id="ModsDoNotDisableAchievements"]
+== Do mods disable achievements?
+
+No - using mods does not disable achievements in Satisfactory.
+Note that the base game's https://satisfactory.wiki.gg/wiki/Advanced_Game_Settings[Advanced Game Settings] do disable achievements.
+
 == Satisfactory Mod Manager is open, but I can't see its window!
 
 The program's window somehow got offscreen.
