@@ -46,8 +46,8 @@ and ensure the "Unreal Engine project path" matches the path to your project.
 
 Click on the `Integrate Wwise into Project...` button.
 
-Change the "Integration Version" drop-down to `All`.
-Then select the same version you installed earlier (likely `2022.1.10.8393`). 
+Change the "Integration Version" drop-down from `Latest` to `All` otherwise Wwise will not show the version you care about.
+Then use the "Major" and "Version" dropdowns to select the same version you installed earlier (likely `2022.1.10.8393`). 
 The version number may have additional numbers on the end of it e.g.
 `2022.1.10.8393.2898` but as long as it starts with `2022.1.10.8393` it should work.
 
@@ -55,7 +55,7 @@ If version `2022.1.10.8393` does not appear even after you have selected `All`,
 edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
 is set to `5.3.2-CSS`.
 
-If this version still doesn't show up, try any other version starting with `2022.1.10`.
+If this version _still_ doesn't show up, contact us for help on the Discord.
 
 If you missed a required component as part of the Wwise installation,
 it may show a yellow warning box indicating what's missing
