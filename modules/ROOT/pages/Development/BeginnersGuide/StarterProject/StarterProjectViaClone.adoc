@@ -50,7 +50,7 @@ xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Starter
 about good long-term homes for your starter project files.
 
 The directory is ready for use as soon as the clone is complete
-and you have switched to the branch you intend to sue.
+and you have switched to the branch you intend to use.
 
 [IMPORTANT]
 ====

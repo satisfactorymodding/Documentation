@@ -330,7 +330,7 @@ By running the generator
 they have been replaced by the less accurate generated assets.
 Once the Asset Generator has completed,
 you'll need to grab multiple files from your backup copy of the Starter Project's content
-and bring some them in to replace the ones in your freshly generated copy.
+and bring some of them in to replace the ones in your freshly generated copy.
 
 The list of files to move is
 https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[here],
