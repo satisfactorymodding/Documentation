@@ -53,6 +53,7 @@ regardless of what their websites and marketing pages claim:
 - gportal - Doesn't show the proper game file tree. You may have success with manual mod installation, but we offer no support for that process.
 - 4netplayers - Doesn't show the root executable, as well as other game files
 - Supercraft - Doesn't show the game files, only save files
+- dawnserver.de - Provider does not allow mods
 
 It is also worth noting that AMP causes SFTP to throw weird errors, but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
 
