@@ -28,8 +28,8 @@ Most of the time, like in our modding case, there are two `targets`.
 One target is for compiling our `modules` compatible with the Unreal Editor,
 and the second target is for compiling our `modules` compatible with the final game.
 The configuration files for these modules will be located in the `/Source/YourModReference` folder of your mod.
-The target configurations follow the `<ModuleName>.Target.cs` naming pattern for the "shipping" configuration
-and the `<ModuleName>Editor.Target.cs` naming pattern for the "development editor" configuration.
+The target configurations follow the `YourModuleName.Target.cs` naming pattern for the "shipping" configuration
+and the `YourModuleNameEditor.Target.cs` naming pattern for the "development editor" configuration.
 
 === Modules
 
@@ -98,9 +98,9 @@ You can come back to this configuration file later and change things here if nee
 
 It's now time to get started adding the module source code.
 
-Do this by creating a file called `<your mod reference>Module.h` and fill it with this template.
-Replace `<mod reference>` with your actual mod reference.
-Remember to replace all instances of `YourModReference` with your actual mod reference. Don't keep the `<>`s.
+Do this by creating a file called `YourModReferenceModule.h` and fill it with this template.
+Replace `YourModReference` with your actual mod reference.
+Remember to replace all instances of `YourModReference` with your actual mod reference.
 
 [source,cpp]
 ----
@@ -121,7 +121,7 @@ Again, replace `YourModReference` with your actual mod reference.
 ----
 #include "YourModReferenceModule.h"
 
-void F<mod reference>Module::StartupModule() {
+void FYourModReferenceModule::StartupModule() {
 	
 }
 
