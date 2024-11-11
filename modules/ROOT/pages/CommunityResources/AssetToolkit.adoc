@@ -116,14 +116,17 @@ so these directions will cover using the command line version instead.
 To dump assets, navigate to your game install directory in Powershell.
 For example, `C:\EpicGamesGames\SatisfactoryEarlyAccess`
 
-Next, from that directory, edit the below the Powershell command to point to your game executable, then run it:
+Next, from that directory, edit the following Powershell command to point to your game executable, then run it:
 
 `FactoryGameEGS.exe -EpicPortal -NoSteamClient -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log -NewConsole`
 
 [WARNING]
 ====
 The above command assumes you are using an Epic Games copy `FactoryGameEGS`.
-Make sure to adjust the command to `FactoryGameSteam` if you are using a Steam copy.
+If you are using a Steam copy of the game:
+
+1. Use the xref:Development/TestingResources.adoc#LaunchScript[Launch Script] at least once before running the command to create the files required for the Steam game to launch correctly from the command line.
+2. Adjust the command to use `FactoryGameSteam` instead of `FactoryGameEGS`.
 ====
 
 [NOTE]
@@ -139,7 +142,7 @@ which will provide info regarding the dumping process (since `-log -NewConsole` 
 You can safely close the Powershell window once you see the console log window,
 although you may wish to keep it open to restart it if it crashes.
 
-Normally the dumper would be run with the `-nullrhi` flag to avoid waisting processing power on rendering the game's menu
+Normally the dumper would be run with the `-nullrhi` flag to avoid wasting processing power on rendering the game's menu
 but this argument seems to be broken as of Satisfactory 1.0,
 so it has been excluded from the command.
 The game window will appear and will be exceedingly low FPS and behind in playing sound effects.
