@@ -2,6 +2,12 @@
 
 You can debug your own {cpp} code using the Visual Studio debugger and use Function Breakpoints to "track" execution vanilla code even without the source code.
 
+== Logging
+
+Depending on the problem you are troubleshooting,
+logging information to the Unreal logs could be faster than using the Visual Studio debugger.
+You can read more about logging in the xref:Development/ModLoader/Logging.adoc[Logging] page.
+
 == Configuration
 
 You can learn more about the Visual Studio debugger
