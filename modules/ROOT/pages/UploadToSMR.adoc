@@ -124,7 +124,9 @@ It will be called `YourModReference.zip`
 and should be larger than all of the other zips in the folder.
 This zip contains the files for each target platform combined into one ready-for-upload package.
 
-Finally, write up a list of all of the things you changed or added in this version for the `Changelog` field.
+Next, write up a list of all of the things you changed or added in this version for the `Changelog` field.
+The first few lines of this changelog will be displayed along with the version number in the Discord's #mod-updates channel,
+so it's best to make them a brief summary of the update as a whole.
 
 [TIP]
 ====
@@ -140,6 +142,13 @@ and nobody will be able (easily) to find your mod on the site.
 Make sure to read the https://ficsit.app/content-policy[ficsit.app Content Policy] before uploading
 and ensure your mod follows the rules.
 ====
+
+Finally, use the "Edit Compatibility Info" secton beneath the Create button to update the compatibility information for your mod.
+This information is displayed to users to indicate if your mod has been tested with the latest version of the game.
+A setting of 'Damaged' or 'Broken' will produce warnings in the mod manager.
+Both you and trusted members of the community can update this information when problems are found or upon major game updates.
+Since you have tested your mod with the latest version of the game,
+set the "Compatibility State" to `Works` for both the Stable and Experimental branch.
 
 You should be all set now - once you press `Create`, the upload process will begin,
 and your mod will be ready for use once it completes.
@@ -200,3 +209,5 @@ Alpakit Release's warning buttons will assist with this.
 
 These edits can be performed in the editor via the Alpakit helper
 or by directly editing the `.uplugin` file in a text editor.
+
+Don't forget to update your mod's Compatibility Information if it has been marked Broken or Damaged due to game updates!
