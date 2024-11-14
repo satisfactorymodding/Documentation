@@ -47,7 +47,6 @@ regardless of what their websites and marketing pages claim:
 
 // cspell:ignore nitroserv gportal
 
-- low.ms - Does not allow executables
 - nitroserv.games - Allows creating but not deleting dot files, which bricks the server
 - Shockbyte - Doesn't show the root executable
 - gportal - Doesn't show the proper game file tree. You may have success with manual mod installation, but we offer no support for that process.
