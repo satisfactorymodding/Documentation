@@ -47,7 +47,6 @@ regardless of what their websites and marketing pages claim:
 
 // cspell:ignore nitroserv gportal
 
-- low.ms - Does not allow executables
 - nitroserv.games - Allows creating but not deleting dot files, which bricks the server
 - Shockbyte - Doesn't show the root executable
 - gportal - Doesn't show the proper game file tree. You may have success with manual mod installation, but we offer no support for that process.
@@ -55,6 +54,13 @@ regardless of what their websites and marketing pages claim:
 - Supercraft - Doesn't show the game files, only save files
 
 It is also worth noting that AMP causes SFTP to throw weird errors, but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
+
+[NOTE]
+====
+The following hosting services support mods through their own tools, but do not provide sufficient access to their servers for tools like SMM and ficsit-cli to function.
+
+- low.ms
+====
 
 If you believe a site is listed here in error,
 contact us about it on the https://discord.ficsit.app[Discord].
