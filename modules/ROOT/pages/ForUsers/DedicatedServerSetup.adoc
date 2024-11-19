@@ -57,7 +57,7 @@ although it may be possible to get mods working on their platform,
 _we offer no support for them_.
 
 - low.ms - Does not allow executables, preventing SMM and ficsit-cli from functioning correctly.
-  Their documentation describes an alternate process for installing mods.
+  They provide their own UI for mod installation, but we do not support this ourselves. See their docs for details.
 - gportal - Doesn't show the proper game file tree.
   You may have success with manual mod installation, but we offer no support for that process.
 ====
