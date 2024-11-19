@@ -48,7 +48,6 @@ regardless of what their websites and marketing pages claim:
 - nitroserv.games - Allows creating but not deleting dot files, which bricks the server
 - Shockbyte - Doesn't show the root executable
 - 4netplayers - Doesn't show the root executable, as well as other game files
-- Supercraft - Doesn't show the game files, only save files
 - dawnserver.de - Provider does not allow mods
 ====
 
