@@ -35,29 +35,37 @@ You will have to follow your server host's own documentation about mod setup.
 If your server host provides (s)ftp access to server files
 the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 
-With this in mind, continue to the link:#GetModManager[next section].
-
 [id="UnsupportedHosting"]
 ==== Unsupported Hosts
 
 We do not currently maintain a list of server hosts that support modded servers.
 
-The following 3rd party hosting services are known to **NOT support mods**,
+====
+The following 3rd party hosting services are known to **_NOT_ support mods**,
 regardless of what their websites and marketing pages claim:
 
 // cspell:ignore nitroserv gportal
-
-- low.ms - Does not allow executables
 - nitroserv.games - Allows creating but not deleting dot files, which bricks the server
 - Shockbyte - Doesn't show the root executable
-- gportal - Doesn't show the proper game file tree. You may have success with manual mod installation, but we offer no support for that process.
 - 4netplayers - Doesn't show the root executable, as well as other game files
-- Supercraft - Doesn't show the game files, only save files
 - dawnserver.de - Provider does not allow mods
+====
 
-It is also worth noting that AMP causes SFTP to throw weird errors, but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
+====
+The following hosts offer an incomplete modding experience -
+although it may be possible to get mods working on their platform,
+_we offer no support for them_.
 
-If you believe a site is listed here in error,
+- low.ms - Does not allow executables, preventing SMM and ficsit-cli from functioning correctly.
+  They provide their own UI for mod installation, but we do not support this ourselves. See their docs for details.
+- gportal - Doesn't show the proper game file tree.
+  You may have success with manual mod installation, but we offer no support for that process.
+====
+
+It is also worth noting that AMP causes SFTP to throw weird errors,
+but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
+
+If you believe a host is listed here in error,
 contact us about it on the https://discord.ficsit.app[Discord].
 
 [id="GetModManager"]
