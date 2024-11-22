@@ -146,7 +146,7 @@ Normally the dumper would be run with the `-nullrhi` flag to avoid wasting proce
 but this argument seems to be broken as of Satisfactory 1.0,
 so it has been excluded from the command.
 The game window will appear and will be exceedingly low FPS and behind in playing sound effects.
-Keep it minimized it as the asset dumper operates and focus on the console window.
+Keep it minimized as the asset dumper operates and focus on the console window.
 
 // The game window itself will never open since the `-nullrhi` argument was used.
 After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
