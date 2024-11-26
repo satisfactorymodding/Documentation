@@ -64,9 +64,12 @@ but it is recommended to use a GUI tool, as they are generally more approachable
 
 === Install the Git CLI First
 
-The Unreal Editor's Git integration relies on having the Git CLI installed to function properly.
+The Unreal Editor's Git integration relies on having the Git Command Line Interface (CLI) installed to function properly.
 Download its installer https://git-scm.com/downloads[here].
 The default settings offered by the installer should be fine for most users.
+When prompted to chose a default text editor for commits, consider selecting an option other than the default Vim.
+This choice will affect you if you decide to commit from the command line.
+Nano, Notepad, and Notepad++ are convenient alternatives.
 
 === Install a Git GUI Client
 

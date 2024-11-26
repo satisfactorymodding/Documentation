@@ -342,8 +342,7 @@ https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAs
 except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
 because the generator's copy of textures is more accurate.
 You should also bring over the `Content/Localization/StringTables` folder
-because the complete asset toolkit does not seem to generate it correctly.
-It is purposefully not included in the list because the stubs generator seems to handle it correctly.
+because they are stored raw in the pak file (not the utoc/ucas) and the automation does not currently extract them.
 
 [TIP]
 ====

@@ -23,13 +23,10 @@ An overview of these files is provided below.
 
 === Targets
 
-`Targets` are UBTs "programs" that you write.
-Most of the time, like in our modding case, there are two `targets`.
-One target is for compiling our `modules` compatible with the Unreal Editor,
-and the second target is for compiling our `modules` compatible with the final game.
-The configuration files for these modules will be located in the `/Source/YourModReference` folder of your mod.
-The target configurations follow the `YourModuleName.Target.cs` naming pattern for the "shipping" configuration
-and the `YourModuleNameEditor.Target.cs` naming pattern for the "development editor" configuration.
+Targets are like UBT "programs" that define how the game gets packaged.
+As of the 1.0 release, mods no longer define their own Targets, instead using the base game's targets,
+which you can find in `Source/TargetName.Target.cs`.
+You should not modifying these target files.
 
 === Modules
 
