@@ -57,14 +57,8 @@ and `/CommunityResources/CustomVersions.json` files.
 
 We need to open the CustomVersions file and copy its contents into a setting in FModel.
 However, the file is stored in a text encoding (UTF-16 LE) that can confuse some text editing programs.
-
-If you are using Windows 10,
-Windows Notepad can successfully load the `CustomVersions.json` file
-and you can copy its contents to your clipboard normally.
-If you are using Windows 11,
-you will need to use another text editor such as https://notepad-plus-plus.org/[Notepad++]. 
-Windows 11's Notepad incorrectly loads the file with UTF-8 encoding
-and FModel will tell you that you broke the .json if you copy the contents over.
+Many editors will auto-detect the encoding,
+but you may need to specifically select the `UTF-16 LE` encoding when opening the file if the text displays with egregious spacing.
 
 To start loading this additional information, open FModel and navigate to `Settings` > `General`,
 then press the `Custom Versions` button in the "Version Configuration" row
@@ -76,7 +70,9 @@ then press `OK` to save your changes.
 
 [WARNING]
 ====
-If the file's contents look like the below image, you will need to use a different text editor to open and copy it as described above.
+If the file's contents look like the below image,
+you either will need to use a different text editor to open and copy it
+or try to reopen the file with the `UTF-16 LE` encoding as described above.
 Note the egregious extra spacing and the error message from FModel.
 
 image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
