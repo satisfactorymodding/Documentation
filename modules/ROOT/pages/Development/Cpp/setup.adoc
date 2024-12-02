@@ -26,7 +26,7 @@ An overview of these files is provided below.
 Targets are like UBT "programs" that define how the game gets packaged.
 As of the 1.0 release, mods no longer define their own Targets, instead using the base game's targets,
 which you can find in `Source/TargetName.Target.cs`.
-You should not modifying these target files.
+You should not modify these target files.
 
 === Modules
 
