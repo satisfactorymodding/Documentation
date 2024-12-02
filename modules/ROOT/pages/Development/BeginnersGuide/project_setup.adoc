@@ -46,8 +46,8 @@ and ensure the "Unreal Engine project path" matches the path to your project.
 
 Click on the `Integrate Wwise into Project...` button.
 
-Change the "Integration Version" drop-down to `All`.
-Then select the same version you installed earlier (likely `2022.1.10.8393`). 
+Change the "Integration Version" drop-down from `Latest` to `All` otherwise Wwise will not show the version you care about.
+Then use the "Major" and "Version" dropdowns to select the same version you installed earlier (likely `2022.1.10.8393`). 
 The version number may have additional numbers on the end of it e.g.
 `2022.1.10.8393.2898` but as long as it starts with `2022.1.10.8393` it should work.
 
@@ -55,7 +55,7 @@ If version `2022.1.10.8393` does not appear even after you have selected `All`,
 edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
 is set to `5.3.2-CSS`.
 
-If this version still doesn't show up, try any other version starting with `2022.1.10`.
+If this version _still_ doesn't show up, contact us for help on the Discord.
 
 If you missed a required component as part of the Wwise installation,
 it may show a yellow warning box indicating what's missing
@@ -81,7 +81,8 @@ You can close the Wwise launcher.
 _Note: the below video demo may select a version that does not match what is written above._
 _Please use the version mentioned in the text above._
 
-image:BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
+.Wwise integration process
+image::BeginnersGuide/simpleMod/Wwise_integrate.gif[image]
 
 [TIP]
 ====
@@ -245,8 +246,16 @@ This section will help you decide how to proceed if you encounter errors while b
 
 This is not actually an error message, just a message that is informing you that the build task has failed.
 Keep reading the Error List to see what actually went wrong.
-Sometimes the real error does not show up until the build has finished.
-You may also have to check the Output > (Show output from: Build) tab instead of the Error List to see the actual error message(s).
+Sometimes the real error message does not show up until the build has finished,
+and sometimes the Error List does not contain the real error message.
+You may also have to check the Output window's 'Output' sub-tab, (select 'Show output from:' `Build`)
+instead of the Error List to see the actual error message(s).
+
+If you're sharing an error message with others for help troubleshooting it,
+it's best to share the entire build output.
+
+.The Visual Studio tab that shows the actual build output
+image::BeginnersGuide/ShowFullBuildOutput.png[Visual Studio screenshot]
 
 ==== Compiler is out of heap space
 

@@ -1,0 +1,14 @@
+= SML Feature Tests
+
+**SML Feature Tests** is a mod that contains code for verifying that SML features are behaving as intended.
+Since it does not always follow good mod coding practices in the interest of being a more useful test,
+it is purposefully not distributed with the Starter Project to avoid confusing developers with bad examples
+and polluting the project with classes and assets that will never be present in an end user's game.
+
+That being said,
+it can be a useful resource for understanding how various SML features are expected to behave
+and as an inspiration for how to test your own mods.
+
+The mod is available https://github.com/satisfactorymodding/SMLFeatureTests[on GitHub]
+and can be brought into the project via
+xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[standard mod importing procedures].

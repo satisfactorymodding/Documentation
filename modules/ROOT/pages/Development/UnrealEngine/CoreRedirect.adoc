@@ -5,7 +5,7 @@ A Core Redirect is an Unreal Engine system that allows you to tell the game and 
 You can learn more about them
 https://www.unrealdirective.com/articles/core-redirectors-what-you-need-to-know[here]
 or
-https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/Assets/CoreRedirects/[on the Unreal docs].
+https://dev.epicgames.com/documentation/en-us/unreal-engine/core-redirects-in-unreal-engine?application_version=5.3[on the Unreal docs].
 Note that the Unreal docs are partly incorrect
 and claim that the OldName of PackageRedirects will work without the slashes present.
 You should follow the example here or on the UnrealDirective docs page instead.
@@ -93,6 +93,10 @@ Remember that packaging the mod again will overwrite any changes you made to thi
 
 If it doesn't seem to be working, make sure your syntax is correct.
 For example, Class Redirects usually have a `_C` suffix in the OldName and newName fields.
+
+You may find the `-DebugCoreRedirects` launch argument useful in your testing.
+It adds additional information to UE logs to help identify core redirect issues, including typos.
+Learn how to launch your game with launch arguments on the xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
 
 == Using Core Redirects in the Editor
 

@@ -108,7 +108,8 @@ _Notable Techniques Used:_
 
 * Using the Asset Registry to quickly discover subclasses (both vanilla and modded)
 * Asynchronous asset loading to avoid stalling the game while waiting for disk I/O
-* CDO edits in bulk (on the aforementioned loaded classes), implemented in {cpp}
+* Class Default Object (CDO) modification
+** CDO edits in bulk (on the aforementioned loaded classes), implemented in {cpp}
 * Hybrid Blueprint/{cpp} game instance module
 ** Root instance's final implementations is in Blueprint,
    but it is backed by a custom {cpp} parent class to be
@@ -195,7 +196,7 @@ _Notable Mod Loader Features Used:_
 * Mod Configuration
 ** Settings panel to reorganize build menu
 
-[id="Beavers Ficsmas Booster"]
+[id="BeaversFicsmasBooster"]
 == Beaver's Ficsmas Booster
 
 Adds a number of new customizer building material and complex decorative parts. Uses seasonal toggles and several new from scratch materials.
@@ -227,3 +228,54 @@ _Notable Satisfactory Features Used:_
 _Notable Mod Loader Features Used:_
 
 * None
+
+[id="BetterTrainCollision"]
+== Better Train Collision
+
+Replaces base game locomotive collision mesh.
+
+_Source Code_: Linked on the https://ficsit.app/mod/BetterTrainCollision[Mod Page]
+
+_Mod Type_: Pure Blueprint
+
+_Notable Techniques Used:_
+
+* Runtime actor modification
+** Replaces locomotive collisions with custom collision mesh
+** Makes sure only the base game train's mesh collisions are replaced,
+   avoiding accidentally modifying other mods' trains
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* Simple Construction Script (SCS) Hooks
+** Used to detect instances of locomotives and trigger the code to replace their collision mesh
+
+[id="EarlyAndFreeBlueprintDesigner"]
+== Early Free Blueprint Designer
+
+Unlocks the Blueprint Designer Mk1-3 and Blueprint usage from the start of the game,
+and makes designers cost no resources to build.
+
+_Source Code_: Linked on the https://ficsit.app/mod/EarlyAndFreeBlueprintDesigner[Mod Page]
+
+_Mod Type_: Pure Blueprint
+
+_Notable Techniques Used:_
+
+* Class Default Object (CDO) modification
+** Class default object of recipes to make them free to build
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tags]
+** Scans all recipes and all schematics for a specific tag and modifies them when present
+** Enables easy extending the mod to affect other mods' blueprint designers.
+   Any recipe with the relevant tag is made free and any schematic with the relevant tag is given for free.

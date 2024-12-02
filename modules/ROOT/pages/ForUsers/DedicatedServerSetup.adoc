@@ -91,7 +91,7 @@ If using the Mod Manager to manage your server:
      by reading the link:#FileTransferMethods[File Transfer Methods] section,
      then return here.
 . The server will now appear in your Game Version dropdown and can be managed like a local install.
-. Skim the below ficsit-cli section to stay informed, then continue reading the link:#ServerClientConsistency[next setup step].
+. Skim the below ficsit-cli section to stay informed, then continue reading the link:#InstallingMods[next setup step].
 
 [id="GetModManager_CLI"]
 === ficsit-cli
@@ -113,7 +113,7 @@ If using ficsit-cli to manage your server:
   b. If ficsit-cli is installed on the server,
      enter the file system path, for example `D:\SatisfactoryDS` or `/opt/SatisfactoryDedicatedServer`.
 . The server will now appear as an install you can select and manage as usual.
-. Continue to the link:#ServerClientConsistency[next setup step].
+. Continue to the link:#InstallingMods[next setup step].
 
 [id="FileTransferMethods"]
 == File Transfer Methods
@@ -122,10 +122,12 @@ The Mod Manager and ficsit-cli support multiple methods of connecting to servers
 Select a method below based on what your server (or 3rd party server host) provides.
 
 For 3rd-party server hosts, refer to their documentation on how to connect to the server using a (S)FTP client.
-The mod manager uses the same username, password, IP and port. The path depends on how the server host has set
-things up (check their documentation), but it's relatively easy to figure it out: in the server's files, find a
-folder that contains a file named `FactoryServer.sh` or `FactoryServer.exe`. The mod manager will make sure the
-path points to an installation, so it will show an error if the path is not correct (no installations found).
+The mod manager uses the same username, password, IP and port.
+The path depends on how the server host has set things up (check their documentation),
+but it's relatively easy to figure it out: in the server's files,
+find a folder that contains a file named `FactoryServer.sh` or `FactoryServer.exe`.
+The mod manager will make sure the path points to an installation,
+so it will show an error if the path is not correct (no installations found).
 
 [id="FileTransferMethods_SFTP"]
 === SFTP
@@ -139,6 +141,9 @@ The examples below are for a self-hosted dedicated server.
 * The path should follow this format:
 +
 `sftp://username:password@ServerNameOrIP:Port/path/`
+* Enter the path to the directory containing `FactoryServer.exe` or `FactoryServer.sh`.
+If using Satisfactory Mod Manager, the built-in file browser
+will automatically select the correct subfolder if you select the root install directory.
 
 .Satisfactory Mod Manager SFTP Example
 image::DedicatedServers/SMM_SFTP.png[Satisfactory Mod Manager Example]
@@ -161,6 +166,9 @@ The examples below are for a self-hosted dedicated server.
 * The path should follow this format:
 +
 `ftp://username:password@ServerNameOrIP:Port/path/`
+* Enter the path to the directory containing `FactoryServer.exe` or `FactoryServer.sh`.
+If using Satisfactory Mod Manager, the built-in file browser
+will automatically select the correct subfolder if you select the root install directory.
 
 .Satisfactory Mod Manager FTP Example
 image::DedicatedServers/SMM_FTP.png[Satisfactory Mod Manager Example]
@@ -179,6 +187,9 @@ The examples below are for a self-hosted dedicated server.
 
 * The authenticating user requires Read/Write/Delete or Read/Modify permissions.
 * The path should follow this format:
+** Enter the path to the directory containing `FactoryServer.exe` or `FactoryServer.sh`.
+If using Satisfactory Mod Manager, the built-in file browser
+will automatically select the correct subfolder if you select the root install directory.
 ** If running your chosen mod management tool on a Windows computer:
 *** If the server is installed on the same computer, use the file path, for example `C:\EpicGamesGames\SatisfactoryDSExperiment`
 *** If the server is on a network location: `\\ServerNameOrIP\ShareName\Path` or `//ServerNameOrIP/ShareName/Path`
@@ -215,23 +226,20 @@ Read the below warnings, then check out the set of directions specific to the mo
 [id="CheckModDedicatedServerSupport"]
 === Checking if a Mod Supports Dedicated Servers
 
-Not all mods are compatible with dedicated servers.
+Most, but not all, mods are compatible with dedicated servers.
 They must be specially compiled and packaged for the alternative format.
-A greater percentage of mods will support servers once Satisfactory 1.0 launches since
-all developers will be forced to recompile their mods for that anyways.
 
-As dedicated server support is still a work in progress,
-there is not currently a convenient way to filter mods for dedicated server support on the ficsit.app website.
-
-When viewing the webpage for a mod, check the "Latest Version" section -
+When viewing the ficsit.app webpage for a mod, check the "Latest Version" section -
 if you see a table with a "Server" column, and a checkmark is present on your server type,
 the mod is compatible with dedicated servers.
-If you see an X, or the table is absent, the mod does not yet support dedicated servers.
+If you see an X, the mod does not yet support dedicated servers.
 
 .Example Mod that Supports Dedicated Servers
 image::DedicatedServers/ExampleSupportsDedicatedServers.png[Supported Example]
 .Example Mod that Does NOT Support Dedicated Servers
 image::DedicatedServers/ExampleDoesNotSupportDedicatedServers.png[No Support Example]
+
+The ficsit.app website does not currently offer a way to filter mods for dedicated server support.
 
 Satisfactory Mod Manager offers a "compatible" filtering mode which,
 while managing a server install, causes only server-compatible mods to be displayed.

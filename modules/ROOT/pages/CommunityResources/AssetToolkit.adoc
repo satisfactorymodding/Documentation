@@ -47,12 +47,12 @@ and an asset generator, to be installed in the editor.
 Both are contained in the https://github.com/mircearoata/UEAssetToolkit/tree/dev[Asset Toolkit repository].
 Download a zip of the repository and extract somewhere,
 or clone it if desired.
-Regardless, make sure the copy you obtain is of the `dev` branch.
+Regardless, make sure the copy you obtain is of the **`dev` branch** as it will have the latest fixes.
 
 [NOTE]
 ====
 Note that the link above points to the *dev branch of Mircea's fork* of the https://github.com/Archengius/UEAssetToolkit[original project].
-Said fork is the one that the https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/.github/workflows/updateSML.yml#L178[CI scripts]
+Said fork is the one that the https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/.github/workflows/updateSML.yml#L176[CI scripts]
 use to semi-automatically generate the starter project, and as such is usually kept more up to date.
 ====
 
@@ -116,9 +116,18 @@ so these directions will cover using the command line version instead.
 To dump assets, navigate to your game install directory in Powershell.
 For example, `C:\EpicGamesGames\SatisfactoryEarlyAccess`
 
-Next, from that directory, run the Powershell command:
+Next, from that directory, edit the following Powershell command to point to your game executable, then run it:
 
-`Engine\Binaries\Win64\FactoryGame-Win64-Shipping.exe -EpicPortal -NoSteamClient -nullrhi -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log`
+`FactoryGameEGS.exe -EpicPortal -NoSteamClient -DumpAllGameAssets -RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log -NewConsole`
+
+[WARNING]
+====
+The above command assumes you are using an Epic Games copy `FactoryGameEGS`.
+If you are using a Steam copy of the game:
+
+1. Use the xref:Development/TestingResources.adoc#LaunchScript[Launch Script] at least once before running the command to create the files required for the Steam game to launch correctly from the command line.
+2. Adjust the command to use `FactoryGameSteam` instead of `FactoryGameEGS`.
+====
 
 [NOTE]
 ====
@@ -127,13 +136,19 @@ Excluding the `-log` argument could result in a shorter runtime, but will make t
 
 The Powershell command should immediately complete,
 leaving you with the option to run another command.
-Shortly after, you should see the Satisfactory splash screen and a console log window 
-which will provide info regarding the dumping process (since `-log` was used).
+Shortly after, you should see the Satisfactory splash screen and a console window 
+which will provide info regarding the dumping process (since `-log -NewConsole` was used).
 
 You can safely close the Powershell window once you see the console log window,
 although you may wish to keep it open to restart it if it crashes.
 
-The game window itself will never open since the `-nullrhi` argument was used.
+Normally the dumper would be run with the `-nullrhi` flag to avoid wasting processing power on rendering the game's menu
+but this argument seems to be broken as of Satisfactory 1.0,
+so it has been excluded from the command.
+The game window will appear and will be exceedingly low FPS and behind in playing sound effects.
+Keep it minimized as the asset dumper operates and focus on the console window.
+
+// The game window itself will never open since the `-nullrhi` argument was used.
 After the game's loading process, you should see a sequence of `LogAssetDumper` messages.
 This will take a bit; go pet a lizard doggo to pass the time.
 If you don't see any `LogAssetDumper` after a minute or so,
@@ -168,12 +183,15 @@ If you're still encountering issues, ask for help on the discord.
 
 == Importing Dumped Assets to the Editor
 
-You can expect a Content folder with all assets imported to take up about 7 GB.
+You can expect a Content folder with all assets imported to take up about 6 GB.
 For comparison, a Content folder with placeholders takes up 366 MB.
 
-=== Create a Backup
+Close the editor if you still have it open.
 
-Before using the Asset Generator, you should move your existing modding project's Content folder to another location.
+=== Move Out the Existing Content Folder
+
+Before using the Asset Generator, move your existing modding project's Content folder to another location,
+for example, by renaming it to `Content_PreGenerate`.
 This serves two purposes - one, giving you a copy of the files to return to in case the asset generation does not succeed.
 Two, moving the folder therefore leaves an empty directory behind where the assets used to be,
 meaning that the asset generator is sure to re-generate every asset,
@@ -181,8 +199,15 @@ ensuring any possible asset generator crashes aren't caused by it trying to upda
 
 === Run the Generator Commandlet
 
+[IMPORTANT]
+====
+It is critical that you move your pre-existing Content folder to another destination before running the generator.
+The generator behaves differently when assets already exist, and can mess up things when they do,
+for example, material slot assignments.
+====
+
 The next step is using the Asset Generator's
-https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Commandlets/UCommandlet/#description[commandlet]
+https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Commandlets/UCommandlet?application_version=5.3[commandlet]
 features to turn the dumped files into usable assets for your editor.
 
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
@@ -243,6 +268,7 @@ Write-Output "/Game/FactoryGame/Unlocks/BPI_UnlockableInterface" >> $SkipSaveFil
 Write-Output "/Game/FactoryGame/Interface/UI/InGame/Graph/BPW_Graph" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/-Shared/Blueprint/BP_OnlineHelpers" >> $SkipSaveFile
 Write-Output "/Game/FactoryGame/AvailabilityDependencies/BPI_AvailabilityDependencyInterface" >> $SkipSaveFile
+Write-Output "/Game/FactoryGame/Schematics/Research/BPD_ResearchTreeNode" >> $SkipSaveFile
 
 # Skip a few assets that cause annoying problems in the editor (ex. missing animation data spam errors)
 # TODO this functionality does not seem to be working?
@@ -259,10 +285,10 @@ CleanupTempFiles
 
 This script will take a considerable amount of time.
 Experts advise locating and petting a lizard doggo while you wait.
-
+There are a lot of things that could go wrong in this process, so be prepared to troubleshoot using the steps below.
 You'll know it's finished when your powershell window closes or you are prompted to enter another command.
 
-After you're done, your modding project's content folder should be around 7 GB.
+After you're done, your modding project's content folder should be around 6 GB.
 
 === Troubleshooting Asset Generation Crashes
 
@@ -298,27 +324,31 @@ If you're still having issues using the asset generator commandlet,
 consider using the link:#UI_Generate[in-editor GUI] instead,
 which is not actively maintained.
 
-== Bring in AngryBeaver's Recreated Assets
+== Restore Custom Assets
 
-Community member AngryBeaver has recreated a number of texturing assets
-that make working with models in the editor a lot more pleasant.
-They are not exactly like the 'real' ones used in game,
-but they are very close.
-
-These are the assets that are included by default in the Starter Project,
-but by running the generator,
+There are a few assets distributed with the normal Starter Project
+that are more complete and/or useful than the output the generator can provide.
+An example is the original copies of some material assets that Coffee Stain has provided us with.
+By running the generator
 they have been replaced by the less accurate generated assets.
-
 Once the Asset Generator has completed,
-you'll need to grab multiple files from your backup copy of the starter project's content
-and bring some in to replace the ones in your current copy.
+you'll need to grab multiple files from your backup copy of the Starter Project's content
+and bring some of them in to replace the ones in your freshly generated copy.
+
+Make sure your editor is closed before you move the files in!
 
 The list of files to move is
-https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[here],
+https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[in the CustomAssets.txt file of the UnrealProjectUpdater repository],
 except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
 because the generator's copy of textures is more accurate.
+You should also bring over the `Content/Localization/StringTables` folder
+because they are stored raw in the pak file (not the utoc/ucas) and the automation does not currently extract them.
 
-Make sure your editor is closed before you move the files in.
+[TIP]
+====
+Check the https://github.com/satisfactorymodding/UnrealProjectUpdater/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aopen[open pull requests]
+for the UnrealProjectUpdater repository to see if there are any additional CustomAssets that haven't been merged into the project's list yet.
+====
 
 If you lost your backup folder
 you can download them from the starter project git repo.
@@ -345,7 +375,7 @@ You have a couple options for dealing with these assets:
 ** If you choose not not save changes to these other assets upon exit, the situation described below will apply
 * Delete the assets from the filesystem while the editor is closed
 ** Upon opening any other asset that depended on these deleted assets in the future, the editor will detect the missing reference and blank it out, requesting that the asset be re-saved. If you save it, the asset will be saved with the field emptied. If you don't save it, the editor will continue to detect this every time the editor is opened.
-* Replace the asset with the "stub" version from the backup of the original stubs content folder you made earlier while the editor is closed
+* Replace the asset with the "stub" version (from the backup of the original stubs content folder you made earlier) while the editor is closed
 ** This approach should not suffer from the side effects mentioned above
 
 After dealing with any broken assets, mods should package again as normal.
