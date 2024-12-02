@@ -35,7 +35,8 @@ The mod has been officially released, and its documentation describes how to con
 == Use CDO Manipulation
 
 If you still want to overwrite content without using a library,
-the correct mechanism for doing so is **Class Default Object (CDO)** manipulation.
+the correct mechanism for doing so is **Class Default Object (CDO)** manipulation,
+sometimes referred to as a **CDO Edit**.
 
 To perform a CDO modification, get the class default object of the
 class you're trying to override and change the relevant properties.
