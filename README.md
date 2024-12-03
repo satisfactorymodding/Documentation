@@ -33,13 +33,16 @@ Send us a message on the Discord if we don't review it within a day or two.
 
 ## Development Setup
 
-### Devcontainer
-
 If you already have Visual Studio Code and Docker installed,
 we offer a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers)
 for the repository that will be auto-detected when you open the folder in VSCode.
+Check out the [Devcontainer](#devcontainer) heading for setup directions.
 
 This also means that Github Codespaces is a pretty convenient way to test out other people's PRs.
+
+If you don't, that's totally fine, check out the [Manual](#manual) heading to install the dependencies on your computer.
+
+### Devcontainer
 
 Make sure you have [the Remote Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 and [Docker Desktop](https://www.docker.com/products/docker-desktop) installed.
@@ -59,7 +62,7 @@ If you are switching between container and local dev you may have to delete the 
 
 ### Manual
 
-If you don't want to use the preconfigured devcontainer, or Codespaces, follow the directions below.
+If you don't want to use the preconfigured devcontainer (or Codespaces), follow the directions below.
 
 Although you can edit the `.adoc` files with just about any editor out there,
 we suggest either Visual Studio Code (with the
@@ -72,31 +75,36 @@ follow the below directions.
 
 #### Installing
 
-1. Install [Node.js](https://nodejs.org/en/download/) (the CI uses 16 but newer should be fine) and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
+1. Install [Node.js](https://nodejs.org/en/download/) (the CI uses 16 but newer should be fine)
+   and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
 
 2. Clone the repository
 
-3. Use pnpm to install dependencies
+3. Use pnpm to install dependencies:
 
-```bash
-pnpm install
-```
+    ```bash
+    pnpm install
+    ```
+
+4. If you have VSCode, open the folder as a workspace
+   and use the Command Palette to run the Task: `Launch hot reloading development server`.
+   Otherwise, follow the building and previewing directions below.
 
 #### Building
 
-To set up a development watch server that will automatically rebuild the docs when you make changes:
+To set up a development watch server that will automatically rebuild the SML docs when you make changes:
 
 ```bash
 pnpm run watch:dev
 ```
 
-To build the docs for **SML and all other hosted mods** (slow):
+Alternatively, to build the docs for **SML and all other hosted mods** (slow):
 
 ```bash
 pnpm run build
 ```
 
-To build the docs for **just SML** (much faster):
+Alternatively, to build the docs for **just SML** (much faster than all mods):
 
 ```bash
 pnpm run build:dev
@@ -109,6 +117,7 @@ The output HTML files for both commands can be found in `\build\site`.
 To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
 
 You can also run `pnpm run serve` which will start a local webserver.
+Your terminal will print usable addresses for the webserver.
 
 #### Link Checker
 
