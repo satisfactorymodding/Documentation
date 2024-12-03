@@ -14,5 +14,6 @@ Here are some example usages:
     ** Example Mod uses this to add a hat to the player if they have an Example Item in their inventory.
        Note that the component is always spawned, but custom logic controls if the hat is visible to the player.
 * Easily track (and potentially store with the save file) per-player data that is guaranteed to exist by hooking the construction of BP_PlayerState
-    ** An example of this can be found in the open-source https://ficsit.app/mod/FreeSamples[Free Samples] mod, which attaches a FreeSampleDataComponent to each BP_PlayerState with this configuration on its RootInstance_FreeSamples blueprint:
-	image:ModLoader/SCSHook_Example_FreeSamples.png[FreeSamples SCS Hook Example]
+    ** The open-source https://ficsit.app/mod/FreeSamples[Free Samples] mod
+       attaches a FreeSampleDataComponent to each BP_PlayerState with this configuration on its RootInstance_FreeSamples blueprint:
+       image:ModLoader/SCSHook_Example_FreeSamples.png[FreeSamples SCS Hook Example]
