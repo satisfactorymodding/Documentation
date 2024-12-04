@@ -74,6 +74,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          flavor: |
+            suffix=-${{ github.run_id }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -84,7 +86,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image (development)
         uses: docker/build-push-action@v5
         if: github.ref == 'refs/heads/Dev'
         with:

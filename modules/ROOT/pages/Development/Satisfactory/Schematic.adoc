@@ -108,9 +108,11 @@ M Schematic Dependencies::
   This array allows for a schematic's to be hidden until either other
   schematics are purchased (`BPSchematicPurchasedDependency`)
   or a specific item is picked up (`BPItemPickedUpDependency`).
-
+{blank} +
+{blank} +
   All items of the array must be satisfied for the schematic to be visible.
-  
+{blank} +
+{blank} +
   Both allow you to select multiple schematics/items.
   If you enable Require All, all of the Schematics/Items
   in that group must be purchased/found for the schematic to be visible.
