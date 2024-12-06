@@ -338,6 +338,10 @@ You can find various log files at different locations:
 
 Mod manager profiles are stored at:
 
+`%appdata%\ficsit\profiles.json`
+
+Any legacy SMM2 profiles should be automatically migrated to SMM3, but if not, they can be found here:
+
 `%appdata%\SatisfactoryModManager\profiles`
 
 [id="Files_Screenshots"]
