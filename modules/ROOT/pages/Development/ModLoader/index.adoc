@@ -1,19 +1,35 @@
 = SML
 
 The Satisfactory Mod Loader provides framework for all the stuff you as modder might encounter
-but unreal doesn't provide help with.
+but Unreal doesn't provide help with.
 
 == Mod "Types"
 
-There are two main ways to load a mod into a game, each of those
-variants have there advantages and disadvantages.
+All Satisfactory mods are full Unreal Engine plugins.
+There are three main ways to create a mod with this approach,
+each with advantages and disadvantages.
 
 * {blank}
-.dll (C++) Mods::
-  `.dll` s are written in C++ and provide deep access to the
-  Satisfactory runtime and the logic written in there is extremely fast.
+Blueprint Mods::
+  Blueprint mods consist of Unreal Blueprint assets which can contain data (like meshes, sounds, textures)
+  and code written in Unreal Blueprint scripting.
+  SML provides a number of utilities and entry points to enable blueprint mods to function.
+  Blueprint mods can do a lot, but they can generally only access fields and methods have been made blueprint accessible from the {cpp} side.
 +
 * {blank}
-Pak Mods::
-  Paks are archives with classical assets like meshes, sounds and more.
-  SML also provides the SPL so you could make a mod without any C++ coding.
+{cpp} Mods::
+  Writing a mod in Unreal {cpp} provides deep access to the Satisfactory runtime
+  and is usually more performant than blueprint code because it does not need to go through the overhead of the blueprint VM.
+  However, it's a pain to reference blueprint assets (a frequent requirement for working with base game content)
+  in a non-brittle manner, and working with widgets is agonizingly verbose.
+  Performing delayed actions is also much more involved than in Blueprint scripting.
++
+* {blank}
+Hybrid Blueprint and {cpp} Mods::
+  Writing a mod with {cpp} does not mean replacing all of your Blueprint assets with {cpp} code.
+  The best mods are implemented with a careful combination of both {cpp} and Blueprint code
+  since each side covers for the other's disadvantages.
+  For example, you can implement references to blueprint assets and widgets on the 
+  However, changes to your mod's class {cpp} structure will require closing the editor and rebuilding Development Editor
+  for the blueprint side to recognize the changes.
++
