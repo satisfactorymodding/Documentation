@@ -25,6 +25,12 @@ Clients will refuse to join servers that are missing mods present on the client 
 The existing `RequiredOnRemote` and `RemoteVersionRange` uplugin fields control this behavior.
 Read more about them in the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[uplugin Special Fields section].
 
+=== Quick Launch Script Supports Multiplayer
+
+The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
+is once again capable of launching local multiplayer games to test with.
+Additionally, the `-loadLatestSave` and `-multiplayer` options are now compatible.
+
 [id="NewFeatures_BPHookHelper"]
 === Blueprint Hook Helper
 
@@ -69,22 +75,24 @@ This section highlights some changes Coffee Stain has made to the base-game spec
 === Launch Argument: CustomConfig
 
 Added in CL382498, the `-CustomConfig=` allows you to override an additional layer of configs compiled into the game.
-
-Using exactly `-CustomConfig=` (specifying an empty string as the value) will alter game functionality to make modded multiplayer testing easier.
+Using exactly `-CustomConfig=` (specifying an empty string as the value)
+enables xref:Development/TestingResources.adoc[local multiplayer testing] by giving the host a consistent GUID/playername
+and clients random GUIDs that persist as long as their game client stays open (game instance).
 
 === Launch Argument: ini Overrides
 
 Added in CL382498, the `-ini:Config:[Section]:Value=` argument allows overriding ini config values via launch arguments.
 
 This behavior was previously possible using the `-EngineINI=` argument,
-but that approach requires creating an ini file to pass in which the game will with unrelated values on launch.
+but that approach requires creating an ini file to pass in
+and the engine would fill it with unrelated values on launch.
 
 For example, the xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
-could use this instead of the `EngineINI` argument:
+now uses this instead of the `EngineINI` argument:
 
 `-ini:Engine:[/Script/EngineSettings.GameMapsSettings]:GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level,[/Script/EngineSettings.GameMapsSettings]:LocalMapOptions=?skipOnboarding?loadgame=saveGameFilename`
 
-This argument can be used to raise the max player count to 10:
+Another example - this argument can be used to raise the multiplayer max player count to 10:
 
 `-ini:Engine:[SystemSettings]:net.MaxPlayersOverride=10`
 

@@ -83,15 +83,26 @@ https://pureinfotech.com/change-execution-policy-run-scripts-powershell/[modify 
 [source,ps1]
 ----
 param (
-	[string]$launcher = "steam", # Default launcher, level 1 of GameDirs config option
-	[string]$side = "client", # Default client/server side, level 2 of GameDirs config option
-	[string]$branch = "stable", # Default branch, level 3 of GameDirs config option
-	[switch]$multiplayer = $false, # When true, enables WIP largely broken multiplayer feature and launches 2 copies of the game instead of 1
-	[switch]$loadLatestSave = $false, # When true, the game will automatically load into the last save file you played. This breaks some multiplayer functionality.
-	[switch]$waitForDebugger = $false, # Launch the game with the -WaitForDebugger flag, telling SML to hold the game's loading process to allow attaching a C++ debugger
-	[switch]$noExceptionHandler = $false, # Launch the game with the -NoExceptionHandler flag, enabling JIT debugging and disabling the UE crash reporter
-	[switch]$info = $false, # When true, print info about what copy of the game is being launched
-	[switch]$test = $false # When true, the game will not actually be launched. Required files still may be created based on other params
+	[Parameter(HelpMessage="Launcher to use (steam, epic). Level 1 of the script's GameDirs config option.")]
+		[string]$launcher = "steam",
+	[Parameter(HelpMessage="Side to use (client, server). Level 2 of the script's GameDirs config option.")]
+		[string]$side = "client",
+	[Parameter(HelpMessage="Branch to use (stable, experimental). Level 3 of the script's GameDirs config option. Not supported by Steam launcher.")]
+		[string]$branch = "stable",
+	[Parameter(HelpMessage="When present, launches 2 copies of the game instead of 1.")]
+		[switch]$multiplayer = $false,
+	[Parameter(HelpMessage="When using the -multiplayer flag, how long to wait before launching the second copy in milliseconds.")]
+		[int]$multiplayerLaunchDelayMs = 5000,
+	[Parameter(HelpMessage="When present, the game will automatically load into the last save file you played. If used with the -multiplayer flag, the save must be in the `common` subfolder of the SaveGames directory.")]
+		[switch]$loadLatestSave = $false,
+	[Parameter(HelpMessage="Launch the game with the -WaitForDebugger flag, telling SML to hold the game's loading process to allow attaching a C++ debugger.")]
+		[switch]$waitForDebugger = $false,
+	[Parameter(HelpMessage="Launch the game with the -NoExceptionHandler flag, enabling JIT debugging and disabling the UE crash reporter.")]
+		[switch]$noExceptionHandler = $false,
+	[Parameter(HelpMessage="When present, print info about what copy of the game is being launched.")]
+		[switch]$info = $false,
+	[Parameter(HelpMessage="When present, the game will not actually be launched, allowing testing this script. Required files still may be created based on other parameters.")]
+		[switch]$test = $false
 )
 
 # ========================================================================================================================
@@ -99,7 +110,7 @@ param (
 # ========================================================================================================================
 
 # Arguments to launch the game with
-$CommonArgs = "-EpicPortal", "-bUseIpSockets", "-Offline", "-log", "-NewConsole", "-nosplash"
+$CommonArgs = "-EpicPortal", "-log", "-NewConsole", "-nosplash"
 
 # Edit the below "path"s to contain your game paths for these possible install locations
 $GameDirs = @{
@@ -112,7 +123,7 @@ $GameDirs = @{
 				path = "UNSET"
 				exeName = "FactoryGameSteam"
 				appid = "526870"
-				# Example: 12345678910111213
+				# Example: value 12345678910111213 from path `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\12345678910111213`
 				savegameSubfolderName = "UNSET"
 			}
 		}
@@ -130,7 +141,7 @@ $GameDirs = @{
 			stable = @{
 				path = "UNSET"
 				exeName = "FactoryGameEGS"
-				# Example: 1234letters0and0numbers0longer12
+				# Example: value 1234letters0and0numbers0longer12 from path `%LOCALAPPDATA%\FactoryGame\Saved\SaveGames\1234letters0and0numbers0longer12`
 				savegameSubfolderName = "UNSET"
 			}
 			experimental = @{
@@ -155,18 +166,19 @@ $GameDirs = @{
 	# Optionally define additional -launcher options here. Hierarchy is -launcher > -side > -branch
 }
 
-# Multiplayer options (no longer work as of U8, kept here for future development)
-$Username1 = "Host"
-$Username2 = "Client"
-
 # Optionally configure the window size and position on the screen (2 sets for 2 copies when using -multiplayer)
-$Game1 = "$CommonArgs", "-Username=`"$Username1`""#, "-windowed", "-WinX=0", "-WinY=32", "ResX=960", "ResY=1040"
-$Game2 = "$CommonArgs", "-Username=`"$Username2`""#, "-windowed", "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
+$Game1 = "$CommonArgs" #, "-windowed", "-WinX=0", "-WinY=32", "ResX=960", "ResY=1040"
+$Game2 = "$CommonArgs" #, "-windowed", "-WinX=960", "-WinY=32", "ResX=960", "ResY=1040"
 
 # Location of your savegame root folder for usage with -loadLatestSave
 # The default should be fine but you can change it if desired
 # It gets combined with the savegameSubfolderName in the GameDirs data to make the full path
 $SaveFolder = "$($env:LOCALAPPDATA)\FactoryGame\Saved\SaveGames\"
+
+
+# Put custom overrides here if you want (for example, if you want to specify values for $GameDirs in one place)
+# Example
+# $GameDirs["steam"]["client"]["steam"]["path"] = "C:\Steam\steamapps\common\Satisfactory"
 
 # ========================================================================================================================
 # End configuration section
@@ -233,51 +245,44 @@ if ($info) {
 }
 
 
-function PrepareArgs([string]$baseArgs, [switch]$applySpecial, [System.Collections.Hashtable]$pathInfo) {
+function PrepareArgs([string]$baseArgs, [switch]$applyFirstInstanceOnlyArguments, [System.Collections.Hashtable]$pathInfo) {
 	$buildArgs = "$baseArgs"
 	
-	if ($applySpecial) {
+	if ($applyFirstInstanceOnlyArguments) {
 		if ($waitForDebugger) {
 			$buildArgs = "$buildArgs", "-WaitForDebugger"
 		}
-
 		if ($noExceptionHandler) {
 			$buildArgs = "$buildArgs", "-NoExceptionHandler"
 		}
-		
 		if ($loadLatestSave) {
-			$saveFolderUserId = $gamePathInfo["savegameSubfolderName"]
+			if ($multiplayer) {
+				# Multiplayer GUID consistency consequence: can't see platform save files. Must be in the `common` subfolder
+				$saveFolderUserId = "common"
+			} else {
+				$saveFolderUserId = $gamePathInfo["savegameSubfolderName"]
+			}
+
 			if (($saveFolderUserId -eq $null) -or ($saveFolderUserId -eq "UNSET")) {
 				Write-Error "Selected game install is missing 'savegameSubfolderName' data in your script config options. It should be the name of the subfolder within your save directory containing the save files you want to use with -loadLatestSave. Your same file directory was entered as: $SaveFolder"
 				exit 1
 			}
-			
+
 			$fullSaveFolder = "$SaveFolder\$saveFolderUserId"
-			
+
 			# https://stackoverflow.com/questions/9675658/powershell-get-childitem-most-recent-file-in-directory
 			# Steam keeps a steam_autocloud.vdf file in here that isn't a savegame
 			$latestSaveFile = (Get-ChildItem $fullSaveFolder -Attributes !Directory -Filter *.sav | sort LastWriteTime | select -last 1)
 			$latestSaveFileName = $latestSaveFile.Basename
 
-			$AutolaunchFilePath = "$($env:LOCALAPPDATA)\FactoryGame\$AutolaunchTempFileName"
-			
-			try {
-				# cast to void suppresses output
-				[void](New-Item $AutolaunchFilePath -ItemType File -Force)
-				Add-Content $AutolaunchFilePath "[/Script/EngineSettings.GameMapsSettings]"
-				Add-Content $AutolaunchFilePath "LocalMapOptions=??skipOnboarding?loadgame=$latestSaveFileName"
-				Add-Content $AutolaunchFilePath "GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level`nGameInstanceClass=/Script/FactoryGame.FGGameInstance"
-			} catch {
-				Write-Error "Failed to create/modify autolaunch file ($AutolaunchFilePath)"
-				Write-Error $_
-				exit 1
-			}
-
-			$buildArgs = "$buildArgs", "EngineINI=`"$AutolaunchFilePath`""
-			# $buildArgs = "$buildArgs", "EngineINI=`"C:\Git\SF_ModProject\RobWorkingDir\TestWorldAutoLaunch.ini`""
+			# Use Satisfactory's -ini feature to avoid needing to create an ini file and use -EngineINI (Unreal) to pass this info along
+			$buildArgs = "$buildArgs", "-ini:Engine:[/Script/EngineSettings.GameMapsSettings]:GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level,[/Script/EngineSettings.GameMapsSettings]:LocalMapOptions=?skipOnboarding?listen?loadgame=$latestSaveFileName"
 		}
 	}
-	
+	if ($multiplayer) {
+		# Satisfactory specific. More consistent multiplayer GUIDs
+		$buildArgs = "$buildArgs", "-CustomConfig="
+	}
 	return $buildArgs
 }
 
@@ -285,7 +290,7 @@ $gameDir = $gamePathInfo["path"]
 $gameEXE = $gamePathInfo["exeName"]
 $GameString = "$($gameDir)\$($gameEXE).exe"
 
-$Game1 = PrepareArgs $Game1 -applySpecial
+$Game1 = PrepareArgs $Game1 -applyFirstInstanceOnlyArguments
 $Game2 = PrepareArgs $Game2
 
 function BGProcess(){
@@ -301,12 +306,10 @@ function BGProcess(){
 
 BGProcess $GameString $Game1
 
-# TODO Multiplayer launch option is not working well right now
-# - As of Update 8, the username option no longer works
-# - Direct loading into a save does not properly set up a multiplayer session, meaning joining via `open 127.0.0.1` in the client won't work. the host must manually load another save file for that to be set up
-
 if ($multiplayer) {
-	sleep -m 5000
+	if (-not $test) {
+		sleep -m $multiplayerLaunchDelayMs
+	}
 } else {
 	return
 }
@@ -328,16 +331,14 @@ Assuming your powershell file is named `SFLaunch_Advanced`:
 - `.\SFLaunch_Advanced.ps1 -multiplayer` will launch two copies of the Steam game client
 - `.\SFLaunch_Advanced.ps1 -launcher epic -branch experimental -multiplayer` will launch two copies of the Epic Experimental game client
 
-Note that the `-multiplayer` flag is currently incompatible with the `-loadLatestSave` flag
-and that the `-loadLatestSave` flag requires
-link:#LoadCustomLevel[extra configuration] to work with saves made in custom levels
-and doesn't guarantee that you'll be put into the same player pawn.
-
 [NOTE]
 ====
 When using the `-loadLatestSave` flag, if the game can't load the save for some reason
 (for example, trying to load a newer save in an older version of the game)
 the game will create and load into a new save file instead.
+
+The `-loadLatestSave` flag requires
+link:#LoadCustomLevel[extra configuration] to work with saves made in custom levels.
 ====
 
 === Launch Script Enhancements
@@ -384,15 +385,15 @@ Note that this requires you to compile your mod for both the Epic and Steam targ
 To do this:
 
 1. Run the link:#LaunchScript[launch script] to open 2 copies of the game client.
-2. On the copy you designate as the host, select a save file to load.
+2. On the copy you designate as the host, select a save file to load. (or, use the `-loadLatestSave` flag)
 Before loading it, click the "Load Settings" button and change the "Session Type" to `IP`.
 3. On the copy you designate as the client, open the "Join Game" menu and enter the ip `127.0.0.1`.
 Alternatively, use the `open 127.0.0.1` xref:SMLChatCommands.adoc#ConsoleCommands[console command] from anywhere.
 
 [IMPORTANT]
 ====
-There is currently a bug in Satisfactory itself causing the host to crash when a client joins in this manner.
-Until this is resolved, either use an Epic and Steam copy or Approach B.
+Using this approach does not generate consistent player GUIDs across game launches.
+If you need a player with a consistent GUID, use a normal Epic/Steam copy for one of the sides.
 ====
 
 [id="MultiplayerTesting_LocalDedicatedServer"]
@@ -416,8 +417,7 @@ However, you will need to tweak it slightly if the level you want to load is a c
 
 Notice that the powershell script's loadLatestSave option creates an ini file on the fly
 containing instructions to load into a specific save file and GameDefaultMap.
-You'll either need to modify the powershell script to point to your custom level
-or create your own ini file for it to use instead.
+You'll either need to modify the powershell script to point to your custom level.
 
 First, you'll need to find the path to use for your custom level.
 It's based on the level's asset path.
@@ -425,6 +425,8 @@ For example, https://github.com/Nogg-aholic/NogsLevel/blob/master/Content/NogsLe
 so its path is `/NogsLevel/NogsLevel.NogsLevel`.
 https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/ExampleMod/Content/Maps/ExampleLevel/ExampleLevel.umap[Example Level's is a few layers of folder deep],
 it's path is `/ExampleMod/Maps/ExampleLevel/ExampleLevel.ExampleLevel`.
+
+Alter the line of the script that sets `GameDefaultMap` to point to the asset path of your custom level.
 
 While you're at it, there are a few other flags you can use to customize the loading process:
 
@@ -455,45 +457,8 @@ Switches found in AFGGameSession:
 
 ?Visibility=SV_Private/SV_Public (Session visibility)
 ?adminpassword=<Admin Password used in console command AdminLogin to gain host privileges>
-
-There is also ?bUseIpSockets linked with offline sessions
-Apparently it disables EOS sockets and makes the game fall back to normal IPv4 sockets
 ....
 +++ </div></details> +++
-
-=== Option 1: Modify Powershell Script's Automatic ini Generation
-
-Alter the `Add-Content` instruction that adds a `GameDefaultMap` to point to the asset path of your custom level.
-Note that this requires you to use the loadLatestSave flag (since that's what causes the script to generate the ini file)
-or modify the script to use the ini file under other conditions.
-
-=== Option 2: Use Your Own ini File
-
-Note how the powershell script uses the EngineINI option to point to an Engine.ini file to use when launching the game.
-
-You can manually write an ini file and modify the powershell script to always launch the game with it,
-or, launch separate from the powershell script by writing your own command.
-
-For example, if your file was called `LoadMapEngineConfiguration.ini`,
-your launch command could look like this:
-
-```
-"D:\SatisfactoryExperimental\FactoryGame\Binaries\Win64\FactoryGame-Win64-Shipping.exe" -EpicPortal -NoMultiplayer -Username=Player1 EngineINI="D:\SatisfactoryExperimental\LoadMapEngineConfiguration.ini"
-```
-
-Note that you will have to modify this example command 
-so that it points to where you have the game installed.
-
-You might want to save it in a batch file or powershell script for easy execution later.
-
-=== Option 3 - Add to Default Game Configuration
-
-Instead of creating a new file for your configuration,
-you can edit your default game configuration, found at
-`%APPDATA%/Local/FactoryGame/Saved/Windows/Engine.ini`.
-
-If you choose this option, the game will _always_ launch using this config
-no matter where you launch it from, even when mods are not installed.
 
 [id="TestingDedicatedServers"]
 == Dedicated Servers
@@ -568,56 +533,3 @@ Once you've verified that you can connect to the vanilla server
 you can start adding mods to it.
 Either install them xref:ForUsers/DedicatedServerSetup.adoc[the same way an end user would]
 or follow the process outlined in the Option section you selected above.
-
-== Modify Online Subsystem Behavior
-
-// From https://discord.com/channels/555424930502541343/562722670974599227/1044575456659259472
-
-Additional information about the Online Subsystem.
-This info is from 2023 and may be out of date.
-
-+++ <details><summary> +++
-True offline mode information from Archengius:
-+++ </summary><div> +++
-Example configuration file to run game offline with just IP sockets and no online subsystems and strings attached whatsoever
-
-[source,ini]
-----
-[/Script/EngineSettings.GameMapsSettings]
-GameDefaultMap=/Game/FactoryGame/Map/MenuScenes/Map_MenuScene_Update_06.Map_MenuScene_Update_06
-ServerDefaultMap=/Game/FactoryGame/Map/DedicatedserverEntry.DedicatedserverEntry
-LocalMapOptions=
-
-[URL]
-Name=Player
-Port=7777
-
-[/Script/Engine.Engine]
-NetDriverDefinitions=(DefName="GameNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
-NetDriverDefinitions=(DefName="BeaconNetDriver",DriverClassName="/Script/OnlineSubsystemUtils.IpNetDriver",DriverClassNameFallback="/Script/OnlineSubsystemUtils.IpNetDriver")
-NetDriverDefinitions=(DefName="DemoNetDriver",DriverClassName="/Script/Engine.DemoNetDriver",DriverClassNameFallback="/Script/Engine.DemoNetDriver")
-
-[OnlineSubsystem]
-DefaultPlatformService=NULL
-NativePlatformService=NULL
-
-[OnlineSubsystemSteam]
-bEnabled=false
-bRelaunchInSteam=false
-
-[OnlineSubsystemEOS]
-bEnabled=false
-
-[OnlineSubsystemNull]
-bEnabled=true
-----
-
-Example command line:
-
-// cspell:ignore Multiprocess
-
-`FactoryGame-Win64-Shipping.exe -NoEpicPortal -EngineIni="C:\EpicLibrary\SatisfactoryExperimental\OfflineEngineIni2.ini" -Multiprocess -Log`
-
-
-`-Multiprocess` prevents game writing to any files (which is really what you want if you plan running multiple instances simultaneously) and `-Log` opens the console log window
-+++ </div></details> +++
