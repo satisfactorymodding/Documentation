@@ -280,8 +280,9 @@ function PrepareArgs([string]$baseArgs, [switch]$applyFirstInstanceOnlyArguments
 		}
 	}
 	if ($multiplayer) {
-		# Satisfactory specific. More consistent multiplayer GUIDs
-		$buildArgs = "$buildArgs", "-CustomConfig="
+		# CustomConfig: Satisfactory specific. More consistent multiplayer GUIDs
+		# Multiprocess: Make the game not write user settings and other .ini files (unsafe operation while multiple copies are open)
+		$buildArgs = "$buildArgs", "-CustomConfig=", "-Multiprocess"
 	}
 	return $buildArgs
 }
