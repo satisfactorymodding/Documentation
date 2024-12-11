@@ -1,0 +1,158 @@
+= Upgrading from SML 3.8.0 to 3.9.x
+
+SML3.9 adds fixes some bugs, adds developer utilities,
+and helps end users avoid installing mods improperly in multiplayer.
+Mods compiled for SML3.8 should work with SML3.9,
+but any mods using Blueprint Hook Helper may need to update their code.
+Even the mods that need to update their code should™ work because the old functions are inline or template.
+
+Please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== New Features
+
+This section talks about the new features that SML 3.9 brings to the table.
+
+=== Clients Check Server Mods when Joining
+
+In previous SML versions, servers were able to reject client connections if the client was missing required mods installed on the server.
+SML 3.9 now implements this check for clients.
+Clients will refuse to join servers that are missing mods present on the client side.
+The existing `RequiredOnRemote` and `RemoteVersionRange` uplugin fields control this behavior.
+Read more about them in the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[uplugin Special Fields section].
+
+[id="NewFeatures_BPHookHelper"]
+=== Blueprint Hook Helper
+
+TODO
+
+=== Example Mod Improvements
+
+ExampleMod has been enhanced with additional examples:
+
+- https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/311[Significant enhancements]
+  to Example Level and the tools for creating custom levels
+- Schematic CDO edit example
+- ExampleItem now has a custom inventory description widget
+
+=== Mass Asset Reparenter
+
+This editor utility allows you to easily change the parent class of multiple assets at once.
+
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Editor Utilities] page.
+
+=== ADA Message Extractor
+
+This utility loads all FGMessage assets in the project and compiles data about them into one string.
+It can be useful for viewing what speaking patterns ADA and the Aliens use when speaking
+without having to hunt through lots of separate message assets.
+
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Editor Utilities] page.
+
+=== Alpakit Release: Open Folder
+
+TODO is this working?
+The Alpakit Release window now has a button to open the output directory that contains packaged mod files for upload.
+
+== Relevant Base Game Changes for Modding
+
+This section highlights some changes Coffee Stain has made to the base-game specifically for modders to utilize.
+
+- Fixed FFGDynamicStruct missing a NetSerializer
+- Added API for working with the new Lightweight Buildable Subsystem for modders
+- New launch arguments (covered in more detail below)
+
+=== Launch Argument: CustomConfig
+
+Added in CL382498, the `-CustomConfig=` allows you to override an additional layer of configs compiled into the game.
+
+Using exactly `-CustomConfig=` (specifying an empty string as the value) will alter game functionality to make modded multiplayer testing easier.
+
+=== Launch Argument: ini Overrides
+
+Added in CL382498, the `-ini:Config:[Section]:Value=` argument allows overriding ini config values via launch arguments.
+
+This behavior was previously possible using the `-EngineINI=` argument,
+but that approach requires creating an ini file to pass in which the game will with unrelated values on launch.
+
+For example, the xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
+could use this instead of the `EngineINI` argument:
+
+`-ini:Engine:[/Script/EngineSettings.GameMapsSettings]:GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level,[/Script/EngineSettings.GameMapsSettings]:LocalMapOptions=?skipOnboarding?loadgame=saveGameFilename`
+
+This argument can be used to raise the max player count to 10:
+
+`-ini:Engine:[SystemSettings]:net.MaxPlayersOverride=10`
+
+== Notable Fixes
+
+=== Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
+
+Mods can now alter vanilla content to unlock-depend on modded content without breaking its registration.
+See https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/248[this github issue for more info].
+
+=== Buildables with Empty Cost Now Finish their Build Animation
+
+This base-game bug has been fixed.
+https://www.answeroverflow.com/m/1290190197501460521[Source].
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+=== Content Bundle Cooking
+
+The optimal way to add modded content to the game world (like ore nodes, deposits, etc.)
+is to use the Content Bundle system,
+but Unreal currently refuses to cook content bundles unless the world is also cooked.
+This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
+and will be fixed in a future SML release.
+
+The next best way is to use sublevel spawning. Here is an example from Kyrium of how to do that:
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+- There are no required changes for this SML update!
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+[id="Changes_BPHookHelper"]
+=== Blueprint Hook Helper
+
+TODO
+
+In addition to the link:#NewFeatures_BPHookHelper[new blueprint hooking features],
+the handling of blueprint hook properties has been unified, resulting in some 
+
+Consider this example of updating the Faster Manual Crafting Redux mod:
+
+SML 3.8 version:
+
+```cpp
+int32* numSparksToAdd = helper.GetLocalVarPtr<FIntProperty>(TEXT("NumberOfSparks"));
+```
+
+SML 3.9 version:
+
+```cpp
+int32* numSparksToAdd = helper.GetLocalVariableHelper()->GetVariablePtr<FIntProperty>(TEXT("NumberOfSparks"));
+```

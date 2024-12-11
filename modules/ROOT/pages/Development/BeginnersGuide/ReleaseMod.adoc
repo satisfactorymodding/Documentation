@@ -235,23 +235,25 @@ citing the offending uplugin file in the error message.
 !===
 
 |RemoteVersionRange
-| A Semver range of versions accepted from the remote clients.
-This requires other players to have a certain version of the
-mod installed to be able to join hosts.
-See the Plugins SemVersion item above for the format for this field.
+| A Semver range of versions accepted from the remote side in multiplayer.
+This requires remotes to have a certain version of the mod installed to be able to join.
+See the Plugins `SemVersion` item above for the format for this field.
 {blank} +
 {blank} +
-This field is optional, and defaults to your SemVersion if unspecified. If you aren't using this behavior, you should exclude the field.
+This field is optional, and defaults to your `SemVersion` if unspecified,
+meaning both sides must have the exact same mod version installed.
+If you aren't using this behavior, you should exclude the field.
 
 |RequiredOnRemote
 | Controls if the mod is required to be on both sides in multiplayer.
 When a client connects, the host checks its own mod list against what the client is connecting with.
 If the host's mod has `RequiredOnRemote` set to true,
 `RemoteVersionRange` is used to check the client's reported version to ensure it's compatible.
-The reverse (client checking host) is not currently implemented but may be in the future.
+The reverse (client checking host) is implemented as of SML 3.9.0.
 {blank} +
 {blank} +
-This field is optional, and defaults to `true`. If you aren't using this behavior, you should exclude the field.
+This field is optional, and defaults to `true`.
+If you aren't using this behavior, you should exclude the field.
 
 |===
 
