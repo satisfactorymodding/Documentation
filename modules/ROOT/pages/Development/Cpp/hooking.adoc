@@ -219,7 +219,7 @@ in order to unsubscribe from the function.
 
 == Blueprint-Hooking
 
-Blueprint function hooking works by changing the instructions of a Blueprint UFunction so that your hook gets called at a specific point in the execution of that function.  Like native hooks, you can hook before and after the function execution.  Unlike native hooks, you can also hook just before top-level statement in the function if you know its original instruction index (which itself requires decompiling the function - look at DEBUG_BLUEPRINT_HOOKING in SML's BlueprintHookManager.cpp for one way to get a JSON dump of the instructions).
+Blueprint function hooking works by changing the instructions of a Blueprint UFunction so that your hook gets called at a specific point in the execution of that function.  Like native hooks, you can hook before and after the function execution.  Unlike native hooks, you can also hook at any top-level statement in the function if you know its original instruction index (which itself requires decompiling the function - look at DEBUG_BLUEPRINT_HOOKING in SML's BlueprintHookManager.cpp for one way to get a JSON dump of the instructions).
 
 [WARNING]
 ====
