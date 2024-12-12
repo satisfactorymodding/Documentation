@@ -331,6 +331,7 @@ All of these Get* methods have documentation about how to discover variables of 
 TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVariableHelper();
 ERepresentationType* representationType = localHelper->GetEnumVariablePtr<ERepresentationType>(TEXT("representationType"));
 int* intValuePtr = localHelper->GetVariablePtr<FIntProperty>(TEXT("someIntValue"));
+*intValuePtr = 42; // You can write values to variables simply by using the returned pointers
 ----
 
 
