@@ -27,7 +27,7 @@ To use it, right click on any Mod Configuration asset and run
 
 You can also launch it from the right click menu of the editor widget or asset action utility.
 
-// cspell:ignore Reparent Reparenter
+// cspell:ignore Reparenter
 
 == Mass Asset Reparenter
 
