@@ -219,16 +219,16 @@ in order to unsubscribe from the function.
 
 == Blueprint-Hooking
 
-Blueprint function hooking works by changing the instructions of a Blueprint UFunction so that your hook gets called at a specific point in the execution of that function.  Like native hooks, you can hook before and after the function execution.  Unlike native hooks, you can also hook at any top-level statement in the function if you know its original instruction index (which itself requires decompiling the function - look at DEBUG_BLUEPRINT_HOOKING in SML's BlueprintHookManager.cpp for one way to get a JSON dump of the instructions).
+Blueprint function hooking works by changing the instructions of a Blueprint UFunction so that your hook gets called at a specific point in the execution of that function. Like native hooks, you can hook before and after the function execution. Unlike native hooks, you can also hook at any top-level statement in the function if you know its original instruction index (which itself requires decompiling the function - look at DEBUG_BLUEPRINT_HOOKING in SML's BlueprintHookManager.cpp for one way to get a JSON dump of the instructions).
 
 [WARNING]
 ====
-Some blueprints (like UI blueprints) do not exist in the dedicated server build.  If your mod attempts to hook such a blueprint in a dedicated server, it will crash the server.  You can use the global function IsRunningDedicatedServer() to skip hooking in this case.
+Some blueprints (like UI blueprints) do not exist in the dedicated server build. If your mod attempts to hook such a blueprint in a dedicated server, it will crash the server. You can use the global function IsRunningDedicatedServer() to skip hooking in this case.
 ====
 
 [WARNING]
 ====
-Once you have hooked a blueprint function, there is currently no way to unhook it without fully exiting Satisfactory.  For this reason, it is recommended that you create/have a root UGameInstanceModule that installs all blueprint function hooks on game startup, usually when DispatchLifecycleEvent is first called.
+Once you have hooked a blueprint function, there is currently no way to unhook it without fully exiting Satisfactory. For this reason, it is recommended that you create/have a root UGameInstanceModule that installs all blueprint function hooks on game startup, usually when DispatchLifecycleEvent is first called.
 ====
 
 The hook function signature is `void(FBlueprintHookHelper&)`.
@@ -240,7 +240,7 @@ This FBlueprintHookHelper structure provides ways to:
  - Read/write variables of the Context, local variables of the hooked blueprint function (which include its Input variables), and Output variables of the function.
  - Skip from the hooked point to the end of the function's execution (though all hooks at that location will be executed prior to this jump).
 
-To attach a blueprint hook, you need a reference to the Blueprint CLASS containing the function you want to hook.  There are C++-only ways to do this using LoadClass but they require hardcoding resource paths, which is not recommended. Instead, you should add these types as member variables to your UGameInstanceModule and then assign them using the picker in the Unreal Editor.
+To attach a blueprint hook, you need a reference to the Blueprint CLASS containing the function you want to hook. There are C++-only ways to do this using LoadClass but they require hardcoding resource paths, which is not recommended. Instead, you should add these types as member variables to your UGameInstanceModule and then assign them using the picker in the Unreal Editor.
 
 Here's an example of getting a reference to the BPW_MapMenu class for hooking (this widget is the left-hand-side menu in the map screen of Satisfactory that lists all the map markers):
 
@@ -272,13 +272,13 @@ image:Development/Cpp/hooking/BPW_MapMenuTypeSelected.png[BPW_MapMenu selected]
 If you just created this blueprint module, also be sure the Root Module checkbox is checked near/at the bottom of this Details panel.
 ====
 
-The class is now availabe to your module for hooking.  If you don't already know the name of the blueprint function you wish to hook, these can found by opening the blueprint in the Unreal Editor, going to the Graph view, and then viewing the FUNCTIONS accordion under the My Blueprint tab:
+The class is now availabe to your module for hooking. If you don't already know the name of the blueprint function you wish to hook, these can found by opening the blueprint in the Unreal Editor, going to the Graph view, and then viewing the FUNCTIONS accordion under the My Blueprint tab:
 
 
 image:Development/Cpp/hooking/BPW_MapMenuFunctions.png[BPW_MapMenu functions]
 
 
-Now you can create the actual hook in C++.  Make sure you have the proper includes:
+Now you can create the actual hook in C++. Make sure you have the proper includes:
 
 [source,cpp]
 ----
@@ -295,7 +295,7 @@ UBlueprintHookManager* hookManager = GEngine->GetEngineSubsystem<UBlueprintHookM
 
 [WARNING]
 ====
-If you attempt to get the UBlueprintHookManager extremely early in startup, the game will crash. But it will be available by the time DispatchLifecycleEvent is called on your UGameInstanceModule.  Beware that DispatchLifecycleEvent is called three times with three different phase values as the game initializes - be sure you only create the hooks once by only creating them in a single phase (ELifecyclePhase::CONSTRUCTION should be fine).
+If you attempt to get the UBlueprintHookManager extremely early in startup, the game will crash. But it will be available by the time DispatchLifecycleEvent is called on your UGameInstanceModule. Beware that DispatchLifecycleEvent is called three times with three different phase values as the game initializes - be sure you only create the hooks once by only creating them in a single phase (ELifecyclePhase::CONSTRUCTION should be fine).
 ====
 
 And then you can create a hook by calling HookBlueprintFunction on the hook manager:
@@ -307,7 +307,7 @@ hookManager->HookBlueprintFunction(
 	[](FBlueprintHookHelper& helper) {
 		// Hook code here
 	},
-	EPredefinedHookOffset::Start ); // For hook just before the function executes.  For a hook just before the function returns, use EPredefinedHookOffset::Return
+	EPredefinedHookOffset::Start ); // For hook just before the function executes. For a hook just before the function returns, use EPredefinedHookOffset::Return
 ----
 
 [WARNING]
@@ -315,7 +315,7 @@ hookManager->HookBlueprintFunction(
 You can create hooks at nearly-arbitrary points in the function by passing the integer offset of the statement where you'd like to hook instead of an EPredefinedHookOffset. Only do this if you know exactly what you're doing and why!
 ====
 
-FBlueprintHookHelper has all the functionality you should need if you wish to modify the state of the blueprint or function execution.  To get and/or set the values of variables, use one of:
+FBlueprintHookHelper has all the functionality you should need if you wish to modify the state of the blueprint or function execution. To get and/or set the values of variables, use one of:
 
 [source,cpp]
 ----
@@ -324,7 +324,7 @@ TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVari
 TSharedRef<FBlueprintHookVariableHelper_Out> outHelper = helper.GetOutVariableHelper(); // For reading/writing Output variables of the function
 ----
 
-All of these Get* methods have documentation about how to discover variables of the appropriate type.  And all of the functions on each helper type have examples of how to access variables, as well as explanation of which functions to use for which types. Use your IDE to inspect the types or see SML's BlueprintHookHelper.h for details, but here is a quick example:
+All of these Get* methods have documentation about how to discover variables of the appropriate type. And all of the functions on each helper type have examples of how to access variables, as well as explanation of which functions to use for which types. Use your IDE to inspect the types or see SML's BlueprintHookHelper.h for details, but here is a quick example:
 
 [source,cpp]
 ----
