@@ -24,13 +24,6 @@ If you hook a member function, the `this` pointer is handled like a parameter an
 As long as you don't cancel the final function execution, or do it yourself by calling the scope object,
 the final function will be implicitly called after your hook function returns.
 
-[WARNING]
-====
-**Sometimes** when hooking functions that return custom types such as structs and FStrings, the game can unexpectedly crash!
-The cause of this is not fully known and often depends on the function being hooked.
-As such, try to avoid hooking functions that return said custom types wherever possible.
-====
-
 The call scope object allows you to:
 
 - Cancel the final function execution (if the hook function returns void).
