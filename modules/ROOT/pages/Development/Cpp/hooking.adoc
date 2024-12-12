@@ -319,12 +319,19 @@ FBlueprintHookHelper has all the functionality you should need if you wish to mo
 
 [source,cpp]
 ----
-helper->GetContextVariableHelper(); // For reading/writing variables on the blueprint that is being hooked (in the example above, this means member variables of BPW_MapMenu)
-helper->GetLocalVariableHelper(); // For reading/writing Input variables of the function, as well as any local variables the function is using for execution (but you have to know their names by decompiling the function)
-helper->GetOutVariableHelper(); // For reading/writing Output variables of the function
+TSharedRef<FBlueprintHookVariableHelper_Context> contextHelper = helper.GetContextVariableHelper(); // For reading/writing variables on the blueprint that is being hooked (in the example above, this means member variables of BPW_MapMenu)
+TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVariableHelper(); // For reading/writing Input variables of the function, as well as any local variables the function is using for execution (but you have to know their names by decompiling the function)
+TSharedRef<FBlueprintHookVariableHelper_Out> outHelper = helper.GetOutVariableHelper(); // For reading/writing Output variables of the function
 ----
 
-All of these Get* methods have documentation about how to discover variables of the appropriate type.  And all of the helpers' functions have examples of how to access variables, as well as explanation of which functions to use. Use your IDE to inspect them or see SML's BlueprintHookHelper.h
+All of these Get* methods have documentation about how to discover variables of the appropriate type.  And all of the functions on each helper type have examples of how to access variables, as well as explanation of which functions to use for which types. Use your IDE to inspect the types or see SML's BlueprintHookHelper.h for details, but here is a quick example:
+
+[source,cpp]
+----
+TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVariableHelper();
+ERepresentationType* representationType = localHelper->GetEnumVariablePtr<ERepresentationType>(TEXT("representationType"));
+int* intValuePtr = localHelper->GetVariablePtr<FIntProperty>(TEXT("someIntValue"));
+----
 
 
 == Protected/Private Function Hooking
