@@ -149,15 +149,14 @@ _Or: 'Why does Satisfactory Mod Manager trigger my antivirus?'_
 Using Satisfactory mods is safe, as long as you only download mods from ficsit.app and install them via the https://smm.ficsit.app/[Mod Manager].
 
 All files uploaded to ficsit.app are tested for malware and such before they are approved for download.
+Downloading arbitrary files always comes with some level of risk, but this procedure minimizes that risk.
 
 Your computer may claim that the Mod Manager is unsafe when you try to open it.
-This is because the mod manager does not have a
-https://comodosslstore.com/resources/what-is-signing-certificate/[signing certificate].
-The certificate costs hundreds per year.
-It's completely unnecessary for normal operation, and not worth it to pay for it.
+This should rarely, if ever, happen since the mod manager has a code signing certificate as of SMM3.
+If you see it, just approve it running.
 
 But rest assured, this community created Satisfactory Mod Manager from scratch.
-We all use it. Provided you only download it from
+We all use it. Provided you only download SMM from
 https://smm.ficsit.app/
 or its https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page]
 we can assure you it is safe.
