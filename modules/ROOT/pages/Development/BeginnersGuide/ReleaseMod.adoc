@@ -300,7 +300,7 @@ Example Blueprint only mod .uplugin:
 		{
 			"Name": "SML",
 			"Enabled": true,
-			"SemVersion": "^3.8.0"
+			"SemVersion": "^3.9.0"
 		}
 	],
 	"GameVersion": ">=365306"
@@ -341,7 +341,7 @@ Example {cpp} and Blueprint mod .uplugin:
 	"Plugins": [
 		{
 			"Name": "SML",
-			"SemVersion": "^3.8.9",
+			"SemVersion": "^3.9.0",
 			"Enabled": true
 		},
 		{

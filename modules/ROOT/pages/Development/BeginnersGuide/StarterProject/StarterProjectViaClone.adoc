@@ -21,7 +21,7 @@ This is the *latest stable* version of the docs.
 
 Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
-Clone the **`master` branch** to develop a mod for SML 3.8.0.
+Clone the **`master` branch** to develop a mod for SML 3.9.0.
 // You should clone the **`dev` branch** because SML 3.8.? is not released yet.
 
 // You should clone either the **`dev` branch** or the **`master` branch**.
