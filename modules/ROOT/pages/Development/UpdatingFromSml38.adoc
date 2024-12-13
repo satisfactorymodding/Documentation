@@ -34,7 +34,9 @@ Additionally, the `-loadLatestSave` and `-multiplayer` options are now compatibl
 [id="NewFeatures_BPHookHelper"]
 === Blueprint Hook Helper
 
-TODO
+The Blueprint Hook Helper has been extended to enable easier access to FProperties,
+FMapProperties, and FStructProperties.
+See `BlueprintHookHelper.h` for more details.
 
 === Example Mod Improvements
 
@@ -61,7 +63,6 @@ Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Edito
 
 === Alpakit Release: Open Folder
 
-TODO is this working?
 The Alpakit Release window now has a button to open the output directory that contains packaged mod files for upload.
 
 == Relevant Base Game Changes for Modding
@@ -146,12 +147,11 @@ but we'd like to draw extra attention to them.
 [id="Changes_BPHookHelper"]
 === Blueprint Hook Helper
 
-TODO
-
 In addition to the link:#NewFeatures_BPHookHelper[new blueprint hooking features],
-the handling of blueprint hook properties has been unified, resulting in some 
+the handling of blueprint hook properties has been unified,
+resulting in some old methods being changed.
 
-Consider this example of updating the Faster Manual Crafting Redux mod:
+Consider this example from the Faster Manual Crafting Redux mod:
 
 SML 3.8 version:
 
@@ -163,4 +163,18 @@ SML 3.9 version:
 
 ```cpp
 int32* numSparksToAdd = helper.GetLocalVariableHelper()->GetVariablePtr<FIntProperty>(TEXT("NumberOfSparks"));
+```
+
+Consider this example from SML's item description widget hook:
+
+SML 3.8 version:
+
+```cpp
+UUserWidget* TooltipWidget = Cast<UUserWidget>(*HookHelper.GetOutVariablePtr<FObjectProperty>());
+```
+
+SML 3.9 version:
+
+```cpp
+UUserWidget* TooltipWidget = Cast<UUserWidget>(*HookHelper.GetOutVariableHelper()->GetVariablePtr<FObjectProperty>(TEXT("ReturnValue")));
 ```
