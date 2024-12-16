@@ -66,6 +66,18 @@ Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Edito
 
 The Alpakit Release window now has a button to open the output directory that contains packaged mod files for upload.
 
+=== Launch Argument: ExecCmds
+
+SML now reimplements the Unreal Engine `ExecCmds` launch argument (normally excluded from shipping builds).
+It enables automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
+after the game loads.
+
+You can read more about it in the 
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
+
+The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
+uses this argument to implement the `-clientAutoJoin` flag.
+
 == Relevant Base Game Changes for Modding
 
 This section highlights some changes Coffee Stain has made to the base-game specifically for modders to utilize.
@@ -97,18 +109,6 @@ now uses this instead of the `EngineINI` argument:
 Another example - this argument can be used to raise the multiplayer max player count:
 
 `-ini:Engine:[SystemSettings]:net.MaxPlayersOverride=10`
-
-=== Launch Argument: ExecCmds
-
-SML now reimplements the Unreal Engine `ExecCmds` launch argument (normally excluded from shipping builds).
-It enables automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
-after the game loads.
-
-You can read more about it in the 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
-
-The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
-uses this argument to implement the `-clientAutoJoin` flag.
 
 == Notable Fixes
 
