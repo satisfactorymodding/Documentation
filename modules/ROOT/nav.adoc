@@ -12,7 +12,7 @@
     ** xref:ManualInstallDirections.adoc[Manual Installation]
 
 * xref:Development/index.adoc[Development]
-    ** xref:Development/UpdatingFromSml37.adoc[Updating from SML 3.7.0]
+    ** xref:Development/UpdatingFromSml38.adoc[Updating from SML 3.8.0]
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
         *** Installing Dependencies
@@ -101,8 +101,9 @@
         *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
         *** xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
         *** xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
-        *** Legacy
         *** xref:SMLConfiguration.adoc[SML Configuration]
+        *** Legacy
+            **** xref:Development/UpdatingFromSml37.adoc[Updating from SML 3.7.0]
             **** xref:Development/UpdatingFromSml36.adoc[Updating from SML 3.6.1]
             **** xref:Development/UpdatingFromSml35.adoc[Updating from SML 3.5.1]
             **** xref:Development/UpdatingFromSml34.adoc[Updating from SML 3.4.1]

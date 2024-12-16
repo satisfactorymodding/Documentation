@@ -502,3 +502,44 @@ bool AMyModHologram::TryUpgrade(const FHitResult& hitResult)
 	return Super::TryUpgrade(hitResult);
 }
 ```
+
+== Showing Additional Visualizations
+
+Blueprint Machine Holograms can spawn custom visuals to assist the user with placement of some buildable objects.
+Using a custom visualization replaces the default visualization.
+This approach is commonly used when a custom buildable requires extra settings and configuration to look correct.
+Consider the following example:
+
+```cpp
+void FMyModModule::StartupModule() {
+	AFGBlueprintHologram::RegisterCustomBuildableVisualization(
+		AABCurvedDecorBuildable::StaticClass(),
+		AFGBlueprintHologram::FCreateBuildableVisualizationDelegate::CreateLambda([](AFGBlueprintHologram* blueprintHologram, AFGBuildable* buildable, USceneComponent* buildableRootComponent) {
+			// Get your buildable
+			AMyBuildable* myBuildable = Cast<AMyBuildable>(buildable);
+
+			// - your cool code here for all the relevant components-
+			// likely involves referencing stuff myBuildable
+			// note that the buildable reference is only scoped to this lambda so don't expect it to persist
+
+			// example: if we had one custom spline mesh component to show it might look like this:
+			USplineMeshComponent* splineMesh = Cast<USplineMeshComponent>(
+				// we use the built in setup component so we don't have to worry about things like: attaching to the actor, transformations, mobility, customizer data, hologramFX, collision channels, and more you would need to set manually if you didn't
+				blueprintHologram->SetupComponent(
+					buildableRootComponent,
+					buildable->GetComponentByClass<USplineMeshComponent>(),
+					buildable->GetFName(),
+					FName()
+				)
+			);
+
+			// example: now do the configuration the vanilla configuration won't, since we are using a custom one
+			splineMesh->SetStartPosition(curve->StartPosition, false);
+			splineMesh->SetEndPosition(curve->EndPosition, false);
+			splineMesh->SetStartTangent(curve->StartTangent, false);
+			splineMesh->SetEndTangent(curve->EndTangent, false);
+			splineMesh->UpdateMesh_Concurrent();
+		})
+	);
+}
+```
