@@ -89,12 +89,14 @@ param (
 		[string]$side = "client",
 	[Parameter(HelpMessage="Branch to use (stable, experimental). Level 3 of the script's GameDirs config option. Not supported by Steam launcher.")]
 		[string]$branch = "stable",
-	[Parameter(HelpMessage="When present, launches 2 copies of the game instead of 1.")]
+	[Parameter(HelpMessage="When present, launches 2 copies of the game instead of 1. Most other arguments only apply to the first copy, read the script implementation for specifics.")]
 		[switch]$multiplayer = $false,
 	[Parameter(HelpMessage="When using the -multiplayer flag, how long to wait before launching the second copy in milliseconds.")]
 		[int]$multiplayerLaunchDelayMs = 5000,
 	[Parameter(HelpMessage="When present, the game will automatically load into the last save file you played. If used with the -multiplayer flag, the save must be in the `common` subfolder of the SaveGames directory.")]
 		[switch]$loadLatestSave = $false,
+	[Parameter(HelpMessage="When present, the second copy of the game will automatically run the `open 127.0.0.1` console command to connect to the first copy. Must be used with -loadLatestSave flag.")]
+		[switch]$clientAutoJoin = $false,
 	[Parameter(HelpMessage="Launch the game with the -WaitForDebugger flag, telling SML to hold the game's loading process to allow attaching a C++ debugger.")]
 		[switch]$waitForDebugger = $false,
 	[Parameter(HelpMessage="Launch the game with the -NoExceptionHandler flag, enabling JIT debugging and disabling the UE crash reporter.")]
@@ -247,7 +249,11 @@ if ($info) {
 
 function PrepareArgs([string]$baseArgs, [switch]$applyFirstInstanceOnlyArguments, [System.Collections.Hashtable]$pathInfo) {
 	$buildArgs = "$baseArgs"
-	
+	if ($clientAutoJoin -and (-not $multiplayer -or -not $loadLatestSave)) {
+		Write-Error "clientAutoJoin flag requires multiplayer flag and loadLatestSave flag so there is a running game for the client to join"
+		exit 1
+	}
+
 	if ($applyFirstInstanceOnlyArguments) {
 		if ($waitForDebugger) {
 			$buildArgs = "$buildArgs", "-WaitForDebugger"
@@ -277,6 +283,12 @@ function PrepareArgs([string]$baseArgs, [switch]$applyFirstInstanceOnlyArguments
 
 			# Use Satisfactory's -ini feature to avoid needing to create an ini file and use -EngineINI (Unreal) to pass this info along
 			$buildArgs = "$buildArgs", "-ini:Engine:[/Script/EngineSettings.GameMapsSettings]:GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level,[/Script/EngineSettings.GameMapsSettings]:LocalMapOptions=?skipOnboarding?listen?loadgame=$latestSaveFileName"
+		}
+	} else {
+		# Only the second copy should run the connect command for clientAutoJoin
+		if ($clientAutoJoin) {
+			# ExecCmds uses UE syntax: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference
+			$buildArgs = "$buildArgs", '-ExecCmds="open 127.0.0.1"'
 		}
 	}
 	if ($multiplayer) {

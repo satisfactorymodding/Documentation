@@ -29,7 +29,8 @@ Read more about them in the xref:Development/BeginnersGuide/ReleaseMod.adoc#_spe
 
 The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
 is once again capable of launching local multiplayer games to test with.
-Additionally, the `-loadLatestSave` and `-multiplayer` options are now compatible.
+Additionally, the `-loadLatestSave` and `-multiplayer` options are now compatible,
+and the `-clientAutoJoin` option has been added to make the client automatically connect to the host.
 
 [id="NewFeatures_BPHookHelper"]
 === Blueprint Hook Helper
@@ -93,9 +94,21 @@ now uses this instead of the `EngineINI` argument:
 
 `-ini:Engine:[/Script/EngineSettings.GameMapsSettings]:GameDefaultMap=/Game/FactoryGame/Map/GameLevel01/Persistent_Level.Persistent_Level,[/Script/EngineSettings.GameMapsSettings]:LocalMapOptions=?skipOnboarding?loadgame=saveGameFilename`
 
-Another example - this argument can be used to raise the multiplayer max player count to 10:
+Another example - this argument can be used to raise the multiplayer max player count:
 
 `-ini:Engine:[SystemSettings]:net.MaxPlayersOverride=10`
+
+=== Launch Argument: ExecCmds
+
+SML now reimplements the Unreal Engine `ExeCmds` launch argument (normally excluded from shipping builds).
+It enables automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
+after the game loads.
+
+You can read more about it in the 
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
+
+The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
+uses this argument to implement the `-clientAutoJoin` flag.
 
 == Notable Fixes
 
