@@ -100,7 +100,7 @@ Another example - this argument can be used to raise the multiplayer max player 
 
 === Launch Argument: ExecCmds
 
-SML now reimplements the Unreal Engine `ExeCmds` launch argument (normally excluded from shipping builds).
+SML now reimplements the Unreal Engine `ExecCmds` launch argument (normally excluded from shipping builds).
 It enables automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
 after the game loads.
 
