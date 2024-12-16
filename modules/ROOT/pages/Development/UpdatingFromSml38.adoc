@@ -1,6 +1,6 @@
 = Upgrading from SML 3.8.0 to 3.9.x
 
-SML3.9 adds fixes some bugs, adds developer utilities,
+SML3.9 fixes some bugs, adds developer utilities,
 and helps end users avoid installing mods improperly in multiplayer.
 Mods compiled for SML3.8 should work with SML3.9,
 but any mods using Blueprint Hook Helper may need to update their code.
