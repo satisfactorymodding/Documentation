@@ -131,6 +131,7 @@
         "USTRUCT",
         "utoc",
         "utocs",
+        "vgmstream",
         "VRAM",
         "Vulkan",
         "webp",
