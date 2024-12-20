@@ -120,3 +120,11 @@ Generally, content created by mods appears under `Game/<mod_reference>/` tag.
 Here is a screenshot from https://github.com/Goz3rr/SatisfactorySaveEditor/[SatisfactorySaveEditor] displaying data from a mod with the reference NogsOres.
 
 image:https://i.imgur.com/0sdahyB.png[image]
+
+== Save File Structure
+
+You can learn more about the save file format via the following resources:
+
+- https://github.com/moritz-h/satisfactory-3d-map/blob/master/docs/SATISFACTORY_SAVE.md[Morizt-h's documentation on the save file format]
+- https://satisfactory.wiki.gg/wiki/Save_files#Save_file_format[Satisfactory Wiki: Save files]
+- Looking at open source https://ficsit.app/tools[tools] to learn how they implemented their features.
