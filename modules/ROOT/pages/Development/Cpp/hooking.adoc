@@ -1,6 +1,6 @@
 = Hooking
 
-Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom function body to a existing function.
+Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom function body to an existing function.
 
 All C/{cpp} functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
 All Blueprint function hook stuff can be found in `#include "Patching/BlueprintHookManager.h"`.
@@ -15,8 +15,8 @@ SML's hooking interface provides distinct 3 ways of hooking functions, each of w
 
 If multiple hooks are attached to the same function, these hooks will then get called in the order they were registered.
 
-There is a normal hook which gets called before the actual function gets called.
-Through this hook you are able to prevent the final function call and you are also able to overwrite the return value.
+There is a normal hook that gets called before the actual function gets called.
+Through this hook, you are able to prevent the final function call and you are also able to overwrite the return value.
 If you cancel the execution of the final function, you can prevent the following hooks from being called.
 Keep in mind that this means that another hook can prevent your hooks from being called by Satisfactory.
 The normal hook's signature is `void(TCallScope<HookFuncSignature>&, hookFuncParams)`.
@@ -57,12 +57,12 @@ void hook(TCallScope<int(int)>& Scope, class* exampleClass, int exampleArg) {
 ----
 
 Since you still want to make sure your hook gets called,
-no care about if the final function got called or not we introduce the "after" hooks.
+no care about whether the final function got called or not we introduce the "after" hooks.
 These hooks get all called after the normal hook calls and only allow you to
 read the parameters as well as the resulting return value.
 That means you can't influence the final function call.
 Also, don't use the TCallScope object, instead the first parameter of your hooks signature
-is the return value following by the function call parameters.
+is the return value followed by the function call parameters.
 
 [source,cpp]
 ----
@@ -76,7 +76,7 @@ void hook(int returnValue, int exampleArg) {
 By 'hook types' we mean the different ways of attaching a hook to a function.
 Each attachment method works differently under the hood, and it's important to pay attention to the key differences between the different types of hooks.
 
-Be aware that type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
+Be aware that the type of return values and parameters etc has nothing to do with each other or if it is a member function, you can use them in any way.
 Note that the Hook function is a std::function, which means that it can be any type a std::function can accept, such as function pointers, function pointers with bound placeholders, or even lambdas.
 
 [IMPORTANT]
@@ -94,7 +94,7 @@ if (!WITH_EDITOR) {
 }
 ----
 
-Using `#if !WITH_EDITOR` and `#endif` directives is also an option, but it is not recommended: it hides errors until building shipping and confuses IDEs, making development and debugging slightly more annoying with no benefit.
+Using `#if !WITH_EDITOR` and `#endif` directives are also an option, but it is not recommended: they hide errors until building shipping and confuse IDEs, making development and debugging slightly more annoying with no benefit.
 ====
 
 === Type: SUBSCRIBE_METHOD
@@ -105,7 +105,7 @@ such that the code you pass will be called before the function executes.
 If multiple mods have subscribed to the same function,
 the hooks will be called in the order they were registered.
 
-Usage goes as following:
+Usage goes as follows:
 
 [source,cpp]
 ----
@@ -131,7 +131,7 @@ void registerHooks() {
 [WARNING]
 ====
 Hooking an overloaded function might not work as intended since the compiler has no clue what exact symbol you now want to hook.
-For that you should have an look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
+For that, you should have a look at the `SUBSCRIBE_METHOD_MANUAL`-Macro which allows you
 to explicitly set the symbol you want to hook.
 ====
 
@@ -145,7 +145,7 @@ but the hook will still run if the hooked function is called by the overriding i
 If the overriding implementation of a subclass does not "call super", you have to hook said subclass separately.
 Because pure virtual functions do not have a proper function body, they cannot possibly be hooked.
 
-Usage goes as following:
+Usage goes as follows:
 
 [source,cpp]
 ----
@@ -162,7 +162,7 @@ public:
 #include "Patching/NativeHookManager.h"
 
 void registerHooks() {
-	SomeClass* SampleObject = new SomeClass(); // For UObject derived classes, use SUBSCRIBE_UOBJECT_METHOD instead
+	SomeClass* SampleObject = GetMutableDefault<SomeClass>(); // For UObject derived classes, use SUBSCRIBE_UOBJECT_METHOD instead
 	SUBSCRIBE_METHOD_VIRTUAL(SomeClass::MemberFunction, SampleObject, [](auto& scope, SomeClass* self, int arg1) {
 		// do some nice stuff there
 	});
@@ -192,8 +192,10 @@ For "after" hooks, add the `_AFTER` postfix to the macro names.
 
 Be aware that the hook function signature changes accordingly and will no longer need the "scope":
 [horizontal]
-*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self))`
-*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, [](SomeClass* self))`
+*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, []([*return value by reference,*] SomeClass* self [*,parameters*]))`
+*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, []([*return value by reference,*] SomeClass* self [*,parameters*]))`
+
+**★ [*return value by reference,*] and [*,parameters*] are to be replaced if present, do NOT leave it as is!**
 
 ==== FORCEINLINE Functions
 
