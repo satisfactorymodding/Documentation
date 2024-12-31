@@ -71,6 +71,7 @@
             **** xref:Development/Satisfactory/Crafting.adoc[Crafting and Recipes]
             **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
             **** xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
+            **** xref:Development/Satisfactory/WWiseEvents.adoc[Wwise Events]
         *** Game Systems
             **** xref:Development/Satisfactory/Audio.adoc[Audio]
             **** xref:Development/Satisfactory/PowerNetwork.adoc[Power Network]
