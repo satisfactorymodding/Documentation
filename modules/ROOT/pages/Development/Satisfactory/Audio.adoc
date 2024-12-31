@@ -7,14 +7,42 @@ This page is a work in progress.
 
 == Wwise
 
-TODO
-
 Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
 
-At the time of writing it is very difficult for modders to interface with Wwise systems,
-so you should use Unreal's built in sound system instead.
+To create new audio events to play in your mod you will need the Wwise project setup and integrated to the SML project.
 
-The SML team is working on enabling modders to interface with Wwise.
+=== Importing Media Files to Wwise
+
+Open the Wwise project file, normally located in: `SMLProject/SMLProject_WwiseProject/SMLProject_WwiseProject.wproj` just doubling clicking this file will open Wwise.
+
+To make sure you are in the correct layout at the top go to `Layout -> Designer`
+
+On the lefthand side you will see the project explorer:
+
+image:Satisfactory/Wwise/Wwise_Image1.png[Wwise_Image1, 350]
+
+Under `Actor-Mixer Hierarchy` there will be `Default Work Unit`.
+
+To keep everything organised create a new Virtual Folder and name it the same as your mod:
+
+image:Satisfactory/Wwise/Wwise_Image2.png[Wwise_Image2, 600]
+
+Now to import audio files!
+
+Drag your `.wav` files into this newly created Virtual Folder. The `Audio File Importer` window will show.
+
+image:Satisfactory/Wwise/Wwise_Image3.png[Wwise_Image3, 600]
+
+Ensure that you have `Create New Objects` selected under import mode. Verify it is going to the correct folder and then click `Import`
+
+Thats It, your audio files are now imported to Wwise!
+
+=== Creating Audiokinetic Events
+
+Audiokinetic Events are used to trigger audio events like Play, Pause, Stop, etc.
+These are normally referred to as `AKEvents`
+
+
 
 == ADA
 
