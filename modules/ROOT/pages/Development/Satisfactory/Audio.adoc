@@ -9,25 +9,25 @@ This page is a work in progress.
 
 Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
 
-To create new audio events to play in your mod you will need the Wwise project setup and integrated to the SML project.
+To create new audio events to play in your mod, you will need the Wwise project set up and integrated into the SML project.
 
 === Importing Media Files to Wwise
 
-Open the Wwise project file, normally located in: `SMLProject/SMLProject_WwiseProject/SMLProject_WwiseProject.wproj` just doubling clicking this file will open Wwise.
+Open the Wwise project file, typically in `SMLProject/SMLProject_WwiseProject/SMLProject_WwiseProject.wproj`. Double-clicking this file will open Wwise.
 
-To make sure you are in the correct layout at the top go to `Layout -> Designer`
+To make sure you are in the correct layout at the top, go to `Layout -> Designer`
 
-On the lefthand side you will see the project explorer:
+On the left-hand side, you will see the project explorer; select the Audio Tab.
 
 image:Satisfactory/Wwise/Wwise_Image1.png[Wwise_Image1, 350]
 
-Under `Actor-Mixer Hierarchy` there will be `Default Work Unit`.
+Under `Actor-Mixer Hierarchy`, there will be `Default Work Unit`
 
-To keep everything organised create a new Virtual Folder and name it the same as your mod:
+To keep everything organized, create a new Virtual Folder and name it the same as your mod:
 
 image:Satisfactory/Wwise/Wwise_Image2.png[Wwise_Image2, 600]
 
-Now to import audio files!
+Now, to import audio files!
 
 Drag your `.wav` files into this newly created Virtual Folder. The `Audio File Importer` window will show.
 
@@ -35,14 +35,76 @@ image:Satisfactory/Wwise/Wwise_Image3.png[Wwise_Image3, 600]
 
 Ensure that you have `Create New Objects` selected under import mode. Verify it is going to the correct folder and then click `Import`
 
-Thats It, your audio files are now imported to Wwise!
+That's It. Your audio files are now imported to Wwise!
 
 === Creating Audiokinetic Events
 
-Audiokinetic Events are used to trigger audio events like Play, Pause, Stop, etc.
-These are normally referred to as `AKEvents`
+Audiokinetic Events trigger audio events like Play, Pause, Stop, etc.
+These are typically referred to as `AKEvents`
+
+To play the audio in your mod, you will need to create an event in Wwise. First, make sure that you have followed the above steps to import your `.wav` files to Wwise.
+
+In Project Explorer, go to the Audio tab and locate the audio for which you want to create an event.
+
+Right-click the audio and select `New Event -> Play`. This will create a new Play event.
+
+image:Satisfactory/Wwise/Wwise_Image4.png[Wwise_Image4, 600]
+
+In the Project Explorer, go to the Events tab, and you should see the event `Play_<AudioName>`.
+
+Double-clicking the event will show the Event's details in the main center section.
+
+There are a few things to take note and verify:
+
+* Take a note of the Event ID (Marked in Red)
+* Make sure that Inclusion is checked (Marked In Green)
+* Verify that the target is for the correct audio (Marked In Blue)
+
+image:Satisfactory/Wwise/Wwise_Image5.png[Wwise_Image5, 600]
+
+Repeat the process for all other audio you want to play in your mod.
+
+[NOTE]
+====
+Create a new Virtual Folder to store the Events for ease and organization.
+====
+
+=== Creating Audiokinetic Soundbanks
+
+You will need to create a new Soundbank for all your Events to be stored.
+
+In Wwise, change the layout to Soundbanks. This can be found at the top under `Layouts -> Soundbanks`.
+
+Select the `Soundbanks` tab in the Project Explorer on the left.
 
 
+By default, you will have the following tree structure:
+
+image:Satisfactory/Wwise/Wwise_Image6.png[Wwise_Image6, 600]
+
+Create a new Soundbank by Right-clicking the `Default Work Unit` then `New Child -> Soundbank`
+
+image:Satisfactory/Wwise/Wwise_Image7.png[Wwise_Image7, 600]
+
+Name the Soundbank `ModName_Soundbank`. This is optional and can be named however you want.
+
+Double-click the newly created Soundbank, which will open in a new window.
+
+In the main Wwise window, navigate to the Events tab in the Project Explorer.
+
+With the Soundbank window still open, drag the `Default Work Unit` or, if you created a Virtual Folder for your event, drag this to the Soundbank window.
+
+image:Satisfactory/Wwise/Wwise_Image8.png[Wwise_Image8, 700]
+
+Go to the `Edit` tab to verify that all the events are included in the Soundbank.
+
+image:Satisfactory/Wwise/Wwise_Image9.png[Wwise_Image9, 600]
+
+Now, it's finally time to generate the Soundbank for Unreal Engine.
+
+In the Project Explorer, on the Soundbanks tab, right-click on the soundbank and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Image10.png[Wwise_Image10, 500]
 
 == ADA
 
