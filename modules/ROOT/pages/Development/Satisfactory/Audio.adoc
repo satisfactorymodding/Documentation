@@ -106,6 +106,40 @@ In the Project Explorer, on the Soundbanks tab, right-click on the soundbank and
 
 image:Satisfactory/Wwise/Wwise_Image10.png[Wwise_Image10, 500]
 
+=== Creating AKEvents In Unreal Engine
+
+Open the Unreal Engine project settings and Navigate to the Wwise integration settings.
+
+Change the `Root Output Path` setting to `<WwiseProjectPath>/GeneratedSoundBanks`.
+
+Then Change the `Unreal Audio Routing` to `Both Wwise and Unreal audio`
+
+You may need to restart Unreal after these changes.
+
+Once your audio, event, and soundbanks are created, it's time to utilize them in the Unreal Engine.
+
+Create a new Audiokinetic Event by right-clicking on an empty area in the Content Browser.
+
+Go To `Audiokinetic -> Audiokinetic Event`
+
+image:Satisfactory/Wwise/Wwise_Image11.png[Wwise_Image11, 500]
+
+Name the new asset **Exactly** the same name as the event in Wwise.
+
+[NOTE]
+====
+If the asset name is exactly the same as the Wwise event, Unreal Engine will automatically populate the correct event information to the variables below.
+====
+
+Verify that the event has the correct information by opening the event in Unreal.
+
+* Verify that the `Wwise Short ID` matches the event ID in Wwise.
+* Verify the `Wwise Name` matches the event name.
+
+image:Satisfactory/Wwise/Wwise_Image12.png[Wwise_Image12, 500]
+
+If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`
+
 == ADA
 
 See the xref:Development/Satisfactory/AdaMessages.adoc[dedicated page on ADA Messages] for more information.
