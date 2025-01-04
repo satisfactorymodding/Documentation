@@ -11,6 +11,14 @@ Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
 
 To create new audio events to play in your mod, you will need the Wwise project set up and integrated into the SML project.
 
+=== Setting Up Audio Buses
+
+By default when using Wwise audio only the `Master` volume slider will work.
+
+You will need to manually create the different Audio Buses that link to the other sliders.
+
+TODO: Waiting for CSS to provide the correct audio bus names.
+
 === Importing Media Files to Wwise
 
 Open the Wwise project file, typically in `SMLProject/SMLProject_WwiseProject/SMLProject_WwiseProject.wproj`. Double-clicking this file will open Wwise.
@@ -139,6 +147,75 @@ Verify that the event has the correct information by opening the event in Unreal
 image:Satisfactory/Wwise/Wwise_Image12.png[Wwise_Image12, 500]
 
 If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`
+
+=== Playing AKEvents In Blueprints
+
+==== Fire & Forget Events
+
+If you would like to play a one off AK event, for example a spark sound. Then you will need to use the following method in your blueprint.
+
+image:Satisfactory/Wwise/Wwise_Image13.png[Wwise_Image13, 100%]
+
+This will first create a new `AK Component` at the root component of the blueprint then play the AK Event specified.
+
+You will need to make sure that you cleanup the `AK Component` once the AK Event has ended. This can be done using the callback event.
+
+==== Looping Events
+
+If you would like to play a sound effect that might loop, for example a humming/buzzing sound for a building.
+
+Then the best method will be to add a `AK Component` to your blueprint and set the `AK Audio Event` variable on the component.
+
+You will need to ensure that you stop the event when the actor is destroyed.
+
+image:Satisfactory/Wwise/Wwise_Image14.png[Wwise_Image14, 100%]
+
+
+=== Setting Up Attenuation
+
+If you are planning of using Wwise for buildings you will need to setup attenuation. By default the audio will play even if you are the otherside of the map.
+
+Wwise has a great tutorial on how to set this up here: https://youtu.be/lOP0seni1DY[Wwise & Unreal | Adding 3D Audio With Attenuation]
+
+=== Updating Wwise Values From Your Mod
+
+You can update audio values using RTPC (Game Parameters).
+
+In your Wwise project go to the Project Explorer and go to the `Game Syncs` tab.
+
+Under `Game Parameters -> Default Work Unit` create a new game parameter by right-clicking the `Default Work Unit` then `New Child -> Game Parameter`
+
+image:Satisfactory/Wwise/Wwise_Image15.png[Wwise_Image15, 100%]
+
+Name this what ever you want.
+
+Open the newly created Game Parameter and you should see the following in the main section.
+
+image:Satisfactory/Wwise/Wwise_Image17.png[Wwise_Image17, 100%]
+
+You will need to set the range, I recommend using 0 to 1.
+
+Now to assign the RTPC Game Parameter to your audio.
+
+Open your Audio then go to the `RTPC` tab. Click the `>>` in the main section to set what you are going to update, in this case I want to update the `Voice Volume`.
+
+Then click the `>>` to the right of the first one and select you game parameter.
+
+image:Satisfactory/Wwise/Wwise_Image16.png[Wwise_Image16, 500]
+
+Once that is done you should see something similar to the following:
+
+image:Satisfactory/Wwise/Wwise_Image18.png[Wwise_Image18, 100%]
+
+Now create the Game Parameter in Unreal Engine.
+
+image:Satisfactory/Wwise/Wwise_Image19.png[Wwise_Image19, 500]
+
+Name it exactly the same as you have in Wwise.
+
+You can now update the RTPC Game Parameter value using blueprints:
+
+image:Satisfactory/Wwise/Wwise_Image20.png[Wwise_Image20, 700]
 
 == ADA
 
