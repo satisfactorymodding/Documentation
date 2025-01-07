@@ -44,7 +44,7 @@ image:Satisfactory/Wwise/Wwise_Import_ImportWindow.png[Wwise_Import_ImportWindow
 
 Ensure that you have `Create New Objects` selected under import mode. Verify it is going to the correct folder and then click `Import`
 
-That's It. Your audio files are now imported to Wwise!
+Your audio files are now imported to Wwise and ready to be referenced by Unreal systems.
 
 === Creating Audiokinetic Events
 
