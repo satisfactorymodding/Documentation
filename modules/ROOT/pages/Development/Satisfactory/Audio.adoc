@@ -48,8 +48,9 @@ Your audio files are now imported to Wwise and ready to be referenced by Unreal 
 
 === Creating Audiokinetic Events
 
-Audiokinetic Events trigger audio events like Play, Pause, Stop, etc.
-These are typically referred to as `AKEvents`
+**Audiokinetic Events** (typically shortened to `AKEvents`) allow your mod code to tell the Wwise sound system to do something.
+Example AKEvent types include Play, Pause, and Stop.
+Each sound you want to use typically needs multiple events associated with it.
 
 To play the audio in your mod, you will need to create an event in Wwise. First, make sure that you have followed the above steps to import your `.wav` files to Wwise.
 
