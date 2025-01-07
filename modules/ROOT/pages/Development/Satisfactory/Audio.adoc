@@ -60,8 +60,8 @@ Right-click the audio and select `New Event -> Play`. This will create a new Pla
 
 image:Satisfactory/Wwise/Wwise_AkEvent_Create.png[Wwise_AkEvent_Create, 600]
 
-In the Project Explorer, go to the Events tab, and you should see the event `Play_<AudioName>`.
-
+Verify the event was created successfully by going to the Project Explorer's `Events` tab.
+You should see the event `Play_<AudioName>`.
 Double-clicking the event will show the Event's details in the main center section.
 
 There are a few things to take note and verify:
