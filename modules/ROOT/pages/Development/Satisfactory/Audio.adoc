@@ -113,7 +113,7 @@ image:Satisfactory/Wwise/Wwise_Soundbank_EditTab.png[Wwise_Soundbank_EditTab, 60
 
 Now, it's finally time to generate the Soundbank for Unreal Engine.
 
-In the Project Explorer, on the Soundbanks tab, right-click on the soundbank and click `Generate Soundbank(s) for all platforms`.
+In the Wwise Project Explorer, on the `Soundbanks` tab, right-click on the soundbank and click `Generate Soundbank(s) for all platforms`.
 
 image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 500]
 
