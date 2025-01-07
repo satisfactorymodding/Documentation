@@ -74,9 +74,9 @@ image:Satisfactory/Wwise/Wwise_AkEvent_Info.png[Wwise_AkEvent_Info, 600]
 
 Repeat the process for all other audio you want to play in your mod.
 
-[NOTE]
+[TIP]
 ====
-Create a new Virtual Folder to store the Events for ease and organization.
+Consider creating one or more Virtual Folders within your mod's folder to store your AKEvents for ease of organization.
 ====
 
 === Creating Audiokinetic Soundbanks
