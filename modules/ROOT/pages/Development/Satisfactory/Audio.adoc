@@ -177,7 +177,9 @@ image:Satisfactory/Wwise/Wwise_UEAkEvent_EndPlay.png[Wwise_UEAkEvent_EndPlay, 10
 
 === Setting Up Attenuation
 
-If you plan to use Wwise audio for buildings, you will need to set up attenuation. By default, the audio will play even if you are on the other side of the map.
+If you plan to use Wwise audio for buildings or equipment, you will need to set up **attenuation**.
+By default, the audio will play at full volume even if you are on the other side of the map from its origin.
+Attenuation causes the sound to become quieter at a distance, or not play at all.
 
 Wwise has a great tutorial on how to set this up here: https://youtu.be/lOP0seni1DY[Wwise & Unreal | Adding 3D Audio With Attenuation]
 
