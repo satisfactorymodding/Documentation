@@ -122,10 +122,8 @@ image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 
 Open the Unreal Engine project settings and Navigate to the Wwise integration settings.
 
 Change the `Root Output Path` setting to `<WwiseProjectPath>/GeneratedSoundBanks`.
-
-Then Change the `Unreal Audio Routing` to `Both Wwise and Unreal audio`
-
-You may need to restart Unreal after these changes.
+Then change the `Unreal Audio Routing` setting to `Both Wwise and Unreal audio`.
+You may need to restart the Unreal Editor after making these changes.
 
 Once your audio, event, and soundbanks are created, it's time to utilize them in the Unreal Engine.
 
