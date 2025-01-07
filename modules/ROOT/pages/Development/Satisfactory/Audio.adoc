@@ -195,7 +195,7 @@ image:Satisfactory/Wwise/Wwise_RTPC_Create.png[Wwise_RTPC_Create, 100%]
 
 Name this whatever you want.
 
-Open the newly created Game Parameter, and you should see the following in the main section.
+Open the newly created Game Parameter, and you should see the following in the main section:
 
 image:Satisfactory/Wwise/Wwise_RTPC_Range.png[Wwise_RTPC_Range, 100%]
 
