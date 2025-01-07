@@ -96,7 +96,8 @@ Create a new Soundbank by Right-clicking the `Default Work Unit` then `New Child
 
 image:Satisfactory/Wwise/Wwise_Soundbank_Create.png[Wwise_Soundbank_Create, 600]
 
-Name the Soundbank `ModName_Soundbank`. This is optional and can be named however you want.
+Name the Soundbank `YourModReference_Soundbank`.
+Soundbank names do not need to be in this format, but including the mod reference helps with organization.
 
 Double-click the newly created Soundbank, which will open in a new window.
 
