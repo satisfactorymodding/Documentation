@@ -126,7 +126,11 @@ Then change the `Unreal Audio Routing` setting to `Both Wwise and Unreal audio`.
 You may need to restart the Unreal Editor after making these changes.
 
 === Creating AKEvents In Unreal Engine
-Once your audio, event, and soundbanks are created, it's time to utilize them in the Unreal Engine.
+Now that you've defined your audio, events, and soundbanks in Wwise, it's time to utilize them in the Unreal Engine.
+The first step in doing this is to create Unreal assets that reference your Wwise assets.
+Although it is possible to use the Wwise Browser to create these, this is not recommended,
+as it places them in the wrong project folders.
+As such, follow the steps below to create them via the Unreal Editor.
 
 Create a new Audiokinetic Event by right-clicking on an empty area in the Content Browser.
 
