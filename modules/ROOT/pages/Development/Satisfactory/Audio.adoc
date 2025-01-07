@@ -103,7 +103,7 @@ Double-click the newly created Soundbank, which will open in a new window.
 
 In the main Wwise window, navigate to the Events tab in the Project Explorer.
 
-With the Soundbank window still open, drag the `Default Work Unit` or, if you created a Virtual Folder for your event, drag this to the Soundbank window.
+With the Soundbank window still open, drag the `Default Work Unit` to the Soundbank window. If you created a specific Virtual Folder for your event, drag that folder instead.
 
 image:Satisfactory/Wwise/Wwise_Soundbank_Window.png[Wwise_Soundbank_Window, 700]
 
