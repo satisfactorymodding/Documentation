@@ -117,7 +117,7 @@ In the Wwise Project Explorer, on the `Soundbanks` tab, right-click on the sound
 
 image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 500]
 
-=== Creating AKEvents In Unreal Engine
+=== Unreal Project Configuration
 
 Open the Unreal Engine project settings and Navigate to the Wwise integration settings.
 
