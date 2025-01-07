@@ -185,11 +185,10 @@ Wwise has a great tutorial on how to set this up here: https://youtu.be/lOP0seni
 
 === Updating Wwise Values From Your Mod
 
-Wwise uses a feature called Real-Time Parameter Control (RTPC) that allows game engines like Unreal or Unity to change values on the Wwise software in real-time.
+Wwise uses a feature called Real-Time Parameter Control (RTPC) that allows game engines like Unreal or Unity to change values on Wwise assets in real-time.
+This enables special behaviors like a manufacturing building's sound volume to fluctuate based on recipe progress.
 
-An example of this would be if, for example, you have a building and want the sound volume to fluctuate based on the recipe's progress.
-
-You can set up an RTPC in Wwise and Unreal and update the value in your building's blueprint.
+After setting up RTPC in Wwise and Unreal, blueprint code can update audio parameter values.
 
 To set these up, in your Wwise project, go to Project Explorer and the `Game Syncs` tab.
 
