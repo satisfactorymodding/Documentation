@@ -27,19 +27,19 @@ To make sure you are in the correct layout at the top, go to `Layout -> Designer
 
 On the left-hand side, you will see the project explorer; select the Audio Tab.
 
-image:Satisfactory/Wwise/Wwise_Image1.png[Wwise_Image1, 350]
+image:Satisfactory/Wwise/Wwise_Import_PorjectExplorer.png[Wwise_Import_PorjectExplorer, 350]
 
 Under `Actor-Mixer Hierarchy`, there will be `Default Work Unit`
 
 To keep everything organized, create a new Virtual Folder and name it the same as your mod:
 
-image:Satisfactory/Wwise/Wwise_Image2.png[Wwise_Image2, 600]
+image:Satisfactory/Wwise/Wwise_Import_VirtualFolderCreate.png[Wwise_Import_VirtualFolderCreate, 600]
 
 Now, to import audio files!
 
 Drag your `.wav` files into this newly created Virtual Folder. The `Audio File Importer` window will show.
 
-image:Satisfactory/Wwise/Wwise_Image3.png[Wwise_Image3, 600]
+image:Satisfactory/Wwise/Wwise_Import_ImportWindow.png[Wwise_Import_ImportWindow, 600]
 
 Ensure that you have `Create New Objects` selected under import mode. Verify it is going to the correct folder and then click `Import`
 
@@ -56,7 +56,7 @@ In Project Explorer, go to the Audio tab and locate the audio for which you want
 
 Right-click the audio and select `New Event -> Play`. This will create a new Play event.
 
-image:Satisfactory/Wwise/Wwise_Image4.png[Wwise_Image4, 600]
+image:Satisfactory/Wwise/Wwise_AkEvent_Create.png[Wwise_AkEvent_Create, 600]
 
 In the Project Explorer, go to the Events tab, and you should see the event `Play_<AudioName>`.
 
@@ -68,7 +68,7 @@ There are a few things to take note and verify:
 * Make sure that Inclusion is checked (Marked In Green)
 * Verify that the target is for the correct audio (Marked In Blue)
 
-image:Satisfactory/Wwise/Wwise_Image5.png[Wwise_Image5, 600]
+image:Satisfactory/Wwise/Wwise_AkEvent_Info.png[Wwise_AkEvent_Info, 600]
 
 Repeat the process for all other audio you want to play in your mod.
 
@@ -88,11 +88,11 @@ Select the `Soundbanks` tab in the Project Explorer on the left.
 
 By default, you will have the following tree structure:
 
-image:Satisfactory/Wwise/Wwise_Image6.png[Wwise_Image6, 600]
+image:Satisfactory/Wwise/Wwise_Soundbank_ProjectExplorer.png[Wwise_Soundbank_ProjectExplorer, 600]
 
 Create a new Soundbank by Right-clicking the `Default Work Unit` then `New Child -> Soundbank`
 
-image:Satisfactory/Wwise/Wwise_Image7.png[Wwise_Image7, 600]
+image:Satisfactory/Wwise/Wwise_Soundbank_Create.png[Wwise_Soundbank_Create, 600]
 
 Name the Soundbank `ModName_Soundbank`. This is optional and can be named however you want.
 
@@ -102,17 +102,17 @@ In the main Wwise window, navigate to the Events tab in the Project Explorer.
 
 With the Soundbank window still open, drag the `Default Work Unit` or, if you created a Virtual Folder for your event, drag this to the Soundbank window.
 
-image:Satisfactory/Wwise/Wwise_Image8.png[Wwise_Image8, 700]
+image:Satisfactory/Wwise/Wwise_Soundbank_Window.png[Wwise_Soundbank_Window, 700]
 
 Go to the `Edit` tab to verify that all the events are included in the Soundbank.
 
-image:Satisfactory/Wwise/Wwise_Image9.png[Wwise_Image9, 600]
+image:Satisfactory/Wwise/Wwise_Soundbank_EditTab.png[Wwise_Soundbank_EditTab, 600]
 
 Now, it's finally time to generate the Soundbank for Unreal Engine.
 
 In the Project Explorer, on the Soundbanks tab, right-click on the soundbank and click `Generate Soundbank(s) for all platforms`.
 
-image:Satisfactory/Wwise/Wwise_Image10.png[Wwise_Image10, 500]
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 500]
 
 === Creating AKEvents In Unreal Engine
 
@@ -130,7 +130,7 @@ Create a new Audiokinetic Event by right-clicking on an empty area in the Conten
 
 Go To `Audiokinetic -> Audiokinetic Event`
 
-image:Satisfactory/Wwise/Wwise_Image11.png[Wwise_Image11, 500]
+image:Satisfactory/Wwise/Wwise_UEAkEvent_Create.png[Wwise_UEAkEvent_Create, 500]
 
 Name the new asset **Exactly** the same name as the event in Wwise.
 
@@ -144,7 +144,7 @@ Verify that the event has the correct information by opening the event in Unreal
 * Verify that the `Wwise Short ID` matches the event ID in Wwise.
 * Verify the `Wwise Name` matches the event name.
 
-image:Satisfactory/Wwise/Wwise_Image12.png[Wwise_Image12, 500]
+image:Satisfactory/Wwise/Wwise_UEAkEvent_Verify.png[Wwise_UEAkEvent_Verify, 500]
 
 If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`
 
@@ -154,7 +154,7 @@ If everything has worked correctly, you can now test the event by right-clicking
 
 If you would like to play a one-off AK event, such as a spark sound, you will need to use the following method in your blueprint.
 
-image:Satisfactory/Wwise/Wwise_Image13.png[Wwise_Image13, 100%]
+image:Satisfactory/Wwise/Wwise_UEAkEvent_FireAndForget.png[Wwise_UEAkEvent_FireAndForget, 100%]
 
 This will first create a new `AK Component` at the blueprint's root component and then play the AK Event specified.
 
@@ -168,7 +168,7 @@ The best method is to add an `AK Component` to your blueprint and set the `AK Au
 
 You must ensure that you stop the event when the actor is destroyed.
 
-image:Satisfactory/Wwise/Wwise_Image14.png[Wwise_Image14, 100%]
+image:Satisfactory/Wwise/Wwise_UEAkEvent_EndPlay.png[Wwise_UEAkEvent_EndPlay, 100%]
 
 
 === Setting Up Attenuation
@@ -179,19 +179,23 @@ Wwise has a great tutorial on how to set this up here: https://youtu.be/lOP0seni
 
 === Updating Wwise Values From Your Mod
 
-You can update audio values using RTPC (Game Parameters).
+Wwise uses a feature called Real-Time Parameter Control (RTPC) that allows game engines like Unreal or Unity to change values on the Wwise software in real-time.
 
-In your Wwise project, go to Project Explorer and the `Game Syncs` tab.
+An example of this would be if, for example, you have a building and want the sound volume to fluctuate based on the recipe's progress.
+
+You can set up an RTPC in Wwise and Unreal and update the value in your building's blueprint.
+
+To set these up, in your Wwise project, go to Project Explorer and the `Game Syncs` tab.
 
 Under `Game Parameters -> Default Work Unit` create a new game parameter by right-clicking the `Default Work Unit` and then `New Child -> Game Parameter`
 
-image:Satisfactory/Wwise/Wwise_Image15.png[Wwise_Image15, 100%]
+image:Satisfactory/Wwise/Wwise_RTPC_Create.png[Wwise_RTPC_Create, 100%]
 
 Name this whatever you want.
 
 Open the newly created Game Parameter, and you should see the following in the main section.
 
-image:Satisfactory/Wwise/Wwise_Image17.png[Wwise_Image17, 100%]
+image:Satisfactory/Wwise/Wwise_RTPC_Range.png[Wwise_RTPC_Range, 100%]
 
 You will need to set the range. I recommend using 0 to 1.
 
@@ -201,21 +205,21 @@ Open your Audio and go to the `RTPC` tab. Click the `>>` in the main section to 
 
 Then click the `>>` to the right of the first one and select your game parameter.
 
-image:Satisfactory/Wwise/Wwise_Image16.png[Wwise_Image16, 500]
+image:Satisfactory/Wwise/Wwise_RTPC_Configure.png[Wwise_RTPC_Configure, 500]
 
 Once that is done, you should see something similar to the following:
 
-image:Satisfactory/Wwise/Wwise_Image18.png[Wwise_Image18, 100%]
+image:Satisfactory/Wwise/Wwise_RTPC_Overview.png[Wwise_RTPC_Overview, 100%]
 
-Now, create the Game Parameter in Unreal Engine.
+Now, to create the link between unreal engine and Wwise you will need to create the Game Parameter in Unreal Engine.
 
-image:Satisfactory/Wwise/Wwise_Image19.png[Wwise_Image19, 500]
+image:Satisfactory/Wwise/Wwise_UERTPC_Create.png[Wwise_UERTPC_Create, 600]
 
 Name it the same as you have in Wwise.
 
 You can now update the RTPC Game Parameter value using blueprints:
 
-image:Satisfactory/Wwise/Wwise_Image20.png[Wwise_Image20, 700]
+image:Satisfactory/Wwise/Wwise_UERTPC_Usage.png[Wwise_UERTPC_Usage, 700]
 
 == ADA
 
