@@ -169,7 +169,8 @@ Once the AK event has ended, you must clean up the `AK Component` using the call
 
 If you would like to play a sound effect that might loop, for example, a humming/buzzing sound for a building, you should use the same AK Component for ease of reference and to avoid the creation/destruction overhead. Add an `AK Component` to your actor blueprint and set the `AK Audio Event` variable on the component.
 
-You must ensure that you stop the event when the actor is destroyed.
+Make sure to stop the audio when the actor is destroyed,
+otherwise it will continue to play with no way to stop it.
 
 image:Satisfactory/Wwise/Wwise_UEAkEvent_EndPlay.png[Wwise_UEAkEvent_EndPlay, 100%]
 
