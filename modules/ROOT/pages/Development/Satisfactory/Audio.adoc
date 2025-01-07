@@ -125,6 +125,7 @@ Change the `Root Output Path` setting to `<WwiseProjectPath>/GeneratedSoundBanks
 Then change the `Unreal Audio Routing` setting to `Both Wwise and Unreal audio`.
 You may need to restart the Unreal Editor after making these changes.
 
+=== Creating AKEvents In Unreal Engine
 Once your audio, event, and soundbanks are created, it's time to utilize them in the Unreal Engine.
 
 Create a new Audiokinetic Event by right-clicking on an empty area in the Content Browser.
