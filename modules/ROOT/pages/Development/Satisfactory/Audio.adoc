@@ -199,7 +199,8 @@ Open the newly created Game Parameter, and you should see the following in the m
 
 image:Satisfactory/Wwise/Wwise_RTPC_Range.png[Wwise_RTPC_Range, 100%]
 
-You will need to set the range. I recommend using 0 to 1.
+The parameter must have a range defined.
+A useful range is `0.0` to `1.0` since many existing gameand engine systems already use that range as a start-finish, minimum-maximum, or off-on scale.
 
 Now, assign the RTPC Game Parameter to your audio.
 
