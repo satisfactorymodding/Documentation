@@ -150,7 +150,10 @@ image:Satisfactory/Wwise/Wwise_UEAkEvent_Verify.png[Wwise_UEAkEvent_Verify, 500]
 If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`.
 This will trigger the event in the editor, for example, playing the sound if the event is a Play-type event.
 
-=== Playing AKEvents In Blueprints
+=== Triggering AKEvents in Code
+
+Triggering AKEvents is typically done in Blueprint code.
+Although it is possible to trigger them from {cpp}, this is not recommended, as it would require passing lots of asset references to the {cpp} side. If you want to trigger events from {cpp}, define a `BlueprintImplementableEvent` UFUNCTION for your {cpp} code to call, allowing you to define the implementation in Blueprint.
 
 ==== Fire & Forget Events
 
