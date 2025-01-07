@@ -31,7 +31,8 @@ image:Satisfactory/Wwise/Wwise_Import_PorjectExplorer.png[Wwise_Import_PorjectEx
 
 Under `Actor-Mixer Hierarchy`, there will be `Default Work Unit`
 
-To keep everything organized, create a new Virtual Folder and name it the same as your mod:
+To keep everything organized, create a new Virtual Folder to house your Wwise files and name it the same as your
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference].
 
 image:Satisfactory/Wwise/Wwise_Import_VirtualFolderCreate.png[Wwise_Import_VirtualFolderCreate, 600]
 
