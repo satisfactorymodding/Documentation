@@ -53,7 +53,7 @@ These are typically referred to as `AKEvents`
 
 To play the audio in your mod, you will need to create an event in Wwise. First, make sure that you have followed the above steps to import your `.wav` files to Wwise.
 
-In Project Explorer, go to the Audio tab and locate the audio for which you want to create an event.
+In Wwise's Project Explorer, go to the `Audio` tab and locate the audio for which you want to create an event.
 
 Right-click the audio and select `New Event -> Play`. This will create a new Play event.
 
