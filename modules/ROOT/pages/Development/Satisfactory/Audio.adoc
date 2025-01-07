@@ -204,7 +204,9 @@ A useful range is `0.0` to `1.0` since many existing gameand engine systems alre
 
 Now, assign the RTPC Game Parameter to your audio.
 
-Open your Audio and go to the `RTPC` tab. Click the `>>` in the main section to set what you want to update. In this case, I want to update the `Voice Volume`.
+Open your Audio in Wwise and go to the `RTPC` tab.
+Click the `>>` in the main section to set what you want to update.
+This example case shows updating the `Voice Volume`.
 
 Then click the `>>` to the right of the first one and select your game parameter.
 
