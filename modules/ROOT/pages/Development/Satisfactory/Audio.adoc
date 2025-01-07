@@ -141,7 +141,7 @@ Name the new asset **Exactly** the same name as the event in Wwise.
 If the asset name is exactly the same as the Wwise event, Unreal Engine will automatically populate the correct event information to the variables below.
 ====
 
-Verify that the event has the correct information by opening the event in Unreal.
+Open the asset and verify that its settings match those configured in Wwise:
 
 * Verify that the `Wwise Short ID` matches the event ID in Wwise.
 * Verify the `Wwise Name` matches the event name.
