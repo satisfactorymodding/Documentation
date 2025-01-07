@@ -138,12 +138,7 @@ Go To `Audiokinetic -> Audiokinetic Event`
 
 image:Satisfactory/Wwise/Wwise_UEAkEvent_Create.png[Wwise_UEAkEvent_Create, 500]
 
-Name the new asset **Exactly** the same name as the event in Wwise.
-
-[NOTE]
-====
-If the asset name is exactly the same as the Wwise event, Unreal Engine will automatically populate the correct event information to the variables below.
-====
+Name the new asset **exactly** the same name as the event you created earlier in Wwise. This enables Unreal to automatically populate the correct event information in the asset's fields.
 
 Open the asset and verify that its settings match those configured in Wwise:
 
