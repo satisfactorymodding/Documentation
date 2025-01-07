@@ -147,7 +147,8 @@ Open the asset and verify that its settings match those configured in Wwise:
 
 image:Satisfactory/Wwise/Wwise_UEAkEvent_Verify.png[Wwise_UEAkEvent_Verify, 500]
 
-If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`
+If everything has worked correctly, you can now test the event by right-clicking the event in Unreal and clicking `Play Event`.
+This will trigger the event in the editor, for example, playing the sound if the event is a Play-type event.
 
 === Playing AKEvents In Blueprints
 
