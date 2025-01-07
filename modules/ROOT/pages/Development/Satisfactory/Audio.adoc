@@ -64,11 +64,11 @@ Verify the event was created successfully by going to the Project Explorer's `Ev
 You should see the event `Play_<AudioName>`.
 Double-clicking the event will show the Event's details in the main center section.
 
-There are a few things to take note and verify:
+There are a few things to take note of and verify:
 
-* Take a note of the Event ID (Marked in Red)
-* Make sure that Inclusion is checked (Marked In Green)
-* Verify that the target is for the correct audio (Marked In Blue)
+* Take a note of the Event ID. You will need to compare it with values in the Unreal Editor later. (Red in the screenshot)
+* Make sure that `Inclusion` is checked (Green in the screenshot)
+* Verify that the target is for the correct audio (Blue in the screenshot)
 
 image:Satisfactory/Wwise/Wwise_AkEvent_Info.png[Wwise_AkEvent_Info, 600]
 
