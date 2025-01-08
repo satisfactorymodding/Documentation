@@ -295,6 +295,7 @@ Name it the same as you have in Wwise.
 You can now update the RTPC Game Parameter value using blueprints:
 
 image:Satisfactory/Wwise/Wwise_UERTPC_Usage.png[Wwise_UERTPC_Usage, 700]
+
 == Wwise and Source Control
 
 [NOTE]
