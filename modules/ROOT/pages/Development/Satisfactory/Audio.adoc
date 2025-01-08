@@ -1,3 +1,7 @@
+
+// cspell:ignore Audiokinetic
+// cspell:ignore Soundbank
+
 = Audio
 
 [NOTE]
@@ -18,6 +22,64 @@ By default when using Wwise audio only the `Master` volume slider will work.
 You will need to manually create the different Audio Buses that link to the other sliders.
 
 TODO: Waiting for CSS to provide the correct audio bus names.
+
+=== Setting Up Attenuation
+
+If you plan to use Wwise audio for buildings or equipment, you must set up **attenuation**.
+By default, the audio will play at full volume even if you are on the other side of the map from its origin.
+Attenuation causes the sound to become quieter at a distance or not play at all.
+
+[NOTE]
+====
+Attenuation is not required if you plan to use Audio for UI or ADA messages, and this step can be skipped.
+====
+
+On Wwises Project Explorer, go to the `ShareSets` tab. Share Sets are useful for providing the same configuration to multiple Wwise objects.
+
+You will see the section `Attenuations -> Default Work Unit` 
+
+image:Satisfactory/Wwise/Wwise_Attenuation_ProjectExplorer.png[Wwise_Attenuation_ProjectExplorer, 350]
+
+Create a new Attenuation object by right-clicking the `Default Work Unit` then `New Child -> Attenuation`
+
+image:Satisfactory/Wwise/Wwise_Attenuation_Create.png[Wwise_Attenuation_Create, 100%]
+
+You can name this whatever you want; just be mindful that you can't use the same name twice.
+
+Open the new Attenuation ShareSet by double clicking the new attenuation shareset.
+
+In the main section, you will be presented with the following:
+
+image:Satisfactory/Wwise/Wwise_Attenuation_Info.png[Wwise_Attenuation_Info, 100%]
+
+==== Distance
+
+Click on the First setting, Volume (by default, will automatically be selected). This is marked in Yellow on the screenshot.
+
+You will then need to set the `Max Distance` setting.
+
+[TIP]
+====
+This number is in Unreal Units (uu); the conversion is 1000uu = 1 meter.
+====
+
+The Max Distance will be the distance away from the building that the player can still hear the sound. 
+
+Based on the vanilla buildings, smaller buildings have a maximum distance of 4,000 to 6,000, and larger vanilla buildings are around 6,000 to 10,000.
+
+==== Spread
+
+By default, the spread will be set to 0. This means that the sound comes from a specific point when rotating the player.
+
+This can become very confusing to players when they are standing right next to the building.
+
+On the screenshot above, change the dropdown marked in Red to `Custom`. This will then show the spread graph in the bottom section.
+
+You can add a new point to the graph by double-clicking the line. Then, set the `X` value to roughly the size of your building and the `Y` value to 100.
+
+Add another point to the graph slightly further on, set the `X` value to the size of the building plus a bit more, and set the `Y` value to 0.
+
+image:Satisfactory/Wwise/Wwise_Attenuation_Spread_Graph.png[Wwise_Attenuation_Spread_Graph, 100%]
 
 === Importing Media Files to Wwise
 
@@ -45,6 +107,20 @@ image:Satisfactory/Wwise/Wwise_Import_ImportWindow.png[Wwise_Import_ImportWindow
 Ensure that you have `Create New Objects` selected under import mode. Verify it is going to the correct folder and then click `Import`
 
 Your audio files are now imported to Wwise and ready to be referenced by Unreal systems.
+
+=== Adding Attenuation To Audio
+
+If you plan on using attenuation on audio, you must first follow the attenuation section of the documentation. xref:Development/Satisfactory/Audio.adoc#_setting_up_attenuation[Setting Up Attenuation].
+
+To set up attenuation on the audio, double-click the audio file in the Wwise Project Explorer `Audio` tab.
+
+Then, once the audio opens in the main section, go to the `Positioning` tab.
+
+Change the `3D Spatialization` setting to `Position + Orientation` (Marked in blue in the screenshot).
+
+Click the `>>` button, then select the Attenuation ShareSet from the list (Marked in red in the screenshot).
+
+image:Satisfactory/Wwise/Wwise_Attenuation_Audio_Settings.png[Wwise_Attenuation_Audio_Settings, 500]
 
 === Creating Audiokinetic Events
 
@@ -161,9 +237,9 @@ If you would like to play a one-off AK event, such as a spark sound, you will ne
 
 image:Satisfactory/Wwise/Wwise_UEAkEvent_FireAndForget.png[Wwise_UEAkEvent_FireAndForget, 100%]
 
-This will first create a new `AK Component` at the blueprint's root component and then play the AK Event specified.
+This will create a new temporary `AK Component` and then play the AK Event specified.
 
-Once the AK event has ended, you must clean up the `AK Component` using the callback event.
+Once the AK event has ended, the temporary `AK Component` will be automatically cleaned up.
 
 ==== Looping Events
 
@@ -173,15 +249,6 @@ Make sure to stop the audio when the actor is destroyed,
 otherwise it will continue to play with no way to stop it.
 
 image:Satisfactory/Wwise/Wwise_UEAkEvent_EndPlay.png[Wwise_UEAkEvent_EndPlay, 100%]
-
-
-=== Setting Up Attenuation
-
-If you plan to use Wwise audio for buildings or equipment, you will need to set up **attenuation**.
-By default, the audio will play at full volume even if you are on the other side of the map from its origin.
-Attenuation causes the sound to become quieter at a distance, or not play at all.
-
-Wwise has a great tutorial on how to set this up here: https://youtu.be/lOP0seni1DY[Wwise & Unreal | Adding 3D Audio With Attenuation]
 
 === Updating Wwise Values From Your Mod
 
@@ -246,6 +313,8 @@ However, this interferes with the typical one-repo-per-mod structure by tying mu
 
 Wwise offers advice on connecting to source control
 https://www.audiokinetic.com/en/library/edge/?source=Help&id=using_wwise_with_source_control_system[in their documentation].
+
+
 == ADA
 
 See the xref:Development/Satisfactory/AdaMessages.adoc[dedicated page on ADA Messages] for more information.
