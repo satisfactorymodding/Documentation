@@ -273,7 +273,16 @@ Find the appropriate row in the module blueprint's Details section under the Cat
 
 image:Development/Cpp/hooking/BPW_MapMenuTypeSelected.png[BPW_MapMenu selected]
 
-The class is now availabe to your module for hooking. If you don't already know the name of the blueprint function you wish to hook, these can found by opening the blueprint in the Unreal Editor, going to the Graph view, and then viewing the FUNCTIONS accordion under the My Blueprint tab:
+The class is now availabe to your module for hooking.
+
+[WARNING]
+====
+It is possible that a class might not be fully loaded by the game before your mod needs it.
+Call `LoadSynchronous` on each TSoftClassPtr in your mod's initialization to ensure it is loaded.
+====
+
+Now that we have a reference to the blueprint class, we can hook its functions.
+If you don't already know the name of the blueprint function you wish to hook, these can found by opening the blueprint in the Unreal Editor, going to the Graph view, and then viewing the FUNCTIONS accordion under the My Blueprint tab:
 
 image:Development/Cpp/hooking/BPW_MapMenuFunctions.png[BPW_MapMenu functions]
 
