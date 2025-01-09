@@ -250,8 +250,8 @@ image:Development/Cpp/hooking/BPW_MapMenuHover.png[Hovering over BPW_MapMenu]
 
 Next, define a `TSoftClassPtr` property on a {cpp}-backed Root Game Instance Module.
 Use the Native Parent Class of the blueprint class you wish to hook as the generic type.
-Make it an EditAnywhere UPROPERTY so it will be available in the Unreal Editor
-Optionally, assing a `Category` name to help organize the property if you plan to hook multiple things.
+Make it an EditAnywhere UPROPERTY so it will be available in the Unreal Editor.
+Optionally, assign a `Category` name to help organize the property if you plan to hook multiple things.
 
 [source,cpp]
 ----
