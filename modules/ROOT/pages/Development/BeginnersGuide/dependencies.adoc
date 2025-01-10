@@ -77,7 +77,7 @@ You might have to scroll a bit to find them.
 Next, from the "Individual Components" tab,
 search for and select:
 
-- `MSVC v143 - VS2022 C++ x64/x86 build tools (v14.34-17.4)`
+- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.34-17.4)`
 - `.NET 6.0 Runtime (Long Term Support)`
 - `.NET Framework 4.8.1 SDK`
 
