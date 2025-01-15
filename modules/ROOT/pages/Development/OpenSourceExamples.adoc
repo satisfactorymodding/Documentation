@@ -95,6 +95,8 @@ _Notable Mod Loader Features Used:_
 ** Tracking if the user has modified the config from the defaults
    to know if future mod updates should automatically overwrite them with updated default data
 ** Programatically modifying config values and saving the changes
+* xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tags]
+** Tags can be used to specify items/recipes/schematics to skip from sample consideration without mod source dependencies.
 
 == Screw It
 
@@ -279,3 +281,25 @@ _Notable Mod Loader Features Used:_
 ** Scans all recipes and all schematics for a specific tag and modifies them when present
 ** Enables easy extending the mod to affect other mods' blueprint designers.
    Any recipe with the relevant tag is made free and any schematic with the relevant tag is given for free.
+
+[id="ThisSignUp"]
+== This Sign Up
+
+Adds arrows to indicate which way is up when building a sign.
+
+_Source Code_: Linked on the https://ficsit.app/mod/ThisSignUp[Mod Page]
+
+_Mod Type_: Pure Blueprint
+
+_Notable Techniques Used:_
+
+* None
+
+_Notable Satisfactory Features Used:_
+
+* None
+
+_Notable Mod Loader Features Used:_
+
+* Simple Construction Script (SCS) Hooks
+** Used to spawn an additional actor component on sign placement holograms (the upwards facing arrow)
