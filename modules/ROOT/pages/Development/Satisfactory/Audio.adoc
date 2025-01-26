@@ -314,7 +314,7 @@ image:Satisfactory/Wwise/Wwise_UE_RTPC_Usage.png[Wwise_UE_RTPC_Usage, 700]
 === Playback Limits
 
 Wwise limits the amount of audio that can be played at once. 
-Trying to play more than this limit will result in lower-priority sounds like footsteps, music, or animal sounds playing.
+Trying to play more than this limit will result in lower-priority audio like footsteps, music, or animals to stop playing.
 
 To resolve this, you will need to set playback limits for each of your audio files. This can be done in the audio's advanced settings tab.
 
@@ -343,7 +343,7 @@ For playing background building sounds, use the `Gained Significance` and `Lost 
 
 image:Satisfactory/Wwise/Wwise_Significance.png[Wwise_Significance, 700]
 
-For fire and forget ak events, use the `Get Is Significant` function before posting the event:
+For fire and forget AK events, use the `Get Is Significant` function before posting the event:
 
 image:Satisfactory/Wwise/Wwise_IsSignificant.png[Wwise_IsSignificant, 700]
 
