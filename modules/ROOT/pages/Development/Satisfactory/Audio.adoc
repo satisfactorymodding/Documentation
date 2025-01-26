@@ -1,7 +1,3 @@
-
-// cspell:ignore Audiokinetic
-// cspell:ignore Soundbank
-
 = Audio
 
 [NOTE]
@@ -9,11 +5,29 @@
 This page is a work in progress.
 ====
 
+Adding sound effects and music via mods can really help bring them to life.
+Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
+Depending on what your mod is trying to do, you may want to use the built in Unreal system or the Wwise system.
+
+== Audio for ADA Messages
+
+See the xref:Development/Satisfactory/AdaMessages.adoc[dedicated page on ADA Messages] for more information.
+
+== Unreal Audio System
+
+If you're playing sound for the purpose of user interfaces (UI) or client-side only effects,
+it may be easier to use Unreal's built in sound system
+at the cost of losing integration with some of the game's systems (ex. ADA) and the advanced features of Wwise.
+
+The "Play Sound 2D" and "Play Sound at Location" blueprint nodes are useful for this purpose.
+
 == Wwise
 
-Coffee Stain uses the Wwise audio system to play sounds in Satisfactory.
+Interfacing with the Wwise sound system will require setting up and integrating a Wwise project and integrating it with the modding project.
 
-To create new audio events to play in your mod, you will need the Wwise project set up and integrated into the SML project.
+Note that using large numbers of Wwise sounds may require getting a
+https://www.audiokinetic.com/en/blog/free-wwise-indie-license/[Wwise indie license]
+for your project.
 
 === Setting Up Audio Buses
 
@@ -34,7 +48,7 @@ Attenuation causes the sound to become quieter at a distance or not play at all.
 Attenuation is not required if you plan to use Audio for UI or ADA messages, and this step can be skipped.
 ====
 
-On Wwises Project Explorer, go to the `ShareSets` tab. Share Sets are useful for providing the same configuration to multiple Wwise objects.
+On Wwise's Project Explorer, go to the `ShareSets` tab. Share Sets are useful for providing the same configuration to multiple Wwise objects.
 
 You will see the section `Attenuations -> Default Work Unit` 
 
@@ -89,7 +103,7 @@ To make sure you are in the correct layout at the top, go to `Layout -> Designer
 
 On the left-hand side, you will see the project explorer; select the Audio Tab.
 
-image:Satisfactory/Wwise/Wwise_Import_PorjectExplorer.png[Wwise_Import_PorjectExplorer, 350]
+image:Satisfactory/Wwise/Wwise_Import_ProjectExplorer.png[Wwise_Import_ProjectExplorer, 350]
 
 Under `Actor-Mixer Hierarchy`, there will be `Default Work Unit`
 
@@ -202,6 +216,7 @@ Then change the `Unreal Audio Routing` setting to `Both Wwise and Unreal audio`.
 You may need to restart the Unreal Editor after making these changes.
 
 === Creating AKEvents In Unreal Engine
+
 Now that you've defined your audio, events, and soundbanks in Wwise, it's time to utilize them in the Unreal Engine.
 The first step in doing this is to create Unreal assets that reference your Wwise assets.
 Although it is possible to use the Wwise Browser to create these, this is not recommended,
@@ -286,15 +301,15 @@ Once that is done, you should see something similar to the following:
 
 image:Satisfactory/Wwise/Wwise_RTPC_Overview.png[Wwise_RTPC_Overview, 100%]
 
-Now, to create the link between unreal engine and Wwise you will need to create the Game Parameter in Unreal Engine.
+Now, to create the link between Unreal Engine and Wwise you will need to create the Game Parameter in Unreal Engine:
 
-image:Satisfactory/Wwise/Wwise_UERTPC_Create.png[Wwise_UERTPC_Create, 600]
+image:Satisfactory/Wwise/Wwise_UE_RTPC_Create.png[Wwise_UE_RTPC_Create, 600]
 
 Name it the same as you have in Wwise.
 
 You can now update the RTPC Game Parameter value using blueprints:
 
-image:Satisfactory/Wwise/Wwise_UERTPC_Usage.png[Wwise_UERTPC_Usage, 700]
+image:Satisfactory/Wwise/Wwise_UE_RTPC_Usage.png[Wwise_UE_RTPC_Usage, 700]
 
 == Wwise and Source Control
 
@@ -315,10 +330,6 @@ However, this interferes with the typical one-repo-per-mod structure by tying mu
 Wwise offers advice on connecting to source control
 https://www.audiokinetic.com/en/library/edge/?source=Help&id=using_wwise_with_source_control_system[in their documentation].
 
-
-== ADA
-
-See the xref:Development/Satisfactory/AdaMessages.adoc[dedicated page on ADA Messages] for more information.
 
 == Volume Options
 
@@ -350,3 +361,20 @@ RTPC.Menu_Volume_Weapons
 These values are on a scale of `0.0` (off) to `1.0` (full volume).
 If multiple categories apply, multiply them together to reach the final volume value.
 For example, the Chainsaw's volume is probably Master multiplied with Equipment multiplied with the chainsaw's specific category.
+
+You may also wish to implement your own volume slider to factor into the mix.
+The suggested approach is to create a
+xref:Development/ModLoader/Configuration.adoc[mod float config option]
+combobox ranging from 0.0 to 1.0 and multiplying it with the other relevant volume categories to use as the final volume.
+
+=== Volume with the Unreal Audio System
+
+Unreal's play sound nodes take volume as a float parameter.
+Follow the steps in the main Volume Options section to combine the relevant volume slider values to obtain the final input volume.
+
+=== Volume with Wwise
+
+The game's master volume slider is automatically applied to any sounds played through Wwise.
+Following other base game volume sliders requires using the respective audio busses on the event.
+
+The RTPC system can be used to factor in arbitrary volume options from other sources.
