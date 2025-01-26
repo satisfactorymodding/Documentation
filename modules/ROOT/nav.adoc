@@ -82,6 +82,7 @@
             **** xref:Development/Satisfactory/AbstractInstance.adoc[Abstract Instances]
             **** xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication]
             **** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
+            **** xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries]
             **** xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API]
         *** xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML]
         *** Legacy
@@ -128,7 +129,7 @@
     ** xref:CommunityResources/incredibuild.adoc[Incredibuild]
     ** xref:CommunityResources/TrainSignalGuide.adoc[Train Signaling Guide]
 
-// TODO unhide once translating section is ready
+// TODO un-hide once translating section is ready
 // * Translating Mods
 //     ** xref:Translation/GetStartedTranslating.adoc[Get Started Translating]
 //     ** xref:Translation/UsingTolgee.adoc[Using Tolgee]
