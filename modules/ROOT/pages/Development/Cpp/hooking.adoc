@@ -5,6 +5,29 @@ Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom f
 All C/{cpp} functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
 All Blueprint function hook stuff can be found in `#include "Patching/BlueprintHookManager.h"`.
 
+== Background Information
+
+The hooking system SML is using is just C / {cpp} function hooking, as Unreal Engine is {cpp}.
+This system can theoretically be used on any executable,
+but you need to know the location of functions in memory, which is difficult.
+For general {cpp} executables, and most UE games, you only have a .exe,
+which provides no information about where functions are located,
+so to figure that out you need very good reverse engineering skills,
+and it needs to be done on an exe-by-exe basis, so if the game updates, everything breaks.
+
+What's different about Satisfactory is that it provides PDBs,
+which normally are used to determine the call stack when a crash happens,
+but they can also be used in the other direction: to find a function address based on the name.
+
+Finding a function address based on the name is the technique that SML v1 used to implement hooking.
+The trouble there is that many functions may be stripped, or inlined, which makes {cpp} modding in general harder,
+but also complicates hooking, as methods might suddenly disappear and be embedded into the place they are called from.
+
+At our request, Coffee Stain enabled Modular Build in
+https://satisfactory.wiki.gg/wiki/Patch_0.4.1.0#Modular_builds[Update 4], which means each Unreal Engine module is a dll on its own.
+This means that all functions are exported, so their address can be natively found by the linker, and also that no function can be inlined.
+Modular builds also enable the native Unreal Engine mod support (i.e., loading mod plugins from the Mods folder).
+
 [id="CppFunctionHooks"]
 == {cpp} Function Hooks
 
