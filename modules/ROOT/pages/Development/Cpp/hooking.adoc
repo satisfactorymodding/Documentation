@@ -182,20 +182,49 @@ Depending on the type of function you are attempting to hook and what you want t
 ==== Const Functions
 
 When hooking a `const` function you will need to prefix the "self" pointer with `const`. 
-[horizontal]
-*Non-Const Function*:: `(auto& scope, SomeClass* self)`
-*Const Function*:: 	`(auto& scope, *const* SomeClass* self)`
+
+[cols="1,4a"]
+|===
+| Is Const? | Format
+
+| Non-Const
+| `(auto& scope, SomeClass* self)`
+
+| Const
+| `(auto& scope, *const* SomeClass* self)`
+
+|===
 
 ==== Hooking AFTER
 
 For "after" hooks, add the `_AFTER` postfix to the macro names.
 
-Be aware that the hook function signature changes accordingly and will no longer need the "scope":
-[horizontal]
-*Non-Virtual*:: `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, []([*return value by reference,*] SomeClass* self [*,parameters*]))`
-*Virtual*:: `SUBSCRIBE_METHOD_VIRTUAL_AFTER(SomeClass::MemberFunction, []([*return value by reference,*] SomeClass* self [*,parameters*]))`
+Be aware that the hook function signature changes accordingly and no longer needs the "scope".
 
-**★ [*return value by reference,*] and [*,parameters*] are to be replaced if present, do NOT leave it as is!**
+The below examples are for non-virtual functions.
+For virtual functions, use `SUBSCRIBE_METHOD_VIRTUAL_AFTER` instead of `SUBSCRIBE_METHOD_AFTER`.
+
+[cols="1,1,4a"]
+|===
+| Return? | Parameters? | Format
+
+| ❌
+| ❌
+| `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self))`
+
+| ✔️
+| ❌
+| `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](auto returnValue, SomeClass* self))`
+
+| ❌
+| ✔️
+| `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](SomeClass* self, int arg1, int arg2))`
+
+| ✔️
+| ✔️
+| `SUBSCRIBE_METHOD_AFTER(SomeClass::MemberFunction, [](auto returnValue, SomeClass* self, int arg1, int arg2))`
+
+|===
 
 ==== FORCEINLINE Functions
 
