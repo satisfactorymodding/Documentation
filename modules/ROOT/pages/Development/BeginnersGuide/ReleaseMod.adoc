@@ -125,7 +125,7 @@ Below is a description of all extra fields SML and SMR require:
 |SemVersion
 | Version number for the mod. Should always increase with new releases,
 and should follow the https://semver.org/[semver] format.
-To summarize, the format is `Major.Minor.Patch`
+To summarize, the format is `Major.Minor.Patch`.
 {blank} +
 {blank} +
 As a rule of thumb, version `1.0.0` should be used for the first public release of your mod.
@@ -140,6 +140,13 @@ so you should try to avoid this.
 * When you release changes that are not backwards compatible,
   or break how other mods interact with your mod,
   you should increase the Major version, for example `2.0.0`.
+
+If you wish to release a pre-release version of your mod,
+use the extended `Major.Minor.Patch-PrereleaseString` format,
+where `PrereleaseString` is an
+https://semver.org/#spec-item-9[alphanumeric-and-dash] string of your choice, such as `pre1`.
+The Mod Manager does not automatically download any versions with a prerelease suffix -
+the user must manually select that version from the version picker.
 
 {blank} +
 Note that `1.10.0` is a valid semver version,
