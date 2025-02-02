@@ -12,7 +12,7 @@ The shopping list portion of the to-do list is a list of items that the player w
 Players can manually add items to it from the codex, crafting bench, and buildgun.
 
 The shopping list can hold arbitrary data,
-but the base game seems to have only implemented visualization of Recipes and Blueprints.
+but the base game seems to have only implemented visualization of Schematics, Recipes, and Blueprints.
 
 Obtain a reference to the player's shopping list via
 the Get Shopping List Component static function of FGShoppingListComponent.

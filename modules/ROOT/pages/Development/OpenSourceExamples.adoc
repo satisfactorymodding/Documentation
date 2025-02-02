@@ -35,8 +35,6 @@ _Notable Techniques Used:_
 
 * Widget Injection
 ** Modify the base game's interface to hide, change, and add new elements
-* Runtime asset generation
-** Used to generate the fake recipe entries for display in the xref:Development/Satisfactory/ShoppingList.adoc[Shopping List]
 * In-game tutorial
 ** An icon with a tooltip that encourages the player to see how to use the mod after installing it,
    then dismisses itself for later
@@ -44,7 +42,7 @@ _Notable Techniques Used:_
 _Notable Satisfactory Features Used:_
 
 * xref:Development/Satisfactory/ShoppingList.adoc[To-Do/Shopping List]
-** Automatically adds items to the player's Shopping List list
+** Adds schematics to the player's Shopping List list
 
 _Notable Mod Loader Features Used:_
 
