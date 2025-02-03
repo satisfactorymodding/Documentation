@@ -42,10 +42,8 @@ https://github.com/Goz3rr/SatisfactorySaveEditor/tree/master/Reference%20Materia
 xref:Development/ExtractGameFiles.adoc#FModel[FModel]
 (the case for most GUI elements).
 
-image:ReuseContent/WikiHubPartsBox.png[HUB Parts on the Satisfactory Wiki]
-
-
-_HUB Parts on the Satisfactory Wiki_
+.HUB Parts on the Satisfactory Wiki
+image::ReuseContent/WikiHubPartsBox.png[HUB Parts on the Satisfactory Wiki]
 
 Next, you can go to that blueprint path in FModel to find out
 what the paths of the relevant static mesh and icon objects are.
@@ -56,10 +54,8 @@ so we should go to
 `\FactoryGame\Resource\Parts\HUBParts`
 in FModel to find the relevant files.
 
-image:ReuseContent/FModelFoundPath.png[HUB Parts inside of FModel]
-
-
-_HUB Parts inside of the FModel Folders browser_
+.HUB Parts inside of the FModel Folders browser
+image::ReuseContent/FModelFoundPath.png[HUB Parts inside of FModel]
 
 Upon switching to the Packages tab we can see
 the `FGItemDescriptor` (`Desc_HUBParts.uasset`)
@@ -71,9 +67,8 @@ For this example, make sure you have `HUBParts` selected in the Folders tab,
 then open `SM_HUBparts_01` from the Packages tab to bring up the 3D viewer.
 Use the Commands button in the top left of the viewer to see navigation keybinds.
 
-image:ReuseContent/FModelHubParts.png[HUB Parts in the FModel 3D Viewer]
-
-_HUB Parts in the FModel 3D Viewer_
+.HUB Parts in the FModel 3D Viewer
+image::ReuseContent/FModelHubParts.png[HUB Parts in the FModel 3D Viewer]
 
 Now that you've found the location of the asset in the base game,
 you're ready to set up the placeholder for it. Within your editor,
