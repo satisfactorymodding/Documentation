@@ -38,7 +38,7 @@ For example, you can use Iron Rods as an ingredient in your own recipes
 because there is an Iron Rod placeholder asset present in the Starter Project.
 
 The placeholder generator makes a best effort to fill in fields with the correct values,
- but it's not always possible to do so,
+but it's not always possible to do so,
 or the content is purposefully excluded.
 For example, recipe ingredients and quantities will be present,
 but models and textures are intentionally replaced with blanks.
@@ -56,6 +56,8 @@ image::BeginnersGuide/StarterProjectStructure/IronRodPlaceholder.png[Iron Rod pl
 Only placeholders for the more common assets types are included in the Starter Project.
 You may need to manually create placeholders for less common assets
 like particle systems, animations, and such if you wish to reference them.
+
+The process for creating your own placeholders so is covered xref:Development/ReuseGameFiles.adoc[here].
 ====
 
 Although it is _possible_ to edit these files,
