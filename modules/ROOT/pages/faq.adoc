@@ -34,9 +34,6 @@ To turn off mods entirely, flip the "Mods" switch in the top left corner of the 
 
 image:FAQ/TurnOffMods.png[Satisfactory Mod Manager Off Switch]
 
-If this fails for some reason, go to `%appdata%\SatisfactoryModManager\profiles` and delete the vanilla folder,
-then restart SMM and turn mods on and back off.
-
 If for some reason this still doesn't work, delete the "Mods" folder from your
 link:#_where_are_my_game_files_located[game's install directory].
 
