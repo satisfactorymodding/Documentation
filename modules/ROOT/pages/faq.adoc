@@ -659,7 +659,7 @@ Expect it to take up about 30 gigabytes.
 One way to do this is to right click on it and select create shortcut.
 
 4. Open the shortcut's properties from the right click menu.
-Under the "Shortcut" settings tab, modify the "Target" line to end in ` -NoSteamClient -EpicPortal`.
+Under the "Shortcut" settings tab, modify the "Target" line to end in `-NoSteamClient -EpicPortal`.
 Make sure you have a space between the file path and this launch argument.
 
 5. You now have a standalone version of the game that will not update or talk to Steam.
