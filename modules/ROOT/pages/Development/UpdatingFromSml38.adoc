@@ -25,6 +25,11 @@ Clients will refuse to join servers that are missing mods present on the client 
 The existing `RequiredOnRemote` and `RemoteVersionRange` uplugin fields control this behavior.
 Read more about them in the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[uplugin Special Fields section].
 
+=== Wwise Support 
+
+SML 3.9.1 enables mods to make use of some of the game's Wwise sound system.
+See the xref:Development/Satisfactory/Audio.adoc[Audio] page for more information.
+
 === Quick Launch Script Supports Multiplayer
 
 The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
@@ -142,8 +147,9 @@ This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/15
 and will be fixed in a future SML release.
 
 The next best way is to use sublevel spawning. Here is an example from Kyrium of how to do that:
-* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41
-* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67
+
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41[KBFLSubLevelSpawning]
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67[KBFLResourceNodeSubsystem]
 
 == Required Changes
 
