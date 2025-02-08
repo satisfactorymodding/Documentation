@@ -378,24 +378,6 @@ Remember, you can totally avoid formatting concerns by using the Alpakit widget 
 
 Consider asking on the Discord if you get stuck on this step.
 
-[id="ArchivedPluginsDirectory"]
-== How Mod File Exporting Works
-
-Up until this point, you have likely been using the Alpakit Dev 'copy to mods directory' feature
-to stage your mods files in game's folders for testing.
-
-Behind the scenes, using the 'Alpakit Selected (Development)' or the 'Alpakit!' (just this mod) buttons
-generates a zip archive for you located at
-`<starter project folder>/Saved/ArchivedPlugins/YourModReference/YourModReference-TargetPlatformName.zip`.
-
-Note that this folder is in the **starter project's Saved folder**,
-not the Saved folder of any of your mods.
-
-Consider checking the zip's contents to see if they're what you expect.
-If for some reason you need extra files to be packaged into the mod, follow the directions
-xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_setup[here]
-to tell Alpakit to include them when building.
-
 [id="PackageForUpload"]
 == Package for Release
 
@@ -413,9 +395,12 @@ is relatively well known.
 However, there are also are also different builds of the game for different platforms (targets).
 There are Stable and EXP variants of each of these:
 
-- `Windows` - Client version of Satisfactory, the one you launch to play the game. People playing the game on Linux still use this version, they run it through a compatibility/emulation layer.
-- `Windows Server` - Windows Dedicated Server version of Satisfactory. It doesn't have a visual interface and is used to run servers from Windows, which is somewhat uncommon.
-- `Linux Server` - Linux Dedicated Server version of Satisfactory. This is what most dedicated servers will be running, especially those hosted by third party services.
+- `Windows` - Client version of Satisfactory, the one you launch to play the game.
+  People playing the game on Linux still use this version, they run it through a compatibility/emulation layer.
+- `Windows Server` - Windows Dedicated Server version of Satisfactory.
+  It doesn't have a visual interface and is used to run servers from Windows, which is somewhat uncommon.
+- `Linux Server` - Linux Dedicated Server version of Satisfactory.
+  This is what most dedicated servers will be running, especially those hosted by third party services.
 
 There are also slightly different versions of the Windows client for Steam and Epic.
 Your mod must be compiled in a slightly different way to be usable on each of these platforms,
@@ -440,20 +425,45 @@ If you leave out one of these targets, the mod will not work on that platform!
 [IMPORTANT]
 ====
 In most cases, especially for mods with no custom {cpp} code, *_you should check all 3 Release Target checkboxes_*.
-This means your mod will run on game clients and dedicated servers.
+This means your mod can be installed on game clients and dedicated servers.
 ====
+
+[id="ArchivedPluginsDirectory"]
+=== How Mod File Exporting Works
+
+Up until this point, you have likely been using the Alpakit Dev 'copy to mods directory' feature
+to stage your mods files in game's folders for testing.
+
+Behind the scenes, using the Alpakit the Unreal Build Tool to generate zip files in the mod's **ArchivedPlugins** folder located at
+`<starter project folder>/Saved/ArchivedPlugins/YourModReference/YourModReference-TargetPlatformName.zip`.
+Note that this folder is in the **starter project's Saved folder**,
+not the Saved folder of any of your mods.
 
 === Alpakit Release
 
 The 'Alpakit Selected (Release)' and release 'Alpakit!' (just this mod) buttons
-will compile and package mods for all targets into one multi-target zip file.
+compile and package mods for all their enabled targets, combining the output into one multi-target zip file.
 In the example image below, clicking `Alpakit!` for ExampleMod builds it for all 3 targets.
 
 image:BeginnersGuide/AlpakitReleaseDemo.png[Alpakit Release with Example Mod and SML selected]
 
-Once complete, find the completed package in the same link:#ArchivedPluginsDirectory[ArchivedPlugins folder mentioned earlier]
-called `YourModReference.zip`.
+Click the 'Alpakit!' (just this mod) button for your mod and wait for the process to complete.
+Packaging for release can take a significant amount of time
+as the project's {cpp} code is compiled for targets that were previously skipped,
+although subsequent runs are faster.
+
+After packaging a mod using Alpakit Release once, a new folder button appears in its row.
+Clicking the button takes you to the link:#ArchivedPluginsDirectory[ArchivedPlugins folder mentioned earlier]
+containing the zip files for that mod for easy inspection and uploading.
+
+The release process creates a zip file called `YourModReference.zip`
+that contains all of the built targets.
 This is the file you'll upload to the Mod Repository later.
+
+Consider checking the zip's contents to see if they're what you expect.
+If for some reason you need extra files to be packaged into the mod, follow the directions
+xref:Development/BeginnersGuide/Adding_Ingame_Mod_Icon.adoc#_setup[here]
+to tell Alpakit to include them when building.
 
 == Last Chance to Change Your Mod Reference
 
