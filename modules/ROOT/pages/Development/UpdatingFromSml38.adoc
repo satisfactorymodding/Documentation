@@ -117,6 +117,11 @@ Another example - this argument can be used to raise the multiplayer max player 
 
 == Notable Fixes
 
+=== Reliable Buffer Overflow
+
+Mircea has created a standalone mod to address one of the causes of the Reliable Buffer Overflow issue.
+See https://ficsit.app/mod/FixReliableBufferOverflow[its mod page] for more information.
+
 === Content Registry Issue with Mod Schematics Depending on Vanilla Schematics
 
 Mods can now alter vanilla content to unlock-depend on modded content without breaking its registration.
