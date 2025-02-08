@@ -21,6 +21,10 @@ xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 The game's icon library system has a couple safeguards to avoid icon ID conflicts,
 but we must turn off these safeguards to add modded icons in our own libraries.
 
+
+// TODO SML3.10.0 AccessTransformer EditAnywhere edits still on dev
+> EditAnywhere AccessTransformers currently on the SML dev branch, but since they are editor-time, they can still be used to package mods for SML 3.9.1
+
 Add the following to your mod's `AccessTransformers.ini`:
 
 [source,ini]

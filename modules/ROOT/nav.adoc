@@ -13,6 +13,7 @@
 
 * xref:Development/index.adoc[Development]
     ** xref:Development/UpdatingFromSml38.adoc[Updating from SML 3.8.0]
+//    ** xref:Development/UpdatingFromSml39.adoc[Updating from SML 3.9.0] // TODO SML3.10.0
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
         *** Installing Dependencies
@@ -82,7 +83,7 @@
             **** xref:Development/Satisfactory/AbstractInstance.adoc[Abstract Instances]
             **** xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Property Replication]
             **** xref:Development/Satisfactory/Savegame.adoc[SaveGame]
-            **** xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries]
+// **** xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries] // TODO SML3.10.0 AccessTransformer EditAnywhere edits still on dev
             **** xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Vanilla Dedicated Server API]
         *** xref:Development/Satisfactory/ModsWithoutSML.adoc[Modding Without SML]
         *** Legacy
