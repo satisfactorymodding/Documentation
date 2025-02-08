@@ -299,7 +299,7 @@ xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save
 == Register the Schematic
 
 To register the schematic, open up the
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_the_class[RootGameWorld_YourModReferenceHere]
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_create_game_world_module[RootGameWorld_YourModReferenceHere]
 asset we created earlier and add the schematics to the `M Schematics` array.
 
 And we're set! Our recipe and schematic are registered and should show up in the game now.
