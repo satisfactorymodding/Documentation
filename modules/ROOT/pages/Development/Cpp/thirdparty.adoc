@@ -143,3 +143,11 @@ you should consider creating a dependency mod to hold the library.
 Although there shouldn't be any issues at runtime if each mod contains the library as a module (untested),
 at development time, Unreal will complain about it when building if both mods are in the project at the same time
 and the third party module name is the same in both.
+
+== Existing Plugins
+
+If the library you wish to use is already a complete uplugin,
+try bringing it into your project folder and packaging it via Alpakit.
+If that works, the library can then be released as a separate mod
+and requirements handled via the normal mod dependency system.
+Ensure you have permission from the library creator to redistribute it before publishing.

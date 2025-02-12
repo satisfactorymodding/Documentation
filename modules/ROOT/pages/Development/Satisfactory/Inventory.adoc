@@ -1,7 +1,10 @@
 = Inventories and Items
 
-This page doesn't just describe the inventory itself,
-but also everything else that is used by it.
+[NOTE]
+====
+This page is not comprehensive.
+Check out the comments in `FGInventoryComponent.h` and `FGInventoryLibrary.h` for additional context and helper functions.
+====
 
 == Item Descriptor [.title-ref]#(`UFGItemDescriptor`)#
 
@@ -12,23 +15,30 @@ and UFGFactoryCustomizationDescriptor (Customizer patterns),
 which are not 'items' in the usual sense,
 and do not make use of all available UFGItemDescriptor properties.
 
-== Item [.title-ref]#(`FInventoryItem`)#
+== Inventory Item [.title-ref]#(`FInventoryItem`)#
 
-This structure contains information about a item (class pointer to a item descriptor) and its connected item state (any kind of actor).
+Represents a single "instance" of an item descriptor and its associated item state (any kind of actor).
+Usually used when referring to items outside of inventories, for example, on belts.
 
-== ItemAmount [.title-ref]#(`FItemAmount`)#
+Most items do not have state, and the game's recipe system ignores item state.
+Equipment items use item state to store ammo/fuel levels, user settings, and other persistent data.
 
-This struct connects just a item descriptor and a count of items without a state.
-That means, this structure is not used to hold information the representation of a item ingame.
-Instead this is f.e. use in a recipe to define how many items of what type of item you need to bring up to get some different type of item with a different amount of them.
+== Item Amount [.title-ref]#(`FItemAmount`)#
 
-== ItemStack [.title-ref]#(`FItemStack`)#
+Associates an item descriptor class with a count of items, notably without an item state.
+Useful for representing quantities of items without regard to how they are being stored.
+Primarily used to define ingredients/products in recipes and costs of schematics.
 
-This is the brother of ItemAmount but this time it holds a Item and a count.
-That means, this time, it is actually used to hold information about item and its count ingame.
-F.e. how many items of what kind are in one player inventory slot?
+Be careful converting these to/from Inventory Stacks to avoid losing item state data.
 
-== FGInventoryComponent [.title-ref]#(`UFGInventoryComponent`)#
+== Inventory Stack [.title-ref]#(`FInventoryStack`)#
 
-This is a `USceneComponent` used to attach a inventory, able to hold multiple Item Stacks at the same time, to a actor. This is not only used for the player, its nearly always used were you know there are items inside.
+Represents an Inventory Item as a stack of potentially multiple items.
+Unlike Item Amount, this maintains state data.
+
+Be careful converting these to/from Item Amounts to avoid losing item state data.
+
+== Inventory Component [.title-ref]#(`UFGInventoryComponent`)#
+
+A `USceneComponent` used to attach a inventory, able to hold multiple Inventory Stacks at the same time, to a actor. This is not only used for the player, it's nearly always used where you know there are items inside.
 That means you can think of them like a container full of items.

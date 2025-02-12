@@ -274,19 +274,20 @@ prompting a system dialog to select a save location.
 
 [WARNING]
 ====
-Some users have reported issues with FModel's audio player, causing it to display sounds as `.wem.wem` files and not play them.
-We haven't found a cause for this issue.
-See https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320[this Discord conversation] for more information (required mod developer discord role to view).
+Some users have reported issues with FModel's audio player,
+causing it to display sounds as `.wem.wem` files and not play them.
+If this is affecting you, check your FModel install directory's `/Output/.data/` folder.
+It should contain `vgmstream-win.zip` and multiple extracted files.
+If it doesn't, get a copy of `vgmstream-win.zip` from
+https://github.com/vgmstream/vgmstream/releases/tag/r1951[its github releases page]
+and extract the zip directly into that folder, then relaunch FModel.
 
-If you are affected by this issue, try using the Bulk Audio Renamer approach below.
+See https://discord.com/channels/555424930502541343/1036634533077979146/1318603952375468125[this Discord conversation] and
+https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320[this Discord conversation]
+if that didn't work (mod developer discord role required to view).
 ====
 
 === Bulk Audio Renamer
-
-// TODO unclear why MrCheese said that FModel can't play sound files since release.
-// Resolve before merge because it might change the above directions further.
-// https://github.com/orgs/satisfactorymodding/projects/15/views/1?pane=issue&itemId=80439924
-// https://discord.com/channels/555424930502541343/1036634533077979146/1286942067125260320
 
 Community member MrCheese has created a python script that enables mass renaming of exported wem files to their associated named bnk files.
 If you decide to extract a large number of sounds, this script can save you a lot of time.

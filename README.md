@@ -58,17 +58,15 @@ The container will automatically serve the built content upon opening for previe
 as well as a file watcher to automatically rebuild the preview upon detecting changes.
 You will still have to manually refresh your browser, though...
 
-If you are switching between container and local dev you may have to delete the `node_modules` and/or `.pnpm_store` folder.
+If you are switching between container and local dev
+you may have to delete the `node_modules` and/or `.pnpm_store` folder.
 
 ### Manual
 
 If you don't want to use the preconfigured devcontainer (or Codespaces), follow the directions below.
 
-Although you can edit the `.adoc` files with just about any editor out there,
-we suggest either Visual Studio Code (with the
-[Asciidoc](https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode)
-and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) plugins)
-or IntelliJ.
+We suggest either Visual Studio Code (and the [suggested extensions](./.vscode/extensions.json))
+or IntelliJ as your editor.
 
 In order to see what the pages will look like on the live site before being deployed,
 follow the below directions.
@@ -86,13 +84,16 @@ follow the below directions.
     pnpm install
     ```
 
-4. If you have VSCode, open the folder as a workspace
-   and use the Command Palette to run the Task: `Launch hot reloading development server`.
-   Otherwise, follow the building and previewing directions below.
+4. If you have VSCode, open the folder as a workspace to connect with our existing functionality.
 
 #### Building
 
-To set up a development watch server that will automatically rebuild the SML docs when you make changes:
+If you have VSCode, use the Command Palette to run the Task: `Launch hot reloading development server`.
+This automatically rebuilds the docs when you make changes and opens your web browser to preview it.
+You will still have to refresh the page manually to see the rebuilt changes.
+Otherwise, follow the directions below.
+
+To open up a development watch server that will automatically rebuild the SML docs when you make changes:
 
 ```bash
 pnpm run watch:dev
@@ -114,15 +115,26 @@ The output HTML files for both commands can be found in `\build\site`.
 
 #### Previewing
 
-To preview the content, you can open the output HTML files in your browser, ex. `build/site/satisfactory-modding/latest/index.html`
+If you have VSCode, use the Command Palette to run the Task: `Launch hot reloading development server`.
+This automatically rebuilds the docs when you make changes and opens your web browser to preview it.
+You will still have to refresh the page manually to see the rebuilt changes.
+Otherwise, follow the directions below.
+
+To preview the content, you can open the output HTML files in your browser,
+ex. `build/site/satisfactory-modding/latest/index.html`
 
 You can also run `pnpm run serve` which will start a local webserver.
 Your terminal will print usable addresses for the webserver.
 
 #### Link Checker
 
-The CI will also run the [lychee link checker](https://github.com/lycheeverse/lychee/tree/master) to check for broken links.
-Its reports can be found in the the [Actions tab](https://github.com/satisfactorymodding/Documentation/actions) of the repo.
+The CI will also run the
+[lychee link checker](https://github.com/lycheeverse/lychee/tree/master)
+to check for broken links.
+Its reports can be found in the the
+[Actions tab](https://github.com/satisfactorymodding/Documentation/actions)
+of the repo.
+
 You can optionally install the tool yourself if you want to run it locally by following the lychee documentation.
 
 ## Adding Docs for Another Mod
@@ -142,7 +154,9 @@ Contact us for more details if you'd like to set this up. The general steps are 
 
 Sub-mod documentation sites are currently still subject to the Lychee link checker run by our CI,
 so if you have broken links in your docs, the build will fail and your site will not be updated.
-You can check the [Actions](https://github.com/satisfactorymodding/Documentation/actions) for this repo to see if/why they failed. Mod docs updates are started by the SatisfactoryModdingBot github user under the action name `mod-docs-update`.
+You can check the [Actions](https://github.com/satisfactorymodding/Documentation/actions)
+for this repo to see if/why they failed.
+Mod docs updates are started by the SatisfactoryModdingBot github user under the action name `mod-docs-update`.
 
 ## Adding new version branches
 

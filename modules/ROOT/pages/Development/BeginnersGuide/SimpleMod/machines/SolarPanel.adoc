@@ -66,7 +66,9 @@ We need to assess the time of day on multiple occasions - once when the actor sp
 For that, we can subscribe to the `OnDayStateChanged` event dispatcher of the time subsystem
 to be notified when this happens and switch our generator accordingly.
 Drag from the Return Value pin of a `Get Time Subsystem` node to create a `Bind Event to OnDayStateChanged` node.
-Next, the event (let's name it `On Day State Changed`) is created by using the `Add Custom Event...` action or by dragging from `Event` pin of `Bind Event to OnDayStateChanged` node.
+Next, the event (let's name it `On Day State Changed`) is created by using
+the `Add Custom Event...` action when right-clicking in the blueprint graph,
+or by dragging from `Event` pin of `Bind Event to OnDayStateChanged` node.
 
 Hook up the execution pin of the Bind Event node to our Begin Play line since we only need to bind once.
 

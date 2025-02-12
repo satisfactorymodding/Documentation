@@ -13,11 +13,13 @@ a suffix will be appended to the file name to differentiate them (ex. `FactoryGa
 
 == Viewing Logs
 
-By default, the game's logs will be stored in
+By default, the game client's logs are be stored in
 `\AppData\Local\FactoryGame\Saved\Logs\FactoryGame.log`.
+For information on log file locations for other platforms, see the xref:faq.adoc#Files_Logs[FAQ].
 
 You can also view the logs live in a terminal as the game is running.
 To view the terminal, add `-log` to the game's launch arguments.
+You can also use the enhanced Unreal Console via `-log -NewConsole` as described xref:Development/TestingResources.adoc#_unreal_console[here].
 Learn how to configure launch arguments on the
 xref:faq.adoc#_how_do_i_start_the_game_with_launch_arguments[FAQ page].
 

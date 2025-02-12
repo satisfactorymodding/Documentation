@@ -85,6 +85,17 @@ so that no changes to the game headers are required.
 Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints.
 It cannot be added to a non-`UFUNCTION` function.
 
+// TODO SML3.10.0
+
+// === EditAnywhere
+
+// Adds `EditAnywhere` to the specified UPROPERTY,
+// allowing you the property to be modified in the Details panel of blueprint assets and instances.
+
+// === BlueprintType
+
+// Adds `BlueprintType` to the specified USTRUCT, allowing that struct to be made or split using blueprint nodes.
+
 == Loading
 
 As of SML3.5.0, BlueprintReadWrite and BlueprintCallable Access Transformers are now applied at runtime,
@@ -144,6 +155,10 @@ Accessor=(Class="AFGBuildableFactory", Property="mInventoryPotential")
 BlueprintReadWrite=(Class="/Script/FactoryGame.FGSchematicManager", Property="mPurchasedSchematics")
 BlueprintCallable=(Class="/Script/FactoryGame.FGDismantleInterface", Function="Dismantle")
 ----
+
+// TODO SML3.10.0
+// EditAnywhere=(Class="/Script/FactoryGame.IconData", Property="ID")
+// BlueprintType=(Struct="/Script/FactoryGame.WorldScannableData")
 
 === Blueprint Asset Property Tracing Example
 

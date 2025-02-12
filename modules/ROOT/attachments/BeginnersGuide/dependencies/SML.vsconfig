@@ -41,7 +41,6 @@
     "Microsoft.ComponentGroup.Blend",
     "Microsoft.VisualStudio.Workload.ManagedDesktop",
     "Microsoft.VisualStudio.Component.VC.ATL",
-    "Microsoft.VisualStudio.Component.SecurityIssueAnalysis",
     "Microsoft.VisualStudio.Component.VC.Redist.14.Latest",
     "Microsoft.VisualStudio.ComponentGroup.NativeDesktop.Core",
     "Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake",

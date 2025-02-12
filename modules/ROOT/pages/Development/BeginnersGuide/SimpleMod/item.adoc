@@ -231,7 +231,7 @@ We chose to not import any textures with the model because we want to leverage t
 https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialInstances/index.html[material instances]
 system to improve game performance.
 
-Right click in the Content Browser to create an advanced asset: `Materials and Textures > Material Instance`
+Right click in the Content Browser to create an advanced asset: `Material > Material Instance`
 and name it `MI_DocItem` to follow Coffee Stain's naming scheme.
 MI stands for Material Instance, whereas MM stands for Master Material.
 
@@ -264,7 +264,9 @@ That's because they store special information in each of the 4 (Red, Green, Blue
 How this works is outside of the scope of this tutorial, but you can find some more info in the
 xref:Development/Modeling/index.adoc[Modeling] section of the docs.
 
-Open the imported `Tex_Doc-Item_MREO` texture, and in the Textures category of the Details pane, uncheck `sRGB`.
+Open the imported `Tex_Doc-Item_MREO` texture, and in the Textures category of the Details pane,
+uncheck `sRGB`
+and set the Compression Settings to `Masks (no sRGB)`
 We have to do this because the of the special data in each color channel - we don't want Unreal to treat it like a normal image.
 The xref:Development/Modeling/MainMaterials.adoc#_factory_baked_mm_factorybaked[Main Materials]
 page has more details about what's going on.
@@ -284,7 +286,7 @@ and check all three of these checkboxes to allow us to override their values:
 - For the Normal field, select `Tex_Doc-Item_N`.
 - For the Reflection Map field, select `Tex_Doc-Item_MREO`.
 
-Next, find the Ambient Occlusion section, and check the `UseAO` box.
+Next, find the AO section, and check the `UseAO` box.
 
 In the Emissive section, check the `UseEmissive` box.
 

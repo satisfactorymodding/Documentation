@@ -95,7 +95,7 @@ If the input grab boolean is false, we just return nothing and the output boolea
 
 Overall the logic becomes: checks if we have power. If we do, try and get a item from the input. If there's no item, we do nothing. But if we get a item, we count it and then return it to the output.
 
-We also add a `Log Display` node near the end for debugging purposes. Details on getting a Live view of the game log can be found xref:Development/TestingResources.adoc#logging[here].
+We also add a `Log Display` node near the end for debugging purposes. Details on getting a live view of the game log can be found xref:Development/TestingResources.adoc#_sml_logging[here].
 
 .Open this image full size to get a better look
 image::BeginnersGuide/simpleMod/machines/SimpleMachine_Grab.png[image]

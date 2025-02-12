@@ -193,7 +193,7 @@ This can be useful if you want to temporarily turn a mod off for troubleshooting
 If you're trying to remove a specific mod from your mod manager profile and it's not working,
 try creating a new profile.
 You could also try
-link:#_how_do_i_share_my_mods_with_my_friends_for_multiplayer[exporting your profile],
+xref:faq.adoc#_how_do_i_share_my_mods_with_my_friends_for_multiplayer[exporting your profile],
 editing the file to delete the mod listing, then importing it again.
 
 == Turning Off All Mods

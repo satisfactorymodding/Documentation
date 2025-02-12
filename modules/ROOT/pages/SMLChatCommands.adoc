@@ -101,7 +101,7 @@ xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[here].
 
 |Cheats
 | Open the Coffee Stain Studios cheats user interface.
-| Mod developers can add cheats here by following xref:Development/Satisfactory/CheatBoard.adoc[these directions].
+Mod developers can add cheats here by following xref:Development/Satisfactory/CheatBoard.adoc[these directions].
 | (Unspecified)
 
 // From UE CheatManager
