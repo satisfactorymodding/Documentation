@@ -74,7 +74,7 @@ You will then need to set the `Max Distance` setting.
 
 [TIP]
 ====
-This number is in Unreal Units (uu); the conversion is 1000uu = 1 meter.
+This number is in Unreal Units (uu); the conversion is 100uu = 1 meter.
 ====
 
 The Max Distance will be the distance away from the building that the player can still hear the sound. 
@@ -285,7 +285,7 @@ Open the newly created Game Parameter, and you should see the following in the m
 image:Satisfactory/Wwise/Wwise_RTPC_Range.png[Wwise_RTPC_Range, 100%]
 
 The parameter must have a range defined.
-A useful range is `0.0` to `1.0` since many existing gameand engine systems already use that range as a start-finish, minimum-maximum, or off-on scale.
+A useful range is `0.0` to `1.0` since many existing game and engine systems already use that range as a start-finish, minimum-maximum, or off-on scale.
 
 Now, assign the RTPC Game Parameter to your audio.
 

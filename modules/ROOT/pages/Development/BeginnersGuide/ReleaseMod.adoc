@@ -144,7 +144,7 @@ so you should try to avoid this.
 If you wish to release a pre-release version of your mod,
 use the extended `Major.Minor.Patch-PrereleaseString` format,
 where `PrereleaseString` is an
-https://semver.org/#spec-item-9[alphanumeric-and-dash] string of your choice, such as `pre1`.
+https://semver.org/#spec-item-9[alphanumeric-and-dot] string of your choice, such as `pre.1` or `beta.12`.
 The Mod Manager does not automatically download any versions with a prerelease suffix -
 the user must manually select that version from the version picker.
 
@@ -434,7 +434,7 @@ This means your mod can be installed on game clients and dedicated servers.
 Up until this point, you have likely been using the Alpakit Dev 'copy to mods directory' feature
 to stage your mods files in game's folders for testing.
 
-Behind the scenes, using the Alpakit the Unreal Build Tool to generate zip files in the mod's **ArchivedPlugins** folder located at
+Behind the scenes, Alpakit uses the Unreal Build Tool and Unreal Automation Tool to generate zip files in the mod's **ArchivedPlugins** folder located at
 `<starter project folder>/Saved/ArchivedPlugins/YourModReference/YourModReference-TargetPlatformName.zip`.
 Note that this folder is in the **starter project's Saved folder**,
 not the Saved folder of any of your mods.
