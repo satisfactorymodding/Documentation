@@ -101,7 +101,7 @@ M Cost::
 +
 M Unlocks::
   This array contains the rewards the player will get when unlocking this schematic.
-  It is a array of xref::/Development/Satisfactory/Schematic.adoc#_fgunlock_ufgunlock[FGUnlock]s.
+  It is a array of link:#_fgunlock_ufgunlock[FGUnlock]s.
 * {blank}
 +
 M Schematic Dependencies::
