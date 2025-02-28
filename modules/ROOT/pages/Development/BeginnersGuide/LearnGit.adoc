@@ -102,7 +102,7 @@ but for now, you should leave this program alone and continue with the steps bel
 ====
 If you came here while learning how to clone the starter project,
 return to that portion of the docs by clicking
-xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc#_obtaining_the_starter_project[here ➡]
+xref:Development/BeginnersGuide/StarterProject/StarterProjectViaClone.adoc[here ➡]
 ====
 
 ====
