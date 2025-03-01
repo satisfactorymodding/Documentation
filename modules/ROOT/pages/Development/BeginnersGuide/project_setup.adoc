@@ -243,7 +243,9 @@ You may also have to check the Output window (select 'Show output from:' `Build`
 instead of the Error List to see the actual error message(s).
 
 If you're sharing an error message with others for help troubleshooting it,
-it's best to share the entire build output.
+it's best to share the *entire build output* -
+copy-paste the contents of this box to share.
+A screenshot alone cuts off most of the useful information.
 
 .The Visual Studio tab that shows the actual build output
 image::BeginnersGuide/ShowFullBuildOutput.png[Visual Studio screenshot]
