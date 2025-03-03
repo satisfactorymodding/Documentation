@@ -28,6 +28,9 @@ If you have errors completing the setup process,
 come back to here and make sure you followed these steps correctly.
 ====
 
+[id="Wwise_Integrate"]
+=== Integrate Wwise with the Project
+
 Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
@@ -76,7 +79,6 @@ Do so, and agree to the terms to start the process.
 
 That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
-You can close the Wwise launcher.
 
 _Note: the below video demo may select a version that does not match what is written above._
 _Please use the version mentioned in the text above._
@@ -90,12 +92,36 @@ If you encounter a checksum error during Wwise integration,
 installing another Wwise version similar in version number should fix the problem.
 ====
 
+[id="Wwise_GenerateBanks"]
+=== Generate Sound Banks
+
+Next, we will use Wwise to generate some empty data to avoid the Unreal Engine editor crashing later on.
+
+Integrating Wwise with the project has produced a new subfolder in the Starter Project directory.
+Assuming your project folder was called `SatisfactoryModLoader`,
+the new folder will be called `SatisfactoryModLoader_WwiseProject`.
+
+Inside the subfolder, find the similarly-named `SatisfactoryModLoader_WwiseProject.wproj` file and open it
+which will launch the Wwise editor application.
+
+Find the "Project Explorer" tab in the Wwise editor (left sidebar)
+and select the `SoundBanks` sub-tab.
+Right click on the top level folder and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Generate Wwise Soundbanks]
+
+A pop-up should open stating "Completed with message(s)".
+Click the `Close` button in the bottom right.
+
+Finally, close the Wwise editor and Wwise Launcher applications
+as they are no longer needed for completing project setup.
+
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-In windows explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+In Windows file explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
 Windows 11 might have buried it within the "more options" submenu.
 If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
 If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
