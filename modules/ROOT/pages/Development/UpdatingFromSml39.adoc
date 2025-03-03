@@ -1,17 +1,6 @@
 = Upgrading from SML 3.9.x to 3.10.x
 
-[NOTE]
-====
-You have found a hidden docs page!
-
-This page is still a work in progress.
-
-If you have any feedback, please let us know in the Discord.
-====
-
-TODO
-
-Look for // TODO SML3.10.0 docs comments before merging
+SML3.10 
 
 Please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
@@ -24,10 +13,46 @@ guide to install the updated engine, starter project, and update your mod.
 
 This section talks about the new features that SML 3.10 brings to the table.
 
+=== Wwise Integration
+
+Although technically introduced in SML 3.9.1,
+the first round of documentation for using the Wwise audio system is now written.
+
+Check out the xref:Development/Satisfactory/Audio.adoc[Audio] page for more information.
+
+=== BlueprintType Access Transformer
+
 TODO
 
-- BlueprintType access transformer
-- EditAnywhere access transformer
+=== EditAnywhere Access Transformer
+
+TODO
+
+=== Custom Icon Libraries
+
+The addition of the EditAnywhere Access Transformer makes implementing custom Icon Libraries very straightforward.
+Icon Libraries provide images for usage on signs, map stamps, and map icons.
+
+Check out the xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries] page for more information,
+and Example Mod's `ExampleModIcons` asset for an example of a custom Icon Library.
+
+[NOTE]
+====
+A base-game bug prevents custom icon libraries from working on modded dedicated servers.
+This bug is expected to be resolved in the Satisfactory 1.1 update.
+====
+
+=== Recipe Linter
+
+A new editor utility included with SMLEditor helps you check your recipes for potential problems or oversights.
+It's relatively easy to expand the system to write your own checks as well.
+
+To use the utility, select one or more assets descending from FGRecipe,
+then right click on one and run
+`Scripted Asset Actions` > `SMLEditor: Lint Recipes for Common Mistakes`.
+Output will be displayed in the editor Output Log tab.
+
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc#RecipeLinter[SML Editor Utilities] page.
 
 == Notable Fixes
 
@@ -64,7 +89,15 @@ the changes described below _must_ be made in order for your mod to be updated.
 
 TODO
 
-- There are no required changes for this SML update!
+=== Generate Wwise Sound Banks
+
+// TODO actually required?
+
+Changes made to enable Wwise integration in SML 3.9.1 caused the editor to crash when opening game level assets due to an edge case in the Wwise plugin code.
+
+To avoid these editor crashes, manually 
+
+xref:Development/Satisfactory/Audio.adoc#_generating_sound_banks[respective section].
 
 == Additional Changes
 
