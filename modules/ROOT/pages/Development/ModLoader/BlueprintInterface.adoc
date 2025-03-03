@@ -209,7 +209,7 @@ Additional information to the version build.
 == FModInfo
 
 This struct contains information about a loaded mod.
-Mainly contents of the data.json of the mod.
+Mainly contents of the mod's uplugin.
 
 === Member Fields
 
