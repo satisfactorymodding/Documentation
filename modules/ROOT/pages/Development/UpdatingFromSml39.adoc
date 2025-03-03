@@ -72,6 +72,13 @@ ExampleMod has been enhanced with additional examples:
 - Custom icon library
 - Improved CDO example (now using Game Instance Module instead of Game World)
 
+=== Widget Blueprint Hooking Enhancement
+
+xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
+using Indirect (Child) can now target widget elements further away in the hierarchy.
+
+Previously, when the parent type is "Indirect (Child)", you could only choose the immediate parents of the widget variables for the widget to attach the new widget to. Now you can choose the grandparents too.
+
 == Notable Fixes
 
 - Fix RequireSessionRestart session settings not being saved
