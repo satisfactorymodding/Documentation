@@ -57,7 +57,7 @@ ExampleMod has been enhanced with additional examples:
 
 This editor utility allows you to easily change the parent class of multiple assets at once.
 
-Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Editor Utilities] page.
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc#MassAssetReparenter[SML Editor Utilities] page.
 
 === ADA Message Extractor
 
@@ -65,7 +65,7 @@ This utility loads all FGMessage assets in the project and compiles data about t
 It can be useful for viewing what speaking patterns ADA and the Aliens use when speaking
 without having to hunt through lots of separate message assets.
 
-Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SML Editor Utilities] page.
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc#AdaMessageExtractor[SML Editor Utilities] page.
 
 === Alpakit Release: Open Folder
 
