@@ -180,14 +180,14 @@ or you will have to repeat a large amount of the setup process again.
 
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *latest stable* version of the docs.
-// This is the *development* version of the docs.
+This is the *archived v3.9.1* version of the docs.
 
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-You should download from the *latest engine release*,
-which an be found at the top of this page:
-https://github.com/satisfactorymodding/UnrealEngine/releases
+To develop for 3.8.0, use this engine version:
+https://github.com/satisfactorymodding/UnrealEngine/releases/tag/5.3.2-css-66
 ====
 
 Download the following files from the release linked above:

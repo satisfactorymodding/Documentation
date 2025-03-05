@@ -16,19 +16,13 @@ check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that 
 
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *latest stable* version of the docs.
-// This is the *development* version of the docs.
+This is the *archived 3.9.1* version of the docs.
 
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-Clone the **`master` branch** to develop a mod for SML 3.9.0.
-// You should clone the **`dev` branch** because SML 3.8.? is not released yet.
-
-// You should clone either the **`dev` branch** or the **`master` branch**.
-// Of those two, you probably want whichever branch was pushed to most recently, which you can see
-// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
-
-If you're uncertain about which branch to clone, **ask us on the Discord**.
+To develop for 3.9.1, clone the `v3.9.1` tag.
 ====
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here]
