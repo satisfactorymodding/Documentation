@@ -1,8 +1,8 @@
 = Upgrading from SML 3.9.x to 3.10.x
 
 SML3.10 expands modding capabilities, adds developer utilities, and fixes some bugs.
-Mods compiled for SML3.9 should work with SML3.10,
-but {c++} mods may need to be tweaked to compile again.
+Mods compiled for SML3.9 will work with SML3.10 in most cases,
+but {cpp} mods using specific features may need to be tweaked and recompiled to avoid crashes.
 
 Please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
@@ -47,7 +47,7 @@ allowing targeted structs to be made or split using blueprint nodes.
 
 === EditAnywhere Access Transformer
 
-The `BlueprintType` access transformer has been added,
+The `EditAnywhere` access transformer has been added,
 allowing targeted properties to be modified in the Details panel of blueprint assets and instances.
 
 === Custom Icon Libraries
@@ -75,9 +75,12 @@ ExampleMod has been enhanced with additional examples:
 === Widget Blueprint Hooking Enhancement
 
 xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
-using Indirect (Child) can now target widget elements further away in the hierarchy.
+can now use `Direct (Any)` to target any widget element in the hierarchy.
+This mode allows implemented hooks that could previously only be done with Bind on BP Function,
+but comes with an increased risk of the hook breaking across game/mod updates.
 
-Previously, when the parent type is "Indirect (Child)", you could only choose the immediate parents of the widget variables for the widget to attach the new widget to. Now you can choose the grandparents too.
+Check out xref:Development/EditorTools/SMLFeatureTests/SMLFeatureTests.adoc[SML Feature Tests]
+for an example using this feature to modify the game's world map UI.
 
 == Notable Fixes
 
@@ -137,3 +140,8 @@ Blueprint assets will automatically upgrade to the new format when loaded in the
 but {cpp} assets will need to switch to the new format manually.
 
 See the xref:Development/Localization.adoc[{cpp} Localization] section for information on how to correctly specify literals for these fields in {cpp}.
+
+== Complete Changelog
+
+The full list containing every changed file and asset can be viewed using GitHub's Compare Changes feature:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.9.1...v3.10.0
