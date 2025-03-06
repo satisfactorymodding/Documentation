@@ -1,0 +1,9 @@
+{
+    // See more in .devcontainer/devcontainer.json
+    "recommendations": [
+        "asciidoctor.asciidoctor-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "mushan.vscode-paste-image",
+    ]
+}

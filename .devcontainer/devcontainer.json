@@ -32,8 +32,8 @@
 		"vscode": {
 			// cSpell:disable
 			"extensions": [
-				"streetsidesoftware.code-spell-checker",
 				"asciidoctor.asciidoctor-vscode",
+				"streetsidesoftware.code-spell-checker",
 				"eamodio.gitlens",
 				"DavidAnson.vscode-markdownlint",
 				"medo64.render-crlf",

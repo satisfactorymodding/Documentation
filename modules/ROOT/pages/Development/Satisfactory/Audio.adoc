@@ -29,13 +29,38 @@ Note that using large numbers of Wwise sounds may require getting a
 https://www.audiokinetic.com/en/blog/free-wwise-indie-license/[Wwise indie license]
 for your project.
 
+=== Opening the Wwise Editor
+
+Creating and editing Wwise assets requires using the Wwise Editor application.
+
+The quickest way to do this is to open the Wwise Project File located at
+`SatisfactoryModLoader_WwiseProject/SatisfactoryModLoader_WwiseProject.wproj`
+in your project folder.
+The path and name will be slightly different if your Unreal project directory is named differently.
+
+You can also open it from the Wwise Launcher application's "Unreal Engine" tab
+using the wwise-logo-circle "Open in Wwise" button (next to the triangle button).
+
+=== Generating Sound Banks
+
+Generating sound banks triggers Wwise to create files that the Unreal Editor can use.
+You'll need to do this once when setting up the modding project to set up the Wwise database
+and again any time you create new Audiokinetic soundbanks.
+
+In the Wwise Editor's Project Explorer, on the `SoundBanks` tab,
+right-click on the Default Work Unit and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 500]
+
 === Setting Up Audio Buses
 
 By default when using Wwise audio only the `Master` volume slider will work.
 
 You will need to manually create the different Audio Buses that link to the other sliders.
 
-TODO: Waiting for CSS to provide the correct audio bus names.
+TODO: Mods can't reuse vanilla Wwise bus assets.
+Must create their own Audio Buses and actively copy values from the vanilla buses' settings values to their own.
+Need to write more detailed directions for doing this.
 
 === Setting Up Attenuation
 
@@ -97,9 +122,7 @@ image:Satisfactory/Wwise/Wwise_Attenuation_Spread_Graph.png[Wwise_Attenuation_Sp
 
 === Importing Media Files to Wwise
 
-Open the Wwise project file, typically in `SMLProject/SMLProject_WwiseProject/SMLProject_WwiseProject.wproj`. Double-clicking this file will open Wwise.
-
-To make sure you are in the correct layout at the top, go to `Layout -> Designer`
+First, activate the Designer layout via the top menu: `Layout -> Designer`
 
 On the left-hand side, you will see the project explorer; select the Audio Tab.
 
@@ -175,7 +198,7 @@ You will need to create a new Soundbank for all your Events to be stored.
 
 In Wwise, change the layout to Soundbanks. This can be found at the top under `Layouts -> Soundbanks`.
 
-Select the `Soundbanks` tab in the Project Explorer on the left.
+Select the `SoundBanks` tab in the Project Explorer on the left.
 
 
 By default, you will have the following tree structure:
@@ -202,10 +225,7 @@ Go to the `Edit` tab to verify that all the events are included in the Soundbank
 image:Satisfactory/Wwise/Wwise_Soundbank_EditTab.png[Wwise_Soundbank_EditTab, 600]
 
 Now, it's finally time to generate the Soundbank for Unreal Engine.
-
-In the Wwise Project Explorer, on the `Soundbanks` tab, right-click on the soundbank and click `Generate Soundbank(s) for all platforms`.
-
-image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Wwise_Soundbank_Generate, 500]
+Do so by following the steps in the link:#_generating_sound_banks[respective section].
 
 === Unreal Project Configuration
 

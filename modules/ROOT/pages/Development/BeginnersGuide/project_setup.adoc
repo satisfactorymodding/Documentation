@@ -28,23 +28,26 @@ If you have errors completing the setup process,
 come back to here and make sure you followed these steps correctly.
 ====
 
+[id="Wwise_Integrate"]
+=== Integrate Wwise with the Project
+
 Start the Wwise launcher that you installed earlier and update the launcher if prompted.
 Make sure you have signed in to the launcher. 
 It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
 
-Next, open the `Unreal Engine` tab in the sidebar.
+Next, open the `Unreal Engine` tab in the left sidebar.
 Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
 Satisfactory requires a specific version of Wwise to work,
 and updating can prevent your mod from working correctly.
 
-Click on the `Open Other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
+Click on the `Open other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
 and select the `FactoryGame.uproject` file contained in your Starter Project folder.
 Your project should now appear in the Wwise launcher.
 In case you have multiple projects listed,
 click the triangle button to expand the details
 and ensure the "Unreal Engine project path" matches the path to your project.
 
-Click on the `Integrate Wwise into Project...` button.
+Click on the `Integrate Wwise in Project...` button.
 
 Change the "Integration Version" drop-down from `Latest` to `All` otherwise Wwise will not show the version you care about.
 Then use the "Major" and "Version" dropdowns to select the same version you installed earlier (likely `2022.1.10.8393`). 
@@ -67,7 +70,7 @@ If you see a blue box offering both "Modify" and "Add Plug-in",
 that means it's configured correctly,
 so continue to the next step.
 
-Under "Wwise Project Path", click the little triangle dropdown on the right
+Under "Wwise Project" header, click the little triangle dropdown on the right
 and choose `New project` to clear the path.
 
 If everything worked according to plan,
@@ -76,7 +79,6 @@ Do so, and agree to the terms to start the process.
 
 That's it! If Wwise shows "Operation completed successfully,"
 you have integrated Wwise into your project.
-You can close the Wwise launcher.
 
 _Note: the below video demo may select a version that does not match what is written above._
 _Please use the version mentioned in the text above._
@@ -90,12 +92,36 @@ If you encounter a checksum error during Wwise integration,
 installing another Wwise version similar in version number should fix the problem.
 ====
 
+[id="Wwise_GenerateBanks"]
+=== Generate Sound Banks
+
+Next, we will use Wwise to generate some empty data to avoid the Unreal Engine editor crashing later on.
+
+Integrating Wwise with the project has produced a new subfolder in the Starter Project directory.
+Assuming your project folder was called `SatisfactoryModLoader`,
+the new folder will be called `SatisfactoryModLoader_WwiseProject`.
+
+Inside the subfolder, find the similarly-named `SatisfactoryModLoader_WwiseProject.wproj` file and open it
+which will launch the Wwise editor application.
+
+Find the "Project Explorer" tab in the Wwise editor (left sidebar)
+and select the `SoundBanks` sub-tab.
+Right click on the top level folder and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Generate Wwise Soundbanks]
+
+A pop-up should open stating "Completed with message(s)".
+Click the `Close` button in the bottom right.
+
+Finally, close the Wwise editor and Wwise Launcher applications
+as they are no longer needed for completing project setup.
+
 == Generate Visual Studio Files
 
 Next, you'll need to generate the remaining files for the project
 with Unreal Engine's "Generate Visual Studio Project Files" tool. 
 
-In windows explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
+In Windows file explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
 Windows 11 might have buried it within the "more options" submenu.
 If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
 If this option errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
@@ -172,26 +198,27 @@ at the cost of additional disk space.
 
 Once Visual Studio loads,
 you should see a folder tree in the Solution Explorer containing entries for
-`UE5`, `AccessTransformers`, `FactoryGame`, and more.
+`Engine`, `Games`, `Programs`, and more.
+Expand the `Games` folder to reveal multiple projects, such as `FactoryGame` and `FactoryGameEGS`.
 
-Some of these projects are "real" and some of them exist only for structure purposes.
-When it's time to compile your mods, you only need to compile the `FactoryGame` project.
-As such, **we do NOT want to use the generic 'Build Solution' operation** that Visual Stuido provides.
+Some of these projects are "real", and some of them exist only for structure purposes.
+When it's time to compile your mods, you only need to compile the `FactoryGame` project (in the `Games/` folder).
+As such, **we do NOT want to use the generic 'Build Solution' operation** that Visual Studio provides.
 Doing so will try to run the build one time for each project item in the solution,
 wasting some time trying to build targets that won't succeed,
 and, if there are any error messages, duplicating them many times over!
 
-image:BeginnersGuide/DoNotBuildSolution.png[Select Development Editor build target]
+image:BeginnersGuide/DoNotBuildSolution.png[Don't use "Build" > "Build Solution"]
 
 In preparation for compiling our project, first select
-the `Development Editor` Solution Configuration,
+the `Development Editor` Solution Configuration
 and `Win64` Solution Platform
 in the top bar.
 It's near the undo/redo buttons and the play button menu items.
 
 Selecting "Development Editor" means compiling the Unreal Editor program that you'll be using to make mods.
 
-image:BeginnersGuide/BuildTargetSelection.png[Selecting build target]
+image:BeginnersGuide/BuildTargetSelection.png[Select Development Editor build target]
 
 To start the actual compile process
 find the FactoryGame project item in the `Games/FactoryGame` solution explorer tree,
@@ -199,7 +226,7 @@ right click on it, and select `Build`.
 
 image:BeginnersGuide/BuildFromMenu.png[Build FactoryGame from Solution Tree menu]
 
-While you're there, also click on "Set as Startup Project"
+While you're there, also click on `Set as Startup Project`
 which will make the {cpp} debugger easier to use later, if you need it.
 You only have to do this once, unless you change the Startup Project.
 
@@ -208,16 +235,6 @@ See link:#Compiling_Troubleshooting[below] if you run into any issues.
 You'll know it's done when the little box-with-cubes-piling-into-it
 icon in the colored bar at the bottom of Visual Studio goes away.
 You can monitor its progress from the Output pane (View > Output) if desired.
-
-// TODO 1.0 Release - which Shipping configuration should be built? Or delay it until later and let Alpakit handle it?
-
-// Shipping - FactoryGame will not work, maybe Shipping - FactoryGameSteam/EGS depending on what people have?
-
-// After it completes, you should select the `Shipping` Solution Configuration from the top toolbar
-// (the same place you selected `Development Editor` earlier)
-// and start another build.
-// Building both of these is required for the editor to function correctly
-// and for you to be able to distribute your mod.
 
 Now that you've built the binaries, your Unreal Editor should open without any issues.
 
@@ -248,11 +265,13 @@ This is not actually an error message, just a message that is informing you that
 Keep reading the Error List to see what actually went wrong.
 Sometimes the real error message does not show up until the build has finished,
 and sometimes the Error List does not contain the real error message.
-You may also have to check the Output window's 'Output' sub-tab, (select 'Show output from:' `Build`)
+You may also have to check the Output window (select 'Show output from:' `Build`)
 instead of the Error List to see the actual error message(s).
 
 If you're sharing an error message with others for help troubleshooting it,
-it's best to share the entire build output.
+it's best to share the *entire build output* -
+copy-paste the contents of this box to share.
+A screenshot alone cuts off most of the useful information.
 
 .The Visual Studio tab that shows the actual build output
 image::BeginnersGuide/ShowFullBuildOutput.png[Visual Studio screenshot]

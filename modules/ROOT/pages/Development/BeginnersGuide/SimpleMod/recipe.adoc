@@ -160,6 +160,24 @@ Ok, now you've created your first recipe!
 Before continuing, remember to
 xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_compile_and_save[compile and save]!
 
+== Check the Recipe with the Recipe Linter
+
+SML Editor includes a tool that can help you check your recipes for some potential problems or oversights.
+Let's run it now to make sure our recipe is in good shape.
+
+To use it, right click on your recipe asset in the Content Browser,
+then select `Scripted Asset Actions` > `SMLEditor: Lint Recipes for Common Mistakes`.
+Output will be displayed in the editor's "Output Log" tab.
+You can use the top menu bar `Window` > `Output Log` to restore the tab if you've closed it.
+
+Because the recipe we just created should have no issues, this should only produce the message:
+`LogSMLEditor: Verbose: [/SMLEditor/Recipe/RecipeLinter/AssetAction_CheckWithRecipeLinter]: Processing recipe Recipe_DocRecipe_C`
+at the end of the Output Log.
+
+You can learn more about the tool on the
+xref:Development/EditorTools/SMLEditor/SMLEditor.adoc#RecipeLinter[SML Editor Utilities] page,
+but for now, let's make our recipe accessible in-game.
+
 == Create a Schematic
 
 Next, let's add our recipe to a schematic to make it available in game.

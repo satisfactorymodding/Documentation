@@ -13,9 +13,9 @@ or you will have to repeat some of the setup process again.
 This is the *latest stable* version of the docs.
 // This is the *development* version of the docs.
 
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+// Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
-Download a zip of the **`master` branch** to develop a mod for SML 3.9.0
+Download a zip of the **`master` branch** to develop a mod for the stable version of SML
 by clicking https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
 
 // Download a zip of the **`dev` branch** (because SML 3.8.? is not released yet)

@@ -88,14 +88,14 @@ void UKBFLResourceNodeDescriptor_ResourceWell::AfterSpawning()
 	if(const TSubclassOf<AFGBuildableFrackingActivator> BPBuildableFrackingActivator = LoadClass<AFGBuildableFrackingActivator>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingSmasher/Build_FrackingSmasher.Build_FrackingSmasher_C")))
 	{
 		AFGBuildableFrackingActivator* FrackingActivatorDefault = BPBuildableFrackingActivator.GetDefaultObject();
-		frackingActivatorCDO = FrackingActivatorDefault
+		frackingActivatorCDO = FrackingActivatorDefault;
 		FrackingActivatorDefault->mAllowedResources.AddUnique(mResourceClass);
 	}
 
 	if(const TSubclassOf<AFGBuildableFrackingExtractor> BPBuildableFrackingExtractor = LoadClass<AFGBuildableFrackingExtractor>(NULL, TEXT("/Game/FactoryGame/Buildable/Factory/FrackingExtractor/Build_FrackingExtractor.Build_FrackingExtractor_C")))
 	{
 		AFGBuildableFrackingExtractor* FrackingExtractorDefault = BPBuildableFrackingExtractor.GetDefaultObject();
-		frackingExtractorCDO = FrackingExtractorDefault
+		frackingExtractorCDO = FrackingExtractorDefault;
 		FrackingExtractorDefault->mAllowedResources.AddUnique(mResourceClass);
 	}
 }

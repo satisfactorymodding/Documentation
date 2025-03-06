@@ -183,7 +183,7 @@ or you will have to repeat a large amount of the setup process again.
 This is the *latest stable* version of the docs.
 // This is the *development* version of the docs.
 
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+// Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
 You should download from the *latest engine release*,
 which an be found at the top of this page:
@@ -267,11 +267,13 @@ Clicking the button will probably redirect you to a sign in page.
 Create an account if you don't have one yet, or sign in, to download and run the installer.
 
 After the installer is complete it should open the launcher for you.
-In the launcher, select the topmost `Wwise` section from the sidebar
-(note: not the Wwise Audio Lab section).
-Click the `Latest` drop-down and change it to `All`.
-Select `2022.1` from the next dropdown.
-Select version `2022.1.10.8393` from the final dropdown.
+
+In the launcher's left sidebar, select the topmost `Wwise` section
+(note: not the "Wwise Audio Lab" section).
+Under the "INSTALL A NEW VERSION" heading,
+click the `Latest` drop-down and change it to `All`.
+Select `2022.1` from the "Major" dropdown.
+Select version `2022.1.10.8393` from the "Version" dropdown.
 Click `Install`.
 
 [WARNING]

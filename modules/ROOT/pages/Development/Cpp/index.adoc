@@ -71,18 +71,18 @@ We can not understate the value of learning through doing. Especially if just st
 The following resources may be helpful for you in the creation of your {cpp} mods:
 
 * CSS has been kind enough to provide us with the Satisfactory {cpp} headers.
-You can find them in the `CommunityResources` folder of your install.
+  They are already included in the Starter Project,
+  but are originally pulled from the `CommunityResources` folder of your install.
 * You can find the `.pdb` files for the game in your install's Binaries folder.
 
 == Dll, pdb & more
 
-When you compile your {cpp} code into the final binaries (stuff that actually is used by the game) you will get a Dynamic Link Library (`.dll`) file.
-When you distribute your mod, you will have to make sure it includes this file. You will need to add it also to your `data.json` as an `sml_mod` object. More info on the upload process can be found on the xref:UploadToSMR.adoc[Uploading to SMR page.]
-
+When you compile your {cpp} code into the final binaries (stuff that actually is used by the game)
+you will get a Dynamic Link Library (`.dll`) file.
 This file comes with a companion, the Program Database (`.pdb`) file.
 This file holds additional information about the original source code and allows you to debug your code more easily in runtime.
-You can ship this file with your mod, but don't need to.
-If you do decide to ship it, it doesn't needed to be added to the `data.json` file.
+Alpakit Release automatically handles the compilation and packaging of these files for different platforms for you.
+More info on the upload process can be found on the xref:UploadToSMR.adoc[Uploading to SMR page].
 
 We won't go into detail about the general technical stuff aspects of {cpp} in this documentation.
 If you want to learn more about that, there are plenty of good resources available elsewhere on the Internet.

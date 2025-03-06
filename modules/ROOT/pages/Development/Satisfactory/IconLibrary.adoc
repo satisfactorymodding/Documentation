@@ -14,16 +14,20 @@ As such, many of the warnings and mentioned in the headers (and field hover tool
 Disregard the tooltips' warnings, but be sure to read the warnings and notes posted on this page.
 ====
 
+[IMPORTANT]
+====
+A base-game bug prevents custom icon libraries from working on modded dedicated servers.
+This bug is expected to be resolved in the Satisfactory 1.1 update.
+====
+
+// https://github.com/orgs/satisfactorymodding/projects/16/views/1?filterQuery=icon&pane=issue&itemId=97852287
+
 == Setup
 
 Before getting started you will need to add some
 xref:Development/ModLoader/AccessTransformers.adoc[Access Transformers].
 The game's icon library system has a couple safeguards to avoid icon ID conflicts,
 but we must turn off these safeguards to add modded icons in our own libraries.
-
-
-// TODO SML3.10.0 AccessTransformer EditAnywhere edits still on dev
-> EditAnywhere AccessTransformers currently on the SML dev branch, but since they are editor-time, they can still be used to package mods for SML 3.9.1
 
 Add the following to your mod's `AccessTransformers.ini`:
 

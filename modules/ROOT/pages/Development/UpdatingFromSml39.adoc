@@ -1,17 +1,8 @@
 = Upgrading from SML 3.9.x to 3.10.x
 
-[NOTE]
-====
-You have found a hidden docs page!
-
-This page is still a work in progress.
-
-If you have any feedback, please let us know in the Discord.
-====
-
-TODO
-
-Look for // TODO SML3.10.0 docs comments before merging
+SML3.10 expands modding capabilities, adds developer utilities, and fixes some bugs.
+Mods compiled for SML3.9 will work with SML3.10 in most cases,
+but {cpp} mods using specific features may need to be tweaked and recompiled to avoid crashes.
 
 Please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
@@ -24,14 +15,77 @@ guide to install the updated engine, starter project, and update your mod.
 
 This section talks about the new features that SML 3.10 brings to the table.
 
-TODO
+=== Wwise Integration
 
-- BlueprintType access transformer
-- EditAnywhere access transformer
+Although technically introduced in SML 3.9.1,
+the first round of documentation for using the Wwise audio system has been written since its release.
+Check out the xref:Development/Satisfactory/Audio.adoc[Audio] page for more information.
+
+=== String Session Settings
+
+SML now provides base classes for Session Settings that store arbitrary strings.
+SML's systems offer an input widget for the end user and handle the replication of the string for you.
+
+Check out ExampleMod's `SessionSetting_ExampleString` asset for an example of a custom string Session Setting.
+
+=== Recipe Linter
+
+A new editor utility included with SMLEditor helps you check your recipes for potential problems or oversights.
+It's relatively easy to expand the system to write your own checks as well.
+
+To use the utility, select one or more assets descending from FGRecipe,
+then right click on one and run
+`Scripted Asset Actions` > `SMLEditor: Lint Recipes for Common Mistakes`.
+Output will be displayed in the editor Output Log tab.
+
+Read more on the xref:Development/EditorTools/SMLEditor/SMLEditor.adoc#RecipeLinter[SML Editor Utilities] page.
+
+=== BlueprintType Access Transformer
+
+The `BlueprintType` access transformer has been added,
+allowing targeted structs to be made or split using blueprint nodes.
+
+=== EditAnywhere Access Transformer
+
+The `EditAnywhere` access transformer has been added,
+allowing targeted properties to be modified in the Details panel of blueprint assets and instances.
+
+=== Custom Icon Libraries
+
+The addition of the EditAnywhere Access Transformer makes implementing custom Icon Libraries very straightforward.
+Icon Libraries provide images for usage on signs, map stamps, and map icons.
+
+Check out the xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries] page for more information,
+and Example Mod's `ExampleModIcons` asset for an example of a custom Icon Library.
+
+[NOTE]
+====
+A base-game bug prevents custom icon libraries from working on modded dedicated servers.
+This bug is expected to be resolved in the Satisfactory 1.1 update.
+====
+
+=== Example Mod Improvements
+
+ExampleMod has been enhanced with additional examples:
+
+- Custom resource, with custom resource node spawned via Sublevel Spawning in the Example Level
+- Custom icon library
+- Improved CDO example (now using Game Instance Module instead of Game World)
+
+=== Widget Blueprint Hooking Enhancement
+
+xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
+can now use `Direct (Any)` to target any widget element in the hierarchy.
+This mode allows implemented hooks that could previously only be done with Bind on BP Function,
+but comes with an increased risk of the hook breaking across game/mod updates.
+
+Check out xref:Development/EditorTools/SMLFeatureTests/SMLFeatureTests.adoc[SML Feature Tests]
+for an example using this feature to modify the game's world map UI.
 
 == Notable Fixes
 
-TODO
+- Fix RequireSessionRestart session settings not being saved
+- Fixed that mods whose Mod Reference starts with `Game` would have their blueprint log messages treated as base-game calls to the modded logging functions
 
 == Not Done Yet
 
@@ -52,7 +106,9 @@ but Unreal currently refuses to cook content bundles unless the world is also co
 This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
 and will be fixed in a future SML release.
 
-The next best way is to use sublevel spawning. Here is an example from Kyrium of how to do that:
+The next best way is to use sublevel spawning.
+ExampleMod uses sublevel spawning to spawn its example resource nodes - check the game world submodule.
+Here is an example from Kyrium of how to do that in {cpp}:
 
 * https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41[KBFLSubLevelSpawning]
 * https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67[KBFLResourceNodeSubsystem]
@@ -62,16 +118,30 @@ The next best way is to use sublevel spawning. Here is an example from Kyrium of
 In addition to any specific-to-your-mod issues you may encounter,
 the changes described below _must_ be made in order for your mod to be updated.
 
-TODO
+=== Generate Wwise Sound Banks
 
-- There are no required changes for this SML update!
+Changes made to enable Wwise integration in SML 3.9.1
+caused the editor to crash when opening level assets due to an edge case in the Wwise plugin code.
+
+To avoid these editor crashes, use the Wwise editor to 
+xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
+which will also silence the pop-up about missing a generated sound bank folder you may have been getting.
+You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
 
 == Additional Changes
 
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
-TODO 
+=== Chat Command and Mod Config using FText
 
-- cpp Chat command usage FString -> FText
-- Cpp Mod config desc FString -> FText
+Chat Command usage and Mod Configuration descriptions have been switched to using FText instead of FString to allow for localization.
+Blueprint assets will automatically upgrade to the new format when loaded in the editor,
+but {cpp} assets will need to switch to the new format manually.
+
+See the xref:Development/Localization.adoc[{cpp} Localization] section for information on how to correctly specify literals for these fields in {cpp}.
+
+== Complete Changelog
+
+The full list containing every changed file and asset can be viewed using GitHub's Compare Changes feature:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.9.1...v3.10.0
