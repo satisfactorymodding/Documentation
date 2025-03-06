@@ -183,7 +183,7 @@ or you will have to repeat a large amount of the setup process again.
 This is the *latest stable* version of the docs.
 // This is the *development* version of the docs.
 
-Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+// Stable (Release) and Experimental are currently both the same version - 1.0 Release.
 
 You should download from the *latest engine release*,
 which an be found at the top of this page:
