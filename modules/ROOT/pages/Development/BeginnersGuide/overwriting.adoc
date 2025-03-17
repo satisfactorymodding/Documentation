@@ -21,6 +21,7 @@ https://docs.ficsit.app/tweakit/latest/index.html[here]
 The mod has yet to be officially released,
 but you can download early builds from the https://discord.gg/2kV6AHbzZK[TweakIt discord],
 and find its source code https://github.com/Feyko/TweakIt[here].
+Note that the plugin has not been updated to support Satisfactory 1.0 as of March 2025.
 
 === ContentLib
 
