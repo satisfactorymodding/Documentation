@@ -473,6 +473,18 @@ Switches found in AFGGameSession:
 ....
 +++ </div></details> +++
 
+== Launch Argument: ExecCmds
+
+SML 3.9.0 reimplements the Unreal Engine `ExecCmds` launch argument (normally excluded from shipping builds),
+allowing automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unreal Console Commands]
+after the game loads.
+
+You can read more about it in the 
+https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
+
+The link:#LaunchScript[Quick Launch Script]
+uses this argument to implement the `-clientAutoJoin` flag.
+
 [id="TestingDedicatedServers"]
 == Dedicated Servers
 
