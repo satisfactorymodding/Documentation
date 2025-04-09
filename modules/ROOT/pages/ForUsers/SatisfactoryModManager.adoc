@@ -208,7 +208,7 @@ xref:faq.adoc#_where_are_my_game_files_located[game's install directory] manuall
 [id="InstallSpecificModVersion"]
 == Installing a Specific Version of a Mod
 
-By default, the Mod Manager will install the latest version of a mod that it thinks is compatible with your game version.
+By default, the Mod Manager will automatically install the latest version of a mod that it thinks is compatible with your game version.
 However, it will avoid versions that end in a prerelease tag (ex. `1.0.0-PrereleaseTagHere`).
 
 If you want to install a specific version of a mod, such as a prerelease version,

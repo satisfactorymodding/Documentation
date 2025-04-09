@@ -254,3 +254,7 @@ https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/#debugco
 is not available in shipping builds.
 However, the command `showdebug INPUT` is available and displays a reduced set of information,
 such as which mapping contexts are currently bound.
+
+== Controllers
+
+TODO SF1.1 controller support info

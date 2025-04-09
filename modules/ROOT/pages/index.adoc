@@ -8,7 +8,7 @@ Here you can find lots of information regarding modding
 https://www.satisfactorygame.com/[Satisfactory],
 the factory-building sim by https://www.coffeestainstudios.com/games/[Coffee Stain Studios] (CSS).
 Modding for Satisfactory is more established than you might think given how long the game has been out.
-There are already https://ficsit.app/[over 600 mods] released
+There are already https://ficsit.app/[over 1100 mods] released
 and we maintain in-depth documentation on how you can create your own.
 
 In this page, we will provide some surface level information for both mod users and developers.
@@ -80,7 +80,7 @@ You can find the archives https://forums.ficsit.app/[here].
 == Contributing
 
 You can find information on how to contribute to the docs
-https://github.com/satisfactorymodding/Documentation#contributing[in the github repo's readme].
+https://github.com/satisfactorymodding/Documentation#contributing[in the GitHub repo's readme].
 
 == Modding Technologies
 
@@ -93,7 +93,7 @@ to load into systems provided by the game, and to interact with each other.
 It also provides many helper features to assist in mod development.
 Due to how CSS has configured Satisfactory,
 it is possible to make mods that do not require SML to function,
-however this is rarely done in practice.
+however xref:Development/Satisfactory/ModsWithoutSML.adoc[this is rarely done in practice].
 
 === Alpakit
 

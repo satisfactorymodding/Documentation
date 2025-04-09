@@ -1,0 +1,114 @@
+= Upgrading from SML 3.10.x to 3.11.x
+
+[IMPORTANT]
+====
+SML 3.11 has not been released yet!
+The contents of this page will change frequently!
+Keep your eyes on the `#modding-info-feed` Discord channel to be notified when updates are made.
+====
+
+SML3.11 brings support for Satisfactory 1.1,
+introduces an enhanced hooking system,
+and fixes some bugs.
+Mods compiled for SML3.10 are unlikely to work with SML3.11 due to changes to the base game headers.
+
+Please _read this entire page before you begin updating your mod_.
+It will save you time later to have an idea going in of what to expect while updating.
+After you have finished reading this page,
+follow the directions on the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod]
+guide to install the updated engine, starter project, and update your mod.
+
+== New Features
+
+This section talks about the new features that SML 3.11 brings to the table.
+
+=== TODO
+
+=== Example Mod Improvements
+
+ExampleMod has been enhanced with additional examples:
+
+- TODO Persistent storage of per-player data in multiplayer
+
+== Notable Fixes
+
+- TODO
+
+== Not Done Yet
+
+The following features are not quite ready to use yet.
+
+=== Advanced Game Settings values not saved
+
+The xref:Development/ModLoader/SessionSettings.adoc[Session Settings] page
+explains how you can create your own Advanced Game Settings.
+However, their values are not currently saved with the save file.
+Session Settings still function correctly - their values are saved.
+
+=== Content Bundle Cooking
+
+The optimal way to add modded content to the game world (like ore nodes, deposits, etc.)
+is to use the Content Bundle system,
+but Unreal currently refuses to cook content bundles unless the world is also cooked.
+This is a https://github.com/satisfactorymodding/SatisfactoryModLoader/issues/155[known bug]
+and will be fixed in a future SML release.
+
+The next best way is to use sublevel spawning.
+ExampleMod uses sublevel spawning to spawn its example resource nodes - check the game world submodule.
+Here is an example from Kyrium of how to do that in {cpp}:
+
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/ResourceNodes/KBFLSubLevelSpawning.cpp#L41[KBFLSubLevelSpawning]
+* https://github.com/Satisfactory-KMods/KBFL/blob/d21381de3621d25f063ecfbf24b5d35533da4357/Source/KBFL/Private/Subsystems/KBFLResourceNodeSubsystem.cpp#L67[KBFLResourceNodeSubsystem]
+
+== Required Changes
+
+In addition to any specific-to-your-mod issues you may encounter,
+the changes described below _must_ be made in order for your mod to be updated.
+
+=== Dependency Updates
+
+The following project dependencies have updated.
+Install the updated versions as you follow the xref:Development/UpdatingToNewVersions.adoc[Updating your Mod] guide.
+
+==== Engine Update
+
+Satisfactory 1.1 is still on Unreal Engine 5.3,
+but Coffee Stain and Fishlabs have made some engine and engine plugin modifications
+in their work towards console support.
+Download and set up our custom release while following the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== Wwise Update
+
+With a new Unreal Engine version comes a new required Wwise update for your project.
+The xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page Wwise instructions]
+lists the new Wwise version and guides you through integrating it into your project as you follow the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+=== Generate Wwise Sound Banks
+
+TODO is this step needed?
+
+To avoid these editor crashes, use the Wwise editor to 
+xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
+which will also silence the pop-up about missing a generated sound bank folder you may have been getting.
+You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
+
+=== TODO other required changes
+
+== Additional Changes
+
+You might not be affected by these changes,
+but we'd like to draw extra attention to them.
+
+=== Blueprint Hooking Overhaul
+
+TODO Arch's blueprint hooking changes
+
+=== TODO Additional Changes
+
+== Complete Changelog
+
+The full list containing every changed file and asset can be viewed using GitHub's Compare Changes feature:
+https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.0...v3.10.0

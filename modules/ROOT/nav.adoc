@@ -13,7 +13,7 @@
 
 * xref:Development/index.adoc[Development]
 
-   ** xref:Development/UpdatingFromSml39.adoc[Updating from SML 3.9.0]
+   ** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
         *** Installing Dependencies
@@ -105,6 +105,7 @@
         *** xref:Development/ModLoader/ExtendedAttributeProvider.adoc[Extended Attribute Provider]
         *** xref:SMLConfiguration.adoc[SML Configuration]
         *** Legacy
+            **** xref:Development/UpdatingFromSml39.adoc[Updating from SML 3.9.0]
             **** xref:Development/UpdatingFromSml38.adoc[Updating from SML 3.8.0]
             **** xref:Development/UpdatingFromSml37.adoc[Updating from SML 3.7.0]
             **** xref:Development/UpdatingFromSml36.adoc[Updating from SML 3.6.1]
