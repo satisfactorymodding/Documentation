@@ -73,11 +73,20 @@ Install the updated versions as you follow the xref:Development/UpdatingToNewVer
 
 ==== Engine Update
 
-Satisfactory 1.1 is still on Unreal Engine 5.3,
+Satisfactory 1.1 is still on Unreal Engine 5.3.2,
 but Coffee Stain and Fishlabs have made some engine and engine plugin modifications
 in their work towards console support.
 Download and set up our custom release while following the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+[IMPORTANT]
+====
+Since both the previous and updated engine version are `5.3.2-CSS`, in order to have both editors installed,
+you will need to edit the old engine's Register.bat to specify a different engine version (ex. `5.3.2-CSS-1.0`)
+otherwise the 2 engine versions will share the same entry.
+
+Opening projects under the old engine version will also require editing the .uproject file to specify the different engine version.
+====
 
 ==== Wwise Update
 
