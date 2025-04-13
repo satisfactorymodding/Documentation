@@ -111,6 +111,12 @@ You should not need to do this again unless you create a new Wwise project or us
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
+=== CppStandard20
+
+If one of your mods uses {cpp} and you haven't already added `CppStandard = CppStandardVersion.Cpp20;` to its `Build.cs` file,
+this update will likely require you to do so.
+See the Alpakit template in `Mods\Alpakit\Templates\CPPAndBlueprintBlank` for an example.
+
 === Blueprint Hooking Overhaul
 
 TODO Arch's blueprint hooking changes
