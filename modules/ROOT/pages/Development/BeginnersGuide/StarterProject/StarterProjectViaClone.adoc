@@ -18,7 +18,7 @@ check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that 
 ====
 This is the *SML v3.10.0* version of the docs.
 
-To develop for 3.10.1, clone the `v3.10.1` tag.
+To develop for 3.10.0, clone the `v3.10.0` tag.
 ====
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here]
