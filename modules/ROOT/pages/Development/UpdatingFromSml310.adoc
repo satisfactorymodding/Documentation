@@ -115,6 +115,11 @@ but we'd like to draw extra attention to them.
 
 TODO Arch's blueprint hooking changes
 
+=== FChatMessageStruct Changes
+
+- Now uses FText field `MessageText` instead of FString field `Message`.
+- Now uses field `MessageSenderColor` instead of `CachedColor`.
+
 === TODO Additional Changes
 
 == Complete Changelog
