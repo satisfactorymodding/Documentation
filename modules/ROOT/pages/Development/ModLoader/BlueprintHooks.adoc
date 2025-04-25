@@ -1,0 +1,79 @@
+= Blueprint Hooking System
+
+[IMPORTANT]
+====
+This feature slated for SML 3.11 has not been released yet, and is not in the `dev` branch yet!
+The contents of this page will change frequently!
+====
+
+TODO move images from Imgur to docs
+
+TODO intro description
+
+== Creating a Hook Blueprint
+
+Within the Unreal Editor, create a new Blueprint of the type "Blueprint Hook"
+
+image::https://i.imgur.com/kgGajRN.png[Create Blueprint]
+
+Create a new function to handle the logic of your hook. The first parameter should be the type of Blueprint you are hooking. Subsequent parameters should be ...idk...
+
+image::https://i.imgur.com/mxDoU3A.png[New Function]
+
+Go back to the Graph, right-click, and create the type of hook you want. These have on-hover tooltips that explain what they do.
+
+image::https://i.imgur.com/GvzILd9.png[Create Hook]
+
+Fill out the drop-downs.
+
+image::https://i.imgur.com/HKItQbM.png[Fill dropdowns]
+
+Add a Target Specifier. These have on-hover tooltips that explain what they do.
+
+image::https://i.imgur.com/PqAXqTR.png[Target Specifier with tooltip]
+image::https://i.imgur.com/TFOMlsv.png[Target Specifier]
+
+Create a Mod Game Instance Module if you don't already have one and add your new hook to the "Blueprint Hooks" section.
+
+image::https://i.imgur.com/bERLsYP.png[Game Instance Module]
+
+
+=== Limitations and workarounds
+
+Because Blueprint Hooks exist as functions there are a few things that cannot be done such as adding delays. 
+
+To work around this you can create your logic in your Mod Game World Module or a Subsystem, then calling that from the Hook.
+
+image::https://i.imgur.com/PGtDyVC.png[Game World Module workaround]
+
+== Creating an Actor Mixin
+
+Creating a Mixin (formerly known as a SCS Hook) is similar to creating a Blueprint Hook.
+
+Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
+
+image::https://i.imgur.com/8kJiYKi.png[Create Mixin]
+
+When creating it you will be given a prompt to choose which Actor to add the Mixin to.
+
+image::https://i.imgur.com/b51SqGX.png[Choose Actor]
+
+Upon opening the Mixin you will be presented with an empty graph. The components of the Actor you are hooking will also be shown.
+
+image::https://i.imgur.com/zlQUp0A.png[Components]
+
+There are a few functions you can override.
+
+image::https://i.imgur.com/8QdyWT2.png[Functions]
+
+If you intend to use "Tick" make sure you check "Enable Mixin Tick". 
+
+image::https://i.imgur.com/xfkB1o3.png[Enable Tick]
+
+Add your logic.
+
+image::https://i.imgur.com/xfdoYrZ.png[Add logic]
+
+Add your new Mixin to your Game Instance Module similar to how a Blueprint Hook is added.
+
+image::https://i.imgur.com/efx6Nn5.png[Add Mixin to Game Instance]

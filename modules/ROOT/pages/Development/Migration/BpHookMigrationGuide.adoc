@@ -1,0 +1,29 @@
+= Migrating Blueprint Hooks
+
+[IMPORTANT]
+====
+This feature slated for SML 3.11 has not been released yet, and is not in the `dev` branch yet!
+The contents of this page will change frequently!
+====
+
+IMPORTANT: Before following this guide you should read the [Link to new hooking doc] to get an overview of the new system and how to create hooks using it.
+
+Migrating a Blueprint hook is easy because you already have all the information you need in the old "Bind on BPFunction" node.
+
+image::https://i.imgur.com/82imCv6.png[Bind on BPFunction]
+
+This gives you the information required to make a Blueprint Hook using the new system:
+
+- Class
+- Function to hook
+- Before or After
+
+Now follow the instruction from the [Link to new hooking doc] to create a new hook. In the hook Blueprint you just plug in those values from your old Bind on BPFunction node:
+
+image::https://i.imgur.com/vukVyH1.png[New Hook]
+
+Set the Class and Function being hooked, then for Hook Reference you'll set whatever function you have your logic in. 
+
+The "Hook Offset Start" checkbox lets you know what kind of Hook Statement to make. If it isn't checked then you will want to make a "Hook After" statement and if it is checked then you will want to make a "Hook Before" statement.
+
+IMPORTANT: Don't forget to register your new Hook as described in [Link to new hooking doc]

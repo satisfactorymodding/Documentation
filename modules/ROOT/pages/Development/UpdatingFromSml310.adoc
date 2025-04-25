@@ -23,6 +23,14 @@ guide to install the updated engine, starter project, and update your mod.
 
 This section talks about the new features that SML 3.11 brings to the table.
 
+=== Blueprint Hooks
+
+TODO
+
+See blueprint hooks heading for more info
+
+xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooks]
+
 === Actor Mixins
 
 TODO, currently on `dev-new-hooking` branch.
@@ -125,6 +133,8 @@ See the Alpakit template in `Mods\Alpakit\Templates\CPPAndBlueprintBlank` for an
 
 TODO Arch's blueprint hooking changes, currently on `dev-new-hooking` branch.
 
+See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
+
 === {cpp} Blueprint Function Hooking Removal
 
 Because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
@@ -134,6 +144,8 @@ The only way to mitigate this brittleness was to have the hook call a blueprint-
 The new system removes the middleman by having blueprint hooks defined and implemented on the asset side,
 giving them full knowledge of asset structure.
 
+See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
+
 ==== Bind on BP Function node removal
 
 The old system was exceedingly limited in that you could never get function parameters or influence return values
@@ -141,6 +153,8 @@ The old system was exceedingly limited in that you could never get function para
 The new system allows you to get the function parameters and modify the function behavior like was already possible with hooks implemented in {cpp} in the old system.
 
 Instead, use a new data-driven hook that calls a function you've implemented in a subsystem.
+
+See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
 
 === Widget Blueprint Hooks: Inline Widget Template Removal
 
@@ -151,6 +165,10 @@ You may have not even known it existed as a result.
 It's incongruent 
 
 Instead, make one-off widgets that contain the widget you wanted to customize, using that extra layer of widget to set the template options.
+
+=== SCS Hooks: TODO
+
+xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
 
 === FChatMessageStruct Changes
 

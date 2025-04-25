@@ -13,7 +13,9 @@
 
 * xref:Development/index.adoc[Development]
 
-   ** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
+    ** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
+        *** xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
+        *** xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
         *** Installing Dependencies
@@ -95,6 +97,7 @@
         *** xref:Development/ModLoader/Subsystems.adoc[Mod Subsystems]
         *** xref:Development/ModLoader/Configuration.adoc[Configuration]
         *** xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks]
+        *** xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooks]
         *** xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
         *** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
         *** xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
