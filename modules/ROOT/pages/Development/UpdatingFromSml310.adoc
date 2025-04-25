@@ -23,6 +23,10 @@ guide to install the updated engine, starter project, and update your mod.
 
 This section talks about the new features that SML 3.11 brings to the table.
 
+=== Actor Mixins
+
+TODO, currently on `dev-new-hooking` branch.
+
 === TODO
 
 === Example Mod Improvements
@@ -119,7 +123,34 @@ See the Alpakit template in `Mods\Alpakit\Templates\CPPAndBlueprintBlank` for an
 
 === Blueprint Hooking Overhaul
 
-TODO Arch's blueprint hooking changes
+TODO Arch's blueprint hooking changes, currently on `dev-new-hooking` branch.
+
+=== {cpp} Blueprint Function Hooking Removal
+
+Because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
+{cpp}-implemented blueprint hooks were always in a messy and brittle state
+of requiring lots of reflection and hardcoded assumptions to work.
+The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
+The new system removes the middleman by having blueprint hooks defined and implemented on the asset side,
+giving them full knowledge of asset structure.
+
+==== Bind on BP Function node removal
+
+The old system was exceedingly limited in that you could never get function parameters or influence return values
+- you only had access to the object instance calling the function.
+The new system allows you to get the function parameters and modify the function behavior like was already possible with hooks implemented in {cpp} in the old system.
+
+Instead, use a new data-driven hook that calls a function you've implemented in a subsystem.
+
+=== Widget Blueprint Hooks: Inline Widget Template Removal
+
+https://discord.com/channels/555424930502541343/562722670974599227/1365331282158162040
+
+This feature was removed due to bugs in the editor causing the template configuration system to not appear under many circumstances.
+You may have not even known it existed as a result.
+It's incongruent 
+
+Instead, make one-off widgets that contain the widget you wanted to customize, using that extra layer of widget to set the template options.
 
 === FChatMessageStruct Changes
 
