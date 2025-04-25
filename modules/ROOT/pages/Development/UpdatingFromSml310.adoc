@@ -157,6 +157,12 @@ Instead, make one-off widgets that contain the widget you wanted to customize, u
 - Now uses FText field `MessageText` instead of FString field `Message`.
 - Now uses field `MessageSenderColor` instead of `CachedColor`.
 
+=== Removal of mAvailableSchematics
+
+TODO
+
+LogAlpakit: Error: [Package SML] LogInit: Display: LogAccessTransformers: Error: Could not resolve property for BlueprintReadWrite /Script/FactoryGame.FGSchematicManager:mAvailableSchematics requested by MAMTips: Could not find property /Script/FactoryGame.FGSchematicManager:mAvailableSchematics
+
 === TODO Additional Changes
 
 == Complete Changelog
