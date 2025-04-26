@@ -317,14 +317,17 @@ Accept any User Account Control or Terms and Conditions prompts that appear alon
 
 xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
 is a powerful tool that automatically install the correct versions of mod dependencies for you.
-Basically all end users will be using this tool to install your mods.
+Basically all end users will be using this tool,
+or its command-line colleague
+xref:ForUsers/DedicatedServerSetup.adoc#GetModManager_CLI[ficsit-cli],
+to play with your mods.
 
-As a developer, you can use it to install the https://ficsit.app/mod/SML[Satisfactory Mod Loader (SML)] mod
-and install other mods to test with.
+Although you don't need to install it to develop mods,
+you can use it to download other mods to test with,
+such as xref:ForUsers/Tags.adoc[helpful mods tagged with `#developer-utility`],
+and to view your mod web page within the mod manager to check its appearance and formatting.
 
-Alternatively, once your modding environment is set up,
-you can use Alpakit to automatically build and install SML.
-This process will be explained on the next page.
+To install Satisfactory Mod Manager, follow the directions xref:ForUsers/SatisfactoryModManager.adoc[here].
 
 == Next Steps
 

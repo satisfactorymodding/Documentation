@@ -492,13 +492,17 @@ and delete the folder named with the
 xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[Mod Reference]
 of the mod you wish to uninstall.
 
-== (Optional) Packaging SML
+[id="InstallSML"]
+== Packaging SML
 
-Note that if you have not yet installed the Satisfactory Mod Loader (SML) in your game client,
+If you have not yet installed the Satisfactory Mod Loader (SML) in your game client from playing with mods before,
 you can use Alpakit to build SML for you and put it in the right folder.
 Simply press the `Alpakit!` button next to `Satisfactory Mod Loader (SML)` in the list.
 
-In the future, using a locally build copy of SML could cause problems
+Alternatively, you can use
+xref:ForUsers/SatisfactoryModManager.adoc#_installing_mods[the Mod Manager to install SML from a published version].
+
+As a note for the future, using a locally build copy of SML could cause problems
 if your copy of the Starter Project is older than the latest SML release,
 in which case you should
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]
