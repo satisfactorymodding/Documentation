@@ -14,66 +14,93 @@ TODO intro description
 
 Within the Unreal Editor, create a new Blueprint of the type "Blueprint Hook"
 
-image::https://i.imgur.com/kgGajRN.png[Create Blueprint]
+image::Development/ModLoader/BlueprintHooks/CreateBlueprintHook.png[Create Blueprint Hook Asset]
 
-Create a new function to handle the logic of your hook. The first parameter should be the type of Blueprint you are hooking. Subsequent parameters should be ...idk...
+Create a new function to handle the logic of your hook. The first parameter should be the type of Blueprint you are hooking. Subsequent parameters should be ...idk... TODO
 
-image::https://i.imgur.com/mxDoU3A.png[New Function]
+image::Development/ModLoader/BlueprintHooks/NewFunction.png[New Function]
 
-Go back to the Graph, right-click, and create the type of hook you want. These have on-hover tooltips that explain what they do.
+TODO how to go between hook graph and function graphs
 
-image::https://i.imgur.com/GvzILd9.png[Create Hook]
+Go back to the Graph, right-click, and create the type of hook you want.
+Each type has an on-hover tooltip that explains what it does.
 
-Fill out the drop-downs.
+image::Development/ModLoader/BlueprintHooks/CreateHook.png[Create Hook]
 
-image::https://i.imgur.com/HKItQbM.png[Fill dropdowns]
+Fill out the drop-downs to specify what class's function you are hooking.
+
+image::Development/ModLoader/BlueprintHooks/FillDropdowns.png[Fill dropdowns]
 
 Add a Target Specifier. These have on-hover tooltips that explain what they do.
 
-image::https://i.imgur.com/PqAXqTR.png[Target Specifier with tooltip]
-image::https://i.imgur.com/TFOMlsv.png[Target Specifier]
+image::Development/ModLoader/BlueprintHooks/TargetSpecifierTooltip.png[Target Specifier with tooltip]
 
-Create a Mod Game Instance Module if you don't already have one and add your new hook to the "Blueprint Hooks" section.
+image::Development/ModLoader/BlueprintHooks/TargetSpecifierConnected.png[Target Specifier]
 
-image::https://i.imgur.com/bERLsYP.png[Game Instance Module]
+[id="Register"]
+== Registering the Hook
 
+Hooks must be registered in a
+xref:Development/ModLoader/ModModules.adoc[Game Instance Module] to be applied in-game.
+Create a Mod Game Instance Module if you don't already have one and add your new hook to the "Blueprint Hooks" array.
 
-=== Limitations and workarounds
+image::Development/ModLoader/BlueprintHooks/RegisterHook.png[Register Hook in Game Instance Module]
 
-Because Blueprint Hooks exist as functions there are a few things that cannot be done such as adding delays. 
+== Limitations and Workarounds
 
-To work around this you can create your logic in your Mod Game World Module or a Subsystem, then calling that from the Hook.
+=== Latent Action Nodes
 
-image::https://i.imgur.com/PGtDyVC.png[Game World Module workaround]
+Because Blueprint Hooks exist as functions, some nodes you may be used to from Event Graphs are not available, including Latent Action nodes like Delay.
 
-== Creating an Actor Mixin
+To work around this, implement your logic in an Event Graph somewhere else,
+such as a Mod Subsystem
+or your Mod Game World Module,
+then calling that event from the Hook Function.
 
-Creating a Mixin (formerly known as a SCS Hook) is similar to creating a Blueprint Hook.
+image::Development/ModLoader/BlueprintHooks/LatentActionWorkaround.png[Game World Module workaround]
 
-Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
+== TODO
 
-image::https://i.imgur.com/8kJiYKi.png[Create Mixin]
+=== Blueprint Hook info
 
-When creating it you will be given a prompt to choose which Actor to add the Mixin to.
+https://discord.com/channels/555424930502541343/562722670974599227/1359689684237680751
 
-image::https://i.imgur.com/b51SqGX.png[Choose Actor]
+FBlueprintHookManager::HookBlueprintFunction -> Blueprint Hook blueprints
+* can do matching instead of just instruction index (more stable ™️), and insert the hook before/after/replace the existing statement
+  * the BP hooking internals are transpiling the bytecode, but transpiling is not exposed to the user
+* hooks are defined in a Blueprint Hook blueprint where the graph can contain
+  * target specifiers (matchers) - which statements/expressions to match
+    * constant (can choose type and value)
+    * function call
+    * function entry/exit
+    * function return value
+    * property read/write
+    * parent expression (takes another specifier as input)
+    * operand (takes another specifier as input)
+    * selector (first/single/all/stuff) (takes another specifier as input)
+  * hooks - what to apply to the statements/expressions filtered above (takes target specifier chain as input)
+    * insert (before/after/replace, will resolve to the statement if targeting an expression)
+    * redirect (for replacing non-statement expressions, e.g. function call argument, must return same type)
+    * they take a function to apply as the hook
+      * the functions exist in the same hook blueprint
+      * can have arguments with the same name as variables available in the hook (local variables, global variables, and temp variables like function return values - need to dump the BP function to see the temp names)
+      * you can also write to the argument to write to the variable
+      * special arguments:
+        * Target (the object)
+        * TargetReturnValue (ReturnValue of the of the hooked function, but renamed to avoid conflicts with this function's ReturnValue)
+        * redirect hooks
+          * OriginalValue
+        * insert hooks
+          * HookTarget (the expression targeted by the hook, if not a statement already)
+          * AssignmentTarget (when hooking an assignment statement, the variable to assign to)
 
-Upon opening the Mixin you will be presented with an empty graph. The components of the Actor you are hooking will also be shown.
+=== Hook Function info
 
-image::https://i.imgur.com/zlQUp0A.png[Components]
-
-There are a few functions you can override.
-
-image::https://i.imgur.com/8QdyWT2.png[Functions]
-
-If you intend to use "Tick" make sure you check "Enable Mixin Tick". 
-
-image::https://i.imgur.com/xfkB1o3.png[Enable Tick]
-
-Add your logic.
-
-image::https://i.imgur.com/xfdoYrZ.png[Add logic]
-
-Add your new Mixin to your Game Instance Module similar to how a Blueprint Hook is added.
-
-image::https://i.imgur.com/efx6Nn5.png[Add Mixin to Game Instance]
+For the hook function, the inputs will be mapped using their name to
+* global variables - object instance
+* local variables - function inputs, function locals, and function temps (which you can check for in a BP code dump, either `-DumpBlueprintPatchingResults` which generates pseudocode, or in FModel which generates a json very similar to the asset dump)
+* Target - special hooking argument that resolves to the object instance the hooked function was running
+* TargetReturnValue - special hooking argument that resolves to the hooked function's ReturnValue
+* HookTarget - special hooking argument that resolves to the expression the hook was pointing to, if it wasn't pointing to a statement
+* AssignmentTarget - special hooking argument that resolves to the variable on the left side of an assignment statement, if that's what was hooked
+* OriginalValue - special hooking argument that resolves to the original value when using redirect hooks (replacing an expression inside a statement, rather than an insert hook which goes before/replace/after a statement), is required in this case

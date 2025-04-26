@@ -6,11 +6,15 @@ This feature slated for SML 3.11 has not been released yet, and is not in the `d
 The contents of this page will change frequently!
 ====
 
-IMPORTANT: Before following this guide you should read the [Link to new hooking doc] to get an overview of the new system and how to create Mixins using it.
+[IMPORTANT]
+====
+Before following this guide you should read the xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] page
+to get an overview of the new system and how to create Mixins using it.
+====
 
 Migrating from a SCS Hook to a Mixin is easy because you already have all the information you need in your Mod Game Instance Module.
 
-image::https://i.imgur.com/EHETSfQ.png[Existing SCS Hook]
+image::Development/UpdatingGuides/OldScsHook.png[Existing SCS Hook]
 
 New SCS Hooks cannot be made, but old ones will remain so you can use them when migrating to Mixins.
 
@@ -20,10 +24,14 @@ From this old information we get:
 - Parent Component
 - Component with your logic
 
-Now follow the instruction from the [Link to new hooking doc] to create a new Mixin. When prompted for the Mixin Target use the one from the "Actor Class" in your old SCS Hook:
+Now follow the instruction from the xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] page to create a new Mixin.
+When prompted for the Mixin Target use the one from the "Actor Class" in your old SCS Hook:
 
-image::https://i.imgur.com/BeL7jDB.png[Pick Mixin Target]
+image::Development/UpdatingGuides/PickMixinTargetClass.png[Pick Mixin Target]
 
 From here you can add any logic you had in your old SCS Component into your new Mixin.
 
-IMPORTANT: Don't forget to register your new Mixin as described in [Link to new hooking doc]
+[WARNING]
+====
+Don't forget to register your new Mixin as described in the xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] page.
+====

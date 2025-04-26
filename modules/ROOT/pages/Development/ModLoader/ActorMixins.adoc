@@ -1,0 +1,51 @@
+= Actor Mixins
+
+[IMPORTANT]
+====
+This feature slated for SML 3.11 has not been released yet, and is not in the `dev` branch yet!
+The contents of this page will change frequently!
+====
+
+Actor Mixins are an extension of the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hook system]
+designed to allow adding extra functionality to Unreal Actors.
+
+TODO
+
+https://discord.com/channels/555424930502541343/562722670974599227/1359689865473687766
+
+== Creating an Actor Mixin
+
+Creating a Mixin (formerly known as a SCS Hook) is similar to creating a Blueprint Hook.
+
+Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
+
+image::https://i.imgur.com/8kJiYKi.png[Create Mixin]
+
+When creating it you will be given a prompt to choose which Actor to add the Mixin to.
+
+image::https://i.imgur.com/b51SqGX.png[Choose Actor]
+
+Upon opening the Mixin you will be presented with an empty graph. The components of the Actor you are hooking will also be shown.
+
+image::https://i.imgur.com/zlQUp0A.png[Components]
+
+There are a few functions you can override.
+
+image::https://i.imgur.com/8QdyWT2.png[Functions]
+
+If you intend to use "Tick" make sure you check "Enable Mixin Tick". 
+
+image::https://i.imgur.com/xfkB1o3.png[Enable Tick]
+
+Add your logic.
+
+image::https://i.imgur.com/xfdoYrZ.png[Add logic]
+
+[id="Register"]
+== Registering the Mixin
+
+Actor Mixins must be registered in a
+xref:Development/ModLoader/ModModules.adoc[Game Instance Module] to be applied in-game.
+Create a Mod Game Instance Module if you don't already have one and add your new Mixin to the "Blueprint Hooks" array.
+
+image::Development/ModLoader/ActorMixins/RegisterMixin.png[Register Mixin to Game Instance Module]

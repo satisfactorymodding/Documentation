@@ -1,5 +1,11 @@
 = Simple Construction Script (SCS) Hooks
 
+[IMPORTANT]
+====
+As of SML 3.11, this system has been deprecated in favor of the
+xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] system.
+====
+
 Introduced in SML3.5, Blueprint Simple Construction Script hooks allow adding modded
 https://docs.unrealengine.com/5.1/en-US/components-in-unreal-engine/[Components]
 to any blueprint-based actor.

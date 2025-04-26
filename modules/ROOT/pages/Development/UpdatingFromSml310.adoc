@@ -35,6 +35,8 @@ xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooks]
 
 TODO, currently on `dev-new-hooking` branch.
 
+xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins]
+
 === TODO
 
 === Example Mod Improvements
@@ -166,7 +168,9 @@ It's incongruent
 
 Instead, make one-off widgets that contain the widget you wanted to customize, using that extra layer of widget to set the template options.
 
-=== SCS Hooks: TODO
+=== Simple Construction Script Hook Deprecation
+
+Simple Construction Script Hooks have been deprecated in favor of the new Actor Mixins system.
 
 xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
 
