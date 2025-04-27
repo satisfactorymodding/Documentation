@@ -19,27 +19,31 @@ Creating a Mixin (formerly known as a SCS Hook) is similar to creating a Bluepri
 
 Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
 
-image::https://i.imgur.com/8kJiYKi.png[Create Mixin]
+image::Development/ModLoader/ActorMixins/CreateMixinAsset.png[]
 
 When creating it you will be given a prompt to choose which Actor to add the Mixin to.
 
-image::https://i.imgur.com/b51SqGX.png[Choose Actor]
+image::Development/ModLoader/ActorMixins/ChooseActor.png[]
 
 Upon opening the Mixin you will be presented with an empty graph. The components of the Actor you are hooking will also be shown.
 
-image::https://i.imgur.com/zlQUp0A.png[Components]
+TODO can you add new components here and have them be added to the actor?
+
+image::Development/ModLoader/ActorMixins/Components.png[]
 
 There are a few functions you can override.
 
-image::https://i.imgur.com/8QdyWT2.png[Functions]
+TODO what if you want to override functions from the actor? presumably use the hook graph?
+
+image::Development/ModLoader/ActorMixins/Functions.png[]
 
 If you intend to use "Tick" make sure you check "Enable Mixin Tick". 
 
-image::https://i.imgur.com/xfkB1o3.png[Enable Tick]
+image::Development/ModLoader/ActorMixins/EnableTick.png[]
 
 Add your logic.
 
-image::https://i.imgur.com/xfdoYrZ.png[Add logic]
+image::Development/ModLoader/ActorMixins/AddLogic.png[]
 
 [id="Register"]
 == Registering the Mixin

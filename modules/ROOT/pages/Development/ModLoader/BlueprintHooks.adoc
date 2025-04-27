@@ -6,8 +6,6 @@ This feature slated for SML 3.11 has not been released yet, and is not in the `d
 The contents of this page will change frequently!
 ====
 
-TODO move images from Imgur to docs
-
 TODO intro description
 
 == Creating a Hook Blueprint
