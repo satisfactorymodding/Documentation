@@ -19,7 +19,16 @@
 			"hide": true,
 			"presentation": {
 				"group": "hot-rebuild-server"
-			}
+			},
+			"problemMatcher": [
+				{
+					"base": "$tsc-watch",
+					"background": {
+						"beginsPattern": "Listening on",
+						"endsPattern": "TODO_WHAT_END_PATTERN_TO_USE_SEEMS_FINE_WITH_THIS?"
+					}
+				}
+			]
 		},
 		{
 			"type": "shell",
@@ -31,8 +40,8 @@
 			}
 		},
 		{
-			"label": "Open in browser",
 			"type": "shell",
+			"label": "Open in browser",
 			"windows": {
 				"command": "Start-Process http://127.0.0.1:8000/"
 			},
