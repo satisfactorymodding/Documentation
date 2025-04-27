@@ -205,6 +205,8 @@ it won't be compiled with your mod and it won't work at runtime.
 === Manually Creating Files
 
 Alternatively, you can manually create the files backing your class.
+This is not recommended as it's very easy to make mistakes with folders, boilerplate code, and includes while doing so.
+
 Navigate to your mod's {cpp} module folder in Windows Explorer
 and create the `.h` and `.cpp` files in the Public and Private folders respectively.
 Then run the
