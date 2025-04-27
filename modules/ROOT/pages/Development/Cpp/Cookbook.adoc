@@ -1,0 +1,58 @@
+= Cookbook
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+Collection of assorted code snippets and useful approaches.
+
+== TActorIterator
+
+Faster than GetAllActorsOfClass and GetTypedBuildable
+
+```cpp
+for (TActorIterator<YourBuildableClass> It(GetWorld()); It; ++It)
+{
+  YourBuildableClass* Buildable = *It;
+   ....
+}
+```
+
+https://discord.com/channels/555424930502541343/862002356626128907/1365513493456883713
+
+== SetTimerForNextTick
+
+```cpp
+FName Tag;
+if (ResourceRouletteCompatibilityManager::IsCompatibilityClass(SpawnedActor, Tag))
+{
+    World->GetTimerManager().SetTimerForNextTick([World, SpawnedActor, Tag]()
+    {
+        ResourceRouletteCompatibilityManager::TagActorAndMesh(SpawnedActor, Tag);
+    });
+}
+```
+
+https://discord.com/channels/555424930502541343/862002356626128907/1365406523227902043
+
+== Custom Attachment Points
+
+https://discord.com/channels/555424930502541343/601030071221878784/1358241612546834607
+
+```cpp
+ const TSubclassOf<UFGAttachmentPointType> Type = point.Type;
+    const TSubclassOf<UFGAttachmentPointType> SnappedType = targetPoint.Type;
+    UFGAttachmentPointType* LocalObject = Type.GetDefaultObject();
+    const UFGAttachmentPointType* RemoteObject = SnappedType.GetDefaultObject();
+    for (auto SnapType : LocalObject->mAllowedAttachmentPointSnapTypes) {
+        if(RemoteObject->IsA(SnapType)) {
+            return true;
+        }
+    }
+    return false;
+```
