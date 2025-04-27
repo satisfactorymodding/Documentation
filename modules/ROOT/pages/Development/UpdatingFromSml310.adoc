@@ -37,6 +37,13 @@ TODO, currently on `dev-new-hooking` branch.
 
 xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins]
 
+=== Launch Argument: DumpBlueprintPatchingResults
+
+// TODO ensure synced with BlueprintHooks.adoc#Viewing Blueprint Function Implementations
+
+When the game is launched with the `-DumpBlueprintPatchingResults` argument,
+SML will dump the bytecode of all blueprint hooked functions to the log in a relatively human-readable format.
+
 === TODO
 
 === Example Mod Improvements

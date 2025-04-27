@@ -84,7 +84,21 @@ Some blueprints (like UI blueprints) do not exist in the dedicated server build.
 If your mod attempts to hook such a blueprint in a dedicated server, it will crash the server.
 You can use the global function `IsRunningDedicatedServer()` to skip hooking in this case.
 
+== Viewing Blueprint Function Implementations
+
+Understanding what base-game blueprint functions do can be troublesome as we don't have their source code
+and the starter project only contains xref:Development/BeginnersGuide/StarterProjectStructure.adoc#PlaceholderSystem[placeholders of blueprint assets].
+
+To assist with this process, SML implements the `-DumpBlueprintPatchingResults` command line argument.
+When the game is launched with this argument,
+SML will dump the bytecode of all blueprint hooked functions to the log in a relatively human-readable format.
+
+Note that it is also possible to use xref:Development/ExtractGameFiles.adoc#FModel[FModel] to dump an asset as JSON
+and view the blueprint bytecode in a less-readable format.
+
 == TODO
+
+Stuff from mircea messages to organize
 
 === Blueprint Hook info
 
@@ -140,3 +154,5 @@ these hooks were always in a messy and brittle state of requiring lots of reflec
 The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
 The modern system removes the middleman by having blueprint hooks defined and implemented on the asset side,
 giving them full knowledge of asset structure.
+
+// TODO mircea discussion about custom thunks?
