@@ -1,9 +1,13 @@
-= Hooking
+= Native Hooking
 
-Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom function body to an existing function.
+Native Hooking is a {cpp} exclusive feature of SML that allows you to attach a custom function body to an existing {cpp} function.
 
-All C/{cpp} functioning hooking stuff can be found in `#include "Patching/NativeHookManager.h"`.
-All Blueprint function hook stuff can be found in `#include "Patching/BlueprintHookManager.h"`.
+All C/{cpp} functioning hooking stuff can be found in SML's `Patching/NativeHookManager.h`.
+
+[NOTE]
+====
+Hooking of Blueprint-implemented functions is covered on the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooking System] page.
+====
 
 == Background Information
 
@@ -267,137 +271,6 @@ Unhooking functionality has not been extensively tested. Please report issues yo
 Macros will return a delegate that can be used with the
 `UNSUBSCRIBE_METHOD` or `UNSUBSCRIBE_UOBJECT_METHOD` macro respectively
 in order to unsubscribe from the function.
-
-
-[id="BpFunctionHooks"]
-== Blueprint Function Hooks
-
-Blueprint function hooking works by changing the instructions of a Blueprint UFunction so that your hook gets called at a specific point in the execution of that function.
-
-Like native hooks, you can hook before and after the function execution. Unlike native hooks, you can also hook at any top-level statement in the function if you know its original instruction index (which itself requires decompiling the function - look at `DEBUG_BLUEPRINT_HOOKING` in SML's BlueprintHookManager.cpp for one way to get a JSON dump of the instructions).
-
-[WARNING]
-====
-Some blueprints (like UI blueprints) do not exist in the dedicated server build. If your mod attempts to hook such a blueprint in a dedicated server, it will crash the server. You can use the global function `IsRunningDedicatedServer()` to skip hooking in this case.
-====
-
-[WARNING]
-====
-Once you have hooked a blueprint function, there is currently no way to unhook it without fully exiting Satisfactory. For this reason, it is recommended that you create/have a root UGameInstanceModule that installs all blueprint function hooks on game startup, usually when DispatchLifecycleEvent is first called.
-====
-
-The hook function signature is `void(FBlueprintHookHelper&)`.
-
-This FBlueprintHookHelper structure provides ways to:
-
-- Access the Context object (Blueprint instance on which the function is executing).
-- Read/write variables of the Context, local variables of the hooked blueprint function (which include its Input variables), and Output variables of the function.
-- Skip from the hooked point to the end of the function's execution (though all hooks at that location will be executed prior to this jump).
-
-To attach a blueprint hook, you need a reference to the Blueprint _class_ containing the function you want to hook. There are {cpp}-only ways to do this using LoadClass, but they require hardcoding resource paths, which is not recommended. Instead, you should add these types as member variables to your UGameInstanceModule and then assign them using the picker in the Unreal Editor.
-
-Here's an example of getting a reference to the `BPW_MapMenu` class for hooking (this widget is the left-hand-side menu in the map screen of Satisfactory that lists all the map markers):
-
-First, determine the native parent class of the widget. A quick way to see this is to find the blueprint you wish to hook in the Content Browser of the Unreal Editor and hover over it to find the Native Parent Class line:
-
-image:Development/Cpp/hooking/BPW_MapMenuHover.png[Hovering over BPW_MapMenu]
-
-Next, define a `TSoftClassPtr` property on a {cpp}-backed Root Game Instance Module.
-Use the Native Parent Class of the blueprint class you wish to hook as the generic type.
-Make it an EditAnywhere UPROPERTY so it will be available in the Unreal Editor
-Optionally, assing a `Category` name to help organize the property if you plan to hook multiple things.
-
-[source,cpp]
-----
-	UPROPERTY(EditAnywhere, Category = "UI Widget Types")
-	TSoftClassPtr<UFGUserWidget> BPW_MapMenuClass;
-----
-
-Next, close the editor and rebuild the project for Development Editor,
-since you just changed the class and field structure of your mod.
-After the build finishes, reopen the editor.
-
-If your mod doesn't have a blueprint Root Instance Module yet,
-create one by adding a new blueprint to your mod that uses your {cpp} Root Instance Module class as its base class.
-If your mod already has an existing blueprint-implemented Root Instance Module, reparent it to your {cpp} class,
-or use a submodule instead (remember, there can only be one root module of each type).
-
-Regardless, open your Root Instance Module blueprint in Unreal Editor.
-Find the appropriate row in the module blueprint's Details section under the Category you used, click the dropdown, and find/select the type:
-
-image:Development/Cpp/hooking/BPW_MapMenuTypeSelected.png[BPW_MapMenu selected]
-
-The class is now availabe to your module for hooking. If you don't already know the name of the blueprint function you wish to hook, these can found by opening the blueprint in the Unreal Editor, going to the Graph view, and then viewing the FUNCTIONS accordion under the My Blueprint tab:
-
-image:Development/Cpp/hooking/BPW_MapMenuFunctions.png[BPW_MapMenu functions]
-
-Now you can create the actual hook in {cpp}. Make sure you have the proper includes:
-
-[source,cpp]
-----
-#include "Patching/BlueprintHookManager.h"
-#include "Patching/BlueprintHookHelper.h"
-----
-
-Get a reference to the UBlueprintHookManager like so: 
-
-[source,cpp]
-----
-UBlueprintHookManager* hookManager = GEngine->GetEngineSubsystem<UBlueprintHookManager>();
-----
-
-[WARNING]
-====
-If you attempt to get the UBlueprintHookManager extremely early in startup, the game will crash.
-It will be available by the time DispatchLifecycleEvent is called on your UGameInstanceModule.
-Remember that DispatchLifecycleEvent is called three times with three different phase values as the game initializes
-- be sure to only create the hooks in one of these phases (ELifecyclePhase::CONSTRUCTION should be fine).
-====
-
-Hooks can be created by calling `HookBlueprintFunction` on the hook manager:
-
-[source,cpp]
-----
-hookManager->HookBlueprintFunction(
-	BPW_MapMenuClass->FindFunctionByName(TEXT("AddActorRepresentationToMenu")), // Will crash if you typo the function name
-	[](FBlueprintHookHelper& helper) {
-		// Hook code here
-	},
-	EPredefinedHookOffset::Start );
-	// EPredefinedHookOffset::Start hooks just before the function executes.
-	// For a hook just before the function returns, use EPredefinedHookOffset::Return
-----
-
-[WARNING]
-====
-You can create hooks at nearly-arbitrary points in the function by passing the integer offset of the statement where you'd like to hook instead of an EPredefinedHookOffset. Only do this if you know exactly what you're doing and why!
-====
-
-FBlueprintHookHelper has all the functionality you should need if you wish to modify the state of the blueprint or function execution. To get and/or set the values of variables, use one of:
-
-[source,cpp]
-----
-// For reading/writing variables on the blueprint that is being hooked (in the example above, this means member variables of BPW_MapMenu)
-TSharedRef<FBlueprintHookVariableHelper_Context> contextHelper = helper.GetContextVariableHelper(); 
-
-// For reading/writing Input variables of the function, as well as any local variables the function is using for execution (but you have to know their names by decompiling the function)
-TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVariableHelper();
-
-// For reading/writing Output variables of the function
-TSharedRef<FBlueprintHookVariableHelper_Out> outHelper = helper.GetOutVariableHelper();
-----
-
-Check the header comments on each `Get*VariableHelper` method to learn which helper to use in what situation.
-Here is a quick example:
-
-[source,cpp]
-----
-TSharedRef<FBlueprintHookVariableHelper_Local> localHelper = helper.GetLocalVariableHelper();
-ERepresentationType* representationType = localHelper->GetEnumVariablePtr<ERepresentationType>(TEXT("representationType"));
-int* intValuePtr = localHelper->GetVariablePtr<FIntProperty>(TEXT("someIntValue"));
-*intValuePtr = 42; // You can write values to variables simply by using the returned pointers
-----
-
 
 == Protected/Private Function Hooking
 

@@ -8,9 +8,9 @@ Keep your eyes on the `#modding-info-feed` Discord channel to be notified when u
 ====
 
 SML3.11 brings support for Satisfactory 1.1,
-introduces an enhanced hooking system,
+revamps the blueprint hooking system,
 and fixes some bugs.
-Mods compiled for SML3.10 are unlikely to work with SML3.11 due to changes to the base game headers.
+Mods compiled for SML3.10 are unlikely to work with SML3.11 due to changes to the base game headers and the blueprint hooking system.
 
 Please _read this entire page before you begin updating your mod_.
 It will save you time later to have an idea going in of what to expect while updating.
@@ -25,7 +25,7 @@ This section talks about the new features that SML 3.11 brings to the table.
 
 === Blueprint Hooks
 
-TODO
+TODO, currently on `dev-new-hooking` branch.
 
 See blueprint hooks heading for more info
 
@@ -104,7 +104,7 @@ Opening projects under the old engine version will also require editing the .upr
 
 ==== Wwise Update
 
-With a new Unreal Engine version comes a new required Wwise update for your project.
+CSS has also updated to a newer version of Wwise.
 The xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Dependencies page Wwise instructions]
 lists the new Wwise version and guides you through integrating it into your project as you follow the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
@@ -113,7 +113,7 @@ xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
 
 TODO is this step needed?
 
-To avoid these editor crashes, use the Wwise editor to 
+To avoid editor crashes, use the Wwise editor to 
 xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
 which will also silence the pop-up about missing a generated sound bank folder you may have been getting.
 You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
@@ -131,13 +131,16 @@ If one of your mods uses {cpp} and you haven't already added `CppStandard = CppS
 this update will likely require you to do so.
 See the Alpakit template in `Mods\Alpakit\Templates\CPPAndBlueprintBlank` for an example.
 
-=== Blueprint Hooking Overhaul
+== Blueprint Hooking Overhaul
 
 TODO Arch's blueprint hooking changes, currently on `dev-new-hooking` branch.
 
 See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
 
 === {cpp} Blueprint Function Hooking Removal
+
+The previous FBlueprintHookManager system has been replaced with 
+The old system cannot coexist with the new system, so you must migrate as part of this update.
 
 Because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
 {cpp}-implemented blueprint hooks were always in a messy and brittle state
@@ -148,7 +151,9 @@ giving them full knowledge of asset structure.
 
 See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
 
-==== Bind on BP Function node removal
+=== Bind on BPFunction node removal
+
+The Bind on BPFunction node offered by the old hooking system has been removed.
 
 The old system was exceedingly limited in that you could never get function parameters or influence return values
 - you only had access to the object instance calling the function.
@@ -172,9 +177,15 @@ Instead, make one-off widgets that contain the widget you wanted to customize, u
 
 Simple Construction Script Hooks have been deprecated in favor of the new Actor Mixins system.
 
-xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
+The data used to set up existing SCS hooks is still visible in the editor,
+but the SCS hooks themselves are not functional,
+and the creation of new SCS hooks is disabled.
+
+For more info, see the xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide].
 
 === FChatMessageStruct Changes
+
+The base-game FChatMessageStruct has changed in the following ways:
 
 - Now uses FText field `MessageText` instead of FString field `Message`.
 - Now uses field `MessageSenderColor` instead of `CachedColor`.
@@ -182,6 +193,8 @@ xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
 === Removal of mAvailableSchematics
 
 TODO
+
+The base-game `mAvailableSchematics` property has been removed from the `FGSchematicManager` class.
 
 LogAlpakit: Error: [Package SML] LogInit: Display: LogAccessTransformers: Error: Could not resolve property for BlueprintReadWrite /Script/FactoryGame.FGSchematicManager:mAvailableSchematics requested by MAMTips: Could not find property /Script/FactoryGame.FGSchematicManager:mAvailableSchematics
 

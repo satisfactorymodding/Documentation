@@ -6,7 +6,7 @@ This feature slated for SML 3.11 has not been released yet, and is not in the `d
 The contents of this page will change frequently!
 ====
 
-Actor Mixins are an extension of the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hook system]
+Actor Mixins are an extension of the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hook System]
 designed to allow adding extra functionality to Unreal Actors.
 
 TODO

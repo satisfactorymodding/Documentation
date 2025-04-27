@@ -6,15 +6,28 @@ This feature slated for SML 3.11 has not been released yet, and is not in the `d
 The contents of this page will change frequently!
 ====
 
-TODO intro description
+SML3.11 introduces a new Blueprint Hooking system that allows modifying the behavior of existing Blueprint functions via custom code.
+Your code can be run before or after the original function and can modify the function's inputs, return values, or cancel its execution.
+It can also replace portions on the function logic (TODO verify).
+
+Blueprint Hooks are created as blueprint assets and have full knowledge of blueprint asset structures and function signatures.
+
+[NOTE]
+====
+Hooking of {cpp}-implemented functions is covered on the xref:Development/Cpp/hooking.adoc[Native Hooking] page.
+====
 
 == Creating a Hook Blueprint
+
+TODO how many hooks can be in one blueprint?
 
 Within the Unreal Editor, create a new Blueprint of the type "Blueprint Hook"
 
 image::Development/ModLoader/BlueprintHooks/CreateBlueprintHook.png[Create Blueprint Hook Asset]
 
-Create a new function to handle the logic of your hook. The first parameter should be the type of Blueprint you are hooking. Subsequent parameters should be ...idk... TODO
+Next, create a new function to handle the logic of your hook.
+The first parameter should be the type of Blueprint you are hooking.
+Subsequent parameters should be ...idk... TODO
 
 image::Development/ModLoader/BlueprintHooks/NewFunction.png[New Function]
 
@@ -46,16 +59,30 @@ image::Development/ModLoader/BlueprintHooks/RegisterHook.png[Register Hook in Ga
 
 == Limitations and Workarounds
 
-=== Latent Action Nodes
+=== Event Graph Nodes
 
-Because Blueprint Hooks exist as functions, some nodes you may be used to from Event Graphs are not available, including Latent Action nodes like Delay.
+Because Blueprint Hooks exist as functions, some nodes you may be used to from Event Graphs are not available, such as Latent Action nodes like Delay.
 
 To work around this, implement your logic in an Event Graph somewhere else,
-such as a Mod Subsystem
-or your Mod Game World Module,
+such as a Mod Subsystem or your Mod Game World Module,
 then calling that event from the Hook Function.
 
 image::Development/ModLoader/BlueprintHooks/LatentActionWorkaround.png[Game World Module workaround]
+
+=== Unregistering Blueprint Hooks
+
+Once you have hooked a blueprint function, there is currently no way to unhook it without fully exiting Satisfactory.
+This is why blueprint hooks are registered in a Game Instance Module.
+
+You can work around this by having your hook code check a flag in a mod subsystem or your game instance module to determine if the hook should execute.
+
+=== Hooking and Dedicated Servers
+
+TODO does this still happen with the new hooking system?
+
+Some blueprints (like UI blueprints) do not exist in the dedicated server build.
+If your mod attempts to hook such a blueprint in a dedicated server, it will crash the server.
+You can use the global function `IsRunningDedicatedServer()` to skip hooking in this case.
 
 == TODO
 
@@ -102,3 +129,14 @@ For the hook function, the inputs will be mapped using their name to
 * HookTarget - special hooking argument that resolves to the expression the hook was pointing to, if it wasn't pointing to a statement
 * AssignmentTarget - special hooking argument that resolves to the variable on the left side of an assignment statement, if that's what was hooked
 * OriginalValue - special hooking argument that resolves to the original value when using redirect hooks (replacing an expression inside a statement, rather than an insert hook which goes before/replace/after a statement), is required in this case
+
+== Blueprint Hooking from {cpp}
+
+It is not currently possible to hook blueprint functions from {cpp} code using SML's systems.
+
+Previous versions of SML allowed hooking blueprint functions from {cpp} code,
+but because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
+these hooks were always in a messy and brittle state of requiring lots of reflection and hardcoded assumptions to work.
+The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
+The modern system removes the middleman by having blueprint hooks defined and implemented on the asset side,
+giving them full knowledge of asset structure.
