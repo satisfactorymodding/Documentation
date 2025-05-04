@@ -39,6 +39,8 @@ exclude = [
     "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1",
     # Pages often time out and Shouldn't™ ever get deleted anyways
     "https://web.archive.org/web/",
+    # Cloudflare checks this, unlikely to be deleted
+    "^https://superuser.com/.*"
 ]
 
 # Exclude these filesystem paths from getting checked.
