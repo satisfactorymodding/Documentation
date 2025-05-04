@@ -45,3 +45,12 @@ Please let us know what you find out so we can update this page.
 - Entry point for your code. {cpp} mods can use `StartupModule`, blueprint mods will need something else to help them load.
 - Alpakit GameVersion dependency field explained on the xref:Development/BeginnersGuide/ReleaseMod.adoc#_special_fields[Releasing Your Mod page].
 - Not conflicting with any systems that SML uses, because there is a very high chance that end users will already have SML installed.
+
+== Examples
+
+Examples of mods that do not use SML:
+
+- https://github.com/NotNite/Statisfactory/[Statisfactory] -
+  Provides additional xref:Development/Satisfactory/DedicatedServerAPIDocs.adoc[Dedicated Server API endpoints]
+- https://github.com/Archengius/BetterVehiclePaths/[BetterVehiclePaths] -
+  Alternative vehicle path definition system
