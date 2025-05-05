@@ -14,7 +14,7 @@
 * xref:Development/index.adoc[Development]
 
     ** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
-        *** xref:Development/Migration/ScsMigrationGuide.adoc[SCS Migration Guide]
+        *** xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide]
         *** xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]

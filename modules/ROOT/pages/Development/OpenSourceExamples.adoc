@@ -1,5 +1,9 @@
 = Open Source Examples
 
+====
+TODO SCS hooks -> Actor Mixins, Blueprint Hooks
+====
+
 It's impossible for this documentation to cover every aspect of making Satisfactory mods.
 However, there are quite a few open-source mods you can download and check out the code of
 to learn how they accomplish certain behaviors or features.

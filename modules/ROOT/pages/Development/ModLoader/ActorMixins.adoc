@@ -22,6 +22,7 @@ Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
 image::Development/ModLoader/ActorMixins/CreateMixinAsset.png[]
 
 When creating it you will be given a prompt to choose which Actor to add the Mixin to.
+Note that unlike Blueprint Hook assets, each Mixin asset can only have hooks for a single Actor class.
 
 image::Development/ModLoader/ActorMixins/ChooseActor.png[]
 

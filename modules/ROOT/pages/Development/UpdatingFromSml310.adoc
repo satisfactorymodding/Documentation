@@ -23,15 +23,31 @@ guide to install the updated engine, starter project, and update your mod.
 
 This section talks about the new features that SML 3.11 brings to the table.
 
-=== Blueprint Hooks
+=== Blueprint Hooks as Assets
 
 TODO, currently on `dev-new-hooking` branch.
 
-See blueprint hooks heading for more info
+The Blueprint Hooking system has been completely rewritten to offer additional capabilities,
+eliminate the need for brittle hardcoded references,
+and improve the developer experience.
 
-xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooks]
+New capabilities include:
+
+- Ability to hook before/after/replacing statements
+- Intuitive hook graph editor interface
+- No {cpp} code required to create a hook
+- Hooks implemented in the blueprint code can now alter function parameters and return values
+- No more hardcoded string references to function and class names
+- Editor-time checking of hook parameters and function signatures
+
+To learn more about the new system,
+see the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooks] page.
+To learn what you need to do to migrate your existing hooks to the new system, see the
+link:#BlueprintHookingOverhaul[Blueprint Hooking Overhaul] heading.
 
 === Actor Mixins
+
+Actor Mixins are a special kind of Blueprint Hook have replaces SCS hooks 
 
 TODO, currently on `dev-new-hooking` branch.
 
@@ -39,10 +55,10 @@ xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins]
 
 === Launch Argument: DumpBlueprintPatchingResults
 
-// TODO ensure synced with BlueprintHooks.adoc#Viewing Blueprint Function Implementations
-
 When the game is launched with the `-DumpBlueprintPatchingResults` argument,
 SML will dump the bytecode of all blueprint hooked functions to the log in a relatively human-readable format.
+
+Read more about it on the xref:Development/ModLoader/BlueprintHooks.adoc#ViewingBlueprintFunctionImplementations[Blueprint Hooks] page.
 
 === TODO
 
@@ -118,11 +134,8 @@ xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
 
 === Generate Wwise Sound Banks
 
-TODO is this step needed?
-
-To avoid editor crashes, use the Wwise editor to 
+If you see the "GeneratedSoundBanks folder does not seem to be set. Would you like to open the settings window to set it?" message, use the Wwise editor to
 xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
-which will also silence the pop-up about missing a generated sound bank folder you may have been getting.
 You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
 
 === TODO other required changes
@@ -137,58 +150,6 @@ but we'd like to draw extra attention to them.
 If one of your mods uses {cpp} and you haven't already added `CppStandard = CppStandardVersion.Cpp20;` to its `Build.cs` file,
 this update will likely require you to do so.
 See the Alpakit template in `Mods\Alpakit\Templates\CPPAndBlueprintBlank` for an example.
-
-== Blueprint Hooking Overhaul
-
-TODO Arch's blueprint hooking changes, currently on `dev-new-hooking` branch.
-
-See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
-
-=== {cpp} Blueprint Function Hooking Removal
-
-The previous FBlueprintHookManager system has been replaced with 
-The old system cannot coexist with the new system, so you must migrate as part of this update.
-
-Because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
-{cpp}-implemented blueprint hooks were always in a messy and brittle state
-of requiring lots of reflection and hardcoded assumptions to work.
-The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
-The new system removes the middleman by having blueprint hooks defined and implemented on the asset side,
-giving them full knowledge of asset structure.
-
-See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
-
-=== Bind on BPFunction node removal
-
-The Bind on BPFunction node offered by the old hooking system has been removed.
-
-The old system was exceedingly limited in that you could never get function parameters or influence return values
-- you only had access to the object instance calling the function.
-The new system allows you to get the function parameters and modify the function behavior like was already possible with hooks implemented in {cpp} in the old system.
-
-Instead, use a new data-driven hook that calls a function you've implemented in a subsystem.
-
-See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
-
-=== Widget Blueprint Hooks: Inline Widget Template Removal
-
-https://discord.com/channels/555424930502541343/562722670974599227/1365331282158162040
-
-This feature was removed due to bugs in the editor causing the template configuration system to not appear under many circumstances.
-You may have not even known it existed as a result.
-It's incongruent 
-
-Instead, make one-off widgets that contain the widget you wanted to customize, using that extra layer of widget to set the template options.
-
-=== Simple Construction Script Hook Deprecation
-
-Simple Construction Script Hooks have been deprecated in favor of the new Actor Mixins system.
-
-The data used to set up existing SCS hooks is still visible in the editor,
-but the SCS hooks themselves are not functional,
-and the creation of new SCS hooks is disabled.
-
-For more info, see the xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide].
 
 === FChatMessageStruct Changes
 
@@ -206,6 +167,64 @@ The base-game `mAvailableSchematics` property has been removed from the `FGSchem
 LogAlpakit: Error: [Package SML] LogInit: Display: LogAccessTransformers: Error: Could not resolve property for BlueprintReadWrite /Script/FactoryGame.FGSchematicManager:mAvailableSchematics requested by MAMTips: Could not find property /Script/FactoryGame.FGSchematicManager:mAvailableSchematics
 
 === TODO Additional Changes
+
+[id="BlueprintHookingOverhaul"]
+== Blueprint Hooking Overhaul
+
+[IMPORTANT]
+====
+These changes are currently on the `dev-new-hooking` branch but not the `dev` branch.
+====
+
+=== {cpp} Blueprint Function Hooking Removal
+
+The previous FBlueprintHookManager system (`FBlueprintHookManager::HookBlueprintFunction`) has been replaced with the new Blueprint Hook system.
+The old system cannot coexist with the new system, so you must migrate as part of this update.
+
+Because the {cpp} side is unaware of the structure of assets defined on the blueprint side,
+{cpp}-implemented blueprint hooks were always in a messy and brittle state
+of requiring lots of reflection and hardcoded assumptions to work.
+The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
+
+The new system removes the middleman by having blueprint hooks defined and implemented on the asset side,
+giving them full knowledge of asset structure.
+It can also do matching instead of just specifying an instruction index, and can insert the hook before/after/replacing the existing statement.
+
+See xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
+
+=== Bind on BPFunction Node Removal
+
+The Bind on BPFunction node offered by the old hooking system has been removed.
+
+The old system was exceedingly limited in that you could never get function parameters or influence return values
+- you only had access to the object instance calling the function.
+The new system allows you to get the function parameters and modify the function behavior like was already possible with hooks implemented in {cpp} in the old system.
+
+Instead of a Bind on BPFunction node, move the event and hook definition to a Blueprint Hook asset.
+This process is covered in the xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide].
+
+=== Widget Blueprint Hooks: Inline Widget Template Removal
+
+This feature was removed due to bugs in the editor causing the template configuration system to not appear under many circumstances.
+You may have not even known it existed as a result.
+
+Instead of the inline template, make one-off widgets that contain the widget you wanted to customize, using that extra 'layer of widget' to set the template options.
+
+=== Simple Construction Script Hook Removal
+
+Simple Construction Script Hooks have been removed in favor of the new Actor Mixins system.
+
+The data used to set up existing SCS hooks is still visible in the editor,
+but the SCS hooks themselves are not functional,
+and the creation of new SCS hooks is disabled.
+
+For more info, see the xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide].
+
+[IMPORTANT]
+====
+Some devs have reported issues with Actor Mixins applying on level streamed actors.
+Please report any issues you encounter with Actor Mixins on the Discord.
+====
 
 == Complete Changelog
 
