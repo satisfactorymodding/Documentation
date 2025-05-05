@@ -35,7 +35,7 @@ exclude = [
     # 403s despite being valid page, we should try to get this working somehow, since these links can change without warning
     "https://docs.unrealengine.com/",
     "https://dev.epicgames.com/",
-    "https://www.unrealengine.com/en-US/blog/",
+    "^https://www.unrealengine.com/en-US/blog/.*",
     # Times out despite being valid
     "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1",
     # Pages often time out and Shouldn't™ ever get deleted anyways
