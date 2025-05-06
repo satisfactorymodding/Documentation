@@ -67,6 +67,7 @@ Read more about it on the xref:Development/ModLoader/BlueprintHooks.adoc#Viewing
 ExampleMod has been enhanced with additional examples:
 
 - TODO Persistent storage of per-player data in multiplayer
+- Custom recipe-based production building (TODO more details, test it in-game)
 
 == Notable Fixes
 

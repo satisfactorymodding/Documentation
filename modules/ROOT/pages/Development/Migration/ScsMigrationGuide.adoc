@@ -18,6 +18,11 @@ image::Development/UpdatingGuides/OldScsHook.png[Existing SCS Hook]
 
 New SCS Hooks cannot be made, but old ones will remain so you can use them when migrating to Mixins.
 
+====
+TODO A bug in the SCS Hook deprecation approach means data from old SCS Hooks gets removed on save.
+Until this is fixed, look at past git commits of your mod to retrieve the old SCS Hook data.
+====
+
 From this old information we get:
 
 - Actor being attached to
