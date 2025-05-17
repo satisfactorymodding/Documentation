@@ -5,7 +5,7 @@
 This page is in the process of being updated.
 ====
 
-In order to get started with C++ modding, you should first begin by performing the setup the project for a Blueprint-based modding project, as shown in the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
+In order to get started with C++ modding, you should first follow the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
 This guide assumes that you have already installed all required dependencies and followed the setup process described there.
 
 == Background Information
@@ -49,29 +49,40 @@ Example uses cases include:
 - Adding external .lib files
 - Calculating information (such as build ID) from the state of the file system
 
-== Using the Alpakit Template
+== Creating a {cpp} Mod Skeleton
 
-The Alpakit Create Mod wizard contains a template
-that creates most of the files mentioned in the below sections automatically.
+There are multiple approaches you can use to create a {cpp} mod.
+They are presented below in order of ease of use.
+
+Regardless of the option you chose,
+consider reading the link:#CreateCppMod_Manual[Creating the Mod-Module From Scratch] section
+to get a better understanding of the purpose of the files involved in a {cpp} mod.
+
+[id="CreateCppMod_AlpakitTemplate"]
+=== Option 1: Using the Alpakit Template
+
+The Alpakit Create Mod wizard can automatically create a blank {cpp} mod for you.
 You can learn more about the wizard on the
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module] page.
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_unreal_plugin_creation[Plugin Setup and Game World Module] page.
+Select the "{cpp} and Blueprint" template.
 
-If you used the template to create your mod
-you can advance to the link:#AddClass[Adding New Classes] section of this page,
-but you may still want to read the manual approach below for additional context of what files the template handled for you.
+After using the wizard, advance to the link:#AddClass[Adding New Classes] section of this page.
 
-[id="ManualAddModule"]
-== Adding a {cpp} Module to an Existing Mod
+[id="CreateCppMod_AlpakitConvert"]
+=== Option 2: Alpakit "Convert to C++ & Blueprint Mod" on Existing Blueprint Mod
 
-If you're adding a module to an existing mod,
-consider temporarily moving your mod out of the project
-(so you can use the template to create a 'new' mod under the same Mod Reference as your mod),
-then closing the editor and moving your pre-existing mod files into the new template file structure.
+If you already have an existing blueprint mod that you'd like to add {cpp} to,
+open the Alpakit Edit Mod dialog for the mod from the Alpakit Dev window and click the "Convert to C++ & Blueprint Mod" button.
+This will apply the Alpakit {cpp} template's files to your existing mod.
 
-If you don't want to do that, or don't want to use the template,
-you'll have to add the module manually.
+After using the button, close the editor,
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
+and build for the Development Editor target so your mod's new {cpp} module is recognized by the editor.
 
-=== Creating the Mod-Module From Scratch
+Next, advance to the link:#AddClass[Adding New Classes] section of this page.
+
+[id="CreateCppMod_Manual"]
+=== Option 3: Creating the Mod-Module From Scratch
 
 Before you can add {cpp} code to your mod you'll have to create a Module build configuration file.
 
