@@ -47,7 +47,7 @@ link:#BlueprintHookingOverhaul[Blueprint Hooking Overhaul] heading.
 
 === Actor Mixins
 
-Actor Mixins are a special kind of Blueprint Hook have replaces SCS hooks 
+Actor Mixins are a special kind of Blueprint Hook that replaces the SCS hooks system.
 
 TODO, currently on `dev-new-hooking` branch.
 
@@ -66,8 +66,12 @@ Read more about it on the xref:Development/ModLoader/BlueprintHooks.adoc#Viewing
 
 ExampleMod has been enhanced with additional examples:
 
-- TODO Persistent storage of per-player data in multiplayer
-- Custom recipe-based production building (TODO more details, test it in-game)
+* Persistent storage of per-player data in multiplayer
+** See `ExampleMod_PerPlayerDataMixin` and `ExampleModPlayerDataComponent`
+* Custom recipe-based production building
+** Requires no custom logic to function
+** Has 1 solid and 1 fluid input port, 3 solid output ports
+** See `Build_ExampleRecipeBasedBuilding`
 
 === Alpakit Mod Sorting
 
