@@ -54,3 +54,28 @@ xref:Development/ModLoader/ModModules.adoc[Game Instance Module] to be applied i
 Create a Mod Game Instance Module if you don't already have one and add your new Mixin to the "Blueprint Hooks" array.
 
 image::Development/ModLoader/ActorMixins/RegisterMixin.png[Register Mixin to Game Instance Module]
+
+== Limitations and Workarounds
+
+=== Blueprint Actors Only
+
+The Blueprint Hooks system only works on blueprint-implemented content.
+As the Actor Mixin system is an extension of the blueprint hooks system,
+it only works on blueprint-implemented actors.
+This rarely causes problems as most actors in Satisfactory are blueprint actors backed by {cpp} actor classes.
+
+Notable actors that are not blueprint implemented include:
+
+- The dropped items that spawn as loot around Drop Pods
+
+The closest workaround for {cpp} actors would be hooking begin play,
+although that is no longer using the Mixin system.
+
+=== Level Actors and Saved Data
+
+Actors that are spawned and streamed with the level required special handling interally to work with the actor mixin system.
+As a consequence of this, SaveGame properties on components added via Mixins to level actors will not be loaded.
+
+To work around this, save this data on something else saved instead, such as a Mod Subsystem.
+Data could be associated with each component via a map of soft object references to data structs.
+Using a soft reference is important here as the object could potentially be unloaded, leading to null keys in the map.
