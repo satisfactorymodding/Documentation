@@ -303,5 +303,5 @@ _Notable Satisfactory Features Used:_
 
 _Notable Mod Loader Features Used:_
 
-* Simple Construction Script (SCS) Hooks
+* Actor Mixins
 ** Used to spawn an additional actor component on sign placement holograms (the upwards facing arrow)

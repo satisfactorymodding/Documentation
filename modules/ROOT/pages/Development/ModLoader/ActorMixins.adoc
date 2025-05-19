@@ -8,43 +8,56 @@ The contents of this page will change frequently!
 
 Actor Mixins are an extension of the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hook System]
 designed to allow adding extra functionality to Unreal Actors.
-
-TODO
-
-https://discord.com/channels/555424930502541343/562722670974599227/1359689865473687766
+After selecting an actor class to base the Mixin off of,
+you are presented with a blueprint that looks as if it was the actor itself.
+From there you can add actor components or set up Blueprint Hooks to call functions you define.
 
 == Creating an Actor Mixin
 
-Creating a Mixin (formerly known as a SCS Hook) is similar to creating a Blueprint Hook.
+Creating a Mixin is similar to creating a Blueprint Hook.
 
 Within the Editor, create a new Blueprint of the type "Blueprint Mixin"
 
 image::Development/ModLoader/ActorMixins/CreateMixinAsset.png[]
 
 When creating it you will be given a prompt to choose which Actor to add the Mixin to.
-Note that unlike Blueprint Hook assets, each Mixin asset can only have hooks for a single Actor class.
 
 image::Development/ModLoader/ActorMixins/ChooseActor.png[]
 
-Upon opening the Mixin you will be presented with an empty graph. The components of the Actor you are hooking will also be shown.
+== Adding Components
 
-TODO can you add new components here and have them be added to the actor?
+Upon opening the Mixin you will be presented with an empty graph.
+The components of the actor you are hooking will also be shown and use the Viewport tab to visualize them.
+
+You can add additional components attached to anything in the actor's hierarchy.
+They will appear with green text to distinguish them from the original actor's components.
 
 image::Development/ModLoader/ActorMixins/Components.png[]
 
-There are a few functions you can override.
+== Adding Logic
 
-TODO what if you want to override functions from the actor? presumably use the hook graph?
+By default, Mixins allow you to implement additional code for the Begin Play, Construction Script, End Play, and Tick functions on the actor.
+Note that even though the editor labels these as overrides, they do not cancel the original function on the actor (TODO verify)
+and are instead created as event notes.
 
 image::Development/ModLoader/ActorMixins/Functions.png[]
 
-If you intend to use "Tick" make sure you check "Enable Mixin Tick". 
+image::Development/ModLoader/ActorMixins/AddLogic.png[]
+
+[NOTE]
+====
+If you intend to use "Tick" make sure to check "Enable Mixin Tick" in the mixin class defaults. 
 
 image::Development/ModLoader/ActorMixins/EnableTick.png[]
+====
 
-Add your logic.
+== Adding Hooks
 
-image::Development/ModLoader/ActorMixins/AddLogic.png[]
+Since Mixins are an extension of a Blueprint Hook asset,
+meaning you can open the Hook Graph window to define hooks.
+These hooks always target the actor class you selected when creating the Mixin.
+
+image::Development/ModLoader/BlueprintHooks/ViewHookGraph.png[]
 
 [id="Register"]
 == Registering the Mixin
@@ -79,3 +92,8 @@ As a consequence of this, SaveGame properties on components added via Mixins to 
 To work around this, save this data on something else saved instead, such as a Mod Subsystem.
 Data could be associated with each component via a map of soft object references to data structs.
 Using a soft reference is important here as the object could potentially be unloaded, leading to null keys in the map.
+
+== Examples
+
+Check out ExampleMod and the xref:Development/OpenSourceExamples.adoc[Open Source Examples] page
+for examples of existing hook blueprints.
