@@ -70,3 +70,15 @@ https://dev.epicgames.com/documentation/en-us/unreal-engine/using-timers-in-unre
 == Scripted Actions
 
 https://dev.epicgames.com/documentation/en-us/unreal-engine/scripted-actions-in-unreal-engine?application_version=5.3
+
+== Check if Main Menu
+
+Keep in mind that 99.99% of the time your logic should not require you to do this,
+use something like a game world mod module instead.
+
+```cpp
+if (AFGGameMode* GameMode = World->GetAuthGameMode<AFGGameMode>()) {
+    return GameMode->IsMainMenuGameMode();
+}
+return false;
+```

@@ -2,12 +2,6 @@
 
 [IMPORTANT]
 ====
-This feature slated for SML 3.11 has not been released yet, and is not in the `dev` branch yet!
-The contents of this page will change frequently!
-====
-
-[IMPORTANT]
-====
 Before following this guide you should read the xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] page
 to get an overview of the new system and how to create Mixins using it.
 ====
@@ -17,11 +11,6 @@ Migrating from a SCS Hook to a Mixin is easy because you already have all the in
 image::Development/UpdatingGuides/OldScsHook.png[Existing SCS Hook]
 
 New SCS Hooks cannot be made, but old ones will remain so you can use them when migrating to Mixins.
-
-====
-TODO A bug in the SCS Hook deprecation approach means data from old SCS Hooks gets removed on save.
-Until this is fixed, look at past git commits of your mod to retrieve the old SCS Hook data.
-====
 
 From this old information we get:
 

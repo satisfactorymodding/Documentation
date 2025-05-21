@@ -1,11 +1,5 @@
 = Blueprint Hooking System
 
-[IMPORTANT]
-====
-This feature slated for SML 3.11 has not been released yet, and is not in the `dev` branch yet!
-The contents of this page will change frequently!
-====
-
 SML3.11 introduces a new Blueprint Hooking system that allows modifying the behavior of existing Blueprint functions via custom code.
 Your code can be run before or after the original function and can modify the function's inputs, return values, or cancel its execution.
 It can also replace individual statements or expression within the function logic.
@@ -108,7 +102,7 @@ Hook functions parameters are populated by the hooking system based on
 The first parameter should be the type of Blueprint you are hooking.
 Subsequent parameters can be any variable that is available in the hooked function's context that the hook might want to read/write. If set to be By Ref, the type must exactly match, but otherwise a wider type can be used.
 
-TODO refine this. Parameters will be mapped using their name to:
+Parameters will be mapped using their name to:
 
 * `Target` - special hooking argument that resolves to the object instance the hooked function was running
 * Global Variables - on the object instance
@@ -117,8 +111,6 @@ TODO refine this. Parameters will be mapped using their name to:
 * `HookTarget` - special hooking argument for insertion hooks. Resolves to the expression the hook was pointing to, if it wasn't pointing to a statement
 * `AssignmentTarget` - special hooking argument for insertion hooks on assignment statements. Resolves to the variable on the left side of an assignment statement.
 * `OriginalValue` - special hooking argument that resolves to the original value when using redirect hooks (replacing an expression inside a statement, rather than an insert hook which goes before/replace/after a statement). Required when using a redirect hook.
-
-TODO what does this mean: "you can also write to the argument to write to the variable"? by ref only?
 
 image::Development/ModLoader/BlueprintHooks/NewFunction.png[New Function]
 
@@ -185,5 +177,8 @@ these hooks were always in a messy and brittle state of requiring lots of reflec
 The only way to mitigate this brittleness was to have the hook call a blueprint-implemented function.
 The modern system removes the middleman by having blueprint hooks defined and implemented on the asset side,
 giving them full knowledge of asset structure.
+
+If you'd like to implement the code your hooks run in {cpp},
+write the code in a blueprint function library or similar and call the functions from the hook blueprint.
 
 // TODO mircea discussion about custom thunks?

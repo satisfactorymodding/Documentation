@@ -25,8 +25,6 @@ This section talks about the new features that SML 3.11 brings to the table.
 
 === Blueprint Hooks as Assets
 
-TODO, currently on `dev-new-hooking` branch.
-
 The Blueprint Hooking system has been completely rewritten to offer additional capabilities,
 eliminate the need for brittle hardcoded references,
 and improve the developer experience.
@@ -47,11 +45,10 @@ link:#BlueprintHookingOverhaul[Blueprint Hooking Overhaul] heading.
 
 === Actor Mixins
 
-Actor Mixins are a special kind of Blueprint Hook that replaces the SCS hooks system.
+Actor Mixins are a special kind of Blueprint Hook that replace the SCS hooks system.
+They make adding custom components to actors much easier and more intuitive to work with in the editor.
 
-TODO, currently on `dev-new-hooking` branch.
-
-xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins]
+See the xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] page for more information.
 
 === Launch Argument: DumpBlueprintPatchingResults
 
@@ -180,17 +177,14 @@ TODO
 
 The base-game `mAvailableSchematics` property has been removed from the `FGSchematicManager` class.
 
+```
 LogAlpakit: Error: [Package SML] LogInit: Display: LogAccessTransformers: Error: Could not resolve property for BlueprintReadWrite /Script/FactoryGame.FGSchematicManager:mAvailableSchematics requested by MAMTips: Could not find property /Script/FactoryGame.FGSchematicManager:mAvailableSchematics
+```
 
 === TODO Additional Changes
 
 [id="BlueprintHookingOverhaul"]
 == Blueprint Hooking Overhaul
-
-[IMPORTANT]
-====
-These changes are currently on the `dev-new-hooking` branch but not the `dev` branch.
-====
 
 === {cpp} Blueprint Function Hooking Removal
 
