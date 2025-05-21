@@ -18,6 +18,8 @@ When creating it you will be given a prompt to choose which Actor to add the Mix
 
 image::Development/ModLoader/ActorMixins/ChooseActor.png[]
 
+The suggested asset naming format is `Mixin_ActorOrPurpose_ModReference`.
+
 == Adding Components
 
 Upon opening the Mixin you will be presented with an empty graph.

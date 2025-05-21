@@ -20,6 +20,8 @@ Within the Unreal Editor, create a new Blueprint of the type "Blueprint Hook"
 
 image::Development/ModLoader/BlueprintHooks/CreateBlueprintHook.png[Create Blueprint Hook Asset]
 
+The suggested asset naming format is `Hook_Purpose_ModReference`.
+
 == The Hook Graph
 
 Blueprint Hooks offer a new graph type called the "Hook Graph".
