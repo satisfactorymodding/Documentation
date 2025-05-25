@@ -17,8 +17,8 @@ jobs:
         # https://docs.github.com/en/webhooks/webhook-events-and-payloads#repository_dispatch
         run: |
           echo "## Run Info" >> $GITHUB_STEP_SUMMARY
-          echo "Repository: ${{ github.event.repository.url }}" >> $GITHUB_STEP_SUMMARY
-          echo "Sender: ${{ github.event.sender.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Repository: ${{ github.event.repository.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Sender: ${{ github.event.sender.html_url }}" >> $GITHUB_STEP_SUMMARY
           echo "Branch: \` ${{ github.event.branch }} \`" >> $GITHUB_STEP_SUMMARY
 
       - name: Checkout
