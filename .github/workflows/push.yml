@@ -19,7 +19,7 @@ jobs:
           echo "## Run Info" >> $GITHUB_STEP_SUMMARY
           echo "Repository: ${{ github.event.repository.url }}" >> $GITHUB_STEP_SUMMARY
           echo "Sender: ${{ github.event.sender.url }}" >> $GITHUB_STEP_SUMMARY
-          echo "Branch: ` ${{ github.event.branch }} `" >> $GITHUB_STEP_SUMMARY
+          echo "Branch: \` ${{ github.event.branch }} \`" >> $GITHUB_STEP_SUMMARY
 
       - name: Checkout
         uses: actions/checkout@v4
