@@ -13,13 +13,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Log Subsite Information
-        if: ${{ github.event_name == 'repository_dispatch' }}
+      - name: Log Action Trigger Info
+        # https://docs.github.com/en/webhooks/webhook-events-and-payloads#repository_dispatch
         run: |
-          echo "## Repository Dispatch Info" >> $GITHUB_STEP_SUMMARY
-          echo "Repository: <${{ github.event.repository }}>" >> $GITHUB_STEP_SUMMARY
-          echo "Sender: <${{ github.event.sender }}>" >> $GITHUB_STEP_SUMMARY
-          echo "Branch: <${{ github.event.branch }}>" >> $GITHUB_STEP_SUMMARY
+          echo "## Run Info" >> $GITHUB_STEP_SUMMARY
+          echo "Repository: ${{ github.event.repository.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Sender: ${{ github.event.sender.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "Branch: \` ${{ github.event.branch }} \`" >> $GITHUB_STEP_SUMMARY
 
       - name: Checkout
         uses: actions/checkout@v4
