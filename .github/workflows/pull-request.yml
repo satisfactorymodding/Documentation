@@ -27,12 +27,20 @@ jobs:
       - name: Build
         run: npm run build:ci
 
+      - name: Build Summary Header (Main Docs)
+        run: |
+          echo "# Link Checker (Main Docs)" >> $GITHUB_STEP_SUMMARY
+
       - id: lychee-main
         name: Check for Broken Links (Main Docs)
         uses: lycheeverse/lychee-action@v1
         with:
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
           fail: true
+
+      - name: Build Summary Header (Subsites)
+        run: |
+          echo "# Link Checker (Subsites)" >> $GITHUB_STEP_SUMMARY
 
       - id: lychee-submods
         name: Check for Broken Links (Subsites)

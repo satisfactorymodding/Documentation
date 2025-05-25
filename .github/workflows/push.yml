@@ -13,6 +13,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Log Subsite Information
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "## Repository Dispatch Info" >> $GITHUB_STEP_SUMMARY
+          echo "Repository: <${{ github.event.repository }}>" >> $GITHUB_STEP_SUMMARY
+          echo "Sender: <${{ github.event.sender }}>" >> $GITHUB_STEP_SUMMARY
+          echo "Branch: <${{ github.event.branch }}>" >> $GITHUB_STEP_SUMMARY
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -33,21 +41,37 @@ jobs:
       - name: Build
         run: npm run build:ci
 
+      - name: Build Summary Header (Main Docs)
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          echo "# Link Checker (Main Docs)" >> $GITHUB_STEP_SUMMARY
+
       - id: lychee-main
         name: Check for Broken Links (Main Docs)
         uses: lycheeverse/lychee-action@v1
+        if: ${{ github.event_name == 'push' }}
         with:
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
+          # We want this to fail the build if there are broken links.
+          # Only running this check on event type `push` means subsites can still build even if main docs has broken links.
           fail: true
+
+      - name: Build Summary Header (Subsites)
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "# Link Checker (Subsites)" >> $GITHUB_STEP_SUMMARY
 
       - id: lychee-submods
         name: Check for Broken Links (Subsites)
         uses: lycheeverse/lychee-action@v1
+        if: ${{ github.event_name == 'repository_dispatch' }}
         with:
           # TODO there surely must be a better way to do this
           # exclude the main docs dir from this check to avoid doing work twice
           # maybe use separate lychee configs to use their exclude_path option?
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
+          # Since we have no control over subsite doc contents, we can't let them fail the full build
+          # TODO: notify subsites when their docs have broken links
           fail: false
 
   image:
