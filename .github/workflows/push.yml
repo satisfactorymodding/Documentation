@@ -13,6 +13,14 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Log Subsite Information
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "## Repository Dispatch Info" >> $GITHUB_STEP_SUMMARY
+          echo "Repository: <${{ github.event.repository }}>" >> $GITHUB_STEP_SUMMARY
+          echo "Sender: <${{ github.event.sender }}>" >> $GITHUB_STEP_SUMMARY
+          echo "Branch: <${{ github.event.branch }}>" >> $GITHUB_STEP_SUMMARY
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -36,6 +44,7 @@ jobs:
       - id: lychee-main
         name: Check for Broken Links (Main Docs)
         uses: lycheeverse/lychee-action@v1
+        if: ${{ github.event_name == 'push' }}
         with:
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
           fail: true
@@ -43,6 +52,7 @@ jobs:
       - id: lychee-submods
         name: Check for Broken Links (Subsites)
         uses: lycheeverse/lychee-action@v1
+        if: ${{ github.event_name == 'repository_dispatch' }}
         with:
           # TODO there surely must be a better way to do this
           # exclude the main docs dir from this check to avoid doing work twice
