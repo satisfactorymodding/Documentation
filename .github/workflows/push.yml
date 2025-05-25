@@ -52,10 +52,12 @@ jobs:
         if: ${{ github.event_name == 'push' }}
         with:
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/satisfactory-modding/**/*.html'
+          # We want this to fail the build if there are broken links.
+          # Only running this check on event type `push` means subsites can still build even if main docs has broken links.
           fail: true
 
       - name: Build Summary Header (Subsites)
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'repository_dispatch' }}
         run: |
           echo "# Link Checker (Subsites)" >> $GITHUB_STEP_SUMMARY
 
@@ -68,6 +70,8 @@ jobs:
           # exclude the main docs dir from this check to avoid doing work twice
           # maybe use separate lychee configs to use their exclude_path option?
           args: --verbose --exclude-all-private --no-progress --accept '200,429' --github-token '${{ secrets.LYCHEE_TOKEN }}' './build/site/[!s][!a][!t][!i]*/**/*.html'
+          # Since we have no control over subsite doc contents, we can't let them fail the full build
+          # TODO: notify subsites when their docs have broken links
           fail: false
 
   image:
