@@ -16,7 +16,11 @@ check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that 
 
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *SML v3.10.0* version of the docs.
+This is the *archived v3.10.0* version of the docs.
+
+If you want to develop mods for a newer release,
+you should follow the
+link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
 To develop for 3.10.0, clone the `v3.10.0` tag.
 ====
