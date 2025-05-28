@@ -272,6 +272,16 @@ Macros will return a delegate that can be used with the
 `UNSUBSCRIBE_METHOD` or `UNSUBSCRIBE_UOBJECT_METHOD` macro respectively
 in order to unsubscribe from the function.
 
+[id="BpFunctionHooks"]
+== Blueprint Function Hooks
+
+Hooking Blueprint-implemented functions from {cpp} is no longer supported as of SML 3.11.0
+for the reasons described xref:Development/UpdatingFromSml310.adoc#BlueprintHookingOverhaul_CppBpHookingRemoval[here].
+Use the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hooking System] instead.
+
+If you'd like to implement the code your hooks run in {cpp},
+write the code in a blueprint function library or similar and call the functions from the hook blueprint.
+
 == Protected/Private Function Hooking
 
 If the function you are attempting to hook is protected or private to that specific class, you must use the `friend` declaration.
