@@ -1,0 +1,41 @@
+= ExampleMod Feature List
+
+[NOTE]
+====
+You have found a hidden docs page!
+
+This page is still a work in progress.
+
+If you have any feedback, please let us know in the Discord.
+====
+
+This page exists to signpost the features demonstrated in the Starter Project's ExampleMod.
+It lists every change the mod implements, where to find it in the mod's code, and links to relevant documentation for that feature.
+
+** Menu World Module - Adds a power slug to the main menu.
+** Game World Module - Registers recipes and items
+*** Adds a milestone that unlocks items and recipes
+** Sub Game World Module: Class Default Object edit example
+*** Adds recipe to existing milestone
+
+* Custom resource
+
+* Custom Game Levels/Maps
+** Drop Pods, Somersloop/Mercer Sphere shrines
+** Gas rocks
+** Explodable rocks
+** Foliage
+** Water
+** Ore Nodes, Oil Nodes, Fracking Nodes
+** Deposits/Clusters
+
+* Mod Configuration
+* Mod Session Settings
+
+* Chat commands
+* Persistent string value stored per-player
+
+* Custom recipe-based production building
+* Decorative building
+* Item counter building with custom blueprint logic
+** Custom building UI
