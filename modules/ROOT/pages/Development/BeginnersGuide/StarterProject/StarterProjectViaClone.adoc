@@ -14,6 +14,12 @@ check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that 
 
 == What Branch to Clone
 
+====
+If you are looking to develop mods for Update 1.0,
+follow the link:https://docs.ficsit.app/satisfactory-modding/v3.10.0/index.html[SML v3.10.0] documentation instead.
+However, we strongly suggest developing mods for Update 1.1 instead as it will be released to the stable branch on June 10th.
+====
+
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
 This is the *latest stable* version of the docs.
