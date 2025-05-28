@@ -164,6 +164,7 @@ The base-game FChatMessageStruct has changed in the following ways:
 [id="BlueprintHookingOverhaul"]
 == Blueprint Hooking Overhaul
 
+[id="BlueprintHookingOverhaul_CppBpHookingRemoval"]
 === {cpp} Blueprint Function Hooking Removal
 
 The previous FBlueprintHookManager system (`FBlueprintHookManager::HookBlueprintFunction`) has been replaced with the new Blueprint Hook system.

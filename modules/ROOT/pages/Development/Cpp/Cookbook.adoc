@@ -82,3 +82,14 @@ if (AFGGameMode* GameMode = World->GetAuthGameMode<AFGGameMode>()) {
 }
 return false;
 ```
+
+== Lightweight Buildable Ref Struct Data Access
+
+https://discord.com/channels/555424930502541343/862002356626128907/1377079724484067469
+
+```cpp
+const FRuntimeBuildableInstanceData* RuntimeData = Ref.ResolveBuildableInstanceData();
+const FBuildableBeamLightweightData* beamData = RuntimeData->TypeSpecificData.GetValuePtr<FBuildableBeamLightweightData>();
+float length = beamData->BeamLength;
+return length;
+```
