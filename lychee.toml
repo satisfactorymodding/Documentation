@@ -42,7 +42,9 @@ exclude = [
     # Pages often time out and Shouldn't™ ever get deleted anyways
     "https://web.archive.org/web/",
     # Cloudflare checks this, unlikely to be deleted
-    "^https://superuser.com/.*"
+    "^https://superuser.com/.*",
+    # Temporarily allow link to 3.10 docs that won't exist till PR is merged. Clean this up as soon as 3.10 is stable.
+    "https://docs.ficsit.app/satisfactory-modding/v3.10.0/index.html"
 ]
 
 # Exclude these filesystem paths from getting checked.
