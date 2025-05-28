@@ -1,6 +1,7 @@
 = Migrating to Blueprint Hook Assets
 
-Migrating a Blueprint Hook is easy because you already have all the information you need in the old "Bind on BPFunction" node or your old {cpp} hook macro.
+Migrating a pre-SML3.11 blueprint hook to the new Hook Asset system is relatively straightforward
+because you already have all the information you need in the old "Bind on BPFunction" node or your old {cpp} hook macro.
 
 image::Development/UpdatingGuides/DeadBindOnBpFuncNode.png[Old Bind on BPFunction Node]
 

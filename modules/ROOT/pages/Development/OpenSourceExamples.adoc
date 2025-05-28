@@ -1,9 +1,5 @@
 = Open Source Examples
 
-====
-TODO SCS hooks -> Actor Mixins, Blueprint Hooks
-====
-
 It's impossible for this documentation to cover every aspect of making Satisfactory mods.
 However, there are quite a few open-source mods you can download and check out the code of
 to learn how they accomplish certain behaviors or features.
@@ -25,6 +21,12 @@ Get started by following the xref:Development/BeginnersGuide/CreateGitRepo.adoc[
 This page is a continual work in progress.
 Are you aware of an open-source mod to list here?
 Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.
+====
+
+[NOTE]
+====
+This page was created before the new Actor Mixin and Blueprint Hook systems.
+Entries may still refer to the old SCS Hook system until they are updated
 ====
 
 == MAM Enhancer

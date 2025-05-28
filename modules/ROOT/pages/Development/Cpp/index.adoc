@@ -24,7 +24,7 @@ Reading the article is also highly recommended.
 
 == Requirements
 
-Well, since this is a very advanced topic, we recommend you to learn {cpp}
+Since this is a very advanced topic, we recommend you to learn {cpp}
 and {cpp} for Unreal Engine first.
 
 We have compiled a list of some helpful learning resources xref:Development/index.adoc#_resources[here], but you will probably want to search out some more on your own.

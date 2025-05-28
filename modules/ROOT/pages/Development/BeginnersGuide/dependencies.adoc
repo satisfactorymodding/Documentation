@@ -317,7 +317,7 @@ Accept any User Account Control or Terms and Conditions prompts that appear alon
 
 xref:index.adoc#_satisfactory_mod_manager_aka_smm[Satisfactory Mod Manager]
 is a powerful tool that automatically install the correct versions of mod dependencies for you.
-Basically all end users will be using this tool,
+All end users will be using this tool,
 or its command-line colleague
 xref:ForUsers/DedicatedServerSetup.adoc#GetModManager_CLI[ficsit-cli],
 to play with your mods.

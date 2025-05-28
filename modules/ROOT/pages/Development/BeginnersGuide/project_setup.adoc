@@ -502,7 +502,7 @@ Simply press the `Alpakit!` button next to `Satisfactory Mod Loader (SML)` in th
 Alternatively, you can use
 xref:ForUsers/SatisfactoryModManager.adoc#_installing_mods[the Mod Manager to install SML from a published version].
 
-As a note for the future, using a locally build copy of SML could cause problems
+As a note for the future, using a locally built copy of SML could cause problems
 if your copy of the Starter Project is older than the latest SML release,
 in which case you should
 xref:Development/UpdatingToNewVersions.adoc[update your Starter Project]

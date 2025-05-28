@@ -24,6 +24,8 @@ When prompted for the Mixin Target use the one from the "Actor Class" in your ol
 image::Development/UpdatingGuides/PickMixinTargetClass.png[Pick Mixin Target]
 
 From here you can add any logic you had in your old SCS Component into your new Mixin.
+Make sure to set any of the settings from your SCS hooks' actor component template(s) on the new component(s) you add to the Mixin,
+assuming your editor displays the template, as a now-irrelevant bug prevented the option from being presented in most circumstances.
 
 [WARNING]
 ====

@@ -257,4 +257,10 @@ such as which mapping contexts are currently bound.
 
 == Controllers
 
-TODO SF1.1 controller support info
+// TODO 1.1 controller support info
+
+Satisfactory 1.1 has added support for controllers and restructured many UIs with controller support in mind.
+No community members have experimented with controller support features and reported their findings yet.
+
+Do you have additional information about controller support tips and approaches?
+Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.

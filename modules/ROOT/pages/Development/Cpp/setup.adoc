@@ -1,10 +1,5 @@
 = C++ Setup
 
-[WARNING]
-====
-This page is in the process of being updated.
-====
-
 In order to get started with C++ modding, you should first follow the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
 This guide assumes that you have already installed all required dependencies and followed the setup process described there.
 
