@@ -72,6 +72,12 @@ The Alpakit Edit Mod dialog now allows adding a {cpp} module to an existing blue
 To add the module, click the "Convert to C++ & Blueprint Mod" button in the bottom left of the dialog.
 Note that you must regenerate Visual Studio project files and build for Development Editor before it can be used in the Unreal Editor.
 
+=== Alpakit Versioned Cooked Content
+
+Alpakit now uses Unreal's versioned cooked content feature,
+increasing the robustness of pak mods, potentially allowing them to survive engine updates without needing to be repackaged.
+We do not have a good way to test this behavior, so it may be tweaked further in the future.
+
 == Notable Fixes
 
 - link:https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/357[Fix crash when switching between string session settings]
