@@ -1,12 +1,5 @@
 = Upgrading from SML 3.10.x to 3.11.x
 
-[IMPORTANT]
-====
-SML 3.11 has not been released yet!
-The contents of this page will change frequently!
-Keep your eyes on the `#modding-info-feed` Discord channel to be notified when updates are made.
-====
-
 SML3.11 brings support for Satisfactory 1.1,
 revamps the blueprint hooking system,
 and fixes some bugs.
@@ -57,8 +50,6 @@ SML will dump the bytecode of all blueprint hooked functions to the log in a rel
 
 Read more about it on the xref:Development/ModLoader/BlueprintHooks.adoc#ViewingBlueprintFunctionImplementations[Blueprint Hooks] page.
 
-=== TODO
-
 === Example Mod Improvements
 
 ExampleMod has been enhanced with additional examples:
@@ -83,7 +74,8 @@ Note that you must regenerate Visual Studio project files and build for Developm
 
 == Notable Fixes
 
-- TODO
+- link:https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/357[Fix crash when switching between string session settings]
+- Fix AChatCommandInstance not calling Super in GetLifetimeReplicatedProps
 
 == Not Done Yet
 
@@ -151,8 +143,6 @@ If you see the "GeneratedSoundBanks folder does not seem to be set. Would you li
 xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
 You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
 
-=== TODO other required changes
-
 == Additional Changes
 
 You might not be affected by these changes,
@@ -170,18 +160,6 @@ The base-game FChatMessageStruct has changed in the following ways:
 
 - Now uses FText field `MessageText` instead of FString field `Message`.
 - Now uses field `MessageSenderColor` instead of `CachedColor`.
-
-=== Removal of mAvailableSchematics
-
-TODO
-
-The base-game `mAvailableSchematics` property has been removed from the `FGSchematicManager` class.
-
-```
-LogAlpakit: Error: [Package SML] LogInit: Display: LogAccessTransformers: Error: Could not resolve property for BlueprintReadWrite /Script/FactoryGame.FGSchematicManager:mAvailableSchematics requested by MAMTips: Could not find property /Script/FactoryGame.FGSchematicManager:mAvailableSchematics
-```
-
-=== TODO Additional Changes
 
 [id="BlueprintHookingOverhaul"]
 == Blueprint Hooking Overhaul
