@@ -35,10 +35,50 @@ You will have to follow your server host's own documentation about mod setup.
 If your server host provides (s)ftp access to server files
 the Mod Manager and ficsit-cli _should_ be able to interact with them normally.
 
+
+[id="SupportedHosts"]
+==== Potentially Supported Hosts
+
+Users have reported success using the following server hosts in the past.
+We are not endorsed by them, offer no guarantees that their services will work for you,
+and strongly encourage you to do your own research.
+Be sure to check their documentation to see if they have any special setup instructions.
+
+====
+
+The below list is shuffled each time the page is loaded to avoid bias towards any one host.
+
+// Ugly inline HTML to make randomized list
+// Spacing sucks to keep asciidoc happy
+// https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
+// https://stackoverflow.com/a/46545530
+// cspell:disable
+[pass]
+<ul id="randomHostList"></ul>
+<script>
+const unshuffled = [
+  "Indifferent Broccoli",
+  "Bisect Hosting",
+  "Zap Hosting",
+  "Supercraft",
+  "Nitrado",
+  "GTX Gaming",
+  "Nodecraft",
+  "Gravel Host"
+];
+const shuffled = unshuffled
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value);
+const list = document.getElementById('randomHostList');
+list.innerHTML = shuffled.map(host => `<li>${host}</li>`).join('');
+</script>
+
+// cspell:enable
+====
+
 [id="UnsupportedHosting"]
 ==== Unsupported Hosts
-
-We do not currently maintain a list of server hosts that support modded servers.
 
 ====
 The following 3rd party hosting services are known to **_NOT_ support mods**,

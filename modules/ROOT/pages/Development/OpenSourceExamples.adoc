@@ -23,6 +23,12 @@ Are you aware of an open-source mod to list here?
 Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.
 ====
 
+[NOTE]
+====
+This page was created before the new Actor Mixin and Blueprint Hook systems.
+Entries may still refer to the old SCS Hook system until they are updated
+====
+
 == MAM Enhancer
 
 Modifies the base game MAM, HUB, and AWESOME Shop UI to provide additional information to the player and improve the user experience.
@@ -299,5 +305,5 @@ _Notable Satisfactory Features Used:_
 
 _Notable Mod Loader Features Used:_
 
-* Simple Construction Script (SCS) Hooks
+* Actor Mixins
 ** Used to spawn an additional actor component on sign placement holograms (the upwards facing arrow)

@@ -1,0 +1,19 @@
+= Factory Legs
+
+Satisfactory machinery often includes "legs" to appear sturdily supported even when placed on uneven ground.
+
+To set up legs on modded buildings, your building need two things:
+
+* Named leg sockets defined on your building's mesh
+    ** The https://dev.epicgames.com/documentation/en-us/unreal-engine/using-sockets-with-static-meshes-in-unreal-engine?application_version=5.3[Unreal documentation]
+        covers how to add sockets to your mesh in the editor.
+    ** Socket names must follow the format `foot_xx` where `xx` is a zero-left-padded number starting at `01`.
+        According to CSS, this numbering format is hardcoded internally.
+* FGFactoryLegs actor component on the building actor
+    ** Use the "mLegSocketNames" property to specify the names of the leg sockets used on your mesh.
+
+Note that if your building has a FGFactoryLegs component and its mesh NOT have leg sockets, the building hologram will always report that it's on uneven ground and prevent placement.
+
+image::Satisfactory/FactoryLegs/LegExampleViewport.png[Screenshot of editor viewport visualizing socket names]
+
+image::Satisfactory/FactoryLegs/LegExampleComponent.png[Screenshot of editor displaying FGFactoryLegs component settings]

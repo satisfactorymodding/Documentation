@@ -382,7 +382,7 @@ This error could appear when launching the game.
 You probably don't have Satisfactory Mod Loader installed in your copy of the game,
 and Unreal Engine is telling you it must be installed for your own mod to function.
 You can package a copy of SML yourself using Alpakit following the steps
-xref:Development/BeginnersGuide/project_setup.adoc#_optional_packaging_sml[on the previous page].
+xref:Development/BeginnersGuide/project_setup.adoc#InstallSML[on the previous page].
 
 === Corrupt data found, please verify your installation
 

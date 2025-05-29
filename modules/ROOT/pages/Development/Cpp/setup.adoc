@@ -1,11 +1,6 @@
 = C++ Setup
 
-[WARNING]
-====
-This page is in the process of being updated.
-====
-
-In order to get started with C++ modding, you should first begin by performing the setup the project for a Blueprint-based modding project, as shown in the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
+In order to get started with C++ modding, you should first follow the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
 This guide assumes that you have already installed all required dependencies and followed the setup process described there.
 
 == Background Information
@@ -49,16 +44,42 @@ Example uses cases include:
 - Adding external .lib files
 - Calculating information (such as build ID) from the state of the file system
 
-== Using the Alpakit Template
+== Creating a {cpp} Mod Skeleton
 
-The Alpakit Create Mod wizard contains a template
-that creates most of the files mentioned in the below sections automatically.
+There are multiple approaches you can use to create a {cpp} mod.
+They are presented below in order of ease of use.
+
+Regardless of the option you chose,
+consider reading the link:#CreateCppMod_Manual[Creating the Mod-Module From Scratch] section
+to get a better understanding of the purpose of the files involved in a {cpp} mod.
+
+[id="CreateCppMod_AlpakitTemplate"]
+=== Option 1: Using the Alpakit Template
+
+The Alpakit Create Mod wizard can automatically create a blank {cpp} mod for you.
 You can learn more about the wizard on the
-xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module] page.
+xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#_unreal_plugin_creation[Plugin Setup and Game World Module] page.
+Select the "{cpp} and Blueprint" template.
 
-== Creating the Mod-Module From Scratch
+After using the wizard, advance to the link:#AddClass[Adding New Classes] section of this page.
 
-To begin adding {cpp} code to your mod you'll have to create a Module build configuration file.
+[id="CreateCppMod_AlpakitConvert"]
+=== Option 2: Alpakit "Convert to C++ & Blueprint Mod" on Existing Blueprint Mod
+
+If you already have an existing blueprint mod that you'd like to add {cpp} to,
+open the Alpakit Edit Mod dialog for the mod from the Alpakit Dev window and click the "Convert to C++ & Blueprint Mod" button.
+This will apply the Alpakit {cpp} template's files to your existing mod.
+
+After using the button, close the editor,
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[regenerate Visual Studio project files],
+and build for the Development Editor target so your mod's new {cpp} module is recognized by the editor.
+
+Next, advance to the link:#AddClass[Adding New Classes] section of this page.
+
+[id="CreateCppMod_Manual"]
+=== Option 3: Creating the Mod-Module From Scratch
+
+Before you can add {cpp} code to your mod you'll have to create a Module build configuration file.
 
 Navigate to your mod's folder, `Mods/YourModReference/`, where your 'YourModReference.uplugin' file is located.
 Create a new folder named `Source` and within it a subfolder named `YourModReference`.
@@ -125,7 +146,7 @@ void FYourModReferenceModule::StartupModule() {
 IMPLEMENT_GAME_MODULE(FYourModReferenceModule, YourModReference);
 ----
 
-== Adding the Module to the UPlugin
+=== Adding the Module to the UPlugin
 
 Next we need to tell the Unreal Editor to use our editor module.
 For this open up the `YourModReference.uplugin` file in your plugin root.
@@ -143,40 +164,58 @@ Like this:
 ----
 (the name used was `YourModReference`, make sure you use your own mod reference instead)
 
-== Finishing Up
+=== Finishing Up
 
 Now that you have added your module folder, configuration, source, and added it to the targets,
 you will need to regenerate your Visual Studio project files. Directions on how to do this can be found xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[here].
 
 After this process completes, you should be able to start working on the {cpp} code for your mod.
 
-[WARNING]
-====
-Make always sure you code in a custom created module!
-Don't write your code in the FactoryGame or SML modules by accident.
-====
-
-== Adding a Class
+[id="AddClass"]
+== Adding New Classes
 
 When you want to add a new class, there are two generally safe ways to go about it.
 Note that **you should not create new files from Visual Studio directly** -
 it is not knowledgeable about the project structure
-and will create files in a temporary directory where they won't be detected by UBT.
+and will create files in a temporary directory where they won't be detected by the UBT.
 
-1. Navigate to the folder in which you want to add your class in Windows Explorer
-and create the `.cpp`-File and the `.h`-File manually.
-You can now open them in Visual Studio or a text editor of your choice.
-Fill them with a template code or just directly the class you need.
+[id="AddClass_Editor"]
+=== Using the Unreal Editor Add Class Wizard
 
-2. Open the Unreal editor and open the "tree view" of the content browser.
-Then navigate to the `C++-Classes` root folder and open the folder named with your mod reference.
-Within that folder, right-click into empty space and select `New {cpp}-Class`.
-Then select your desired base class, hit next, and name your class.
-Change the other settings as your desire and finish with `create class`.
+Open your project in the Unreal Editor and use the `Tools` > `New {cpp} Class...` menu option.
+Then select your desired base class (`None` or `Object` if you're not sure yet),
+hit next, and name your class.
+Next to the "Name" field, select your mod's {cpp} module from the dropdown
+to ensure the files are created in the correct location.
+Leave the "Class Type" as `Public` to streamline compatibility with other mods.
+Consider editing the "Path" to utilize subfolders to further organize your files.
+
+.Filled class creation pop-up with mod {cpp} module 'PowerSuit' selected as an example
+image::Cpp/EditorCreateClass.png[Screenshot of unreal editor class creation pop-up]
+
+Finally, select `Create Class` to generate the files and trigger Unreal Engine's live coding rebuild functionality.
+
+Once your mod has at least one {cpp} class its classes folder will appear in Content Browser windows
+assuming you have "Show {cpp} Classes" enabled in your Content Browser settings (cog button menu).
+Right clicking on empty space in one of these folders also allows opening this wizard,
+although it unfortunately does not pre-fill the selected module.
 
 [WARNING]
 ====
-Make sure you select your custom {cpp}-module when using the Unreal editor method of creating a new class file. In this screenshot, the mod reference is 'LightItUp'.
-
-image:Cpp/EditorCreateClass.jpg[image]
+Make sure you always select your mod's Module when creating a class.
+If you write your code in one of the FactoryGame or SML modules by accident,
+it won't be compiled with your mod and it won't work at runtime.
 ====
+
+[id="AddClass_ManualFiles"]
+=== Manually Creating Files
+
+Alternatively, you can manually create the files backing your class.
+This is not recommended as it's very easy to make mistakes with folders, boilerplate code, and includes while doing so.
+
+Navigate to your mod's {cpp} module folder in Windows Explorer
+and create the `.h` and `.cpp` files in the Public and Private folders respectively.
+Then run the
+xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio project files]
+utility to refresh Visual Studio's project structure.
+You can now open them in Visual Studio, or a text editor of your choice.

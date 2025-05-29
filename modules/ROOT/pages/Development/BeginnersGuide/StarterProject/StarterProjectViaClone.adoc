@@ -14,11 +14,27 @@ check out our xref:Development/BeginnersGuide/LearnGit.adoc[mini tutorial] that 
 
 == What Branch to Clone
 
+====
+If you are looking to develop mods for Update 1.0,
+follow the link:https://docs.ficsit.app/satisfactory-modding/v3.10.0/index.html[SML v3.10.0] documentation instead.
+However, we strongly suggest developing mods for Update 1.1 instead as it will be released to the stable branch on June 10th.
+====
+
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *SML v3.10.0* version of the docs.
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
 
-To develop for 3.10.0, clone the `v3.10.0` tag.
+// Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+
+Clone the **`master` branch** to develop a mod for the stable version of SML.
+// You should clone the **`dev` branch** because SML 3.8.? is not released yet.
+
+// You should clone either the **`dev` branch** or the **`master` branch**.
+// Of those two, you probably want whichever branch was pushed to most recently, which you can see
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+
+If you're uncertain about which branch to clone, **ask us on the Discord**.
 ====
 
 https://github.com/satisfactorymodding/SatisfactoryModLoader/[Here]

@@ -127,6 +127,8 @@ image:BeginnersGuide/simpleMod/ShowPluginContentInViewer.png[Show Plugin Content
 * xref:Development/EditorTools/SMLEditor/SMLEditor.adoc[SMLEditor]
 ** Editor-only mod that provides helpful utilities to mod creators, such as a mod configuration screen preview and a Research Tree Editor.
 
+// TODO link to xref:Development/ExampleModDirectory.adoc[ExampleMod Feature List] once done
+
 You should not need to edit any of the provided mod files under normal circumstances.
 
 == Plugins Folder

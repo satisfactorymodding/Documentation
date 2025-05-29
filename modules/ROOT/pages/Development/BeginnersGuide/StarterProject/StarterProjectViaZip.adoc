@@ -8,12 +8,28 @@ or you will have to repeat some of the setup process again.
 
 == What Version to Download
 
+====
+If you are looking to develop mods for Update 1.0,
+follow the link:https://docs.ficsit.app/satisfactory-modding/v3.10.0/index.html[SML v3.10.0] documentation instead.
+However, we strongly suggest developing mods for Update 1.1 instead as it will be released to the stable branch on June 10th.
+====
+
 // When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
 ====
-This is the *SML v3.10.0* version of the docs.
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
 
-To develop for 3.10.0, use this zip:
-https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/tags/v3.10.0.zip
+Download a zip of the **`master` branch** to develop a mod for the stable version of SML
+by clicking https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/master.zip[here].
+
+// Download a zip of the **`dev` branch** (because SML 3.8.? is not released yet)
+// by clicking https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/dev.zip[here].
+
+// You should download a zip either of the **`dev` branch** or the **`master` branch**.
+// Of those two, you probably want whichever branch was pushed to most recently, which you can see
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
+
+If you're uncertain about which branch to download, **ask us on the Discord**.
 ====
 
 == Unzipping the Files

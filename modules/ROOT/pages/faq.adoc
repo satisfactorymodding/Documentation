@@ -1,4 +1,4 @@
-= Frequently Asked Questions
+= Frequently Asked Questions (FAQ)
 
 You can find answers to frequently asked questions on the modding discord (and about modding in general) here.
 
@@ -69,6 +69,19 @@ Moving or reinstalling will not affect your save files.
 
 It varies depending on the mod, but in general, yes, this is totally fine.
 The mod should say on its mod page on ficsit.app if it can't be added to an in-progress game.
+
+[id="FindMissingMods"]
+== Can I find out what mods I was using in a save file if I lost the mod manager profile?
+
+Yes, SML keeps a record of what mods a save file was using, and their versions, within the save header.
+
+The easiest way to see this is to install the link:https://ficsit.app/mod/SML[Satisfactory Mod Loader] mod and try to load the save file again.
+A pop-up will appear with a list of the mods that were used in the save file.
+If the pop-up is too long, the rest of the list will be in the link:#Files_Logs[game's log file].
+
+Alternatively, you can open your save file in a text editor, as the save header modded data is not currently compressed.
+Line 3 will contain a JSON object of the format `{"Version":1,"Mods":[{"Reference":"ModReferenceHere","Name":"Mod User Facing Display Name Here","Version":"SemVerHere"},]}`.
+Keep in mind that large save files can crash some text editors.
 
 [id="MultiplayerSupport"]
 == Do mods work with multiplayer?

@@ -9,17 +9,22 @@ If you're just looking to play Satisfactory with mods, check out how to install 
 
 == Resources
 
-Below is a list of some good resources about making mods for Satisfactory, Unreal Engine, C++ and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
+Below is a list of some good resources about making mods for Satisfactory, Unreal Engine, {cpp} and 3D Modeling. Please contact us if you know of other resources that should be added to this list.
 
 - https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] 
 +
 A good YouTube Channel showing a more in-depth look at features of Unreal Engine (BP only).
 - https://www.youtube.com/c/AlexForsythe[Alex Forsythe]
 +
-A YouTube Channel that covers Unreal concepts (both BP and C++) in detail, including replication.
+A YouTube Channel that covers Unreal concepts (both BP and {cpp}) in detail, including replication.
 - https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g[Virtus Learning Hub]
 +
-A "general" tutorial series channel for UE game development (also covers some C++)
+A "general" tutorial series channel for UE game development (also covers some {cpp})
 - http://academy.unrealengine.com/[Unreal Engine Academy]
 +
 A neat learning platform made by Epic Games for learning Unreal Engine.
+
+=== {cpp}-specific
+
+- link:https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.3[Unreal Engine Documentation: Programming with {cpp}]
+- link:https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.3[Unreal Engine Documentation: Coding Standard]

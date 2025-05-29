@@ -254,3 +254,13 @@ https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/#debugco
 is not available in shipping builds.
 However, the command `showdebug INPUT` is available and displays a reduced set of information,
 such as which mapping contexts are currently bound.
+
+== Controllers
+
+// TODO 1.1 controller support info
+
+Satisfactory 1.1 has added support for controllers and restructured many UIs with controller support in mind.
+No community members have experimented with controller support features and reported their findings yet.
+
+Do you have additional information about controller support tips and approaches?
+Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.

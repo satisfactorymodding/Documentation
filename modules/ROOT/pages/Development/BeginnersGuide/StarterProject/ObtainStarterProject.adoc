@@ -1,7 +1,10 @@
 = Starter Project
 
-The SML development team provides an Unreal project
-that comes pre-installed with Satisfactory Mod Loader,
+The Starter Project is distributed by the Satisfactory Modding team
+as a GitHub repository named "Satisfactory Mod Loader".
+Despite the name, the repository is actually an Unreal Engine project
+that includes the source code of the Satisfactory Mod Loader (as a plugin),
+the game's {cpp} headers,
 placeholder assets for base game content,
 and some useful developer plugins.
 

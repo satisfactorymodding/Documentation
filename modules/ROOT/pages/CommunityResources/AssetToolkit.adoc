@@ -421,12 +421,17 @@ trying to use the UI usually won't fix them!
 Ask for help on the discord.
 
 There are currently numerous crashing issues when using the UI of the Asset Toolkit plugins as opposed to the command line interface.
-Unless you have a specific reason for using the UI,
-you should probably use the command line directions above to dump and generate assets instead.
+Unless you have a very specific reason for using the UI,
+use the command line directions above to dump and generate assets instead.
 ====
 
-[id="UI_Dump"]
-==== Dumping
++++ <details><summary> +++
+Deprecated UI Instructions
++++ </summary><div> +++
+
+// [id="UI_Dump"]
+// ==== Dumping
+*Dumping*
 
 In order to extract the assets to be imported to the editor,
 launch your copy of Satisfactory and open the in-game developer console,
@@ -442,14 +447,16 @@ or use the `...` button to select a specific path.
 Next, select the asset paths you would like to dump, usually `Game/FactoryGame/`,
 and optionally restrict what is exported with the Asset Type Filter dropdown.
 
-Once you're ready, press "Begin Asset Dumping".
+Once you're ready, press `Begin Asset Dumping`.
 This will take some time; go pet a lizard doggo while you wait.
 
-[id="UI_Generate"]
-==== Generating
+// [id="UI_Generate"]
+// ==== Generating
 
-To open the in-editor interface, navigate to Window -> Developer Tools -> Asset Generator.
+*Generating*
+
+To open the in-editor interface, navigate to Tools -> Miscellaneous -> Asset Generator.
 Check all the asset types and asset paths, and uncheck "Public Project",
 otherwise you will generate placeholder assets again.
 
-image:CommunityResources/AssetToolkit/OpenAssetGeneratorUI.png[image]
++++ </div></details> +++
