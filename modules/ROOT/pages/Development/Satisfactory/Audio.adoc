@@ -428,9 +428,89 @@ combobox ranging from 0.0 to 1.0 and multiplying it with the other relevant volu
 Unreal's play sound nodes take volume as a float parameter.
 Follow the steps in the main Volume Options section to combine the relevant volume slider values to obtain the final input volume.
 
-=== Volume with Wwise
+== Creating a new volume slider
 
 The game's master volume slider is automatically applied to any sounds played through Wwise.
-Following other base game volume sliders requires using the respective audio busses on the event.
 
-The RTPC system can be used to factor in arbitrary volume options from other sources.
+You will need to create your own volume slider to be able to control Wwise audio for your mod.
+
+=== Creating the Volume slider data asset
+
+To add a new volume slider to the games user settings you will need to create a new `FGUserSetting` Data Asset
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_UE_CreateDataAsset.png[Wwise_Volume_UE_CreateDataAsset, 700]
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_UE_PickDataAssetClass.png[Wwise_Volume_UE_PickDataAssetClass, 700]
+
+Once the Data Asset is created you will need to set the settings:
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_UE_DataAsset_Settings.png[Wwise_Volume_UE_DataAsset_Settings, 700]
+
+* **Str Id**: The user setting id (Recommend using RTPC.Menu_Volume_<ModName>)
+* **Display Name**: The display name that will appear on the options menu.
+* **Tool Tip**: Give a descriptive tool tip for the slider.
+* **Category Class**: Set this to `USC_Audio`
+* **Sub Category Class**: Set this to relevant sub category (Search for USubC_Audio_)
+* **Menu Priority**: Set this to a high value to not interfer with the games options e.g. 50+
+* **Apply Type**: Set this to `FGUserSettingApplyType_UpdateInstantly`
+* **Value Selector**: Set this to what is presented in the image above.
+* **Manager Type Availability**: Set this to `FGGameUserSettings`
+* **Show In Builds**: Set this to `PublicBuilds`
+
+This will add a slider to the audio options menu. Now you need to bind the slider to the Wwise sounds.
+
+=== Creating the Wwise Audio Bus
+
+Create a new audio bus in Wwise by going to the `Audio` tab.
+Go to `Master-Mixer Hierarchy` -> `Default Work Unit` -> `Master Audio Bus` Right click and `New Child` -> `Audio Bus`
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_Wwise_CreateAudioBus.png[Wwise_Volume_Wwise_CreateAudioBus, 700]
+
+
+Set the name to anything that you want.
+
+Now link the audio bus to the Wwise audio:
+
+Navigate to your audio in Wwise and go to the `General Settings` tab and click the `...` in the `Output Bus` section.
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_Wwise_SelectAudioBus.png[Wwise_Volume_Wwise_SelectAudioBus, 700]
+
+Select the new Audio Bus.
+
+=== Create the RTPC for the Audio Bus
+
+Create a new RTPC in Wwise using the documentation above: link:#_updating_wwise_values_from_your_mod[Updating Wwise Values From Your Mod].
+
+[IMPORTANT]
+====
+Make sure that the RTPC min/max values are 0.0 -> 1.0
+====
+
+Name the RTPC something like `RTPC_<ModName>_Volume`
+
+=== Link the RTPC to the Audio Bus
+
+Go to the `Audio` tab in Wwise and click on the new Audio Bus that you created. Then go to the `RTPC` tab.
+
+Click the first `>>` and select `Bus Volume`
+Click the second `>>` and go to `Game Parameters` then select the newly created RTPC
+
+You should then have the following graph going from 0 to 1
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_Wwise_LinkAudioBus.png[Wwise_Volume_Wwise_LinkAudioBus, 700]
+
+=== Linking the Slider to the RTPC
+
+You will need to create the new RTPC in Unreal Engine:
+
+image:Satisfactory/Wwise/Wwise_UE_RTPC_Create.png[Wwise_UE_RTPC_Create, 700]
+
+Name the RTPC in Unreal Engine exactly the same as what you named in Wwise.
+
+In your `GameWorldModule` as part of the construction stage link the slider to the RTPC using the following:
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_UE_LinkRTPC.png[Wwise_Volume_UE_LinkRTPC, 700]
+
+Once this has been done you should see the volume slider in the audio options:
+
+image:Satisfactory/Wwise/Wwise_Volume/Wwise_Volume_GamePreview.png[Wwise_Volume_GamePreview, 700]
