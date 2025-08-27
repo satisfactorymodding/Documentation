@@ -186,7 +186,7 @@ If you want to develop mods for a newer release,
 you should follow the
 link:https://docs.ficsit.app/satisfactory-modding/latest/index.html[latest docs branch].
 
-To develop for 3.8.0, use this engine version:
+To develop for 3.9.1, use this engine version:
 https://github.com/satisfactorymodding/UnrealEngine/releases/tag/5.3.2-css-66
 ====
 
