@@ -1,0 +1,134 @@
+= Rendering in First Person with Panini Projection (Unreal / Satisfactory)
+
+[abstract]
+== Executive Summary
+
+First-person equipment is rendered in a separate pass, which causes projection mismatches at wide FOVs.
+*Panini Projection* corrects this by aligning equipment with world geometry, but is only effective between around *70–90° FOV*.
+
+Use *Master Materials + Instances* for scalable setups, or direct Panini nodes for quick one-off materials.
+
+== Overview
+
+In Unreal Engine (and Satisfactory), first-person equipment is drawn in a *separate render pass* so tools remain visible and don’t clip into the environment.
+
+The problem: at wide FOVs, standard perspective projection can distort or even hide these meshes because their projection does not match the world’s.
+
+The solution: *Panini Projection*, a special camera projection that reduces edge distortion by “straightening out” the view. This ensures that both the world and first-person meshes use the same projection math.
+
+[NOTE]
+====
+Panini works best in the *70–90° FOV range*, with *90° FOV* being the sweetspot for Satisfactory.
+
+Above 90°, it cannot fully compensate for distortion, leading to stretched or unnatural visuals.
+====
+
+== Why Panini Matters
+
+Without Panini enabled, equipment added by mods may render inconsistently or even disappear at certain angles.
+With Panini, equipment meshes remain aligned with the world and display reliably in front of the camera.
+
+.Figure: Projection comparison (with vs without Panini at ~90° FOV)
+
+[cols="a,a", frame=none, grid=none]
+|===
+| image::Development/3DModeling/Panini_off.png[Panini OFF, title=Panini Disabled]
+| image::Development/3DModeling/Panini_on.png[Panini ON, title=Panini Enabled]
+|===
+
+== Why It Breaks Above 90° FOV
+
+Panini in Unreal is not a true projection matrix replacement — it’s a *post-process remap* applied after the camera renders the scene with standard perspective projection.
+
+Key reasons it aligns at 90° but breaks above:
+
+- **Unreal’s camera is perspective-based**
+  The engine always uses a perspective projection matrix. Panini only remaps the output, so it’s not a full replacement camera type. Around 90°, Panini’s math lines up closely with perspective, so equipment and world still align.
+
+- **Non-linear distortion above 90°**
+  Past ~90°, Panini starts stretching differently on horizontal and vertical axes.
+  Elements rendered in screen-space (equipment meshes, HUD overlays, etc.) assume a linear perspective projection — they diverge once Panini remaps the world differently.
+
+- **Separate equipment FOV**
+  In Satisfactory (and most UE4/UE5 FPS setups), equipment is rendered with its own “viewmodel FOV” (often hardcoded near 90) decoupled from world FOV.
+  At high FOVs, the world is remapped by Panini, but the equipment is not — so the alignment breaks.
+
+- **Why other demos/games look fine**
+  In Unreal demos/games where everything uses the same projection, Panini looks correct even above 90.
+  In Satisfactory, equipment rendering is a *different pipeline*, so unless Panini is applied there too, it will always diverge.
+
+[IMPORTANT]
+====
+If you want Panini to work reliably above 90° FOV, you must either:
+
+- Apply the same Panini remap to the *equipment viewmodel render pass*, or
+- Force equipment to render with the *world FOV* instead of its fixed viewmodel FOV.
+====
+
+.Figure: FOV range comparison (70°, 90°, 120° with Panini)
+image::Development/3DModeling/70_fov.png[Panini effectiveness at 70 FOV, title=70 FOV]
+image::Development/3DModeling/90_fov.png[Panini effectiveness at 90 FOV, title=90 FOV]
+image::Development/3DModeling/120_fov.png[Panini effectiveness at 120 FOV, title=120 FOV]
+
+== Enabling Panini Projection on Equipment Materials
+
+Panini can be integrated into materials in two main ways, depending on whether your material uses *Material Attributes*.
+
+=== 1. Using `Apply Panini Projection` (Material Attributes workflow)
+
+. In your Material settings, enable *Use Material Attributes*.
+. Use `Make Material Attributes` to gather outputs.+
+. Feed the result into `Apply Panini Projection`.
+. Add a *Static Switch* to toggle Panini on/off.
+. Connect the `Apply Panini Projection` to the *Static Switch True* input.
+. Connect the result of `Make Material Attributes` to the *Static Switch False* input.
+. Connect the result to the Material’s *Material Attributes* output.
+
+[IMPORTANT]
+====
+This approach is recommended for *Master Materials*.
+You can then create *Material Instances* and toggle Panini per-instance without recompiling the shader.
+====
+
+=== 2. Using `Panini Projection` directly (non-attributes workflow)
+
+. If not using Material Attributes, call `Panini Projection` directly.
+. Connect the parameters: *d*, *s*, *Screen Space Scale*, and *WPO*.
+. Add a *Static Switch* to toggle Panini on/off.
+. Feed the result of the `Panini Projection` into the *Static Switch True* input.
+. Plug a `Texture Coordinate` Node into the *Static Switch False* input.
+. Plug the result into the respective `Texture Sample` *UV* input.
+. Route the output to your material logic (e.g., Emissive/Color/Roughness, CustomUV).
+
+[TIP]
+====
+This approach is simpler for *one-off materials* but less reusable across multiple items.
+====
+
+image::Development/3DModeling/Apply_Panini.png[Apply Panini, title=Apply Panini]
+image::Development/3DModeling/Direct_Panini.png[Direct Panini, title=Direct Panini]
+
+=== Choosing the Right Approach
+
+[cols="1,1", options="header", stripes=even]
+|===
+| Use Case | Recommended Workflow
+| Multiple equipment items, flexible toggling | Master Material + Instances (Apply Panini Projection)
+| Single-use or test setups | Direct Panini Projection node
+|===
+
+== Best Practices
+
+[TIP]
+====
+Use *Master Materials* whenever possible.
+Defining Panini Projection once in a Master Material ensures all derived *Material Instances* inherit it automatically.
+This reduces duplication, prevents errors, and ensures new equipment works correctly by default.
+====
+
+[NOTE]
+====
+Remember that Panini Projection only improves visuals within *70–90° FOV*.
+
+Do not rely on it for extreme wide-angle setups.
+====

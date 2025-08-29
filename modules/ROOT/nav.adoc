@@ -54,6 +54,7 @@
         *** xref:Development/Modeling/setup.adoc[Workflow Setup]
         *** xref:Development/Modeling/MainMaterials.adoc[Main Materials]
         *** xref:Development/Modeling/style.adoc[Style Guide]
+        *** xref:Development/Modeling/PaniniProjection.adoc[Panini Projection]
     ** xref:Development/UnrealEngine/index.adoc[Unreal Engine]
         *** xref:Development/UnrealEngine/UnrealLearningResources.adoc[Unreal Learning Resources]
         *** xref:Development/UnrealEngine/CoreRedirect.adoc[Core Redirects]
