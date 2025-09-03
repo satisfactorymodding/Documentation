@@ -104,7 +104,7 @@ Press `OK` to save your changes.
 
 image:ExtractingGameFiles/FModelModelSettings.png[FModel Model Export Settings]
 
-[WARNING] 
+[WARNING]
 ====
 Any other changes made are at user discretion, and dependent on level of knowledge.
 ====
@@ -245,7 +245,7 @@ go back to grab the `wwnames.db3` from the GitHub release and put it in the same
 // cspell:ignore txtp
 Next, select `Generate TXTP` which will create a folder in the same directory as the bnk file
 containing a txtp file for the event.
-// Need the + symbols to make sure Asciidoc doesn't see them as attributes 
+// Need the + symbols to make sure Asciidoc doesn't see them as attributes
 (ex. `+Play_EQ_JetPack_Activate {s} {m}.txtp+`)
 
 Open the txtp file in a text editor of your choice.
@@ -272,6 +272,14 @@ After optionally previewing the sound file in the player,
 right click on it in the player's playlist and select Save,
 prompting a system dialog to select a save location.
 
+[TIP]
+====
+You can also select the entire `Media` folder to extract all sound files at once. It will export the Audio Files as `.wem` files.
+This will be useful if you need to extract a large number of sounds quickly and works great with the Script mentioned further down.
+
+Be aware though that this method will extract all sounds, including those you may not need, and can result in file sizes exceeding 5 GB. If you only need specific sounds, it's recommended to extract them individually.
+====
+
 [WARNING]
 ====
 Some users have reported issues with FModel's audio player,
@@ -290,17 +298,36 @@ if that didn't work (mod developer discord role required to view).
 === Bulk Audio Renamer
 
 Community member MrCheese has created a python script that enables mass renaming of exported wem files to their associated named bnk files.
-If you decide to extract a large number of sounds, this script can save you a lot of time.
-
-To use it:
+This has since been enhanced by community member Rovetown to fully automate the process. If you decide to extract a large number of sounds, this script can save you a lot of time.
 
 1. Create a folder somewhere named `SatisfactoryAudioRenamer`.
 2. Create a subfolder named `out`
 3. Create a subfolder named `txtp`
-4. link:{attachmentsdir}/Development/SatisfactoryAudioRenamer/convert.py[Download this python file (convert.py)]
-   and place it in the SatisfactoryAudioRenamer folder
-5. Move all the txtp files that wwiser generated earlier to the txtp subfolder
+4. Create a subfolder inside `txtp` named `wem`
+5. Place the extracted `.wem` files (including their parent folder if you decided to extract the full folder structure) into the `wem` subfolder.
+6. link:{attachmentsdir}/Development/SatisfactoryAudioRenamer/convert.py[Download this python file (convert.py)]
+   and place it in the SatisfactoryAudioRenamer folder.
+7. Be sure to change the `VGMSTREAM` Path inside the downloaded `converter.py` to the location of your `vgmstream-cli.exe`
+8. Move all the txtp files that wwiser generated earlier to the txtp subfolder
    and run `python .\convert.py` from a terminal in that SatisfactoryAudioRenamer folder.
+9. You now have the renamed `.wav` files in the `out` subfolder (and in their original folder structure).
+
+[NOTE]
+====
+The Script will try and rerun if it encounters any errors.
+However, it may not always succeed in properly renaming all files.
+This can be due to several reasons, so if you encounter this, feel free to ask for help in the discord.
+
+If you get any Errors regarding Python Libraries, make sure you have all the required dependencies installed.
+These are:
+
+* os
+* subprocess
+* pathlib
+* shutil
+* logging
+
+====
 
 == Generating a Complete Starter Project
 
