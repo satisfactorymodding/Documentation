@@ -1,0 +1,159 @@
+= Setting Up The Modding Environment on Linux
+
+The Satisfactory Modding Environment is also available for you to develop if you are on a Linux-based platform.
+
+NOTE: This is for setting up the Modding Environment on Linux. If you are on Windows, please follow the guide xref:Development/BeginnersGuide/dependencies.adoc[here].
+
+== Prerequisites
+
+Before we can begin, we must install the following packages with our distro's package manager.
+On Debian-based systems such as Ubuntu, this would be `apt install`, or `dnf install` on Fedora.
+
+* `git` (For version control)
+* `msitools` (For `msiextract`, used by `vsdownload.py` of msvc-wine)
+* `tar` and `zstd` (For decompressing the engine archive)
+* `dos2unix` (For the Wwise patches, used by the SML project)
+
+For example, on Fedora this would be
+
+[source,bash]
+----
+dnf install git msitools tar zstd dos2unix`.
+----
+
+== Engine Setup
+
+Now we can begin setting up our custom version of Unreal Engine.
+
+=== Download MSVC
+
+First, we must install MSVC using msvc-wine:
+
+Copy and paste this into your terminal, but be sure to first swap `<msvc_install_dir>` to the directory where you want to install MSVC, then run it.
+This will automatically clone the msvc-wine repository and use it to download the correct version if MSVC for the editor to use.
+
+[source,bash]
+----
+git clone --branch ue-patches https://github.com/mircearoata/msvc-wine.git
+
+cd msvc-wine
+
+./vsdownload.py --accept-license --dest "<msvc_install_dir>" --msvc-version "17.4" --sdk-version "10.0.18362" --channel "release.ltsc.17.4"
+
+./install.sh "<msvc_install_dir>"
+----
+
+Next, you'll need to edit either `/etc/environment` or `~/.profile` with a tool such as Neovim, to set the `UE_WINE_MSVC` environment variable.
+
+For example: `UE_WINE_MSVC="<msvc_install_dir>"` (make sure to surround the directory in quotes)
+
+Then you may need to log out and back in, or restart your PC for the change to take effect.
+
+=== Download the engine
+
+You can do this one of two ways: Either build the engine from source, or download an already built archive from the GitHub CI.
+
+==== From Source
+
+Clone the `5.3.2-CSS-linux` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware)
+
+==== Download an archive
+
+Currently, Mircea is hosting build archives for us at https://files.mircearoata.me/UE_Linux/, but this will be changed over to the GitHub CI eventually.
+Click on the latest commit link, and download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files one at a time.
+
+Once those are done downloading, create a folder called `UnrealEngineCSS` or similar, and move the archives into it.
+Then run the command below to extract them:
+
+[source,bash]
+----
+cat UnrealEngine-CSS-Editor-Linux.tar.zst.* | zstd -d | tar -xf -
+----
+
+=== Register the engine
+
+Register the engine to your system by running this command, replacing `<ue_dir>` with the path to your engine installation:
+
+[source,bash]
+----
+<ue_dir>/Engine/Binaries/Linux/UnrealVersionSelector -register -unattended
+----
+
+Then, edit the file `<ue_dir>/Engine/Build/InstalledBuild.txt` to remove the `-linux` suffix from the version name if it is present.
+
+== Project Setup
+
+Clone or download the starter project from https://github.com/satisfactorymodding/SatisfactoryModLoader as normal.
+
+=== Wwise setup
+
+Download the latest build of wwise-cli from https://github.com/mircearoata/wwise-cli/releases/latest.
+
+Run this command in your terminal to download the required version of Wwise:
+
+[source,bash]
+----
+./wwise-cli download --sdk-version "2023.1.3.8471" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms=
+----
+
+When that's done, run this command to integrate it into the starter project, replacing `<project_dir>` with the path to your project:
+
+[source,bash]
+----
+./wwise-cli integrate-ue --integration-version "2023.1.3.2970" --project "<project_dir>/FactoryGame.uproject"
+----
+
+=== IDE setup
+
+Now we must set up our IDE for building the starter project, and for developing with C++.
+Since Visual Studio isn't available for Linux, you can instead use Rider or VS Code.
+
+==== Rider
+
+Currently, Rider doesn't show the `Mods` directory when opening the .uproject, so you must generate a Visual Studio Solution to open it.
+However, you will also need a Makefile to build the project.
+Run the following commands, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
+
+To generate the VS Solution:
+
+[source,bash]
+----
+<ue_dir>/Engine/Build/BatchFiles/Linux/Build.sh -projectfiles -project="<project_dir>/FactoryGame.uproject" -game -2022
+----
+
+To create a Makefile:
+
+[source,bash]
+----
+<ue_dir>/Engine/Build/BatchFiles/Linux/Build.sh -projectfiles -project="<project_dir>/FactoryGame.uproject" -game -Makefile
+----
+
+Open the `FactoryGame.sln` file in Rider.
+In the Rider settings, under `Toolset and Build`, make sure `.NET CLI executable path` is set to `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/6.0.302/linux/dotnet`
+
+==== VS Code
+
+To generate a code-workspace file, run the following command, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
+
+[source,bash]
+----
+<ue_dir>/Engine/Build/BatchFiles/Linux/Build.sh -projectfiles -project="<project_dir>/FactoryGame.uproject" -game -VSCode
+----
+
+Open the `.code-workspace` file, **not** the folder.
+In the workspace settings, add `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/6.0.302/linux` to `omnisharp.dotNetCliPaths`
+
+=== Other
+
+For other IDEs (not tested by us), you can view this page for command line options to generate project files for various other IDEs: https://github.com/satisfactorymodding/UnrealEngine/blob/5.3.2-CSS/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateProjectFilesMode.cs#L26-L38
+
+== Compile the project
+
+* For Rider, open the Terminal and run `make FactoryEditor`
+* For VS Code, press `Ctrl + Shift + P`, then select `Run Task`, then `FactoryEditor Linux Development Build`
+
+Then wait for the build to complete.
+
+== Open the editor
+
+If everything above was done correctly, you may now open the `FactoryGame.uproject` file in your Starter Project to launch the Unreal Editor.

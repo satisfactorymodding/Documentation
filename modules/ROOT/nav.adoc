@@ -24,6 +24,7 @@
                 ***** xref:Development/BeginnersGuide/StarterProject/StarterProjectViaClone.adoc[Option A: Git Clone]
                 ***** xref:Development/BeginnersGuide/StarterProject/StarterProjectViaZip.adoc[Option B: Download Zip]
         *** xref:Development/BeginnersGuide/project_setup.adoc[Project Setup]
+        *** xref:Development/BeginnersGuide/LinuxSetup.adoc[Linux Setup]
         *** xref:Development/BeginnersGuide/StarterProjectStructure.adoc[Starter Project Structure]
         *** xref:Development/BeginnersGuide/SimpleMod/index.adoc[Create a Simple Mod]
             **** xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc[Plugin Setup and Game World Module]

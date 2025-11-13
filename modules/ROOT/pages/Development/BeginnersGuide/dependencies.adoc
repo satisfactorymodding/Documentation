@@ -14,6 +14,8 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left.
 
+NOTE: This is for setting up the Modding Environment on Windows. If you are on Linux, please follow the guide xref:Development/BeginnersGuide/LinuxSetup.adoc[here].
+
 == Before you Begin
 
 Make sure you've read the starting information on the
@@ -103,7 +105,7 @@ Satisfactory's dedicated servers typically run on Linux.
 Cross-compiling from Windows to Linux requires
 the compatible version of Unreal Engine specific CLang Toolchain to be installed
 prior to building for Linux Dedicated Servers.
-The download link for these files can be found on the Unreal documentation page for
+The download link for these files can be found on the Unreal documentation page for 
 https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#nativetoolchain[Cross-Compiling for Linux].
 
 Currently, Satisfactory uses Unreal Engine 5.3.2 with custom changes provided by Coffee Stain Studios.
@@ -179,10 +181,21 @@ It's imperative that you download the correct engine for the version of the game
 or you will have to repeat a large amount of the setup process again.
 
 ====
-include::/_includes/current-branch-header.adoc[]
+If you are looking to develop mods for Update 1.0,
+follow the link:https://docs.ficsit.app/satisfactory-modding/v3.10.0/index.html[SML v3.10.0] documentation instead.
+However, we strongly suggest developing mods for Update 1.1 instead as it will be released to the stable branch on June 10th.
+====
 
-Download this engine version: +
-https://github.com/satisfactorymodding/UnrealEngine/releases/{engine-version}
+// When updating the below, remember to update StaterProjectViaClone.adoc, StarterProjectViaZip.adoc, and dependencies.adoc (engine)
+====
+This is the *latest stable* version of the docs.
+// This is the *development* version of the docs.
+
+// Stable (Release) and Experimental are currently both the same version - 1.0 Release.
+
+You should download from the *latest engine release*,
+which an be found at the top of this page:
+https://github.com/satisfactorymodding/UnrealEngine/releases
 ====
 
 Download the following files from the release linked above:
@@ -256,18 +269,12 @@ and in order to develop mods,
 you'll need to install and integrate Wwise with your mod project,
 even if you do not plan to modify sounds.
 
-[id="WwiseLauncher"]
-=== Download the Audiokinetic Launcher
-
 Visit https://www.audiokinetic.com/en/download/[Wwise] and click on the
 `+Download Audiokinetic Launcher+` button.
 Clicking the button will probably redirect you to a sign in page.
 Create an account if you don't have one yet, or sign in, to download and run the installer.
 
 After the installer is complete it should open the launcher for you.
-
-[id="WwiseVersion"]
-=== Install the Wwise Version
 
 In the launcher's left sidebar, select the topmost `Wwise` section
 (note: not the "Wwise Audio Lab" section).
@@ -276,8 +283,6 @@ click the `Latest` drop-down and change it to `All`.
 Select `2023.1` from the "Major" dropdown.
 Select version `2023.1.3.8471` from the "Version" dropdown.
 Click `Install`.
-
-image::BeginnersGuide/Wwise/wwise_version.png[Select Wwise version screenshot, title=Installing a new Wwise version. Wwise UI may differ slightly from this screenshot.]
 
 [WARNING]
 ====
@@ -308,18 +313,13 @@ Once presented with options on what to install, select:
 *** _Windows_
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2019
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2022
-**** pass:[<span class="green-check">✔</span>] Game Core
 
-If anything else is selected by default, do not uncheck them. They are required for Visual Studio to work.
-
-image::BeginnersGuide/Wwise/wwise_packages.png[Select Wwise packages screenshot, title=Selecting packages and deployment platforms. Wwise UI may differ slightly from this screenshot.]
+If anything is selected by default, do not uncheck them. They are required for Visual Studio to work.
 
 Click `Next` (you may need to scroll down to see the button).
 You don't need to add any plugins,
-so press `Select None` in the top right then `Install` (or `Modify` if you already have it installed) in the bottom left to begin the installation process.
+so press `Select None` in the top right then `Install` in the bottom left to begin the installation process.
 Accept any User Account Control or Terms and Conditions prompts that appear along the way.
-
-image::BeginnersGuide/Wwise/wwise_no_plugins.png[Do not select any Wwise plugins screenshot, title=Deselect all plugins. Wwise UI may differ slightly from this screenshot.]
 
 == Satisfactory Mod Manager
 
