@@ -137,7 +137,7 @@ Excluding the `-log` argument could result in a shorter runtime, but will make t
 
 The Powershell command should immediately complete,
 leaving you with the option to run another command.
-Shortly after, you should see the Satisfactory splash screen and a console window 
+Shortly after, you should see the Satisfactory splash screen and a console window
 which will provide info regarding the dumping process (since `-log -NewConsole` was used).
 
 You can safely close the Powershell window once you see the console log window,
@@ -169,7 +169,7 @@ inside your game install directory.
 
 [NOTE]
 ====
-Asset dumping is also used to create the stater project stubs when the game updates.
+Asset dumping is also used to create the starter project stubs when the game updates.
 If you're interested in how this works, check out the
 https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/.github/workflows/updateSML.yml#L209[CI scripts],
 or contact us on the discord for more info.
@@ -340,9 +340,16 @@ and bring some of them in to replace the ones in your freshly generated copy.
 
 Make sure your editor is closed before you move the files in!
 
+[IMPORTANT]
+====
+Thanks to community member Rovetown we now have an almost fully automated way of doing this.
+You can use the link:{attachmentsdir}/CommunityResources/AssetToolkitCopyTool.ps1[Asset Toolkit: Unreal Asset Copy Tool] to help with this process. Simply download the script, place it in the **root** of your (backup) **Starter Project** folder and run it. It will copy all the necessary files for you. It is guided, interactive and easy to use. It comes with logs in case something goes wrong.
+====
+
+In case you want to do it manually, here is how to do it:
+
 The list of files to move is
-https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[in the CustomAssets.txt file of the UnrealProjectUpdater repository],
-except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
+https://github.com/satisfactorymodding/UnrealProjectUpdater/blob/master/CustomAssets.txt[in the CustomAssets.txt file of the UnrealProjectUpdater repository], except skip any texture assets (usually those starting with `TX_`) mentioned in the list,
 because the generator's copy of textures is more accurate.
 You should also bring over the `Content/Localization/StringTables` folder
 because they are stored raw in the pak file (not the utoc/ucas) and the automation does not currently extract them.
@@ -397,7 +404,7 @@ because it adds a significant amount of time to game startup.
 
 If you'd like to learn more about the Asset Toolkit, you can continue reading below.
 
-=== Asset Generator Commandlet Documentation 
+=== Asset Generator Commandlet Documentation
 
 Here is an explanation of what the various commandlet options do, written by Archengius:
 
