@@ -62,7 +62,6 @@ const unshuffled = [
   "Bisect Hosting",
   "Zap Hosting",
   "Supercraft",
-  "Nitrado",
   "GTX Gaming",
   "Nodecraft",
   "Gravel Host",
@@ -99,6 +98,8 @@ _we offer no support for them_.
 - low.ms - Does not allow executables, preventing SMM and ficsit-cli from functioning correctly.
   They provide their own UI for mod installation, but we do not support this ourselves. See their docs for details.
 - gportal - Doesn't show the proper game file tree.
+  You may have success with manual mod installation, but we offer no support for that process.
+- Nitrado - Does not connect properly via FTP.
   You may have success with manual mod installation, but we offer no support for that process.
 ====
 
