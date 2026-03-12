@@ -18,7 +18,7 @@ For example, on Fedora this would be
 
 [source,bash]
 ----
-dnf install git msitools tar zstd dos2unix`.
+dnf install git msitools tar zstd dos2unix
 ----
 
 == Engine Setup
@@ -30,7 +30,7 @@ Now we can begin setting up our custom version of Unreal Engine.
 First, we must install MSVC using msvc-wine:
 
 Copy and paste this into your terminal, but be sure to first swap `<msvc_install_dir>` to the directory where you want to install MSVC, then run it.
-This will automatically clone the msvc-wine repository and use it to download the correct version if MSVC for the editor to use.
+This will automatically clone the msvc-wine repository and use it to download the correct version of MSVC for the editor to use.
 
 [source,bash]
 ----
