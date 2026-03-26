@@ -1,6 +1,7 @@
 = Unreal Engine
 
-Satisfactory uses a customized version of Unreal Engine (UE) 5.3.2 by Epic Games as its game engine.
+Satisfactory uses a customized version of Unreal Engine (UE) 5.6.1 by Epic Games as its game engine.
+
 UE provides a solid framework for developing fast executing native code and a interface for artists to use a more easy way for creating content.
 
 The modding documentation does not replace the https://docs.unrealengine.com/[Unreal Engine Documentation].
