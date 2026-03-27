@@ -84,6 +84,12 @@ You should not need to do this again unless you create a new Wwise project or us
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
+=== Asset Dumping with `-nullrhi` no longer works
+Dumping assets with `-nullrhi` is no longer possible, because Unreal Engine doesn't load mesh data when using that anymore, 
+as a dedicated servers memory optimization. 
+
+`-RenderOffscreen` can be used instead, which will still use the GPU to render, but without the game window.
+
 TODO: Add any additional changes that we want to draw attention to here.
 
 == Complete Changelog
