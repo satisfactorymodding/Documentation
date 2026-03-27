@@ -151,6 +151,3 @@
 //     ** For Mod Developers
 //         *** xref:Translation/Developers/RequestTolgeeProject.adoc[Using Tolgee]
 //         *** xref:Development/Localization.adoc[Localizing Mods]
-
-* Community Mod Lists
-    ** xref:CommunityModLists/QOL.adoc[Quality of Life Mods]
