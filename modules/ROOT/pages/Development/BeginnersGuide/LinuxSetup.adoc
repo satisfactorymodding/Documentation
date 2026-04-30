@@ -13,12 +13,13 @@ On Debian-based systems such as Ubuntu, this would be `apt install`, or `dnf ins
 * `msitools` (For `msiextract`, used by `vsdownload.py` of msvc-wine)
 * `tar` and `zstd` (For decompressing the engine archive)
 * `dos2unix` (For the Wwise patches, used by the SML project)
+* `wine` (Needed to build Alpakit Win64 targets)
 
 For example, on Fedora this would be
 
 [source,bash]
 ----
-dnf install git msitools tar zstd dos2unix
+dnf install git msitools tar zstd dos2unix wine
 ----
 
 == Engine Setup
