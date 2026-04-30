@@ -119,7 +119,7 @@ To generate the VS Solution:
 
 [source,bash]
 ----
-<ue_dir>/Engine/Build/BatchFiles/Linux/Build.sh -projectfiles -project="<project_dir>/FactoryGame.uproject" -game -Rider
+<ue_dir>/Engine/Build/BatchFiles/Linux/Build.sh -projectfiles -project="<project_dir>/FactoryGame.uproject" -game -2022
 ----
 
 To create a Makefile:
