@@ -1,125 +1,1201 @@
-= Creating ADA and In-game Inbox Messages
+= Creating Fully-voiced ADA and In-game Inbox Messages
 
 [NOTE]
 ====
 This page is a work in progress.
 ====
 
-Ada messages can add an immersive feel to your mods fitting in with every in game milestone unlock.
+ADA messages can add an immersive feel to your mods, fitting in with every in-game milestone unlock. This guide assumes that you have not used Wwise before. If you have used Wwise before, please consider therapy.
 
 == What to Say
 
-TODO info on what speaking patterns ADA and Aliens have
+Before you get started, develop your mod! The first step in creating voice lines is, unsurprisingly, to write them. We'll record them later, but first, it is worth understanding how Coffee Stain Studios wrote ADA and the Aliens (denoted ???? in the game), so that your ADA sounds like the ADA we all know and love.
 
-Use the SMLEditor/Content/AdaMessages/AdaMessageExtractor editor utility widget to quickly view all messages as text 
+=== ADA Speaking Pattern
 
-== Defining Messages
-
-=== Creating the Data Asset:
-
-First right click in a content browser and go to Miscellaneous -> Data Asset
-Then Select the class of `FGMessage`
-
-image:Satisfactory/AdaMessages/AdaMessage_1.png[AdaMessage_1, 350]
-
-image:Satisfactory/AdaMessages/AdaMessage_2.png[AdaMessage_2, 450]
-
-The name of the new data asset can be anything, but the following naming convention is strongly suggested:
-
-```
-MSG_<ModName>_Tier<TierNumber>-<MilestoneName>
-```
-
-For example:
-
-```
-MSG_ExampleMod_Tier1-ExampleMilestone
-```
-
-This will refer to the example mods schematic for tier 1 and the first schematic.
-This is optional but will help you distinguish each milestone if you have lots of ADA messages. 
+ADA speaks with a polished corporate tone. She is direct, procedural, and usually frames everything in terms of productivity, efficiency, compliance, and FICSIT's goals. ADA often uses corporate language that is highly operational, speaking about productivity metrics, safety language that is more about asset preservation than personal concern. She often is written with dry and dark humor, mildly deprecating remarks toward the Pioneer, peferences to the `Save the Day` program, and reminders not to waste resources, time, equipment, or FICSIT property, the latter of which includes the Pioneer. ADA does not usually sound emotional. She can appear helpful, but the help is usually framed around keeping the Pioneer productive. Concern for the Pioneer is often secondary to concern for FICSIT property, mission progress, or resource extraction.
 
 [NOTE]
 ====
-When the game loads it will look for all data assets with the class of FGMessage and load these automatically.
-There is no requirement to manually register these data assets.
+ADA humor should usually be dry rather than silly. She should sound like a corporate AI that is unintentionally funny, lacking empathy.
 ====
 
-=== Setting up the Email Message
+=== Alien Speaking Pattern
 
-As part of the new message data asset this will also create a new email that can be viewed in the `Inbox` window in game.
+Alien messages use the `????` sender and should feel less literal than ADA messages. Their communication is fragmented, symbolic, and non-linear. The alien perspective treats the world as something higher-dimensional, musical, organic, or woven together. They often describe industrial activity and alien influence through metaphor rather than direct explanation.
 
-This is the first stage of setting up the Data Asset by setting the `Title` and `Message` variables:
+Useful recurring alien concepts include:
 
-image:Satisfactory/AdaMessages/AdaMessage_3.png[AdaMessage_3]
+* `Effigy` - The Pioneer or player character.
+* `Nodes` or `Windows` - SAM nodes, altars, or points of connection.
+* `Singing` - Active communication, signaling, or resonance.
+* `River` - The factory, conveyor belts, logistics, extraction, and flowing resources.
+* `Blood` - SAM or alien artifacts, especially as a medium of influence, growth, or expansion.
+* `Tapestry` - The world or connected system of influence.
+* `Symphony` - Coordinated growth, communication, or expansion.
+* `Shallow` - Human industrial activity as seen by the aliens, a primitive imitation of their own process.
 
-=== Setting Up Subtitles
+Alien messages often imply that the Pioneer is not fully understood as a person. The Pioneer may be addressed as an effigy, vessel, tool, or moving shape. The factory may be described as a river, wound, hunger, song, or shallow growth.
 
-If your ADA speak is quite long then you will need to split this into multiple subtiles.
-This is because the text will not fit in the ADA popup widget.
+The aliens say strange things:
 
-This can be done by adding a new Array element to the `mSubtitles` variable.
+    The effigy walks beside the river.
+    It does not hear the song beneath the stone.
 
-Each element in the array should have `Subtitle` `Sender Class` and `Time Stamp`
+    The windows open.
+    The blood remembers its shape.
+    The shallow river grows teeth.
 
-* Subtitle - This is the text you want to show in the ADA popup message
-* Sender Class - This is the class of the Sender aka ADA or Alien Message
-* Time Stamp - This is the Time Stamp when the message should be sent. Correlates to the audio message timestamp if there is pauses.
+    You build in lines.
+    We bloom in all directions.
+    Still, the hunger is familiar.
 
-image:Satisfactory/AdaMessages/AdaMessage_4.png[AdaMessage_4]
+    The other voice speaks in commands.
+    It folds the effigy into purpose.
+    We sing. It calculates.
+    Both consume.
 
-Setting the voice over requires a Wwise Audio Event and can be set in the data asset.
+    The node is not silent.
+    It waits with its mouth closed.
+    Touch the blood and hear the window open.
 
-image:Satisfactory/AdaMessages/AdaMessage_5.png[AdaMessage_5]
+[NOTE]
+====
+Alien messages should be strange but not random. They should feel like they have meaning, even if the meaning is indirect. Use repeated symbols and metaphors so the player can start to infer a pattern, even if you have absolutely no idea what it is they're saying yourself.
+====
 
-=== Setting up the Trigger
-
-The trigger is automatically registered when the game is loaded, you just need to populate the trigger settings in the data asset.
-
-image:Satisfactory/AdaMessages/AdaMessage_6.png[AdaMessage_6]
-
-For messages triggered by schematics,
-set the Trigger Dependency to `BP Schematic Purchased Dependency`
-and configure the dependencies according to what schematic should trigger the message.
-
-Additional trigger settings:
-
-* Can Be Queued - This setting is for if another ada message is being played then it will wait for it complete.
-* Can Be Repeated - This setting is for if the ada message can be repeated.
-* Can Interupt - Setting for if another lower priority message is playing then interupt it.
-* Play Interupt Message - This setting will first play the default interupt message then play our message.
-* Blocked By Cooldown - Message will not play if in the message cooldown. Generally don't check this.
-* Priority - The priority of this message - suggested baseline value of 1.
-
+Using the tips above, write out all of your text in a place you can copy and paste from. If you're planning on using only this guide, keep the text under 170 characters, including spaces, so it will fit into the free generator. The next thing we're going to do is record these in ADA's voice and stage everything before we dive into the Unreal Editor and Wwise.
 
 == Generating ADA Audio
 
-All voice lines spoken by ADA (and the ????) are generated using Google's Text-to-Speech API
-with the `en-US-Wavenet-C` voicebank.
-The additional affects applied to the ???? voice are not currently known by the community.
+All voice lines spoken by ADA (and the ????) are generated using Google's Text-to-Speech API with the `en-US-Wavenet-C` voicebank. The additional effects applied to the ???? voice are not currently known by the community.
 
-It was previously possible to try out on the https://cloud.google.com/text-to-speech[Google Cloud TTS demo website] using the following settings, but **they have since removed it from the list**.
+The community is not currently aware of an official free Google-hosted place to use the `en-US-Wavenet-C` voicebank. However, the following site currently provides a way to generate audio with `en-US-Wavenet-C`:
+
+* https://www.voicerankings.com/voice/Google/female/en-US-Wavenet-C
+
+image:Satisfactory/AdaMessages/AdaVoice_1.png[Screenshot of the VoiceRankings en-US-Wavenet-C page showing the text input and generation controls]
+
+It was previously possible to try out on the https://cloud.google.com/text-to-speech[Google Cloud TTS demo website] using the following settings, but they have since removed it from the list.
 
 * Voice type: `WaveNet`
 * Voice name: `en-US-Wavenet-C`
 * Pitch: `-1.2`
 
-The community is not currently aware of a place to use the `en-US-Wavenet-C` voicebank for free,
-however, some similar alternatives are known:
+Some similar alternatives are known:
 
-- The https://ttsfree.com/text-to-speech/[TTSFree website] allows generating audio using `en-US-Standard-C` voicebank,
-  which is similar but has clearly audible differences.
-- https://actions-on-google-labs.github.io/nightingale-ssml-editor/[Nightingale Text to Speech Demo] claims to allows generating audio using `en-US-Wavenet-C`, but it seems to be using `en-US-Standard-C` instead.
-- You can set up a paid Google Cloud account and use its APIs to generate Wavenet C audio
+* The https://ttsfree.com/text-to-speech/[TTSFree website] allows generating audio using `en-US-Standard-C` voicebank, which is similar but has clearly audible differences.
+* https://actions-on-google-labs.github.io/nightingale-ssml-editor/[Nightingale Text to Speech Demo] claims to allow generating audio using `en-US-Wavenet-C`, but it seems to be using `en-US-Standard-C` instead.
+* You can set up a paid Google Cloud account and use its APIs to generate Wavenet C audio.
 
-You may need to change the text of what the TTS is saying to not match what the captions are when saying certain words.
-// cspell:ignore fixit
-For example, to have it pronounce FICSIT correctly, use the word 'fixit'
+[NOTE]
+====
+The text sent to text-to-speech does not always need to match the subtitle text exactly. For example, to make the voice pronounce FICSIT correctly, you may need to write `fix it` in the text-to-speech input while keeping `FICSIT` in the subtitle. It is strongly suggested that you keep the text you fed to the TTS on hand so you can re-record lines later if needed or figure out how you got it to say a specific word in the past.
+====
 
-It is strongly suggested that you keep the text you fed to the TTS on hand so you can re-record lines later if needed or figure out how you got it to say a specific word in the past.
+=== Suggested Naming
 
-== Importing ADA Audio to the Editor
+Before you generate or process many files, decide on names for each message. Use names that can be reused throughout the entire workflow. We suggest using the naming convention:
 
-Message data assets reference the audio to play via the `mAudioEvent` field that takes an Audiokinetic Event.
-Importing audio and creating Audiokinetic Events is done through Wwise,
-the process of which is documented on the xref:Development/Satisfactory/Audio.adoc[Audio] page.
+----
+MSG_<MessageName>
+----
+
+For example:
+
+----
+MSG_Bioremediation
+MSG_LeadRebar
+MSG_CrystalReductionAgent
+----
+
+Later, each of these will become:
+
+----
+WAV file:             MSG_Bioremediation.wav
+Wwise sound object:   MSG_Bioremediation
+Wwise event:          Play_MSG_Bioremediation
+Unreal AK Event:      Play_MSG_Bioremediation
+FGMessage audio:      Play_MSG_Bioremediation
+----
+
+[WARNING]
+====
+Save the files as *.wav, avoiding spaces and punctuation in the names. They make it easier to create mismatches later. Do not rely on filenames generated by a TTS website. Rename the files so they match the message they belong to.
+====
+
+== Preparing the Audio Files
+
+[NOTE]
+====
+This is optional, but it takes the output from our voice generator and turns it into something that sounds far closer to Coffee Stain's ADA. If you don't want to do this step, skip down to the next section, where we use the Unreal Editor to set up the Event assets for each message.
+====
+
+Install Audacity if you do not already have it:
+
+* https://www.audacityteam.org/download/
+
+You will also need the Multi-Voice Chorus Nyquist plugin. Download the `.ny` plugin file from the bottom of the page located at:
+
+* https://lame.buanzo.org/audacity_plugins_handbook/MultiVoiceChorus.ny.html
+
+To install the `.ny` plugin:
+
+. Download the `.ny` file from the plugin source.
+. Open Audacity.
+. Go to `Tools` -> `Nyquist Plugin Installer`.
+. Click `Browse` and select the downloaded `.ny` file.
+. Click `Install` -> `OK`.
+. Restart Audacity.
+
+image:Satisfactory/AdaMessages/AdaVoice_2.png[Screenshot of Audacity Tools menu with Nyquist Plugin Installer highlighted]
+
+image:Satisfactory/AdaMessages/AdaVoice_3.png[Screenshot of the Nyquist Plugin Installer dialog with the downloaded .ny file selected]
+
+After restarting Audacity, go to the `Effect` menu and confirm that `Multi-Voice Chorus` appears.
+
+image:Satisfactory/AdaMessages/AdaVoice_4.png[Screenshot of the Audacity Effect menu showing Multi-Voice Chorus]
+
+=== Configuring the Effects
+
+Before creating the macro, we have to configure the effects manually once so Audacity remembers the values. Load up one of your ADA voice line `*.wav` files. If you only have a few ADA voice lines, feel free to skip creating a macro and configure the settings manually. If you have more than three, we recommend the macro approach.
+
+[WARNING]
+====
+Audacity macros use the last-used settings for effects. They do not permanently store the effect values independently. If you later change the effect settings, the macro will use the new values. Check the settings before batch processing.
+====
+
+==== Multi-Voice Chorus
+
+First, load in your sound file, click on its waveform, and select the entire thing using CTRL+A. Then open:
+
+----
+Effect -> Multi-Voice Chorus
+----
+
+Set:
+
+----
+Speed: 1.90
+Depth: 2.90
+Voices: 1
+Mix: 3.40
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_5.png[Screenshot of Multi-Voice Chorus effect settings with Speed 1.90, Depth 2.90, Voices 1, and Mix 3.40]
+
+Click `OK`.
+
+==== Delay
+
+Open:
+
+----
+Effect -> Delay
+----
+
+Set:
+
+----
+Delay type: Regular
+Delay level per echo: -18.70 dB
+Delay time: 0.00 seconds
+Pitch change effect: Pitch/Tempo
+Pitch change per echo: -0.120 semitones
+Number of echoes: 2
+Allow duration to change: Yes
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_6.png[Screenshot of Delay effect settings with all listed values filled in]
+
+Click `OK`.
+
+=== Creating the Audacity Macro
+
+Create a reusable processing chain:
+
+. Go to `Tools` -> `Macros`.
+. Click `New`.
+. Name it:
++
+----
+ADA Voice Lines
+----
+. Add the following steps in this order:
++
+----
+Multi-Voice Chorus
+Delay
+Save
+----
+
+This creates a reusable processing chain. Next, we add add an export step to the macro:
+
+----
+Export as WAV
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_7.png[Screenshot of the Audacity macro with Export as WAV added after Delay]
+
+With the export step, the macro will orocess the audio, export the processed audio, then save automatically.
+
+The suggested export format is pretty standard for this kind of audio file:
+
+----
+WAV
+PCM
+48 kHz
+16-bit or 24-bit
+----
+
+[WARNING]
+====
+Do not import compressed files such as `.mp3` into Wwise if you can avoid it.
+Use `.wav` files as your source files.
+====
+
+=== Applying the Macro to Many Files
+
+The best method for batch processing is to use two folders:
+
+----
+input_audio/
+processed_audio/
+----
+
+Put all unprocessed audio files into `input_audio/`.
+
+Then:
+
+. Go to `Tools` -> `Macros`.
+. Select `ADA Voice Lines`.
+. Click `Apply to Files...`.
+. Choose the files.
+. Run the macro.
+
+Audacity will process every selected file.
+
+== The Plan from Here
+
+Our next step is to collect the finished files from `processed_audio/` and import those into Wwise. To get ready for this, we should ensure our processed files are named so they match the message they belong to.
+
+For example:
+
+----
+MSG_Bioremediation.wav
+MSG_LeadRebar.wav
+MSG_CrystalReductionAgent.wav
+----
+
+Message data assets reference the audio to play via the `mAudioEvent` field that takes an Audiokinetic Event in the Unreal Editor. Importing audio and creating Audiokinetic Events is done through Wwise. If none of that made sense, it is because we haven't got there yet! That said, we are now ready to take a deep breath and dive into Wwise. For a preview of what we're doing for the next bit, the overall workflow is:
+
+----
+WAV file
+-> Wwise sound object
+-> Wwise Play Event
+-> Wwise SoundBank
+-> Unreal Audiokinetic Event asset
+-> FGMessage mAudioEvent
+----
+
+== Importing ADA Audio to Wwise
+
+=== Opening the Wwise Project
+
+Open the Wwise project for your modding project.
+
+If Wwise is not already open, open the Audiokinetic Launcher.
+
+In the Audiokinetic Launcher:
+
+. Click `Projects`.
+. Look for the Wwise project that belongs to your Satisfactory modding setup.
+. Click `Open in Wwise`.
+
+image:Satisfactory/AdaMessages/AdaVoice_8.png[Screenshot of Audiokinetic Launcher Projects tab with a Satisfactory modding Wwise project visible]
+
+If the project does not appear in the launcher, click `Open Other...` or `Browse...` and find the Wwise project file manually.
+
+The Wwise project file usually ends in:
+
+----
+.wproj
+----
+
+The quickest way is to open the Wwise project file located at:
+
+----
+SatisfactoryModLoader_WwiseProject/SatisfactoryModLoader_WwiseProject.wproj
+----
+
+The path and name may be slightly different if your Unreal project directory is named differently.
+
+For example, your setup might have a path similar to:
+
+----
+C:/Satisfactory Modding/SatisfactoryModLoader-master/SatisfactoryModLoader-master_WwiseProject/SatisfactoryModLoader-master_WwiseProject.wproj
+----
+
+When Wwise is open, you should see tabs on the panel on the left-hand side such as:
+
+----
+Project Explorer
+Actor-Mixer Hierarchy
+Events
+SoundBanks
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_9.png[Screenshot of Wwise open in the Designer layout showing Project Explorer, Actor-Mixer Hierarchy, Events, and SoundBanks areas]
+
+=== Importing the WAV Files
+
+In Wwise, activate the Designer layout:
+
+----
+Layouts -> Designer
+----
+
+In the Project Explorer, go to the `Audio` tab.
+
+Under `Actor-Mixer Hierarchy`, find:
+
+----
+Default Work Unit
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_10.png[Screenshot of Wwise Project Explorer Audio tab showing Actor-Mixer Hierarchy and Default Work Unit]
+
+Create a virtual folder for your mod:
+
+. Right-click `Default Work Unit`.
+. Choose:
++
+----
+New Child -> Virtual Folder
+----
+Name it using your mod reference EXACTLY.
+
+image:Satisfactory/AdaMessages/AdaVoice_11.png[Screenshot of right-click menu on Default Work Unit showing New Child -> Virtual Folder]
+
+For example:
+
+----
+WasteShielding
+----
+
+Create another virtual folder inside it for ADA voice lines:
+
+. Right-click your mod folder.
+. Choose:
++
+----
+New Child -> Virtual Folder
+----
+. Name it:
++
+----
+VO
+----
+
+Your Wwise tree should now look like:
+
+----
+Actor-Mixer Hierarchy
+  Default Work Unit
+    <ModReference>
+      VO
+----
+
+For example:
+
+----
+Actor-Mixer Hierarchy
+  Default Work Unit
+    WasteShielding
+      VO
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_12.png[Screenshot of Wwise Actor-Mixer Hierarchy showing Default Work Unit -> WasteShielding -> VO]
+
+Right-click the `VO` folder and select:
+
+----
+Import Audio Files...
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_13.png[Screenshot of VO folder right-click menu with Import Audio Files selected]
+
+In the import window:
+
+. Click `Add Files...`.
+. Select your processed `.wav` files.
+. Use `Create New Objects`.
+. If Wwise asks what type of object to create, use `Sound Voice` if available. This is changed via a drop-down at the top of the panel, near the center.
+. If `Sound Voice` is not available, `Sound SFX` can still work.
+. Make sure the destination is your `VO` folder.
+. Click `Import`.
+
+image:Satisfactory/AdaMessages/AdaVoice_14.png[Screenshot of Wwise Import Audio Files window with WAV files added, Create New Objects selected, and destination set to the VO folder]
+
+After importing, verify that the files appear under:
+
+----
+Actor-Mixer Hierarchy
+  Default Work Unit
+    <ModReference>
+      VO
+----
+
+For example:
+
+----
+Actor-Mixer Hierarchy
+  Default Work Unit
+    WasteShielding
+      VO
+        MSG_Bioremediation
+        MSG_LeadRebar
+        MSG_CrystalReductionAgent
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_15.png[Screenshot of imported MSG_... sound objects under the VO folder]
+
+If Wwise imported objects with non-clean names, rename them.
+
+To rename an object:
+
+. Select the object.
+. Press `F2`.
+. Enter the new name.
+. Press `Enter`.
+
+Suggested naming convention:
+
+----
+MSG_<MessageName>
+----
+
+For example:
+
+----
+MSG_Bioremediation
+MSG_LeadRebar
+MSG_CrystalReductionAgent
+----
+
+[WARNING]
+====
+Avoid spaces and punctuation in Wwise object names. They make it easier to create mismatches later.
+====
+
+[NOTE]
+====
+Importing all files at once is fine, but we highly recommend testing the complete pipeline with a single message before wiring every message in Unreal.
+====
+
+=== Testing the Imported Sound Object
+
+Before creating an event, test that the imported sound object works in Wwise.
+
+Select one imported sound object. We will use:
++
+----
+MSG_Bioremediation
+----
+
+Selecting this in the panel on the left of the screen will bring open a screen in the main part of the screen full of information and controls we do not care about. Find the Transport Control panel, usually near the bottom of the screen, and click Play.
+
+image:Satisfactory/AdaMessages/AdaVoice_16.png[Screenshot of MSG_Bioremediation selected with the Wwise Transport Control Play button visible]
+
+You should hear the imported voice line.
+
+If you hear nothing:
+
+* Check that Windows is outputting Wwise to the correct audio device.
+* Check that the imported file is not silent.
+* Check that the file is a normal `.wav` file.
+* Re-export the file from Audacity if needed.
+
+=== Creating Wwise Play Events
+
+Now that we have everything imported into Wwise, we need a Wwise Play Event for each file. You can think of these as additional instructions that link back to the files we imported, namely the instruction to play the file, which will be useful to us because we want the file to play when something is unlocked or purchased.
+
+In Wwise's Project Explorer, go to the `Audio` tab and locate the imported sound object.
+
+For each sound object:
+
+. Right-click the sound object.
+. Select:
++
+----
+New Event -> Play
+----
+Name the event using the sound object name with `Play_` in front.
+
+image:Satisfactory/AdaMessages/AdaVoice_17.png[Screenshot of a Wwise sound object right-click menu showing New Event -> Play]
+
+Suggested naming convention:
+
+----
+Sound object: MSG_Bioremediation
+Event:        Play_MSG_Bioremediation
+----
+
+For example:
+
+----
+MSG_Bioremediation         -> Play_MSG_Bioremediation
+MSG_LeadRebar              -> Play_MSG_LeadRebar
+MSG_CrystalReductionAgent  -> Play_MSG_CrystalReductionAgent
+----
+
+Repeat this for each ADA voice line. After creating the event, go to the Project Explorer's `Events` tab and verify that it exists. You should see something like:
+
+----
+Events
+  Default Work Unit
+    Play_MSG_Bioremediation
+    Play_MSG_LeadRebar
+    Play_MSG_CrystalReductionAgent
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_18.png[Screenshot of Wwise Events tab showing Play_MSG_... events under Default Work Unit]
+
+This should be automatic, but there are a few things to check now to save us pain later. Open one event and check the panel near the right of the screen to the left of the Meter:
+
+* The event name is correct.
+* `Inclusion` is checked.
+* The target is the correct sound object.
+
+image:Satisfactory/AdaMessages/AdaVoice_19.png[Screenshot of a Wwise Play_MSG_... event showing Inclusion checked and target set to the correct MSG_... sound object]
+
+You can select the event and use the transport controls at the bottom of the screen in Wwise to verify that the event plays the expected audio.
+
+[WARNING]
+====
+Unreal will reference the Wwise event, not the raw sound object. The event name is what you will recreate as an Audiokinetic Event asset in Unreal. That is, Unreal calls the Play_ event, which plays the raw sound object. This is complicated, but Wwise can do so much more than just play back ADA voice lines; we just don't care about that functionality for this use case.
+====
+
+== Creating the ADA SoundBank
+
+You will need a SoundBank that includes your ADA Play Events. A SoundBank is a grouping of Play Events.
+
+In Wwise, change the layout to SoundBanks:
+
+----
+Layouts -> SoundBanks
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_20.png[Screenshot of Wwise Layouts menu with SoundBanks selected]
+
+If you do not see the SoundBanks layout, open the SoundBank Manager instead:
+
+----
+Views -> SoundBank Manager
+----
+
+or:
+
+----
+Shift + B
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_21.png[Screenshot of Wwise Views menu showing SoundBank Manager]
+
+In the Project Explorer, go to the `SoundBanks` tab.
+
+Right-click `Default Work Unit`:
+
+----
+SoundBanks
+  Default Work Unit
+----
+
+and select:
+
+----
+New Child -> SoundBank
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_22.png[Screenshot of Wwise SoundBanks tab right-click menu showing New Child -> SoundBank]
+
+Name the SoundBank after your mod reference or another stable name.
+
+This documentation is made using the WasteShielding mod, so its SoundBank was named `WasteShielding`. You name yours according to your mod name, and append an `_SoundBank` to it if you'd like:
+
+----
+ExampleMod_SoundBank
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_23.png[Screenshot of a newly created SoundBank named WasteShielding]
+
+Open the newly created SoundBank and add your ADA Play Events to it. You can add the event folder or the individual `Play_MSG_...` events, but we recommend the latter. You can select multiple Play Events at once and drag them all over. There are two ways to do this that make any sense whatsoever:
+
+Method 1:
+
+. Open the SoundBank.
+. Open the Project Explorer `Events` tab.
+. Drag the `Play_MSG_...` events into the SoundBank inclusion list.
+
+image:Satisfactory/AdaMessages/AdaVoice_24.png[Screenshot of dragging Play_MSG_... events from the Events tab into the SoundBank inclusion list]
+
+Method 2:
+
+. Open the SoundBank Manager:
++
+----
+Views -> SoundBank Manager
+----
++
+or:
++
+----
+Shift + B
+----
+. Double-click your SoundBank.
+. Drag the events from the `Events` tab of the Project Explorer into the SoundBank editor.
+
+image:Satisfactory/AdaMessages/AdaVoice_25.png[Screenshot of SoundBank Manager with WasteShielding selected and the SoundBank editor open]
+
+Go to the SoundBank's `Edit` tab and verify that all of the events are included.
+
+Your SoundBank should include entries like:
+
+----
+Play_MSG_Bioremediation
+Play_MSG_LeadRebar
+Play_MSG_CrystalReductionAgent
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_26.png[Screenshot of WasteShielding SoundBank Edit tab listing all Play_MSG_... events]
+
+=== Including the Master-Mixer Hierarchy
+
+For ADA audio to correctly play in game, the SoundBank must also include the relevant Master-Mixer Hierarchy.
+
+In the Project Explorer, go to the `Audio` tab.
+
+Find:
+
+----
+Master-Mixer Hierarchy
+  Default Work Unit
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_27.png[Screenshot of Wwise Audio tab showing Master-Mixer Hierarchy -> Default Work Unit]
+
+Add the relevant Master-Mixer Hierarchy object, such as the master bus or the Default Work Unit containing the bus routing, to the same SoundBank as your ADA events.
+
+Depending on your Wwise layout, you may be able to:
+
+. Open the SoundBank editor.
+. Go to the Project Explorer `Audio` tab.
+. Drag the relevant Master-Mixer Hierarchy object into the SoundBank inclusion list.
+
+image:Satisfactory/AdaMessages/AdaVoice_28.png[Screenshot of dragging Master-Mixer Hierarchy or Master Audio Bus into the WasteShielding SoundBank]
+
+If dragging the whole `Default Work Unit` works, use that.
+If Wwise only allows individual objects, drag the master bus or relevant audio bus inside it.
+
+Your ADA SoundBank should include both:
+
+----
+Events
+  Play_MSG_...
+----
+
+and:
+
+----
+Master-Mixer Hierarchy
+  Master Audio Bus or relevant bus routing
+----
+
+
+
+[WARNING]
+====
+If the Play Events are in the SoundBank but the Master-Mixer Hierarchy is not included, the event may resolve and may even play in the editor, but it will fail to output audio in-game.
+====
+
+[WARNING]
+====
+Seriously, do not forget to add the Master-Mixer Hierarchy!
+====
+
+=== Generating the SoundBank
+
+Generate the SoundBank after adding the events and Master-Mixer Hierarchy.
+
+Open the SoundBank Manager:
+
+----
+Views -> SoundBank Manager
+----
+
+or:
+
+----
+Shift + B
+----
+
+Make sure your SoundBank is checked for `Windows`.
+
+image:Satisfactory/AdaMessages/AdaVoice_29.png[Screenshot of SoundBank Manager with Windows selected and the WasteShielding SoundBank checked]
+
+Click:
+
+----
+Generate All
+----
+
+The output should show:
+
+----
+0 errors
+0 fatal errors
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_30.png[Screenshot of successful Wwise SoundBank generation showing 0 errors and 0 fatal errors]
+
+Warnings may need review, but errors must be fixed. Wwise is notorious for throwing thousands of errors when there is only one thing wrong, so keep that in mind.
+
+Save the Wwise project after generating the SoundBank:
+
+----
+File -> Save
+----
+
+or:
+
+----
+Ctrl + S
+----
+
+[WARNING]
+====
+Regenerate the SoundBank any time you add a new voice line, create a new Play Event, or change the SoundBank contents. Otheriwise Unreal won't be able to see it.
+====
+
+== Unreal Project Configuration
+
+Congratulations! You are done with Wwise! The rest of this tutorial takes place in the Unreal editor, so go ahead and open it and go to the Unreal Engine project settings:
+
+----
+Edit -> Project Settings...
+----
+
+We are going to set up the Unreal project and make sure it points to the Wwise SoundBank we just created. This is how Unreal knows where to look. Search for:
+
+----
+Root Output
+----
+
+Navigate to:
+
+----
+Wwise -> Integration Settings
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_31.png[Screenshot of Unreal Project Settings search for Wwise and the Wwise Integration Settings page]
+
+In the `Installation` subsection, set `Root Output Path` to the Wwise project's `GeneratedSoundBanks` folder.
+
+For example:
+
+----
+<WwiseProjectPath>/GeneratedSoundBanks
+----
+
+WARNING
+====
+Do not set the directory to the `Windows` folder inside `GeneratedSoundBanks`. That is to say that `<WwiseProjectPath>/GeneratedSoundBanks` is correct, yet `<WwiseProjectPath>/GeneratedSoundBanks/Windows` is not.
+====
+
+The setting may be pre-filled with an incorrect relative path, something that starts with `..\`. Use the directory picker to ensure it points to the actual Wwise project you generated the banks from.
+
+For example, this may be correct for your setup:
+
+----
+C:/[Whereever You Put Your SML Install]/SatisfactoryModLoader-master/SatisfactoryModLoader-master_WwiseProject/GeneratedSoundBanks
+----
+
+Inside that folder, it is normal to see platform folders such as:
+
+----
+GeneratedSoundBanks
+  Mac
+  Windows
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_32.png[Screenshot of Windows Explorer showing GeneratedSoundBanks folder containing Windows and Mac subfolders]
+
+Set the Root Output Path to the parent `GeneratedSoundBanks` folder, not to the `Windows` folder.
+
+image:Satisfactory/AdaMessages/AdaVoice_33.png[Screenshot of Unreal Wwise Integration Settings with Root Output Path set to the GeneratedSoundBanks parent folder]
+
+Now we are going to make sure the audio routing is set up right. Search for:
+
+----
+Unreal Audio
+----
+
+In the `Initialization` subsection, set:
+
+----
+Unreal Audio Routing: Both Wwise and Unreal audio
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_34.png[Screenshot of Unreal Audio Routing set to Both Wwise and Unreal audio]
+
+Restart the Unreal Editor after changing these settings. It will prompt you to do so.
+
+[WARNING]
+====
+If you find that the Unreal Audiokinetic Event asset shows event metadata but `Play Event` in the editor does not make a sound, the Root Output Path is incorrect, which is why we are making sure it works now.
+====
+
+== Creating Audiokinetic Events in Unreal
+
+Now we can create the Unreal assets that reference the Wwise Play Events. Remember that we are done with Wwise, so create the assets manually in the Content Browser. To do that, create an audio events folder in your mod's content folder. You can name or structure this however you want, but we recommend something like:
+
+----
+/<ModReference>/Audio/Events
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_35.png[Screenshot of Unreal Content Browser showing a mod Audio/Events folder]
+
+As you can see, you can organize this however you'd like. Right-click in the folder and select:
+
+----
+Audiokinetic -> Audiokinetic Event
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_36.png[Screenshot of Unreal Content Browser right-click menu showing Audiokinetic -> Audiokinetic Event]
+
+Name the asset EXACTLY the same as the Wwise event. If you do not, `Wwise Name` will be set wrong, and nothing will play.
+
+[WARNING]
+====
+If the Unreal event asset does not resolve (auto-set) to a Wwise name or Short ID, check that the Unreal asset name exactly matches the Wwise event name.
+====
+
+For example:
+
+----
+Wwise event:        Play_MSG_Bioremediation
+Unreal AK Event:    Play_MSG_Bioremediation
+----
+
+NOTE
+====
+When we set the name in the Content Browser, Unreal fills out the `Wwise Name` under `Event Info`. It is the content of `Wwise Name` that has to be EXACTLY the same. Repeat this for every Wwise Play Event you want to use in an ADA message.
+
+Right-click the Audiokinetic Event asset in the Content Browser and select:
+
+----
+Play Event
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_37.png[Screenshot of Unreal Content Browser right-click menu on Play_MSG_Bioremediation showing Play Event]
+
+If the event plays in the Unreal Editor, the Wwise project path and generated bank data are likely set up correctly! If it doesn't, go check and make sure that `Wwise Name` under `Event Info` are filled out EXACTLY the same as the `Play_` event in Wwise.
+
+[WARNING]
+====
+Editor playback working does not always prove the in-game SoundBank is complete. If the message displays in-game but has no audio, check that the SoundBank includes the Master-Mixer Hierarchy. This is the third time we have mentioned this, because it is incredibly important.
+====
+
+== Defining Messages
+
+Now that we have our
+
+=== Creating the Data Asset
+
+First, right-click in a Content Browser and go to `Miscellaneous` -> `Data Asset`. Then select the class of `FGMessage`.
+
+image:Satisfactory/AdaMessages/AdaMessage_1.png[Unreal Editor Content Browser right-click menu showing Miscellaneous expanded and Data Asset selected, 350]
+
+image:Satisfactory/AdaMessages/AdaMessage_2.png[Unreal Editor Pick Class For Data Asset Instance window with FGMessage selected, 450]
+
+The name of the new data asset can be anything, but the following naming convention is strongly suggested:
+
+----
+MSG_<ModName>_Tier<TierNumber>-<MilestoneName>
+----
+
+For example:
+
+----
+MSG_ExampleMod_Tier1-ExampleMilestone
+----
+
+This refers to the example mod's tier 1 schematic and the first schematic. This is optional, but it will help you distinguish each milestone when you have many ADA messages.
+
+[NOTE]
+====
+When the game loads, it will look for all data assets with the class of `FGMessage` and load these automatically. There is no requirement to manually register these data assets.
+====
+
+=== Setting up the Email Message
+
+As part of the new message data asset, this will also create a new email that can be viewed in the `Inbox` window in-game. This is the first stage of setting up the data asset by setting the `Title` and `Message` variables:
+
+image:Satisfactory/AdaMessages/AdaMessage_3.png[FGMessage data asset Message section showing M Title and M Message fields filled with example inbox text]
+
+`Title` is the title shown in the inbox.
+
+`Message` is the longer body text shown in the inbox.
+
+=== Setting Up Subtitles
+
+If your ADA speech is quite long, then you will need to split it into multiple subtitles. This is because the text will not fit in the ADA pop-up widget. This can be done by adding a new array element to the `mSubtitles` variable. Each element in the array should have `Subtitle`, `Sender Class`, and `Time Stamp`.
+
+* Subtitle - This is the text you want to show in the ADA pop-up message.
+* Sender Class - This is the class of the sender, such as ADA or Alien Message.
+* Time Stamp - This is the time when the subtitle should appear. It correlates to the audio message timestamp if there are pauses.
+
+image:Satisfactory/AdaMessages/AdaMessage_4.png[FGMessage data asset M Subtitles section showing two subtitle array elements with Sender Class set to Sender_ADA and timestamp fields]
+
+
+[NOTE]
+====
+Long subtitle lines may not fit in the ADA popup. Split long lines into multiple subtitle entries and time them against the audio.
+====
+
+Setting the voice-over requires a Wwise Audio Event and can be configured in the data asset.
+
+image:Satisfactory/AdaMessages/AdaMessage_5.png[FGMessage data asset VO section showing the M Audio Event field currently set to None]
+
+The audio field is `mAudioEvent`. This should be assigned to an Unreal `Audiokinetic Event` asset. The Unreal `Audiokinetic Event` asset should correspond to a Wwise Play Event.
+
+For example:
+
+----
+mAudioEvent = Play_MSG_Bioremediation
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_38.png[Screenshot of the FGMessage mAudioEvent field assigned to a Play_MSG_... Audiokinetic Event asset]
+
+=== Setting up the Trigger
+
+The trigger is automatically registered when the game is loaded; you just need to populate the trigger settings in the data asset.
+
+image:Satisfactory/AdaMessages/AdaMessage_6.png[FGMessage data asset Trigger section showing BP Schematic Purchased Dependency selected, a schematic added to M Schematics, RequireAllSchematics checked, and trigger options configured]
+
+For messages triggered by schematics, set the Trigger Dependency to `BP Schematic Purchased Dependency` and configure the dependencies according to what schematic should trigger the message.
+
+For example:
+
+----
+mTrigger = BP Schematic Purchased Dependency
+Schematics[0] = Schematic_ExampleMilestone
+RequireAllSchematics = true
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_39.png[Screenshot of mTrigger set to BP Schematic Purchased Dependency with a schematic selected in the Schematics array]
+
+Additional trigger settings:
+
+* Can Be Queued - This setting is for if another ADA message is being played, then this message will wait for it to complete.
+* Can Be Repeated - This setting is for if the ADA message can be repeated.
+* Can Interrupt - Setting for if another lower priority message is playing, then interrupt it.
+* Play Interrupt Message - This setting will first play the default interrupt message, then play our message.
+* Blocked By Cooldown - Message will not play if in the message cooldown. Generally, don't check this.
+* Priority - The priority of this message. Suggested baseline value of 1.
+
+For normal milestone messages, a good starting point is:
+
+----
+Can Be Queued: true
+Can Be Repeated: false
+Can Interrupt: false
+Play Interrupt Message: false
+Blocked By Cooldown: false
+Priority: 1
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_40.png[Screenshot of the FGMessage trigger options with the recommended normal milestone values]
+
+[NOTE]
+====
+Test on a save where the schematic has not already been purchased. If `Can Be Repeated` is false, the message may not fire again in a save that already unlocked the schematic. The MAMEnhancer mod is fantastic for this kind of debugging.
+====
+
+== Assigning Audio to the FGMessage
+
+So far, the text and pop-up will fire, but no sound accompanies them. This is not a great outcome considering the amount of work it took to get there. To get the sound wired up, open an `FGMessage` data asset that we just created for one of your voice lines. Find the voice-over section and assign its `mAudioEvent` to whatever `Play_MSG_<MessageName>` this `FGMessage` is written-up for:
+
+For example, the `FGMessage` named `MSG_Bioremediation` would have:
+
+----
+mAudioEvent = Play_MSG_Bioremediation
+----
+
+This must be the Unreal `Audiokinetic Event` asset that matches the Wwise Play Event. That is, the `FGMessage` references the Unreal AudioKinetic event, which links to the Wwise play event, which references the sound object. You might notice that this perfectly follows the order that we have set everything up, because this is a complicated onion, and we started in the middle.
+
+For reference, using Bioremediation as an example:
+
+----
+Wwise sound object:  MSG_Bioremediation
+Wwise event:         Play_MSG_Bioremediation
+Unreal AK Event:     Play_MSG_Bioremediation
+FGMessage audio:     Play_MSG_Bioremediation
+SoundBank:           Contains Play_MSG_Bioremediation
+SoundBank:           Contains Master-Mixer Hierarchy
+----
+
+NOTE
+====
+Do you see how we reiterated that you should add the Master-Mixer Hierarchy to your SoundBank before generating it? Please do that~
+====
+
+== Packaging the Mod
+
+After the Wwise SoundBank is generated and the Unreal Audiokinetic Event assets are created, package the mod using your normal Alpakit workflow.
+
+If packaging fails with a message about `AutomationTool` already running, restart Unreal and it should be fixed. This has nothing to do with what we have done, but it happens sometimes.
+
+
+== Troubleshooting
+
+Most failures after the first working message are caused by one of the following:
+
+* The Wwise event was not added to the SoundBank.
+* The SoundBank was not regenerated.
+* The Unreal Audiokinetic Event name does not exactly match the Wwise event name.
+* The `FGMessage` points to the wrong Audiokinetic Event.
+* The schematic trigger is pointing to the wrong schematic.
+
+=== The ADA message does not appear at all
+
+Check:
+
+* The `FGMessage` data asset exists and is saved.
+* The trigger dependency is set.
+* The schematic dependency points to the correct schematic.
+* The test save has not already purchased the schematic.
+* `Can Be Repeated` is enabled if you are intentionally trying to test repeatedly in the same save.
+
+=== The ADA message appears but there is no audio
+
+Check:
+
+* `mAudioEvent` is assigned.
+* The Unreal Audiokinetic Event name exactly matches the Wwise event name.
+* The Wwise event has `Inclusion` checked.
+* The Wwise event targets the correct sound object.
+* The event is included in the SoundBank.
+* The Master-Mixer Hierarchy is included in the same SoundBank.
+* The SoundBank was regenerated after changes.
+* Unreal's Wwise `Root Output Path` points to the correct `GeneratedSoundBanks` folder.
+* `Unreal Audio Routing` is set to `Both Wwise and Unreal audio`.
+* The Unreal Editor was restarted after changing Wwise settings.
+* The Master-Mixer Hierarchy is included in the same SoundBank.
+
+=== The Wwise event plays in Wwise but not in the Unreal Editor
+
+Check:
+
+* The Unreal Audiokinetic Event asset has the exact same name as the Wwise event.
+* The Wwise SoundBank has been generated.
+* The Unreal `Root Output Path` points to the Wwise project's `GeneratedSoundBanks` folder.
+* The Master-Mixer Hierarchy is included in the SoundBank.
+* The path points to `GeneratedSoundBanks`, not `GeneratedSoundBanks/Windows`.
+* `Unreal Audio Routing` is set to `Both Wwise and Unreal audio`.
+* The Unreal Editor was restarted after changing the Wwise integration settings.
+
+=== The Unreal Editor Play Event works but the game has no audio
+
+Check:
+
+* The mod was repackaged after regenerating the SoundBank.
+* The SoundBank contains the Master-Mixer Hierarchy.
+* The tested save has not already consumed the schematic trigger.
+* The `.pak` contains the `.bnk` file.
+
+To inspect a packaged `.pak`, use UnrealPak:
+
+----
+UnrealPak.exe "<PathToPak>\<YourMod>FactoryGame-Windows.pak" -List > "%USERPROFILE%\Desktop\<YourMod>PakList.txt"
+----
+
+Search the generated text file for:
+
+----
+.bnk
+WwiseAudio
+<YourSoundBankName>.bnk
+----
+
+A valid packaged bank path may look like:
+
+----
+Content/WwiseAudio/English(US)/<YourSoundBankName>.bnk
+----
+
+For example:
+
+----
+Content/WwiseAudio/English(US)/WasteShielding.bnk
+----
+
+[NOTE]
+====
+A `.bnk` may not appear as a loose file in the installed mod folder if it has been packaged into the `.pak`.
+Inspect the `.pak` rather than relying only on Windows file search.
+====
+
+=== The message is very quick or the subtitle disappears too soon
+
+Check:
+
+* The subtitle entries are split into reasonable chunks.
+* The subtitle timestamps match the audio.
+* The audio event is assigned and plays.
+* The audio file is not extremely short because it was accidentally trimmed too aggressively.
+
+=== The wrong voice line plays
+
+Check the full chain for that message:
+
+----
+FGMessage data asset
+-> mAudioEvent
+-> Unreal AK Event asset
+-> Wwise event
+-> Wwise sound object
+----
+
+The names should match the intended message.
+
+For example:
+
+----
+FGMessage:       MSG_Bioremediation
+mAudioEvent:     Play_MSG_Bioremediation
+Unreal AK Event: Play_MSG_Bioremediation
+Wwise event:     Play_MSG_Bioremediation
+Wwise object:    MSG_Bioremediation
+----
+
+=== The SoundBank was generated, but the game still has no sound
+
+Make sure the SoundBank includes both:
+
+----
+Play_MSG_... events
+----
+
+and:
+
+----
+Master-Mixer Hierarchy / relevant bus routing
+----
+
+Including only the Play Events is not enough in some cases.
+The game may have the event and media, but the audio may not route to output correctly.
+
+== The End
+
+Congrats! You now have fully voiced ADA lines in your mod, and all it took was your sanity!
