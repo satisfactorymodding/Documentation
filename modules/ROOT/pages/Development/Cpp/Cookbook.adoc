@@ -114,3 +114,17 @@ https://forums.unrealengine.com/t/how-to-create-k2node-that-appears-as-multiple-
 == Custom Cpp Struct Equality Operator
 
 https://forums.unrealengine.com/t/creating-a-custom-equality-operator-between-structures/151127
+
+== Finding and Modifying a Config Property via {cpp}
+
+Possibly move this to the xref:Development/ModLoader/Configuration.adoc[Configuration] docs page?
+Is it possible to do this via the generated config structs instead?
+
+Example from InfiniteNudge.
+
+```cpp
+UConfigManager* ConfigManager = GetWorld()->GetGameInstance()->GetSubsystem<UConfigManager>();
+auto root = ConfigManager->GetConfigurationRootSection({ "InfiniteNudge", "" });
+CastChecked<UConfigPropertyBool>(root->SectionProperties.FindChecked("ShowScrollModeGizmo"))->Value = UInfiniteGizmo::Toggle();
+root->MarkDirty();
+```
