@@ -96,8 +96,7 @@ return length;
 
 == Latent Functions
 
-https://mikelis.net/easy-c-latent-functions-in-unreal-engine-blueprints/
-
+https://web.archive.org/web/20260202052337/https://mikelis.net/easy-c-latent-functions-in-unreal-engine-blueprints/
 
 == Creating K2 Nodes
 

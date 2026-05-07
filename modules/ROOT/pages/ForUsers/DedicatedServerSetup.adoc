@@ -62,7 +62,6 @@ const unshuffled = [
   "Bisect Hosting",
   "Zap Hosting",
   "Supercraft",
-  "Nitrado",
   "GTX Gaming",
   "Nodecraft",
   "Gravel Host",
@@ -82,7 +81,7 @@ list.innerHTML = shuffled.map(host => `<li>${host}</li>`).join('');
 [id="UnsupportedHosting"]
 ==== Unsupported Hosts
 
-// cspell:ignore gportal
+// cspell:ignore gportal nitrado
 ====
 The following 3rd party hosting services are known to **_NOT_ support mods**,
 regardless of what their websites and marketing pages claim:
@@ -100,6 +99,7 @@ _we offer no support for them_.
   They provide their own UI for mod installation, but we do not support this ourselves. See their docs for details.
 - gportal - Doesn't show the proper game file tree.
   You may have success with manual mod installation, but we offer no support for that process.
+- Nitrado - FTP connection often responds with "invalid response" to valid requests.
 ====
 
 It is also worth noting that AMP causes SFTP to throw weird errors,
