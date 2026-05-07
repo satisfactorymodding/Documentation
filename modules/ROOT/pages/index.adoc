@@ -85,7 +85,7 @@ After you've finished your mod (or at least its first version), you might want t
 
 The community used to have a Discourse-powered forums website for modding discussion,
 but it has since been archived due to low usage.
-You can find the archives https://forums.ficsit.app/[here].
+You can find the archives https://web.archive.org/web/20260309124622/https://forums.ficsit.app/index-2.html[here].
 
 == Contributing
 

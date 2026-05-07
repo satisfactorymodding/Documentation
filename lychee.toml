@@ -26,6 +26,8 @@ exclude = [
     "https://www.gnu.org/",
     # This is a valid page but still 404s for some reason
     "https://www.audiokinetic.com/en/download/",
+    # As of 05/2026 they are captcha blocked -> 403s
+    "https://www.audiokinetic.com/en/",
     # unable to get local issuer certificate
     "https://questions.satisfactorygame.com/",
     # 403s despite being valid pages
