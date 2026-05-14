@@ -210,6 +210,26 @@ image:Satisfactory/AdaMessages/AdaVoice_6.png[Screenshot of Delay effect setting
 
 Click `OK`.
 
+==== Echo
+
+Open:
+
+----
+Effect -> Echo
+----
+
+Set:
+
+----
+Delay time (seconds): 0.06
+Decay factor: 0.24
+----
+
+image:Satisfactory/AdaMessages/AdaVoice_Echo.png[Screenshot of Echo effect settings with all listed values filled in]
+
+Click `OK`.
+
+
 === Creating the Audacity Macro
 
 Create a reusable processing chain:
