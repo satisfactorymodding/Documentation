@@ -120,10 +120,11 @@ Navigate to the Example Mod's content folder in your editor and find the _game m
 Right click on it, then go to the Asset Actions dropdown and select `Migrate...`, which will cause a popup to open.
 This popup's default settings include more assets than we want to copy, so we'll have to narrow it down.
 
-Uncheck anything that is outside of the the `/ExampleMod/Maps/` directory.
-When you're done, it'll look like this:
+Uncheck anything that is outside of the the `/ExampleMod/` directory tree.
+When you're done, it'll look like this ():
 
-image:Development/CustomLevels/AssetMigrator.png[Screenshot of Asset Migrator popup with unwanted content deselected]
+.Migration dialog. Sections have been collapsed for the screenshot. All of the children inside the checked items should also be checked (they are by default).
+image::Development/CustomLevels/AssetMigrator.png[Screenshot of Asset Migrator popup with unwanted content deselected]
 
 Press `Ok` to be taken to a system file browser window.
 Navigate to your mod's Content folder and press Select Folder to continue.
@@ -136,7 +137,8 @@ You can do this by right clicking on your version of the Example Level and selec
 then hovering over any of the items in the first branch level to the right of the Level in the viewer.
 The path should start with your own mod reference and not `/ExampleMod/`.
 
-image:Development/CustomLevels/CorrectReferenceViewer.png[Screenshot of a correctly migrated level in the Reference Viewer]
+.Note the path of your mod reference is present here, not `ExampleMod`
+image::Development/CustomLevels/CorrectReferenceViewer.png[Screenshot of a correctly migrated level in the Reference Viewer]
 
 === Renaming Your Assets
 
@@ -195,7 +197,8 @@ Each game level has a special blueprint called the Level Blueprint.
 This is a good place to run level-specific setup code.
 To view and edit the Level Blueprint, open it with the dedicated button in the top bar's Blueprints button.
 
-image:Development/CustomLevels/OpenLevelBlueprint.png[Open Level Blueprint button]
+.Opening the Level Blueprint
+image::Development/CustomLevels/OpenLevelBlueprint.png[Open Level Blueprint button]
 
 Since you copied the example level, there is already some code in here.
 Some of it is required to prevent the game from crashing when the player enters
@@ -276,7 +279,7 @@ Where is the Oil node mesh?::
 * {blank}
 +
 Gas Pillars don't visually emit clouds::
-  This is a known bug that we're not sure how to fix yet.
+  Gas pillars use a special system to control their visual effects. See the floating documentation actors in the example level.
 * {blank}
 +
 Crab hatchers don't detect the player::
@@ -288,7 +291,7 @@ All of the models in the editor appear as white cubes::
 * {blank}
 +
 No music is played::
-  We aren't sure how to trigger music in custom levels yet, especially since we don't have access to most Wwise systems.
+  We aren't sure how to trigger music in custom levels yet.
   Try using ambient volumes.
 * {blank}
 +
@@ -301,7 +304,7 @@ Lumen is not working!::
 * {blank}
 +
 The sky is dark and I crash a few seconds after loading into the level!::
-  Make sure your Project Settings have FGWorldSettings as the World Settings Class.
+  Make sure your Project Settings have `FGWorldSettings` as the World Settings Class.
 
 == World Partition System
 
