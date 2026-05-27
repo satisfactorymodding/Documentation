@@ -292,7 +292,7 @@ function PrepareArgs([string]$baseArgs, [switch]$applyFirstInstanceOnlyArguments
 	} else {
 		# Only the second copy should run the connect command for clientAutoJoin
 		if ($clientAutoJoin) {
-			# ExecCmds uses UE syntax: https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference
+			# ExecCmds uses UE syntax: https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-command-line-arguments-reference
 			$buildArgs = "$buildArgs", '-ExecCmds="open 127.0.0.1"'
 		}
 	}
@@ -485,7 +485,7 @@ allowing automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unrea
 after the game loads.
 
 You can read more about it in the 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
+https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
 
 The link:#LaunchScript[Quick Launch Script]
 uses this argument to implement the `-clientAutoJoin` flag.

@@ -11,7 +11,7 @@ Introduced in SML3.8, the Content Tag Registry is an
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
 xref:Development/ModLoader/Subsystems.adoc[Subsystem]
 that manages
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Gameplay Tag Containers]
+https://dev.epicgames.com/documentation/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.6[Gameplay Tag Containers]
 at a per-class level to be utilized by mod systems.
 
 Gameplay Tags are essentially a structured hierarchical system of FName tags that Unreal has built further libraries and optimizations around.
@@ -86,7 +86,7 @@ Tag comments can be edited later in the tag source ini file.
 
 UE Tags are hierarchical with each "level" separated by periods.
 For an example, see https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this blog post]
-and https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[the UE documentation].
+and https://dev.epicgames.com/documentation/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.6[the UE documentation].
 
 Tag names should be written with this behavior in mind.
 
@@ -189,7 +189,7 @@ Use `UContentTagRegistry::Get()` to get a reference to the registry.
 Use `UContentTagRegistry:GetGameplayTagContainerFor` to get the tag container for a class.
 
 From there, use
-https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.3#functions[tag container functions] to query for tags.
+https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.6#functions[tag container functions] to query for tags.
 
 == Using Tags from Other Mods
 

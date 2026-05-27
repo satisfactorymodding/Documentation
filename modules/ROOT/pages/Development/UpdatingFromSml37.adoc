@@ -66,7 +66,7 @@ Note that the inverse (joining a server with SML from a vanilla client) is not y
 === Content Tag Registry
 
 SML now offers a registry to assist mods with using
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Unreal Gameplay Tags].
+https://dev.epicgames.com/documentation/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.6[Unreal Gameplay Tags].
 
 Gameplay Tags are a useful way to introduce some cross-mod compatibility without hard dependencies on other mods.
 

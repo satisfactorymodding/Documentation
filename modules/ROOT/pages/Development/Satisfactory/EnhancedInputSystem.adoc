@@ -159,7 +159,7 @@ and the created node will have the header text `EnhancedInputAction IA_TriggerEx
 [id="RespondInputActionsCpp"]
 === {cpp}
 
-The https://dev.epicgames.com/documentation/en-us/unreal-engine/enhanced-input-in-unreal-engine?application_version=5.3#addinginputlisteners[Unreal documentation]
+The https://dev.epicgames.com/documentation/unreal-engine/enhanced-input-in-unreal-engine?application_version=5.6#addinginputlisteners[Unreal documentation]
 explains how to handle responding to Input Actions in {cpp},
 except it assumes we have control over the player controller, which modders do not.
 Thankfully Coffee Stain has created a delegate `AFGCharacterPlayer::OnPlayerInputInitialized`

@@ -5,7 +5,7 @@ A Core Redirect is an Unreal Engine system that allows you to tell the game and 
 You can learn more about them
 https://www.unrealdirective.com/articles/core-redirectors-what-you-need-to-know[here]
 or
-https://dev.epicgames.com/documentation/en-us/unreal-engine/core-redirects-in-unreal-engine?application_version=5.3[on the Unreal docs].
+https://dev.epicgames.com/documentation/unreal-engine/core-redirects-in-unreal-engine?application_version=5.6[on the Unreal docs].
 Note that the Unreal docs are partly incorrect
 and claim that the OldName of PackageRedirects will work without the slashes present.
 You should follow the example here or on the UnrealDirective docs page instead.

@@ -449,14 +449,14 @@ It's one of the editor plugins that comes pre-installed with the starter project
 === Opening Alpakit
 
 Click on the Alpakit Dev button in the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#maintoolbar[Main Toolbar]
+https://dev.epicgames.com/documentation/unreal-engine/unreal-editor-interface?application_version=5.6#maintoolbar[Main Toolbar]
 of the Unreal editor to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
 
 image:BeginnersGuide/OpenAlpakitDev.png[Alpakit Dev icon]
 
 You can also bring it up via `File > Alpakit Dev` from the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#menubar[Menu Bar].
+https://dev.epicgames.com/documentation/unreal-engine/unreal-editor-interface?application_version=5.6#menubar[Menu Bar].
 
 Next, open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log",
 or using `File > Alpakit Log`.

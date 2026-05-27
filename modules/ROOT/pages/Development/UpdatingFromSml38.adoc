@@ -78,7 +78,7 @@ It enables automatically executing xref:SMLChatCommands.adoc#ConsoleCommands[Unr
 after the game loads.
 
 You can read more about it in the 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
+https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-command-line-arguments-reference[Unreal documentation]
 
 The xref:Development/TestingResources.adoc#LaunchScript[Quick Launch Script]
 uses this argument to implement the `-clientAutoJoin` flag.

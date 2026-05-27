@@ -63,13 +63,13 @@ https://www.unrealengine.com/en-US/blog/collision-filtering
 
 == Timers
 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/gameplay-timers-in-unreal-engine
+https://dev.epicgames.com/documentation/unreal-engine/gameplay-timers-in-unreal-engine
 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-timers-in-unreal-engine
+https://dev.epicgames.com/documentation/unreal-engine/using-timers-in-unreal-engine
 
 == Scripted Actions
 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/scripted-actions-in-unreal-engine?application_version=5.3
+https://dev.epicgames.com/documentation/unreal-engine/scripted-actions-in-unreal-engine?application_version=5.6
 
 == Check if Main Menu
 
@@ -104,7 +104,7 @@ https://www.gamedev.net/tutorials/programming/engines-and-middleware/improving-u
 
 https://forums.unrealengine.com/t/how-do-i-create-my-own-blueprint-node-with-c/294883/2
 
-https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Editor/Kismet
+https://dev.epicgames.com/documentation/unreal-engine/API/Editor/Kismet
 
 https://dev.epicgames.com/community/learning/tutorials/2lZj/unreal-engine-creating-a-uk2node-returning-a-reference
 

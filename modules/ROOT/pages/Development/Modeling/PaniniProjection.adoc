@@ -21,7 +21,7 @@ a vertex shader called a **Panini Projection** is applied to the world and the p
 To learn more about this technique, see 
 http://tksharpless.net/vedutismo/Pannini/[this article],
 which was originally linked from Unreal Engine documentation page about a
-https://dev.epicgames.com/documentation/en-us/unreal-engine/panini-projection-in-unreal-engine?application_version=5.3#references[different unrelated implementation] of the technique.
+https://dev.epicgames.com/documentation/unreal-engine/panini-projection-in-unreal-engine?application_version=5.6#references[different unrelated implementation] of the technique.
 
 Satisfactory always renders the player's first person viewmodels with a fixed 90° FOV,
 so it's best to work on these meshes at a 90°.
