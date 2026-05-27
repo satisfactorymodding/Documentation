@@ -75,7 +75,7 @@ follow the below directions.
 
 1. Install [Node.js](https://nodejs.org/en/download/)
    (Check [`.node-version`](/.node-version) to find the exact version, but anything >=24 will probably be fine)
-   and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
+   and [pnpm Package Manager](https://pnpm.io/) through your preferred method (exact version in [`.pnpm-version](/.pnpm-version)).
 
 2. Clone the repository
 

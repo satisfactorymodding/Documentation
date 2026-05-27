@@ -4,10 +4,12 @@
 	"name": "SML Documentation",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/javascript-node/tags
+	// TODO read .node-version and install that?
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
+		// TODO read `.pnpm-version` and install that?
 		"ghcr.io/devcontainers-extra/features/pnpm": "latest"
 	},
 

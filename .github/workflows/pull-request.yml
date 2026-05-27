@@ -10,10 +10,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Read pnpm version from file
+        id: pnpm-version
+        run: echo "PNPM_VERSION=$(cat .pnpm-version)" >> $GITHUB_OUTPUT
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 11
+          version: ${{ steps.pnpm-version.outputs.PNPM_VERSION }}
 
       - name: Setup NodeJS
         uses: actions/setup-node@v6
@@ -61,8 +65,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Read pnpm version from file
+        id: pnpm-version
+        run: echo "PNPM_VERSION=$(cat .pnpm-version)" >> $GITHUB_OUTPUT
+
       - name: Build Docker image (without pushing)
         uses: docker/build-push-action@v7
         with:
           context: .
           push: false
+          build-args: |
+            PNPM_VERSION=${{ steps.pnpm-version.outputs.PNPM_VERSION }}

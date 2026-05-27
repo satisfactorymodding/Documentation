@@ -1,10 +1,11 @@
-FROM node:alpine as build
+FROM node:alpine AS build
 
 ARG BUILD=build
+ARG PNPM_VERSION
 
 WORKDIR /app
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm ${PNPM_VERSION}
 
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
