@@ -222,9 +222,10 @@ Download the following files from the release linked above:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
+- `UnrealEngine-CSS-Editor-Win64-3.bin`
 - `UnrealEngine-CSS-Editor-Win64.exe`
 
-Save all 3 files in the same folder,
+Save all 4 files in the same folder,
 and make sure that their names are _exactly the same as listed above_
 otherwise the installer will not work.
 
@@ -241,6 +242,12 @@ https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 
 You also must have used the link:#UnrealLinker[Unreal Linker] tool described above to link your GitHub account to our repository.
+====
+
+[NOTE]
+====
+The `Win64.7z` files are provided as a non-installer version for legacy CI purposes.
+Don't use them unless you already know you need them.
 ====
 
 === Install the Custom Engine
