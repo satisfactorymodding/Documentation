@@ -196,6 +196,13 @@ will tell you where in the docs to find the new version numbers.
 * Starter Project contents
   ** Always changes with every SML version, since the Starter Project contains the SML source code.
 
+== Install the New Clang Toolchain
+
+Check up on the xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies guide]
+to see if you need a new clang toolchain and install if so.
+Windows' "Add or remove programs" (Apps & features) can tell you what version you currently have installed
+by searching `clang`.
+
 == Install the New Engine
 
 New editor versions are usually downloaded from

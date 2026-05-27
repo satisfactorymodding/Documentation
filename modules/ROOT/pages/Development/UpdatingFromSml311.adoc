@@ -66,10 +66,14 @@ Install the updated versions as you follow the xref:Development/UpdatingToNewVer
 
 ==== Engine Update
 
-Satisfactory 1.2 brings the game to Unreal Engine 5.6.1,
-Coffee Stain and Fishlabs have made some engine and engine plugin modifications
-in furtherance their work maintaining console support.
+Satisfactory 1.2 brings the game to Unreal Engine 5.6.1.
 Download and set up our custom release while following the
+xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
+
+==== Clang Toolchain Update
+
+This updated engine version also requires an updated clang toolchain.
+Download and set up the new toolchain while following the
 xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
 
 ==== Wwise Update
@@ -100,5 +104,11 @@ TODO: Add any additional changes that we want to draw attention to here.
 
 == Complete Changelog
 
+[NOTE]
+====
+This link temporarily compares to the `dev` branch since there is no 3.12 tag until release.
+====
+
 The full list containing every changed file and asset can be viewed using GitHub's Compare Changes feature:
-https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.12.0...v3.11.0
+// https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.3...v3.12.0
+https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.3...dev
