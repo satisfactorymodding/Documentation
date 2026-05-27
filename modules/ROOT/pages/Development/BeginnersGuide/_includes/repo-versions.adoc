@@ -1,5 +1,5 @@
-:suggested-branch: master
-// :suggested-branch: dev
+// :suggested-branch: master
+:suggested-branch: dev
 
 // If this is an archived docs branch, this should be set to the SML version it corresponds to.
 :this-archive-version: NOT-AN-ARCHIVE
