@@ -3,11 +3,12 @@
 {
 	"name": "SML Documentation",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	// https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/javascript-node/tags
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:24",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
-		"ghcr.io/devcontainers-contrib/features/pnpm": "latest"
+		"ghcr.io/devcontainers-extra/features/pnpm": "latest"
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
