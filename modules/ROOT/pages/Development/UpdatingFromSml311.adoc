@@ -100,7 +100,13 @@ as a dedicated servers memory optimization.
 
 `-RenderOffscreen` can be used instead, which will still use the GPU to render, but without the game window.
 
-TODO: Add any additional changes that we want to draw attention to here.
+
+=== Custom Icon Libraries on Servers
+
+1.2 fixes a base-game bug content registration bug,
+allowing modded xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries]
+to work properly on dedicated servers.
+No changes to existing icon libraries are known to be required for the fix to work.
 
 == Complete Changelog
 
