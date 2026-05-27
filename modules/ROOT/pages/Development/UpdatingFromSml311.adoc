@@ -1,5 +1,11 @@
 = Upgrading from SML 3.11.x to 3.12.x
 
+[IMPORTANT]
+=====
+This guide is still a work in progress and is not in a state to be followed yet.
+Attempt to upgrade at your own risk, we are still working on this document.
+=====
+
 SML3.12 brings support for Satisfactory 1.2.
 
 Mods compiled for SML3.11 are not expected to work with SML3.12 due to upgrading the Unreal 
