@@ -121,7 +121,7 @@ Right click on it, then go to the Asset Actions dropdown and select `Migrate...`
 This popup's default settings include more assets than we want to copy, so we'll have to narrow it down.
 
 Uncheck anything that is outside of the the `/ExampleMod/` directory tree.
-When you're done, it'll look like this ():
+When you're done, it'll look like this:
 
 .Migration dialog. Sections have been collapsed for the screenshot. All of the children inside the checked items should also be checked (they are by default).
 image::Development/CustomLevels/AssetMigrator.png[Screenshot of Asset Migrator popup with unwanted content deselected]
