@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@antora/cli':
         specifier: ^3.1.4
-        version: 3.1.15
+        version: 3.1.14
       '@antora/site-generator-default':
         specifier: ^3.1.4
-        version: 3.1.15
+        version: 3.1.14
       chokidar-cli:
         specifier: ^3.0.0
         version: 3.0.0
@@ -35,73 +35,73 @@ packages:
       '@75lb/nature':
         optional: true
 
-  '@antora/asciidoc-loader@3.1.15':
-    resolution: {integrity: sha512-MVspbcMPmBgxZms0EjmyC9nlCAWBJfHYSwQCXRZn6T7OujRrLvJFPgz+EROz9XOqh4v76BeqgEuLsUJIZjH3cw==}
+  '@antora/asciidoc-loader@3.1.14':
+    resolution: {integrity: sha512-4xxisnoBFrlLNY6f3xZtyyfgm+tBLsqesTcEStfc8jtXUMYJ4b2DWIzo1vULmxvZ7yY5+Q7YqEvS5o6kIWAG0A==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/cli@3.1.15':
-    resolution: {integrity: sha512-76vLhkyzyFd49WJHsC04oPAZlK4qWbJaeZdS/pLUUVBqgaxeSeNqpTZ0pXo7f+5laGRO19fXyk1eDWGus9h8jA==}
+  '@antora/cli@3.1.14':
+    resolution: {integrity: sha512-I6WcygMU2bFInjdURJjkYjo7K5M8B3lBB53v9OO0IcY0LhEY8Wa7IlZ7wVinf5qEjHvaYzRGTZVl6RsJtVt7Sw==}
     engines: {node: '>=16.0.0'}
     hasBin: true
 
-  '@antora/content-aggregator@3.1.15':
-    resolution: {integrity: sha512-w84rJRKx+C4dsSbOHmjg78oM2T6xP9JRDsxpXjTmlh9T4zlNELCB6AD5s6Gztt3S6wlTiCNFLZw0v/HEVtuhzQ==}
+  '@antora/content-aggregator@3.1.14':
+    resolution: {integrity: sha512-FVuBgnrGPiktYqK1WHbGF8O8l4m5KHlkxoJumrbacgFo8SKuiRFEo31zalxrCUsv8QM3UBEgX+LdHrve/9CGLg==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/content-classifier@3.1.15':
-    resolution: {integrity: sha512-m7INbqJcXBZU04HdBMqfL/NvezC3aaJGHHa0KfzeEKICg5FT22cVsEp6mYTgJVT4HqRy7JPCn9UeZvoa9x+MzQ==}
+  '@antora/content-classifier@3.1.14':
+    resolution: {integrity: sha512-y8Fk+KU1lqD3aawOu3ZFK92YfOZ1k3YBJhLI9QIFM6Ck4STPnf7AwYbhfOtjODlwer5/OhFmfhjUB2hn7onGnA==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/document-converter@3.1.15':
-    resolution: {integrity: sha512-7YZsc/iIJVTxvHKy0/eqPTuRIJupBd7Pq49gWvCxiDBR9Zj4esqMZIU3HaIbkBgqJLlQv5TLBeTjiQ1Qpe1hNw==}
+  '@antora/document-converter@3.1.14':
+    resolution: {integrity: sha512-f6wFnL+489DI0ZDgoxYWzbxxWqPviRiJ56OHS1NixEfvJ7OpRBDPEbX1xnsIeiyFBgqX4+nY92MsCWKTa+Gf3w==}
     engines: {node: '>=16.0.0'}
 
   '@antora/expand-path-helper@3.0.0':
     resolution: {integrity: sha512-7PdEIhk97v85/CSm3HynCsX14TR6oIVz1s233nNLsiWubE8tTnpPt4sNRJR+hpmIZ6Bx9c6QDp3XIoiyu/WYYA==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/file-publisher@3.1.15':
-    resolution: {integrity: sha512-UfLYeyD6Na9YXespr3Xjy6OPIAGG6GTbdW3SNn8KxHl3hGeF/AtM3NaR+AJgyOmTb2r9lHzfODXeZevqX+vMww==}
+  '@antora/file-publisher@3.1.14':
+    resolution: {integrity: sha512-fTaAnkyKSOlsxQM1TBFCAmiERA6Q67XleDCD2bMPVgfcENmo0Xfx59KwCHaA92IcRSmMftydlXHPaFxNh0UVsg==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/logger@3.1.15':
-    resolution: {integrity: sha512-txA2Nv0QQ+hIt6arc3Rrh1BiUJNlucsyNF7ZA7LgtN+rzxyjcqQPpbQ2F3tU2lOV/LOQCEvMbmz9Dj0tY8oBuA==}
+  '@antora/logger@3.1.14':
+    resolution: {integrity: sha512-kVEeGqZbXR903hPIm+BlN97fLdQ3LoUzE/BOPZ6vRp9m9Mmbnm67Kg7fSYkfTMLB0S2UWpAPFg22RdsU5ZoAzA==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/navigation-builder@3.1.15':
-    resolution: {integrity: sha512-XRs4pfNd88GCG9lDAJ1J+2vwvre7OzNRSgRmZhEhtgv0A13NEZq37X4YuaH46F2kj2BqiZT8UOuxqAqarLaxmg==}
+  '@antora/navigation-builder@3.1.14':
+    resolution: {integrity: sha512-/637YLGD7oUHGSfEfszXkk4ASfIhDAg5Xs9035J1dV07XYRlGqmtUb15rtapbcECpcQFjCyM5jFQYSNNvLrGcQ==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/page-composer@3.1.15':
-    resolution: {integrity: sha512-koKlhWilA0E0QdCCOeLLzCFLNViBVjNe3aIlmJnMCwAK0p85wyhVfyolNqbNejAvdCZ87YhUQJ52Q4ikCgkQQg==}
+  '@antora/page-composer@3.1.14':
+    resolution: {integrity: sha512-RfA+67TxCqUPrQbZdrfjgLpHh8MR2z2du7cyF3HGX4N6DpqEBvz81NHHl3rA3fj6BQZPQbGm2OYAMU6wzJ6Pog==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/playbook-builder@3.1.15':
-    resolution: {integrity: sha512-L2bE9FS0Th/d37DeDjz/dg9YXrkHM1xI0WQB3eiW3K/6d0Mc7eJhbmDMT0K8S+hgdaO0AT4kqDWzvx2866ZobA==}
+  '@antora/playbook-builder@3.1.14':
+    resolution: {integrity: sha512-Ss2r7In00u/n9Da+JOxEqIE8NeRosf+f+agzH3Te09JV/mpgZKxEOE5V/VuP+TNNq4ww1eu5aOS8DiU2PYwj4Q==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/redirect-producer@3.1.15':
-    resolution: {integrity: sha512-mV0KnRiTr9oi0hPm7okT/Bw8kkz+PWYxp9AVSGqzhkoQgr3crxhgyS0NFCoViHwjaj4NfQrf++yxbhr6Igd7Dw==}
+  '@antora/redirect-producer@3.1.14':
+    resolution: {integrity: sha512-5koAwRk1cZrvE/qfOWKXqb3jtxrZbWA5EYHYGFEoato5By3cbC42blH4Bre9/48pjyS6znFpbZhYUBpT7PRhZA==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/site-generator-default@3.1.15':
-    resolution: {integrity: sha512-rXCVv513b617kKu8dVAxeDUKhtkzRujTICzjuDEy/sfAnHuFLcuR169lPS6qYdN/uOh4P6cXyBBzVw4F6JvyyA==}
+  '@antora/site-generator-default@3.1.14':
+    resolution: {integrity: sha512-p+tVzVkJ8+pcnxUP7m5KG6ROK9T6ULS9Vmt9v/9mfQH9KmZ4xtlbbG00x8j/OLSY9pEvTvdTfUwZXm/6Nqpc9g==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/site-generator@3.1.15':
-    resolution: {integrity: sha512-Z9YiRTqw3ssnLQxSHI3VZHEPLytQXt8cWC5C/o9vS+Fc560TSNs1UO4quPFIkg+bFUpxXtcAxqbp650aA4/N1g==}
+  '@antora/site-generator@3.1.14':
+    resolution: {integrity: sha512-hQIUVtM9+xwleYWc4fIRZmiKl2p+ItOJuUm2+Hkdh07BZsySxkMOxxCyZsvTn9rc+4R94CYqDQCYElwFwdB2WA==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/site-mapper@3.1.15':
-    resolution: {integrity: sha512-dV5zGeL1uMQ83sfkBWKg8vjaJQXz1Zh3ZSNQZYa64HnT4M7oSuQUzwDZdS0j6ZtTiYcNGulRi1ucz3uIoc9tqw==}
+  '@antora/site-mapper@3.1.14':
+    resolution: {integrity: sha512-3qbETtwadl+fWREjzrBUxPUorMcMiZ+hdkB1El9z7it9KzKh0Yp7Je0+2uTxGX+Lov9uik48dZJ9e/mr5PeaRQ==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/site-publisher@3.1.15':
-    resolution: {integrity: sha512-pBuNxgA+H+WB5F4gA/gim5wKx/884QwlqOl0CpOY+6Fqn7h2ooHA7Tv6O47Tra1nZzNbIe3CQRoA5pnrX6zyRw==}
+  '@antora/site-publisher@3.1.14':
+    resolution: {integrity: sha512-8apyEmgepUc7ms9CTEIPwN3tGtWwLqR6fbLMLs7hibqmOSR880Ut/4GRGb97sqcGQXSHdIyWK2oJKzRl1Akb6Q==}
     engines: {node: '>=16.0.0'}
 
-  '@antora/ui-loader@3.1.15':
-    resolution: {integrity: sha512-zYjF5ID7t6mUEJuMyeNW/AYu1U0026wZj58H0siGuaT5YhVoxZrfvZYWV5iCMntpKduMqkwZW/l+D4MIqjhFYQ==}
+  '@antora/ui-loader@3.1.14':
+    resolution: {integrity: sha512-LVvTdKQOB44CmJ1JQDu8sJf6rrLZMxPAWWackdg2JtGyGHHpd80/MBcv4BSFk7//cJQ13Oqm/7JCbhD51KAFjg==}
     engines: {node: '>=16.0.0'}
 
   '@antora/user-require-helper@3.0.0':
@@ -439,8 +439,8 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  brace-expansion@1.1.15:
-    resolution: {integrity: sha512-EwOCDEex4quD37XhqM3omwtMoJjr//isUZz1JopUNWms+4Z2ViyM/k1YIRePpoVNnQhENnxtFjLaxNHrT7xIUg==}
+  brace-expansion@1.1.14:
+    resolution: {integrity: sha512-MWPGfDxnyzKU7rNOW9SP/c50vi3xrmrua/+6hfPbCS2ABNWfx24vPidzvC7krjU/RTo235sV776ymlsMtGKj8g==}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -448,10 +448,6 @@ packages:
 
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-
-  buffer-crc32@1.0.0:
-    resolution: {integrity: sha512-Db1SbgBS/fg/392AblrMJk97KggmvYhr4pB5ZIMTWtaivCPMWLkmb7m21cJvpvgK+J3nsU2CmmixNBZx4vFj/w==}
-    engines: {node: '>=8.0.0'}
 
   buffer@6.0.3:
     resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
@@ -1715,8 +1711,8 @@ packages:
   streaming-json-stringify@3.1.0:
     resolution: {integrity: sha512-axtfs3BDxAsrZ9swD163FBrXZ8dhJJp6kUI6C97TvUZG9RHKfbg9nFbXqEheFNOb3IYMEt2ag9F62sWLFUZ4ug==}
 
-  streamx@2.26.0:
-    resolution: {integrity: sha512-VvNG1K72Po/xwJzxZFnZ++Tbrv4lwSptsbkFuzXCJAYZvCK5nnxsvXU6ajqkv7chyiI1Y0YXq2Jh8Iy8Y7NF/A==}
+  streamx@2.25.0:
+    resolution: {integrity: sha512-0nQuG6jf1w+wddNEEXCF4nTg3LtufWINB5eFEN+5TNZW7KWJp6x87+JFL43vaAUPyCfH1wID+mNVyW6OHtFamg==}
 
   string-width@3.1.0:
     resolution: {integrity: sha512-vafcv6KjVZKSgz06oM/H6GDBrAtz8vdhQakGjFIvNrHA6y3HCF1CInLy+QLq8dTJPQ1b+KDUqDFctkdRW44e1w==}
@@ -1858,8 +1854,8 @@ packages:
   which-module@2.0.1:
     resolution: {integrity: sha512-iBdZ57RDvnOR9AGBhML2vFZf7h8vmBjhoaZqODJBFWHVtKkDmKuHai3cx5PgVMrX5YDNp27AofYbAwctSS+vhQ==}
 
-  which-typed-array@1.1.21:
-    resolution: {integrity: sha512-zbRA8cVm6io/d5W8uIe2hblzN76/Wm3v/yiythQvr+dpBWeqhPSWIDNj4zOyHi4zKbMK6DN34Xsr9jPHJERAEw==}
+  which-typed-array@1.1.20:
+    resolution: {integrity: sha512-LYfpUkmqwl0h9A2HL09Mms427Q1RZWuOHsukfVcKRq9q95iQxdw0ix1JQrqbcDR9PH1QDwf5Qo8OZb5lksZ8Xg==}
     engines: {node: '>= 0.4'}
 
   wordwrap@1.0.0:
@@ -1904,12 +1900,12 @@ packages:
   yargs@13.3.2:
     resolution: {integrity: sha512-AX3Zw5iPruN5ie6xGRIDgqkT+ZhnRlZMLMHAs8tg7nRruy2Nb+i5o9bwghAogtM08q1dpr2LVoS8KSTMYpWXUw==}
 
-  yauzl@3.3.1:
-    resolution: {integrity: sha512-RNPCUkiE/ZgO4w8i9U5yDQVHaFDdnzaFANElRvpJteCspvmv2VqrRb9lvS6odVD+jqI/zDsxAHJVsafpcheVQQ==}
+  yauzl@3.1.3:
+    resolution: {integrity: sha512-JCCdmlJJWv7L0q/KylOekyRaUrdEoUxWkWVcgorosTROCFWiS9p2NNPE9Yb91ak7b1N5SxAZEliWpspbZccivw==}
     engines: {node: '>=12'}
 
-  yazl@3.3.1:
-    resolution: {integrity: sha512-BbETDVWG+VcMUle37k5Fqp//7SDOK2/1+T7X8TD96M3D9G8jK5VLUdQVdVjGi8im7FGkazX7kk5hkU8X4L5Bng==}
+  yazl@2.5.1:
+    resolution: {integrity: sha512-phENi2PLiHnHb6QBVot+dJnaAZ0xosj7p3fWl+znIjBDlnMI2PsZCJZ306BPTFOaHf5qdDEI8x5qFrSOBN5vrw==}
 
   ylru@1.4.0:
     resolution: {integrity: sha512-2OQsPNEmBCvXuFlIni/a+Rn+R2pHW9INm0BxXJ4hVDA8TirqMj+J/Rp9ItLatT/5pZqWwefVrTQcHpixsxnVlA==}
@@ -1930,23 +1926,23 @@ snapshots:
       lodash: 4.18.1
       typical: 7.3.0
 
-  '@antora/asciidoc-loader@3.1.15':
+  '@antora/asciidoc-loader@3.1.14':
     dependencies:
-      '@antora/logger': 3.1.15
+      '@antora/logger': 3.1.14
       '@antora/user-require-helper': 3.0.0
       '@asciidoctor/core': 2.2.9
 
-  '@antora/cli@3.1.15':
+  '@antora/cli@3.1.14':
     dependencies:
-      '@antora/logger': 3.1.15
-      '@antora/playbook-builder': 3.1.15
+      '@antora/logger': 3.1.14
+      '@antora/playbook-builder': 3.1.14
       '@antora/user-require-helper': 3.0.0
       commander: 11.1.0
 
-  '@antora/content-aggregator@3.1.15':
+  '@antora/content-aggregator@3.1.14':
     dependencies:
       '@antora/expand-path-helper': 3.0.0
-      '@antora/logger': 3.1.15
+      '@antora/logger': 3.1.14
       '@antora/user-require-helper': 3.0.0
       braces: 3.0.3
       cache-directory: 2.0.0
@@ -1964,106 +1960,106 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/content-classifier@3.1.15':
+  '@antora/content-classifier@3.1.14':
     dependencies:
-      '@antora/asciidoc-loader': 3.1.15
-      '@antora/logger': 3.1.15
+      '@antora/asciidoc-loader': 3.1.14
+      '@antora/logger': 3.1.14
       mime-types: 2.1.35
       vinyl: 3.0.1
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/document-converter@3.1.15':
+  '@antora/document-converter@3.1.14':
     dependencies:
-      '@antora/asciidoc-loader': 3.1.15
+      '@antora/asciidoc-loader': 3.1.14
 
   '@antora/expand-path-helper@3.0.0': {}
 
-  '@antora/file-publisher@3.1.15':
+  '@antora/file-publisher@3.1.14':
     dependencies:
       '@antora/expand-path-helper': 3.0.0
       '@antora/user-require-helper': 3.0.0
       vinyl: 3.0.1
-      yazl: 3.3.1
+      yazl: 2.5.1
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/logger@3.1.15':
+  '@antora/logger@3.1.14':
     dependencies:
       '@antora/expand-path-helper': 3.0.0
       pino: 9.2.0
       pino-pretty: 11.2.2
       sonic-boom: 4.0.1
 
-  '@antora/navigation-builder@3.1.15':
+  '@antora/navigation-builder@3.1.14':
     dependencies:
-      '@antora/asciidoc-loader': 3.1.15
+      '@antora/asciidoc-loader': 3.1.14
 
-  '@antora/page-composer@3.1.15':
+  '@antora/page-composer@3.1.14':
     dependencies:
-      '@antora/logger': 3.1.15
+      '@antora/logger': 3.1.14
       handlebars: 4.7.9
       require-from-string: 2.0.2
 
-  '@antora/playbook-builder@3.1.15':
+  '@antora/playbook-builder@3.1.14':
     dependencies:
       '@iarna/toml': 2.2.5
       convict: 6.2.5
       js-yaml: 4.1.1
       json5: 2.2.3
 
-  '@antora/redirect-producer@3.1.15':
+  '@antora/redirect-producer@3.1.14':
     dependencies:
       vinyl: 3.0.1
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/site-generator-default@3.1.15':
+  '@antora/site-generator-default@3.1.14':
     dependencies:
-      '@antora/site-generator': 3.1.15
+      '@antora/site-generator': 3.1.14
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/site-generator@3.1.15':
+  '@antora/site-generator@3.1.14':
     dependencies:
-      '@antora/asciidoc-loader': 3.1.15
-      '@antora/content-aggregator': 3.1.15
-      '@antora/content-classifier': 3.1.15
-      '@antora/document-converter': 3.1.15
-      '@antora/file-publisher': 3.1.15
-      '@antora/logger': 3.1.15
-      '@antora/navigation-builder': 3.1.15
-      '@antora/page-composer': 3.1.15
-      '@antora/playbook-builder': 3.1.15
-      '@antora/redirect-producer': 3.1.15
-      '@antora/site-mapper': 3.1.15
-      '@antora/site-publisher': 3.1.15
-      '@antora/ui-loader': 3.1.15
+      '@antora/asciidoc-loader': 3.1.14
+      '@antora/content-aggregator': 3.1.14
+      '@antora/content-classifier': 3.1.14
+      '@antora/document-converter': 3.1.14
+      '@antora/file-publisher': 3.1.14
+      '@antora/logger': 3.1.14
+      '@antora/navigation-builder': 3.1.14
+      '@antora/page-composer': 3.1.14
+      '@antora/playbook-builder': 3.1.14
+      '@antora/redirect-producer': 3.1.14
+      '@antora/site-mapper': 3.1.14
+      '@antora/site-publisher': 3.1.14
+      '@antora/ui-loader': 3.1.14
       '@antora/user-require-helper': 3.0.0
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/site-mapper@3.1.15':
+  '@antora/site-mapper@3.1.14':
     dependencies:
-      '@antora/content-classifier': 3.1.15
+      '@antora/content-classifier': 3.1.14
       vinyl: 3.0.1
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/site-publisher@3.1.15':
+  '@antora/site-publisher@3.1.14':
     dependencies:
-      '@antora/file-publisher': 3.1.15
+      '@antora/file-publisher': 3.1.14
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
 
-  '@antora/ui-loader@3.1.15':
+  '@antora/ui-loader@3.1.14':
     dependencies:
       '@antora/expand-path-helper': 3.0.0
       braces: 3.0.3
@@ -2075,7 +2071,7 @@ snapshots:
       should-proxy: 1.0.4
       simple-get: 4.0.1
       vinyl: 3.0.1
-      yauzl: 3.3.1
+      yauzl: 3.1.3
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
@@ -2376,7 +2372,7 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  brace-expansion@1.1.15:
+  brace-expansion@1.1.14:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
@@ -2386,8 +2382,6 @@ snapshots:
       fill-range: 7.1.1
 
   buffer-crc32@0.2.13: {}
-
-  buffer-crc32@1.0.0: {}
 
   buffer@6.0.3:
     dependencies:
@@ -3011,7 +3005,7 @@ snapshots:
 
   is-typed-array@1.1.15:
     dependencies:
-      which-typed-array: 1.1.21
+      which-typed-array: 1.1.20
 
   is-typedarray@1.0.0: {}
 
@@ -3330,7 +3324,7 @@ snapshots:
 
   minimatch@3.1.5:
     dependencies:
-      brace-expansion: 1.1.15
+      brace-expansion: 1.1.14
 
   minimist@1.2.8: {}
 
@@ -3714,7 +3708,7 @@ snapshots:
       json-stringify-safe: 5.0.1
       readable-stream: 2.3.8
 
-  streamx@2.26.0:
+  streamx@2.25.0:
     dependencies:
       events-universal: 1.0.1
       fast-fifo: 1.3.2
@@ -3765,7 +3759,7 @@ snapshots:
 
   teex@1.0.1:
     dependencies:
-      streamx: 2.26.0
+      streamx: 2.25.0
     transitivePeerDependencies:
       - bare-abort-controller
       - react-native-b4a
@@ -3859,7 +3853,7 @@ snapshots:
 
   which-module@2.0.1: {}
 
-  which-typed-array@1.1.21:
+  which-typed-array@1.1.20:
     dependencies:
       available-typed-arrays: 1.0.7
       call-bind: 1.0.9
@@ -3919,14 +3913,14 @@ snapshots:
       y18n: 4.0.3
       yargs-parser: 13.1.2
 
-  yauzl@3.3.1:
+  yauzl@3.1.3:
     dependencies:
       buffer-crc32: 0.2.13
       pend: 1.2.0
 
-  yazl@3.3.1:
+  yazl@2.5.1:
     dependencies:
-      buffer-crc32: 1.0.0
+      buffer-crc32: 0.2.13
 
   ylru@1.4.0: {}
 
