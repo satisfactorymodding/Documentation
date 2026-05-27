@@ -86,6 +86,9 @@ include::./../_includes/editor-familiarize-list.adoc[]
   Important details and conventions to be aware of when reading and writing {cpp} code for Unreal Engine.
   Notable points include an explanation of the T/U/A/F/I/E prefixes for names.
 
+  ** ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/containers-in-unreal-engine?application_version=5.3[Containers in Unreal Engine] -
+  Information on and code examples of using the three most common container classes in Unreal - TArray, TMap, and TSet.
+
   ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/reflection-system-in-unreal-engine?application_version=5.3['Unreal Engine Reflection System' section] -
   Details many Unreal core constructs and macros (UObject, UProperty, etc.) backed by the reflection system that enable Unreal's editor and memory management features.
 
