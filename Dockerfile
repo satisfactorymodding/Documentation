@@ -5,7 +5,7 @@ ARG PNPM_VERSION
 
 WORKDIR /app
 
-RUN npm install -g pnpm ${PNPM_VERSION}
+RUN npm install -g pnpm@${PNPM_VERSION}
 
 COPY package.json package.json
 COPY pnpm-lock.yaml pnpm-lock.yaml
