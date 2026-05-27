@@ -109,7 +109,8 @@ when the save state gets stored or loaded.
 You may encounter a situation where you want to save data per-player in a multiplayer game
 without it being tied to any tangible game object like a building or equipment item.
 The best way to implement this is with
-xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks].
+xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins] to attach a component to the player's PlayerState.
+Check out the Example Mod's `ExampleModPlayerDataComponent` for an example of how to do this.
 
 == Where Modded Save Content Ends Up
 

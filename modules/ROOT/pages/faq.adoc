@@ -234,7 +234,7 @@ Note that the base game's https://satisfactory.wiki.gg/wiki/Advanced_Game_Settin
 The program's window somehow got offscreen.
 We're still not sure what causes this.
 To fix it you need to edit the `%appdata%\SatisfactoryModManager\settings.json` file
-and within the `windowLocation` property, set the `x` and `y` to 0 to bring the window back on the screen.
+and within the `windowPosition` property, set the `x` and `y` to 0 to bring the window back on the screen.
 
 Restart SMM after you do that.
 
@@ -248,15 +248,22 @@ or ask nicely in the `#help-using-mods` discord channel.
 == What happens if I open up a save without mods installed?
 
 If you were to load up a save file without mods,
-all of the content from those mods will simply vanish from the save,
-and the game should load just fine with no modded content.
+all of the content added by those mods will simply vanish from the save.
+The loading process can slow down because the game produces log messages about any missing content it encounters as it skips it.
+After that **_your save file will load and be playable as normal in the base game_**,
+obviously missing any modded content.
 
-Keep in mind that after saving the game after loading it with no mods,
-the modded content would be permanently gone from that point on.
-So, if you want to keep modded content, don't play in that save without your mods installed!
+Note that if you create another save after loading without mods,
+the modded content will be lost from that point on.
+So, if you want to keep the modded content, don't play in that save without your mods installed!
+Simply quit the game without saving, launch the game with your mods, then load the previous save file - modded content will still be there.
 
-If you ever load a save without mods by accident,
-just quit the game without saving and launch the game with your mods, your content should still be there.
+Some mods allow placing, connecting, or configuring base-game content in ways not normally possible,
+for example, constructing or repositioning the base-game's buildings.
+These effects can persist after the mod is uninstalled.
+In exceedingly rare cases, a broken mod of this type could create a damaged save file that causes problems even when loaded in the base game.
+We are aware of this happening only twice in all of Satisfactory modding history.
+You can repair these rare cases by using a save editor tool linked on link:https://ficsit.app/tools[] to delete any corrupted buildings.
 
 == How do I make my own mod?
 
@@ -323,7 +330,7 @@ See link:#_how_do_i_backup_my_save_files[Backing Up Save Files].
 [id="Files_Blueprints"]
 === Blueprint Designer Files
 
-Check out the https://satisfactory.wiki.gg/wiki/Blueprint#Save_Location[Official Wiki's information on Blueprint Designer files].
+Check out the https://satisfactory.wiki.gg/wiki/Blueprint#Save_location[Official Wiki's information on Blueprint Designer files].
 
 Remember that the folder may not exist if you haven't created a blueprint yet.
 

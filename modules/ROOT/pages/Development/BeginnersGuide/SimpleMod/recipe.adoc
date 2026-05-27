@@ -184,7 +184,7 @@ Next, let's add our recipe to a schematic to make it available in game.
 
 Schematics are what Satisfactory uses to grant recipes and capabilities to the player.
 Schematics are the milestones you'll see in the HUB,
-the Tier 0 tutorial phases, M.A.M researches, alternate recipe researches, and more.
+the Tier 0 tutorial phases, M.A.M researches, Hard Drive scan result options, AWESOME Shop purchases, and more.
 If the player is unlocking an item, building, or any recipe, it's probably be granted by a schematic.
 
 Go to the Content Browser in the Unreal editor.
@@ -270,6 +270,7 @@ M Schematic Icon::
 // Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
   Set both this field and `M Small Schematic Icon` to
   https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_SchemDoc.png[this example image].
+  You can bring the image into the project by downloading it somewhere, then right clicking in a Content Browser and using `Import to /...`.
 * {blank}
 +
 M Cost::

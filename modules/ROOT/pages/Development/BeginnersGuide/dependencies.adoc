@@ -38,11 +38,31 @@ Launch the game at least once to ensure all files get set up correctly.
 
 == Visual Studio
 
-Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
-and select the button for Visual Studio 2022 Community, which is free of charge.
+// Visit the https://visualstudio.microsoft.com/downloads/[Microsoft Visual Studio downloads page]
+// and select the button for Visual Studio 2022 Community, which is free of charge.
+
+Unreal Engine's build tools use MSVC (Microsoft Visual {cpp})
+and have good integration with the Visual Studio,
+a free of charge integrated development environment (IDE).
 
 If you already have Visual Studio installed,
 you'll need to run installer again and follow the steps below to modify your existing installation.
+
+[IMPORTANT]
+====
+This version of Satisfactory works best with Visual Studio _2022_,
+not the latest release version 2026.
+
+If you were to proceed with Visual Studio 2026 installed,
+you would have to select different Components than the ones we listed here,
+and certain editor functionalities like the Create {cpp} Class wizard will not work.
+
+To download 2022, either click
+link:https://aka.ms/vs/17/release/vs_community.exe[here to directly download the Visual Studio 2022 Community installer from Microsoft],
+or visit the
+link:https://learn.microsoft.com/en-us/visualstudio/releases/2022/release-history#evergreen-bootstrappers[Release and Build History page heading "Evergreen Bootstrappers"]
+to download the "Community" channel bootstrapper for Version 17.14 (which is the exact same link we provided above).
+====
 
 After the installer has downloaded, run it and agree to any authorization prompts you receive along the way.
 Once you are prompted to install Visual Studio 2022
@@ -51,13 +71,23 @@ you have two options for selecting the relevant components.
 [id="ImportConfiguration"]
 === Option 1: Import an Installer Configuration
 
-If the installer took you directly to the Workflow or Component selection screen
-you'll have to use the smaller X button in the top right to close out of that prompt first.
+// If the installer took you directly to the Workflow or Component selection screen
+// you'll have to use the smaller X button in the top right to close out of that prompt first.
 
-Instead of clicking "Install" next to Visual Studio 2022,
-click the 'More' dropdown and select `Import Configuration`.
-If the option does not appear, make sure that your existing installation is not "pending"
-by allowing it to finish installing.
+Because the Visual Studio installer really wants you to install 2026 instead of 2022,
+this approach requires you to do a small workaround.
+
+When the installer first opens, use its default settings to install Visual Studio 2022.
+If you were to close out of this prompt, only the option to install 2026 will be provided,
+and you'd have to close and reopen the installer to get it again.
+
+After the installer completes, open it again and use the "More" dropdown on Visual Studio 2022's entry
+to select `Import Configuration`.
+
+// Instead of clicking "Install" next to Visual Studio 2022,
+// click the 'More' dropdown and select `Import Configuration`.
+// If the option does not appear, make sure that your existing installation is not "pending"
+// by allowing it to finish installing.
 
 // cspell:ignore vsconfig
 Download link:{attachmentsdir}/BeginnersGuide/dependencies/SML.vsconfig[this configuration file]
@@ -80,6 +110,9 @@ search for and select:
 - `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.34-17.4)(Out of Support)`
 - `.NET 6.0 Runtime (Out of support)`
 - `.NET Framework 4.8.1 SDK`
+
+Note that even though some of these components are marked as "Out of Support",
+they are the versions that Satisfactory and Unreal use, so you must use them.
 
 === While Visual Studio Installs
 

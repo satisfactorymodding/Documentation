@@ -40,6 +40,7 @@ exclude = [
     "https://dev.epicgames.com/",
     "^https://www.unrealengine.com/en-US/blog/.*",
     "^https://www.epicgames.com/help/.*",
+    "https://www.audiokinetic.com/en/",
     # Times out despite being valid
     "https://www.adobe.com/learn/substance-3d-designer/web/the-pbr-guide-part-1",
     # Pages often time out and Shouldn't™ ever get deleted anyways

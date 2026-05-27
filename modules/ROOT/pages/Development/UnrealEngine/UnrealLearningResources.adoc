@@ -48,11 +48,14 @@ include::./../_includes/editor-familiarize-list.adoc[]
   A high-level overview of what Blueprints are and what they can do.
   Links to other pages with more information about specific features.
 
-    ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/basic-scripting-with-blueprints-in-unreal-engine?application_version=5.3[Basic Scripting with Blueprints] -
-        Brief introduction to blueprint variables and event graphs
+  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/basic-scripting-with-blueprints-in-unreal-engine?application_version=5.3[Basic Scripting with Blueprints] -
+      Brief introduction to blueprint variables and event graphs
 
-    ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-blueprints-visual-scripting-in-unreal-engine?application_version=5.3[Blueprints Visual Scripting Overview] -
-        Breaks down the anatomy of a Blueprint and the different types of Blueprints available.
+  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-blueprints-visual-scripting-in-unreal-engine?application_version=5.3[Blueprints Visual Scripting Overview] -
+      Breaks down the anatomy of a Blueprint and the different types of Blueprints available.
+
+  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/graph-editor-for-the-blueprints-visual-scripting-editor-in-unreal-engine?application_version=5.3[Blueprint Editor: Graph Editor] -
+  Information on the Blueprint graph editor interface and the available interactions/keybinds.
 
 * ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprint-tutorials-in-unreal-engine?application_version=5.3[Blueprint Tutorials] -
   Links to walkthroughs of accomplishing various tasks in the Blueprint scripting editor.
@@ -69,8 +72,32 @@ include::./../_includes/editor-familiarize-list.adoc[]
 
 * ⭐📖📽 https://www.youtube.com/watch?v=VMZftEVDuCE[Blueprints vs. C++: How They Fit Together and Why You Should Use Both]- 
   Excellent overview of how a project using both Blueprints and {cpp} can best leverage the strengths of both.
+
+* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.3['Programming with C++ in Unreal Engine' section] -
+  Epic's primary {cpp} documentation hub containing many other articles.
+
+  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-cpp-quick-start?application_version=5.3[Unreal Engine {cpp} Quick Start] -
+  Epic's introductory tutorial for creating an actor in exclusively {cpp}. It's a cube that bobs up and down in the game level.
+
+  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.3[Coding Standard for Unreal Engine] -
+  Important details and conventions to be aware of when reading and writing {cpp} code for Unreal Engine.
+  Notable points include an explanation of the T/U/A/F/I/E prefixes for names.
+
+  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/reflection-system-in-unreal-engine?application_version=5.3['Unreal Engine Reflection System' section] -
+  Details many Unreal core constructs and macros (UObject, UProperty, etc.) backed by the reflection system that enable Unreal's editor and memory management features.
+
+  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-to-variables-timers-and-events-in-unreal-engine-cpp?application_version=5.3[Variables, Timers, and Events] -
+  Working with timers and latent actions is generally easier in blueprint, but is possible in {cpp} as well.
+
 * 📽 https://www.youtube.com/watch?v=IaU2Hue-ApI[The Unreal Engine Game Framework: From int main() to BeginPlay] -
   A high-level tour of what Unreal is doing under the hood when you run a game.
+
+* ⭐📖 https://unreal-garden.com/[Unreal Garden (previously ben🌱ui)] -
+  Community-ran documentation site with information on various topics, notable of which is extensive information on Unreal Metadata Specifiers.
+
+  ** 📖 https://unreal-garden.com/docs/uclass/[All UCLASS Specifiers]
+  ** 📖 https://unreal-garden.com/docs/ufunction/[All UFUNCTION Specifiers]
+  ** 📖 https://unreal-garden.com/docs/uproperty/[All UPROPERTY Specifiers]
 
 [id="General"]
 == General
@@ -81,3 +108,17 @@ include::./../_includes/editor-familiarize-list.adoc[]
   Note that this tutorial will cover a lot of concepts and systems that Satisfactory already does for you.
 * 📖📽 https://dev.epicgames.com/community/unreal-engine/learning[Learn Unreal Engine Portal] - 
   Collection of learning resources created by Epic Games and the Unreal developer community.
+
+* 📽 https://www.youtube.com/c/AlexForsythe[Alex Forsythe] -
+  YouTube channel that explains Unreal Engine systems and concepts (both Blueprint and {cpp}) in an approachable way,
+  including replication.
+
+* 📽 https://www.youtube.com/channel/UCOVfF7PfLbRdVEm0hONTrNQ[Mathew Wadstein] -
+  YouTube channel with short, focused videos on specific Unreal Engine concepts.
+
+* 📽 https://www.youtube.com/channel/UCz-eYJAUgSE-mqzKtit7m9g[Tinkr Academy/Virtus Learning Hub]
+  YouTube channel with beginner-focused general Unreal tutorials and walkthroughs.
+
+// This appears to be paid only now
+// * http://academy.unrealengine.com/[Unreal Engine Academy]
+//   A neat learning platform made by Epic Games for learning Unreal Engine.

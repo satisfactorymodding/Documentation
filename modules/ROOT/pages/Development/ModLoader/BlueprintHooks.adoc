@@ -55,7 +55,7 @@ The following hook types are available:
 ** Before
 ** Replace
 ** After
-* Redirect Hook - Must return the same type
+* Redirect Hook
 
 .Hover over an entry to display an explanatory tooltip
 image::Development/ModLoader/BlueprintHooks/CreateHook.png[Create Hook]
@@ -97,31 +97,59 @@ All Hooks require a Target Specifier to be connected to them to tell them what p
 
 image::Development/ModLoader/BlueprintHooks/TargetSpecifierConnected.png[Target Specifier]
 
-== Hook Functions
+// == Understanding Statements
+
+// TODO explanation of what exactly a statement is. 
+// Those nodes compile to some bytecode. A statement is a top-level instruction in the bytecode, like x = something()
+// In the BP code dump, each line is a statement
+// https://discord.com/channels/555424930502541343/562722670974599227/1451596054054309971
+
+[id="HookImplementation"]
+== Hook Implementation Function
 
 The code executed by a hook is defined in functions within the Hook Blueprint.
-The "Hook Implementation" option on hook nodes determines what function is invoked a hook node.
+The "Hook Implementation" option on hook nodes determines what function is invoked by a hook node.
 
-=== Hook Function Parameters
+[id="HookImplementation_Parameters"]
+=== Parameters
 
-Hook functions parameters are populated by the hooking system based on
-the target function's parameters, target class, and type of hook.
+The parameters on the hook implementation function are populated by the hooking system
+based on the target function's parameters, target class, and type of hook.
 
-The first parameter should be named `Target` and be of the type of Blueprint you are hooking.
-Subsequent parameters can be any variable that is available in the hooked function's context that the hook might want to read/write.
-If set to be By Ref, the type must exactly match, but otherwise a wider type can be used.
+Parameters can be any variable that is available in the hooked function's context that the hook might want to read/write.
+A wider type can be used unless the parameter is set to Pass-by-Reference (By Ref).
+For example, a real value float could be converted to a double parameter,
+or a real value of a specific object type could be converted to a general "Object" parameter.
 
-Parameters will be mapped using their name to:
+If a parameter is passed By Ref, the type must exactly match, and no automatic type conversion is ever performed.
+By Ref parameters can be modified to change the mapped variable's value in the hooked function.
 
-* `Target` - special hooking argument that resolves to the object instance the hooked function was running on
-* Global Variables - on the object instance
+Parameters are mapped to function variables by naming the parameter exactly the same thing as the variable.
+
+* Global Variables - on the object instance (the `Target`, see below)
 * Local Variables - function inputs, function locals, and function temps (which you can check for in a BP code dump, either via the link:#ViewingBlueprintFunctionImplementations[`-DumpBlueprintPatchingResults` launch argument] which generates pseudocode, or in xref:Development/ExtractGameFiles.adoc#FModel[FModel] which generates a json very similar to the asset dump)
-* `TargetReturnValue` - special hooking argument that resolves to the hooked function's ReturnValue
-* `HookTarget` - special hooking argument for insertion hooks. Resolves to the expression the hook was pointing to, if it wasn't pointing to a statement
-* `AssignmentTarget` - special hooking argument for insertion hooks on assignment statements. Resolves to the variable on the left side of an assignment statement.
-* `OriginalValue` - special hooking argument that resolves to the original value when using redirect hooks (replacing an expression inside a statement, rather than an insert hook which goes before/replace/after a statement). Required when using a redirect hook.
+
+In addition, the following special hooking arguments are available:
+
+* `Target` - resolves to the object instance the hooked function was running on.
+* `TargetReturnValue` - resolves to the hooked function's ReturnValue.
+* `HookTarget` - only for insertion hooks. Resolves to the expression the hook was pointing to, if it wasn't pointing to a statement.
+* `AssignmentTarget` - only for insertion hooks on assignment statements. Resolves to the variable on the left side of an assignment statement.
+* `OriginalValue` - required for redirect hooks. Resolves to the original value (replacing an expression inside a statement, rather than an insert hook which goes before/replace/after a statement).
+
+All parameters are optional, except `OriginalValue` for redirect hooks.
 
 image::Development/ModLoader/BlueprintHooks/NewFunction.png[New Function]
+
+[id="HookImplementation_Returns"]
+=== Return Values
+
+Insertion hooks can optionally return a boolean named `ReturnValue`
+to control whether the hooked function should continue execution (`True`)
+or jump to the return statement, effectively canceling the function and skipping any other hooks on the statement (`False`).
+If this is not present, execution will continue by default.
+
+Redirect hooks must return a value of the same type as the statement being replaced.
 
 [id="Register"]
 == Registering the Hook
@@ -146,13 +174,15 @@ You can modify the arguments the hooked function receives by using a Before Hook
 Add the parameter you want to modify as a By-Ref parameter on your hook function.
 The initial value can be accessed via the parameter and modified by a Set By Ref node.
 
-// === Cancel Hooked Function Execution
+=== Cancel Hooked Function Execution
 
-// TODO, see https://discord.com/channels/555424930502541343/562722670974599227/1451402917624942612
+Insertion hooks can conditionally cancel further execution of the function they are hooking.
+Be careful exactly which statement you are hooking, as you don't want to accidentally run more of the target function's code than you intended.
 
-// You can (conditionally) cancel the execution of a function using a Replace hook.
-// By default, Replace hooks do not execute their original target, .
-// When relevant, Replace hooks will still execute their original target if the Hook Implementation returns `True` for a boolean output parameter named `ReturnValue`.
+To cancel execution, the hook implementation function should return a boolean `ReturnValue` of `False`.
+
+If you intend to cancel execution just based off of input parameters,
+use a Before hook on the Function Entry Statement expression.
 
 === More!
 

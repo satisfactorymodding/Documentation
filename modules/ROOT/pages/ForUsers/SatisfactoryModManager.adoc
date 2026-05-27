@@ -81,8 +81,9 @@ for the rest of the steps.
 Linux builds of the mod manager can be found on the
 https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page].
 
-The GitHub page also offers a standalone version
-but you must have `+webkit2gtk-4.1+` installed to use it.
+* If you download the AppImage version, you may need to mark it as executable (via a GUI or `chmod{non-breaking-space}+x{non-breaking-space}filename`) before running it.
+
+* If you use the standalone version, note that you must have already installed any required packages mentioned on the GitHub releases page.
 
 [id="Install_Winget"]
 === With Winget
@@ -100,7 +101,8 @@ Satisfactory does not officially support Mac,
 but you can use various technologies outside the scope of this guide,
 such as CrossOver, to get it running.
 
-Satisfactory Mod Manager itself can run natively on Macs without any additional software.
+Satisfactory Mod Manager itself can run natively on Macs without any additional software
+by downloading the MacOS build from the https://github.com/satisfactorymodding/SatisfactoryModManager/releases[GitHub releases page].
 
 == Managing Game Installations
 

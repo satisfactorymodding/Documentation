@@ -46,17 +46,6 @@ To perform a CDO edit,
 first obtain the class default object of the class you're trying to override
 then use setter functions or directly modify values of the relevant properties.
 
-Keep in mind that when modifying properties on a CDO,
-you're not changing anything on _existing_ object instances -
-you're only changing the template.
-Depending on what kind of content you are modifying and when your code performs the edit,
-some instances may have already been created using the old CDO values.
-For example, buildings already placed in the save file load in earlier than some mod code executes.
-
-Your code may also need to fetch all existing instances of the class
-and modify their values too to ensure they match your new desired value.
-Performing your CDO modifications earlier in the mod loading process can sometimes remove the need for this extra step.
-
 When performing CDO manipulation, you must keep a reference to the CDO in memory
 to ensure that Unreal does not garbage collect your patched object (and its descendants) and later load it unmodified from disk, undoing your change.
 To do this, you need to reference the CDO in a property.
@@ -67,6 +56,29 @@ More on this in the language-specific sections below.
 Be mindful when modifying class default objects as you can break other mod and vanilla content without leaving a trace.
 For safety and troubleshooting reasons, SML's helper function logs a warning when you access a class not owned by your mod.
 ====
+
+[id="Cdo_Timing"]
+==== Timing
+
+CDO edits must be performed at the correct time during the game lifecycle
+depending on what data they need and what content they are trying to modify.
+A CDO edit performed at an inopportune time can appear to work but result in unusual edge case behavior.
+
+Keep in mind that when modifying properties on a CDO,
+you're not changing anything on _existing_ object instances -
+you're only changing the template.
+Depending on what kind of content you are modifying and when in the game lifecycle your code performs the edit,
+some instances may have already been created using the old CDO values.
+For example, buildings already placed in the save file load in earlier than some mod code executes.
+
+Your code may also need to fetch all existing instances of the class
+and modify their values too to ensure they match your new desired value.
+Performing your CDO modifications earlier in the mod loading process can sometimes remove the need for this extra step.
+
+For example, if you want control over if a CDO is performed via a xref:Development/ModLoader/SessionSettings.adoc[Session Setting],
+you must perform the edit after that data is available, such as in a xref:Development/ModLoader/ModModules.adoc[Game World Module].
+But that's after buildings that exist in the save file have already been created,
+so you may need to fetch and modify those instances too.
 
 [id="CdoLimitations"]
 === Understanding the Limits of CDO Edits
@@ -98,7 +110,7 @@ Set the property's value to be the CDO before manipulating the object. +
 If you are modifying multiple CDOs, you can make the property an array of objects instead, and add each CDO to the array.
 
 ====
-Check out ExampleMod's `SubGameWorld_ExampleMod_SchematicCdoEdit` for a code example.
+Check out ExampleMod's `SubInstance_ExampleMod_SchematicCdoEdit` for a code example.
 ====
 
 [id="CDO_Cpp"]

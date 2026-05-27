@@ -10,6 +10,8 @@ asciidoc:
   attributes:
     # Increase max table of content nesting levels from 2 to 3 https://docs.antora.org/antora/latest/page/page-attributes/#access-attributes-from-ui-template
     page-toclevels: 3@
+    # Non-breaking space to avoid being split across lines
+    non-breaking-space:  
     # Zero-width joiner (U+200D) to avoid being split across lines
     zero-width-join: ‍
     # Uses zero-width joiner (U+200D) to avoid being split across lines

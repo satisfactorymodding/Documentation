@@ -6,7 +6,7 @@ It will look like a flatscreen television.
 
 == Creating a Folder for our Item
 
-Items (and fluids) in Satisfactory are described by
+Items (and fluids) in Satisfactory are defined by
 xref:/Development/Satisfactory/Inventory.adoc#_item_descriptor_ufgitemdescriptor[FGItemDescriptor]s,
 which contain information on their appearance and properties.
 They often also come with textures (to define their icons), meshes, and materials (to define their in-world appearance).
@@ -42,13 +42,13 @@ You can hover over the left side of a field to get a tooltip describing its purp
 M Display Name::
   The item's name in game, which appears in its tooltip and what it is called in the Codex.
   {blank} +
-  We'll set this to "Doc Item".
+  We'll set this to `Doc Item`.
 * {blank}
 +
 M Description::
   A description of the item, which appears in its tooltip and the Codex.
   {blank} +
-  In our case, we can use the text "This is the starter item of the Doc mod."
+  In our case, we can use the text `This is the starter item of the Doc mod.`
 * {blank}
 +
 M Abbreviated Display Name::
@@ -58,7 +58,7 @@ M Abbreviated Display Name::
   In the base game, this is usually only set for items that are difficult to distinguish,
   for example, raw ores and ingots.
   {blank} +
-  We can leave this blank, or use "DocI".
+  We can leave this blank, or use `DocI`.
 * {blank}
 +
 M Stack Size::
@@ -88,7 +88,7 @@ M Energy Value::
   You can find the fuel values of vanilla items on the https://satisfactory.wiki.gg/wiki/Category:Fuels[wiki].
   Note that if you want your item to qualify as a biofuel for the Biomass Burner, you should subclass `FGItemDescriptorBiomass` instead.
   {blank} +
-  Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use 0.0 for that value.
+  Our Doc Item won't be a fuel item, so it shouldn't be able to get burned in any generators, so we'll use `0.0` for that value.
 * {blank}
 +
 M Radioactive Decay::
@@ -96,13 +96,13 @@ M Radioactive Decay::
   The editor tooltip for this field is incorrect - values can seemingly be any value greater than 0.
   For example, Plutonium Waste (most intense in Vanilla) uses a value of 200, and Encased Uranium Cell (least intense) uses 0.5.
   {blank} +
-  We'll leave this at 0 for safety while testing our mod.
+  We'll leave this at `0` for safety while testing our mod.
 * {blank}
 +
 M Form::
   Defines the type of this item: Invalid, Solid, Liquid, Gas, or Heat
   {blank} +
-  Our new item should be a Solid for ease of testing.
+  Our new item should be a `Solid` for ease of testing.
 
 [WARNING]
 ====
@@ -150,7 +150,7 @@ M Small Icon::
 // Links to GH hosted image because cloudflare serves it as a webp -> can't be imported to Unreal
   We have an image ready for use
   link:https://raw.githubusercontent.com/satisfactorymodding/Documentation/master/modules/ROOT/attachments/BeginnersGuide/simpleMod/Icon_DocItem.png[here].
-  You can import it in the Content Browser pane via `Add/Import > Import to...`.
+  You can import it via the Content Browser right click menu, or via the  `Import` button in the Content Browser header.
 * {blank}
 +
 M Big Icon::
@@ -209,7 +209,7 @@ The process of importing meshes and textures has a couple extra details that we 
 
 === Importing the Mesh
 
-First, import the mesh (.fbx file) to your DocItem folder via `Add/Import > Import to...`.
+First, import the mesh (`.fbx` file) to your DocItem folder via one of the Content Browser's Import features described earlier.
 Select just the Mesh, and pay attention on the dialog that pops up.
 Most of the default settings are fine, but scroll down to the Material section
 and ensure that:
@@ -220,10 +220,10 @@ and ensure that:
 
 To finish this dialog, select the `Import` option in the prompt.
 
-You should rename the asset to `SM_DocItem` to follow Coffee Stain's naming scheme.
-SM stands for Static Mesh.
-
 image:BeginnersGuide/simpleMod/NoMaterialImport.png[image]
+
+Next, rename the created asset to `SM_DocItem` to follow Coffee Stain's naming scheme.
+SM stands for Static Mesh.
 
 === Creating the Material Instance
 
@@ -295,7 +295,8 @@ In the "Global Static Switch Parameter Values" section, check the `bUseLegacyPai
 In the bottom right corner of the preview viewport,
 click on the flat panel icon to preview the material on a plane instead of a sphere.
 If you've done everything correctly, it should look like the below image.
-Note that no warnings appear in the top left of the viewport.
+Note that no warnings appear in the top left of the viewport,
+just some statistics about the material.
 Afterwards, save the asset.
 
 image:BeginnersGuide/simpleMod/MaterialInstanceSettings.png[image]

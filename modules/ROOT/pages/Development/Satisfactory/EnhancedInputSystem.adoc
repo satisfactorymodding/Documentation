@@ -136,24 +136,31 @@ If you want the context to be available:
 
 It is suggested that your code respond to input actions in either an actor
 (such as a xref:Development/ModLoader/Subsystems.adoc[Subsystems]), a widget,
-or a custom actor component on the player character or controller attached
-via xref:Development/ModLoader/SimpleConstructionScript.adoc[Simple Construction Script (SCS) Hooks].
+or a custom actor component on the player character or controller attached via
+xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins].
 
 On some actors, such as Subsystems,
-you may need to call Player Controller instance > EnableInput for them to process user input.
+you may need to add them to the input processing stack by calling (Player Controller instance) > `EnableInput`
+for them to actually receive user input events.
 
 [id="RespondInputActionsBlueprint"]
 === Blueprint
 
+An example of this can be found in `ExampleSubsystem` in the ExampleMod.
+
 In order to create the Blueprint event node for responding to an input action,
 you may have to turn off "Context Sensitive" in the blueprint action selector for it to appear in the search results.
 
-Type the name of the input action to create the Event node for responding to it.
+Type the name of the input action asset to create an Event node for responding to it.
+For example, if your input action asset is named `IA_TriggerExampleMessage_Play`,
+then the node's name in the search will be (Event Node icon) `IA_TriggerExampleMessage_Play`,
+and the created node will have the header text `EnhancedInputAction IA_TriggerExampleMessage_Play`
 
 [id="RespondInputActionsCpp"]
 === {cpp}
 
-The Unreal documentation explains how to handle responding to Input Actions in {cpp},
+The https://dev.epicgames.com/documentation/en-us/unreal-engine/enhanced-input-in-unreal-engine?application_version=5.3#addinginputlisteners[Unreal documentation]
+explains how to handle responding to Input Actions in {cpp},
 except it assumes we have control over the player controller, which modders do not.
 Thankfully Coffee Stain has created a delegate `AFGCharacterPlayer::OnPlayerInputInitialized`
 which mods can bind to.

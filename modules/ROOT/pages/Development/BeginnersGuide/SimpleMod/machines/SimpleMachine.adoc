@@ -54,22 +54,39 @@ Second, add a xref:Development/Satisfactory/PowerNetwork.adoc[FGPowerInfo] compo
 If we had used one of the other types of base machine classes, these may have existed automatically, but since we chose FGBuildable, we need to add them ourselves.
 
 
-== Init logic
+[id="Code_BeginPlay"]
+== Initialization Logic in Begin Play
 
-The init logic happens in the `BeginPlay` event and initializes the base state of the machine (also based on the save information).
-There is not that much we need to do here.
-The only thing we need to do is to set the PowerInfo on the PowerConnection and configure the target consumption of the `FGPowerInfo` to something like 1.0.
-This controls how much power in MW the building will use to operate.
+The BeginPlay event is fired when the building spawns into the world, be it placed for the first time or loaded from the save file.
+
+For our counter building, it needs to:
+
+- Set what PowerInfo component the PowerConnection component should use
+- Set how much power, in MW, the building should consume to operate.
+  This is done by using Set Target Consumption on the FGPowerInfo to some positive number.
+
+We don't need to adjust anything else here
+because the building's default values will already have been set from the blueprint class's Class Defaults.
 
 .Logic in the Event Graph
 image::BeginnersGuide/simpleMod/machines/SimpleMachine_Init.jpg[image]
 
+[NOTE]
+=====
+Make sure to check out the
+xref:Development/UnrealEngine/UnrealLearningResources.adoc#UnrealBlueprint[Unreal Learning Resources section: "Blueprint Scripting"]
+for more information on how to write blueprint code.
+
+Of particular note is the "Blueprint Editor: Graph Editor" document linked from there.
+=====
+
+[id="Code_Grab"]
 == Grab Logic
 
 [WARNING]
 ====
 It is generally unwise to implement conveyor grab logic in Unreal Blueprint code as the tutorial does here.
-If you plan for your buildings to be used in any substantive quantity,
+If you plan for your buildings to be used in any substantial quantity,
 you should implement this logic in C++ to avoid the performance overhead of Blueprint.
 This tutorial will eventually™ be replaced with another one following better practices.
 ====

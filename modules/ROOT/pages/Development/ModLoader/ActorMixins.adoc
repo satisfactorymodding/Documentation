@@ -1,10 +1,12 @@
 = Actor Mixins
 
 Actor Mixins are an extension of the xref:Development/ModLoader/BlueprintHooks.adoc[Blueprint Hook System]
-designed to allow adding extra functionality to Unreal Actors.
+designed to allow adding extra functionality or components to existing Unreal Actors your mod doesn't own.
 After selecting an actor class to base the Mixin off of,
 you are presented with a blueprint that looks as if it was the actor itself.
 From there you can add actor components or set up Blueprint Hooks to call functions you define.
+
+Actor Mixins replaced the previous xref:Development/ModLoader/SimpleConstructionScript.adoc[SCS Hooks] system in SML 3.11.
 
 == Creating an Actor Mixin
 

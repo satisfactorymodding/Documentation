@@ -1,4 +1,4 @@
-= C++ Modding
+= {cpp} Modding
 
 Utilizing {cpp} code in your mod allows access to a much wider variety of game systems and features.
 Furthermore, {cpp} code is often compiled into far more performance friendly code than its Blueprint equivalent.
@@ -7,7 +7,7 @@ However, {cpp} systems have their own shortcomings as well.
 Writing a mod with {cpp} does not mean replacing all of your Blueprint assets with {cpp} code.
 The best mods are implemented with a careful combination of both {cpp} and Blueprint code.
 
-== Understanding Blueprint vs C++
+== Understanding Blueprint vs {cpp}
 
 Alex Forsythe has an excellent writeup (and corresponding video)
 that explains the different roles of {cpp} and blueprint in an Unreal project.
@@ -15,7 +15,7 @@ Alex's summary of the article:
 
 ====
 It's not an either/or decision.
-Learn what makes C++ and Blueprints different, what they have in common, and how to use them together effectively.
+Learn what makes {cpp} and Blueprints different, what they have in common, and how to use them together effectively.
 ====
 
 You can find the article (and a link to the video) http://awforsythe.com/unreal/blueprints_vs_cpp/[here].
@@ -27,7 +27,10 @@ Reading the article is also highly recommended.
 Since this is a very advanced topic, we recommend you to learn {cpp}
 and {cpp} for Unreal Engine first.
 
-We have compiled a list of some helpful learning resources xref:Development/index.adoc#_resources[here], but you will probably want to search out some more on your own.
+We have compiled a list of some helpful
+xref:Development/UnrealEngine/UnrealLearningResources.adoc[Unreal Learning Resources],
+but you will probably want to search out some more on your own.
+Let us know which ones you found helpful so we can add them to the list!
 
 Here is a list of some concepts you should learn before going further:
 
@@ -87,12 +90,13 @@ More info on the upload process can be found on the xref:UploadToSMR.adoc[Upload
 
 We won't go into detail about the general technical stuff aspects of {cpp} in this documentation.
 If you want to learn more about that, there are plenty of good resources available elsewhere on the Internet.
-In order to write {cpp} mods, you will require both general {cpp} knowledge, and knowledge about how {cpp} applies to Unreal Engine systems.
-You can find a quick guide to the Unreal portion in the https://docs.unrealengine.com/en-US/Programming/Introduction/index.html[Unreal Documentation].
+In order to effectively write {cpp} mods, you will require both general {cpp} knowledge, and knowledge about how {cpp} applies to Unreal Engine systems.
+Unreal's documentation covers this in its
+https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.3['Programming with C++ in Unreal Engine' section].
 
 == Modding Capabilities
 
-As Satisfactory is packaged as a modular build and the developers distribute the headers and `pdb`s for us,
+As Satisfactory is packaged as a modular build and the developers distribute the headers and `.pdb` s for us,
 and mods are loaded as Unreal plugins,
 there is very little of the game that {cpp} mods _can't_ modify.
 It usually just comes down to how much patience you have to figure out how to do it.
@@ -102,6 +106,3 @@ you should read the doc comment that has been added to the function.
 Sometimes the comment will tell you that it doesn't work
 and suggest you use the workaround written in the comment,
 or it may contain valuable context about how the function can be used.
-
-If it still doesn't work, and you are **absolutely sure** that you are using it correctly,
-contact the SML developers on the Discord for further advice.

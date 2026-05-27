@@ -1,7 +1,10 @@
-= C++ Setup
+= {cpp} Setup
 
-In order to get started with C++ modding, you should first follow the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
+In order to get started with {cpp} modding, you should first follow the xref:Development/BeginnersGuide/project_setup.adoc[Getting Started guide].
 This guide assumes that you have already installed all required dependencies and followed the setup process described there.
+
+You should also have a basic understanding of the concepts
+mentioned on the xref:Development/Cpp/index.adoc[{cpp} Modding section index page].
 
 == Background Information
 
@@ -210,6 +213,14 @@ When you want to add a new class, there are two generally safe ways to go about 
 Note that **you should not create new files from Visual Studio directly** -
 it is not knowledgeable about the project structure
 and will create files in a temporary directory where they won't be detected by the UBT.
+
+[NOTE]
+====
+Make sure you are aware of the naming conventions for classes, files, and fields in Unreal Engine.
+They are covered in the
+https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.3#namingconventions[Coding Standard for Unreal Engine] documentation page.
+For example, if you create an UObject whose class name does not start with `U`, the code will not compile.
+====
 
 [id="AddClass_Editor"]
 === Using the Unreal Editor Add Class Wizard
