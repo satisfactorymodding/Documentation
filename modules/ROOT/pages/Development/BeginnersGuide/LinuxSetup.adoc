@@ -39,7 +39,7 @@ git clone --branch ue-patches https://github.com/mircearoata/msvc-wine.git
 
 cd msvc-wine
 
-./vsdownload.py --accept-license --dest "<msvc_install_dir>" --msvc-version "17.4" --sdk-version "10.0.18362" --channel "release.ltsc.17.4"
+./vsdownload.py --accept-license --dest "<msvc_install_dir>" --msvc-version "17.8" --sdk-version "10.0.22621" --channel "release.ltsc.17.8"
 
 ./install.sh "<msvc_install_dir>"
 ----
@@ -56,12 +56,18 @@ You can do this one of two ways: Either build the engine from source, or downloa
 
 ==== From Source
 
-Clone the `5.3.2-CSS-linux` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware)
+Clone the `5.6.1-CSS` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware)
 
 ==== Download an archive
 
-Currently, Mircea is hosting build archives for us at https://files.mircearoata.me/UE_Linux/, but this will be changed over to the GitHub CI eventually.
-Click on the latest commit link, and download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files one at a time.
+https://github.com/satisfactorymodding/UnrealEngine/releases/
+
+Click on the latest release https://github.com/satisfactorymodding/UnrealEngine/releases/[here], and download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files.
+
+[NOTE]
+====
+You do NOT have to download the `UnrealEngine-CSS-Editor-Linux-Debug.tar.zst.*` files. Only the non-debug ones.
+====
 
 Once those are done downloading, create a folder called `UnrealEngineCSS` or similar, and move the archives into it.
 Then run the command below to extract them:
@@ -80,8 +86,6 @@ Register the engine to your system by running this command, replacing `<ue_dir>`
 <ue_dir>/Engine/Binaries/Linux/UnrealVersionSelector -register -unattended
 ----
 
-Then, edit the file `<ue_dir>/Engine/Build/InstalledBuild.txt` to remove the `-linux` suffix from the version name if it is present.
-
 == Project Setup
 
 Clone or download the starter project from https://github.com/satisfactorymodding/SatisfactoryModLoader as normal.
@@ -94,14 +98,14 @@ Run this command in your terminal to download the required version of Wwise:
 
 [source,bash]
 ----
-./wwise-cli download --sdk-version "2023.1.3.8471" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms=
+./wwise-cli download --sdk-version "2023.1.14.8770" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms=
 ----
 
 When that's done, run this command to integrate it into the starter project, replacing `<project_dir>` with the path to your project:
 
 [source,bash]
 ----
-./wwise-cli integrate-ue --integration-version "2023.1.3.2970" --project "<project_dir>/FactoryGame.uproject"
+./wwise-cli integrate-ue --integration-version "2023.1.14.3555" --project "<project_dir>/FactoryGame.uproject"
 ----
 
 === IDE setup
@@ -111,8 +115,22 @@ Since Visual Studio isn't available for Linux, you can instead use Rider or VS C
 
 ==== Rider
 
-Currently, Rider doesn't show the `Mods` directory when opening the .uproject, so you must generate a Visual Studio Solution to open it.
-However, you will also need a Makefile to build the project.
+There are two methods to open the project in Rider. Uproject is preferred, but Solution + Makefile is also available if you need it for a specific reason.
+
+===== Uproject
+
+Due to a bug with Rider, you'll need to install a plugin in order to see the `Mods` folder when opening the Uproject file. Open the Settings window and find the "Plugins" page, then search the marketplace for `Unreal Project Model Mods Fix` by Archengius and install it. Restart the IDE if prompted.
+
+
+===== Makefile
+
+The other method is to generate a Visual Studio Solution and Makefile to build the project.
+
+[NOTE]
+====
+The Uproject method is preferred, but if for whatever reason you need to have the solution and makefile, you can follow these steps.
+====
+
 Run the following commands, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
 
 To generate the VS Solution:
@@ -130,7 +148,9 @@ To create a Makefile:
 ----
 
 Open the `FactoryGame.sln` file in Rider.
-In the Rider settings, under `Toolset and Build`, make sure `.NET CLI executable path` is set to `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/6.0.302/linux/dotnet`
+In the Rider settings, under `Toolset and Build`, make sure `.NET CLI executable path` is set to `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux/dotnet`
+
+Then to build it, run `make FactoryEditor` or any of the other targets.
 
 ==== VS Code
 
@@ -142,7 +162,7 @@ To generate a code-workspace file, run the following command, replacing `<ue_dir
 ----
 
 Open the `.code-workspace` file, **not** the folder.
-In the workspace settings, add `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/6.0.302/linux` to `omnisharp.dotNetCliPaths`
+In the workspace settings, add `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux` to `omnisharp.dotNetCliPaths`
 
 === Other
 
@@ -150,7 +170,7 @@ For other IDEs (not tested by us), you can view this page for command line optio
 
 == Compile the project
 
-* For Rider, open the Terminal and run `make FactoryEditor`
+* For Rider, select `Development`, `Editor`, `Linux`, and then click the build button in the top right.
 * For VS Code, press `Ctrl + Shift + P`, then select `Run Task`, then `FactoryEditor Linux Development Build`
 
 Then wait for the build to complete.
