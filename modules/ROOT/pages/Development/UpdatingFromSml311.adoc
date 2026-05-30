@@ -106,20 +106,47 @@ The following features are not quite ready to use yet.
 
 === Unreal Game Features
 
+TODO
+
 Changes in 1.2 allow Satisfactory mods to take advantage of the link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
 Game Features are similar to SML's xref:Development/ModLoader/ModModules.adoc[Game Instance Modules].
 
 [IMPORTANT]
 ====
-SMM and ficsit.app do not yet support distribution of mods using the Game Feature asset structure.
-We expect to be adding this functionality in the months after the 1.2 release.
+SMM/ficsit-cli and ficsit.app do not yet support distribution of mods using the Game Feature asset structure.
+This support is being written and 3.12 won't be publicly released until it's done.
 ====
 
+TODO Basically all mods should switch to the GameFeature system, because all mods that add content should for the asset management. Pure libraries would be the ones that don't need to. https://discord.com/channels/555424930502541343/562722670974599227/1509918776605278348
+
+Satisfactory now uses the Asset Manager 
+All previous asset types that were auto-detected (such as icon libraries, input contexts, and FGUserSettings)
+now require using Game Features.
+
 ExampleMod has been updated to package its files using Game Features.
+
+To migrate your mod to use Game Features:
+
+. Close the editor
+. Transfer the mod's plugin folder from the
+  `<Project>/Mods/` directory to the
+  `<Project>/GameFeatures/Mods/` directory.
+. TODO rebuild needed for {cpp}?
+. Create a new GameFeatureData asset in the mod content root named exactly `GameFeatureData` (TODO can we have alpakit verify this?)
+. TODO what actions need to be set up? `It lists the actions to be taken when loading/unloading the GameFeature, and the asset search paths for primary assets` -Mircea
 
 In the future the link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
 with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
 like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
+
+TODO Arch mentioned it's possible to register schematics and stuff without SML now via this; best place to document?
+
+=== Content Tags in the Base Game
+
+TODO
+
+Arch said he implemented the Content Tags system basically 1:1 in vanilla,
+confirm, and should we take out SML's now?
 
 == Required Changes
 
@@ -237,6 +264,12 @@ you may notice additional code and assets for console support code.
 allowing modded xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries]
 to work properly on dedicated servers.
 No changes to existing icon libraries are known to be required for the fix to work.
+
+=== `-NoFirstLoginPopup` Launch Argument
+
+TODO
+
+Skips the Experimental branch popup on the main menu (document this elsewhere too, maybe quick launch script?)
 
 === TODO More Additional Changes
 
