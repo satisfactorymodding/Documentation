@@ -31,8 +31,8 @@ Whether or not a game update or SML update requires a mod update depends on a nu
 - Unreal Engine version transitions
 - Significant changes to SML APIs, usually denoted with a major version number bump
 
-If the systems a mod is working with wasn't touched by an update,
-it could end up working without any changes.
+If the systems a mod works with weren't touched by an update,
+the mod could end up working without any changes.
 
 == Avoid Breaking in the First Place
 
@@ -487,7 +487,7 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 - Rewriting or To-Do commenting out broken functionality in your mod to account for codebase changes
 - Asking for help on the Discord
 
-3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping
+3. Repeat steps 1-2 until the project builds successfully for Development Editor
 4. Open the Unreal Engine Editor for your project
 5. Run Alpakit on SML to install the latest version of SML in your copy of the game, or install it via SMM.
    Problems in your own project files could prevent packaging from succeeding - if you encounter any, see Step 8.
