@@ -11,17 +11,32 @@ you will have to browse the website to use this feature.
 
 == Using Tags to Search
 
-Use tags to filter down your search results for mods.
+Use tags to refine your search results for mods.
+
+[id="TagSearch_SMR"]
+=== On ficsit.app
+
 For example, if you want to find all mods that add new equipment,
 go to the https://ficsit.app/mods[Mods page] and click the `Filter...` button,
 then click the `#equipment` tag.
-Hover over tags to see a description explaining the purpose of the tag.
+Hover over tag buttons or listings on mods to see a description.
+
+In the current implementation, displayed results match any of your selected tags.
+
+[id="TagSearch_SMM"]
+=== In the Mod Manager
+
+To start filtering by tags, click tags icon next to the search bar.
+You can control if results must match all selected tags, or 1 or more of your selected tags,
+with the 2 options atop the tag list.
+
+In the current implementation, you must visit ficsit.app to see tag descriptions.
 
 == Creating New Tags
 
-The list of tags is managed by the site moderators to avoid an abundance of low-mod-count tags.
+The list of tags is curated by the site moderators to avoid an abundance of low-mod-count tags.
 If you have an idea for a new tag,
-suggest it on our Discord server.
+suggest it on our link:https://discord.ficsit.app/[Discord server].
 
 Mod developers and site moderators can attach tags to mods via the Edit Mod page.
 If a mod has been tagged with an irrelevant tag, site moderators may choose to remove the tag from that mod.

@@ -157,6 +157,19 @@ Here is what each option of the dropdown does:
 - `Disabled` is the opposite of Enabled, only showing mods you have downloaded but have "paused," which means they will not be loaded.
   Dependency mods will never show up here because they are removed when no other enabled mods require them.
 
+== Searching for Mods
+
+In addition to the funnel dropdown,
+you can use search queries and xref:ForUsers/Tags.adoc[Tag] matching to control what mods display in the list.
+
+Advanced users can use link:https://www.fusejs.io/extended-search.html#operators[fusejs extended search operators]
+to further refine their SMM search queries.
+
+- `term` matches mods that contain terms close to `term` (link:https://www.fusejs.io/fuzzy-search.html[fuzzy matching])
+- `'term` matches mods that include exactly `term` (not fuzzy)
+- `!term` excludes mods that match `term`
+- link:https://www.fusejs.io/extended-search.html#operators[And more!]
+
 == Profiles
 
 Profiles are a convenient way to manage a collection of mods.
