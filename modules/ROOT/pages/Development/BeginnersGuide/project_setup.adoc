@@ -121,29 +121,29 @@ with Unreal Engine's "Generate Visual Studio Project Files" tool.
 
 In Windows file explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
 Windows 11 might have buried it within the "more options" submenu.
-If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
-If this option appears, but errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
-Otherwise, if the option doesn't appear, you'll need to run a tool from the command line to generate the project files.
-
+* If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
+* If this option appears, but errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
+* Otherwise, if the option doesn't appear, you'll need to run a tool from the command line to generate the project files.
++
 The command will follow the form below:
-
++
 ```ps1
 & "<path to your Unreal build batch file here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
-
++
 Here is an example of a completed command:
-
++
 ```ps1
 & "C:\Program Files\Unreal Engine - CSS\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
-
++
 [WARNING]
 ====
 The above command will not work if you copy paste it
 - you'll need to modify it yourself to point towards your project file and Unreal Engine install.
 ====
-
++
 [WARNING]
 ====
 The above command is formatted for Powershell.
