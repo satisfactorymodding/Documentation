@@ -229,7 +229,7 @@ You may also want to assign custom icons to each shortcut.
 This will change the appearance of the editor in the taskbar,
 making it easier to distinguish between multiple versions of the editor running at once.
 You can create your own icons or use 
-https://discord.com/channels/555424930502541343/689188183048585244/1043643638577631263[these ones from on the Discord].
+https://discord.com/channels/555424930502541343/1506318224982147152[these ones from on the Discord].
 You may have to restart your computer for the icon changes to take effect,
 as Windows aggressively caches icons.
 
