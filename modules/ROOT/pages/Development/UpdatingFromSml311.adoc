@@ -104,13 +104,6 @@ This information is currently only visible on ficsit.app, not inside of SMM.
 
 The following features are not quite ready to use yet.
 
-=== Mod Keybinds
-
-Some mod developers have reported problems with modded keybinds.
-They are appearing in the options menu, but not functioning properly.
-This is still being investigated.
-If you have more info on this, please report it in the Discord.
-
 === Unreal Game Features
 
 Changes in 1.2 allow Satisfactory mods to take advantage of the link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
@@ -186,6 +179,22 @@ Please try it and report back on the Discord.
 
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
+
+=== Enhanced Input Mapping Context Parent Class Change
+
+TODO
+
+Need to use FGChildInputMappingContext if using parent context registration
+
+Also need to be using GameFeatures for it to be auto detected otherwise need to manually register (no longer using parent approach https://discord.com/channels/555424930502541343/562722670974599227/1509904209649340558)
+
+Do they need special register steps in gamefeaturedata? https://discord.com/channels/555424930502541343/562722670974599227/1509918327420616805
+
+The `mParentContext` field has been moved from UFGInputMappingContext to UFGChildInputMappingContext, so the value set on existing assets will be lost. Hope you kept your old editor around so you can check it! Or maybe fmodel/contentinspector could tell you
+
+UE right click menu on asset lets you change the parent class
+
+https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/417
 
 === Asset Dumping with `-nullrhi` no longer works
 
