@@ -186,8 +186,8 @@ If you're still encountering issues, ask for help on the discord.
 
 == Importing Dumped Assets to the Editor
 
-You can expect a Content folder with all assets imported to take up about 6 GB.
-For comparison, a Content folder with placeholders takes up 366 MB.
+You can expect a Content folder with all assets imported to take up about 7 GB.
+For comparison, a Content folder with placeholders takes up about 366 MB.
 
 Close the editor if you still have it open.
 
@@ -291,7 +291,7 @@ Experts advise locating and petting a lizard doggo while you wait.
 There are a lot of things that could go wrong in this process, so be prepared to troubleshoot using the steps below.
 You'll know it's finished when your powershell window closes or you are prompted to enter another command.
 
-After you're done, your modding project's content folder should be around 6 GB.
+After you're done, your modding project's content folder should be around 7 GB.
 
 === Troubleshooting Asset Generation Crashes
 
