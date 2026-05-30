@@ -193,13 +193,20 @@ You'll be presented with a few notices upon opening the solution for the first t
 We'll go through each of these below, as some of them can safely be ignored,
 while others could break your install if you take the wrong action.
 
+[id="vs_popups_sign_in"]
+==== Sign in to Visual Studio
+
+You do not need to sign in to Visual Studio to use it.
+
+**It is safe to click `Close` or `x` on this message and dismiss it.**
+
 [id="vs_popups_unsupported_projects"]
 ==== Unsupported Projects
 
 Visual Studio may tell you "These projects are either not supported or need project behavior impacting modifications <...>"
 in a pop-up window upon opening the solution.
 
-**It is safe to click "OK" on this message and dismiss it.**
+**It is safe to click `OK` on this message and dismiss it.**
 
 Even though some of the components are outdated or out of support,
 they are the ones required by Satisfactory and Unreal and must be used.
@@ -229,7 +236,7 @@ We must use these exact package versions to match what the game and engine are u
 An editor tab titled "Unreal Engine Integration Configuration" opens on startup by default.
 It assists with initial setup of tools installed with the 'Game Development with {cpp}' workload.
 
-**Uncheck the "Show on startup" checkbox at the top and close the tab.**
+**Uncheck the `Show on startup` checkbox at the top and close the tab.**
 Unfortunately some of the changes required to make the custom engine work are not compatible with these tools.
 Do NOT set up the "Visual Studio Integration Tool" or "Unreal Engine Test Adapter",
 as they will make changes to the project and engine that break your ability to compile the editor and/or package mods.
