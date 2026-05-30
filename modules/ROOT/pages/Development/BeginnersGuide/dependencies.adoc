@@ -309,30 +309,30 @@ After the installer is complete it should open the launcher for you.
 [id="WwiseVersion"]
 === Install the Wwise Version
 
-In the launcher's left sidebar, select the topmost `Wwise` section
-(note: not the "Wwise Audio Lab" section).
-Under the "INSTALL A NEW VERSION" heading,
-click the `Latest` drop-down and change it to `All`.
-Select `2023.1` from the "Major" dropdown.
-Select version `2023.1.14.8770` from the "Version" dropdown.
-Click `Install`.
-
-image::BeginnersGuide/Wwise/wwise_version.png[Select Wwise version screenshot, title=Installing a new Wwise version. Wwise UI may differ slightly from this screenshot.]
-
+. Sign into the launcher if you haven't already,
+  otherwise it will interrupt you to do so later.
+. In the launcher's left sidebar, select the `Wwise` section
+. Under the "INSTALL A NEW VERSION" heading,
+  click the `Latest` drop-down and change it to `All`.
+. Select `{wwise-version-major}` from the "Major" dropdown.
+. Select version `{wwise-version-full}` from the "Version" dropdown.
+. Click `Install`.
++
+image::BeginnersGuide/Wwise/wwise_version.png[Select Wwise version screenshot, title=Installing a new Wwise version. See above for the "Major" and "Version" to select.]
++
 [WARNING]
 ====
-Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
-Newer versions of Wwise __might__ work,
+**Try to download the exact Wwise version mentioned above**.
+Other versions of Wwise __might__ work,
 but they are likely to have other incompatible changes that will break the setup process.
 
-**Try to download the exact Wwise version mentioned above**.
 If you don't see it,
-try any other version starting with `2023.1.3`, preferring newer versions,
+try any other version starting with `{wwise-version-major-minor}`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
-Once presented with options on what to install, select:
-
+. Once presented with options on what packages and platforms to install, select:
++
 // Inline HTML to make checkmarks green
 // https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
 // https://docs.asciidoctor.org/asciidoc/latest/pass/pass-macro/
@@ -349,17 +349,22 @@ Once presented with options on what to install, select:
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2019
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2022
 **** pass:[<span class="green-check">✔</span>] Game Core
-
-If anything else is selected by default, do not uncheck them. They are required for Visual Studio to work.
-
++
+* If anything else is selected by default, do not uncheck them. They are required for Visual Studio to work.
++
 image::BeginnersGuide/Wwise/wwise_packages.png[Select Wwise packages screenshot, title=Selecting packages and deployment platforms. Wwise UI may differ slightly from this screenshot.]
-
-Click `Next` (you may need to scroll down to see the button).
-You don't need to add any plugins,
-so press `Select None` in the top right then `Install` (or `Modify` if you already have it installed) in the bottom left to begin the installation process.
-Accept any User Account Control or Terms and Conditions prompts that appear along the way.
-
++
+. Click `Next` (you may need to scroll down to see the button).
+. You don't need to add any plugins,
+  so click the "partially selected" checkbox in the top right twice
+  so that it turns into a "nothing selected" checkbox.
+  This removes any pre-selected plugins.
+. Click `Install` (or `Modify` if you already have it installed)
+  in the bottom left to begin the installation process.
++
 image::BeginnersGuide/Wwise/wwise_no_plugins.png[Do not select any Wwise plugins screenshot, title=Deselect all plugins. Wwise UI may differ slightly from this screenshot.]
++
+. Accept any "User Account Control" or "Terms and Conditions" prompts that appear along the way.
 
 == Satisfactory Mod Manager
 
