@@ -15,7 +15,7 @@ include::../_includes/repo-versions.adoc[]
 // If you're uncertain about which branch to use, **ask us on the Discord**.
 // ====
 
-Dev docs
+// Dev docs
 ====
 include::../_includes/current-branch-header.adoc[]
 

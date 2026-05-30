@@ -1,5 +1,7 @@
 = Required Software
 
+include::./../_includes/software-versions.adoc[]
+
 To get started with modding Satisfactory,
 you'll need multiple other pieces of software installed first.
 Don't worry, we'll guide you through each step
@@ -139,8 +141,8 @@ prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for
 https://dev.epicgames.com/documentation/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.6#version-history[Cross-Compiling for Linux].
 
-Currently, Satisfactory uses Unreal Engine 5.6.1 with custom changes provided by Coffee Stain Studios.
-Therefore, the Cross-Compile Toolchain version required is `-v25` or `clang-18.1.0-based`.
+Currently, Satisfactory uses Unreal Engine {engine-version} with custom changes provided by Coffee Stain Studios.
+Therefore, the Cross-Compile Toolchain version required is `{clang-cc-toolchain-version}`.
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
@@ -213,7 +215,7 @@ or you will have to repeat a large amount of the setup process again.
 include::./_includes/current-branch-header.adoc[]
 
 Download this engine version: +
-https://github.com/satisfactorymodding/UnrealEngine/releases/{engine-version}
+https://github.com/satisfactorymodding/UnrealEngine/releases/{engine-gh-release}
 ====
 
 Download the following files from the release linked above:
