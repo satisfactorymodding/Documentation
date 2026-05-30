@@ -365,6 +365,7 @@ image::BeginnersGuide/Wwise/wwise_packages.png[Select Wwise packages screenshot,
 image::BeginnersGuide/Wwise/wwise_no_plugins.png[Do not select any Wwise plugins screenshot, title=Deselect all plugins. Wwise UI may differ slightly from this screenshot.]
 +
 . Accept any "User Account Control" or "Terms and Conditions" prompts that appear along the way.
+. You're good to go once it says "Install operation completed successfully."
 
 == Satisfactory Mod Manager
 
