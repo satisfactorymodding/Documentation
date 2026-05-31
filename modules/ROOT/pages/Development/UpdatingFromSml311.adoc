@@ -256,7 +256,7 @@ Also need to be using GameFeatures for it to be auto detected otherwise need to 
 
 Do they need special register steps in gamefeaturedata? https://discord.com/channels/555424930502541343/562722670974599227/1509918327420616805
    Almost certainly FGChildInputMappingContext
-   Not sure about non-child
+   Seems like non-child don't as long as something else references them, ex. MC_InputExampleWidget referenced by Widget_InputExample
 
 ==== Player Mappable Settings Migration
 

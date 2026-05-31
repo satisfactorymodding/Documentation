@@ -86,6 +86,8 @@ Input Mapping Contexts should have all of the relevant Input Actions provided in
 which is also where you are allowed to assign default key bindings for each action.
 For each Input Action you list, you must:
 
+TODO some of these fields don't exist any more
+
 - Enable "Is Player Mappable" (unless you don't want it to be edited by the user, but 99% of the time you do)
 - Under "Player Mappable Options":
     - Provide a "Name", otherwise the bind will not be user editable and attempting to look up its display name will fail.
@@ -96,8 +98,17 @@ Satisfactory adds its own custom fields to Input Mapping Contexts that appear in
 
 - The "Display Name" is the name of the section heading the Actions will be grouped under in the settings menu.
 This should usually be your mod's user friendly name.
-- "Menu Priority" presumably allows for reordering categories, but is `0.0` for all base-game Contexts and has not been tested.
+Multiple contexts using exactly the same name will be presented under the same heading.
+- "M Menu Priority" allows for reordering categories.
+  This should always be at least `200` to ensure modded categories end up after base-game ones,
+  except "Other" which appears to be hardcoded to always be last.
 - "Parent Context" is described in detail below.
+
+TODO better place
+
+- Note that the "Description" field does not seem to appear anywhere in the game UI
+
+- On input actions Player Mappable Context data, the "Display Category" field seems to be ignored
 
 Once an input action is added to a Context and the Context is properly formatted
 with a Display Name it will appear in the settings menu.
