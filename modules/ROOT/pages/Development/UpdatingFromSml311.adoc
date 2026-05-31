@@ -104,6 +104,16 @@ This information is currently only visible on ficsit.app, not inside of SMM.
 
 The following features are not quite ready to use yet.
 
+=== Editor Can't Open Standalone
+
+If you open the editor from the Windows Start menu, it may fail to open.
+Logs can be found in `%LOCALAPPDATA%\UnrealEngine\5.6\Saved\Logs\Unreal.log`
+
+We are still investigating why this happens.
+In the mean time, the editor will open properly when you double-click-open `FactoryGame.uproject` in the Starter Project.
+
+TODO Arch+Rob identified potential fix and new engine is building https://discord.com/channels/555424930502541343/562722670974599227/1510481056850251977
+
 === Unreal Game Features
 
 TODO
