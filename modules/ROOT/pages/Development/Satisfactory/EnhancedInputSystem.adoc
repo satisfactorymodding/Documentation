@@ -1,5 +1,7 @@
 = Enhanced Input System
 
+TODO actions now have their player mappable settings configured on them and not their contexts
+
 [NOTE]
 ====
 This page is a work in progress.
@@ -107,6 +109,8 @@ and one for when they are in the user interface.
 
 [id="ParentContext"]
 === Parent Context
+
+TODO add directions about specifically using UFGChildInputMappingContext
 
 Parent Contexts are a feature provided by Satisfactory for usage by mods.
 We can't add our own Actions to the existing Contexts that are shipped with the base game,

@@ -231,21 +231,50 @@ Please try it and report back on the Discord.
 You might not be affected by these changes,
 but we'd like to draw extra attention to them.
 
-=== Enhanced Input Mapping Context Parent Class Change
+=== Enhanced Input
 
-TODO
+A number of fields have been moved between InputMappingContext and InputAction classes this update.
 
-Need to use FGChildInputMappingContext if using parent context registration
+You can find their old values by opening up your backup copy of the project and checking it there.
+If you don't have a backup copy, make one next time!
+You may also be able to recover this info by using
+xref:Development/ExtractGameFiles.adoc[FModel] or Content Inspector on an existing release of your mod.
+
+==== Mapping Context Parent Class Change
+
+Input contexts using the xref:Development/Satisfactory/EnhancedInputSystem.adoc[Parent Context registration approach]
+need to be migrated to a new purpose-built data asset class.
+
+The `mParentContext` field has been moved from UFGInputMappingContext to UFGChildInputMappingContext,
+so the value set on existing assets will be lost.
+
+To migrate an existing input mapping context asset,
+right click on it and select either of the 2 `Convert to a Different DataAsset Type` menu options,
+then select `FGChildInputMappingContext`
 
 Also need to be using GameFeatures for it to be auto detected otherwise need to manually register (no longer using parent approach https://discord.com/channels/555424930502541343/562722670974599227/1509904209649340558)
 
 Do they need special register steps in gamefeaturedata? https://discord.com/channels/555424930502541343/562722670974599227/1509918327420616805
+   Almost certainly FGChildInputMappingContext
+   Not sure about non-child
 
-The `mParentContext` field has been moved from UFGInputMappingContext to UFGChildInputMappingContext, so the value set on existing assets will be lost. Hope you kept your old editor around so you can check it! Or maybe fmodel/contentinspector could tell you
+==== Player Mappable Settings Migration
 
-UE right click menu on asset lets you change the parent class
+A number of fields previously present on InputContexts' "Mappings" records have moved to Input Actions:
 
-https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/417
+- Is Player Mappable
+- Name (for options value saving)
+- Display Name
+- Display Category
+
+These fields were previously configured on the InputContext,
+unless you were using the Experimental Player Mappable Key Settings option.
+This update makes that option no longer experimental, but the requirement.
+
+It's still possible to set these on the input context if you use the `Override Settings` Setting Behavior,
+but it's recommended to configure them on the action instead.
+
+TODO should axis still have it on the action? ex. ExampleMod /Script/EnhancedInput.InputAction'/ExampleMod/Inputs/Interface/IA_ExampleWidgetMovementAxis.IA_ExampleWidgetMovementAxis' needs 4 separate
 
 === Asset Dumping with `-nullrhi` no longer works
 
