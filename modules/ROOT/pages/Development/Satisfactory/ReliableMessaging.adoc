@@ -243,17 +243,16 @@ void UModReliableMessagingPlayerComponent::SendRawMessage(const APlayerControlle
 
 You are in full control of whether or not to send data to certain player controllers, 
 and it doesn't have to be some initial data, you call the `SendMessage` function whenever you like.
-If for example you do want to send a message to all players but you don't directly access to their controllers
-you can use and actor iterator like this.
+If for example you do want to send a message to all players but you don't directly have access to their controllers
+you can use the player controller iterator like this.
 
 [source,c++]
 ----
-    for (TActorIterator<APlayerController> actorIterator(GetWorld()); actorIterator; ++actorIterator) {
-        APlayerController* PlayerController = *actorIterator;
-        if (!IsValid(PlayerController) || PlayerController->IsLocalController())
-            continue;
+	for (TPlayerControllerIterator<AFGPlayerController>::ServerAll playerController(GetWorld()); playerController; ++playerController) {
+		if (!IsValid(*playerController))
+			continue;
 
-        SendRawMessage(PlayerController, Message...);
+        SendRawMessage(playerController, Message...);
     }
 ----
 
