@@ -259,4 +259,4 @@ you can use the player controller iterator like this.
 === Example implementations
 
  * On the Satisfactory modding discord https://discord.com/channels/555424930502541343/1036634533077979146/1463650672137212114[the .cpp code] for the `UFGConveyorChainSubsystemReplicationComponent` was shared. 
- * There is also an https://github.com/Jarno458/SatisfactoryArchipelagoMod/blob/main/Source/Archipelago/Private/Subsystem/ApPlayerInfoSubsystem.cpp[open source implementation] in the https://ficsit.app/mod/Archipelago[Archipelago] mod.
+ * There are also an https://github.com/Jarno458/AdditionalDepots/blob/main/Mod/Source/AdditionalDepots/Private/AdditionalDepotsReplicatorComponent.cpp[open source implementation] in the https://ficsit.app/mod/AdditionalDepots[Additional Depots] mod.
