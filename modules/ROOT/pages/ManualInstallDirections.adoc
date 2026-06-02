@@ -55,20 +55,33 @@ Folder names and levels of folder nesting matter, so make sure you have the corr
 === Installing Your Mod of Choice
 
 On https://ficsit.app/[SMR], navigate to your desired mod's page, click on
-`versions` in the upper right left corner and then click `+download+` on your desired version.
-Usually this will be the top version in the list.
+`versions` in the upper right left corner.
+Each row is a version of the mod with more recent uploads appearing higher on the list.
+Once you've identified the correct version,
+click `View` to view its extended details.
+
+Verify that the CL# of Satisfactory that you have installed satisfies the Game Version range listed for the version,
+and ensure that you've got the correct SML version installed (listed in the Dependencies section of the version page).
+
+Then use the `Download...` dropdown to obtain the file for target you're installing to.
 
 [WARNING]
 ====
-Always check to make sure that the `SML Version` column for the mod version
-you choose matches the version of SML you have installed. You can
+Always check to make sure that the `Game Versions` column for the mod version
+you choose matches the CL# of  you have installed. You can
 attempt to install the mod with mismatched versions, but most of the
 time, it won't work.
 ====
 
-Now just unzip the downloaded .smod/.zip file into `<game root>/FactoryGame/Mods`.
+Next, preview the contents of the smod/zip file and open the `.uplugin` file in a text editor.
+Look for the `GameFeature` field, as its value determines where the mod files need to be placed:
 
-When you're done, you should have roughly the following folder structure:
+- If `true`: Files go in `<game root>/FactoryGame/Mods/GameFeatures/`
+- If `false` (or absent): Files go in `<game root>/FactoryGame/Mods/`
+
+Now unzip the downloaded .smod/.zip file into the path above.
+
+When you're done, you should have roughly the following folder structure for a `GameFeature`: `false` mod:
 
 image:ManualInstall/mod_in_folder_example.png[A mod in the folder]
 
@@ -77,12 +90,12 @@ Folder names and levels of folder nesting matter, so make sure you have the corr
 
 [WARNING]
 ====
-SML will not fetch mod dependencies for you!
+You must manually identify and install all mod dependencies yourself!
 
-That means if the mod you're installing has other mods as dependencies,
-you must track down and manually install them all yourself.
 This is yet another reason to use the Mod Manager instead,
 as it will handle that for you.
+
+This information is visible in the uplugin file and the Version page on ficsit.app.
 ====
 
 == Installing Mods on Linux
