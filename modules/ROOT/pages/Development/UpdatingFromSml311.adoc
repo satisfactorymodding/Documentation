@@ -98,6 +98,18 @@ Note that uploading additional versions of your mod is blocked until disclosure 
 
 This information is currently only visible on ficsit.app, not inside of SMM.
 
+=== Advanced Game Settings split to Creative Mode and Game Modes
+
+TODO
+
+All preexisting Advanced Game Settings are now part of "Creative Mode" and still disable achievements.
+There is a new category of settings called "Game Modes" that include
+the new ore node randomization
+and cost multiplier settings.
+"Game Modes" do not disable achievements.
+
+It should be possible to define new Game Mode settings using FGUserSetting but no one has tried it yet.
+
 === TODO Remaining New Features
 
 == Not Done Yet
@@ -228,10 +240,14 @@ which may require additional code changes.
 
 Unreal has provided a conversion tool that can update portions of your code automatically: link:https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-migration-guide?lang=en-US#optionalconversiontool[Unreal Engine 5 Migration Guide: Optional Conversion Tool]
 
-Steps to run tool? https://discord.com/channels/555424930502541343/1486398610706006117/1509348752857497650
+You don't need to build the tool yourself, our engine ships it in `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealObjectPtrTool.exe`
 
-It is unclear if this tool will work properly for mods.
-Please try it and report back on the Discord.
+Steps to run tool?
+
+- Original discussion https://discord.com/channels/555424930502541343/1486398610706006117/1509348752857497650
+- ⭐ Revised Digby steps https://discord.com/channels/555424930502541343/562722670974599227/1511023084055035987
+
+Running the tool applies for every loaded mod in the project.
 
 === TODO More Required Changes
 
@@ -285,6 +301,20 @@ but it's recommended to configure them on the action instead.
 
 TODO should axis still have it on the action? ex. ExampleMod /Script/EnhancedInput.InputAction'/ExampleMod/Inputs/Interface/IA_ExampleWidgetMovementAxis.IA_ExampleWidgetMovementAxis' needs 4 separate
 
+=== {cpp} Full Include Paths (BuildSettingsVersion V5)
+
+A change in CSS build settings means that all modules must follow `BuildSettingsVersion.V5`.
+Previously, targets for mods could have slightly different settings and still work properly.
+
+Although the Alpakit mod templates have been updated to account for this for a few game updates,
+existing mods using legacy build settings may need to update their mod source to compile under the updated settings.
+
+The most common example of this is needing to use full paths in includes now.
+For example, code previously using `#include "FGHologram.h"`
+must now use `#include "/Hologram/FGHologram.h"`.
+
+More context on link:https://discord.com/channels/555424930502541343/562722670974599227/1510573946515230750[this Discord message chain].
+
 === Asset Dumping with `-nullrhi` no longer works
 
 Dumping assets with `-nullrhi` is no longer possible, because Unreal Engine doesn't load mesh data when using that anymore, 
@@ -318,6 +348,8 @@ No changes to existing icon libraries are known to be required for the fix to wo
 TODO
 
 Skips the Experimental branch popup on the main menu (document this elsewhere too, maybe quick launch script?)
+
+Nosplash might also do part of this? Inconsistent behavior when tested on epic experimental
 
 === TODO More Additional Changes
 
