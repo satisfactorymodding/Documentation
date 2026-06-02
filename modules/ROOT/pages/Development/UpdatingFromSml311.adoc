@@ -116,9 +116,10 @@ TODO Arch+Rob identified potential fix and new engine is building https://discor
 
 === Unreal Game Features
 
-TODO
+WIP
 
-Changes in 1.2 allow Satisfactory mods to take advantage of the link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
+Changes in 1.2 allow Satisfactory mods to take advantage of the
+link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
 Game Features are similar to SML's xref:Development/ModLoader/ModModules.adoc[Game Instance Modules].
 
 [IMPORTANT]
@@ -130,24 +131,32 @@ This support is being written and 3.12 won't be publicly released until it's don
 TODO Basically all mods should switch to the GameFeature system, because all mods that add content should for the asset management. Pure libraries would be the ones that don't need to. https://discord.com/channels/555424930502541343/562722670974599227/1509918776605278348
 
 Satisfactory now uses the Asset Manager 
-All previous asset types that were auto-detected (such as icon libraries, input contexts, and FGUserSettings)
+All previous asset types that were previously auto-detected
+(such as icon libraries, input contexts, FGMessages (ADA), and FGUserSettings)
 now require using Game Features.
 
 ExampleMod has been updated to package its files using Game Features.
 
 To migrate your mod to use Game Features:
 
-. Close the editor
+. Delete any existing built copies of the mod from your game install directories.
+  The game will get confused and not load things properly if you have both a "standard" and "game features" copy of your mod installed at once.
+  ("A version of the 'ModReferenceHere' plugin has already been enabled" log message produced)
+. Close the Unreal editor
 . Transfer the mod's plugin folder from the
   `<Project>/Mods/` directory to the
-  `<Project>/GameFeatures/Mods/` directory.
-. TODO rebuild needed for {cpp}?
-. Create a new GameFeatureData asset in the mod content root named exactly `GameFeatureData` (TODO can we have alpakit verify this?)
+  `<Project>/Mods/GameFeatures/` directory.
+. Regenerate Visual Studio Project Files
+. Compile for Development Editor
+. Create a new Data Asset of type FGGameFeatureData in the mod's content root folder with the name of your mod reference.
+  Using the name `GameFeatureData` is also supported but discouraged as it makes editing multiple mods at once confusing.
+. (Optional) Create a new mod with the Alpakit template to copy its Primary Asset Types to Scan rules to your own
 . TODO what actions need to be set up? `It lists the actions to be taken when loading/unloading the GameFeature, and the asset search paths for primary assets` -Mircea
 
 In the future the link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
 with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
 like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
+Based on SirDigby's testing, this is not working yet.
 
 TODO Arch mentioned it's possible to register schematics and stuff without SML now via this; best place to document?
 

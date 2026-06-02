@@ -116,7 +116,7 @@ in the Plugins field as explained below,
 unless your mod is xref:Development/Satisfactory/ModsWithoutSML.adoc[specifically designed to work without SML].
 ====
 
-Below is a description of all extra fields SML and SMR require:
+Below is a description of all extra fields SML and SMR utilize:
 
 [cols="3,8a"]
 |===
@@ -262,6 +262,14 @@ The reverse (client checking host) is implemented as of SML 3.9.0.
 This field is optional, and defaults to `true`.
 If you aren't using this behavior, you should exclude the field.
 
+|GameFeature
+| (Only present in packaged releases)
+Indicates if the mod should be installed to
+the GameFeatures subdirectory of the Mods directory (`true`)
+or the normal Mods directory (`false`).
+
+Alpakit sets this field for you automatically when building releases,
+so this should not be present in your mod source's uplugin.
 |===
 
 
