@@ -60,8 +60,6 @@ Clone the `5.6.1-CSS` branch of https://github.com/satisfactorymodding/UnrealEng
 
 ==== Download an archive
 
-https://github.com/satisfactorymodding/UnrealEngine/releases/
-
 Click on the latest release https://github.com/satisfactorymodding/UnrealEngine/releases/[here], and download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files.
 
 [NOTE]
