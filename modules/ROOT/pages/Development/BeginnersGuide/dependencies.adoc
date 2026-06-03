@@ -17,7 +17,7 @@ Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left.
 
 NOTE: This is for setting up the Modding Environment on Windows.
-If you are on Linux, please follow the guide xref:Development/BeginnersGuide/LinuxSetup.adoc[here].
+If you are on Linux, please follow the xref:Development/Linux/LinuxSetup.adoc[Linux Setup guide].
 
 == Before you Begin
 

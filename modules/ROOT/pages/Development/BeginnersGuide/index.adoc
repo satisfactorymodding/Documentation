@@ -79,7 +79,7 @@ and pick up the `Aspiring Modder` role in the "Channels & Roles" section to get 
 == Contributing to the Docs
 
 These documentation pages are all written by community members, and are publicly editable via GitHub's PR system.
-You can see the source code by clicking 'Edit this Page' in the top right corner of any page.
+You can see the source code by clicking `Edit this Page` in the top right corner of any page.
 
 Please do not hesitate to contact us with corrections, suggestions, or questions.
 The best way to reach the team is our https://discord.ficsit.app[Discord Server].
@@ -91,5 +91,5 @@ https://github.com/satisfactorymodding/Documentation#readme[here].
 
 Next up is setting up your modding development environment.
 // Future editors - this spot is purposefully missing a link to the Dependencies so people get practice using the sidebar.
-Use the site's sidebar to navigate to the 'Installing Dependencies' section's 'Required Software' page.
+Use the site's sidebar to navigate to the "Installing Dependencies" section's "Required Software" page.
 You can read more about using the sidebar in the link:#_navigating_the_docs[Navigating the Docs] section.

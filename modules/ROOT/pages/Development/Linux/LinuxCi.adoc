@@ -1,0 +1,10 @@
+= Linux Continuous Integration (CI)
+
+As of SML 3.12, we build binaries for SML and the custom Unreal Engine from Linux CI runners.
+We use a self hosted link:https://github.com/actions/actions-runner-controller[arc-k8s] runner
+as the involved Unreal Engine files are very large and build times would blow through the free GitHub runner limits.
+
+This was largely motivated by the previous Windows runners breaking basically every update.
+If you'd like to set up your own CI for building your own mods,
+check out link:https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/dev/.github/workflows/build.yml[SML's GitHub actions definitions].
+Contact us on the link:https://discord.ficsit.app[Discord Server] if you want help or have questions about how ours works.
