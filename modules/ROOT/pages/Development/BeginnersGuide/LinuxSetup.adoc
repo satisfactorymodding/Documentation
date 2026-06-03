@@ -56,7 +56,7 @@ You can do this one of two ways: Either build the engine from source, or downloa
 
 ==== From Source
 
-Clone the `5.6.1-CSS` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware)
+Clone the `5.6.1-CSS` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware).
 
 ==== Download an archive
 
