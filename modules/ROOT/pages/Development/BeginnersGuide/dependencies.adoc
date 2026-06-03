@@ -16,6 +16,9 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left.
 
+NOTE: This is for setting up the Modding Environment on Windows.
+If you are on Linux, please follow the guide xref:Development/BeginnersGuide/LinuxSetup.adoc[here].
+
 == Before you Begin
 
 Make sure you've read the starting information on the
