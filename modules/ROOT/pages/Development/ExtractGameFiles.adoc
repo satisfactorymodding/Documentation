@@ -34,7 +34,7 @@ and enter your game install directory as the "Directory"
 (for example, `C:\EpicGamesGames\SatisfactoryExperimental`).
 Next, press the blue Plus button (NOT the OK button!) to add the game to the Detected Game dropdown,
 which should automatically select it.
-Back in the upper section, select `GAME_UE5_3 (536870960)` for the "UE Versions" selector.
+Back in the upper section, select `GAME_UE5_6` for the "UE Versions" selector.
 If this item doesn't appear in the list, ensure "Enable custom UE versions" is unchecked.
 After confirming that the game is selected, press the `OK` button.
 
