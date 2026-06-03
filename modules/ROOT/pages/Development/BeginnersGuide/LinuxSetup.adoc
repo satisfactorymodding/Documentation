@@ -13,7 +13,7 @@ On Debian-based systems such as Ubuntu, this would be `apt install`, or `dnf ins
 * `msitools` (For `msiextract`, used by `vsdownload.py` of msvc-wine)
 * `tar` and `zstd` (For decompressing the engine archive)
 * `dos2unix` (For the Wwise patches, used by the SML project)
-* `wine` (Needed to build Alpakit Win64 targets)
+* `wine` (Needed to build Alpakit Win64 targets and open the Wwise Authoring application)
 
 For example, on Fedora this would be
 
@@ -178,3 +178,42 @@ Then wait for the build to complete.
 == Open the editor
 
 If everything above was done correctly, you may now open the `FactoryGame.uproject` file in your Starter Project to launch the Unreal Editor.
+
+== Generating the Wwise Project
+
+You may see "GeneratedSoundBanks folder does not seem to be set" when you go to open the Unreal Editor, which is because the wwise-cli does not create a project automatically.
+Instead, you must download the Wwise Authoring package by appending `--filter Packages=Authoring` to the command from earlier:
+
+[source,bash]
+----
+./wwise-cli download --sdk-version "2023.1.14.8770" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring
+----
+
+Once that's completed, run
+
+[source,bash]
+----
+wine ~/.cache/wwise-cli/wwise/2023.1.14.8770/Authoring/x64/Release/bin/Wwise.exe
+----
+
+which will open the Wwise Authoring application.
+In the bottom left, click `New`.
+Set the project name to `SatisfactoryModLoader_WwiseProject`, and the location to the root of your project folder.
+
+image:BeginnersGuide/Wwise/wwise-create-project-linux.png[Create Wwise Project]
+
+If you get a pop-up saying `No valid license key found. Wwise will run in Trial mode.`, you can ignore it and click `Close` in the bottom right.
+
+=== Generate Sound Banks
+
+Find the "Project Explorer" tab in the Wwise editor (left sidebar)
+and select the `SoundBanks` sub-tab.
+Right-click on the top level folder and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Generate Wwise Soundbanks]
+
+A pop-up should open stating "Completed with message(s)".
+Click the `Close` button in the bottom right.
+
+Now you can open the Unreal Editor.
+If you get the GeneratedSoundBanks pop-up, you can follow the link:project_setup.html#_generatedsoundbanks_folder_does_not_seem_to_be_set[normal instructions] now that the Wwise project is set up.
