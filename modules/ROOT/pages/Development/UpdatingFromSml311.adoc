@@ -98,17 +98,35 @@ Note that uploading additional versions of your mod is blocked until disclosure 
 
 This information is currently only visible on ficsit.app, not inside of SMM.
 
+=== Modding and Linux
+
+Thanks to some hard work on the build system,
+the binaries we distribute for SML 3.12 and the custom Unreal Engine version
+are now compiled on Linux machines.
+
+This shouldn't change anything visible to end users or mod developers,
+but it makes our automated build systems a lot easier to maintain,
+and means it's now easier for individual mod developers to set up their own, if desired.
+
+Coinciding with this, we've done a bunch of testing with developing mods from Linux machines,
+and it's now stable enough for us to include directions on the docs.
+As Linux systems are often unique, expect to have to face some undocumented complications
+and join the Discord to seek setup assistance.
+
+You can find the Linux-specific setup directions on the xref:Development/Linux/LinuxSetup.adoc[Linux Setup] page.
+
 === Advanced Game Settings split to Creative Mode and Game Modes
 
 TODO
 
-All preexisting Advanced Game Settings are now part of "Creative Mode" and still disable achievements.
+Satisfactory 1.2 has renamed the concept of Advanced Game Settings to "Creative Mode".
+These options still disable achievements.
 There is a new category of settings called "Game Modes" that include
 the new ore node randomization
 and cost multiplier settings.
 "Game Modes" do not disable achievements.
 
-It should be possible to define new Game Mode settings using FGUserSetting but no one has tried it yet.
+It should be possible to define new Game Mode settings using FGUserSetting, but no one has tried it yet.
 
 === TODO Remaining New Features
 
