@@ -542,6 +542,13 @@ image:FAQ/EpicBranch.png[Epic Installer]
 You may wish to download an older version of the game
 in order to play with mods that are not yet updated.
 
+[WARNING]
+====
+We do not provide support for using older versions of the game.
+By following this process, you are volunteering to fix any issues that may arise yourself,
+and you are accepting the risk of possible data loss.
+====
+
 === Make a Backup
 
 The easiest way to use an older copy of the game is to plan for it in advance.
