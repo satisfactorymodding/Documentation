@@ -16,8 +16,6 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left.
 
-NOTE: This is for setting up the Modding Environment on Windows.
-If you are on Linux, please follow the xref:Development/Linux/LinuxSetup.adoc[Linux Setup guide].
 
 == Before you Begin
 
@@ -27,10 +25,17 @@ to learn important information about how to use these docs.
 
 [IMPORTANT]
 ====
-Are you a returning Satisfactory modder who already has a past modding environment set up?
+Are you a **returning Satisfactory mod developer** who already has a past modding environment set up?
 Make sure to follow the
 xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 guide before following these directions.
+====
+
+[IMPORTANT]
+====
+Are you a **Linux 🐧 user**?
+These directions cover setting up the modding environment on a Windows machine.
+Check out the separate xref:Development/Linux/LinuxSetup.adoc[Linux Setup guide] to develop from Linux.
 ====
 
 == Satisfactory

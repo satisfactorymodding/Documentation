@@ -1,8 +1,35 @@
-= Setting Up The Modding Environment on Linux
+= Linux Modding Environment Setup
 
-The Satisfactory Modding Environment is also available for you to develop if you are on a Linux-based platform.
+// cspell:ignore msitools msiextract vsdownload zstd release.ltsc omnisharp
 
-NOTE: This is for setting up the Modding Environment on Linux. If you are on Windows, please follow the guide xref:Development/BeginnersGuide/dependencies.adoc[here].
+include::./../_includes/software-versions.adoc[]
+
+Although Satisfactory does not have official Linux support,
+and Unreal Engine typically prioritizes Windows for development,
+significant community efforts have resulted in a mostly stable Linux development environment for Satisfactory modding.
+
+[IMPORTANT]
+====
+Are you a **Windows user**?
+These directions cover setting up the modding environment on a Linux machine.
+If you are on Windows, follow the xref:Development/BeginnersGuide/dependencies.adoc[standard modding setup guide].
+====
+
+== Word of Caution
+
+As Linux systems often have unique setups, expect to have to face some undocumented complications
+and link:https://discord.ficsit.app/[join the Discord to seek setup assistance].
+
+These directions **are not intended to fully replace the normal Getting Started guide** -
+we highly encourage you to read each section's corresponding Windows setup step as well
+to get a better understanding of how the modding environment works,
+and troubleshoot issues that may arise during Linux setup as well.
+
+====
+Sections will have blocks like this one pointing out the corresponding Windows setup direction step(s),
+or directing you to another point on the page.
+Sometimes reading the corresponding Windows step is required to get information/links to proceed, so don't skip them.
+====
 
 == Prerequisites
 
@@ -15,7 +42,7 @@ On Debian-based systems such as Ubuntu, this would be `apt install`, or `dnf ins
 * `dos2unix` (For the Wwise patches, used by the SML project)
 * `wine` (Needed to build Alpakit Win64 targets and open the Wwise Authoring application)
 
-For example, on Fedora this would be
+For example, on Fedora this would be:
 
 [source,bash]
 ----
@@ -28,7 +55,7 @@ Now we can begin setting up our custom version of Unreal Engine.
 
 === Download MSVC
 
-First, we must install MSVC using msvc-wine:
+First, we must install MSVC using msvc-wine.
 
 Copy and paste this into your terminal, but be sure to first swap `<msvc_install_dir>` to the directory where you want to install MSVC, then run it.
 This will automatically clone the msvc-wine repository and use it to download the correct version of MSVC for the editor to use.
@@ -50,17 +77,39 @@ For example: `UE_WINE_MSVC="<msvc_install_dir>"` (make sure to surround the dire
 
 Then you may need to log out and back in, or restart your PC for the change to take effect.
 
+====
+Corresponding Windows step: xref:Development/BeginnersGuide/dependencies.adoc#_visual_studio[Visual Studio]
+====
+
 === Download the engine
 
-You can do this one of two ways: Either build the engine from source, or download an already built archive from the GitHub CI.
+First, follow the standard setup directions to get access to the custom engine.
+
+====
+xref:Development/BeginnersGuide/dependencies.adoc#CustomEngine[Steps to get engine access ➡]
+====
+
+Once you have access, you can install the engine in one of two ways:
+Either build it from source, or download an already built archive from our GitHub releases.
 
 ==== From Source
 
-Clone the `5.6.1-CSS` branch of https://github.com/satisfactorymodding/UnrealEngine (A source build can take at least 2-3 hours depending on your hardware).
+A source build can take at least 2-3 hours depending on your hardware
+and will consume a boatload of disk space.
+
+====
+xref:Development/BeginnersGuide/dependencies.adoc#_download_the_custom_engine[Repository link to clone ➡]
+
+The tag from the release mentioned here will tell you what to switch to after you clone the repository.
+====
 
 ==== Download an archive
 
-Click on the latest release https://github.com/satisfactorymodding/UnrealEngine/releases/[here], and download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files.
+====
+xref:Development/BeginnersGuide/dependencies.adoc#_download_the_custom_engine[Release link to download ➡]
+====
+
+Download each of the `UnrealEngine-CSS-Editor-Linux.tar.zst.*` files.
 
 [NOTE]
 ====
@@ -77,57 +126,126 @@ cat UnrealEngine-CSS-Editor-Linux.tar.zst.* | zstd -d | tar -xf -
 
 === Register the engine
 
-Register the engine to your system by running this command, replacing `<ue_dir>` with the path to your engine installation:
+Register the engine to your system by running this command,
+replacing `<ue_dir>` with the path to your engine installation:
 
 [source,bash]
 ----
 <ue_dir>/Engine/Binaries/Linux/UnrealVersionSelector -register -unattended
 ----
 
+[id="SectionProjectSetup"]
 == Project Setup
 
-Clone or download the starter project from https://github.com/satisfactorymodding/SatisfactoryModLoader as normal.
+The Starter Project is a custom Unreal Engine project we distribute
+that includes modding tools and game headers/stubs.
 
-=== Wwise setup
+[id="DownloadStarterProject"]
+=== Starter Project Download
+
+Clone or download the starter project.
+
+====
+xref:Development/BeginnersGuide/StarterProject/ObtainStarterProject.adoc[Obtain the Starter Project ➡]
+====
+
+[id="WwiseInstall"]
+=== wwise-cli Assisted Wwise Installation
 
 Download the latest build of wwise-cli from https://github.com/mircearoata/wwise-cli/releases/latest.
 
 Run this command in your terminal to download the required version of Wwise:
 
-[source,bash]
+// Docs editors: subs attribute needed to handle the text substitutions for version numbers
+// https://docs.asciidoctor.org/asciidoc/latest/subs/attributes/#attributes-substitution-value
+
+[source,bash,subs="attributes"]
 ----
-./wwise-cli download --sdk-version "2023.1.14.8770" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms=
+./wwise-cli download --sdk-version "{wwise-version-full}" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring
 ----
 
 When that's done, run this command to integrate it into the starter project, replacing `<project_dir>` with the path to your project:
 
-[source,bash]
+Note the intentional difference between the sdk and integration versions.
+
+[source,bash,subs="attributes"]
 ----
-./wwise-cli integrate-ue --integration-version "2023.1.14.3555" --project "<project_dir>/FactoryGame.uproject"
+./wwise-cli integrate-ue --integration-version "{wwise-version-major-minor}.{wwise-version-stupid-api-suffix}" --project "<project_dir>/FactoryGame.uproject"
 ----
+
+====
+Corresponding Windows steps:
+- xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Download the Audiokinetic Launcher]
+- xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_wwise[Integrate Wwise with the Project]
+====
+
+=== Wwise Project Generation
+
+Next, we need to open the Wwise authoring application to generate the Wwise project.
+
+Run this command to open the Wwise Authoring application.
+
+[source,bash,subs="attributes"]
+----
+wine ~/.cache/wwise-cli/wwise/{wwise-version-full}/Authoring/x64/Release/bin/Wwise.exe
+----
+
+In the bottom left, click `New`.
+Set the project name to `SatisfactoryModLoader_WwiseProject`, and the location to the root of your project folder.
+
+image:BeginnersGuide/Wwise/wwise-create-project-linux.png[Create Wwise Project]
+
+If you get a pop-up saying `No valid license key found. Wwise will run in Trial mode.`,
+you can ignore it and click `Close` in the bottom right.
+
+=== Sound Bank Generation
+
+Find the "Project Explorer" tab in the Wwise editor (left sidebar)
+and select the `SoundBanks` sub-tab.
+Right-click on the top level folder and click `Generate Soundbank(s) for all platforms`.
+
+image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Generate Wwise Soundbanks]
+
+A pop-up should open stating "Completed with message(s)".
+Click the `Close` button in the bottom right.
+
+====
+Corresponding Windows step: xref:/Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[Generate Sound Banks]
+====
 
 === IDE setup
 
 Now we must set up our IDE for building the starter project, and for developing with C++.
 Since Visual Studio isn't available for Linux, you can instead use Rider or VS Code.
 
+====
+link:#Rider[Rider steps ➡]
+link:#VSCode[VS Code steps ➡]
+
+Corresponding Windows step: xref:Development/BeginnersGuide/project_setup.adoc#_generate_visual_studio_files[Generate Visual Studio Files]
+====
+
+[id="Rider"]
 ==== Rider
 
 There are two methods to open the project in Rider. Uproject is preferred, but Solution + Makefile is also available if you need it for a specific reason.
 
+[id="Rider_Uproject"]
 ===== Uproject
 
-Due to a bug with Rider, you'll need to install a plugin in order to see the `Mods` folder when opening the Uproject file. Open the Settings window and find the "Plugins" page, then search the marketplace for `Unreal Project Model Mods Fix` by Archengius and install it. Restart the IDE if prompted.
+Due to a bug with Rider, you'll need to install a plugin in order to see the `Mods` folder when opening the Uproject file.
+Open the Settings window and find the "Plugins" page, then search the marketplace for
+link:https://plugins.jetbrains.com/plugin/29974-unreal-project-model-mods-fix[`Unreal Project Model Mods Fix`] by Archengius and install it.
+Restart the IDE if prompted.
 
+====
+link:#Compile[Proceed to project compilation steps ➡]
+====
 
+[id="Rider_Makefile"]
 ===== Makefile
 
 The other method is to generate a Visual Studio Solution and Makefile to build the project.
-
-[NOTE]
-====
-The Uproject method is preferred, but if for whatever reason you need to have the solution and makefile, you can follow these steps.
-====
 
 Run the following commands, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
 
@@ -150,6 +268,11 @@ In the Rider settings, under `Toolset and Build`, make sure `.NET CLI executable
 
 Then to build it, run `make FactoryEditor` or any of the other targets.
 
+====
+link:#Compile[Proceed to project compilation steps ➡]
+====
+
+[id="VSCode"]
 ==== VS Code
 
 To generate a code-workspace file, run the following command, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
@@ -162,10 +285,23 @@ To generate a code-workspace file, run the following command, replacing `<ue_dir
 Open the `.code-workspace` file, **not** the folder.
 In the workspace settings, add `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux` to `omnisharp.dotNetCliPaths`
 
+====
+link:#Compile[Proceed to project compilation steps ➡]
+====
+
+[id="OtherIDE"]
 === Other
 
-For other IDEs (not tested by us), you can view this page for command line options to generate project files for various other IDEs: https://github.com/satisfactorymodding/UnrealEngine/blob/5.3.2-CSS/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateProjectFilesMode.cs#L26-L38
+For other IDEs (not tested by us),
+you can check the
+link:https://github.com/satisfactorymodding/UnrealEngine/blob/{engine-version}-CSS/Engine/Source/Programs/UnrealBuildTool/Modes/GenerateProjectFilesMode.cs#L26-L38[engine UBT GenerateProjectFilesMode class implementation]
+to discover command line options used for various other IDEs.
 
+====
+link:#Compile[Proceed to project compilation steps ➡]
+====
+
+[id="Compile"]
 == Compile the project
 
 * For Rider, select `Development`, `Editor`, `Linux`, and then click the build button in the top right.
@@ -173,45 +309,34 @@ For other IDEs (not tested by us), you can view this page for command line optio
 
 Then wait for the build to complete.
 
+====
+Corresponding Windows step: xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[Project Compilation]
+====
+
 == Open the editor
 
 If everything above was done correctly, you may now open the `FactoryGame.uproject` file in your Starter Project to launch the Unreal Editor.
 
-== Generating the Wwise Project
+=== Assign Generated Sound Banks Paths
 
-You may see "GeneratedSoundBanks folder does not seem to be set" when you go to open the Unreal Editor, which is because the wwise-cli does not create a project automatically.
-Instead, you must download the Wwise Authoring package by appending `--filter Packages=Authoring` to the command from earlier:
+You should get a pop-up saying "GeneratedSoundBanks folder does not seem to be set" once you get into the editor.
+This is expected because the wwise-cli does not create a project automatically.
 
-[source,bash]
-----
-./wwise-cli download --sdk-version "2023.1.14.8770" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring
-----
+====
+xref:Development/BeginnersGuide/project_setup.adoc#_generatedsoundbanks_folder_does_not_seem_to_be_set[Follow the Unreal Editor steps for setting the paths ➡]
+====
 
-Once that's completed, run
+== Satisfactory Mod Manager
 
-[source,bash]
-----
-wine ~/.cache/wwise-cli/wwise/2023.1.14.8770/Authoring/x64/Release/bin/Wwise.exe
-----
+Satisfactory Mod Manager is used to install other published mods for testing purposes.
+Although not required to proceed, we advise installing now to be prepared for future work.
+We provide native Linux builds as documented in the
+xref:ForUsers/SatisfactoryModManager.adoc#Install_Linux[SMM installation guide].
 
-which will open the Wwise Authoring application.
-In the bottom left, click `New`.
-Set the project name to `SatisfactoryModLoader_WwiseProject`, and the location to the root of your project folder.
+== Next Steps
 
-image:BeginnersGuide/Wwise/wwise-create-project-linux.png[Create Wwise Project]
+You should now be able to proceed with the rest of the Getting Started Guide.
 
-If you get a pop-up saying `No valid license key found. Wwise will run in Trial mode.`, you can ignore it and click `Close` in the bottom right.
-
-=== Generate Sound Banks
-
-Find the "Project Explorer" tab in the Wwise editor (left sidebar)
-and select the `SoundBanks` sub-tab.
-Right-click on the top level folder and click `Generate Soundbank(s) for all platforms`.
-
-image:Satisfactory/Wwise/Wwise_Soundbank_Generate.png[Generate Wwise Soundbanks]
-
-A pop-up should open stating "Completed with message(s)".
-Click the `Close` button in the bottom right.
-
-Now you can open the Unreal Editor.
-If you get the GeneratedSoundBanks pop-up, you can follow the link:project_setup.html#_generatedsoundbanks_folder_does_not_seem_to_be_set[normal instructions] now that the Wwise project is set up.
+====
+xref:Development/BeginnersGuide/project_setup.adoc#_open_unreal_editor[Continue with the normal Getting Started Guide ➡]
+====
