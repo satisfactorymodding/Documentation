@@ -12,7 +12,7 @@ Contact us on the link:https://discord.ficsit.app[Discord Server] if you want he
 At the time of writing,
 the runners are currently using the default `ghcr.io/actions/actions-runner`,
 but specialized images are in development and will be published on
-link:github.com/satisfactorymodding[our GitHub] eventually.
+link:https://github.com/satisfactorymodding[our GitHub] eventually.
 
 [IMPORTANT]
 ====
