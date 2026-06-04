@@ -175,8 +175,9 @@ Note the intentional difference between the sdk and integration versions.
 
 ====
 Corresponding Windows steps:
-- xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Download the Audiokinetic Launcher]
-- xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_wwise[Integrate Wwise with the Project]
+
+* xref:Development/BeginnersGuide/dependencies.adoc#_wwise[Download the Audiokinetic Launcher]
+* xref:Development/BeginnersGuide/project_setup.adoc#_setting_up_wwise[Integrate Wwise with the Project]
 ====
 
 === Wwise Project Generation
