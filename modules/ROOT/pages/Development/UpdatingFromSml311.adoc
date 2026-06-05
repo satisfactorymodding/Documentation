@@ -20,8 +20,6 @@ guide to install the updated engine, starter project, and update your mod.
 
 == Versioned Cooked Content
 
-TODO move this heading?
-
 Since Alpakit uses xref:Development/UpdatingFromSml310.adoc#_alpakit_versioned_cooked_content[Versioned Cooked Content] as of SML 3.10,
 there is a chance that some blueprint-only mods packaged for SML3.10 will require no changes to function properly in Satisfactory 1.2.
 
@@ -53,8 +51,6 @@ This section talks about the new features that Satisfactory 1.2 and SML 3.12 bri
 
 === User Config Resetting
 
-TODO Additional details, see https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/364/
-
 Users can now reset xref:Development/ModLoader/Configuration.adoc[Mod Configuration options] to their default values directly from the config screen.
 Package ExampleMod and try it out in game!
 
@@ -66,9 +62,9 @@ All existing default values and user config choices have been preserved.
 Although you do not technically need to change anything for your mods to get this feature,
 it is worth reviewing your configuration to see if there are any values that the user should not be allowed to reset.
 
-=== ficsit.app Controller Compatibility Tracking
+For more information, see link:https://github.com/satisfactorymodding/SatisfactoryModLoader/pull/364/[the PR adding the feature].
 
-TODO currently only live on ficsit.dev
+=== ficsit.app Controller Compatibility Tracking
 
 ficsit.app now allows you to communicate if your mod works with controllers, such as Xbox, Playstation, or Steam controllers.
 This information is presented and stored in a system similar to the existing Stable and Experimental branch compatibility.
@@ -84,8 +80,6 @@ The possible options are:
 This information is currently only visible on ficsit.app, not inside of SMM.
 
 === ficsit.app Disclosures
-
-TODO currently only live on ficsit.dev, and there are pending content policy edits not on dev yet
 
 ficsit.app now offers a consistent location for mods to place their Network Activity Transparency information.
 Previously, this information was expected to be somewhere inside the mod description text.
@@ -126,69 +120,14 @@ the new ore node randomization
 and cost multiplier settings.
 "Game Modes" do not disable achievements.
 
-It should be possible to define new Game Mode settings using FGUserSetting, but no one has tried it yet.
+It should be possible to define new Game Mode settings using `FGUserSetting`s,
+but at the time of writing no one has tried it yet.
 
 === TODO Remaining New Features
 
 == Not Done Yet
 
 The following features are not quite ready to use yet.
-
-=== Editor Can't Open Standalone
-
-If you open the editor from the Windows Start menu, it may fail to open.
-Logs can be found in `%LOCALAPPDATA%\UnrealEngine\5.6\Saved\Logs\Unreal.log`
-
-We are still investigating why this happens.
-In the mean time, the editor will open properly when you double-click-open `FactoryGame.uproject` in the Starter Project.
-
-TODO Arch+Rob identified potential fix and new engine is building https://discord.com/channels/555424930502541343/562722670974599227/1510481056850251977
-
-=== Unreal Game Features
-
-WIP
-
-Changes in 1.2 allow Satisfactory mods to take advantage of the
-link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
-Game Features are similar to SML's xref:Development/ModLoader/ModModules.adoc[Game Instance Modules].
-
-[IMPORTANT]
-====
-SMM/ficsit-cli and ficsit.app do not yet support distribution of mods using the Game Feature asset structure.
-This support is being written and 3.12 won't be publicly released until it's done.
-====
-
-TODO Basically all mods should switch to the GameFeature system, because all mods that add content should for the asset management. Pure libraries would be the ones that don't need to. https://discord.com/channels/555424930502541343/562722670974599227/1509918776605278348
-
-Satisfactory now uses the Asset Manager 
-All previous asset types that were previously auto-detected
-(such as icon libraries, input contexts, FGMessages (ADA), and FGUserSettings)
-now require using Game Features.
-
-ExampleMod has been updated to package its files using Game Features.
-
-To migrate your mod to use Game Features:
-
-. Delete any existing built copies of the mod from your game install directories.
-  The game will get confused and not load things properly if you have both a "standard" and "game features" copy of your mod installed at once.
-  ("A version of the 'ModReferenceHere' plugin has already been enabled" log message produced)
-. Close the Unreal editor
-. Transfer the mod's plugin folder from the
-  `<Project>/Mods/` directory to the
-  `<Project>/Mods/GameFeatures/` directory.
-. Regenerate Visual Studio Project Files
-. Compile for Development Editor
-. Create a new Data Asset of type FGGameFeatureData in the mod's content root folder with the name of your mod reference.
-  Using the name `GameFeatureData` is also supported but discouraged as it makes editing multiple mods at once confusing.
-. (Optional) Create a new mod with the Alpakit template to copy its Primary Asset Types to Scan rules to your own
-. TODO what actions need to be set up? `It lists the actions to be taken when loading/unloading the GameFeature, and the asset search paths for primary assets` -Mircea
-
-In the future the link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
-with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
-like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
-Based on SirDigby's testing, this is not working yet.
-
-TODO Arch mentioned it's possible to register schematics and stuff without SML now via this; best place to document?
 
 === Content Tags in the Base Game
 
@@ -231,6 +170,52 @@ xref:Development/UpdatingToNewVersions.adoc[Updating your Mod guide].
 If you see the "GeneratedSoundBanks folder does not seem to be set. Would you like to open the settings window to set it?" message, use the Wwise editor to
 xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
 You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
+
+=== Unreal Game Features
+
+WIP
+
+Changes in 1.2 allow Satisfactory mods to take advantage of the
+link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
+Game Features are similar to SML's xref:Development/ModLoader/ModModules.adoc[Game Instance Modules].
+
+[IMPORTANT]
+====
+SMM/ficsit-cli and ficsit.app do not yet support distribution of mods using the Game Feature asset structure.
+This support is being written and 3.12 won't be publicly released until it's done.
+====
+
+TODO Basically all mods should switch to the GameFeature system, because all mods that add content should for the asset management. Pure libraries would be the ones that don't need to. https://discord.com/channels/555424930502541343/562722670974599227/1509918776605278348
+
+In previous versions, a number of asset types were auto-detected by the game without regisration.
+These include icon libraries, input contexts, FGMessages (for ADA), and FGUserSettings.
+These content types must now be registered via the Game Features system.
+
+ExampleMod has been updated to package its files using Game Features.
+
+To migrate your mod to use Game Features:
+
+. Delete any existing built copies of the mod from your game install directory.
+  The game will get confused and not load things properly if you have both a "standard" and "game features" copy of your mod installed at once.
+  ("A version of the 'ModReferenceHere' plugin has already been enabled" log message produced)
+. Close the Unreal editor
+. Transfer the mod's plugin folder from the
+  `<Project>/Mods/` directory to the
+  `<Project>/Mods/GameFeatures/` directory.
+. Regenerate Visual Studio Project Files
+. Compile for Development Editor
+. Create a new Data Asset of type FGGameFeatureData in the mod's content root folder.
+  It should be named exactly your mod's mod reference.
+  Using the name `GameFeatureData` is also supported but discouraged as it makes editing multiple mods at once confusing.
+. (Optional) Create a new mod with the Alpakit template to copy its Primary Asset Types to Scan rules to your own
+. TODO what actions need to be set up? `It lists the actions to be taken when loading/unloading the GameFeature, and the asset search paths for primary assets` -Mircea
+
+In the future the link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
+with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
+like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
+Based on SirDigby's testing, this is not working yet.
+
+TODO Arch mentioned it's possible to register schematics and stuff without SML now via this; best place to document?
 
 === Unreal Pointer Migration
 
