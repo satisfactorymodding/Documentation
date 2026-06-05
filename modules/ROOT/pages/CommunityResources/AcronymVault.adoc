@@ -96,7 +96,7 @@ https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
 A command line tool created by SirDigby that assists mod authors with installing dependencies and setting up the Starter Project files.
 
-Its source code can be found on link:https://github.com/mklierman/SMEH[SirDigyb's GitHub].
+Its source code can be found on link:https://github.com/mklierman/SMEH[SirDigby's GitHub].
 
 === Satisfactory Modding Environment Installer (SMEI)
 
