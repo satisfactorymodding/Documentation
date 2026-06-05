@@ -369,6 +369,17 @@ Skips the Experimental branch popup on the main menu (document this elsewhere to
 
 Nosplash might also do part of this? Inconsistent behavior when tested on epic experimental
 
+
+=== FVariant FString Comparison
+
+The game now ships with an implementation for FVariant to compare FStrings.
+This is useful for implementing string-based FGUserSettings.
+Previously this required a custom conversion implementation.
+
+=== Linear Color Option Support
+
+The game now ships with a Linear Color FGUserSetting type.
+
 === TODO More Additional Changes
 
 == Complete Changelog
