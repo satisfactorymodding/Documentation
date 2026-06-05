@@ -91,11 +91,21 @@ designed to manage and control multiple satisfactory dedicated server instances.
 Its public source code can be found on
 https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
 
+[id="SMEH"]
+=== Satisfactory Modding Environment Helper (SMEH)
+
+A command line tool created by SirDigby that assists mod authors with installing dependencies and setting up the Starter Project files.
+
+Its source code can be found on link:https://github.com/mklierman/SMEH[SirDigyb's GitHub].
+
 === Satisfactory Modding Environment Installer (SMEI)
 
-A command line tool that assists mod authors with installing dependencies and setting up the Starter Project files.
+A now-archived command line tool that assisted mod authors with installing dependencies and setting up the Starter Project files.
+It has been discontinued due to the lead developer's other time commitments leaving no time to maintain it.
 
-Its source code can be found
+Using link:#SMEH[SMEH] instead is recommended.
+
+Its archived source code can be found
 https://github.com/satisfactorymodding/SMEI[here].
 
 === Simple Construction Script (SCS)

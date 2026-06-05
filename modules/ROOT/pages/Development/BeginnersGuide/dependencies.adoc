@@ -38,6 +38,16 @@ These directions cover setting up the modding environment on a Windows machine.
 Check out the separate xref:Development/Linux/LinuxSetup.adoc[Linux Setup guide] to develop from Linux.
 ====
 
+[NOTE]
+====
+Community member SirDigby has created an open-source utility to assist with setting up the modding environment.
+It automatically completes many of the setup steps as long as your system setup is relatively standard.
+If you'd like the try it out, you can download it from link:https://github.com/mklierman/SMEH[SirDigyb's GitHub].
+
+If you run into any setup troubles using SMEH,
+make sure to tell anyone you're contacting for support that you used it.
+====
+
 == Satisfactory
 
 This one should be pretty straightforward, and odds are, you've already done it.
