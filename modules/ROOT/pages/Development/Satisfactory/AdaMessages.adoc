@@ -13,6 +13,14 @@ TODO info on what speaking patterns ADA and Aliens have
 
 Use the SMLEditor/Content/AdaMessages/AdaMessageExtractor editor utility widget to quickly view all messages as text 
 
+== Registering Messages
+
+As of SF 1.2, your xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
+must be configured with a Primary Asset Type to Scan rule to detect and register custom FGMessage assets included in your mod.
+Without this step, the messages will not play.
+
+For an example scan rule, see ExampleMod or the default rules created by the Alpakit templates.
+
 == Defining Messages
 
 === Creating the Data Asset:

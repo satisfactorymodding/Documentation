@@ -3,6 +3,8 @@
 Satisfactory offers a clipboard functionality to copy-paste configuration options between machines.
 It's possible to extend this functionality to work with your own custom buildings.
 
+== Custom Clipboard Functionality
+
 The `AFGBuildable` class already implements the `IFGFactoryClipboardInterface` interface, the interface defining the functions that must be overridden to implement clipboard functionality, so listing this interface an extra time is not necessary.
 
 1. Create a class with basetype `FGFactoryClipboardSettings` and add variables for the stuff you want to save in the clipboard
@@ -20,3 +22,7 @@ image:Satisfactory/Clipboard/GetClipboardMappingClass.png[GetClipboardMappingCla
 image:Satisfactory/Clipboard/ClipboardCopy.png[Copy]
 
 image:Satisfactory/Clipboard/ClipboardPaste.png[Paste]
+
+== Clipboard Data Scope
+
+Clipboard data is tracked client side in multiplayer and is not synced with the server.

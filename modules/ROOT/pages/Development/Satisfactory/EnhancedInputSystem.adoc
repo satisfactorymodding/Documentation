@@ -1,10 +1,12 @@
 = Enhanced Input System
 
-TODO actions now have their player mappable settings configured on them and not their contexts
-
 [NOTE]
 ====
 This page is a work in progress.
+
+TODO as of 1.2 actions now have their player mappable settings configured on them and not their contexts.
+
+TODO as of 1.2, contexts using parent contexts must be scanned by the mod's xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset] to be recognized.
 ====
 
 Unreal Engine 5 introduces the Enhanced Input System which assits games in handling user input.

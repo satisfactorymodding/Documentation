@@ -191,6 +191,22 @@ Use `UContentTagRegistry:GetGameplayTagContainerFor` to get the tag container fo
 From there, use
 https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.6#functions[tag container functions] to query for tags.
 
+== Vanilla Functionality
+
+As of SF 1.2, the base game ships with a basic read-only version of a content tag registry
+via the `mGameplayTags` field
+on the following classes:
+
+* FGItemDescriptor
+* FGRecipe
+* FGResearchTree
+* FGSchematic
+
+The base game's system only allows blueprints to get these tags, not set them, and is restricted to these types.
+As such, using SML's system for working with tags is recommended when you need these additional features.
+
+When accessing one of these types, SML will reuse the vanilla gameplay tag container instead of making its own.
+
 == Using Tags from Other Mods
 
 Since tags are defined by string names,

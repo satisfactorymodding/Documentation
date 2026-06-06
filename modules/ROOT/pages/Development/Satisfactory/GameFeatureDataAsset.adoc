@@ -1,0 +1,68 @@
+= Satisfactory Game Feature Data System
+
+[NOTE]
+====
+This page is still a work in progress.
+
+TODO Arch mentioned it's possible to register schematics without SML now via this
+====
+
+Introduced in 1.2, Satisfactory uses the
+link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay]
+system to detect content present in mods and register it with base game systems.
+
+Game Features serve a similar purpose to SML's xref:Development/ModLoader/ModModules.adoc[Mod Modules]
+for content registration.
+
+[id="Actions"]
+== Game Feature Actions
+
+Multiple "Actions" exist that allow performing some kind of modification.
+This page will only document ones we know to be directly useful for modding. 
+
+=== Add Components
+
+This action allows specifying Unreal Components to be spawned with Actor classes,
+somewhat similar to using an xref:Development/ModLoader/ActorMixins.adoc[Actor Mixin] to attach a component to a class.
+
+=== Add Cheats
+
+Specify cheat managers from the mod to register with the engine cheat manager.
+
+=== Add World Partition Content (Content Bundle)
+
+This functionality is not totally working yet. 
+
+[id="AssetScan"]
+== Primary Asset Types to Scan
+
+This list of rules tell the game where to find classes of certian types inside your mod to register them.
+Although any class can be specified, scanning for a class that the base game or a mod doesn't already take action based on is not useful.
+
+The following classes are known to be used by the base game once scanned:
+
+* FGSchematic
+* FGResearchTree
+* FGUserSetting
+* FGMessage
+* FGRemoteCallObject
+* FGIconLibrary
+* FGChildInputMappingContext
+
+A scanning rule can check a mod content directory and its subdirectories,
+or operate on a specific list of assets,
+or the combined results of both.
+
+== When to Use Mod Modules Instead
+
+The Game Feature content registration has some feature overlap with xref:Development/ModLoader/ModModules.adoc[SML Mod Modules].
+
+(TODO there are probably more reasons than this)
+
+Use Game Features if...
+
+* Your content should always be loaded when the mod is loaded
+
+Use SML Mod Modules if...
+
+* Your content needs to be loaded conditionally (for example, based on a xref:Development/ModLoader/SessionSettings.adoc[Session Setting] or the presence of another mod)

@@ -45,8 +45,14 @@ Then select `FGIconLibrary` as the Data Asset Class
 
 image:Satisfactory/IconLibrary/SelectDataAssetClass_FGIconLibrary.png[Screenshot of selecting Data Asset class]
 
-Place the asset wherever you'd like in your mod's files.
-The game's Icon Database Subsystem will automatically detect and load it.
+== Register the Icon Library
+
+As of 1.2, Satisfactory uses a mod's xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
+to detect and load icon libraries.
+
+Set up a Primary Asset Types to Scan rule for the `FGIconLibrary` class
+and ensure the directory is a parent directory of the folder containing your icon library.
+See the linked page for more information on how to set that up.
 
 == Importing Icon Images
 

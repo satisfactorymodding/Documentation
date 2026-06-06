@@ -227,7 +227,7 @@ and we will investigate and update the info if necessary.
 == Do mods disable achievements?
 
 No - using mods does not disable achievements in Satisfactory.
-Note that the base game's https://satisfactory.wiki.gg/wiki/Advanced_Game_Settings[Advanced Game Settings] do disable achievements.
+Note that the base game's link:https://satisfactory.wiki.gg/wiki/Creative_Mode[Creative Mode (formerly named Advanced Game Settings, abbreviated AGS)] options do disable achievements.
 
 == Satisfactory Mod Manager is open, but I can't see its window!
 

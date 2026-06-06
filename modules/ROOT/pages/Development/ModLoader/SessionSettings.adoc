@@ -2,11 +2,10 @@
 
 Introduced in SML3.5, Session Settings
 (referred to in-game as **Mod Savegame Settings**)
-are a feature similar to Advanced Game Settings
+are a feature similar to the base game's Creative Mode and Game Mode Settings
 that allows mods to store configuration information on a _per-game-save_ basis.
 Session Setting values are xref:Development/Satisfactory/Multiplayer.adoc[automatically replicated in multiplayer]
 and can be edited by any connected player.
-Note that Session Settings do not require Advanced Game Settings to be enabled to be used.
 
 Session Settings are currently stored in the Map Travel URL,
 making them available exceedingly early in the loading process.
@@ -230,10 +229,11 @@ For example `SML.ForceAllowCheats 1` will set the SML session setting `ForceAllo
 
 == Advanced Game Settings
 
-In order to create an Advanced Game Setting instead of a Session Setting,
-create a data asset of type `FGUserSetting` instead of `SMLSessionSetting`.
+In order to create an Creative Mode setting (internally called an Advanced Game Setting) instead of a Session Setting:
 
-Once the type is set to `Advanced Game Setting` in the asset properties,
-the game will automatically discover it and add it to the Advanced Game Settings menu for you.
-You can use the same category system as Session Settings to control what categories it appears in.
-This is also true for Photo Mode and Options Menu settings, if for some reason you want to add values to those.
+. Create a data asset of type `FGUserSetting` instead of `SMLSessionSetting`.
+. Set the Manager Type Availability is set to `FGAdvancedGameSettings` in the asset properties.
+. You can use the same category system as Session Settings to control what categories it appears in.
+  This is also true for Photo Mode and Options Menu settings, if for some reason you want to add values to those.
+. Ensure your mod's xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
+  is configured to scan for FGUserSetting assets at the path required to find your data asset.

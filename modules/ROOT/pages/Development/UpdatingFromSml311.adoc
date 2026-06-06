@@ -21,7 +21,7 @@ guide to install the updated engine, starter project, and update your mod.
 == Versioned Cooked Content
 
 Since Alpakit uses xref:Development/UpdatingFromSml310.adoc#_alpakit_versioned_cooked_content[Versioned Cooked Content] as of SML 3.10,
-there is a chance that some blueprint-only mods packaged for SML3.10 will require no changes to function properly in Satisfactory 1.2.
+there is a chance that some blueprint-only mods packaged for SML3.11 will require no changes to function properly in Satisfactory 1.2.
 
 Since it's not possible for an end user to predict which mods will or won't work,
 we are not planning to announce this, except to careful readers of this page - hey, that's you!
@@ -29,17 +29,18 @@ It's up to mod developers and attentive community members to test mods and updat
 
 As a general rule of thumb, your mod will probably NOT have survived if:
 
-- It includes includes any {cpp} modules
-- It interfaces with systems changed in Satisfactory 1.2, like vehicles
-- It worked with user input, especially for controllers
-- You stepped outside on a rainy day while wearing 1 sock on the wrong foot during the 1.2 experimental (that is to say, there are factors we aren't aware of yet)
+* It includes includes any {cpp} modules
+* It interfaces with systems changed in Satisfactory 1.2, like vehicles
+* It worked with user input, especially for controllers
+* You stepped outside on a rainy day while wearing 1 sock on the wrong foot during the 1.2 experimental
+  (that is to say, there are factors we aren't aware of yet)
 
 To test whether your mod still works without recompiling:
 
-1. Install your published SML3.10-dependent mod via Satisfactory Mod Manager
+1. Install your published SML3.11-dependent mod via Satisfactory Mod Manager
    or by xref:ManualInstallDirections.adoc[manually installing it].
-2. As SML 3.12 is not currently released, it is not available on SMM.
-   Use Alpakit to package a version of SML yourself.
+2. Use SMM to install a copy of SML3.12, or
+   use Alpakit to package a version of SML yourself.
    Note that SMM will replace your self-packaged copy of SML if it detects that changes are required.
 3. Launch your game and test your mod accordingly
 4. If your mod functions without a recompile, update its Compatibility Info on the mod page accordingly.
@@ -111,8 +112,6 @@ You can find the Linux-specific setup directions on the xref:Development/Linux/L
 
 === Advanced Game Settings split to Creative Mode and Game Modes
 
-TODO
-
 Satisfactory 1.2 has renamed the concept of Advanced Game Settings to "Creative Mode".
 These options still disable achievements.
 There is a new category of settings called "Game Modes" that include
@@ -123,18 +122,32 @@ and cost multiplier settings.
 It should be possible to define new Game Mode settings using `FGUserSetting`s,
 but at the time of writing no one has tried it yet.
 
-=== TODO Remaining New Features
+=== Basic Content Tag System in the Base Game
+
+As of 1.2, the base game includes a basic read-only version of the SML xref:Development/ModLoader/ContentTagRegistry.adoc[Content Tag Registry]
+via the `mGameplayTags` field on the following classes:
+
+* FGItemDescriptor
+* FGRecipe
+* FGResearchTree
+* FGSchematic
+
+The base game's system only allows blueprints to get these tags, not set them, and is restricted to these types.
+As such, using SML's system for working with tags is recommended when you need these additional features.
+SML's registry has been updated to reuse the vanilla gameplay tag container of a class if it already exists.
 
 == Not Done Yet
 
 The following features are not quite ready to use yet.
 
-=== Content Tags in the Base Game
+=== Game Feature Backed Extended Data Layers
 
-TODO
+The new Game Feature system should allow using the Unreal link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
+with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
+like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
 
-Arch said he implemented the Content Tags system basically 1:1 in vanilla,
-confirm, and should we take out SML's now?
+Based on Mircea and SirDigby's testing, this is not working reliably yet, and the specifics are still being figured out.
+More info in link:https://discord.com/channels/555424930502541343/562722670974599227/1512594506623484025[this Discord message chain].
 
 == Required Changes
 
@@ -171,27 +184,20 @@ If you see the "GeneratedSoundBanks folder does not seem to be set. Would you li
 xref:Development/BeginnersGuide/project_setup.adoc#Wwise_GenerateBanks[manually generate sound banks once],
 You should not need to do this again unless you create a new Wwise project or use Wwise systems in your mod.
 
-=== Unreal Game Features
+[id="GameFeatureDataAssetSetup"]
+=== Set Up an Unreal Game Feature Data Asset
 
-WIP
-
-Changes in 1.2 allow Satisfactory mods to take advantage of the
+Changes in 1.2 allow Satisfactory to take advantage of the
 link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay] system.
-Game Features are similar to SML's xref:Development/ModLoader/ModModules.adoc[Game Instance Modules].
+Game Features are a asset detection and registration system similar to SML's xref:Development/ModLoader/ModModules.adoc[Mod Modules], except built into Unreal.
 
-[IMPORTANT]
-====
-SMM/ficsit-cli and ficsit.app do not yet support distribution of mods using the Game Feature asset structure.
-This support is being written and 3.12 won't be publicly released until it's done.
-====
+99% of mods should now include a "Game Feature Data Asset",
+with the exception being mods that introduce no new content nor assets, just scripting libraries.
+Future Satisfactory updates are likely to further extend the capabilities of the Game Feature Data Asset system.
 
-TODO Basically all mods should switch to the GameFeature system, because all mods that add content should for the asset management. Pure libraries would be the ones that don't need to. https://discord.com/channels/555424930502541343/562722670974599227/1509918776605278348
-
-In previous versions, a number of asset types were auto-detected by the game without regisration.
+In previous versions, a number of asset types were auto-detected by the game without registration.
 These include icon libraries, input contexts, FGMessages (for ADA), and FGUserSettings.
-These content types must now be registered via the Game Features system.
-
-ExampleMod has been updated to package its files using Game Features.
+As of 1.2, these content types must now be registered via the Game Features system.
 
 To migrate your mod to use Game Features:
 
@@ -204,22 +210,24 @@ To migrate your mod to use Game Features:
   `<Project>/Mods/GameFeatures/` directory.
 . Regenerate Visual Studio Project Files
 . Compile for Development Editor
-. Create a new Data Asset of type FGGameFeatureData in the mod's content root folder.
-  It should be named exactly your mod's mod reference.
+. Create a new `Data Asset` asset of class `FGGameFeatureData` in the mod's content root folder.
+  It should be named exactly the mod's mod reference.
   Using the name `GameFeatureData` is also supported but discouraged as it makes editing multiple mods at once confusing.
-. (Optional) Create a new mod with the Alpakit template to copy its Primary Asset Types to Scan rules to your own
-. TODO what actions need to be set up? `It lists the actions to be taken when loading/unloading the GameFeature, and the asset search paths for primary assets` -Mircea
+. Create a new dummy mod with the Blueprint Only Alpakit template to view sample "Primary Asset Types to Scan" rules,
+  then assess which your mod needs to register. The following previously auto-detected classes must now be registered via scan rules:
+  ** FGUserSetting
+  ** FGMessage
+  ** FGIconLibrary
+  ** FGChildInputMappingContext (previously Input Mapping Context using Parent Context registration)
 
-In the future the link:https://dev.epicgames.com/documentation/unreal-engine/world-partition---data-layers-in-unreal-engine?application_version=5.6[World Partition Data Layers] system,
-with data layers loaded by Game Features, will be the intended approach for creating additions to the game map,
-like new ore nodes or terrain elements, replacing the current sublevel spawning approach.
-Based on SirDigby's testing, this is not working yet.
+ExampleMod is updated to use the Game Feature system
+if you'd like to compare against an already migrated mod.
 
-TODO Arch mentioned it's possible to register schematics and stuff without SML now via this; best place to document?
+====
+Read more on the xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset] page.
+====
 
 === Unreal Pointer Migration
-
-TODO
 
 Satisfactory has switched to use Unreal `TObjectPtr<>`s instead of raw pointers (for example, `UObject*`) in their codebase
 for the memory and dependency management benefits it offers.
@@ -241,18 +249,28 @@ as TObjectPtr can automatically cast to a raw pointer as needed,
 but link:https://www.youtube.com/watch?v=j0zf1VOegk8[it can't automatically cast to a pointer-by-reference],
 which may require additional code changes.
 
-Unreal has provided a conversion tool that can update portions of your code automatically: link:https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-migration-guide?lang=en-US#optionalconversiontool[Unreal Engine 5 Migration Guide: Optional Conversion Tool]
-
-You don't need to build the tool yourself, our engine ships it in `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64\UnrealObjectPtrTool.exe`
-
-Steps to run tool?
-
-- Original discussion https://discord.com/channels/555424930502541343/1486398610706006117/1509348752857497650
-- ⭐ Revised Digby steps https://discord.com/channels/555424930502541343/562722670974599227/1511023084055035987
-
+Unreal has provided a conversion tool that can update portions of your code automatically.
+Below is a summary of the steps adapted to a Satisfactory mod's needs.
+Unreal's original usage guide for the tool can be found on their documentation:
+link:https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-5-migration-guide?lang=en-US#optionalconversiontool[Unreal Engine 5 Migration Guide: Optional Conversion Tool].
 Running the tool applies for every loaded mod in the project.
 
-=== TODO More Required Changes
+. Open your engine install folder to locate `C:\Program Files\Unreal Engine - CSS\Engine\Programs\UnrealHeaderTool\Config\DefaultEngine.ini`
+. Change `NonEngineNativePointerMemberBehavior` from `AllowSilently` to `AllowAndLog`
+. Run a {cpp} build of the starter project so the required UHT log messages are produced.
+  Doesn't need to be a full rebuild, but if the build output says "Up to date", you'll have to run a rebuild.
+. Open the UBT log file located at "%LOCALAPPDATA%\UnrealBuildTool\Log.txt"
+  Remove any lines from the file relating to native pointer usage that mention Wwise (AkAudio),
+  otherwise running the tool will break Wwise and you'll have to remove the Wwise plugin and re-integrate it.
+. The engine installer distributed by the modding community already includes a built version of the tool.
+  Open a Powershell terminal in the `C:\Program Files\Unreal Engine - CSS\Engine\Binaries\Win64` folder,
+  then run the tool by executing the following command:
++
+```ps1
+> ./UnrealObjectPtrTool.exe "%LOCALAPPDATA%\UnrealBuildTool\Log.txt"
+```
+. If the command worked, it'll output something like: `LogUnrealObjectPtrTool: Display: Upgraded successfully.  97 upgrades found; 97 upgrades performed`
+. If the command didn't work or didn't output anything, post in the #help-developing-mods channel of the link:https://discord.ficsit.app/[Discord] to get help.
 
 == Additional Changes
 
@@ -278,13 +296,10 @@ so the value set on existing assets will be lost.
 
 To migrate an existing input mapping context asset,
 right click on it and select either of the 2 `Convert to a Different DataAsset Type` menu options,
-then select `FGChildInputMappingContext`
+then select `FGChildInputMappingContext`.
 
-Also need to be using GameFeatures for it to be auto detected otherwise need to manually register (no longer using parent approach https://discord.com/channels/555424930502541343/562722670974599227/1509904209649340558)
-
-Do they need special register steps in gamefeaturedata? https://discord.com/channels/555424930502541343/562722670974599227/1509918327420616805
-   Almost certainly FGChildInputMappingContext
-   Seems like non-child don't as long as something else references them, ex. MC_InputExampleWidget referenced by Widget_InputExample
+You will also need to set up your link:#GameFeatureDataAssetSetup[Game Feature Data Asset] to scan for FGChildInputMappingContext
+as covered in that section.
 
 ==== Player Mappable Settings Migration
 
@@ -302,7 +317,8 @@ This update makes that option no longer experimental, but the requirement.
 It's still possible to set these on the input context if you use the `Override Settings` Setting Behavior,
 but it's recommended to configure them on the action instead.
 
-TODO should axis still have it on the action? ex. ExampleMod /Script/EnhancedInput.InputAction'/ExampleMod/Inputs/Interface/IA_ExampleWidgetMovementAxis.IA_ExampleWidgetMovementAxis' needs 4 separate
+TODO how to properly specify settings for axis bindings? Should axis still have it present on the action?
+ExampleMod IA_ExampleWidgetMovementAxis seemed to need 4 separate overrides at the Context level to work properly and display properly in the game settings UI
 
 === {cpp} Full Include Paths (BuildSettingsVersion V5)
 
@@ -348,12 +364,10 @@ No changes to existing icon libraries are known to be required for the fix to wo
 
 === `-NoFirstLoginPopup` Launch Argument
 
-TODO
+Using the `-NoFirstLoginPopup` launch argument skips the Experimental branch popup on the main menu.
 
-Skips the Experimental branch popup on the main menu (document this elsewhere too, maybe quick launch script?)
-
-Nosplash might also do part of this? Inconsistent behavior when tested on epic experimental
-
+TODO - In testing, this behaved inconsistently, and may also need to be used with the `-nosplash` argument.
+Please try it out and let us know what you find on the Discord.
 
 === FVariant FString Comparison
 
@@ -365,15 +379,7 @@ Previously this required a custom conversion implementation.
 
 The game now ships with a Linear Color FGUserSetting type.
 
-=== TODO More Additional Changes
-
 == Complete Changelog
 
-[NOTE]
-====
-This link temporarily compares to the `dev` branch since there is no 3.12 tag until release.
-====
-
 The full list containing every changed file and asset can be viewed using GitHub's Compare Changes feature:
-// https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.3...v3.12.0
-https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.3...dev
+https://github.com/satisfactorymodding/SatisfactoryModLoader/compare/v3.11.3...v3.12.0

@@ -64,7 +64,7 @@
         *** xref:Development/UnrealEngine/BluePrints.adoc[Blueprints]
     ** xref:Development/Satisfactory/index.adoc[Satisfactory]
         *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
-        *** Game Features
+        *** Gameplay Elements
             **** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
             **** xref:Development/Satisfactory/Paintable.adoc[Paintable]
             **** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
@@ -78,6 +78,7 @@
             **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
             **** xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
         *** Game Systems
+            **** xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
             **** xref:Development/Satisfactory/Audio.adoc[Audio]
             **** xref:Development/Satisfactory/PowerNetwork.adoc[Power Network]
             **** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
