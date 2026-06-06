@@ -35,8 +35,8 @@ meaning it will be filtered according to usage of the `EGetObtainableItemDescrip
 The base game also utilizes a few tags:
 
 * `Item.CentralStorage.PreserveItemState` stores the item in the Dimensional Depot in a different format, preserving the per-item-instance state data used by equipment and some modded items
+* `Recipe.Part` is used to indicate that a recipe should have its cost multiplied by the Game Mode feature
 * `Resource.Advanced` and similar are used to identify resources for the node randomization feature
-* `Recipe.SpacePart` and similar are probably used to identify recipes for the recipe cost multiplier feature
 
 == Limitations
 

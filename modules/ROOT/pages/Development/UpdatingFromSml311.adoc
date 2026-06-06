@@ -369,6 +369,17 @@ allowing modded xref:Development/Satisfactory/IconLibrary.adoc[Icon Libraries]
 to work properly on dedicated servers.
 No changes to existing icon libraries are known to be required for the fix to work.
 
+=== `Get Ingredients` Needs World Context
+
+With the addition of the recipe cost multiplier system,
+getting the ingredients of a recipe now requires world context to involve the save's multiplier settings.
+
+=== Add `Recipe.Part` tag to Component Recipes
+
+The base game uses xref:Development/ModLoader/ContentTagRegistry.adoc[Gameplay Tags] to control the behavior of the recipe cost multiplier system.
+Modded component recipes should tag their components with `Recipe.Part` to be included in the multiplier.
+Make sure to leave out the tag on recipes that would break if multiplied, for example, packaging and unpackaging liquids.
+
 === `-NoFirstLoginPopup` Launch Argument
 
 Using the `-NoFirstLoginPopup` launch argument skips the Experimental branch popup on the main menu.
