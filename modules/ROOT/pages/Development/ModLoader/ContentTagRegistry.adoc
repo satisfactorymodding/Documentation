@@ -30,6 +30,14 @@ By adding the `SML.Registry.Item.SpecialItemDescriptor` tag to an item descripto
 `GetObtainableItemDescriptors` and `IsDescriptorFilteredOut` utilities in `UModContentRegistry` will consider it a Special item descriptor,
 meaning it will be filtered according to usage of the `EGetObtainableItemDescriptorsFlags::IncludeSpecial` flag.
 
+=== Base Game Tags
+
+The base game also utilizes a few tags:
+
+* `Item.CentralStorage.PreserveItemState` stores the item in the Dimensional Depot in a different format, preserving the per-item-instance state data used by equipment and some modded items
+* `Resource.Advanced` and similar are used to identify resources for the node randomization feature
+* `Recipe.SpacePart` and similar are probably used to identify recipes for the recipe cost multiplier feature
+
 == Limitations
 
 === Registry Freeze
@@ -191,9 +199,10 @@ Use `UContentTagRegistry:GetGameplayTagContainerFor` to get the tag container fo
 From there, use
 https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.6#functions[tag container functions] to query for tags.
 
+[id="VanillaGameplayTagsSystem"]
 == Vanilla Functionality
 
-As of SF 1.2, the base game ships with a basic read-only version of a content tag registry
+As of 1.2, the base game ships with a basic read-only version of a content tag registry
 via the `mGameplayTags` field
 on the following classes:
 
@@ -202,7 +211,13 @@ on the following classes:
 * FGResearchTree
 * FGSchematic
 
-The base game's system only allows blueprints to get these tags, not set them, and is restricted to these types.
+The base game's system has a few notable limitations compared to SML's:
+
+* It is restricted to the above types
+* Only content the mod itself defines can be tagged
+* Blueprints can only get these tags, not set them
+* Tag modifications can't be made conditionally or at runtime while loading
+
 As such, using SML's system for working with tags is recommended when you need these additional features.
 
 When accessing one of these types, SML will reuse the vanilla gameplay tag container instead of making its own.
