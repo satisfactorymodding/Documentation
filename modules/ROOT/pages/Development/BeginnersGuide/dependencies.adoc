@@ -127,12 +127,12 @@ You might have to scroll a bit to find them.
 Next, from the "Individual Components" tab,
 search for and select:
 
-- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.34-17.4)(Out of Support)`
-- `.NET 6.0 Runtime (Out of support)`
+- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.38-17.8)`
+- `.NET 8.0 Runtime`
 - `.NET Framework 4.8.1 SDK`
 
-Note that even though some of these components are marked as "Out of Support",
-they are the versions that Satisfactory and Unreal use, so you must use them.
+Note that even if some of these components are marked as "Out of Support",
+they are still the versions that Satisfactory and Unreal use, so you must use them.
 
 === While Visual Studio Installs
 
