@@ -441,7 +441,7 @@ First, you'll need to find the path to use for your custom level.
 It's based on the level's asset path.
 For example, https://github.com/Nogg-aholic/NogsLevel/blob/master/Content/NogsLevel.umap[Nog's Level's level asset is at the content root],
 so its path is `/NogsLevel/NogsLevel.NogsLevel`.
-https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/ExampleMod/Content/Maps/ExampleLevel/ExampleLevel.umap[Example Level's is a few layers of folder deep],
+https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/master/Mods/GameFeatures/ExampleMod/Content/Maps/ExampleLevel/ExampleLevel.umap[Example Level's is a few layers of folder deep],
 it's path is `/ExampleMod/Maps/ExampleLevel/ExampleLevel.ExampleLevel`.
 
 Alter the line of the script that sets `GameDefaultMap` to point to the asset path of your custom level.
