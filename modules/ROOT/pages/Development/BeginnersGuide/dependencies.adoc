@@ -127,8 +127,8 @@ You might have to scroll a bit to find them.
 Next, from the "Individual Components" tab,
 search for and select:
 
-- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.38-17.8)`
-- `.NET 8.0 Runtime`
+- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.38-17.8) (Out of Support)`
+- `.NET 8.0 Runtime (Long Term Support)`
 - `.NET Framework 4.8.1 SDK`
 
 Note that even if some of these components are marked as "Out of Support",

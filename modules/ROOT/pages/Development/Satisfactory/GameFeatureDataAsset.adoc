@@ -31,7 +31,13 @@ Specify cheat managers from the mod to register with the engine cheat manager.
 
 === Add World Partition Content (Content Bundle)
 
-This functionality is not totally working yet. 
+Don't use this one, use the non-content-bundle one instead.
+
+=== Add World Partition Content (Non-Content Bundle)
+
+This is the one that should be used instead of the Content Bundle one.
+At the time of writing, it does not appear properly in the editor without an editor setting adjustment.
+This functionality is not totally working yet.
 
 [id="AssetScan"]
 == Primary Asset Types to Scan

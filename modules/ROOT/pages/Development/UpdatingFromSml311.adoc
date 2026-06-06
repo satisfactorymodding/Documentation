@@ -337,7 +337,7 @@ existing mods using legacy build settings may need to update their mod source to
 
 The most common example of this is needing to use full paths in includes now.
 For example, code previously using `#include "FGHologram.h"`
-must now use `#include "/Hologram/FGHologram.h"`.
+must now use `#include "Hologram/FGHologram.h"`.
 
 More context on link:https://discord.com/channels/555424930502541343/562722670974599227/1510573946515230750[this Discord message chain].
 
@@ -376,9 +376,9 @@ Using the `-NoFirstLoginPopup` launch argument skips the Experimental branch pop
 TODO - In testing, this behaved inconsistently, and may also need to be used with the `-nosplash` argument.
 Please try it out and let us know what you find on the Discord.
 
-=== FVariant FString Comparison
+=== FVariant FString Conversion
 
-The game now ships with an implementation for FVariant to compare FStrings.
+The game now ships with an implementation for FVariant to convert FStrings.
 This is useful for implementing string-based FGUserSettings.
 Previously this required a custom conversion implementation.
 
