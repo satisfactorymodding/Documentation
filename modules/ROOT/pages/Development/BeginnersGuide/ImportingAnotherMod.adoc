@@ -43,7 +43,7 @@ xref:Development/BeginnersGuide/CreateGitRepo.adoc[here].
 
 ## Download the Source Code
 
-The next step is to download the mod's source code and place it in your own project's Mods directory.
+The next step is to download the mod's source code and put it in your local project.
 
 You could download their plugin as a zip and extract it,
 but consider cloning the repository to make it easy to update your copy with future changes to the mod.
@@ -54,6 +54,14 @@ exactly matches the mod's
 xref:Development/BeginnersGuide/SimpleMod/gameworldmodule.adoc#ModReference[mod reference]
  - the filename of the mod's `.uplugin` file.
 Otherwise the editor will not properly identify the plugin.
+
+Next, look at the files in the mod source's Content subfolder, if it has one.
+
+* If you see a uasset named exactly the mod's mod reference, or `GameFeatureData`,
+  this means the mod is using the xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Features system],
+  and the plugin folder must be placed in the `Mods/GameFeatures/` directory of your project.
+* If the mod has no Content folder, or there is and you don't see the asset,
+  the mod can be placed in the base `Mods/` folder of the project.
 
 ## Dependencies
 
