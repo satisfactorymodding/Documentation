@@ -220,15 +220,38 @@ To migrate your mod to use Game Features:
 . Create a new `Data Asset` asset of class `FGGameFeatureData` in the mod's content root folder.
   It should be named exactly the mod's mod reference.
   Using the name `GameFeatureData` is also supported but discouraged as it makes editing multiple mods at once confusing.
-. Create a new dummy mod with the Blueprint Only Alpakit template to view sample "Primary Asset Types to Scan" rules,
-  then assess which your mod needs to register. The following previously auto-detected classes must now be registered via scan rules:
+. Open the asset.
+  * Under "Initial State", click `Edit Plugin`.
+    In the dialog window, ensure that the Initial State is set to `Active`.
+    Close the dialog
+  * If the data asset's "Current State" is not `Active`, click on the `Active` button to attempt to switch to that state.
+  You'll know it worked if it says "Deactivate the feature before editing the Game Feature Data" in yellow.
+. The following previously (pre-1.2) auto-detected classes must now be registered via scan rules.
+  If your mod DOES NOT use any of these types, you're done with the required steps to set up Game Features.
   ** FGUserSetting
   ** FGMessage
   ** FGIconLibrary
   ** FGChildInputMappingContext (previously Input Mapping Context using Parent Context registration)
+. If your mod DOES use one of those types,
+  create a new dummy mod with the "Blueprint Only" Alpakit template,
+  then open its game feature data asset to view example "Primary Asset Types to Scan" rules.
+  Assess which your mod needs to register and set up similar rules in your mod.
 
 ExampleMod is updated to use the Game Feature system
 if you'd like to compare against an already migrated mod.
+
+[WARNING]
+====
+We are currently monitoring a bug
+where the editor displays an inaccurate "Current State" value inside the Game Feature Data asset
+and the Game Feature is not actually loaded in-game.
+
+If you are confident you have specified scan rules correctly but content still isn't appearing,
+check the Unreal Editor's Plugins menu and view the Edit screen for your mod.
+Ensure the "Initial State" is set to `Active` and not something else.
+
+More discussion link:https://discord.com/channels/555424930502541343/562722670974599227/1512943585018904616[on the Discord]
+====
 
 ====
 Read more on the xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset] page.
