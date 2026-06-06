@@ -4,17 +4,17 @@ include::../_includes/repo-versions.adoc[]
 
 // Live docs
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// This is the *latest stable* version of the docs. +
-// Stable (Release) and Experimental are currently both the same game version.
+This is the *latest stable* version of the docs. +
+Stable (Release) and Experimental are currently both the same game version.
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // Dev docs
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-This is the *development* version of the docs. +
-Stable (Release) and Experimental are on different versions of the game.
-If you want to develop mods for the stable release of SML,
-you should follow the https://docs.ficsit.app/satisfactory-modding/latest/index.html[non-`dev` docs branch].
+// This is the *development* version of the docs. +
+// Stable (Release) and Experimental are on different versions of the game.
+// If you want to develop mods for the stable release of SML,
+// you should follow the https://docs.ficsit.app/satisfactory-modding/latest/index.html[non-`dev` docs branch].
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
