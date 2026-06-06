@@ -1,10 +1,10 @@
 include::../_includes/repo-versions.adoc[]
 
 // Live docs
-====
-include::../_includes/current-branch-header.adoc[]
+// ====
+// include::../_includes/current-branch-header.adoc[]
 
-{verbphraseCaps} the **`{suggested-branch}` branch** to develop a mod for the stable version of SML{actionphrase}
+// {verbphraseCaps} the **`{suggested-branch}` branch** to develop a mod for the stable version of SML{actionphrase}
 
 // You should {verbphrase} either
 // the **`dev` branch** or the **`master` branch**.
@@ -12,17 +12,17 @@ include::../_includes/current-branch-header.adoc[]
 // which you can see in the ("Updated" column)
 // https://github.com/satisfactorymodding/SatisfactoryModLoader/branches[on the GitHub repository].
 
-If you're uncertain about which branch to use, **ask us on the Discord**.
-====
-
-// Dev docs
-// ====
-// include::../_includes/current-branch-header.adoc[]
-
-// You should {verbphrase} the **`{suggested-branch}` branch** (because SML 3.?.? is not released yet){actionphrase}
-
 // If you're uncertain about which branch to use, **ask us on the Discord**.
 // ====
+
+// Dev docs
+====
+include::../_includes/current-branch-header.adoc[]
+
+You should {verbphrase} the **`{suggested-branch}` branch** (because SML 3.?.? is not released yet){actionphrase}
+
+If you're uncertain about which branch to use, **ask us on the Discord**.
+====
 
 // Archive
 // ====

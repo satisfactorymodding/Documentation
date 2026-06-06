@@ -1,0 +1,12 @@
+// UE version (make sure ./BeginnersGuide/_includes/repo-versions.adoc is also accurate)
+:engine-version: 5.6.1
+
+// Clang cross-compile toolchain version
+:clang-cc-toolchain-version: v25 clang-18.1.0-based
+
+// Wwise versions
+:wwise-version-major: 2023.1
+:wwise-version-major-minor: 2023.1.14
+:wwise-version-full: 2023.1.14.8770
+// This one is used by the Wwise api, so by our CI and the Linux setup directions
+:wwise-version-stupid-api-suffix: 3555

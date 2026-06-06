@@ -1,5 +1,7 @@
 = Required Software
 
+include::./../_includes/software-versions.adoc[]
+
 To get started with modding Satisfactory,
 you'll need multiple other pieces of software installed first.
 Don't worry, we'll guide you through each step
@@ -14,6 +16,7 @@ once everything is installed and built - 30+ GB is possible.
 Keep this in mind when deciding where put all your files
 - don't keep them on a drive with very little space left.
 
+
 == Before you Begin
 
 Make sure you've read the starting information on the
@@ -22,10 +25,27 @@ to learn important information about how to use these docs.
 
 [IMPORTANT]
 ====
-Are you a returning Satisfactory modder who already has a past modding environment set up?
+Are you a **returning Satisfactory mod developer** who already has a past modding environment set up?
 Make sure to follow the
 xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
 guide before following these directions.
+====
+
+[IMPORTANT]
+====
+Are you a **Linux 🐧 user**?
+These directions cover setting up the modding environment on a Windows machine.
+Check out the separate xref:Development/Linux/LinuxSetup.adoc[Linux Setup guide] to develop from Linux.
+====
+
+[NOTE]
+====
+Community member SirDigby has created an open-source utility to assist with setting up the modding environment.
+It automatically completes many of the setup steps as long as your system setup is relatively standard.
+If you'd like the try it out, you can download it from link:https://github.com/mklierman/SMEH[SirDigby's GitHub].
+
+If you run into any setup troubles using SMEH,
+make sure to tell anyone you're contacting for support that you used it.
 ====
 
 == Satisfactory
@@ -107,12 +127,12 @@ You might have to scroll a bit to find them.
 Next, from the "Individual Components" tab,
 search for and select:
 
-- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.34-17.4)(Out of Support)`
-- `.NET 6.0 Runtime (Out of support)`
+- `MSVC v143 - VS 2022 C++ x64/x86 build tools (v14.38-17.8) (Out of Support)`
+- `.NET 8.0 Runtime (Long Term Support)`
 - `.NET Framework 4.8.1 SDK`
 
-Note that even though some of these components are marked as "Out of Support",
-they are the versions that Satisfactory and Unreal use, so you must use them.
+Note that even if some of these components are marked as "Out of Support",
+they are still the versions that Satisfactory and Unreal use, so you must use them.
 
 === While Visual Studio Installs
 
@@ -137,10 +157,10 @@ Cross-compiling from Windows to Linux requires
 the compatible version of Unreal Engine specific CLang Toolchain to be installed
 prior to building for Linux Dedicated Servers.
 The download link for these files can be found on the Unreal documentation page for
-https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#nativetoolchain[Cross-Compiling for Linux].
+https://dev.epicgames.com/documentation/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.6#version-history[Cross-Compiling for Linux].
 
-Currently, Satisfactory uses Unreal Engine 5.3.2 with custom changes provided by Coffee Stain Studios.
-Therefore, the Cross-Compile Toolchain version required is `-v22` or `clang-16.0.6-based`.
+Currently, Satisfactory uses Unreal Engine {engine-version} with custom changes provided by Coffee Stain Studios.
+Therefore, the Cross-Compile Toolchain version required is `{clang-cc-toolchain-version}`.
 
 Download the correct Cross-Compile Toolchain from the link above and run it to install the relevant files.
 The default options that the installer offers are fine.
@@ -174,10 +194,8 @@ as well as making sure you're logged into your linked GitHub account when you fo
 
 Verify this step has worked by visiting this repository link:
 https://github.com/EpicGames/UnrealEngine/
-(or https://github.com/EpicGames-Mirror-A/UnrealEngine/ since June 2024)
 If it worked, you will see a private GitHub repository.
-If it didn't work, you'll get a 404 page, so try the other link.
-If neither link works, try again in a few minutes and make sure you didn't miss any steps in Unreal's instructions.
+If it didn't work, you'll get a 404 page - try again in a few minutes and make sure you didn't miss any steps in Unreal's instructions.
 
 Once you're sure it works, close that browser tab - we don't need any files from this repository.
 Visiting there was just to verify that you have access.
@@ -215,16 +233,17 @@ or you will have to repeat a large amount of the setup process again.
 include::./_includes/current-branch-header.adoc[]
 
 Download this engine version: +
-https://github.com/satisfactorymodding/UnrealEngine/releases/{engine-version}
+https://github.com/satisfactorymodding/UnrealEngine/releases/{engine-gh-release}
 ====
 
 Download the following files from the release linked above:
 
 - `UnrealEngine-CSS-Editor-Win64-1.bin`
 - `UnrealEngine-CSS-Editor-Win64-2.bin`
+- `UnrealEngine-CSS-Editor-Win64-3.bin`
 - `UnrealEngine-CSS-Editor-Win64.exe`
 
-Save all 3 files in the same folder,
+Save all 4 files in the same folder,
 and make sure that their names are _exactly the same as listed above_
 otherwise the installer will not work.
 
@@ -241,6 +260,12 @@ https://github.com/settings/organizations[GitHub Account Organizations page].
 If your GitHub account is already listed as linked on the Epic Games page you can unlink and relink it re-send the GitHub organization invitation.
 
 You also must have used the link:#UnrealLinker[Unreal Linker] tool described above to link your GitHub account to our repository.
+====
+
+[NOTE]
+====
+The `Win64.7z` files are provided as a non-installer version for legacy CI purposes.
+Don't use them unless you already know you need them.
 ====
 
 === Install the Custom Engine
@@ -302,30 +327,30 @@ After the installer is complete it should open the launcher for you.
 [id="WwiseVersion"]
 === Install the Wwise Version
 
-In the launcher's left sidebar, select the topmost `Wwise` section
-(note: not the "Wwise Audio Lab" section).
-Under the "INSTALL A NEW VERSION" heading,
-click the `Latest` drop-down and change it to `All`.
-Select `2023.1` from the "Major" dropdown.
-Select version `2023.1.3.8471` from the "Version" dropdown.
-Click `Install`.
-
-image::BeginnersGuide/Wwise/wwise_version.png[Select Wwise version screenshot, title=Installing a new Wwise version. Wwise UI may differ slightly from this screenshot.]
-
+. Sign into the launcher if you haven't already,
+  otherwise it will interrupt you to do so later.
+. In the launcher's left sidebar, select the `Wwise` section
+. Under the "INSTALL A NEW VERSION" heading,
+  click the `Latest` drop-down and change it to `All`.
+. Select `{wwise-version-major}` from the "Major" dropdown.
+. Select version `{wwise-version-full}` from the "Version" dropdown.
+. Click `Install`.
++
+image::BeginnersGuide/Wwise/wwise_version.png[Select Wwise version screenshot, title=Installing a new Wwise version. See above for the "Major" and "Version" to select.]
++
 [WARNING]
 ====
-Watch out - most older versions of Wwise don't have support for Unreal Engine 5, which this project needs.
-Newer versions of Wwise __might__ work,
+**Try to download the exact Wwise version mentioned above**.
+Other versions of Wwise __might__ work,
 but they are likely to have other incompatible changes that will break the setup process.
 
-**Try to download the exact Wwise version mentioned above**.
 If you don't see it,
-try any other version starting with `2023.1.3`, preferring newer versions,
+try any other version starting with `{wwise-version-major-minor}`, preferring newer versions,
 or asking for help on the Discord.
 ====
 
-Once presented with options on what to install, select:
-
+. Once presented with options on what packages and platforms to install, select:
++
 // Inline HTML to make checkmarks green
 // https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
 // https://docs.asciidoctor.org/asciidoc/latest/pass/pass-macro/
@@ -342,17 +367,23 @@ Once presented with options on what to install, select:
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2019
 **** pass:[<span class="green-check">✔</span>] Visual Studio 2022
 **** pass:[<span class="green-check">✔</span>] Game Core
-
-If anything else is selected by default, do not uncheck them. They are required for Visual Studio to work.
-
++
+* If anything else is selected by default, do not uncheck them. They are required for Visual Studio to work.
++
 image::BeginnersGuide/Wwise/wwise_packages.png[Select Wwise packages screenshot, title=Selecting packages and deployment platforms. Wwise UI may differ slightly from this screenshot.]
-
-Click `Next` (you may need to scroll down to see the button).
-You don't need to add any plugins,
-so press `Select None` in the top right then `Install` (or `Modify` if you already have it installed) in the bottom left to begin the installation process.
-Accept any User Account Control or Terms and Conditions prompts that appear along the way.
-
++
+. Click `Next` (you may need to scroll down to see the button).
+. You don't need to add any plugins,
+  so click the "partially selected" checkbox in the top right twice
+  so that it turns into a "nothing selected" checkbox.
+  This removes any pre-selected plugins.
+. Click `Install` (or `Modify` if you already have it installed)
+  in the bottom left to begin the installation process.
++
 image::BeginnersGuide/Wwise/wwise_no_plugins.png[Do not select any Wwise plugins screenshot, title=Deselect all plugins. Wwise UI may differ slightly from this screenshot.]
++
+. Accept any "User Account Control" or "Terms and Conditions" prompts that appear along the way.
+. You're good to go once it says "Install operation completed successfully."
 
 == Satisfactory Mod Manager
 

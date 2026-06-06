@@ -17,8 +17,7 @@
     "Microsoft.VisualStudio.Component.SQL.CLR",
     "Microsoft.Component.ClickOnce",
     "Microsoft.VisualStudio.Component.ManagedDesktop.Core",
-    "Microsoft.NetCore.Component.Runtime.6.0",
-    "Microsoft.NetCore.Component.Runtime.7.0",
+    "Microsoft.NetCore.Component.Runtime.8.0",
     "Microsoft.NetCore.Component.SDK",
     "Microsoft.VisualStudio.Component.FSharp",
     "Microsoft.ComponentGroup.ClickOnce.Publish",
@@ -53,6 +52,6 @@
     "Microsoft.VisualStudio.Component.HLSL",
     "Component.Unreal.Ide",
     "Microsoft.VisualStudio.Workload.NativeGame",
-    "Microsoft.VisualStudio.Component.VC.14.34.17.4.x86.x64"
+    "Microsoft.VisualStudio.Component.VC.14.38.17.8.x86.x64"
   ]
 }

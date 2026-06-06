@@ -1,0 +1,26 @@
+= Linux Continuous Integration (CI)
+
+As of SML 3.12, we build binaries for SML and the custom Unreal Engine from Linux CI runners.
+We use a self hosted link:https://github.com/actions/actions-runner-controller[arc-k8s] runner
+as the involved Unreal Engine files are very large and drastically exceed free GitHub runner limits.
+
+The switch was largely motivated by the previous Windows runners breaking basically every update.
+If you'd like to set up your own CI for building your own mods,
+check out link:https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/dev/.github/workflows/build.yml[SML's GitHub actions definitions].
+Contact us on the link:https://discord.ficsit.app[Discord Server] if you want help or have questions about how ours works.
+
+At the time of writing,
+the runners are currently using the default `ghcr.io/actions/actions-runner`,
+but specialized images are in development and will be published on
+link:https://github.com/satisfactorymodding[our GitHub] eventually.
+
+[IMPORTANT]
+====
+Due to MSVC, Unreal Engine, and Wwise license restrictions, built images of our custom runners cannot be public.
+If you'd like to use them, you must build the image yourself from our definitions.
+====
+
+It is possible to set up CI on Windows as well,
+but make sure to use a Windows Server installation to avoid complications with automatic updates and useless popups blocking runner functionality.
+The link:https://github.com/satisfactorymodding/SatisfactoryModLoader/blob/v3.11.3/.github/workflows/build.yml[SML 3.11.3 GitHub actions definitions]
+was the last version we used Windows runners for.

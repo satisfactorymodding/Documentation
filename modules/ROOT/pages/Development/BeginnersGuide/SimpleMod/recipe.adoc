@@ -131,7 +131,7 @@ M Manual Manufacturing Multiplier::
 M Produced In::
   An array of IFGRecipeProducerInterface implementers (machines) that are allowed to use the recipe.
   {blank} +
-  Let's add both `FGWorkBench` and `Build_ConstructorMk1`
+  Let's add both `BP_WorkBenchComponent` and `Build_ConstructorMk1`
   to verify the behavior we discussed about the manufacturing times.
 * {blank}
 +

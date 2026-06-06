@@ -34,8 +34,8 @@ This guide focuses on the Satisfactory Modding specific portions of creating a w
 
 Check out the following documentation from Unreal as a starting point for learning how to design widgets.
 
-* https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-ui-designer-quick-start-guide-in-unreal-engine?application_version=5.3#2-displayinghealth,energy&ammo[UMG UI Designer Quick Start Guide: 2 - Displaying Health, Energy & Ammo]
-* https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-editor-reference-for-unreal-engine?application_version=5.3[UMG Editor Reference]
+* https://dev.epicgames.com/documentation/unreal-engine/umg-ui-designer-quick-start-guide-in-unreal-engine?application_version=5.6#2-displayinghealth,energy&ammo[UMG UI Designer Quick Start Guide: 2 - Displaying Health, Energy & Ammo]
+* https://dev.epicgames.com/documentation/unreal-engine/umg-editor-reference-for-unreal-engine?application_version=5.6[UMG Editor Reference]
 
 == Retrieving Information from our Machine
 

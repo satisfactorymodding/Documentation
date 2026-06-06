@@ -11,7 +11,7 @@ Introduced in SML3.8, the Content Tag Registry is an
 xref:Development/ModLoader/ModModules.adoc#_game_instance_bound_module_ugameinstancemodule[Game Instance]
 xref:Development/ModLoader/Subsystems.adoc[Subsystem]
 that manages
-https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[Gameplay Tag Containers]
+https://dev.epicgames.com/documentation/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.6[Gameplay Tag Containers]
 at a per-class level to be utilized by mod systems.
 
 Gameplay Tags are essentially a structured hierarchical system of FName tags that Unreal has built further libraries and optimizations around.
@@ -29,6 +29,14 @@ https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this bl
 By adding the `SML.Registry.Item.SpecialItemDescriptor` tag to an item descriptor, the 
 `GetObtainableItemDescriptors` and `IsDescriptorFilteredOut` utilities in `UModContentRegistry` will consider it a Special item descriptor,
 meaning it will be filtered according to usage of the `EGetObtainableItemDescriptorsFlags::IncludeSpecial` flag.
+
+=== Base Game Tags
+
+The base game also utilizes a few tags:
+
+* `Item.CentralStorage.PreserveItemState` stores the item in the Dimensional Depot in a different format, preserving the per-item-instance state data used by equipment and some modded items
+* `Recipe.Part` is used to indicate that a recipe should have its cost multiplied by the Game Mode feature
+* `Resource.Advanced` and similar are used to identify resources for the node randomization feature
 
 == Limitations
 
@@ -86,7 +94,7 @@ Tag comments can be edited later in the tag source ini file.
 
 UE Tags are hierarchical with each "level" separated by periods.
 For an example, see https://www.tomlooman.com/unreal-engine-gameplaytags-data-driven-design/[this blog post]
-and https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.3[the UE documentation].
+and https://dev.epicgames.com/documentation/unreal-engine/using-gameplay-tags-in-unreal-engine?application_version=5.6[the UE documentation].
 
 Tag names should be written with this behavior in mind.
 
@@ -189,7 +197,30 @@ Use `UContentTagRegistry::Get()` to get a reference to the registry.
 Use `UContentTagRegistry:GetGameplayTagContainerFor` to get the tag container for a class.
 
 From there, use
-https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.3#functions[tag container functions] to query for tags.
+https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/GameplayTags/FGameplayTagContainer?application_version=5.6#functions[tag container functions] to query for tags.
+
+[id="VanillaGameplayTagsSystem"]
+== Vanilla Functionality
+
+As of 1.2, the base game ships with a basic read-only version of a content tag registry
+via the `mGameplayTags` field
+on the following classes:
+
+* FGItemDescriptor
+* FGRecipe
+* FGResearchTree
+* FGSchematic
+
+The base game's system has a few notable limitations compared to SML's:
+
+* It is restricted to the above types
+* Only content the mod itself defines can be tagged
+* Blueprints can only get these tags, not set them
+* Tag modifications can't be made conditionally or at runtime while loading
+
+As such, using SML's system for working with tags is recommended when you need these additional features.
+
+When accessing one of these types, SML will reuse the vanilla gameplay tag container instead of making its own.
 
 == Using Tags from Other Mods
 

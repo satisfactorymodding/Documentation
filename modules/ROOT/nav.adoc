@@ -13,9 +13,7 @@
 
 * xref:Development/index.adoc[Development]
 
-    ** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
-        *** xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide]
-        *** xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
+    ** xref:Development/UpdatingFromSml311.adoc[Updating from SML 3.11.0]
     ** xref:Development/UpdatingToNewVersions.adoc[_Updating your Mod_]
     ** xref:Development/BeginnersGuide/index.adoc[Getting Started]
         *** Installing Dependencies
@@ -39,6 +37,9 @@
         *** xref:Development/BeginnersGuide/overwriting.adoc[Class Default Objects (CDOs) and Overwriting Content]
         *** xref:Development/BeginnersGuide/ReleaseMod.adoc[Releasing Your Mod]
         *** xref:Development/BeginnersGuide/ImportingAnotherMod.adoc[Importing Other Mods to your Project]
+        *** Modding from a Linux Machine
+            **** xref:Development/Linux/LinuxSetup.adoc[Linux Development Setup]
+            **** xref:Development/Linux/LinuxCi.adoc[Mod CI]
 // TODO *** xref:Development/ExampleModDirectory.adoc[ExampleMod Feature List] // Also uncomment in StaterProjectStructure.adoc
     ** Git and Modding
         *** xref:Development/BeginnersGuide/LearnGit.adoc[Learning Git]
@@ -63,7 +64,7 @@
         *** xref:Development/UnrealEngine/BluePrints.adoc[Blueprints]
     ** xref:Development/Satisfactory/index.adoc[Satisfactory]
         *** xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
-        *** Game Features
+        *** Gameplay Elements
             **** xref:Development/Satisfactory/ResourceSink.adoc[Resource Sink]
             **** xref:Development/Satisfactory/Paintable.adoc[Paintable]
             **** xref:Development/Satisfactory/Chainsawable.adoc[Chainsaw and Foliage]
@@ -77,6 +78,7 @@
             **** xref:Development/Satisfactory/AdaMessages.adoc[ADA Messages]
             **** xref:Development/Satisfactory/CheatBoard.adoc[Cheat Board]
         *** Game Systems
+            **** xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
             **** xref:Development/Satisfactory/Audio.adoc[Audio]
             **** xref:Development/Satisfactory/PowerNetwork.adoc[Power Network]
             **** xref:Development/Satisfactory/BuildableHolograms.adoc[Buildable Holograms]
@@ -112,6 +114,9 @@
         *** xref:SMLConfiguration.adoc[SML Configuration]
         *** Legacy
             **** Migration Guides
+                ***** xref:Development/UpdatingFromSml310.adoc[Updating from SML 3.10.0]
+                    ****** xref:Development/Migration/ScsMigrationGuide.adoc[SCS Hook Migration Guide]
+                    ****** xref:Development/Migration/BpHookMigrationGuide.adoc[Blueprint Hook Migration Guide]
                 ***** xref:Development/UpdatingFromSml39.adoc[Updating from SML 3.9.0]
                 ***** xref:Development/UpdatingFromSml38.adoc[Updating from SML 3.8.0]
                 ***** xref:Development/UpdatingFromSml37.adoc[Updating from SML 3.7.0]
@@ -150,6 +155,3 @@
 //     ** For Mod Developers
 //         *** xref:Translation/Developers/RequestTolgeeProject.adoc[Using Tolgee]
 //         *** xref:Development/Localization.adoc[Localizing Mods]
-
-* Community Mod Lists
-    ** xref:CommunityModLists/QOL.adoc[Quality of Life Mods]

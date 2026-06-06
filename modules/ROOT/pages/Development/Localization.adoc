@@ -66,7 +66,7 @@ In widgets, consider using Canvas Panels, Overlays, and Render Transforms if you
 ### {cpp} Localization
 
 Detailed documentation for {cpp} localization can be found in the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/text-localization-in-unreal-engine?application_version=5.3[Unreal documentation].
+https://dev.epicgames.com/documentation/unreal-engine/text-localization-in-unreal-engine?application_version=5.6[Unreal documentation].
 
 When working in {cpp}, you can use the `NSLOCTEXT` and `LOCTEXT` macros to mark text as localizable.
 

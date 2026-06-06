@@ -8,17 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - name: Read pnpm version from file
+        id: pnpm-version
+        run: echo "PNPM_VERSION=$(cat .pnpm-version)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v6
         with:
-          version: 9
+          version: ${{ steps.pnpm-version.outputs.PNPM_VERSION }}
 
       - name: Setup NodeJS
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version-file: '.node-version'
           cache: 'pnpm'
 
       - name: Install Dependencies
@@ -59,10 +63,16 @@ jobs:
       - build
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+
+      - name: Read pnpm version from file
+        id: pnpm-version
+        run: echo "PNPM_VERSION=$(cat .pnpm-version)" >> $GITHUB_OUTPUT
 
       - name: Build Docker image (without pushing)
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: false
+          build-args: |
+            PNPM_VERSION=${{ steps.pnpm-version.outputs.PNPM_VERSION }}

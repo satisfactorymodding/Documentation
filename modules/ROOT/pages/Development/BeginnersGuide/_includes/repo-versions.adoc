@@ -1,10 +1,12 @@
-:suggested-branch: master
-// :suggested-branch: dev
+// :suggested-branch: master
+:suggested-branch: dev
 
 // If this is an archived docs branch, this should be set to the SML version it corresponds to.
 :this-archive-version: NOT-AN-ARCHIVE
 // :this-archive-version: 3.9.1
 
+// Modding UE-CSS release to download (used in URL)
+//(make sure ./../_includes/software-versions.adoc is also accurate)
 // If this is an archived docs branch, this should be set to the Unreal Engine this SML version needs
-:engine-version: latest
-// :engine-version: tag/5.3.2-css-66
+:engine-gh-release: latest
+// :engine-gh-release: tag/5.6.1-css-83

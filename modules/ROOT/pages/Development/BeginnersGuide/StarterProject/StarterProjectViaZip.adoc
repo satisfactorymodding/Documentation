@@ -14,7 +14,7 @@ include::../_includes/repo-versions.adoc[]
 :verbphrase: download a zip of
 :verbphraseCaps: Download a zip of
 :actionphrase: {sp}from here: https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/{suggested-branch}.zip
-:archiveactionphrase: this tag: https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/heads/tags/v{this-archive-version}.zip
+:archiveactionphrase: this tag: https://github.com/satisfactorymodding/SatisfactoryModLoader/archive/refs/tags/v{this-archive-version}.zip
 
 include::../_includes/branch-notice.adoc[]
 

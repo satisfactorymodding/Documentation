@@ -27,44 +27,47 @@ Keep this in mind as you follow other tutorials.
 [id="UnrealEditor"]
 == Using the Unreal Editor
 
-* ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-terminology?application_version=5.3[Unreal Engine Terminology] - 
+* ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-terminology?application_version=5.6[Unreal Engine Terminology] - 
   A glossary of common Unreal Engine terms you may encounter in other tutorials.
 
 include::./../_includes/editor-familiarize-list.adoc[]
 
-* ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/reference-viewer-in-unreal-engine?application_version=5.3[Reference Viewer] -
+* ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/reference-viewer-in-unreal-engine?application_version=5.6[Reference Viewer] -
   Using the Reference Viewer to see what assets reference a given asset, and what other assets are referenced by it.
 
-* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/property-matrix-in-unreal-engine?application_version=5.3[Property Matrix] -
+* 📖 https://dev.epicgames.com/documentation/unreal-engine/property-matrix-in-unreal-engine?application_version=5.6[Property Matrix] -
   Quickly viewing or editing the properties of multiple assets at once using the Property Matrix.
 
-* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/global-asset-picker-in-unreal-engine?application_version=5.3[Global Asset Picker] -
+* 📖 https://dev.epicgames.com/documentation/unreal-engine/global-asset-picker-in-unreal-engine?application_version=5.6[Global Asset Picker] -
   Quickly opening an asset you already know the name of using the Global Asset Picker.
 
 [id="UnrealBlueprint"]
 == Blueprint Scripting
 
-* ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/introduction-to-blueprints-visual-scripting-in-unreal-engine?application_version=5.3[Introduction to Blueprints] -
-  A high-level overview of what Blueprints are and what they can do.
+* ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/introduction-to-blueprints-visual-scripting-in-unreal-engine?application_version=5.6[Introduction to Blueprints] -
+  A very high-level overview of what Blueprints are and what they can do.
   Links to other pages with more information about specific features.
 
-  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/basic-scripting-with-blueprints-in-unreal-engine?application_version=5.3[Basic Scripting with Blueprints] -
+  ** 📖 https://dev.epicgames.com/documentation/unreal-engine/basic-scripting-with-blueprints-in-unreal-engine?application_version=5.6[Basic Scripting with Blueprints] -
       Brief introduction to blueprint variables and event graphs
 
-  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-blueprints-visual-scripting-in-unreal-engine?application_version=5.3[Blueprints Visual Scripting Overview] -
+  ** 📖 https://dev.epicgames.com/documentation/unreal-engine/overview-of-blueprints-visual-scripting-in-unreal-engine?application_version=5.6[Blueprints Visual Scripting Overview] -
       Breaks down the anatomy of a Blueprint and the different types of Blueprints available.
 
-  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/graph-editor-for-the-blueprints-visual-scripting-editor-in-unreal-engine?application_version=5.3[Blueprint Editor: Graph Editor] -
+  ** ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/graph-editor-for-the-blueprints-visual-scripting-editor-in-unreal-engine?application_version=5.6[Blueprint Editor: Graph Editor] -
   Information on the Blueprint graph editor interface and the available interactions/keybinds.
 
-* ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprint-tutorials-in-unreal-engine?application_version=5.3[Blueprint Tutorials] -
+* ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/blueprint-foundations?application_version=5.6[Blueprint Foundations] - 
+  Goes into more detail than "Introduction to Blueprints" and showcases how to use some of the editor features to edit them.
+
+* ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/blueprint-workflows-in-unreal-engine?application_version=5.6[Blueprints Workflows] -
   Links to walkthroughs of accomplishing various tasks in the Blueprint scripting editor.
   Note that the page currently duplicates all available tutorials in each complexity heading.
 
-* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/searching-in-blueprints-in-unreal-engine?application_version=5.3[Blueprint Search]
+* 📖 https://dev.epicgames.com/documentation/unreal-engine/searching-in-blueprints-in-unreal-engine?application_version=5.6[Blueprint Search]
   How to use the Blueprint editor's search functionality.
 
-* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/graphs-in-unreal-engine?application_version=5.3[Anatomy of a Blueprint : Graphs] -
+* 📖 https://dev.epicgames.com/documentation/unreal-engine/graphs-in-unreal-engine?application_version=5.6[Anatomy of a Blueprint : Graphs] -
   Overview of the different kinds of blueprint graphs with links to additional information.
 
 [id="UnrealCpp"]
@@ -73,20 +76,23 @@ include::./../_includes/editor-familiarize-list.adoc[]
 * ⭐📖📽 https://www.youtube.com/watch?v=VMZftEVDuCE[Blueprints vs. C++: How They Fit Together and Why You Should Use Both]- 
   Excellent overview of how a project using both Blueprints and {cpp} can best leverage the strengths of both.
 
-* 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.3['Programming with C++ in Unreal Engine' section] -
+* 📖 https://dev.epicgames.com/documentation/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.6['Programming with C++ in Unreal Engine' section] -
   Epic's primary {cpp} documentation hub containing many other articles.
 
-  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-cpp-quick-start?application_version=5.3[Unreal Engine {cpp} Quick Start] -
+  ** ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/unreal-engine-cpp-quick-start?application_version=5.6[Unreal Engine {cpp} Quick Start] -
   Epic's introductory tutorial for creating an actor in exclusively {cpp}. It's a cube that bobs up and down in the game level.
 
-  ** ⭐📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.3[Coding Standard for Unreal Engine] -
+  ** ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.6[Coding Standard for Unreal Engine] -
   Important details and conventions to be aware of when reading and writing {cpp} code for Unreal Engine.
   Notable points include an explanation of the T/U/A/F/I/E prefixes for names.
 
-  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/reflection-system-in-unreal-engine?application_version=5.3['Unreal Engine Reflection System' section] -
+  ** ⭐📖 https://dev.epicgames.com/documentation/unreal-engine/containers-in-unreal-engine?application_version=5.6[Containers in Unreal Engine] -
+  Information on and code examples of using the three most common container classes in Unreal - TArray, TMap, and TSet.
+
+  ** 📖 https://dev.epicgames.com/documentation/unreal-engine/reflection-system-in-unreal-engine?application_version=5.6['Unreal Engine Reflection System' section] -
   Details many Unreal core constructs and macros (UObject, UProperty, etc.) backed by the reflection system that enable Unreal's editor and memory management features.
 
-  ** 📖 https://dev.epicgames.com/documentation/en-us/unreal-engine/quick-start-guide-to-variables-timers-and-events-in-unreal-engine-cpp?application_version=5.3[Variables, Timers, and Events] -
+  ** 📖 https://dev.epicgames.com/documentation/unreal-engine/quick-start-guide-to-variables-timers-and-events-in-unreal-engine-cpp?application_version=5.6[Variables, Timers, and Events] -
   Working with timers and latent actions is generally easier in blueprint, but is possible in {cpp} as well.
 
 * 📽 https://www.youtube.com/watch?v=IaU2Hue-ApI[The Unreal Engine Game Framework: From int main() to BeginPlay] -

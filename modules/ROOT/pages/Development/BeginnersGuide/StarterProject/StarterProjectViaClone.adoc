@@ -35,6 +35,14 @@ https://docs.github.com/en/desktop/adding-and-cloning-repositories/cloning-a-rep
 to use GitHub Desktop to clone the repository.
 Otherwise, use the git clone method of your choice.
 
+If using the command line, the `-b branchName` option can control what branch is cloned, for example:
+
+```sh
+git clone -b branchName git@github.com:satisfactorymodding/SatisfactoryModLoader.git
+```
+
+== Switch Branches
+
 Your Git client will probably start you on the `master` branch by default,
 so you may have to switch branches to the branch or tag you actually intended to clone.
 
@@ -49,11 +57,10 @@ and you have switched to the branch you intend to use.
 [IMPORTANT]
 ====
 Many Git clients will automatically clone the repository's default branch.
-Make sure you're on the branch/tag you intended before proceeding.
+Make sure you're on the branch/tag you intended before proceeding!
 ====
 
 == Next Steps
 
 Now that all the dependencies are installed, you can move onto
 xref:Development/BeginnersGuide/project_setup.adoc[setting up the project].
-

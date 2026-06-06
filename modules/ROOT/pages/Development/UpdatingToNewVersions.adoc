@@ -31,8 +31,8 @@ Whether or not a game update or SML update requires a mod update depends on a nu
 - Unreal Engine version transitions
 - Significant changes to SML APIs, usually denoted with a major version number bump
 
-If the systems a mod is working with wasn't touched by an update,
-it could end up working without any changes.
+If the systems a mod works with weren't touched by an update,
+the mod could end up working without any changes.
 
 == Avoid Breaking in the First Place
 
@@ -196,6 +196,13 @@ will tell you where in the docs to find the new version numbers.
 * Starter Project contents
   ** Always changes with every SML version, since the Starter Project contains the SML source code.
 
+== Install the New Clang Toolchain
+
+Check up on the xref:Development/BeginnersGuide/dependencies.adoc#ClangToolchain[Dependencies guide]
+to see if you need a new clang toolchain and install if so.
+Windows' "Add or remove programs" (Apps & features) can tell you what version you currently have installed
+by searching `clang`.
+
 == Install the New Engine
 
 New editor versions are usually downloaded from
@@ -204,6 +211,10 @@ but you should keep your eyes on the Discord
 to see if a specific branch or download link is mentioned instead.
 The specific files to download are described in the
 xref:Development/BeginnersGuide/dependencies.adoc#_download_the_custom_engine[Dependencies guide].
+
+Make sure to delete any pre-existing engine installer files you may have in your downloads folder
+to avoid your system automatically appending `(1)` to the end,
+which will confuse the new installer.
 
 Remember, if you see a 404 page following that link,
 the page is not dead, you need to log into the right GitHub account.
@@ -222,7 +233,7 @@ You may also want to assign custom icons to each shortcut.
 This will change the appearance of the editor in the taskbar,
 making it easier to distinguish between multiple versions of the editor running at once.
 You can create your own icons or use 
-https://discord.com/channels/555424930502541343/689188183048585244/1043643638577631263[these ones from on the Discord].
+https://discord.com/channels/555424930502541343/1506318224982147152[these ones from on the Discord].
 You may have to restart your computer for the icon changes to take effect,
 as Windows aggressively caches icons.
 
@@ -480,7 +491,7 @@ xref:Development/BeginnersGuide/project_setup.adoc#_project_compilation[compile 
 - Rewriting or To-Do commenting out broken functionality in your mod to account for codebase changes
 - Asking for help on the Discord
 
-3. Repeat steps 1-2 until the project builds successfully for both Development Editor and Shipping
+3. Repeat steps 1-2 until the project builds successfully for Development Editor
 4. Open the Unreal Engine Editor for your project
 5. Run Alpakit on SML to install the latest version of SML in your copy of the game, or install it via SMM.
    Problems in your own project files could prevent packaging from succeeding - if you encounter any, see Step 8.

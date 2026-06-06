@@ -31,10 +31,10 @@ so you can bring the selector up again via `Directory` > `Selector`.
 Under the "Add Undetected Game" heading, click the two-arrows icon,
 enter `Satisfactory` as the "Name",
 and enter your game install directory as the "Directory"
-(for example, `C:\EpicGamesGames\SatisfactoryExperimental`).
+(for example, `C:{zero-width-join}/EpicGamesGames{zero-width-join}/SatisfactoryExperimental`).
 Next, press the blue Plus button (NOT the OK button!) to add the game to the Detected Game dropdown,
 which should automatically select it.
-Back in the upper section, select `GAME_UE5_3 (536870960)` for the "UE Versions" selector.
+Back in the upper section, select `GAME_UE5_6` for the "UE Versions" selector.
 If this item doesn't appear in the list, ensure "Enable custom UE versions" is unchecked.
 After confirming that the game is selected, press the `OK` button.
 
@@ -52,8 +52,8 @@ Coffee Stain Studios kindly ships this extra information with the game files for
 First, navigate to your
 xref:faq.adoc#Files_GameInstall[game install directory]
 in a File Explorer window to locate the
-`/CommunityResources/FactoryGame.usmap`
-and `/CommunityResources/CustomVersions.json` files.
+`/{zero-width-join}CommunityResources/FactoryGame.usmap`
+and `/{zero-width-join}CommunityResources/CustomVersions.json` files.
 
 We need to open the CustomVersions file and copy its contents into a setting in FModel.
 However, the file is stored in a text encoding (UTF-16 LE) that can confuse some text editing programs.
@@ -80,7 +80,7 @@ image:ExtractingGameFiles/FModel_BrokenJSON.png[Broken JSON]
 
 Back on the Settings screen, check the box for "Local Mapping File"
 and then enter the full path to your `FactoryGame.usmap` file, which is also in the Community Resources folder,
-(for example, `C:\EpicGamesGames\SatisfactoryExperimental\CommunityResources\FactoryGame.usmap`).
+(for example, `C:{zero-width-join}\EpicGamesGames{zero-width-join}\SatisfactoryExperimental{zero-width-join}\CommunityResources{zero-width-join}\FactoryGame.usmap`).
 
 Press `OK` to close the settings prompt,
 which will open another prompt asking you to restart FModel - press `OK`.

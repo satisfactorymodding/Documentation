@@ -73,8 +73,9 @@ follow the below directions.
 
 #### Installing
 
-1. Install [Node.js](https://nodejs.org/en/download/) (Check `/.github/workflows/push.yml` to find the exact version, but anything >=20 will probably be fine)
-   and [pnpm Package Manager](https://pnpm.io/) through your preferred method.
+1. Install [Node.js](https://nodejs.org/en/download/)
+   (Check [`.node-version`](/.node-version) to find the exact version, but anything >=24 will probably be fine)
+   and [pnpm Package Manager](https://pnpm.io/) through your preferred method (exact version in [`.pnpm-version](/.pnpm-version)).
 
 2. Clone the repository
 

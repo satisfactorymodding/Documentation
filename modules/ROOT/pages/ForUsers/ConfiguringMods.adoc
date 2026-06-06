@@ -27,7 +27,7 @@ You should not normally need to edit these files directly.
 
 xref:Development/ModLoader/SessionSettings.adoc[Mod Savegame Settings]
 are special type of configuration option that only apply to a single game file,
-similar to the base game's https://satisfactory.wiki.gg/wiki/Advanced_Game_Settings[Advanced Game Settings].
+similar to the base game's link:https://satisfactory.wiki.gg/wiki/Creative_Mode[Creative Mode (formerly named Advanced Game Settings, abbreviated AGS)].
 
 You can set Mod Savegame Settings when creating a new save file on the main menu
 or via the "Mod Savegame Settings" entry in the pause menu.

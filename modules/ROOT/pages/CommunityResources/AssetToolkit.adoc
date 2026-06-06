@@ -118,7 +118,7 @@ Next, from that directory, edit the following Powershell command to point to you
 
 // cspell:ignore norhithread
 // Prevent break on dash and its argument
-`FactoryGameEGS.exe -EpicPortal -NoSteamClient -DumpAllGameAssets -{wj}RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log -NewConsole -nullrhi -norhithread`
+`FactoryGameEGS.exe -EpicPortal -NoSteamClient -DumpAllGameAssets -{wj}RootAssetPath=/Game -ExcludePackagePaths=/Game/WwiseAudio -ExcludePackageNames=/Game/Geometry/Meshes/1M_Cube_Chamfer -PackagesPerTick=32 -ExitOnFinish -log -NewConsole -RenderOffscreen -norhithread`
 
 [WARNING]
 ====
@@ -143,7 +143,7 @@ which will provide info regarding the dumping process (since `-log -NewConsole` 
 You can safely close the Powershell window once you see the console log window,
 although you may wish to keep it open to restart it if it crashes.
 
-The game user interface will never open since we used the `-nullrhi -norhithread` arguments,
+The game user interface will never open since we used the `-RenderOffscreen -norhithread` arguments,
 leaving only the console window visible.
 // Normally the dumper would be run with the `-nullrhi` flag to avoid wasting processing power on rendering the game's menu
 // but this argument seems to be broken as of Satisfactory 1.0,
@@ -186,8 +186,8 @@ If you're still encountering issues, ask for help on the discord.
 
 == Importing Dumped Assets to the Editor
 
-You can expect a Content folder with all assets imported to take up about 6 GB.
-For comparison, a Content folder with placeholders takes up 366 MB.
+You can expect a Content folder with all assets imported to take up about 7 GB.
+For comparison, a Content folder with placeholders takes up about 366 MB.
 
 Close the editor if you still have it open.
 
@@ -210,7 +210,7 @@ for example, material slot assignments.
 ====
 
 The next step is using the Asset Generator's
-https://dev.epicgames.com/documentation/en-us/unreal-engine/API/Runtime/Engine/Commandlets/UCommandlet?application_version=5.3[commandlet]
+https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/UCommandlet?application_version=5.6[commandlet]
 features to turn the dumped files into usable assets for your editor.
 
 Below is a modified version of a Powershell script originally written by adamsogm for using the Asset Generator commandlet.
@@ -291,7 +291,7 @@ Experts advise locating and petting a lizard doggo while you wait.
 There are a lot of things that could go wrong in this process, so be prepared to troubleshoot using the steps below.
 You'll know it's finished when your powershell window closes or you are prompted to enter another command.
 
-After you're done, your modding project's content folder should be around 6 GB.
+After you're done, your modding project's content folder should be around 7 GB.
 
 === Troubleshooting Asset Generation Crashes
 

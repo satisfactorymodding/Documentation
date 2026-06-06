@@ -218,7 +218,7 @@ and will create files in a temporary directory where they won't be detected by t
 ====
 Make sure you are aware of the naming conventions for classes, files, and fields in Unreal Engine.
 They are covered in the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.3#namingconventions[Coding Standard for Unreal Engine] documentation page.
+https://dev.epicgames.com/documentation/unreal-engine/epic-cplusplus-coding-standard-for-unreal-engine?application_version=5.6#namingconventions[Coding Standard for Unreal Engine] documentation page.
 For example, if you create an UObject whose class name does not start with `U`, the code will not compile.
 ====
 

@@ -92,7 +92,7 @@ We won't go into detail about the general technical stuff aspects of {cpp} in th
 If you want to learn more about that, there are plenty of good resources available elsewhere on the Internet.
 In order to effectively write {cpp} mods, you will require both general {cpp} knowledge, and knowledge about how {cpp} applies to Unreal Engine systems.
 Unreal's documentation covers this in its
-https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.3['Programming with C++ in Unreal Engine' section].
+https://dev.epicgames.com/documentation/unreal-engine/programming-with-cplusplus-in-unreal-engine?application_version=5.6['Programming with C++ in Unreal Engine' section].
 
 == Modding Capabilities
 

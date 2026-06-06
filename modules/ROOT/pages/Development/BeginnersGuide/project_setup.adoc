@@ -1,5 +1,7 @@
 = Project Setup
 
+include::./../_includes/software-versions.adoc[]
+
 Now that you've installed all of the prerequisite software
 and got a copy of the starter project,
 it's time to start setting the project up.
@@ -31,54 +33,50 @@ come back to here and make sure you followed these steps correctly.
 [id="Wwise_Integrate"]
 === Integrate Wwise with the Project
 
-Start the Wwise launcher that you installed earlier and update the launcher if prompted.
-Make sure you have signed in to the launcher. 
-It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
-
-Next, open the `Unreal Engine` tab in the left sidebar.
-Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
-Satisfactory requires a specific version of Wwise to work,
-and updating can prevent your mod from working correctly.
-
-Click on the `Open other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
-and select the `FactoryGame.uproject` file contained in your Starter Project folder.
-Your project should now appear in the Wwise launcher.
-In case you have multiple projects listed,
-click the triangle button to expand the details
-and ensure the "Unreal Engine project path" matches the path to your project.
-
-Click on the `Integrate Wwise in Project...` button.
-
-Change the "Integration Version" drop-down from `Latest` to `All` otherwise Wwise will not show the version you care about.
-Then use the "Major" and "Version" dropdowns to select the same version you installed earlier (likely `2023.1.3.8471`). 
-The version number may have additional numbers on the end of it e.g.
-`2023.1.3.8471.2970` but as long as it starts with `2023.1.3.8471` it should work.
-
-If version `2023.1.3.8471` does not appear even after you have selected `All`,
-edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
-is set to `5.3.2-CSS`.
-
-If this version _still_ doesn't show up, contact us for help on the Discord.
-
-If you missed a required component as part of the Wwise installation,
-it may show a yellow warning box indicating what's missing
-as well as a button to "Modify" the installation.
-Go ahead and follow what it says for this step only.
-If Wwise warns you that it could not find an installation in a red warning box,
-that means you have not selected the correct version as stated above.
-If you see a blue box offering both "Modify" and "Add Plug-in",
-that means it's configured correctly,
-so continue to the next step.
-
-Under "Wwise Project" header, click the little triangle dropdown on the right
-and choose `New project` to clear the path.
-
-If everything worked according to plan,
-you should now be able to click on the blue `Integrate` button.
-Do so, and agree to the terms to start the process.
-
-That's it! If Wwise shows "Operation completed successfully,"
-you have integrated Wwise into your project.
+. Start the Wwise launcher that you installed earlier and update the launcher if prompted.
+  Make sure you have signed in to the launcher. 
+  It can give ambiguous error messages when trying to integrate Wwise if you aren't signed in.
+. Open the `Unreal Engine` tab in the left sidebar.
+  * Do _not_ click any of the update buttons on the Unreal Engine Wwise tab.
+    Satisfactory requires a specific version of Wwise to work,
+    and updating can prevent your mod from working correctly.
+. Click on the `Open other` button next to the "RECENT UNREAL ENGINE PROJECTS" header
+  and select the `FactoryGame.uproject` file contained in your Starter Project folder.
+. Your project should now appear in the Wwise launcher.
+  * If multiple projects are listed,
+   click the `v` triangle buttons to expand the details
+   and ensure the "Unreal Engine project path" matches the path to your project.
+. Click on the `Integrate Wwise in Project...` button.
+. Change the "Integration Version" drop-down from `Latest` to `All` otherwise Wwise will not show the version you care about.
+. Use the dropdowns to select the version you installed earlier (`{wwise-version-full}`).
+  * The version number may have additional numbers on the end of it e.g.
+    `{wwise-version-full}.1234` but as long as it starts with `{wwise-version-full}` it should work.
+  * If version `{wwise-version-full}` does not appear even after you have selected `All`,
+    make sure you got the correct branch of the project,
+    and edit the `.uproject` file in a text editor to be sure that `EngineAssociation`
+    is set to `{engine-version}-CSS`.
+  ** If this version _still_ doesn't show up, contact us for help on the Discord.
+. Depending on what the Wwise UI shows:
+  .. If you see 2 🟦 blue boxes
+     offering "Modify" and "Add Plug-ins" buttons,
+     that means it's configured correctly,
+     so **continue to the next step**.
+  .. If you see a 🟨 yellow warning box
+     talking about missed a required component
+     with a button to "Modify" the installation, you need to add a component.
+     Go ahead and follow what it says for this step only.
+  .. If you see a 🟥 red error box
+     and Wwise warns you that it could not find an installation
+     that means you have not selected the correct version as stated above.
+. Scroll down to the "Wwise Project" header
+. Click the little triangle dropdown on the right
+  and choose `New project` to clear the path.
+. If everything worked according to plan,
+  you should now be able to click on the blue `Integrate` button.
+  Do so, and agree to the terms to start the process.
+. That's it! Once Wwise shows "Integration completed successfully"
+  you have integrated Wwise into your project.
+  Close the Wwise launcher as we won't need it any more.
 
 _Note: the below video demo may select a version that does not match what is written above._
 _Please use the version mentioned in the text above._
@@ -123,29 +121,29 @@ with Unreal Engine's "Generate Visual Studio Project Files" tool.
 
 In Windows file explorer, right-click on the `.uproject` file in your Starter Project folder and select `Generate Visual Studio project files`.
 Windows 11 might have buried it within the "more options" submenu.
-If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
-If this option appears, but errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
 
-Otherwise, if the option doesn't appear, you'll need to run a tool from the command line to generate the project files.
-
+* If this option appears for you and runs without error, skip down to the link:#_project_compilation[next section].
+* If this option appears, but errors, check out the link:#GenerateVSFiles_Troubleshooting[Troubleshooting section below].
+* Otherwise, if the option doesn't appear, you'll need to run a tool from the command line to generate the project files.
++
 The command will follow the form below:
-
++
 ```ps1
 & "<path to your Unreal build batch file here (it was installed with the custom Editor)>" -projectfiles -project="<path to your .uproject file here>" -game -rocket -progress
 ```
-
++
 Here is an example of a completed command:
-
++
 ```ps1
 & "C:\Program Files\Unreal Engine - CSS\Engine\Build\BatchFiles\Build.bat" -projectfiles -project="D:\Git\SatisfactoryModLoader\FactoryGame.uproject" -game -rocket -progress
 ```
-
++
 [WARNING]
 ====
 The above command will not work if you copy paste it
 - you'll need to modify it yourself to point towards your project file and Unreal Engine install.
 ====
-
++
 [WARNING]
 ====
 The above command is formatted for Powershell.
@@ -159,7 +157,7 @@ If you are prompted to choose an engine version when generating project files,
 or the generation command fails, it's possible that you have a corrupted engine install
 left behind from previous modding or Unreal Engine endeavors.
 
-The correct engine version should appear in the picker as `5.3.2-CSS` and should not be considered a binary build.
+The correct engine version should appear in the picker as `{engine-version}-CSS` and should not be considered a binary build.
 To remove a listing for a corrupted engine install,
 use the https://www.techtarget.com/searchenterprisedesktop/definition/Windows-Registry-Editor[Windows registry editor]
 to edit the registry key `HKEY_CURRENT_USER\SOFTWARE\Epic Games\Unreal Engine\Builds`
@@ -195,13 +193,20 @@ You'll be presented with a few notices upon opening the solution for the first t
 We'll go through each of these below, as some of them can safely be ignored,
 while others could break your install if you take the wrong action.
 
+[id="vs_popups_sign_in"]
+==== Sign in to Visual Studio
+
+You do not need to sign in to Visual Studio to use it.
+
+**It is safe to click `Close` or `x` on this message and dismiss it.**
+
 [id="vs_popups_unsupported_projects"]
 ==== Unsupported Projects
 
 Visual Studio may tell you "These projects are either not supported or need project behavior impacting modifications <...>"
 in a pop-up window upon opening the solution.
 
-**It is safe to click "OK" on this message and dismiss it.**
+**It is safe to click `OK` on this message and dismiss it.**
 
 Even though some of the components are outdated or out of support,
 they are the ones required by Satisfactory and Unreal and must be used.
@@ -231,7 +236,7 @@ We must use these exact package versions to match what the game and engine are u
 An editor tab titled "Unreal Engine Integration Configuration" opens on startup by default.
 It assists with initial setup of tools installed with the 'Game Development with {cpp}' workload.
 
-**Uncheck the "Show on startup" checkbox at the top and close the tab.**
+**Uncheck the `Show on startup` checkbox at the top and close the tab.**
 Unfortunately some of the changes required to make the custom engine work are not compatible with these tools.
 Do NOT set up the "Visual Studio Integration Tool" or "Unreal Engine Test Adapter",
 as they will make changes to the project and engine that break your ability to compile the editor and/or package mods.
@@ -448,14 +453,14 @@ It's one of the editor plugins that comes pre-installed with the starter project
 === Opening Alpakit
 
 Click on the Alpakit Dev button in the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#maintoolbar[Main Toolbar]
+https://dev.epicgames.com/documentation/unreal-engine/unreal-editor-interface?application_version=5.6#maintoolbar[Main Toolbar]
 of the Unreal editor to open its panel.
 It looks like an alpaca peeking out of a cardboard box.
 
 image:BeginnersGuide/OpenAlpakitDev.png[Alpakit Dev icon]
 
 You can also bring it up via `File > Alpakit Dev` from the
-https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-editor-interface?application_version=5.3#menubar[Menu Bar].
+https://dev.epicgames.com/documentation/unreal-engine/unreal-editor-interface?application_version=5.6#menubar[Menu Bar].
 
 Next, open the alpakit-specific log window by clicking the three-dots button next the icon and selecting "Alpakit Log",
 or using `File > Alpakit Log`.

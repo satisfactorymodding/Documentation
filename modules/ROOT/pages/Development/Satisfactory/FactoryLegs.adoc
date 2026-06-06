@@ -5,7 +5,7 @@ Satisfactory machinery often includes "legs" to appear sturdily supported even w
 To set up legs on modded buildings, your building need two things:
 
 * Named leg sockets defined on your building's mesh
-    ** The https://dev.epicgames.com/documentation/en-us/unreal-engine/using-sockets-with-static-meshes-in-unreal-engine?application_version=5.3[Unreal documentation]
+    ** The https://dev.epicgames.com/documentation/unreal-engine/using-sockets-with-static-meshes-in-unreal-engine?application_version=5.6[Unreal documentation]
         covers how to add sockets to your mesh in the editor.
     ** Socket names must follow the format `foot_xx` where `xx` is a zero-left-padded number starting at `01`.
         According to CSS, this numbering format is hardcoded internally.
