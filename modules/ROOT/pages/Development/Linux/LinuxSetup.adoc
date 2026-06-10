@@ -286,6 +286,103 @@ To generate a code-workspace file, run the following command, replacing `<ue_dir
 Open the `.code-workspace` file, **not** the folder.
 In the workspace settings, add `<ue_dir>/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux` to `omnisharp.dotNetCliPaths`
 
+[id="c_cpp_properties"]
+===== IntelliSense
+
+To support IntelliSense, first generate the Clang Data Base by running the following command, replacing `<ue_dir>` and `<project_dir>` with the respective paths.
+
+[source,bash]
+----
+<ue_dir>/Engine/Build/BatchFiles/RunUBT.sh FactoryEditor Linux Development "<project_dir>/FactoryGame.uproject" -Compiler=Clang -mode=GenerateClangDataBase
+----
+
+The generated file will be created in the `<ue_dir>`, you'll need to move it into the `.vscode` directory of the `project_dir`.
+
+[source,bash]
+----
+mv <ue_dir>/compile_commands.json "<project_dir>/.vscode/compile_commands.json"
+----
+
+Next, create the `.vscode/c_cpp_properties.json` like so:
+
+[source,json]
+----
+{
+  "configurations": [
+    {
+      "name": "FactoryEditor Editor Linux Development (FactoryGame)",
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "clang-x64",
+      "compileCommands": [
+        "${workspaceFolder}/.vscode/compile_commands.json"
+      ]
+    }
+  ],
+  "version": 4
+}
+----
+
+===== Exclude Files
+
+Excluding unnecessary files can improve editor performance.
+
+Example `.vscode/settings.json` file. You'll need to replace `<ue_dir>` with the respective path.
+
+[source,json]
+----
+{
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/Binaries/**": true,
+    "**/DerivedDataCache/**": true,
+    "**/Intermediate/**": true,
+    "**/Saved/**": true,
+    "<ue_dir>/Engine/Binaries/**": true,
+    "<ue_dir>/Engine/Content/**": true,
+    "<ue_dir>/Engine/DerivedDataCache/**": true,
+    "<ue_dir>/Engine/Intermediate/**": true,
+    "<ue_dir>/Engine/Saved/**": true,
+    "<ue_dir>/Engine/Plugins/**/Binaries/**": true,
+    "<ue_dir>/Engine/Plugins/**/Intermediate/**": true,
+    "<ue_dir>/FeaturePacks/**": true,
+    "<ue_dir>/Templates/**": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "<ue_dir>/Engine/Binaries": true,
+    "<ue_dir>/Engine/Content": true,
+    "<ue_dir>/Engine/DerivedDataCache": true,
+    "<ue_dir>/Engine/Intermediate": true,
+    "<ue_dir>/Engine/Saved": true,
+    "<ue_dir>/FeaturePacks": true,
+    "<ue_dir>/Templates": true
+  },
+  "C_Cpp.files.exclude": {
+    "**/Binaries/**": true,
+    "**/DerivedDataCache/**": true,
+    "**/Saved/**": true,
+    "<ue_dir>/Engine/Binaries/**": true,
+    "<ue_dir>/Engine/Content/**": true,
+    "<ue_dir>/Engine/DerivedDataCache/**": true,
+    "<ue_dir>/Engine/Intermediate/**": true,
+    "<ue_dir>/Engine/Saved/**": true,
+    "<ue_dir>/Engine/Shaders/**": true,
+    "<ue_dir>/FeaturePacks/**": true,
+    "<ue_dir>/Templates/**": true
+  },
+  "search.exclude": {
+    "**/Binaries": true,
+    "**/DerivedDataCache": true,
+    "**/Intermediate": true,
+    "**/Saved": true,
+    "<ue_dir>/Engine/Content/**": true,
+    "<ue_dir>/FeaturePacks/**": true,
+    "<ue_dir>/Templates/**": true
+  }
+}
+----
+
 ====
 link:#Compile[Proceed to project compilation steps ➡]
 ====
