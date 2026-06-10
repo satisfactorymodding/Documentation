@@ -259,11 +259,13 @@ Read more on the xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Fe
 
 === Unreal Pointer Migration
 
-Satisfactory has switched to use Unreal `TObjectPtr<>`s instead of raw pointers (for example, `UObject*`) in their codebase
+Satisfactory has switched to use Unreal `+TObjectPtr<>+` instead of raw pointers (for example, `+UObject*+`) in their codebase
 for the memory and dependency management benefits it offers.
 
 Any {cpp} mods using raw pointers to UObjects/UStructs/UProperties
-must switch to this format to avoid crashes (`It will build somewhat fine like this but not using TObjectPtr might result in GC crashes if/when we enable Incremental GC` - Arch).
+must switch to this format to avoid future crashes
+("It will build somewhat fine like this but not using TObjectPtr might result in GC crashes if/when we enable Incremental GC" - Arch).
+
 In the next SML update, mods still using raw pointers will be unable to compile.
 You can force this compile-time check now by adjusting the Unreal Header Tool configuration:
 
