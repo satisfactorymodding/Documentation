@@ -36,6 +36,7 @@ exclude = [
     "https://www.unrealengine.com/en-US/ue-on-github",
     "https://store.epicgames.com/en-US/p/satisfactory",
     "https://www.merriam-webster.com/dictionary/",
+    "https://en.cppreference.com/cpp/language/friend",
     # 403s despite being valid page, we should try to get this working somehow, since these links can change without warning
     "https://docs.unrealengine.com/",
     "https://dev.epicgames.com/",
