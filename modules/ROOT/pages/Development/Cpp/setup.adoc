@@ -127,11 +127,16 @@ Remember to replace all instances of `YourModReference` with your actual mod ref
 ----
 #pragma once
 
+#include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FYourModReferenceModule : public FDefaultGameModuleImpl {
+class FYourModReferenceModule : public IModuleInterface
+{
 public:
+
+	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
+	virtual void ShutdownModule() override;
 };
 ----
 
@@ -142,11 +147,22 @@ Again, replace `YourModReference` with your actual mod reference.
 ----
 #include "YourModReferenceModule.h"
 
-void FYourModReferenceModule::StartupModule() {
-	
+#define LOCTEXT_NAMESPACE "FYourModReferenceModuleModule"
+
+void FYourModReferenceModule::StartupModule()
+{
+	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
 }
 
-IMPLEMENT_GAME_MODULE(FYourModReferenceModule, YourModReference);
+void FYourModReferenceModule::ShutdownModule()
+{
+	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
+	// we call this function before unloading the module.
+}
+
+#undef LOCTEXT_NAMESPACE
+	
+IMPLEMENT_MODULE(FYourModReferenceModule, YourModReference)
 ----
 
 ==== Adding the Module to the UPlugin
