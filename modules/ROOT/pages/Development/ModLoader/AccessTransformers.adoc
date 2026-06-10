@@ -56,14 +56,31 @@ If you see this error message, it means you probably made a typo in your access 
 
 === Friend
 
-Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to access all private fields and methods of AFGSomeClass.
+Adds `friend class UMyClass;` into the class you specify, allowing `UMyClass` to access all private fields and methods of `AFGSomeClass`.
+link:https://en.cppreference.com/cpp/language/friend[Click to learn more about the {cpp} friend declaration].
+
+[source,ini]
+----
+Friend=(Class="AFGSomeClass", FriendClass="UMyClass")
+----
 
 === Accessor
 
-Creates the public methods `FORCEINLINE PropertyType GetSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }`.
+Creates the public methods `FORCEINLINE PropertyType GetmSomeProperty() { return mSomeProperty; }` and `FORCEINLINE void SetmSomeProperty(PropertyType SomeProperty) { mSomeProperty = SomeProperty; }` on `AFGSomeClass`.
 
 This is beneficial when you are trying to access a field and you are not in a class to use Friend for.
+
+[source,ini]
+----
+Accessor=(Class="AFGSomeClass", Property="mSomeProperty")
+----
+
 Below is a usage example from PowerSuit for the FEquipmentStats struct.
+
+[source,ini]
+----
+Accessor=(Class="AFGEquipment", Property="mCostToUse")
+----
 
 // cspell:ignore Getm
 [source,cpp]
@@ -83,20 +100,40 @@ so that no changes to the game headers are required.
 
 This is also used for properties within structs, provided they are a UPROPERTY and the struct is BlueprintType (which can be added with an Access Transformer).
 
+[source,ini]
+----
+BlueprintReadWrite=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+----
+
 === BlueprintCallable
 
 Adds `BlueprintCallable` to the specified UFUNCTION, allowing you to call that function from blueprints.
 It cannot be added to a non-`UFUNCTION` function.
+
+[source,ini]
+----
+BlueprintCallable=(Class="/Script/FactoryGame.FGSomeClass", Function="FunctionName")
+----
 
 === EditAnywhere
 
 Adds `EditAnywhere` to the specified UPROPERTY,
 allowing you the property to be modified in the Details panel of blueprint assets and instances.
 
+[source,ini]
+----
+EditAnywhere=(Class="/Script/FactoryGame.FGSomeClass", Property="mSomeProperty")
+----
+
 === BlueprintType
 
 Adds `BlueprintType` to the specified USTRUCT,
 allowing that struct to be made or split using blueprint nodes.
+
+[source,ini]
+----
+BlueprintType=(Struct="/Script/FactoryGame.FGSomeStruct")
+----
 
 == Loading
 
