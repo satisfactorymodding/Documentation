@@ -145,6 +145,7 @@
     ** xref:CommunityResources/IconGenerator.adoc[Icon Generator]
     ** xref:CommunityResources/incredibuild.adoc[Incredibuild]
     ** xref:CommunityResources/TrainSignalGuide.adoc[Train Signaling Guide]
+    ** xref:CommunityResources/ServerHostSmmInfo.adoc[SMM for Server Hosts]
 
 // TODO un-hide once translating section is ready
 // * Translating Mods

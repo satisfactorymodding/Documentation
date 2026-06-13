@@ -1,0 +1,28 @@
+= Satisfactory Mod Manager for Server Hosts
+
+Are you a server host company looking to ensure your servers are compatible with xref:ForUsers/SatisfactoryModManager.adoc[Satisfactory Mod Manager (SMM)]?
+This is the page for you.
+All players looking to play modded Satisfactory will be using SMM,
+so being compatible avoids users switching to another compatible host instead.
+
+To ensure compatibility, check the following:
+
+* Ensure you have a modern (S)FTP implementation to avoid random connection drops
+* Allow (S)FTP access without hiding files or blocking dlls
+    ** SMM must view the game executable file to detect the server.
+    ** Many mods have custom dlls required to function. Note that all dlls are scanned by virustotal before they are allowed on ficsit.app.
+    ** Some mods create or read other files and folders in the game install directory to function properly.
+* Allow the user to temporarily stop the game server without it automatically starting up again
+    ** Mods can't be added or removed while the game is running.
+* Test out SMM yourself
+    ** The best way to ensure it's working is to try it out the same way your users would!
+    ** The source code for both link:https://github.com/satisfactorymodding/SatisfactoryModManager[SMM]
+       and the underlying link:https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli] are available if they would assist with your troubleshooting.
+* (Bonus points) Allow users to temporarily prevent their servers from updating to newer game versions
+    ** Some users like to run previous versions while waiting for mods to be updated.
+* (Bonus points) Also expose port 8080
+    ** In addition to the ports used by the base game, some server monitoring mods like link:https://ficsit.app/mod/FicsitRemoteMonitoring[Ficsit Remote Monitoring] use this port for communications.
+
+====
+If you have any questons, or want to be added to the xref:ForUsers/DedicatedServerSetup.adoc#SupportedHosts[known supported hosts list], contact us on the link:https://discord.ficsit.app[Discord].
+====

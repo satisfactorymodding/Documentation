@@ -102,11 +102,15 @@ _we offer no support for them_.
 - Nitrado - FTP connection often responds with "invalid response" to valid requests.
 ====
 
-It is also worth noting that AMP causes SFTP to throw weird errors,
-but mods can be installed if pointing SMM to a network mount or local path as described link:#FileTransferMethods_SMB[here].
+It is also worth noting that AMP previously caused SFTP to throw weird errors.
+The AMP devs have updated their SFTP implementation to correct this,
+but if you still encounter it, mods can be also installed on AMP via a network mount or local path as described link:#FileTransferMethods_SMB[in the SMB section].
 
 If you believe a host is listed here in error,
 contact us about it on the https://discord.ficsit.app[Discord].
+
+Are you a server host company looking to ensure your servers are compatible with SMM?
+See the xref:CommunityResources/ServerHostSmmInfo.adoc[SMM for Server Hosts] page for more info.
 
 [id="GetModManager"]
 == Use a Mod Manager to Connect to the Server
