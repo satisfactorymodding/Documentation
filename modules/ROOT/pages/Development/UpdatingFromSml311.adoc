@@ -205,6 +205,8 @@ Future Satisfactory updates are likely to further extend the capabilities of the
 In previous versions, a number of asset types were auto-detected by the game without registration.
 These include icon libraries, input contexts, FGMessages (for ADA), and FGUserSettings.
 As of 1.2, these content types must now be registered via the Game Features system.
+A few other content types can also be detected (as an alterative to using SML content registration systems),
+which you can read more about on the xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset] page.
 
 To migrate your mod to use Game Features:
 
@@ -233,9 +235,12 @@ To migrate your mod to use Game Features:
   ** FGIconLibrary
   ** FGChildInputMappingContext (previously Input Mapping Context using Parent Context registration)
 . If your mod DOES use one of those types,
+  you'll need to create a scan rule for it.
+  In order to learn the supported rules,
   create a new dummy mod with the "Blueprint Only" Alpakit template,
-  then open its game feature data asset to view example "Primary Asset Types to Scan" rules.
-  Assess which your mod needs to register and set up similar rules in your mod.
+  then open its game feature data asset to view its "Primary Asset Types to Scan" rules.
+  The Alpakit template should contain all supported scan rules.
+  Assess which types your mod needs to register, then and set up similar rules in your mod.
 
 ExampleMod is updated to use the Game Feature system
 if you'd like to compare against an already migrated mod.

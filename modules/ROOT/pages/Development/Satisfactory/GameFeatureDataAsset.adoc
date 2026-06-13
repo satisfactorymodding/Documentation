@@ -3,16 +3,19 @@
 [NOTE]
 ====
 This page is still a work in progress.
-
-TODO Arch mentioned it's possible to register schematics without SML now via this
 ====
 
 Introduced in 1.2, Satisfactory uses the
 link:https://dev.epicgames.com/documentation/unreal-engine/game-features-and-modular-gameplay-in-unreal-engine?application_version=5.6[Unreal Game Features and Modular Gameplay]
 system to detect content present in mods and register it with base game systems.
 
+== Content Registration via Game Feature Data
+
 Game Features serve a similar purpose to SML's xref:Development/ModLoader/ModModules.adoc[Mod Modules]
 for content registration.
+
+As long as the content type you're trying to register is one of the supported types listed link:#AssetScan[below],
+you should be able to use a Game Feature Data asset _instead_ of an SML Mod Module for registering content, such as schematics.
 
 [id="Actions"]
 == Game Feature Actions
@@ -21,6 +24,11 @@ Multiple "Actions" exist that allow performing some kind of modification.
 This page will only document ones we know to be directly useful for modding. 
 
 === Add Components
+
+[IMPORTANT]
+====
+This Action is not working as of Satisfactory 1.2
+====
 
 This action allows specifying Unreal Components to be spawned with Actor classes,
 somewhat similar to using an xref:Development/ModLoader/ActorMixins.adoc[Actor Mixin] to attach a component to a class.
@@ -36,7 +44,7 @@ Don't use this one, use the non-content-bundle one instead.
 === Add World Partition Content (Non-Content Bundle)
 
 This is the one that should be used instead of the Content Bundle one.
-At the time of writing, it does not appear properly in the editor without an editor setting adjustment.
+At the time of writing, **it does not appear properly in the editor without an editor setting adjustment**.
 This functionality is not totally working yet.
 
 [id="AssetScan"]
@@ -68,7 +76,12 @@ The Game Feature content registration has some feature overlap with xref:Develop
 Use Game Features if...
 
 * Your content should always be loaded when the mod is loaded
+* You'd like to register every asset of a type under a certain directory,
+  for example, an entire directory tree of schematics
 
 Use SML Mod Modules if...
 
+* You already need a mod module to utilize other SML-specific features like mod subsystems or chat commands
+* You only want specific assets of a type to be registered,
+  for example, only some of the schematics you have in a directory
 * Your content needs to be loaded conditionally (for example, based on a xref:Development/ModLoader/SessionSettings.adoc[Session Setting] or the presence of another mod)
