@@ -20,9 +20,8 @@ To ensure compatibility, check the following:
        and the underlying link:https://github.com/satisfactorymodding/ficsit-cli[ficsit-cli] are available if they would assist with your troubleshooting.
 * (Bonus points) Allow users to temporarily prevent their servers from updating to newer game versions
     ** Some users like to run previous versions while waiting for mods to be updated.
-* (Bonus points) Also expose port 8080
-    ** In addition to the ports used by the base game, some server monitoring mods like link:https://ficsit.app/mod/FicsitRemoteMonitoring[Ficsit Remote Monitoring] use this port for communications.
+* (Bonus points) Also expose optional extra port(s):
+    ** In addition to the ports used by the base game, some server monitoring mods like link:https://ficsit.app/mod/FicsitRemoteMonitoring[Ficsit Remote Monitoring] use a TCP port for communications.
+    ** Port(s) can be configured for mods to facilitate flexibility in assignment. See mod documentation or reach out to the mod creator/maintainer for details.
 
-====
 If you have any questons, or want to be added to the xref:ForUsers/DedicatedServerSetup.adoc#SupportedHosts[known supported hosts list], contact us on the link:https://discord.ficsit.app[Discord].
-====
