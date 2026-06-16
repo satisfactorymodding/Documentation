@@ -307,3 +307,31 @@ _Notable Mod Loader Features Used:_
 
 * Actor Mixins
 ** Used to spawn an additional actor component on sign placement holograms (the upwards facing arrow)
+
+[id="FicsitRemoteMonitoring"]
+== Ficsit Remote Monitoring
+
+Adds remote monitoring capabilities to the game.
+
+_Source Code_: Linked on the https://ficsit.app/mod/FicsitRemoteMonitoring[Mod Page]
+
+_Mod Type_: C++ with some Blueprints
+
+_Notable Techniques Used:_
+
+* Use of a third-party library (uWebSockets) in a mod
+* HTTP Server and Serial/RS232 Communications
+* Webhook Communications
+* Icon Generator (thanks to D4rk for the assistance)
+* Modules for Client and Server logic separation
+
+_Notable Satisfactory Features Used:_
+
+* Responds to API calls to the native game's HTTPS server to interact with the mod's features from outside the game.
+* Use of the native game's configuration method, i.e. FGGameUserSettings
+* Methods to access various in-game subsystems to retrieve information about the game state
+
+_Notable Mod Loader Features Used:_
+
+* Mod Subsystems
+* Access Transformers, to be able to read otherwise inaccessible member variables.
