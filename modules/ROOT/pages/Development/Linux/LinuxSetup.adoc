@@ -239,6 +239,57 @@ Open the Settings window and find the "Plugins" page, then search the marketplac
 link:https://plugins.jetbrains.com/plugin/29974-unreal-project-model-mods-fix[`Unreal Project Model Mods Fix`] by Archengius and install it.
 Restart the IDE if prompted.
 
+You may encounter an error where the project model definition files fail to generate.
+
+image:BeginnersGuide/FailedToGenerateProjectModel.png[Failed to generate project model]
+
+In order to fix it so you can edit C++ code, you need to open your file manager to
+`<ue_dir>/Engine/Source/Programs/` and delete the `LiveLinkHub` directory.
+
+To avoid redundant compilation jobs every time you try to package a mod, you need to download these two files:
+
+https://github.com/satisfactorymodding/UnrealEngine/blob/5.6.1-CSS/Engine/Build/BatchFiles/BuildUBT.sh
+
+and
+
+https://github.com/satisfactorymodding/UnrealEngine/blob/5.6.1-CSS/Engine/Build/BatchFiles/DotnetDepends.sh
+
+and place them in `<ue_dir>/Engine/Build/BatchFiles/`.
+Ensure they can be executed by running:
+
+[source,bash]
+----
+chmod +x BuildUBT.sh DotnetDepends.sh
+----
+
+Then, in your preferred text editor, open:
+
+`<ue_dir>/Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs`
+
+and comment out lines 2474 through 2482 like this:
+
+[source,cs]
+----
+// GlobalSingleInstanceMutex? mutex = null;
+// if (Rules.BuildEnvironment == TargetBuildEnvironment.Shared)
+// {
+//	 string MutexName = GlobalSingleInstanceMutex.GetUniqueMutexForPath("UnrealBuildTool_CreateCompileEnvironmentForProjectFiles", Unreal.EngineDirectory);
+//	 mutex = new GlobalSingleInstanceMutex(MutexName, true);
+// }
+//
+// CreateSharedPCHInstances(Rules, TargetToolChain, Binaries, GlobalCompileEnvironment, new NullActionGraphBuilder(Logger), Logger);
+// mutex?.Dispose();
+----
+
+Now, run:
+
+[source,bash]
+----
+bash <ue_dir>/Engine/Build/BatchFiles/BuildUBT.sh
+----
+
+Once that's complete, you can move on to the compilation steps.
+
 ====
 link:#Compile[Proceed to project compilation steps ➡]
 ====
