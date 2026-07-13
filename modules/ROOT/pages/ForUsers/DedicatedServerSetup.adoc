@@ -65,7 +65,8 @@ const unshuffled = [
   "GTX Gaming",
   "Nodecraft",
   "Gravel Host",
-  "Nitroserv"
+  "Nitroserv",
+  "Bearded Host"
 ];
 const shuffled = unshuffled
   .map(value => ({ value, sort: Math.random() }))
