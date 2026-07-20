@@ -47,7 +47,7 @@ image:CommunityResources/Incredibuild/incredibuild-email.png[image]
 == Installing Incredibuild
 
 Now that you have your license, we can begin installing Incredibuild.
-If you haven't already, you can download the agent installer from https://dl.incredibuild.com/ib10-latest[here].
+If you haven't already, you can download the agent installer from https://docs.incredibuild.com/site_landing/download_docs_center.htm[here].
 Run the installer and read the license agreement before accepting.
 
 For the install configuration, select "Grid" mode.

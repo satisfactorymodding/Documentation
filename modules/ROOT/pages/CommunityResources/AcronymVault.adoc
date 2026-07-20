@@ -88,8 +88,8 @@ A separate https://satisfactory-calculator.com/en/megaprints[Megaprints Reposito
 Satisfactory Server Manager is a webpage
 designed to manage and control multiple satisfactory dedicated server instances.
 
-Its public source code can be found on
-https://github.com/mrhid6/SatisfactoryServerManager[GitHub].
+Its public source code can be found on the Organization's 
+https://github.com/SatisfactoryServerManager[Github].
 
 [id="SMEH"]
 === Satisfactory Modding Environment Helper (SMEH)

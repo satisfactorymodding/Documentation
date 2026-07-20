@@ -48,7 +48,7 @@ Unreal console commands are run *from the in-game developer console*
 which opens when you press the grave/tilde key (``` or `~`).
 They can also be executed from the interactive console of a dedicated server.
 If the console does not open upon keypress, check out the
-https://satisfactory.wiki.gg/wiki/Console#Accessing[Satisfactory Wiki's page on the Console]
+https://satisfactory.wiki.gg/wiki/Debug_console#Accessing[Satisfactory Wiki's page on the Console]
 to try alternate approaches.
 
 Some console commands are built into Unreal Engine,
