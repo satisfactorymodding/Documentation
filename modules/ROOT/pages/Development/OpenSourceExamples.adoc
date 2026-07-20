@@ -315,7 +315,7 @@ Adds remote monitoring capabilities to the game.
 
 _Source Code_: Linked on the https://ficsit.app/mod/FicsitRemoteMonitoring[Mod Page]
 
-_Mod Type_: C++ with some Blueprints
+_Mod Type_: Hybrid Blueprint/{cpp}
 
 _Notable Techniques Used:_
 
