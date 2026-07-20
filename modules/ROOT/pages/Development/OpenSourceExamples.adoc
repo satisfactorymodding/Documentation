@@ -322,7 +322,7 @@ _Notable Techniques Used:_
 * Use of a third-party library (uWebSockets) in a mod
 * HTTP Server and Serial/RS232 Communications
 * Webhook Communications
-* Icon Generator (thanks to D4rk for the assistance)
+* Icon Generator
 * Modules for Client and Server logic separation
 
 _Notable Satisfactory Features Used:_
