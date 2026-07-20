@@ -243,7 +243,7 @@ You may encounter an error where the project model definition files fail to gene
 
 image:BeginnersGuide/FailedToGenerateProjectModel.png[Failed to generate project model]
 
-In order to fix it so you can edit C++ code, you need to open your file manager to
+In order to fix it so you can edit {cpp} code, you need to open your file manager to
 `<ue_dir>/Engine/Source/Programs/` and delete the `LiveLinkHub` directory.
 
 To avoid redundant compilation jobs every time you try to package a mod, you need to download these two files:
