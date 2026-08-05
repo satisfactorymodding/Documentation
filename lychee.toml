@@ -48,7 +48,9 @@ exclude = [
     # Pages often time out and Shouldn't™ ever get deleted anyways
     "https://web.archive.org/web/",
     # Cloudflare checks this, unlikely to be deleted
-    "^https://superuser.com/.*"
+    "^https://superuser.com/.*",
+    # Seems to often be behind a captcha
+    "https://github.com/signup"
 ]
 
 # Exclude these filesystem paths from getting checked.
