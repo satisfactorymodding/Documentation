@@ -1,0 +1,272 @@
+= Reliable Messaging
+
+[NOTE]
+====
+This page assumes you already have working knowledge of Unreal Engine's replication system.
+
+Read the xref:Development/Satisfactory/Multiplayer.adoc[Multiplayer]
+page for information about Unreal's replication system and special cases for Satisfactory.
+====
+
+Reliable Messaging was introduced in the 1.1 release
+and is a Coffee Stain custom implementation that completely bypasses Unreal's normal replication system.
+It sends messages directly to clients over a TCP connection. Although this comes at the
+cost of slightly higher latency, it gives developers fine-grained control over the
+contents of the message, and is also not susceptible to Unreal Engine's replication
+limits (e.g. the dreaded Reliable Buffer Overflow).
+
+The purpose of the system is to replicate large amounts of data without hitting Unreal Engine's its limits.
+Satisfactory uses this system to replicate foliage removals, as well as the recipe and schematic managers data.
+
+The system can send data from Server to specific clients or from clients to the server, but in this page we will only focus at Server to client data, for client to server data it would work the same way, you just got to register the message handler on the server and send the message from the client
+
+== Replicating Data
+
+=== Setting up the build dependency
+
+To use the system to replicate data, we must first make it available.
+In our cpp code we need to add `"ReliableMessaging"` to our `PublicDependencyModuleNames` in the `YourModReference.Build.cs`.
+And we must also add it as an dependency plugin in our mods .uplugin file by adding it under plugins, no SemVersion is required because we set it as a `BasePlugin`.
+
+[source,uplugin]
+----
+	"Plugins": [
+		{
+			"Name": "ReliableMessaging",
+			"Enabled": true,
+			"BasePlugin": true
+		}
+	],
+----
+
+=== Choosing gameplay tag
+
+Reliable Messaging routes different messages to different handlers using gameplay tags, 
+Since this entire document is done in cpp, i will include the pure cpp way to add gameplay tags
+In the header we declare a gameplay tag
+[source,h]
+----
+UE_DECLARE_GAMEPLAY_TAG_EXTERN(YourModItsReplication);
+----
+Then in cpp we give it an string representation
+[source,c++]
+---
+UE_DEFINE_GAMEPLAY_TAG(YourModItsReplication, "YourMod.Replication");
+---
+
+Then when you need this gameplay tag later in your cpp side you can retrieve it with `FGameplayTag::RequestGameplayTag(TEXT("YourMod.Replication"));`
+
+=== Deciding the message to transfer
+
+For this example we will assume we want to send and array of fictional player infos.
+We will need to define our custom data struct `FPlayerInfo`, the message struct and the message id.
+The message id allows your receiving handler to switch between different handling for different types of data.
+It will look something like this
+
+[source,h]
+----
+// some custom data struct (can be USTRUCT(BlueprintType)) if desired
+struct YOURMOD_API FPlayerInfo
+{
+	FString Name;
+	FString Job;
+
+	FPlayerInfo(FString name, FString job) : Name(name), Job(job) {}
+	FPlayerInfo() : FPlayerInfo(TEXT(""), TEXT("")) {}
+	FPlayerInfo(const FPlayerInfo& Other) : Name(Other.Name), Job(Other.Job) {}
+};
+
+// message id, to distinguish between different messages
+enum class EModPlayerInfoMessageId : uint32
+{
+	PlayerJobs = 0x01
+};
+
+// the message struct to send
+struct FModPlayerInfoJobsMessage
+{
+	static constexpr EModPlayerInfoMessageId MessageId = EModPlayerInfoMessageId::PlayerJobs;
+	TArray<FPlayerInfo> PlayerInfos;
+
+	friend FArchive& operator<<(FArchive& Ar, FModPlayerInfoJobsMessage& Message);
+};
+----
+
+We would also need to implement some operator overloads to the `<<` operator 
+so that the compiler knows how to serialize our custom struct
+
+[source,c++]
+----
+// serializer for our custom data struct
+FArchive& operator<<(FArchive& Ar, FPlayerInfo& Info)
+{
+	Ar << Info.Name;
+	Ar << Info.Job;
+	return Ar;
+}
+
+// serializer for our message
+FArchive& operator<<(FArchive& Ar, FModPlayerInfoJobsMessage& Message)
+{
+	Ar << Message.PlayerInfos;
+	return Ar;
+}
+----
+
+=== Setting up a handler for receiving data
+
+On the client we want to register a callback to be called when the server sends us messages.
+This is done by retrieving the `UReliableMessagingPlayerComponent` for your local player controller
+and calling `RegisterTaggedMessageHandler` on it.
+For this we will be creating a `UActorComponent` in cpp that will receive and send the messages.
+Its generally a good idea to setup this handler early so you can start receiving your data early.
+For that its recommended to setup this handler in the `BeginPlay()` of your `UActorComponent`.
+
+[source,h]
+----
+// `BlueprintSpawnableComponent` is required to make it show up as an component
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+class YOURMOD_API UModReliableMessagingPlayerComponent : public UActorComponent
+{
+	GENERATED_BODY()
+
+public:
+	virtual void BeginPlay() override;
+
+	void OnRawDataReceived(TArray<uint8>&& InMessageData);
+}
+----
+[source,c++]
+----
+void UModReliableMessagingPlayerComponent::BeginPlay()
+{
+	const APlayerController* PlayerController = CastChecked<APlayerController>(GetOwner());
+
+	if (!PlayerController->HasAuthority() && PlayerController->IsLocalController())
+	{
+		//register data received handler
+		if (UReliableMessagingPlayerComponent* PlayerComponent = UReliableMessagingPlayerComponent::GetFromPlayer(PlayerController))
+		{
+			const FGameplayTag ReplicationTag = FGameplayTag::RequestGameplayTag(TEXT("YourMod.Replication"));
+			PlayerComponent->RegisterTaggedMessageHandler(ReplicationTag,
+				UReliableMessagingPlayerComponent::FOnBulkDataReplicationPayloadReceived::CreateUObject(this, &UModReliableMessagingPlayerComponent::OnRawDataReceived));
+		}
+	}
+}
+----
+
+Now we will also need need to implement that `OnRawDataReceived`. 
+Assuming we are going to receive messages like the one defined above, we can implement it like this.
+
+[source,c++]
+----
+void UModReliableMessagingPlayerComponent::OnRawDataReceived(FGameplayTag tag, TArray<uint8>&& InMessageData)
+{
+	if (tag != FGameplayTag::RequestGameplayTag(TEXT("YourMod.Replication")))
+		return;
+
+	FMemoryReader RawMessageMemoryReader(InMessageData);
+	FNameAsStringProxyArchive NameAsStringProxyArchive(RawMessageMemoryReader);
+
+	EModPlayerInfoMessageId MessageId{};
+
+    // this actually writes the id from `NameAsStringProxyArchive` to `MessageId`
+	NameAsStringProxyArchive << MessageId; 
+	if (NameAsStringProxyArchive.IsError()) return;
+
+    // if we support different messages we can switch here to the correct types we expect
+	switch (MessageId) 
+	{
+        case EModPlayerInfoMessageId::PlayerJobs:
+        {
+            FModPlayerInfoJobsMessage JobsMessage;
+
+            // this actually writes the message from `NameAsStringProxyArchive` to `JobsMessage`
+            NameAsStringProxyArchive << JobsMessage;
+            if (NameAsStringProxyArchive.IsError()) return;
+
+            ToDoHandlePlayerInfoJobsMessage(JobsMessage);
+            
+            break;
+        }
+	}
+}
+----
+
+=== Setting up the actor mixin
+
+Next up we want to our component to be attached to the PlayerController.
+This can be achieved using a xref:Development/ModLoader/ActorMixins.adoc[Actor Mixin] 
+targeting `BP_PlayerController` to which we add our custom actor component `UModReliableMessagingPlayerComponent`. 
+
+image::Satisfactory/ReliableMessaging/BlueprintMixinTarget.png[Actor mixin target example]
+image::Satisfactory/ReliableMessaging/AddComponent.png[Add Component]
+
+Be sure to check the checkbox `Auto Activate`.
+
+=== Sending the message from the server
+
+If you want to directly replicate some initial data to clients that connect to the server,
+we can reuse same `BeginPlay` of our component that we defined above.
+To do this we will need to extend it to directly send the data to connecting clients.
+
+[source,c++]
+----
+void UModReliableMessagingPlayerComponent::BeginPlay()
+{
+	// We are Server, and this is a remote player. Send descriptor lookup array to the client
+	if (PlayerController->HasAuthority() && !PlayerController->IsLocalController())
+	{
+        TArray<FPlayerInfo> PlayerInfos
+        PlayerInfos.Add(FPlayerInfo(TEXT("Sander"), TEXT("Rouge")));
+        PlayerInfos.Add(FPlayerInfo(TEXT("Henk"), TEXT("Warrior")));
+        PlayerInfos.Add(FPlayerInfo(TEXT("Melisa"), TEXT("Mage")));
+
+        FModPlayerInfoJobsMessage JobsMessage;
+        JobsMessage.PlayerInfos = PlayerInfos;
+
+        SendRawMessage(PlayerController, JobsMessage);
+	}
+}
+----
+
+And the actual implementation of `SendRawMessage` will look something like this.
+
+[source,c++]
+----
+void UModReliableMessagingPlayerComponent::SendRawMessage(const APlayerController* PlayerController, FModPlayerInfoJobsMessage Message) const
+{
+	TArray<uint8> RawMessageData;
+	FMemoryWriter RawMessageMemoryWriter(RawMessageData);
+	FNameAsStringProxyArchive NameAsStringProxyArchive(RawMessageMemoryWriter);
+
+	NameAsStringProxyArchive << Message.MessageId;
+	NameAsStringProxyArchive << Message;
+
+	UReliableMessagingPlayerComponent* PlayerComponent = UReliableMessagingPlayerComponent::GetFromPlayer(PlayerController);
+	if (ensure(PlayerComponent))
+	{
+		const FGameplayTag ReplicationTag = FGameplayTag::RequestGameplayTag(TEXT("YourMod.Replication"));
+		PlayerComponent->SendTaggedMessage(ReplicationTag, MoveTemp(RawMessageData));
+	}
+}
+----
+
+You are in full control of whether or not to send data to certain player controllers, 
+and it doesn't have to be some initial data, you can call the `SendTaggedMessage` function whenever you like.
+If for example you do want to send a message to all players but you don't directly access to their controllers
+you can use the player controller iterator like this.
+
+[source,c++]
+----
+	for (TPlayerControllerIterator<AFGPlayerController>::ServerAll playerController(GetWorld()); playerController; ++playerController) {
+		if (!IsValid(*playerController))
+			continue;
+
+        SendRawMessage(playerController, Message...);
+    }
+----
+
+=== Example implementations
+
+ * There is an open source implementation in the https://github.com/Jarno458/AdditionalDepots/blob/main/Mod/Source/AdditionalDepots/Private/AdditionalDepotsReplicatorComponent.cpp[open source implementation] in the https://ficsit.app/mod/AdditionalDepots[Additional Depots] mod.
