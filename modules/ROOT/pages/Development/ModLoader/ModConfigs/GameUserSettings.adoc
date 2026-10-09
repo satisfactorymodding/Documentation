@@ -1,0 +1,234 @@
+= User Settings
+
+Game User Settings are a feature that is used by the base game's Creative Mode and Game Mode Settings
+that allows mods to store configuration information on a _per-game-install_ basis.
+Game User Setting values are xref:Development/Satisfactory/Multiplayer.adoc[automatically replicated in multiplayer]
+and can be edited by any connected player.
+
+Game User Settings are currently stored in the Engine's GameUserSettings.ini file,
+making them available exceedingly early in the loading process.
+This may change in the future depending on what mod developers decide is more useful.
+
+== Defining New Game User Settings
+
+Game User Settings are defined by Data Assets.
+To create a Game User Setting in Blueprint, in a content browser right click and select
+`Create Advanced Asset` > `Miscellaneous` > `Data Asset` and search for `FGUserSetting`.
+
+=== Selecting a Str Id
+
+Game User Settings are handled by `UFGGameUserSettings`, the class the game uses to define the configuration options in the settings menu.
+
+The "Str Id" field is a unique identifier for the Game User Setting
+and is used for retrieving the value of the Game User Setting later.
+See the table below for some examples of Str Ids and things to keep in mind when selecting one.
+
+.Example User Setting Str Ids
+|===
+|✔️ Good Example |❌ Bad Practice
+
+|✔️ `YourModReference.EnableFizzBuzz`
+
+Prefix the id with your Mod Reference to ensure it is unique across mods.
+
+| ❌ `EnableFizzBuzz`
+
+Another mod could implement a User Setting by this name,
+leading to a conflict.
+
+|✔️ `YourModReference.WhizzbangStrengthMult`
+
+Since User Settings are referenced by their string id,
+giving them a verbose, unique name makes it easy to find all usages of the setting in code
+via a find operation.
+
+| ❌ `YourModReference.Multiplier`
+
+Multiplier for what? It's easy to forget what this setting controls,
+and if you ever decide to add other "multipliers" in the future,
+they could easily be mentally confused with this one.
+
+|✔️ `YourModReference.PowerCostMultFloat`
+
+Since you must use a type-specific method to read/write a User Setting,
+consider including the setting's type as part of its id as a reminder of what type it is.
+Unfortunately using the wrong getter method is currently a silent error due to how the FG Options system is implemented,
+making this problem particularly annoying to track down.
+
+|
+// intentionally blank
+
+|✔️ `YourModRef.MinerMk1.PowerCostMultFloat`
+
+Consider indicating which building/feature a setting applies to
+if you offer multiple settings with similar names or functionality.
+
+|
+// intentionally blank
+
+
+|===
+
+[id="Categories"]
+=== Display
+
+The following fields control how User Settings appear to end users:
+
+- Display Name: User-facing name of the option. Users can search for this text within the setting's category.
+- Tool Tip: User-facing description of what the option does.
+  Appears at the bottom of the setting scroll list when the user hovers over the option.
+  Text will wrap as needed to fit the user's screen, but manual new lines are not supported.
+- Widgets to Create: Defines where the setting appears. Elaborated on below.
+
+[id="CategoryAsset"]
+==== Category Assets
+
+User Settings appear in categories defined by FGUserSettingCategory assets.
+You must create a minimum of 2 Category assets for your mod's User Settings,
+one for the overarching Category used by your mod, and a second for a Sub Category within your category.
+Category assets can be reused for multiple options within the same mod.
+
+The following defaults are suggested:
+
+[NOTE]
+====
+User Setting categories can use the icon functionality offered by FGUserSettingCategory.
+====
+
+[id="CategoryAsset_Main"]
+===== (Main) Category
+
+Suggested asset name: `USC_YourModReference`
+
+- mDisplayName: The Friendly Name of your mod, for example, `Example Mod`. The user can search all Categories for what you write here.
+- mMenuPriority: Leave this at `0`, you can't infer what other mods the end user will have installed to pick a "good" value.
+  If you create multiple main categories, you can use this field to ensure they display next to each other.
+  In this case, pick a random large number to use as a base and then a small offset to group them together, for example, `864392` and `864392.1`.
+
+Mods typically define a single main category for their User Settings.
+If you end up creating multiple, make sure it's still clear which mod is offering the category.
+
+[id="CategoryAsset_Sub"]
+===== Sub Category:
+
+Suggested asset name: `USSubC_YourModReference_SubCategoryName`
+
+- mDisplayName: Header text for this sub category. This field's text isn't currently searchable.
+- mMenuPriority: Because you control all sub categories within your mod's category, this field is useful for ordering them.
+
+[id="WidgetsToCreate"]
+==== "Widgets to Create" entry
+
+User Settings inherit functionality from FGUserSettings that enable the same option to be displayed in multiple places,
+so making one appear involves creating at least one entry in the Widgets to Create field.
+Make sure to define these fields:
+
+- Category Class: Self explanatory.
+- Sub Category Class: Self explanatory.
+- Menu Priority: Controls options' ordering within the sub category.
+
+==== Level Whitelist
+
+When values are present in this array, the User Setting is restricted to only appear when playing in one of the specified game levels.
+Combined with the fact that users can configure User Settings when setting up a new game save,
+they are especially useful as options for custom maps.
+
+=== Behavior
+
+Not all properties inherited from UFGGameUserSettings are relevant to User Settings.
+You will have to experiment to see which ones have an effect.
+Please update this documentation page via "Edit This Page" in the top right with your findings.
+
+Checking the "Use CVar" field is only required
+if you wish to allow modifying the value of the User Setting via the game console.
+
+SML automatically forces the following property values on User Settings.
+If you change any of these properties they will be automatically reset to these values
+next time the asset is loaded.
+
+* ShowInBuilds: `Public Builds` to ensure that User Settings are visible to the user
+* ManagerAvailability: `USM MAX`, which is an invalid value, ensuring that the setting never displays in base-game options menus.
+* IsSettingSessionWide: `true` to ensure that multiplayer clients are able to modify User Settings and have their changes stored with the save file.
+
+In order to have a User Setting only editable at save creation, use the "Don't show in game" Visibility Disqualifier.
+
+=== Registration
+
+A User Setting must be registered to be usable by the player.
+
+To register a User Setting, list it in the relevant array of your mod's
+xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset].
+
+Registering a User Setting makes it available to be configured in Satisfactory's Settings menu
+which is available at both world creation and in the pause menu.
+
+== Reading and Writing User Settings
+
+Check ExampleMod for some example User Settings and how to read their values.
+There is an example in the ExampleMod Level Blueprint and in the Game World Module.
+
+=== From Blueprints
+
+To get a reference to the User Settings, use the "Get Option Interface" node.
+
+You can read the value of a User Setting via the "Get <typename> Option Value" method of the User Settings Manager.
+You can also subscribe to changes via "Subscribe to Dynamic Option Update".
+
+If you want to programmatically modify the value of a User Setting,
+use the "Set <typename> Option Value".
+
+=== From {cpp}
+
+The UFGGameUserSettings is a UGameUserSettings UObject and as such can be accessed via the standard Unreal method of getting user settings. This does not require the game world context as shown below.
+
+An example of reading a User Setting value from {cpp}:
+
+```cpp
+UFGGameUserSettings* UserSettings = UFGGameUserSettings::GetFGGameUserSettings();
+
+// Boolean setting
+const FVariant ConfigVariant = UserSettings->GetOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+bool ConfigValue = ConfigVariant.GetValue<bool>();
+--or--
+bool ConfigValue = UserSettings->GetBoolOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+
+// Integer setting
+const FVariant ConfigVariant = UserSettings->GetOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+int32 ConfigValue = ConfigVariant.GetValue<int32>();
+--or--
+int32 ConfigValue = UserSettings->GetIntOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+
+// FString setting
+const FVariant ConfigVariant = UserSettings->GetOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+FString ConfigValue = ConfigVariant.GetValue<FString>();
+--or--
+FString ConfigValue = UserSettings->GetStringOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+
+// Float setting
+const FVariant ConfigVariant = UserSettings->GetOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+float ConfigValue = ConfigVariant.GetValue<float>();
+--or--
+float ConfigValue = UserSettings->GetFloatOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+
+// Linear Color setting
+const FVariant ConfigVariant = UserSettings->GetOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+FLinearColor ConfigValue = ConfigVariant.GetValue<FLinearColor>();
+--or--
+FLinearColor ConfigValue = UserSettings->GetLinearColorOptionValue(TEXT("ExampleMod.ExampleUserSetting"));
+```
+
+=== Testing
+
+Make sure to check in-game to ensure that your User Settings appear and display as you expect.
+They are referred to in-game as Settings. This is the same as the game settings for Display, World, Gameplay, etc.
+
+Check out ExampleMod for some example types and setups using User Settings.
+
+== Advanced Game Settings
+
+In order to create an Creative Mode setting (internally called an Advanced Game Setting) instead of a User Setting:
+
+. Create a data asset of type `FGUserSetting`.
+. Set the Manager Type Availability is set to `FGAdvancedGameSettings` in the asset properties.
+. Ensure your mod's xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset]
+  is configured to scan for FGUserSetting assets at the path required to find your data asset.

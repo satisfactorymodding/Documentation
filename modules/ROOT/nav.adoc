@@ -105,7 +105,11 @@
         *** xref:Development/ModLoader/ActorMixins.adoc[Actor Mixins]
         *** xref:Development/ModLoader/WidgetBlueprintHooks.adoc[Widget Blueprint Hooks]
         *** xref:Development/ModLoader/BlueprintInterface.adoc[Blueprint Interface]
-        *** xref:Development/ModLoader/SessionSettings.adoc[Session Settings]
+        *** Mod Configurations
+            **** xref:Development/ModLoader/ModConfigs/ConfigTypes.adoc[Config Types (Which one should you use?)]
+            **** xref:Development/ModLoader/ModConfigs/SessionSettings.adoc[Session Settings]
+            **** xref:Development/ModLoader/ModConfigs/ModConfig.adoc[Mod Config]                  
+            **** xref:Development/ModLoader/ModConfigs/GameUserSettings.adoc[Game UserSettings]
         *** xref:Development/ModLoader/ChatCommands.adoc[Chat Commands]
         *** xref:Development/ModLoader/Registry.adoc[Registry]
         *** xref:Development/ModLoader/GameMapRegistry.adoc[Game Map Registry]
