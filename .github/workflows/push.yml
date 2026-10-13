@@ -11,7 +11,7 @@ env:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: arc-k8s # Run on self hosted because lychee fails on some websites which block github actions
     steps:
       - name: Log Action Trigger Info
         # https://docs.github.com/en/webhooks/webhook-events-and-payloads#repository_dispatch
@@ -23,6 +23,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v6
+
+        # Workaround for https://github.com/pnpm/pnpm/issues/11531 on self hosted, can be removed when we use pnpm 12
+      - name: Install missing pnpm dependency
+        run: sudo apt-get update && sudo apt-get install -y libatomic1
 
       - name: Read pnpm version from file
         id: pnpm-version
