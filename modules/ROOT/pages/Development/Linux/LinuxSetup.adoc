@@ -158,17 +158,19 @@ Run this command in your terminal to download the required version of Wwise:
 
 // Docs editors: subs attribute needed to handle the text substitutions for version numbers
 // https://docs.asciidoctor.org/asciidoc/latest/subs/attributes/#attributes-substitution-value
+// Use incremental substitutions such that default code block substitutions (such as replacing <>) are still applied
+// https://docs.asciidoctor.org/asciidoc/latest/subs/apply-subs-to-blocks/#incremental
 
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
-./wwise-cli download --sdk-version "{wwise-version-full}" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring
+./wwise-cli download --sdk-version "{wwise-version-full}" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring --filter Packages=Authoring_Windows_x64_Release
 ----
 
 When that's done, run this command to integrate it into the starter project, replacing `<project_dir>` with the path to your project:
 
 Note the intentional difference between the sdk and integration versions.
 
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 ./wwise-cli integrate-ue --integration-version "{wwise-version-major-minor}.{wwise-version-stupid-api-suffix}" --project "<project_dir>/FactoryGame.uproject"
 ----
@@ -186,7 +188,7 @@ Next, we need to open the Wwise authoring application to generate the Wwise proj
 
 Run this command to open the Wwise Authoring application.
 
-[source,bash,subs="attributes"]
+[source,bash,subs="attributes+"]
 ----
 wine ~/.cache/wwise-cli/wwise/{wwise-version-full}/Authoring/x64/Release/bin/Wwise.exe
 ----
