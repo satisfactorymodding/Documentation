@@ -161,7 +161,7 @@ Run this command in your terminal to download the required version of Wwise:
 
 [source,bash,subs="attributes"]
 ----
-./wwise-cli download --sdk-version "{wwise-version-full}" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring
+./wwise-cli download --sdk-version "{wwise-version-full}" --filter Packages=SDK --filter DeploymentPlatforms=Windows_vc160 --filter DeploymentPlatforms=Windows_vc170 --filter DeploymentPlatforms=Linux --filter DeploymentPlatforms= --filter Packages=Authoring --filter Packages=Authoring_Windows_x64_Release
 ----
 
 When that's done, run this command to integrate it into the starter project, replacing `<project_dir>` with the path to your project:
