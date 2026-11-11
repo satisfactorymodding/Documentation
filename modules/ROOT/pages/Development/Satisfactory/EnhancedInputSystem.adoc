@@ -1,5 +1,7 @@
 = Enhanced Input System
 
+// cspell:ignore Blueprintable Gamepad SetKeyboardFocus SetNavigationRuleExplicit SetUserFocus enhancedinput gamepad showdebug spacebar
+
 [NOTE]
 ====
 This page is a work in progress.
@@ -9,7 +11,7 @@ TODO as of 1.2 actions now have their player mappable settings configured on the
 TODO as of 1.2, contexts using parent contexts must be scanned by the mod's xref:Development/Satisfactory/GameFeatureDataAsset.adoc[Game Feature Data Asset] to be recognized.
 ====
 
-Unreal Engine 5 introduces the Enhanced Input System which assits games in handling user input.
+Unreal Engine 5 introduces the Enhanced Input System which assists games in handling user input.
 Satisfactory extends this system to allow for automatic detection of mod keybinds in the game's settings menu
 and automatic integration with the base game's contexts.
 
@@ -292,10 +294,86 @@ such as which mapping contexts are currently bound.
 
 == Controllers
 
-// TODO 1.1 controller support info
+Satisfactory 1.1 added controller support and restructured many UIs with controller support in mind.
+For mods, controller support usually involves a few separate pieces:
+input actions, focus/navigation, and the on-screen control hints shown by the game.
+The input action setup itself is covered in the earlier sections of this page.
 
-Satisfactory 1.1 has added support for controllers and restructured many UIs with controller support in mind.
-No community members have experimented with controller support features and reported their findings yet.
+The controller compatibility status shown on ficsit.app is described in the
+xref:Development/UpdatingFromSml311.adoc[SML 3.11 update notes].
 
-Do you have additional information about controller support tips and approaches?
-Add it via the "Edit This Page" button in the top right corner and open a Pull Request to bring in your changes.
+=== Detecting Controller UI
+
+FactoryGame exposes helper functions in `FGBlueprintFunctionLibrary` that are useful from UI code:
+
+- `ShouldShowGamepadUI(const UObject* WorldContextObject)`
+- `IsUsingController(const UObject* WorldContextObject)`
+
+`IsUsingController` should not be called on a dedicated server.
+For client-side UI work, it can be used to decide when to apply controller focus, controller-specific submit behavior, or gamepad-only hint rows.
+
+=== Focus and Navigation
+
+Controller input depends on focus.
+If your widget builds its UI dynamically, make sure the generated controls are focusable and receive user focus (`SetUserFocus`, not just `SetKeyboardFocus`) after the widget tree has settled.
+In practice, deferring focus to the next frame, such as with a zero-duration "Delay" node or a next-tick timer in {cpp}, is often more reliable than setting it immediately during construction or while rebuilding children.
+
+Dynamic grids and sidebars usually need explicit UMG navigation rules, such as `SetNavigationRuleExplicit`.
+The default spatial navigation can choose a nearby widget that is geometrically close but not the item the player expects.
+For grids, keep the visual column count and controller navigation column count in sync, then rebuild navigation whenever the child list changes.
+For sidebars, focus movement may also need to activate the row, not just move the highlight, so the rest of the UI updates with the focused category.
+
+When closing a child popup or modal, restore focus to the parent control that opened it, or to the closest stable equivalent.
+If the parent returns with no focused widget, broad actions such as Back/Cancel can reach the wrong widget and close more UI than intended.
+After restoring focus, calling `UFGBlueprintFunctionLibrary::NotifyKeyHintsChanged` can help the native hint bars recalculate.
+
+=== Select and Back Behavior
+
+Controller behavior does not always match mouse behavior one-to-one.
+For example, mouse users may click an item to preview it and then click a separate submit button,
+while controller users may expect the focused item to submit immediately with the bottom face button.
+
+Where possible, call the stock widget's close/submit functions instead of directly hiding or removing the widget.
+This gives the owning modal/window a chance to clean up its focus state, dimming, and hint ownership.
+Direct removal can leave the parent UI in a partially active state.
+
+=== Control Hints
+
+The on-screen control chips are native UI, not just text labels placed inside the current widget.
+There are at least two paths worth knowing about:
+
+- `UFGUserWidget::Keybindings` / `GetKeyHints` feeds normal widget-driven hints.
+- `UFGButtonHintBar` renders controller button-hint rows and can update from focus-path, widget-path, or Enhanced Input sources.
+
+`FFGKeybinding` entries without a `HintTag` can flow into the regular footer row.
+`HintTag` appears to route a hint to a matching native auto-hint widget, such as a specific search or tab hint.
+Do not invent custom hint tags unless you also have a matching native hint widget to render them.
+For ordinary footer actions such as Select or Settings, try leaving keybindings untagged first.
+
+Keyboard/mouse shortcut chips and controller glyph rows are not the same renderer.
+If keyboard bindings are still present while the UI is in controller mode, the controller footer may show unknown glyphs for those keys.
+Keep the active keybinding rows scoped to the current input mode when a widget provides different keyboard and controller hints.
+
+If you patch an existing vanilla widget, you may also find `Widget_HintContainer` widgets with a `SetKeybindingHints(...)` function.
+That path can match existing keyboard/mouse shortcut chips, but it depends on the structure of the vanilla widget and should be treated as more version-fragile than normal widget keybindings.
+
+[IMPORTANT]
+=====
+Treat `UFGButtonHintBar::mCurrentKeyHints` as runtime-owned state.
+It is useful for diagnostics, but directly mutating it can replace or hide unrelated native hints.
+Prefer `UFGUserWidget::Keybindings`, `AddChildKeybindings`, or a higher-level hint API that rebuilds the hints for you.
+=====
+
+=== Testing Checklist
+
+Test controller UI changes with both mouse/keyboard and controller input.
+Useful checks include:
+
+- opening and closing the UI from both input modes
+- switching input mode while the UI is open
+- moving through every generated sidebar/grid direction
+- selecting, submitting, backing out, and closing child popups
+- returning focus to the parent UI after a child popup closes
+- making sure hint rows do not duplicate, disappear, or leave empty chip backgrounds behind
+
+If the mod changes controller support, also update its ficsit.app controller compatibility state once the behavior has been tested.
