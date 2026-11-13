@@ -1,0 +1,51 @@
+= Mod Configuration Options
+
+== Session Settings vs. Mod Config vs. Game User Settings
+
+There are various ways for mod developers to add configuration options for their mods, and it can be confusing to know which one 
+to use. Listed below are the main types of configuration options, and the pros and cons of each type. In general, Session Settings 
+are best for options that affect gameplay and may vary between different saves, Mod Configs are best for options that are more visual 
+or client-specific, and Game User Settings are best for options that should be configurable on dedicated servers and designed for 
+per server or per client rather than per save.
+
+xref:Development/ModLoader/ModConfigs/SessionSettings.adoc[Session Settings]:
+
+.Pros:
+** Good for things that do not pertain to a particular player, or you want to be a choice per save file, such as
+*** What recipes from a mod are enabled
+*** How fast a machine operates
+*** Options for a custom level
+** Per-save configuration
+** Automatically replicated in multiplayer
+** Can be made to sync between server and clients by mod developer if desired
+
+.Cons:
+** Not per-installation, settings have to be re-configured for every new session.
+** Must be registered in the mod's GameInstanceModule to be registered.
+** Not visible in Dedicated Servers, as the User Interface is not loaded there.
+
+xref:Development/ModLoader/ModConfigs/Configuration.adoc[Mod Configurations]:
+
+.Pros:
+** Per-installation configuration
+*** Carries over between saves
+** Can be made to sync between server and clients by mod developer if desired
+** Different users may want different settings on the same server, such as visual options or UI options that do not affect gameplay
+
+.Cons:
+** Not replicated in multiplayer by default
+** Server settings must be configured through the Mod Config file
+
+xref:Development/ModLoader/ModConfigs/UserSettings.adoc[Game User Settings], known as FGUserSetting:
+
+.Pros:
+** Per-installation configuration
+*** Carries over between saves
+** Can use the icon functionality offered by FGUserSettingCategory
+** Allows Dedicated Server and clients to have different settings for the same mod
+** Automatically replicated in multiplayer if `Is Session Setting Wide` is checked
+** Contains an user interface for dedicated servers to configure settings that affect the server
+
+.Cons:
+** Not per-save, changes affect all save files using the same installation
+** Mod must be a GameFeature to use Game User Settings, and settings must be registered in the mod's FGGameFeatureData to be registered.

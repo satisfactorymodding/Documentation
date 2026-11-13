@@ -15,24 +15,6 @@ It's possible to make a session setting specific to only a certain level,
 making them particularly useful for providing config options for custom levels
 since they can be edited before the save is created.
 
-== Session Settings vs. Mod Config
-
-Session settings are always per-game-save, while mod config is stored per-game-installation.
-For example, in a dedicated server, the server has its own mod config and each client has their own mod config.
-Making the server aware of client's chosen configs (or vice versa) is only required if
-some behavior on both sides requires it, for example movement speeds or content registration.
-Replicating config values must be implemented by the mod developer.
-Session Setting values are automatically xref:Development/Satisfactory/Multiplayer.adoc[replicated in multiplayer].
-
-xref:Development/ModLoader/Configuration.adoc[Mod Configurations] are better for user interface or visual stuff
-since it gets saved with the user's installation, carries over between saves, and different users may want different settings on the same server.
-
-Session Settings are good for things that do not pertain to a particular player,
-or you want to be a choice per save file, such as
-what recipes from a mod are enabled,
-how fast a machine operates,
-or options for a custom level.
-
 == Defining New Session Settings
 
 Session Settings are defined by Data Assets.
@@ -199,7 +181,7 @@ use the "Get Session Settings Manager" node.
 You can read the value of a session setting via the "Get <typename> Option Value" method of the Session Settings Manager.
 You can also subscribe to changes via "Subscribe to Dynamic Option Update".
 
-If you want to programatically modify the value of a session setting,
+If you want to programmatically modify the value of a session setting,
 use the "Set <typename> Option Value".
 
 === From {cpp}
