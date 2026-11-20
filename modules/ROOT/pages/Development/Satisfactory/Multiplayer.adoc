@@ -264,6 +264,12 @@ xref:Development/Satisfactory/ConditionalPropertyReplication.adoc[Conditional Pr
 a system custom written by Coffee Stain to reduce the amount of unnecessary data sent to clients.
 See the linked page for more information on how to replicate inventory components.
 
+[id="ReliableMessagingReplication"]
+== Replication with Reliable Messaging
+
+Since the 1.1 release you can use xref:Development/Satisfactory/ReliableMessaging.adoc[Reliable Messaging] 
+to replicate large amount of data while bypassing Unreal Engine's built-in replication.
+
 == Replicated Maps
 
 For unknown reasons, Unreal does not provide systems that allow TMaps to be replicated.
@@ -279,6 +285,7 @@ There are multiple approaches you can implement yourself to work around this:
   Such an approach is most certainly not for the faint of heart, though.
   If your map is updating so often that the overhead of converting it to/from an array is important,
   reconsider if you really need to replicate all that data, and if you would encounter network problems first.
+* Maps can also be replicated by a custom implementation using link:#ReliableMessagingReplication[Replication with Reliable Messaging]
 
 Note that replicating one array of keys and one array of values is not suggested
 because changes to each array are not guaranteed to arrive at the same time.
