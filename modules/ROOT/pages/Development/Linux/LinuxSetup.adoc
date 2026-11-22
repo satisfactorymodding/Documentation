@@ -264,26 +264,7 @@ Ensure they can be executed by running:
 chmod +x BuildUBT.sh DotnetDepends.sh
 ----
 
-Then, in your preferred text editor, open:
-
-`<ue_dir>/Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildTarget.cs`
-
-and comment out lines 2474 through 2482 like this:
-
-[source,cs]
-----
-// GlobalSingleInstanceMutex? mutex = null;
-// if (Rules.BuildEnvironment == TargetBuildEnvironment.Shared)
-// {
-//	 string MutexName = GlobalSingleInstanceMutex.GetUniqueMutexForPath("UnrealBuildTool_CreateCompileEnvironmentForProjectFiles", Unreal.EngineDirectory);
-//	 mutex = new GlobalSingleInstanceMutex(MutexName, true);
-// }
-//
-// CreateSharedPCHInstances(Rules, TargetToolChain, Binaries, GlobalCompileEnvironment, new NullActionGraphBuilder(Logger), Logger);
-// mutex?.Dispose();
-----
-
-Now, run:
+Then run:
 
 [source,bash]
 ----
